@@ -1,0 +1,10 @@
+{
+  "task": "goal",
+  "classes": ["background", "orange_circle", "orange_square", "orange_triangle", "yellow_circle", "yellow_square", "yellow_triangle"],
+  "aliases": {"Orange Circle Goal": "orange_circle", "Orange Square Goal": "orange_square", "Orange Triangle Goal": "orange_triangle", "Yellow Circle Goal": "yellow_circle", "Yellow Square Goal": "yellow_square", "Yellow Triangle Goal": "yellow_triangle", "orangecircle": "orange_circle", "orangesquare": "orange_square", "orangetriangle": "orange_triangle", "yellowcircle": "yellow_circle", "yellowsquare": "yellow_square", "yellowtriangle": "yellow_triangle"},
+  "teacher_size": 96, "student_size": 64, "batch_size": 32,
+  "head_epochs": 2, "finetune_epochs": 4, "head_lr": 0.0001, "finetune_lr": 0.000005,
+  "patience": 3, "student_epochs": 25,
+  "temperature": 4.0, "alpha": 0.5, "seed": 42,
+  "threshold": 0.8, "calibration_samples": 500
+}

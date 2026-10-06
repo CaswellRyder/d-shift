@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-03",
+  "reviewer": "AI assistant visual review; not human certification",
+  "source": "cheese-geozd/cats-and-dogs-bmity/10",
+  "archive_sha256": "99d2f4e3725c63214368c497e79ebb280581ef3d0c25cace0dd29fe4d5879db9",
+  "scope": "Eight randomly selected train/validation crops per target class (64 total), plus 40 randomly selected box-exclusion background crops. Seed 42. No test image review or predictions.",
+  "findings": "Sampled crops match the upstream balloon colors and goal color/shape labels. Real indoor arena, reflective foil balloons, netted goals, motion blur and oblique views. Sampled backgrounds show walls, ceiling, machinery and partial colored structures, with no obvious complete target.",
+  "decision": "Proceed with a research teacher baseline using upstream labels; no full annotation completeness claim.",
+  "limitations": [
+    "Not every image or box was visually reviewed.",
+    "Ambiguous generic Balloons excluded as positives; their boxes still exclude backgrounds.",
+    "Clip groups and time blocks inferred from filenames; independence of recording sessions is not established.",
+    "No full-frame proposal, Pi-camera, tracking or flight qualification."
+  ]
+}

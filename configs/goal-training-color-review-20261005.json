@@ -1,0 +1,29 @@
+{
+  "scope": "train_only",
+  "reviewer": "AI visual inspection of both complete original training images, not human certification",
+  "annotation_sha256": "dea89589e63d4a2e4e327ef90295af4fb14b2e6e7f48372f56d2452a4a758841",
+  "policy": "Only the two explicit annotations change in a new export. Original boxes and files remain immutable; validation and reserved test remain unchanged.",
+  "limitations": "Candidates were found with a color heuristic and individually inspected. This is not an exhaustive annotation audit or proof that all remaining labels are correct.",
+  "decisions": [
+    {
+      "file": "20241002_185015_012_jpg.rf.8c970af59ac15106738926fc7459031d.jpg",
+      "image_sha256": "798461a076768d66e076e7759ed8df7cc693d0a5885cb861717887e74eae3a11",
+      "annotation_id": 650,
+      "original_label": "orange_square",
+      "original_bbox": [235.52, 312.11, 84.16, 62.93],
+      "action": "relabel",
+      "replacement_label": "yellow_square",
+      "reason": "The sole target is a visibly yellow four-sided open goal frame. Preserve its existing box and change only the wrong color label."
+    },
+    {
+      "file": "20241002_190715_010_jpg.rf.fd8a1230a37ad861e7435f987c224783.jpg",
+      "image_sha256": "9f56fd024d03539b6bffa1b1091a223d8a6e05e9a61e804283e3244115183124",
+      "annotation_id": 4675,
+      "original_label": "orange_square",
+      "original_bbox": [461.28, 219.73, 43.52, 59.09],
+      "action": "remove_non_goal",
+      "replacement_label": null,
+      "reason": "The box encloses a reflective green balloon, not an open goal frame. Remove only this false goal annotation; do not invent a balloon label or modify the balloon dataset."
+    }
+  ]
+}

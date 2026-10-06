@@ -1,0 +1,18 @@
+{
+  "status": "provisional engineering target, pending user confirmation",
+  "classes": ["orange_circle", "orange_square", "orange_triangle", "yellow_circle", "yellow_square", "yellow_triangle"],
+  "iou_threshold": 0.5,
+  "confidence_threshold": 0.25,
+  "minimum_precision_per_class": 0.9,
+  "minimum_recall_per_class": 0.9,
+  "minimum_targets_per_class": 50,
+  "required_reporting": ["per_class", "per_color", "class_agnostic_localization", "size_strata"],
+  "qualification_gates": {
+    "development_validation": "All six classes must meet thresholds at a fixed operating point",
+    "independent_evaluation": "Separate recordings or frozen reserved test after development selection",
+    "real_camera": "Actual neon orange and yellow goals under representative camera and lighting conditions",
+    "pi_runtime": "Measured ARMv6 compatibility, latency and memory; no timing requirement yet supplied",
+    "flight": "Outside detector metric qualification; never implied by detection pass"
+  },
+  "deployment_approved": false
+}

@@ -1,0 +1,25 @@
+{
+  "source": "https://github.com/yk-codez/Autonomous_Aerial_Robotics/tree/main/test_images_environment",
+  "label_origin": "AI visual annotation, 2026-10-03; not human certified",
+  "reference_image_size": [1600, 1600],
+  "coordinate_format": "xyxy in reference image; scale to actual image dimensions",
+  "session": "iu-highbay-same-scene-unverified-date",
+  "training_approved": false,
+  "license_status": "No repository license found; inspection and label draft only, excluded from training",
+  "completeness": "Only large foreground yellow goals; distant objects deliberately unannotated; DO NOT sample background from these incomplete annotations",
+  "images": {
+    "test_image.JPEG": [
+      {"label": "yellow_circle", "box": [175, 718, 285, 824]},
+      {"label": "yellow_square", "box": [716, 674, 850, 804]},
+      {"label": "yellow_triangle", "box": [1286, 741, 1464, 901]}
+    ],
+    "test_image_1.jpeg": [
+      {"label": "yellow_square", "box": [14, 608, 161, 751]},
+      {"label": "yellow_triangle", "box": [731, 683, 915, 849]}
+    ],
+    "test_image_2.jpeg": [
+      {"label": "yellow_circle", "box": [445, 685, 554, 791]},
+      {"label": "yellow_square", "box": [1057, 633, 1195, 767]}
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt
+--- a/tensorflow/lite/CMakeLists.txt
++++ b/tensorflow/lite/CMakeLists.txt
+@@ -841,4 +841,6 @@
+-target_compile_options(xnnpack-delegate
+-  PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}
+-  PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}
+-)
++if(TARGET xnnpack-delegate)
++  target_compile_options(xnnpack-delegate
++    PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}
++    PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}
++  )
++endif()

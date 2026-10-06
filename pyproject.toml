@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dtr-mobilenetv4"
+version = "0.1.0"
+description = "Keras MobileNetV4 teachers and tiny INT8 crop classifiers for DTR"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "tensorflow==2.18.1", "keras==3.8.0", "numpy==1.26.4",
+  "pillow==11.1.0", "opencv-python-headless==4.11.0.86", "pyyaml==6.0.2",
+  "setuptools==75.8.2",
+]
+
+[project.optional-dependencies]
+pretrained = ["timm==1.0.15", "torch==2.6.0", "torchvision==0.21.0", "huggingface-hub==0.29.3"]
+dev = ["pytest==8.3.5", "ruff==0.11.2"]
+metal = ["tensorflow-metal==1.2.0; platform_system == 'Darwin'"]
+
+[project.scripts]
+dtr = "dtr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dtr = ["static/*.html", "static/*.css", "static/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

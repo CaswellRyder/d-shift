@@ -1,0 +1,49 @@
+{
+  "scope": "train_only",
+  "reviewer": "AI visual inspection of all five named original images, not human certification",
+  "annotation_sha256": "dea89589e63d4a2e4e327ef90295af4fb14b2e6e7f48372f56d2452a4a758841",
+  "policy": "Drop only the listed contradictory or duplicate annotation; retain the verified existing annotation and all other labels. No new boxes, validation changes, or test reads. Original dataset remains immutable.",
+  "limitations": "This checks overlapping annotations only; missing targets and other wrong labels may remain. Partially visible targets at frame edges are not newly annotated by this review.",
+  "decisions": [
+    {
+      "file": "20241002_192638_005_jpg.rf.18e35710f99c698446535329f229d77c.jpg",
+      "image_sha256": "feb17654829cd872570494c09dafa391b61d408bcb6183fcf9dc74a883fc4cc0",
+      "drop_annotation_id": 2943,
+      "retain_annotation_id": 2944,
+      "retain_label": "yellow_circle",
+      "reason": "Single continuous curved yellow hoop; square annotation duplicates the correct circle annotation. No square occupies this box."
+    },
+    {
+      "file": "20241002_192638_017_jpg.rf.9a756067e552f592ef5ae758fae8409f.jpg",
+      "image_sha256": "46009ceaba6b46074783be36644d4fbfb76849087eda8e4e2ee8c78b5137c7de",
+      "drop_annotation_id": 2956,
+      "retain_annotation_id": 2957,
+      "retain_label": "yellow_circle",
+      "reason": "One yellow circular hoop, not a square; preserve the existing circle annotation and the separate partial orange triangle."
+    },
+    {
+      "file": "20241002_192638_002_jpg.rf.4918dd42efa3859dd9b20c0ce0bd8b0e.jpg",
+      "image_sha256": "afca4dd1f44f88e8355869c1605d6efc70ffc88ffbb8e44bef73bb4122c6df0b",
+      "drop_annotation_id": 4875,
+      "retain_annotation_id": 4874,
+      "retain_label": "yellow_circle",
+      "reason": "Identical boxes with contradictory labels; visible object is a single curved yellow hoop."
+    },
+    {
+      "file": "20241002_192649_022_jpg.rf.d350340b05e912c5d87d210af44ae88c.jpg",
+      "image_sha256": "5559f85279bc75092f8d3410ece1246c09d5574b286bc89ca6c364f390d1bf41",
+      "drop_annotation_id": 3010,
+      "retain_annotation_id": 3011,
+      "retain_label": "orange_triangle",
+      "reason": "One orange triangular frame annotated twice. Retain the existing outer box which includes its left/top rim; remove the smaller clipped duplicate."
+    },
+    {
+      "file": "20241002_192741_021_jpg.rf.564a96513acf1a4c2ac2f5e2d3657b5e.jpg",
+      "image_sha256": "70ffa5cc900038792bdc88e91846cc82be868d10fca12d55d56de66f2a2ee245",
+      "drop_annotation_id": 3386,
+      "retain_annotation_id": 3385,
+      "retain_label": "yellow_circle",
+      "reason": "A single partially clipped yellow hoop at the top has two near-identical boxes. Keep one; preserve all other objects."
+    }
+  ]
+}
