@@ -1,0 +1,101 @@
+{
+  "task": "goal",
+  "classes": [
+    "background",
+    "orange_circle",
+    "orange_square",
+    "orange_triangle",
+    "yellow_circle",
+    "yellow_square",
+    "yellow_triangle"
+  ],
+  "size": 64,
+  "layout": "NHWC",
+  "color": "RGB",
+  "pixel_range": [
+    0,
+    255
+  ],
+  "resize": "Pillow bilinear stretch",
+  "normalization": "embedded 1/255",
+  "output": "logits; dequantize then softmax",
+  "threshold": 0.8,
+  "threshold_status": "provisional; tune on validation recordings",
+  "input_quantization": [
+    1.0,
+    -128
+  ],
+  "output_quantization": [
+    0.18569405376911163,
+    -9
+  ],
+  "sha256": "aeab17f8d6bd73165eae806634cc516aab56e066fbb9b3b0b53090751fef40d2",
+  "bytes": 22512,
+  "calibration_samples": 500,
+  "calibration_split": "train",
+  "integer_only_verified": true,
+  "synthetic_training": false,
+  "deployment_approved": false,
+  "pi_zero_verified": false,
+  "training": {
+    "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/goal-proposals-20261005/teacher.keras",
+    "teacher_sha256": "ce1f95ef833351f9de15c4d5ecfdba650f5fcbea407e66c97f749660af86f076",
+    "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/dtr-proposals-reviewed-20261005/goal/manifest.json",
+    "manifest_sha256": "ba20dc1ceb7c5c71e08f254cf8df9fa777b5b308b507f6b3e7d7c69b089ddd82",
+    "config": {
+      "task": "goal",
+      "classes": [
+        "background",
+        "orange_circle",
+        "orange_square",
+        "orange_triangle",
+        "yellow_circle",
+        "yellow_square",
+        "yellow_triangle"
+      ],
+      "aliases": {
+        "Orange Circle Goal": "orange_circle",
+        "Orange Square Goal": "orange_square",
+        "Orange Triangle Goal": "orange_triangle",
+        "Yellow Circle Goal": "yellow_circle",
+        "Yellow Square Goal": "yellow_square",
+        "Yellow Triangle Goal": "yellow_triangle",
+        "orangecircle": "orange_circle",
+        "orangesquare": "orange_square",
+        "orangetriangle": "orange_triangle",
+        "yellowcircle": "yellow_circle",
+        "yellowsquare": "yellow_square",
+        "yellowtriangle": "yellow_triangle"
+      },
+      "teacher_size": 96,
+      "student_size": 64,
+      "batch_size": 32,
+      "head_epochs": 2,
+      "finetune_epochs": 4,
+      "head_lr": 0.0001,
+      "finetune_lr": 5e-06,
+      "patience": 3,
+      "student_epochs": 25,
+      "temperature": 4.0,
+      "alpha": 0.5,
+      "seed": 42,
+      "threshold": 0.8,
+      "calibration_samples": 500
+    },
+    "epochs": 25,
+    "temperature": 4.0,
+    "alpha": 0.5,
+    "augmentation": "none; cached logits for identical source crops",
+    "student_variant": "context",
+    "training_script_sha256": "55c89ac0b734c81fbe001b468a0314dfe90276a2b8b61a788f6de7e129cfe111",
+    "models_source_sha256": "3c537e84e2da21d94759f31f99b9c35ea498a0b9c062d436f9143c30d897ca1d",
+    "target_cache_run": "runs/goal-pi-student-long-20261005",
+    "test_evaluated": false,
+    "deployment_approved": false,
+    "pi_zero_verified": false,
+    "purpose": "integration_research",
+    "tensorflow": "2.18.1",
+    "keras": "3.8.0",
+    "target_cache_sha256": "36ccbda210445e9652009cd58655c2382e51cd9b5d0774f5bb3e0ef1da8083f5"
+  }
+}

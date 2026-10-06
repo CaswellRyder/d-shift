@@ -1,0 +1,49 @@
+{
+  "source_revision": "72fbba3d20f4616d7312b5e2b7f79daf6e82f2fa",
+  "source_patch": "diff --git a/tensorflow/lite/CMakeLists.txt b/tensorflow/lite/CMakeLists.txt\nindex 3198ec61..1f96ba54 100644\n--- a/tensorflow/lite/CMakeLists.txt\n+++ b/tensorflow/lite/CMakeLists.txt\n@@ -176,6 +176,7 @@ endif()\n find_package(cpuinfo REQUIRED)  #CPUINFO is used by XNNPACK and RUY library\n find_package(ml_dtypes REQUIRED)\n find_package(ruy REQUIRED)\n+find_package(fp16_headers REQUIRED)  # CPU kernels also require these headers.\n # Include TSL, which is in tensorflow/third_party\n include_directories(\n   ${TSL_SOURCE_DIR}\n@@ -838,7 +839,9 @@ target_compile_options(_pywrap_tensorflow_interpreter_wrapper\n   PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}\n )\n \n-target_compile_options(xnnpack-delegate\n-  PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}\n-  PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}\n-)\n+if(TARGET xnnpack-delegate)\n+  target_compile_options(xnnpack-delegate\n+    PUBLIC ${TFLITE_TARGET_PUBLIC_OPTIONS}\n+    PRIVATE ${TFLITE_TARGET_PRIVATE_OPTIONS}\n+  )\n+endif()\n",
+  "dependencies": {
+    "abseil-cpp": "d9e4955c65cd4367dd6bf46f4ccb8cd3d100540b",
+    "cpuinfo": "de0ce7c7251372892e53ce9bc891750d2c9a4fd8",
+    "eigen": "4c38131a16803130b66266a912029504f2cf23cd",
+    "farmhash": "0d859a811870d10f53a594927d0d0b97573ad06d",
+    "fp16_headers": "0a92994d729ff76a58f692d3028ca1b64b145d91",
+    "gemmlowp": "16e8662c34917be0065110bfcd9cc27d30f52fdf",
+    "ml_dtypes": "00d98cd92ade342fef589c0470379abb27baebe9",
+    "protobuf": "90b73ac3f0b10320315c2ca0d03a5a9b095d2f66",
+    "ruy": "3286a34cc8de6149ac6844107dfdffac91531e72"
+  },
+  "files": {
+    "build-armv6/libtensorflowlite_c.so": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+    "build-armv6/CMakeCache.txt": "b94041f862725ee320a60b85a7c0df25aedba9141e2ef90b42919ffdca178509",
+    "build-armv6/compile_commands.json": "1a1b54e8cc677a78509edc5bd583ff222084cbfa56e9dfdaf23990f4b6b14788",
+    "host-tools/bin/flatc": "b077b143c8029ab422055b0994ba8acfc46f43a21519a8924433e8cefed29d90",
+    "armv6-smoke": "cd2ca731b148efd73f17361bae7be4ebf2eacf435b95f49699cb5b8ce1323bc8",
+    "pi-sysroot.tar.gz": "ead39901058f54d382453d0b78a45ed53ef1a7614beda3766861ce37707b540f",
+    "build-attempt-1.log": "731ec3dcf03e9a8ace3ccc3fc9c201f73fee6ee11ddfde633567cb32948075d6",
+    "build-attempt-2.log": "e972330fdccbbdaf9378cb16c019ebde1197970aa4d2899264a88b02b66e8a72",
+    "build-attempt-3.log": "45a562b098e862fe0495736934b34633aa4a88a6461221be4aee7fbf38eb1a97",
+    "build-attempt-4.log": "56052ac31a7ad9313938fa888c13e2696b1ad64d6e7c8bc5be9588a73ff3ec77",
+    "build-attempt-5.log": "d9962a4d18294fbbb2bffee9e6eb407baa7776c517068701058a3e10155b6fda",
+    "build-attempt-6.log": "fcccbfbc0f343c2ac0ff04275c7904dbfc9237a42a0fe247272be1d99bb50fd9"
+  },
+  "recipe_sha256": {
+    "release-defines.h": "f67525ab82da692511e95a5950a7d378431875e64f5e2b2448b71885bf27a4f8",
+    "smoke.cc": "a9041887c6ece5f98a5528c4676cac299dd2a9e85953933911c046409ef94f26",
+    "zig-ar.sh": "9fa69b8cc76709d37275d9053a9278e360f8a5cee28a1654e74fb422623d9b16",
+    "record_build.py": "ec0e2d3f4790e1e3b928cdaeb208d2a36478107387f429c51461a979f93d7785",
+    "build.sh": "20540b33c7be59eb7efb75e2be1ded7fff628f89b5675fbdda16bee2e0d071e9",
+    "fp16-cpu-headers.patch": "ce6d6702528760bc75a6cafac90b10d8820ac12aaad460bcf3ce4e4d22cc4470",
+    "zig-ranlib.sh": "8e560c81a0ab5e8bcd65446c63474e6d7b5569cd9bd5e0012deeb8ca2302f7ea",
+    "armv6-zig.cmake": "a1d743f82b3b6a512b9c43661742f35dbbccc599bf81e99ccf0615a925e283c6",
+    "xnnpack-disabled.patch": "d4aa19eb9370bcb08e4cc574bca3caeda2493a79600d0bf2641d26099933ec02",
+    "zig-cc.sh": "e51a68b93f40674ccd6ce03f5984fc78b6f667246a41f34b366cf3559e98528f",
+    "zig-cxx.sh": "7e6d8fdb3932f50d9cd018362e7db8ba28d328541c1c2c2098c34804bd48e287"
+  },
+  "target": "arm-linux-gnueabihf.2.28 / arm1176jzf_s",
+  "zig": "0.14.1",
+  "cmake": "3.31.6",
+  "ninja": "1.11.1.3",
+  "installed_runtime_replaced": false,
+  "fast_math": false,
+  "deployment_approved": false
+}

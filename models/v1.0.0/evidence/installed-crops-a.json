@@ -1,0 +1,83 @@
+{
+  "results": {
+    "context-fp32": {
+      "max_score_delta": 2.3096799850463867e-07,
+      "labels_match": true,
+      "tolerance": 0.001,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 64.22480587334287,
+      "p50_ms": 63.15336900297552,
+      "p95_ms": 70.71889920407557,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "147671bbff83a8d0f57ff01a0fc8836441790b7b5c919f0e1ade1bb16c75fea3"
+    },
+    "context-int8": {
+      "max_score_delta": 1.862645149230957e-09,
+      "labels_match": true,
+      "tolerance": 0.03,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 87.11786388852892,
+      "p50_ms": 85.67014599975664,
+      "p95_ms": 95.21005399510614,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "aeab17f8d6bd73165eae806634cc516aab56e066fbb9b3b0b53090751fef40d2"
+    },
+    "separable-fp32": {
+      "max_score_delta": 4.544854164123535e-07,
+      "labels_match": true,
+      "tolerance": 0.001,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 43.896531809531595,
+      "p50_ms": 43.08157099876553,
+      "p95_ms": 49.731307903130066,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "ff7953a08a8fc416cfeb318de728326a5738969d2b93c5ff20954f093cf3e975"
+    },
+    "separable-int8": {
+      "max_score_delta": 0.002527177333831787,
+      "labels_match": true,
+      "tolerance": 0.03,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 60.33713009489316,
+      "p50_ms": 59.32641099934699,
+      "p95_ms": 64.07206520088948,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "738c75b3250a633ddf3a9e9605447928abca4b8e7a86d752496ea9746b8d8649"
+    },
+    "warm-fp32": {
+      "max_score_delta": 1.6391277313232422e-06,
+      "labels_match": true,
+      "tolerance": 0.001,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 43.50832920652696,
+      "p50_ms": 43.11356900143437,
+      "p95_ms": 44.58195640036138,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "0ef51ec0fb0d5fabafaa898a9b547314488de6ecebeb9fcf89f4bcc1f101a138"
+    },
+    "warm-int8": {
+      "max_score_delta": 0.005216479301452637,
+      "labels_match": true,
+      "tolerance": 0.03,
+      "parity_passed": true,
+      "samples": 63,
+      "mean_ms": 60.47373198389467,
+      "p50_ms": 60.00840399792651,
+      "p95_ms": 62.151881397585385,
+      "runtime": "dtr.native_tflite",
+      "model_sha256": "26e66da72b254f735b2b47e0af45cb5dc0d88a2dee62d9a392a23b5a6e0c9ff4"
+    }
+  },
+  "host": "vision",
+  "machine": "armv6l",
+  "bundle_sha256": "019bae7be9f44c356b493c54704d1369cc6fb10af8f4cf0a6d649b5c4641fa99",
+  "scope": "Crop resize + inference + softmax; predecoded crops, 5 warmups; not full frame/camera timing",
+  "actual_armv6": true,
+  "flight_commands": null,
+  "deployment_approved": false
+}

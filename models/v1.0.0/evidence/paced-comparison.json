@@ -1,0 +1,81 @@
+{
+  "mode": "paced",
+  "host": "vision",
+  "machine": "armv6l",
+  "source_frames": 12,
+  "image_size": [
+    320,
+    240
+  ],
+  "pixel_sha256": "815c5704151623196972466f8b241308f84714e742a1212318b4740df04a0ff5",
+  "model_sha256": "147671bbff83a8d0f57ff01a0fc8836441790b7b5c919f0e1ade1bb16c75fea3",
+  "library": "/home/pacman/dtr-runtime-build-20261006/libtensorflowlite_c.candidate.so",
+  "pixel_backend": "numpy",
+  "pixel_settings": {
+    "TARGET_COLOR": [
+      156,
+      156,
+      0
+    ],
+    "COLOR_THRESHOLD": 90.0,
+    "MIN_SHAPE_SIZE": 20,
+    "PICK": "first",
+    "USE_MEMORY": true,
+    "ADAPTIVE_STRIDE": true,
+    "DOWNSAMPLE_FACTOR": 1,
+    "ROI_EXPAND": 0.75
+  },
+  "flight_commands": null,
+  "independent_test": false,
+  "scope": "Yellow localization; supplied pixel method selects one goal, context can emit multiple. Static resets pixel memory per image. Paced uses actual elapsed time and drops frames; generated translation/zoom/exposure and blackouts are not competition video. Accuracy is on each method's processed frames, not a common temporal sample in paced mode.",
+  "results": {
+    "pixel": {
+      "frames": 702,
+      "tp": 292,
+      "fp": 12,
+      "fn": 1094,
+      "precision": 0.9605263157894737,
+      "recall": 0.2106782106782107,
+      "f1": 0.3455621301775148,
+      "target_present_frames": 522,
+      "frames_with_correct_target": 292,
+      "any_target_success": 0.5593869731800766,
+      "mean_ms": 71.82132224805437,
+      "p95_ms": 131.32676095083286,
+      "processing_fps": 13.923441795546863,
+      "p95_result_age_ms": 157.5261216512443,
+      "skipped_frames": 18,
+      "over_100ms": 78,
+      "missing_frame_detections": 0,
+      "delivered_fps": 9.849211550199705,
+      "timeline_frames": 720
+    },
+    "context": {
+      "frames": 581,
+      "tp": 851,
+      "fp": 30,
+      "fn": 284,
+      "precision": 0.9659477866061293,
+      "recall": 0.7497797356828194,
+      "f1": 0.8442460317460317,
+      "target_present_frames": 429,
+      "frames_with_correct_target": 429,
+      "any_target_success": 1.0,
+      "mean_ms": 111.80693589839629,
+      "p95_ms": 236.11523399449652,
+      "processing_fps": 8.94398895707814,
+      "p95_result_age_ms": 241.51830700429855,
+      "skipped_frames": 139,
+      "over_100ms": 268,
+      "missing_frame_detections": 0,
+      "delivered_fps": 7.927659338850717,
+      "timeline_frames": 720
+    }
+  },
+  "source_fps": 10,
+  "repeats": 2,
+  "elapsed_by_method": {
+    "pixel": 71.27474076701765,
+    "context": 73.2877101760314
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "edges": [
+    {
+      "stage": "runs/goal-dtr-v10-20261003",
+      "parent": "artifacts/pretrained/mobilenetv4_conv_small.keras",
+      "parent_sha256": "cfa9869e12e40d3f52d5d1954376b7a71e8acde40aaf6de8a382fdde8b213b78",
+      "artifact": "runs/goal-dtr-v10-20261003/teacher.keras",
+      "sha256": "676080eed5ed14b11a21f71e941e5b1bdb7c787d650ae7d172cf23590bc59be4",
+      "data_manifest_sha256": "60de07a96a19841802b0def65dcaf7cf540d65319a03c7ba197104ecfc978b71"
+    },
+    {
+      "stage": "runs/goal-proposals-20261005",
+      "parent": "runs/goal-dtr-v10-20261003/teacher.keras",
+      "parent_sha256": "676080eed5ed14b11a21f71e941e5b1bdb7c787d650ae7d172cf23590bc59be4",
+      "artifact": "runs/goal-proposals-20261005/teacher.keras",
+      "sha256": "ce1f95ef833351f9de15c4d5ecfdba650f5fcbea407e66c97f749660af86f076",
+      "data_manifest_sha256": "ba20dc1ceb7c5c71e08f254cf8df9fa777b5b308b507f6b3e7d7c69b089ddd82"
+    },
+    {
+      "stage": "runs/balloon-dtr-v10-20261003",
+      "parent": "artifacts/pretrained/mobilenetv4_conv_small.keras",
+      "parent_sha256": "cfa9869e12e40d3f52d5d1954376b7a71e8acde40aaf6de8a382fdde8b213b78",
+      "artifact": "runs/balloon-dtr-v10-20261003/teacher.keras",
+      "sha256": "95fb0feab4455f6602c553c01f5750d1a3b610e142df7ab63b2c838394832a67",
+      "data_manifest_sha256": "8a50f7e980df008ba8c6434a3a0f04a3b7d9265b8108c2fb41d96ed9fdeb2430"
+    },
+    {
+      "stage": "runs/balloon-proposals-20261005",
+      "parent": "runs/balloon-dtr-v10-20261003/teacher.keras",
+      "parent_sha256": "95fb0feab4455f6602c553c01f5750d1a3b610e142df7ab63b2c838394832a67",
+      "artifact": "runs/balloon-proposals-20261005/teacher.keras",
+      "sha256": "47733772eeee7c937374239b6280e09558418592c2c006442e5a92ae1abd40ce",
+      "data_manifest_sha256": "263f502def55711c2263149b85cd3d862114d439195890551a09e661c5894115"
+    },
+    {
+      "stage": "runs/student-research-20261005/context-kd",
+      "parent": "runs/goal-proposals-20261005/teacher.keras",
+      "parent_sha256": "ce1f95ef833351f9de15c4d5ecfdba650f5fcbea407e66c97f749660af86f076",
+      "artifact": "runs/student-research-20261005/context-kd/student.keras",
+      "sha256": "b98a4cbbb3f47a8ef2676242a1fe8e5f387dc8ca2b9a9f035e458ef73f19324e",
+      "data_manifest_sha256": "ba20dc1ceb7c5c71e08f254cf8df9fa777b5b308b507f6b3e7d7c69b089ddd82"
+    },
+    {
+      "stage": "runs/balloon-pi-student-20261005",
+      "parent": "runs/balloon-proposals-20261005/teacher.keras",
+      "parent_sha256": "47733772eeee7c937374239b6280e09558418592c2c006442e5a92ae1abd40ce",
+      "artifact": "runs/balloon-pi-student-20261005/student.keras",
+      "sha256": "1c966bb6bf26623fcfaac0a5b0022e55ff8528fff272763917b4aac4bc484100",
+      "data_manifest_sha256": "263f502def55711c2263149b85cd3d862114d439195890551a09e661c5894115"
+    }
+  ],
+  "scope": "Selected stage checkpoints, not every epoch or rejected experiment; datasets excluded",
+  "deployment_approved": false
+}

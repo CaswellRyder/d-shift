@@ -1,0 +1,75 @@
+{
+  "host": "pacintosh.local",
+  "machine": "arm64",
+  "mode": "frames",
+  "flight_commands": null,
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "frames": 595,
+  "split": "development_validation",
+  "budget": 12,
+  "model_sha256": "147671bbff83a8d0f57ff01a0fc8836441790b7b5c919f0e1ade1bb16c75fea3",
+  "yellow_localization": {
+    "tp": 484,
+    "fp": 62,
+    "fn": 49,
+    "precision": 0.8864468864468864,
+    "recall": 0.9080675422138836,
+    "f1": 0.897126969416126
+  },
+  "classes": {
+    "orange_circle": {
+      "tp": 70,
+      "fp": 92,
+      "fn": 180,
+      "precision": 0.43209876543209874,
+      "recall": 0.28,
+      "f1": 0.33980582524271846
+    },
+    "orange_square": {
+      "tp": 47,
+      "fp": 28,
+      "fn": 157,
+      "precision": 0.6266666666666667,
+      "recall": 0.23039215686274508,
+      "f1": 0.33691756272401435
+    },
+    "orange_triangle": {
+      "tp": 93,
+      "fp": 125,
+      "fn": 108,
+      "precision": 0.42660550458715596,
+      "recall": 0.4626865671641791,
+      "f1": 0.4439140811455847
+    },
+    "yellow_circle": {
+      "tp": 145,
+      "fp": 45,
+      "fn": 14,
+      "precision": 0.7631578947368421,
+      "recall": 0.9119496855345912,
+      "f1": 0.830945558739255
+    },
+    "yellow_square": {
+      "tp": 240,
+      "fp": 13,
+      "fn": 15,
+      "precision": 0.9486166007905138,
+      "recall": 0.9411764705882353,
+      "f1": 0.9448818897637795
+    },
+    "yellow_triangle": {
+      "tp": 97,
+      "fp": 6,
+      "fn": 22,
+      "precision": 0.941747572815534,
+      "recall": 0.8151260504201681,
+      "f1": 0.8738738738738738
+    }
+  },
+  "mean_ms": 1.5287094581246126,
+  "p50_ms": 1.5227909898385406,
+  "p95_ms": 2.0981208188459277,
+  "processing_fps": 654.1465382354461,
+  "timing_scope": "detection only; excludes camera, load, render; not live FPS"
+}

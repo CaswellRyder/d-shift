@@ -1,0 +1,71 @@
+{
+  "mode": "static",
+  "host": "vision",
+  "machine": "armv6l",
+  "source_frames": 595,
+  "image_size": [
+    320,
+    240
+  ],
+  "pixel_sha256": "815c5704151623196972466f8b241308f84714e742a1212318b4740df04a0ff5",
+  "model_sha256": "147671bbff83a8d0f57ff01a0fc8836441790b7b5c919f0e1ade1bb16c75fea3",
+  "library": "/home/pacman/dtr-runtime-build-20261006/libtensorflowlite_c.candidate.so",
+  "pixel_backend": "numpy",
+  "pixel_settings": {
+    "TARGET_COLOR": [
+      156,
+      156,
+      0
+    ],
+    "COLOR_THRESHOLD": 90.0,
+    "MIN_SHAPE_SIZE": 20,
+    "PICK": "first",
+    "USE_MEMORY": true,
+    "ADAPTIVE_STRIDE": true,
+    "DOWNSAMPLE_FACTOR": 1,
+    "ROI_EXPAND": 0.75
+  },
+  "flight_commands": null,
+  "independent_test": false,
+  "scope": "Yellow localization; supplied pixel method selects one goal, context can emit multiple. Static resets pixel memory per image. Paced uses actual elapsed time and drops frames; generated translation/zoom/exposure and blackouts are not competition video. Accuracy is on each method's processed frames, not a common temporal sample in paced mode.",
+  "results": {
+    "pixel": {
+      "frames": 595,
+      "tp": 54,
+      "fp": 5,
+      "fn": 479,
+      "precision": 0.9152542372881356,
+      "recall": 0.10131332082551595,
+      "f1": 0.18243243243243243,
+      "target_present_frames": 256,
+      "frames_with_correct_target": 54,
+      "any_target_success": 0.2109375,
+      "mean_ms": 96.71003175464053,
+      "p95_ms": 182.98196960095072,
+      "processing_fps": 10.340188932385663,
+      "p95_result_age_ms": null,
+      "skipped_frames": 0,
+      "over_100ms": 170,
+      "missing_frame_detections": 0
+    },
+    "context": {
+      "frames": 595,
+      "tp": 484,
+      "fp": 62,
+      "fn": 49,
+      "precision": 0.8864468864468864,
+      "recall": 0.9080675422138836,
+      "f1": 0.897126969416126,
+      "target_present_frames": 256,
+      "frames_with_correct_target": 254,
+      "any_target_success": 0.9921875,
+      "mean_ms": 382.11739356124514,
+      "p95_ms": 445.0879082985921,
+      "processing_fps": 2.616996810012318,
+      "p95_result_age_ms": null,
+      "skipped_frames": 0,
+      "over_100ms": 573,
+      "missing_frame_detections": 0
+    }
+  }
+}

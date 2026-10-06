@@ -55,6 +55,12 @@ experiments, and the October 6 ARMv6 runtime rebuild.
 
 ## Status and boundaries
 
+- **D-SHIFT v1.0.0:** the [model card and full weight lineage](docs/MODEL_V1.md)
+  freeze Context-16K FP32 as the goal integration candidate and retain the separate
+  balloon INT8 baseline. Small selected weights are in [models/](models/README.md);
+  pretrained/teacher checkpoints and the ARMv6 runtime are private release assets.
+  Datasets remain excluded. This is a research snapshot, not flight approval.
+
 - **Updated pixel comparison (2026-10-06):** [static, paced, and live-camera results](docs/COMPETITION_COMPARISON.md).
   The unchanged hollow-goal pixel method and context FP32 student were tested on
   the actual Pi. Paced generated replay delivered 9.85 versus 7.93 FPS; native-size
@@ -196,9 +202,10 @@ cd d-shift
 ```
 
 Create the isolated `.venv` in the checkout. Nothing is installed into system Python.
-Datasets, trained weights, experiment outputs, and compiled runtime bundles are
-not included in Git. See the data preparation, training, and runtime build guides
-below to reproduce them; existing local artifacts remain untouched.
+Selected v1 student weights and metadata are included in Git. Larger lineage
+weights and the compiled ARMv6 runtime are downloadable private release assets;
+see [the v1 model card](docs/MODEL_V1.md). Datasets, full experiment outputs,
+and intermediate checkpoints remain outside Git. Existing local artifacts are untouched.
 
 ```bash
 uv sync --extra pretrained --extra dev --extra metal

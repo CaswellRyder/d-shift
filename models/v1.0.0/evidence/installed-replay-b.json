@@ -1,0 +1,119 @@
+{
+  "host": "vision",
+  "machine": "armv6l",
+  "mode": "replay",
+  "model_sha256": "147671bbff83a8d0f57ff01a0fc8836441790b7b5c919f0e1ade1bb16c75fea3",
+  "base_manifest_sha256": "d477c4880b62580b8a6a2d4bb2869647b12bd25a90482bdc3564ad8da37bd263",
+  "budget": 4,
+  "scan_interval": 0.5,
+  "refresh_interval": 0.6,
+  "label_ttl": 1.0,
+  "proposal_profile": "balloon_components",
+  "difference_backend": "native",
+  "background_refresh_interval": 1.8,
+  "flight_commands": null,
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "scope": "Synthetic translation of development stills; NOT real video accuracy",
+  "nominal_frame_interval_ms": 100,
+  "clips": [
+    "frames/0000.png",
+    "frames/0001.png",
+    "frames/0002.png",
+    "frames/0003.png",
+    "frames/0004.png",
+    "frames/0014.png",
+    "frames/0015.png",
+    "frames/0016.png",
+    "frames/0005.png",
+    "frames/0006.png",
+    "frames/0017.png",
+    "frames/0018.png"
+  ],
+  "timing_scope": "processing only; nominal clock does not imply 10 Hz real-time",
+  "results": {
+    "temporal": {
+      "frames": 240,
+      "mean_ms": 184.11935344189865,
+      "p95_ms": 418.658128356401,
+      "processing_fps": 5.431259567808354,
+      "inference_calls": 439,
+      "full_scans": 78,
+      "over_100ms": 145,
+      "max_emitted_label_age_ms": 927.1369260022767,
+      "metrics": {
+        "orange_circle": {
+          "tp": 34,
+          "fp": 32,
+          "fn": 146,
+          "precision": 0.5151515151515151,
+          "recall": 0.18888888888888888,
+          "f1": 0.2764227642276423
+        },
+        "orange_square": {
+          "tp": 36,
+          "fp": 6,
+          "fn": 144,
+          "precision": 0.8571428571428571,
+          "recall": 0.2,
+          "f1": 0.32432432432432434
+        },
+        "orange_triangle": {
+          "tp": 82,
+          "fp": 16,
+          "fn": 80,
+          "precision": 0.8367346938775511,
+          "recall": 0.5061728395061729,
+          "f1": 0.6307692307692307
+        },
+        "yellow_circle": {
+          "tp": 126,
+          "fp": 0,
+          "fn": 18,
+          "precision": 1.0,
+          "recall": 0.875,
+          "f1": 0.9333333333333333
+        },
+        "yellow_square": {
+          "tp": 176,
+          "fp": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.9777777777777777,
+          "f1": 0.9887640449438202
+        },
+        "yellow_triangle": {
+          "tp": 38,
+          "fp": 14,
+          "fn": 106,
+          "precision": 0.7307692307692307,
+          "recall": 0.2638888888888889,
+          "f1": 0.3877551020408163
+        },
+        "yellow_localization": {
+          "tp": 340,
+          "fp": 14,
+          "fn": 128,
+          "precision": 0.96045197740113,
+          "recall": 0.7264957264957265,
+          "f1": 0.8272506082725061
+        }
+      },
+      "first_correct_class_after_return_nominal_ms_by_clip": [
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "missing_frame_false_positives": 0
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "status": "INTEGRATION_CANDIDATE_UNVALIDATED",
+  "student_parameters": 6131,
+  "validation_fp32": {
+    "accuracy": 0.9940577249575552,
+    "classes": [
+      "background",
+      "green_balloon",
+      "purple_balloon"
+    ],
+    "confusion_true_rows_predicted_columns": [
+      [
+        593,
+        0,
+        1
+      ],
+      [
+        6,
+        479,
+        0
+      ],
+      [
+        0,
+        0,
+        99
+      ]
+    ],
+    "precision": [
+      0.989983305509182,
+      1.0,
+      0.99
+    ],
+    "recall": [
+      0.9983164983164983,
+      0.9876288659793815,
+      1.0
+    ],
+    "samples": 1178
+  },
+  "validation_int8": {
+    "accuracy": 0.9940577249575552,
+    "confusion_true_rows_predicted_columns": [
+      [
+        593,
+        0,
+        1
+      ],
+      [
+        6,
+        479,
+        0
+      ],
+      [
+        0,
+        0,
+        99
+      ]
+    ]
+  },
+  "export": {
+    "task": "balloon",
+    "classes": [
+      "background",
+      "green_balloon",
+      "purple_balloon"
+    ],
+    "size": 64,
+    "layout": "NHWC",
+    "color": "RGB",
+    "pixel_range": [
+      0,
+      255
+    ],
+    "resize": "Pillow bilinear stretch",
+    "normalization": "embedded 1/255",
+    "output": "logits; dequantize then softmax",
+    "threshold": 0.8,
+    "threshold_status": "provisional; tune on validation recordings",
+    "input_quantization": [
+      1.0,
+      -128
+    ],
+    "output_quantization": [
+      0.12751497328281403,
+      -23
+    ],
+    "sha256": "504aaf559eca236bee8a69cc45aee1e7dfdba633cf97d93e9deadee16cfc5d00",
+    "bytes": 10640,
+    "calibration_samples": 500,
+    "calibration_split": "train",
+    "integer_only_verified": true,
+    "synthetic_training": false,
+    "deployment_approved": false,
+    "pi_zero_verified": false,
+    "training": {
+      "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-proposals-20261005/teacher.keras",
+      "teacher_sha256": "47733772eeee7c937374239b6280e09558418592c2c006442e5a92ae1abd40ce",
+      "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/dtr-proposals-reviewed-20261005/balloon/manifest.json",
+      "manifest_sha256": "263f502def55711c2263149b85cd3d862114d439195890551a09e661c5894115",
+      "config": {
+        "task": "balloon",
+        "classes": [
+          "background",
+          "green_balloon",
+          "purple_balloon"
+        ],
+        "aliases": {
+          "Green Balloon": "green_balloon",
+          "Purple Balloon": "purple_balloon",
+          "greenball": "green_balloon",
+          "purpleball": "purple_balloon"
+        },
+        "teacher_size": 96,
+        "student_size": 64,
+        "batch_size": 32,
+        "head_epochs": 2,
+        "finetune_epochs": 4,
+        "head_lr": 0.0001,
+        "finetune_lr": 5e-06,
+        "patience": 3,
+        "student_epochs": 25,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "seed": 42,
+        "threshold": 0.8,
+        "calibration_samples": 500
+      },
+      "epochs": 8,
+      "temperature": 4.0,
+      "alpha": 0.5,
+      "augmentation": "none; cached logits for identical source crops",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "pi_zero_verified": false,
+      "purpose": "integration_research",
+      "tensorflow": "2.18.1",
+      "keras": "3.8.0"
+    }
+  },
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_zero_verified": false,
+  "scope": "Crop validation only; not full-frame detector accuracy"
+}

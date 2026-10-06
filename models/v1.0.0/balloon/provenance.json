@@ -1,0 +1,44 @@
+{
+  "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-proposals-20261005/teacher.keras",
+  "teacher_sha256": "47733772eeee7c937374239b6280e09558418592c2c006442e5a92ae1abd40ce",
+  "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/dtr-proposals-reviewed-20261005/balloon/manifest.json",
+  "manifest_sha256": "263f502def55711c2263149b85cd3d862114d439195890551a09e661c5894115",
+  "config": {
+    "task": "balloon",
+    "classes": [
+      "background",
+      "green_balloon",
+      "purple_balloon"
+    ],
+    "aliases": {
+      "Green Balloon": "green_balloon",
+      "Purple Balloon": "purple_balloon",
+      "greenball": "green_balloon",
+      "purpleball": "purple_balloon"
+    },
+    "teacher_size": 96,
+    "student_size": 64,
+    "batch_size": 32,
+    "head_epochs": 2,
+    "finetune_epochs": 4,
+    "head_lr": 0.0001,
+    "finetune_lr": 5e-06,
+    "patience": 3,
+    "student_epochs": 25,
+    "temperature": 4.0,
+    "alpha": 0.5,
+    "seed": 42,
+    "threshold": 0.8,
+    "calibration_samples": 500
+  },
+  "epochs": 8,
+  "temperature": 4.0,
+  "alpha": 0.5,
+  "augmentation": "none; cached logits for identical source crops",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_zero_verified": false,
+  "purpose": "integration_research",
+  "tensorflow": "2.18.1",
+  "keras": "3.8.0"
+}

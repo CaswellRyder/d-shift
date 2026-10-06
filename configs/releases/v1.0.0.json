@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "status": "research_integration_snapshot",
+  "deployment_approved": false,
+  "goal_model": "models/v1.0.0/goal/student.float.tflite",
+  "balloon_model": "models/v1.0.0/balloon/student.int8.tflite",
+  "goal_architecture": "context",
+  "goal_parameters": 16183,
+  "balloon_architecture": "tiny",
+  "balloon_parameters": 6131,
+  "search_size": [320, 240],
+  "camera_rotation_degrees": 180,
+  "temporal": {
+    "budget": 4,
+    "candidate_limit": 12,
+    "scan_interval": 0.5,
+    "refresh_interval": 0.6,
+    "background_refresh_interval": 1.8,
+    "label_ttl": 1.0,
+    "proposal_profile": "balloon_components",
+    "difference_backend": "native"
+  },
+  "runtime_asset": "d-shift-v1.0.0-armv6-runtime.zip",
+  "runtime_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+  "runtime_override": "DTR_TFLITE_LIBRARY",
+  "notes": "Goal temporal configuration is measured. Balloon export is a separate baseline; simultaneous balloon/goal operation and mission control are not qualified. Metadata approval flags remain false."
+}
