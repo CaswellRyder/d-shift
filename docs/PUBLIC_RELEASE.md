@@ -23,8 +23,12 @@ documented research.
 The targeted scan found no matches for the checked private-key, GitHub/cloud-token,
 and previously exposed credential patterns. It is not a complete secret-detection
 audit and does not prove that all possible sensitive material is absent.
-New changes need another scan. CI must be observed succeeding remotely, not merely
-assumed to pass because the YAML exists or the Mac tests pass.
+New changes need another scan. Remote CI passed for cleanup commit `6ddc67a`
+([run 37562499662](https://github.com/CaswellRyder/d-shift/actions/runs/37562499662)):
+lint, Python and browser-policy tests, artifact verification, and generated model
+loading checks. This validates desktop packaging, not Pi or flight performance.
+The runner reported action Node.js 20 deprecation and an upcoming `ubuntu-latest`
+image migration; both are maintenance notices, not failed checks.
 
 ## Before changing visibility
 
@@ -71,7 +75,7 @@ and pretrained-model attribution, even though datasets are not uploaded.
 
 ### 4. Finish publication checks
 
-- [ ] Observe the new GitHub Actions run; record any platform-specific limitations.
+- [x] Observe the new GitHub Actions run; record any platform-specific limitations.
 - [ ] Owner approves historical-path/author disclosures or a sanitization plan.
 - [ ] Owner confirms publication rights and dependency-risk policy.
 - [ ] Owner explicitly requests changing visibility to public.
