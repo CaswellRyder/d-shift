@@ -3,6 +3,31 @@
 Discuss substantial model, dataset, or runtime changes before implementation.
 Use focused branches and pull requests with plain descriptive titles.
 
+## Local version control with Jujutsu
+
+Use `jj` for local work. This checkout uses colocated Jujutsu and Git, so existing
+Git history and GitHub tooling remain available. On another existing Git clone,
+initialize once with `jj git init --colocate` (requires Jujutsu installed).
+
+Start with `jj status`, `jj diff`, and `jj log`. Jujutsu snapshots the working
+copy automatically; there is no Git-style staging step. Review ownership before
+checkpointing, and use explicit paths to leave unrelated changes uncommitted:
+
+```sh
+jj commit -m "Describe the completed change" path/to/owned-file
+```
+
+This creates a new working-copy change on top. Bookmarks are named branch tips
+and do not automatically advance with every commit. After verifying the finished
+revision, move the intended bookmark explicitly, for example
+`jj bookmark set main -r @-` when continuing the existing main line. Use a focused
+bookmark for separate work. Do not rewrite published revisions or move unrelated
+bookmarks. Inspect `jj op log` for recovery history before considering an undo.
+
+Keep `.gitignore` protections for data, runs, artifacts, and credentials. Avoid
+mixing Git mutations with Jujutsu mutations in the same workflow. Fetching and
+pushing remain explicit actions; a local checkpoint does not publish anything.
+
 ## Setup and checks
 
 Use Python 3.11 and `uv sync --locked --extra dev` on a desktop host.
