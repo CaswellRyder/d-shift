@@ -8,7 +8,7 @@ import time
 import cv2
 import numpy as np
 
-from .vision import proposals, suppress_duplicates
+from .vision import proposals, suppress_duplicates, validate_model_profile
 
 
 def validate_rgb(rgb):
@@ -33,6 +33,7 @@ def observe_detail(rgb, predictor, scan_rgb=None, scan_size=(320,240), limit=12,
     This allows synchronized camera streams and exact frozen-proposal ablations.
     If omitted, search image is resized locally and its cost is included in timing.
     """
+    validate_model_profile(predictor.metadata, profile)
     start = time.perf_counter()
     validate_rgb(rgb)
     if scan_rgb is None:

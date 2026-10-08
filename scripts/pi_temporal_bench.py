@@ -66,7 +66,8 @@ def main():
     parser.add_argument("--output",required=True)
     parser.add_argument("--mode",choices=["replay","camera"],default="replay")
     parser.add_argument("--budget",type=int,default=4)
-    parser.add_argument("--profile",choices=("balloon_components","goal_lut"),default="balloon_components")
+    parser.add_argument("--profile",choices=("balloon_components","goal_lut","balloon_red_blue"),
+                        default="balloon_components")
     parser.add_argument("--difference-backend",choices=("numpy","native"),default="native")
     parser.add_argument("--policy",choices=["both","temporal"],default="both")
     parser.add_argument("--background-refresh",type=float,default=1.8)

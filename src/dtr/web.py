@@ -22,7 +22,10 @@ from PIL import Image, UnidentifiedImageError
 
 from .runtime import Predictor
 from .tracking import BoxTracker
-from .vision import DEFAULT_DUPLICATE_POLICY, DEFAULT_LIMIT, color_mask, observe
+from .vision import (
+    DEFAULT_DUPLICATE_POLICY, DEFAULT_LIMIT, RED_BLUE_PROFILE,
+    color_mask, observe, validate_model_profile,
+)
 
 ASSETS = Path(__file__).with_name("static")
 MAX_BODY = 256 * 1024
@@ -50,9 +53,15 @@ class VisionService:
                 self.predictors[task] = TeacherPredictor(path, allow_unvalidated)
             else:
                 self.predictors[task] = Predictor(path, allow_unvalidated)
+        self.profiles = {}
         for task, predictor in self.predictors.items():
             if predictor.metadata["task"] != task:
                 raise ValueError(f"Wrong task in {task} model metadata")
+            classes = predictor.metadata.get("classes", ())
+            profile = (RED_BLUE_PROFILE if {"red_balloon", "blue_balloon"}.intersection(classes)
+                       else self.profile)
+            validate_model_profile(predictor.metadata, profile)
+            self.profiles[task] = profile
         self.sessions = {}
         self.lock = threading.Lock()
 
@@ -67,6 +76,7 @@ class VisionService:
                     "engine": p.metadata.get("kind", "int8_student"),
                     "model_sha256": p.metadata.get("sha256"),
                     "proposal_limit": self.limits[task],
+                    "proposal_profile": self.profiles[task],
                 }
                 for task, p in self.predictors.items()
             },
@@ -102,11 +112,11 @@ class VisionService:
             if reset:
                 state["tracker"] = BoxTracker()
             result = observe(
-                rgb, self.predictors[task], limit=self.limits[task], profile=self.profile
+                rgb, self.predictors[task], limit=self.limits[task], profile=self.profiles[task]
             )
             result["observations"] = state["tracker"].update(result["observations"], now)
             state.update(last=now, sequence=sequence)
-            ok, png = cv2.imencode(".png", color_mask(rgb, task, self.profile))
+            ok, png = cv2.imencode(".png", color_mask(rgb, task, self.profiles[task]))
             if not ok:
                 raise ValueError("Mask encoding failed")
             result.update(

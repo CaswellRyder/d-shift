@@ -14,6 +14,8 @@ HSV_RANGES = {
 DEFAULT_LIMIT = 12  # Offboard research budget, NOT an ARMv6 performance claim.
 DEFAULT_PROFILE = "v2"
 DEFAULT_DUPLICATE_POLICY = "nested"
+RED_BLUE_PROFILE = "balloon_red_blue"
+RED_BLUE_CLASSES = frozenset(("background", "red_balloon", "blue_balloon"))
 PROPOSAL_PROFILES = (
     "v2",
     "orange_v3",
@@ -23,6 +25,7 @@ PROPOSAL_PROFILES = (
     "orange_local",
     "balloon_external",
     "balloon_components",
+    RED_BLUE_PROFILE,
     "goal_gap9",
     "orange_regions",
     "orange_regions_compact",
@@ -31,15 +34,37 @@ PROPOSAL_PROFILES = (
 )
 
 
+def validate_model_profile(metadata, profile):
+    """Never reinterpret historical green/purple outputs as red/blue identities."""
+    metadata = metadata or {}
+    classes = metadata.get("classes", ())
+    red_blue_model = bool({"red_balloon", "blue_balloon"}.intersection(classes))
+    if profile == RED_BLUE_PROFILE:
+        if (metadata.get("task") != "balloon" or len(classes) != 3
+                or set(classes) != RED_BLUE_CLASSES):
+            raise ValueError("balloon_red_blue requires a red/blue balloon model, not legacy weights")
+    elif red_blue_model:
+        raise ValueError("Red/blue balloon models require the balloon_red_blue proposal profile")
+
+
 def color_masks(rgb, task, profile=DEFAULT_PROFILE):
     if profile not in PROPOSAL_PROFILES:
         raise ValueError("Unknown proposal profile")
     if task not in HSV_RANGES:
         raise ValueError("Task must be balloon or goal")
+    if profile == RED_BLUE_PROFILE and task != "balloon":
+        raise ValueError("balloon_red_blue is only valid for the balloon task")
     if task == "goal" and profile == "goal_lut":
         from .color_lookup import goal_lookup_masks
         return goal_lookup_masks(rgb)
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+    if profile == RED_BLUE_PROFILE:
+        # Broad proposal bands, not color decisions. The crop model must reject
+        # orange goals, purple clutter, and non-balloon red/blue objects.
+        red = cv2.inRange(hsv, (0, 45, 30), (10, 255, 255))
+        red |= cv2.inRange(hsv, (170, 45, 30), (179, 255, 255))
+        blue = cv2.inRange(hsv, (95, 45, 30), (130, 255, 255))
+        return [red, blue]
     masks = [
         cv2.inRange(hsv, np.array(lo, np.uint8), np.array(hi, np.uint8))
         for lo, hi in HSV_RANGES[task]
@@ -202,7 +227,8 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
                 else cv2.RETR_LIST
             )
             if task == "balloon" and profile in (
-                "balloon_components", "goal_gap9", "orange_regions", "orange_regions_compact"
+                "balloon_components", "goal_gap9", "orange_regions", "orange_regions_compact",
+                RED_BLUE_PROFILE,
             ):
                 retrieval = cv2.RETR_CCOMP
             contours, hierarchy = cv2.findContours(mask, retrieval, cv2.CHAIN_APPROX_SIMPLE)
@@ -355,6 +381,7 @@ def observe(
     duplicate_policy=DEFAULT_DUPLICATE_POLICY,
 ):
     """Scores are not calibrated probabilities. Boxes are not goal opening geometry."""
+    validate_model_profile(predictor.metadata, profile)
     start = time.perf_counter()
     found = []
     candidates = proposals(rgb, predictor.metadata["task"], limit, profile=profile)
