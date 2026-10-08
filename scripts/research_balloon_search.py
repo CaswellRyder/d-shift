@@ -54,6 +54,34 @@ def remove_contained(candidates):
     return kept
 
 
+def suppress_confirmed_balloon_parts(observations):
+    """Research-only: suppress tiny same-color parts only after a parent is accepted.
+
+    Unlike pre-inference containment filtering, an unverified/background parent
+    cannot hide a valid smaller balloon. Same-color overlapping instances can
+    still be merged incorrectly; this is not a deployed instance-segmentation rule.
+    """
+    rows = [dict(row) for row in observations]
+    labels = {"red_balloon", "blue_balloon"}
+    for child in rows:
+        if not child["accepted"] or child["label"] not in labels:
+            continue
+        a, b, c, d = child["box"]
+        area = (c-a)*(d-b)
+        if area <= 0:
+            continue
+        for parent in observations:
+            if not parent["accepted"] or parent["label"] != child["label"]:
+                continue
+            x, y, z, w = parent["box"]
+            parent_area = (z-x)*(w-y)
+            overlap = max(0, min(c, z)-max(a, x))*max(0, min(d, w)-max(b, y))
+            if area <= .35*parent_area and overlap >= .95*area:
+                child.update(accepted=False, suppressed=True, suppression_reason="confirmed_balloon_part")
+                break
+    return rows
+
+
 def select(candidates, limit=12):
     queues = [[c for c in sorted(candidates, key=lambda c: -c["proposal_score"])
                if c["color_group"] == group] for group in (0, 1)]
@@ -90,7 +118,7 @@ def experimental(rgb, variant):
                     c = candidate(contour, group, rgb.shape)
                     if c:
                         pool.append(c)
-    elif variant in ("mser", "mser_blend", "mser_components"):
+    elif variant in ("mser", "mser_blend", "mser_components", "mser_confirmed_parts"):
         planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
                   cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
         for group, plane in enumerate(planes):

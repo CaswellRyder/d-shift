@@ -14,7 +14,7 @@ from dtr.data import read_json, sha256
 from dtr.runtime import Predictor
 from dtr.tracking import iou
 from dtr.vision import RED_BLUE_PROFILE, suppress_duplicates, validate_model_profile
-from scripts.research_balloon_search import experimental
+from scripts.research_balloon_search import experimental, suppress_confirmed_balloon_parts
 
 LABELS = ("red_balloon", "blue_balloon")
 
@@ -86,7 +86,7 @@ def evaluate(manifest, scene_review, models, negatives, negative_review):
             fits.append(dict(id=row["id"], label=pred["label"], accepted=pred["accepted"], score=pred["score"]))
         variants = {}
         with zipfile.ZipFile(archive_path) as archive:
-            for variant in ("baseline", "multisat", "mser", "mser_components"):
+            for variant in ("baseline", "multisat", "mser", "mser_components", "mser_confirmed_parts"):
                 total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
                 frames = []
                 for source, rows in sorted(scenes.items()):
@@ -103,6 +103,8 @@ def evaluate(manifest, scene_review, models, negatives, negative_review):
                         a, b, c, d = candidate["crop_box"]
                         found.append(dict(candidate, **predictor.predict(rgb[b:d, a:c])))
                     detections = suppress_duplicates(found)
+                    if variant == "mser_confirmed_parts":
+                        detections = suppress_confirmed_balloon_parts(detections)
                     counts = detection_counts(truth, detections)
                     for label in LABELS:
                         for key in ("tp", "fp", "fn"):
