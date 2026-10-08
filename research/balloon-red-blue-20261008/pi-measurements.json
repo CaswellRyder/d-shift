@@ -1,0 +1,707 @@
+{
+  "scope": "Device timing plus tiny off-domain development diagnostics",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "flight_ready": false,
+  "results": {
+    "camera-context-fp32-temporal-a.json": {
+      "report_sha256": "cee4db70a9d9ae4fe8ea84ef6eb8d8a2ae3113f0fa1f3b553161ef3610c68859",
+      "frames_sha256": "c92f3f549baccb24f6daebd13bb9d991043e3dc37afff94b54314c0301301491",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "camera",
+        "policy": "temporal",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 4,
+        "health_before": {
+          "temperature_millicelsius": "43850",
+          "load_average": "1.01 0.71 0.34 1/238 4702",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "camera_rotation_degrees": 180,
+        "requested_camera_fps": 10,
+        "camera_size": [
+          320,
+          240
+        ],
+        "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': True, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (640, 480), 'stride': 800, 'framesize': 384000}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (640, 480)}, 'display': 'main', 'encode': 'main'}",
+        "wall_seconds": 28.799355534021743,
+        "observed_loop_fps": 4.166759907465275,
+        "scope": "Unlabeled live camera timing; NO detection accuracy or flight qualification",
+        "increasing_sensor_timestamps": true,
+        "output_age_clock": "libcamera SensorTimestamp vs Linux CLOCK_BOOTTIME; invalid ages omitted",
+        "output_age": {
+          "mean_ms": 330.7202571916667,
+          "p50_ms": 346.75171550000005,
+          "p95_ms": 485.93414475000003,
+          "max_ms": 544.654976
+        },
+        "missing_or_invalid_ages": 0,
+        "timing": {
+          "mean_ms": 208.2871681333927,
+          "p50_ms": 150.94168949872255,
+          "p95_ms": 338.28639195417054,
+          "max_ms": 353.4227599739097
+        },
+        "frames": 120,
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "1.25 0.81 0.39 1/243 4711",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 125788,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "accepted_observations": 0,
+      "accuracy": null,
+      "accuracy_reason": "Unlabeled live scene; no precision/recall claim"
+    },
+    "camera-context-fp32-temporal-b.json": {
+      "report_sha256": "a894eab9efad46f85f51dd2638f5685aec344b055229464bd66d53098039a5c4",
+      "frames_sha256": "b95cc5baf7cf8a16adeda4de1a96ad86fb7e030bc210eadbbcee4a8d123532c2",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "camera",
+        "policy": "temporal",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 4,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.98 0.87 0.48 1/238 4740",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "camera_rotation_degrees": 180,
+        "requested_camera_fps": 10,
+        "camera_size": [
+          320,
+          240
+        ],
+        "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': True, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (640, 480), 'stride': 800, 'framesize': 384000}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (640, 480)}, 'display': 'main', 'encode': 'main'}",
+        "wall_seconds": 27.790221219998784,
+        "observed_loop_fps": 4.318065662379253,
+        "scope": "Unlabeled live camera timing; NO detection accuracy or flight qualification",
+        "increasing_sensor_timestamps": true,
+        "output_age_clock": "libcamera SensorTimestamp vs Linux CLOCK_BOOTTIME; invalid ages omitted",
+        "output_age": {
+          "mean_ms": 329.3985566,
+          "p50_ms": 348.6172285,
+          "p95_ms": 476.92072615,
+          "max_ms": 516.653212
+        },
+        "missing_or_invalid_ages": 0,
+        "timing": {
+          "mean_ms": 199.53817719967142,
+          "p50_ms": 153.4121629956644,
+          "p95_ms": 317.8046435859869,
+          "max_ms": 339.92492899415083
+        },
+        "frames": 120,
+        "health_after": {
+          "temperature_millicelsius": "44926",
+          "load_average": "1.11 0.91 0.52 1/243 4749",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 125880,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "accepted_observations": 0,
+      "accuracy": null,
+      "accuracy_reason": "Unlabeled live scene; no precision/recall claim"
+    },
+    "camera-separable-fp32-temporal-a.json": {
+      "report_sha256": "f2982182e969f9d28f04ba6a244ee2862868c4c1d92e17fda16c81ca7a4dcb0b",
+      "frames_sha256": "32793776867956633f3aa134ce93c8e99e51d3d6f46b82de1d937104fb405e75",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "camera",
+        "policy": "temporal",
+        "model": "separable-fp32",
+        "model_sha256": "1f3cd4443cc00a05e01ef0bfdc9f27d3a80df5b46fda46e653c672e5bb671e4d",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.1920928955078125e-07,
+        "budget": 4,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "1.16 0.82 0.41 1/238 4713",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "camera_rotation_degrees": 180,
+        "requested_camera_fps": 10,
+        "camera_size": [
+          320,
+          240
+        ],
+        "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': True, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (640, 480), 'stride': 800, 'framesize': 384000}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (640, 480)}, 'display': 'main', 'encode': 'main'}",
+        "wall_seconds": 23.985545446019387,
+        "observed_loop_fps": 5.003013180169937,
+        "scope": "Unlabeled live camera timing; NO detection accuracy or flight qualification",
+        "increasing_sensor_timestamps": true,
+        "output_age_clock": "libcamera SensorTimestamp vs Linux CLOCK_BOOTTIME; invalid ages omitted",
+        "output_age": {
+          "mean_ms": 295.4945840666667,
+          "p50_ms": 292.781044,
+          "p95_ms": 433.72851365,
+          "max_ms": 472.192156
+        },
+        "missing_or_invalid_ages": 0,
+        "timing": {
+          "mean_ms": 171.63345910933762,
+          "p50_ms": 119.3445685057668,
+          "p95_ms": 305.0301927491091,
+          "max_ms": 317.42019500234164
+        },
+        "frames": 120,
+        "health_after": {
+          "temperature_millicelsius": "45464",
+          "load_average": "1.10 0.84 0.43 1/243 4722",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 125984,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "accepted_observations": 0,
+      "accuracy": null,
+      "accuracy_reason": "Unlabeled live scene; no precision/recall claim"
+    },
+    "camera-separable-fp32-temporal-b.json": {
+      "report_sha256": "851231f539b6dd5c959339c8611e3ad2f11254d8532a48a8917d3be7312921b0",
+      "frames_sha256": "ea2f6b2b6f7050aeabb1aa1366be898f3e979e7857649bcc99e4de83e80884c4",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "camera",
+        "policy": "temporal",
+        "model": "separable-fp32",
+        "model_sha256": "1f3cd4443cc00a05e01ef0bfdc9f27d3a80df5b46fda46e653c672e5bb671e4d",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.1920928955078125e-07,
+        "budget": 4,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.95 0.84 0.45 1/238 4727",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "camera_rotation_degrees": 180,
+        "requested_camera_fps": 10,
+        "camera_size": [
+          320,
+          240
+        ],
+        "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': True, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (640, 480), 'stride': 800, 'framesize': 384000}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (640, 480)}, 'display': 'main', 'encode': 'main'}",
+        "wall_seconds": 22.83956238400424,
+        "observed_loop_fps": 5.254041123136509,
+        "scope": "Unlabeled live camera timing; NO detection accuracy or flight qualification",
+        "increasing_sensor_timestamps": true,
+        "output_age_clock": "libcamera SensorTimestamp vs Linux CLOCK_BOOTTIME; invalid ages omitted",
+        "output_age": {
+          "mean_ms": 268.791706475,
+          "p50_ms": 269.7079165,
+          "p95_ms": 406.85940135,
+          "max_ms": 464.563739
+        },
+        "missing_or_invalid_ages": 0,
+        "timing": {
+          "mean_ms": 162.6257101323669,
+          "p50_ms": 117.55359150993172,
+          "p95_ms": 285.7989268057281,
+          "max_ms": 291.58850698149763
+        },
+        "frames": 120,
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.97 0.85 0.47 1/243 4737",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 125532,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "accepted_observations": 0,
+      "accuracy": null,
+      "accuracy_reason": "Unlabeled live scene; no precision/recall claim"
+    },
+    "crops-context-fp32-a.json": {
+      "report_sha256": "503c1b4b904cb1c182e0a0203e1a8e8b3d04a13091d211f40c9449368113141d",
+      "frames_sha256": "d201ecdc7237d685cbcd3731f402cff47f0fc384cf2a5cb09533387d24c51ae2",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "40084",
+          "load_average": "0.67 0.26 0.09 1/239 4672",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 29.435170000215294,
+          "p50_ms": 26.080685507622547,
+          "p95_ms": 46.22859288647305,
+          "max_ms": 47.329430002719164
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "40622",
+          "load_average": "0.67 0.26 0.09 3/239 4673",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108716,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "crops-context-int8-a.json": {
+      "report_sha256": "dbd326370663b0a7d5a7bb3ae6503d4d75e338f2d345dde7a00725c2d601c5aa",
+      "frames_sha256": "7e386034fc9aeaa25d703e9689ad23bd99d6cfb8b24c82a3cb3379761ec52777",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "context-int8",
+        "model_sha256": "b3799a0fdc408a17855accd2005efcbfe275ab178fbf808e8945742c451a10fa",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 0.0,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "41160",
+          "load_average": "0.85 0.35 0.12 1/238 4675",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 57.498094512629905,
+          "p50_ms": 54.08434850687627,
+          "p95_ms": 74.1990059541422,
+          "max_ms": 76.9590729905758
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.87 0.36 0.13 1/238 4676",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108768,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "crops-refined-fp32-a.json": {
+      "report_sha256": "91215a9097fa39ce75e8bb83c70fa649ad53edaaec9edca1d6a8c832fb892b84",
+      "frames_sha256": "ad384d3f1f1dafb6f26821fd4a96b170fe186b4c9e8aa3d5a1a437fde1a33911",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "refined-fp32",
+        "model_sha256": "9d90eb02a6aabf38268949729a886ca0dc0460224428bfa3579e0eef57c65d52",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.7881393432617188e-07,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.91 0.41 0.15 1/238 4678",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 29.75014168769121,
+          "p50_ms": 26.51518050697632,
+          "p95_ms": 46.17854396055918,
+          "max_ms": 47.03243399853818
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.91 0.41 0.15 1/238 4679",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108500,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "crops-refined-int8-a.json": {
+      "report_sha256": "0fde54cec646392cb97d4d14c43ea3d872ec37388c701616c1b8d1e54e85f440",
+      "frames_sha256": "32c0800b13dc97edd5a2b81761cce51ccd128796b0b65680699d4f3f6d70cab4",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "refined-int8",
+        "model_sha256": "351730cb205ee189932e5c95d38227004491e70794e3ab57c0ed4057a818437e",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.94 0.46 0.18 1/238 4681",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 57.51129522432166,
+          "p50_ms": 53.77035301353317,
+          "p95_ms": 74.07210868987022,
+          "max_ms": 89.21592598198913
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.95 0.47 0.18 1/238 4682",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108740,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "crops-separable-fp32-a.json": {
+      "report_sha256": "99317b9d36cf6ceb0355e3f2a0402953fc41a35b50470e776e0f7c3a09e8945b",
+      "frames_sha256": "dc92653b5179494a77806db94bd96b773d084e5c06cd76de5507088160fd9743",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "separable-fp32",
+        "model_sha256": "1f3cd4443cc00a05e01ef0bfdc9f27d3a80df5b46fda46e653c672e5bb671e4d",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.1920928955078125e-07,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.97 0.52 0.21 1/238 4684",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 24.26790793761029,
+          "p50_ms": 20.972747006453574,
+          "p95_ms": 41.05940590525279,
+          "max_ms": 42.64848699676804
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.97 0.52 0.21 1/238 4685",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108504,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "crops-separable-int8-a.json": {
+      "report_sha256": "99a1289254ee2cdc43be3b757cf0acf815f9ede029fc5c3d4d0ff50e24051413",
+      "frames_sha256": "29e67f01a94221a9e49b02fbe2ec4f42028fbef16014d6dc7d7ed6b70efa4038",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "crops",
+        "policy": "stateless",
+        "model": "separable-int8",
+        "model_sha256": "41ca3bdab2adb9c89e5a27fb731824d15d843d43f55c23df2da627f3235382cf",
+        "bundle_sha256": "c94d29bd102227c537e631cde9532434bd1e8f9fc67379faacffa4a91679a43d",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 0.00020296219736337662,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.98 0.56 0.23 1/238 4687",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Warmed resize + inference + softmax; excludes camera and frame search",
+        "timing": {
+          "mean_ms": 44.83143580146134,
+          "p50_ms": 41.327503000502475,
+          "p95_ms": 61.377061941311695,
+          "max_ms": 62.628246989334
+        },
+        "frames": 80,
+        "health_after": {
+          "temperature_millicelsius": "43850",
+          "load_average": "0.98 0.57 0.23 1/238 4689",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 108368,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      }
+    },
+    "replay-context-fp32-a.json": {
+      "report_sha256": "af9b6a3618dddf8f5ad85189e1f6ca2e8c2487ba0637e975f877079e47de137c",
+      "frames_sha256": "a3f1b6f69842ab40f29922510bb85ac882f0d4b3623124a9eab18c2cb6b5c072",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.93 0.66 0.31 1/238 4699",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 320.9221482029534,
+          "p50_ms": 361.18616499879863,
+          "p95_ms": 440.0393682139111,
+          "max_ms": 442.9966840252746
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "1.02 0.68 0.32 1/238 4700",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 109352,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 100.44844445510535,
+        "crop_and_classify": 219.25856845045928,
+        "assemble_and_suppress": 1.2151352973887697
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.1160205227331117
+    },
+    "replay-refined-fp32-a.json": {
+      "report_sha256": "976427ca5927754cd23718cbd4f4797a9923d170ff9f9f3786ceaa1a89f44bc8",
+      "frames_sha256": "c35cc7f648d9468585902a77a9a4b0cf6f7590d7a40c8f7251fda02a774b4843",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "refined-fp32",
+        "model_sha256": "9d90eb02a6aabf38268949729a886ca0dc0460224428bfa3579e0eef57c65d52",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.7881393432617188e-07,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.89 0.62 0.29 1/238 4696",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 325.8584374503698,
+          "p50_ms": 366.63709799177013,
+          "p95_ms": 447.13993058539927,
+          "max_ms": 447.8296230081469
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.90 0.62 0.29 1/238 4697",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 109364,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 100.86483879858861,
+        "crop_and_classify": 223.94521120004356,
+        "assemble_and_suppress": 1.0483874517376535
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.0688172687021673
+    },
+    "replay-separable-fp32-a.json": {
+      "report_sha256": "ad887e15163e06afa55639514195b34169cb7cec09a8195d020b080e13b425be",
+      "frames_sha256": "df85033201354be1f927c3519905a6cc770ba04678442341ef356536bb59f563",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "separable-fp32",
+        "model_sha256": "1f3cd4443cc00a05e01ef0bfdc9f27d3a80df5b46fda46e653c672e5bb671e4d",
+        "bundle_sha256": "225b309564dbe5d7c34972329ba98e5f233f762172d937638dd225b187834999",
+        "input_sha256": "3df674c361c5cbe2e7c849864698bc5bbe7689712c5625e17473780719ce6ca9",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 1.1920928955078125e-07,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.67 0.55 0.25 1/238 4693",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 269.3256148515502,
+          "p50_ms": 296.3949395052623,
+          "p95_ms": 372.88337170757586,
+          "max_ms": 379.6064399939496
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.70 0.56 0.26 1/238 4694",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 109280,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 99.54680420341901,
+        "crop_and_classify": 168.65157424617792,
+        "assemble_and_suppress": 1.1272364019532688
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.71297769263867
+    }
+  }
+}

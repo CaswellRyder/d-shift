@@ -1,10 +1,12 @@
 import io
+import json
+import sys
 import zipfile
 
 from PIL import Image
 import pytest
 
-from dtr.data import sha256, write_json
+from dtr.data import read_json, sha256, write_json
 from scripts.pi_red_blue_bench import statistics, verify_bundle
 from scripts.build_red_blue_pi_bundle import build
 
@@ -64,3 +66,26 @@ def test_bundle_never_opens_reserved_test_images(tmp_path, monkeypatch):
     verify_bundle(output)
     with pytest.raises(FileExistsError):
         build(output, manifest, review, archive, {"test": model})
+
+
+def test_summary_never_counts_replay_repetitions_as_independent_targets(tmp_path, monkeypatch):
+    from scripts.summarize_red_blue_pi import main
+    inputs = tmp_path / "inputs.json"
+    truth = dict(label="red_balloon", box=[0, 0, 20, 20])
+    write_json(inputs, dict(frames=[dict(source="one-photo", truth=[truth])]))
+    results = tmp_path / "results"
+    results.mkdir()
+    report = results / "replay.json"
+    write_json(report, dict(machine="armv6l", input_sha256=sha256(inputs), frames=3,
+                            mode="replay", timing=dict(mean_ms=10)))
+    frame = dict(source="one-photo", observations=[dict(**truth, score=.9, accepted=True)])
+    report.with_suffix(".frames.jsonl").write_text((json.dumps(frame)+"\n")*3)
+    output = tmp_path / "summary.json"
+    monkeypatch.setattr(sys, "argv", ["summarize", "--results", str(results),
+                                      "--inputs", str(inputs), "--output", str(output)])
+    main()
+    summary = read_json(output)
+    assert summary["flight_ready"] is False
+    result = summary["results"]["replay.json"]
+    assert result["unique_development_photos"] == 1
+    assert result["development_metrics"]["red_balloon"]["tp"] == 1

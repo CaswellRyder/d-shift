@@ -1,0 +1,162 @@
+{
+  "status": "INTEGRATION_CANDIDATE_UNVALIDATED",
+  "student_parameters": 7763,
+  "validation_fp32": {
+    "accuracy": 1.0,
+    "classes": [
+      "background",
+      "red_balloon",
+      "blue_balloon"
+    ],
+    "confusion_true_rows_predicted_columns": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ],
+    "precision": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "recall": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "samples": 8
+  },
+  "validation_int8": {
+    "accuracy": 1.0,
+    "confusion_true_rows_predicted_columns": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "export": {
+    "task": "balloon",
+    "classes": [
+      "background",
+      "red_balloon",
+      "blue_balloon"
+    ],
+    "size": 64,
+    "layout": "NHWC",
+    "color": "RGB",
+    "pixel_range": [
+      0,
+      255
+    ],
+    "resize": "Pillow bilinear stretch",
+    "normalization": "embedded 1/255",
+    "output": "logits; dequantize then softmax",
+    "threshold": 0.8,
+    "threshold_status": "provisional; tune on validation recordings",
+    "input_quantization": [
+      1.0,
+      -128
+    ],
+    "output_quantization": [
+      0.06318435817956924,
+      27
+    ],
+    "sha256": "41ca3bdab2adb9c89e5a27fb731824d15d843d43f55c23df2da627f3235382cf",
+    "bytes": 15656,
+    "calibration_samples": 212,
+    "calibration_split": "train",
+    "integer_only_verified": true,
+    "synthetic_training": false,
+    "deployment_approved": false,
+    "pi_zero_verified": false,
+    "training": {
+      "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-20261008/teacher.keras",
+      "teacher_sha256": "9eaa9452f4ab33cf5631e1dec4e0f391025189f4a7236222ca3a60cea2e27236",
+      "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-red-blue-bootstrap-20261008/manifest.json",
+      "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+      "config": {
+        "task": "balloon",
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "aliases": {
+          "Red Balloon": "red_balloon",
+          "Blue Balloon": "blue_balloon",
+          "redball": "red_balloon",
+          "blueball": "blue_balloon"
+        },
+        "teacher_size": 96,
+        "student_size": 64,
+        "batch_size": 16,
+        "head_epochs": 5,
+        "finetune_epochs": 15,
+        "student_epochs": 25,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "seed": 42,
+        "threshold": 0.8,
+        "calibration_samples": 500,
+        "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+        "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+        "deployment_approved": false
+      },
+      "epochs": 25,
+      "temperature": 4.0,
+      "alpha": 0.5,
+      "augmentation": "none; cached logits for identical source crops",
+      "student_variant": "separable_context",
+      "training_script_sha256": "b28ae2eb81475e86d164c34ab2506fcb8d9d72c580f8b49e481d635943324425",
+      "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+      "target_cache_run": "runs/balloon-red-blue-context-20261008",
+      "initialize_context": "runs/balloon-red-blue-context-20261008",
+      "initial_student_sha256": "20a52a65a32ef3791f5de32cca3f4863e0eeb6545703f749ff3c4bb8a78b1cbb",
+      "teacher_targets_kind": "teacher_logits",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "pi_zero_verified": false,
+      "purpose": "integration_research",
+      "tensorflow": "2.18.1",
+      "keras": "3.8.0",
+      "target_cache_sha256": "16c6ac7f63d966cb2dbf2f4d3b47a7cdc334456524fc13322f86bf73f6ab282f",
+      "initialization": {
+        "method": "per_input_channel_rank_one_svd",
+        "copied_layers": [
+          "conv_8",
+          "conv_16",
+          "conv_32",
+          "classifier"
+        ],
+        "relative_kernel_error": 0.8145445585250854
+      }
+    }
+  },
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_zero_verified": false,
+  "scope": "Crop validation only; not full-frame detector accuracy"
+}

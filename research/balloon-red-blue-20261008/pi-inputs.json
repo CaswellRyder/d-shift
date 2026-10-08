@@ -1,0 +1,627 @@
+{
+  "split": "development_validation",
+  "crops": [
+    {
+      "path": "crops/000.png",
+      "truth": "background"
+    },
+    {
+      "path": "crops/001.png",
+      "truth": "background"
+    },
+    {
+      "path": "crops/002.png",
+      "truth": "background"
+    },
+    {
+      "path": "crops/003.png",
+      "truth": "red_balloon"
+    },
+    {
+      "path": "crops/004.png",
+      "truth": "red_balloon"
+    },
+    {
+      "path": "crops/005.png",
+      "truth": "blue_balloon"
+    },
+    {
+      "path": "crops/006.png",
+      "truth": "blue_balloon"
+    },
+    {
+      "path": "crops/007.png",
+      "truth": "blue_balloon"
+    }
+  ],
+  "frames": [
+    {
+      "path": "frames/000.png",
+      "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+      "truth": [
+        {
+          "label": "blue_balloon",
+          "box": [
+            196.25,
+            83.90625,
+            280.0,
+            148.359375
+          ]
+        }
+      ]
+    },
+    {
+      "path": "frames/001.png",
+      "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+      "truth": [
+        {
+          "label": "red_balloon",
+          "box": [
+            49.375,
+            106.4714494875549,
+            180.625,
+            238.24304538799416
+          ]
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            145.625,
+            4.919472913616398,
+            304.6875,
+            183.07467057101024
+          ]
+        }
+      ]
+    },
+    {
+      "path": "frames/002.png",
+      "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+      "truth": [
+        {
+          "label": "red_balloon",
+          "box": [
+            163.5370611183355,
+            148.828125,
+            231.36540962288686,
+            189.140625
+          ]
+        }
+      ]
+    },
+    {
+      "path": "frames/003.png",
+      "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+      "truth": [
+        {
+          "label": "blue_balloon",
+          "box": [
+            172.8125,
+            5.046728971962616,
+            201.25,
+            36.44859813084112
+          ]
+        }
+      ]
+    }
+  ],
+  "models": {
+    "context-int8": {
+      "path": "models/context-int8.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9358930587768555,
+            8.454039925709367e-05,
+            0.06402239203453064
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.9641362428665161,
+            0.004992381669580936,
+            0.030871443450450897
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9711930155754089,
+            0.005853455513715744,
+            0.022953512147068977
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.021605663001537323,
+            0.961618959903717,
+            0.016775362193584442
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.003979215398430824,
+            0.9897458553314209,
+            0.006274941843003035
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.001253685331903398,
+            4.67244753963314e-05,
+            0.9986995458602905
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.011501861736178398,
+            9.879365097731352e-05,
+            0.9883993864059448
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.008098860271275043,
+            5.9765021433122456e-05,
+            0.9918414354324341
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.02
+    },
+    "context-fp32": {
+      "path": "models/context-fp32.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9406629204750061,
+            7.638620445504785e-05,
+            0.05926073342561722
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.9661388993263245,
+            0.004579520784318447,
+            0.02928159013390541
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9715083241462708,
+            0.005809755530208349,
+            0.02268190123140812
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.021263714879751205,
+            0.962460458278656,
+            0.016275880858302116
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.004002807196229696,
+            0.9895439147949219,
+            0.006453239358961582
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.0012728013098239899,
+            4.402222839416936e-05,
+            0.9986831545829773
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.012588677927851677,
+            9.215102909365669e-05,
+            0.9873191118240356
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.00883390847593546,
+            5.866977517143823e-05,
+            0.9911074042320251
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.001
+    },
+    "refined-int8": {
+      "path": "models/refined-int8.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9871605634689331,
+            7.054782327031717e-05,
+            0.012768923304975033
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.975695013999939,
+            0.004059737082570791,
+            0.020245259627699852
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9742159247398376,
+            0.0065025221556425095,
+            0.019281474873423576
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.04760633036494255,
+            0.9347472786903381,
+            0.01764635182917118
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.009581012651324272,
+            0.9835365414619446,
+            0.006882423534989357
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.011629416607320309,
+            0.00018172782438341528,
+            0.9881888628005981
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.194930300116539,
+            0.00041852673166431487,
+            0.804651141166687
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.16697855293750763,
+            0.00032617911347188056,
+            0.8326952457427979
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.02
+    },
+    "refined-fp32": {
+      "path": "models/refined-fp32.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9878677129745483,
+            6.595512968488038e-05,
+            0.012066381052136421
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.976630449295044,
+            0.004098264966160059,
+            0.01927129551768303
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9726209044456482,
+            0.0068464865908026695,
+            0.020532673224806786
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.04672995209693909,
+            0.9363058805465698,
+            0.016964150592684746
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.008953950367867947,
+            0.9843665361404419,
+            0.0066795856691896915
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.011904009617865086,
+            0.00017270764510612935,
+            0.9879233241081238
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.2131347954273224,
+            0.0004099444777239114,
+            0.7864552736282349
+          ],
+          "label": "blue_balloon",
+          "accepted": false
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.17892181873321533,
+            0.00031468310044147074,
+            0.8207634687423706
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.001
+    },
+    "separable-int8": {
+      "path": "models/separable-int8.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9827636480331421,
+            7.735600775049534e-06,
+            0.017228582873940468
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.9807375073432922,
+            0.0031221690587699413,
+            0.016140339896082878
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9819289445877075,
+            0.005520130041986704,
+            0.01255097333341837
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.005927014164626598,
+            0.9897514581680298,
+            0.0043214838951826096
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.0011541966814547777,
+            0.9963822364807129,
+            0.0024635838344693184
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.0023157168179750443,
+            1.9019465980818495e-05,
+            0.997665286064148
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.01185614988207817,
+            7.56300360080786e-05,
+            0.988068163394928
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.009829546324908733,
+            2.5888994059641846e-05,
+            0.9901446104049683
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.02
+    },
+    "separable-fp32": {
+      "path": "models/separable-fp32.tflite",
+      "golden": [
+        {
+          "path": "crops/000.png",
+          "scores": [
+            0.9833064675331116,
+            7.679451300646178e-06,
+            0.016685770824551582
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/001.png",
+          "scores": [
+            0.981196403503418,
+            0.0030144676566123962,
+            0.015789078548550606
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/002.png",
+          "scores": [
+            0.9827482104301453,
+            0.005419316701591015,
+            0.011832423508167267
+          ],
+          "label": "background",
+          "accepted": false
+        },
+        {
+          "path": "crops/003.png",
+          "scores": [
+            0.005941537208855152,
+            0.9899423122406006,
+            0.004116128198802471
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/004.png",
+          "scores": [
+            0.0012490296503528953,
+            0.9961937665939331,
+            0.002557136816903949
+          ],
+          "label": "red_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/005.png",
+          "scores": [
+            0.0024093175306916237,
+            1.7614995158510283e-05,
+            0.9975730776786804
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/006.png",
+          "scores": [
+            0.014343970455229282,
+            7.814784476067871e-05,
+            0.9855778813362122
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        },
+        {
+          "path": "crops/007.png",
+          "scores": [
+            0.011658717878162861,
+            2.692337511689402e-05,
+            0.9883143901824951
+          ],
+          "label": "blue_balloon",
+          "accepted": true
+        }
+      ],
+      "score_tolerance": 0.001
+    }
+  },
+  "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191"
+}
