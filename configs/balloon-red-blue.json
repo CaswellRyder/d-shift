@@ -1,0 +1,12 @@
+{
+  "task": "balloon",
+  "classes": ["background", "red_balloon", "blue_balloon"],
+  "aliases": {"Red Balloon": "red_balloon", "Blue Balloon": "blue_balloon", "redball": "red_balloon", "blueball": "blue_balloon"},
+  "teacher_size": 96, "student_size": 64, "batch_size": 16,
+  "head_epochs": 5, "finetune_epochs": 15, "student_epochs": 25,
+  "temperature": 4.0, "alpha": 0.5, "seed": 42,
+  "threshold": 0.8, "calibration_samples": 500,
+  "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+  "status": "training specification only; no red/blue model trained or runtime qualified",
+  "deployment_approved": false
+}

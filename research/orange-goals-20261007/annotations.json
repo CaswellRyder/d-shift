@@ -1,0 +1,27 @@
+{
+  "synthetic": true,
+  "split": "train",
+  "annotation_origin": "AI visual review of generated images; not human certified",
+  "confirmed_taxonomy": "User correction 2026-10-07: orange/yellow goals; RED/BLUE balloons. Existing green/purple generated balloons are goal-task distractors only, not competition positives.",
+  "scenes": [
+    {
+      "image": "backlit-goals.png",
+      "width": 1254, "height": 1254,
+      "source_group": "generated-backlit-goals-20261007",
+      "goal_absent": false,
+      "objects": [
+        {"label": "orange_circle", "box": [249, 216, 475, 431]},
+        {"label": "orange_square", "box": [953, 390, 1060, 529]},
+        {"label": "orange_triangle", "box": [686, 740, 746, 799]}
+      ]
+    },
+    {
+      "image": "foil-clutter-negative.png",
+      "width": 1254, "height": 1254,
+      "source_group": "generated-foil-clutter-20261007",
+      "goal_absent": true,
+      "objects": []
+    }
+  ],
+  "restrictions": ["training/research only", "descendants stay in source group", "no real accuracy or physical scale claim", "do not use goal-negative label for balloon task"]
+}

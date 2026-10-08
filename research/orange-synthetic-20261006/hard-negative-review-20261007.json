@@ -1,0 +1,36 @@
+{
+  "source_split": "train",
+  "reviewer": "AI assistant visual review, not human certified",
+  "coordinate_space": "320x240 preprocessing coordinates; source photos are 640x640",
+  "source_root": "data/roboflow-dtr-v10-grouped/coco/train",
+  "training_imported": false,
+  "items": [
+    {
+      "file": "20241002_190328_020_jpg.rf.cba534b6e4412d8344f700217f39fa17.jpg",
+      "crop_box": [2, 128, 15, 143],
+      "prediction": "orange_triangle",
+      "score": 0.9986761212348938,
+      "review_label": "background",
+      "review_note": "Lower left sign/packaging area, no goal visible at proposed location",
+      "status": "candidate_hard_negative"
+    },
+    {
+      "file": "20241002_193115_027_jpg.rf.3678fdc668647249249bf56e35ec8a54.jpg",
+      "crop_box": [98, 117, 113, 127],
+      "prediction": "orange_circle",
+      "score": 0.957490861415863,
+      "review_label": "background",
+      "review_note": "Region along purple foil balloon left boundary; no orange goal visible",
+      "status": "candidate_hard_negative_for_goal_classifier_only"
+    },
+    {
+      "file": "20241002_193115_044_jpg.rf.56911691e4ebbd0a29a413399301468b.jpg",
+      "crop_box": [0, 33, 6, 46],
+      "prediction": "orange_square",
+      "score": 0.9979047775268555,
+      "review_label": null,
+      "review_note": "Narrow clipped far-left region; insufficient visual evidence to assign a reliable negative",
+      "status": "exclude_ambiguous"
+    }
+  ]
+}

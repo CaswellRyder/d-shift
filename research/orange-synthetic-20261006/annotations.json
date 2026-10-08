@@ -1,0 +1,22 @@
+{
+  "synthetic": true,
+  "generator": "built-in image_gen",
+  "split": "research_training_candidate_only",
+  "source_group": "generated-orange-gym-001",
+  "annotation_origin": "assistant visual review of generated image; approximate visible boxes including balloon necks, excluding goal stands",
+  "human_reviewed": false,
+  "competition_accuracy_established": false,
+  "taxonomy_confirmed": "User clarified orange GOALS and RED/BLUE balloons on 2026-10-07. Orange balloons are distractors. Historical green/purple models are not corrected competition models.",
+  "image": "scene-001.png",
+  "width": 1448,
+  "height": 1086,
+  "objects": [
+    {"label": "orange_balloon", "box": [333, 183, 534, 459]},
+    {"label": "orange_balloon", "box": [861, 271, 908, 333]},
+    {"label": "orange_balloon", "box": [1212, 288, 1235, 318]},
+    {"label": "orange_square", "box": [649, 429, 833, 610]},
+    {"label": "yellow_circle", "box": [1140, 466, 1264, 586]}
+  ],
+  "negative_objects_present": ["orange training cones", "gym floor markings", "goal support stands"],
+  "limitations": ["single generated scene", "not exact DTR construction or calibrated physical scale", "not verified Pi-camera photometry", "not a held-out benchmark"]
+}
