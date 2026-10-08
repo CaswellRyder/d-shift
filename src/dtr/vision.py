@@ -1,5 +1,6 @@
 """Bounded OpenCV color proposals + selected crop verifier; observational only."""
 
+import os
 import time
 
 import cv2
@@ -54,6 +55,9 @@ def color_masks(rgb, task, profile=DEFAULT_PROFILE):
         raise ValueError("Task must be balloon or goal")
     if profile == RED_BLUE_PROFILE and task != "balloon":
         raise ValueError("balloon_red_blue is only valid for the balloon task")
+    if profile == RED_BLUE_PROFILE and os.environ.get("DTR_RED_BLUE_COLOR_LOOKUP"):
+        from .color_lookup import red_blue_lookup_masks
+        return red_blue_lookup_masks(rgb, os.environ["DTR_RED_BLUE_COLOR_LOOKUP"])
     if task == "goal" and profile == "goal_lut":
         from .color_lookup import goal_lookup_masks
         return goal_lookup_masks(rgb)

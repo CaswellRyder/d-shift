@@ -14,7 +14,7 @@ from dtr.runtime import Predictor
 from dtr.vision import RED_BLUE_PROFILE, validate_model_profile
 
 
-def build(output, manifest, review, archive_path, models):
+def build(output, manifest, review, archive_path, models, red_blue_lookup=None):
     output, manifest = Path(output), Path(manifest)
     doc, decisions = read_json(manifest), read_json(review)
     if sha256(manifest) != decisions["manifest_sha256"]:
@@ -30,9 +30,18 @@ def build(output, manifest, review, archive_path, models):
     (output / "crops").mkdir()
     (output / "frames").mkdir()
     for name in ("__init__", "data", "runtime", "native_tflite", "goal_evidence",
-                 "vision", "tracking", "temporal"):
+                 "vision", "tracking", "temporal", "color_lookup"):
         shutil.copyfile(f"src/dtr/{name}.py", output / "dtr" / f"{name}.py")
     shutil.copyfile("scripts/pi_red_blue_bench.py", output / "pi_red_blue_bench.py")
+    if red_blue_lookup:
+        from dtr.color_lookup import RedBlueColorLookup
+        RedBlueColorLookup(red_blue_lookup)  # Verify before copying.
+        shutil.copyfile(red_blue_lookup, output / "red-blue-lookup.bin")
+        shutil.copyfile(Path(red_blue_lookup).with_suffix(".json"), output / "red-blue-lookup.json")
+        for name in ("build_red_blue_lookup", "pi_red_blue_search_bench", "build_native_color_lookup"):
+            shutil.copyfile(f"scripts/{name}.py", output / f"{name}.py")
+        for name in ("native_color_lookup.py", "native_color_lookup.c"):
+            shutil.copyfile(f"src/dtr/{name}", output / "dtr" / name)
     for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
         shutil.copyfile(name, output / name)
     crops = []
@@ -90,11 +99,12 @@ def main():
     parser.add_argument("--review", default="configs/balloon-red-blue-development-scenes.json")
     parser.add_argument("--archive", default="data/raw/matterport-balloon/balloon_dataset.zip")
     parser.add_argument("--model", action="append", required=True, help="Unique alias=path")
+    parser.add_argument("--red-blue-lookup", help="Optional prebuilt exact RGB24 color table")
     args = parser.parse_args()
     models = dict(item.split("=", 1) for item in args.model)
     if len(models) != len(args.model):
         parser.error("Duplicate model alias")
-    print(build(args.output, args.manifest, args.review, args.archive, models))
+    print(build(args.output, args.manifest, args.review, args.archive, models, args.red_blue_lookup))
 
 
 if __name__ == "__main__":

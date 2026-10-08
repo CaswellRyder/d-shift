@@ -1,4 +1,4 @@
-"""Optional exact 24-bit RGB goal-mask lookup: 16 MiB, never downloads/generates at runtime."""
+"""Optional exact RGB mask lookups: 16 MiB each, never generated at runtime."""
 from functools import lru_cache
 import os
 from pathlib import Path
@@ -9,10 +9,12 @@ from .data import read_json, sha256
 
 
 class GoalColorLookup:
+    contract = "dtr-goal-rgb24-hsv-v1"
+
     def __init__(self, path):
         path = Path(path)
         meta = read_json(path.with_suffix(".json"))
-        if (meta.get("contract") != "dtr-goal-rgb24-hsv-v1"
+        if (meta.get("contract") != self.contract
                 or path.stat().st_size != 1 << 24 or sha256(path) != meta["sha256"]):
             raise ValueError("Goal lookup size/contract/hash mismatch")
         self.values = np.fromfile(path, dtype=np.uint8)
@@ -43,3 +45,23 @@ def goal_lookup_masks(rgb):
     if not path:
         raise ValueError("goal_lut requires explicit DTR_GOAL_COLOR_LOOKUP path")
     return _lookup(str(Path(path).resolve())).masks(rgb)
+
+
+class RedBlueColorLookup(GoalColorLookup):
+    contract = "dtr-balloon-red-blue-rgb24-hsv-v1"
+
+    def masks(self, rgb):
+        library = os.environ.get("DTR_RED_BLUE_LOOKUP_LIBRARY")
+        if library:
+            from .native_color_lookup import native_lookup
+            return native_lookup(str(Path(library).resolve())).masks(rgb, self.values)
+        return super().masks(rgb)
+
+
+@lru_cache(maxsize=1)
+def _red_blue_lookup(path):
+    return RedBlueColorLookup(path)
+
+
+def red_blue_lookup_masks(rgb, path):
+    return _red_blue_lookup(str(Path(path).resolve())).masks(rgb)

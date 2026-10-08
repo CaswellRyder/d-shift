@@ -15,7 +15,7 @@ from PIL import Image
 from dtr.data import read_json, sha256, write_json
 from dtr.runtime import Predictor
 from dtr.temporal import TemporalVision
-from dtr.vision import RED_BLUE_PROFILE, observe, validate_model_profile
+from dtr.vision import RED_BLUE_PROFILE, color_masks, observe, validate_model_profile
 
 
 def verify_bundle(root):
@@ -58,6 +58,7 @@ def main():
     parser.add_argument("--count", type=int, default=80)
     parser.add_argument("--budget", type=int, default=12)
     parser.add_argument("--fps", type=float, default=10)
+    parser.add_argument("--mask-backend", choices=("hsv", "lookup", "native"), default="hsv")
     args = parser.parse_args()
     if not 1 <= args.count <= 600 or not 1 <= args.budget <= 12 or not 1 <= args.fps <= 30:
         parser.error("Require count 1..600, budget 1..12, fps 1..30")
@@ -65,12 +66,21 @@ def main():
         parser.error("Temporal timing requires real camera timestamps, not repeated stills")
     root, output = Path(args.base).resolve(), Path(args.output)
     verify_bundle(root)
+    os.environ.pop("DTR_RED_BLUE_COLOR_LOOKUP", None)
+    os.environ.pop("DTR_RED_BLUE_LOOKUP_LIBRARY", None)
+    if args.mask_backend in ("lookup", "native"):
+        os.environ["DTR_RED_BLUE_COLOR_LOOKUP"] = str(root / "red-blue-lookup.bin")
+    if args.mask_backend == "native":
+        os.environ["DTR_RED_BLUE_LOOKUP_LIBRARY"] = str(root / "native-color-lookup.so")
     inputs = read_json(root / "inputs.json")
     model_record = inputs["models"][args.model]
     if output.exists() or output.with_suffix(".frames.jsonl").exists():
         raise FileExistsError(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     cv2.setNumThreads(1)
+    mask_start = time.perf_counter()
+    color_masks(np.zeros((8, 8, 3), np.uint8), "balloon", RED_BLUE_PROFILE)
+    mask_startup_ms = (time.perf_counter()-mask_start)*1000
     predictor = Predictor(root / model_record["path"], allow_unvalidated=True)
     validate_model_profile(predictor.metadata, RED_BLUE_PROFILE)
     crops = [np.asarray(Image.open(root / r["path"]).convert("RGB")) for r in inputs["crops"]]
@@ -88,7 +98,11 @@ def main():
                   runtime=type(predictor.interpreter).__module__,
                   runtime_version=getattr(predictor.interpreter, "version", None),
                   max_golden_score_delta=max(parity), budget=args.budget, health_before=health(),
-                  deployment_approved=False, test_evaluated=False, flight_commands=None)
+                  deployment_approved=False, test_evaluated=False, flight_commands=None,
+                  mask_backend=args.mask_backend,
+                  mask_startup_ms=mask_startup_ms,
+                  color_lookup_sha256=sha256(root / "red-blue-lookup.bin") if args.mask_backend != "hsv" else None,
+                  native_color_library_sha256=sha256(root / "native-color-lookup.so") if args.mask_backend == "native" else None)
     library = os.environ.get("DTR_TFLITE_LIBRARY")
     report["runtime_library_sha256"] = sha256(library) if library else None
     records = []
