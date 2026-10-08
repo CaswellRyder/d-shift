@@ -1,0 +1,13 @@
+{
+  "purpose": "Small off-domain development experiment, not the 94 percent competition gate",
+  "annotation_origin": "AI visual review of Matterport crop sheets on 2026-10-08; not human-certified",
+  "validation_source_anchors": [136,149,158,162],
+  "validation_note": "All crops from each anchored photo stay together. Sources were previously inspected in the training proposal audit; this is development validation, not a blind final evaluation.",
+  "reserved_upstream_val": {
+    "red_balloon": [262,277,290],
+    "blue_balloon": [293,301],
+    "background": [255,263,267,270,278,280,282,285,289,294,295,296,297,298,299,300,302,303,304]
+  },
+  "test_note": "Tiny off-domain upstream-val holdout; no model selection on this split and insufficient evidence for flight readiness",
+  "deployment_approved": false
+}
