@@ -22,7 +22,7 @@ INDEX_SHA = "a66b696b6bdc9f4900151cc4970ffcad1dcf03e2e4749d90236ad77322751ba8"
 HOLDOUT_ANCHORS = {"val": [129, 159, 193], "test": [199, 214, 275]}
 
 
-def build(archive_path, review_path, index_path, output, config):
+def build(archive_path, review_path, index_path, output, config, *, training_only=False):
     if sha256(archive_path) != ARCHIVE_SHA:
         raise ValueError("Unexpected source archive checksum")
     if sha256(index_path) != INDEX_SHA:
@@ -32,10 +32,14 @@ def build(archive_path, review_path, index_path, output, config):
         raise FileExistsError(output)
     review, index = read_json(review_path), read_json(index_path)
     by_id = {row["id"]: row for row in index}
-    holdouts = {by_id[i]["source"]: split for split, ids in HOLDOUT_ANCHORS.items() for i in ids}
+    holdouts = ({} if training_only else
+                {by_id[i]["source"]: split for split, ids in HOLDOUT_ANCHORS.items() for i in ids})
     selected = [(i, label) for label in config["classes"] for i in review[label]]
     if len({i for i, _ in selected}) != len(selected):
         raise ValueError("Duplicate reviewed crop ID")
+    if training_only and any(not by_id[i]["source"].startswith("balloon/train/")
+                             for i, _ in selected):
+        raise ValueError("Training-only bootstrap cannot consume upstream validation images")
     rows, source_splits = [], {}
     output.mkdir(parents=True)
     with zipfile.ZipFile(archive_path) as archive:
@@ -77,6 +81,7 @@ def build(archive_path, review_path, index_path, output, config):
         "negative_coverage": "other-color balloons only; arena hard negatives still needed",
         "competition_accuracy_established": False,
         "redistribution_approved": False,
+        "training_only": training_only,
     }
     manifest = output / "manifest.json"
     write_json(
@@ -89,11 +94,12 @@ def build(archive_path, review_path, index_path, output, config):
             source_archive_sha256=ARCHIVE_SHA,
             review_sha256=sha256(review_path),
             qualification=qualification,
-            split_provenance="source-image holdouts; session independence UNVERIFIED",
+            split_provenance=("upstream train images only; no validation/test split" if training_only
+                              else "source-image holdouts; session independence UNVERIFIED"),
             samples=rows,
         ),
     )
-    validate(manifest, config)
+    validate(manifest, config, splits=("train",) if training_only else ("train", "val", "test"))
     counts = Counter(f"{r['split']}/{r['label']}" for r in rows)
     receipt = dict(
         samples=len(rows),
@@ -113,13 +119,18 @@ def build(archive_path, review_path, index_path, output, config):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default="data/balloon-public-bootstrap-20261003")
+    parser.add_argument("--config", default="configs/balloon.json")
+    parser.add_argument("--review", default="configs/balloon-public-review.json")
+    parser.add_argument("--training-only", action="store_true",
+                        help="No holdouts or accuracy claim; upstream train images only")
     args = parser.parse_args()
     build(
         "data/raw/matterport-balloon/balloon_dataset.zip",
-        "configs/balloon-public-review.json",
+        args.review,
         "data/raw/matterport-balloon/review/index.json",
         args.output,
-        read_json("configs/balloon.json"),
+        read_json(args.config),
+        training_only=args.training_only,
     )
 
 

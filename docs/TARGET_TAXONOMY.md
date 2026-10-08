@@ -33,6 +33,12 @@ Code verification uses generated color patches and mock classifiers to check mas
 boundaries, budgets, identity routing, and mismatch rejection. It establishes no
 real balloon accuracy, Pi speed, or trained red/blue model availability.
 
+The [2026-10-08 bootstrap checkpoint](../research/balloon-red-blue-20261008/README.md)
+now records 114 AI-reviewed public-photo training crops and a full-image proposal
+audit. It is training-only, not a complete train/validation/test dataset. At the
+current 320×240/12-candidate budget, covered targets were 11/24 red and 7/18 blue;
+proposal quality remains an explicit gap before classifier optimization.
+
 The existing generated foil scene actually contains green/purple balloons. Keep
 those image annotations truthful; it remains a goal-negative research scene,
 not red/blue positive training or evidence about competition balloon behavior.
