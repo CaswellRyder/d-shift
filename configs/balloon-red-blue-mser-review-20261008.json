@@ -1,0 +1,29 @@
+{
+  "queue_sha256": "a54cc3f1fa3d31f52ac22db8794d20a999c547662eda1629074eff1a864cbb88",
+  "admit": [0, 1, 2, 3, 4, 7, 10, 11, 16, 17, 18],
+  "exclude": [5, 6, 8, 9, 12, 13, 14, 15],
+  "review": "AI visual review of all 19 crop thumbnails and all 11 full-photo context panels on 2026-10-08; not human-certified",
+  "decisions": {
+    "0": "Illuminated building facade, not a balloon",
+    "1": "Blue patch on patterned trousers",
+    "2": "Blue patch on clown wig",
+    "3": "Blue shirt print",
+    "4": "Person's head and neck under warm indoor lighting",
+    "5": "EXCLUDED: blurred red region below partially occluded red object; ambiguous",
+    "6": "EXCLUDED: partially occluded red object at party; cannot confidently rule out balloon",
+    "7": "Person's face in party background",
+    "8": "EXCLUDED: blue twisting balloon sculpture, missing from upstream boxes",
+    "9": "EXCLUDED: highlight within same blue twisting balloon sculpture",
+    "10": "Blue shirt/backpack on person at right edge",
+    "11": "Red rear lamp on car",
+    "12": "EXCLUDED: real red balloon missing from upstream boxes",
+    "13": "EXCLUDED: two real red balloons missing from upstream boxes",
+    "14": "EXCLUDED: region within real red balloon",
+    "15": "EXCLUDED: printed detail and ribbon over real red balloon",
+    "16": "Red fabric on chair behind person",
+    "17": "Same red fabric on chair, larger crop",
+    "18": "Blue patch on child's dress"
+  },
+  "purpose": "Training-only MSER hard negatives; multiple views are not independent samples",
+  "deployment_approved": false
+}

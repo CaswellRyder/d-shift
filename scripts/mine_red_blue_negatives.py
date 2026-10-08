@@ -22,7 +22,9 @@ def safe_negative(crop_box, balloon_boxes):
     return all(overlap(crop_box, box) == 0 for box in balloon_boxes)
 
 
-def mine(manifest, model, output):
+def mine(manifest, model, output, variant="baseline", per_source=2):
+    if variant not in ("baseline", "mser") or not 1 <= per_source <= 12:
+        raise ValueError("Require baseline/mser and 1..12 candidates per training source")
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -50,7 +52,12 @@ def mine(manifest, model, output):
             truth = [[v*(320/image.width if k % 2 == 0 else 240/image.height)
                       for k, v in enumerate(box)] for box in annotations[source]]
             found = []
-            for c in proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE):
+            if variant == "baseline":
+                candidates = proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
+            else:
+                from scripts.research_balloon_search import experimental
+                candidates = experimental(rgb, variant)
+            for c in candidates:
                 if not safe_negative(c["crop_box"], truth):
                     continue
                 a, b, e, f = c["crop_box"]
@@ -58,7 +65,7 @@ def mine(manifest, model, output):
                 prediction = predictor.predict(crop)
                 if prediction["accepted"]:
                     found.append((prediction["score"], prediction["label"], c, crop))
-            for score, prediction, c, crop in sorted(found, key=lambda x: -x[0])[:2]:
+            for score, prediction, c, crop in sorted(found, key=lambda x: -x[0])[:per_source]:
                 index = len(rows)
                 relative = f"crops/{index:03d}.png"
                 dest = output / relative
@@ -83,6 +90,8 @@ def mine(manifest, model, output):
     report = dict(training_approved=False, review_required=True, samples=rows,
                   base_manifest_sha256=sha256(manifest), model_sha256=sha256(model),
                   archive_sha256=ARCHIVE_SHA, index_sha256=INDEX_SHA,
+                  proposal_variant=variant, per_source_limit=per_source,
+                  script_sha256=sha256(__file__),
                   labeling="Zero crop-box overlap with ALL upstream balloon boxes; NOT yet reviewed",
                   split="train only; source disjoint from development validation/test")
     write_json(output / "review.json", report)
@@ -103,8 +112,10 @@ def main():
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--model", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--variant", choices=("baseline", "mser"), default="baseline")
+    parser.add_argument("--per-source", type=int, default=2)
     args = parser.parse_args()
-    mine(args.manifest, args.model, args.output)
+    mine(args.manifest, args.model, args.output, args.variant, args.per_source)
 
 
 if __name__ == "__main__":
