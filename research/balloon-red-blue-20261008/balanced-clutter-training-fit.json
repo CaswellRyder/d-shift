@@ -1,0 +1,1154 @@
+{
+  "scope": "Fit on 78 admitted training crops, NOT generalization or full-frame metrics",
+  "queue_sha256": "4049fcac260440de93e061167706574098804f184072da22b60fd07053fab193",
+  "review_sha256": "d56092649cdc03ab66643d363a9860eb33ba938a764ce4c50f80cd34ea5451ea",
+  "script_sha256": "26f7cf7e46861edb1b981fc6e4fbaebc180aa0343e36621297f6e122682f3c8f",
+  "results": {
+    "clutter": {
+      "model_sha256": "23dd7d60d42db85f771f67cef5b68121010d0bc3c9e4f17de5e924fa8341eca9",
+      "threshold": 0.8,
+      "summary": {
+        "background": {
+          "total": 30,
+          "correct_argmax": 30,
+          "correct_accepted": 0,
+          "accepted_as_balloon": 0
+        },
+        "red_balloon": {
+          "total": 24,
+          "correct_argmax": 24,
+          "correct_accepted": 24,
+          "accepted_as_balloon": 24
+        },
+        "blue_balloon": {
+          "total": 24,
+          "correct_argmax": 23,
+          "correct_accepted": 23,
+          "accepted_as_balloon": 23
+        }
+      },
+      "predictions": [
+        {
+          "id": 0,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9745270609855652
+        },
+        {
+          "id": 1,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999467134475708
+        },
+        {
+          "id": 2,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999208450317383
+        },
+        {
+          "id": 4,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9984961748123169
+        },
+        {
+          "id": 5,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.933849573135376
+        },
+        {
+          "id": 6,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9963089823722839
+        },
+        {
+          "id": 7,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9998466968536377
+        },
+        {
+          "id": 8,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9998993873596191
+        },
+        {
+          "id": 9,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999939203262329
+        },
+        {
+          "id": 10,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9972919821739197
+        },
+        {
+          "id": 11,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9995259046554565
+        },
+        {
+          "id": 12,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9841293096542358
+        },
+        {
+          "id": 13,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.995730459690094
+        },
+        {
+          "id": 14,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999477863311768
+        },
+        {
+          "id": 15,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999749660491943
+        },
+        {
+          "id": 16,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9978882670402527
+        },
+        {
+          "id": 17,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9997400641441345
+        },
+        {
+          "id": 18,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999501705169678
+        },
+        {
+          "id": 19,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9997665286064148
+        },
+        {
+          "id": 20,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998899698257446
+        },
+        {
+          "id": 21,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999942779541016
+        },
+        {
+          "id": 22,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999866485595703
+        },
+        {
+          "id": 23,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9993504881858826
+        },
+        {
+          "id": 24,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9932981133460999
+        },
+        {
+          "id": 25,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9988038539886475
+        },
+        {
+          "id": 26,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9986768364906311
+        },
+        {
+          "id": 27,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999991655349731
+        },
+        {
+          "id": 28,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.999705970287323
+        },
+        {
+          "id": 29,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.8328068852424622
+        },
+        {
+          "id": 30,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999993085861206
+        },
+        {
+          "id": 31,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9998243451118469
+        },
+        {
+          "id": 32,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999063014984131
+        },
+        {
+          "id": 33,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9961562752723694
+        },
+        {
+          "id": 34,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999918937683105
+        },
+        {
+          "id": 35,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998251795768738
+        },
+        {
+          "id": 36,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999279975891113
+        },
+        {
+          "id": 37,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999346733093262
+        },
+        {
+          "id": 38,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999980926513672
+        },
+        {
+          "id": 39,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999959468841553
+        },
+        {
+          "id": 40,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9979854822158813
+        },
+        {
+          "id": 41,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999899864196777
+        },
+        {
+          "id": 42,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.997599184513092
+        },
+        {
+          "id": 43,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9903301000595093
+        },
+        {
+          "id": 44,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9997413754463196
+        },
+        {
+          "id": 45,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999294281005859
+        },
+        {
+          "id": 46,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9994113445281982
+        },
+        {
+          "id": 47,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999423027038574
+        },
+        {
+          "id": 48,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9995679259300232
+        },
+        {
+          "id": 49,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9994696974754333
+        },
+        {
+          "id": 50,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9996870756149292
+        },
+        {
+          "id": 51,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9993422627449036
+        },
+        {
+          "id": 52,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9995892643928528
+        },
+        {
+          "id": 53,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9562351107597351
+        },
+        {
+          "id": 54,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999274015426636
+        },
+        {
+          "id": 55,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999728202819824
+        },
+        {
+          "id": 56,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998267292976379
+        },
+        {
+          "id": 57,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9993842840194702
+        },
+        {
+          "id": 58,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9874061942100525
+        },
+        {
+          "id": 59,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9995920062065125
+        },
+        {
+          "id": 60,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998705387115479
+        },
+        {
+          "id": 61,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998824596405029
+        },
+        {
+          "id": 62,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9997140765190125
+        },
+        {
+          "id": 63,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.978884220123291
+        },
+        {
+          "id": 64,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999881982803345
+        },
+        {
+          "id": 65,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9894331097602844
+        },
+        {
+          "id": 66,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9980429410934448
+        },
+        {
+          "id": 67,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9996956586837769
+        },
+        {
+          "id": 68,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9997192025184631
+        },
+        {
+          "id": 69,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9995309114456177
+        },
+        {
+          "id": 70,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9995527863502502
+        },
+        {
+          "id": 71,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9808362722396851
+        },
+        {
+          "id": 72,
+          "truth": "blue_balloon",
+          "label": "background",
+          "accepted": false,
+          "score": 0.5228322148323059
+        },
+        {
+          "id": 73,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9988952875137329
+        },
+        {
+          "id": 74,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9996252059936523
+        },
+        {
+          "id": 75,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999727010726929
+        },
+        {
+          "id": 76,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9540273547172546
+        },
+        {
+          "id": 77,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9154210090637207
+        },
+        {
+          "id": 79,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9929808378219604
+        }
+      ]
+    },
+    "control": {
+      "model_sha256": "b64e18b845d988dc81d50ffff61a9a5b0b56206c425b810adb0f5be5e5411191",
+      "threshold": 0.8,
+      "summary": {
+        "background": {
+          "total": 30,
+          "correct_argmax": 30,
+          "correct_accepted": 0,
+          "accepted_as_balloon": 0
+        },
+        "red_balloon": {
+          "total": 24,
+          "correct_argmax": 24,
+          "correct_accepted": 24,
+          "accepted_as_balloon": 24
+        },
+        "blue_balloon": {
+          "total": 24,
+          "correct_argmax": 24,
+          "correct_accepted": 24,
+          "accepted_as_balloon": 24
+        }
+      },
+      "predictions": [
+        {
+          "id": 0,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9998657703399658
+        },
+        {
+          "id": 1,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999631643295288
+        },
+        {
+          "id": 2,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999781847000122
+        },
+        {
+          "id": 4,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999980926513672
+        },
+        {
+          "id": 5,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9998656511306763
+        },
+        {
+          "id": 6,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999616146087646
+        },
+        {
+          "id": 7,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999786615371704
+        },
+        {
+          "id": 8,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999986886978149
+        },
+        {
+          "id": 9,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.999998927116394
+        },
+        {
+          "id": 10,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999923706054688
+        },
+        {
+          "id": 11,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999785840511322
+        },
+        {
+          "id": 12,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9997850060462952
+        },
+        {
+          "id": 13,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999464750289917
+        },
+        {
+          "id": 14,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999978542327881
+        },
+        {
+          "id": 15,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999967813491821
+        },
+        {
+          "id": 16,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9985853433609009
+        },
+        {
+          "id": 17,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.999998927116394
+        },
+        {
+          "id": 18,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999289512634277
+        },
+        {
+          "id": 19,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999294281005859
+        },
+        {
+          "id": 20,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999955415725708
+        },
+        {
+          "id": 21,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999992847442627
+        },
+        {
+          "id": 22,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999992847442627
+        },
+        {
+          "id": 23,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999903440475464
+        },
+        {
+          "id": 24,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999716281890869
+        },
+        {
+          "id": 25,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999459981918335
+        },
+        {
+          "id": 26,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999884366989136
+        },
+        {
+          "id": 27,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.999998927116394
+        },
+        {
+          "id": 28,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999951124191284
+        },
+        {
+          "id": 29,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9977312684059143
+        },
+        {
+          "id": 30,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9998619556427002
+        },
+        {
+          "id": 31,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999887943267822
+        },
+        {
+          "id": 32,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999980926513672
+        },
+        {
+          "id": 33,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9998214840888977
+        },
+        {
+          "id": 34,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9986629486083984
+        },
+        {
+          "id": 35,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9995576739311218
+        },
+        {
+          "id": 36,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9997747540473938
+        },
+        {
+          "id": 37,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999718964099884
+        },
+        {
+          "id": 38,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999994039535522
+        },
+        {
+          "id": 39,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999996423721313
+        },
+        {
+          "id": 40,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999768733978271
+        },
+        {
+          "id": 41,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999991655349731
+        },
+        {
+          "id": 42,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999721050262451
+        },
+        {
+          "id": 43,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9993622899055481
+        },
+        {
+          "id": 44,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999840259552002
+        },
+        {
+          "id": 45,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9992629885673523
+        },
+        {
+          "id": 46,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999962568283081
+        },
+        {
+          "id": 47,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999960660934448
+        },
+        {
+          "id": 48,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9999966621398926
+        },
+        {
+          "id": 49,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999392032623291
+        },
+        {
+          "id": 50,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999469518661499
+        },
+        {
+          "id": 51,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999562501907349
+        },
+        {
+          "id": 52,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9998928308486938
+        },
+        {
+          "id": 53,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9994544386863708
+        },
+        {
+          "id": 54,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999516010284424
+        },
+        {
+          "id": 55,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999397993087769
+        },
+        {
+          "id": 56,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999369382858276
+        },
+        {
+          "id": 57,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999858140945435
+        },
+        {
+          "id": 58,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9995191097259521
+        },
+        {
+          "id": 59,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999663829803467
+        },
+        {
+          "id": 60,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999749660491943
+        },
+        {
+          "id": 61,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999510049819946
+        },
+        {
+          "id": 62,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999819993972778
+        },
+        {
+          "id": 63,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9996562004089355
+        },
+        {
+          "id": 64,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.999955415725708
+        },
+        {
+          "id": 65,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9998666048049927
+        },
+        {
+          "id": 66,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9982030391693115
+        },
+        {
+          "id": 67,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999767541885376
+        },
+        {
+          "id": 68,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999798536300659
+        },
+        {
+          "id": 69,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999725818634033
+        },
+        {
+          "id": 70,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999735355377197
+        },
+        {
+          "id": 71,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9994840621948242
+        },
+        {
+          "id": 72,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9673028588294983
+        },
+        {
+          "id": 73,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999808073043823
+        },
+        {
+          "id": 74,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9999727010726929
+        },
+        {
+          "id": 75,
+          "truth": "red_balloon",
+          "label": "red_balloon",
+          "accepted": true,
+          "score": 0.9999387264251709
+        },
+        {
+          "id": 76,
+          "truth": "blue_balloon",
+          "label": "blue_balloon",
+          "accepted": true,
+          "score": 0.9996411800384521
+        },
+        {
+          "id": 77,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.8010916709899902
+        },
+        {
+          "id": 79,
+          "truth": "background",
+          "label": "background",
+          "accepted": false,
+          "score": 0.9757398366928101
+        }
+      ]
+    }
+  },
+  "test_evaluated": false,
+  "deployment_approved": false
+}
