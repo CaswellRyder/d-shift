@@ -1,0 +1,97 @@
+"""Add explicitly reviewed external training crops; holdout labels/sources unchanged."""
+import argparse
+from collections import Counter
+from pathlib import Path
+import shutil
+
+import numpy as np
+
+from dtr.data import read_json, sha256, validate, write_json
+
+
+def admitted(queue_root, review_path, base_manifest):
+    root = Path(queue_root).resolve()
+    queue = read_json(root / "review.json")
+    review = read_json(review_path)
+    if (queue["base_manifest_sha256"] != sha256(base_manifest)
+            or review["queue_sha256"] != sha256(root / "review.json")):
+        raise ValueError("Queue/review does not match frozen inputs")
+    ids = review["admit"]
+    if (not ids or len(ids) != len(set(ids)) or set(ids).intersection(review["exclude"])
+            or any(type(i) is not int or not 0 <= i < len(queue["samples"]) for i in ids)):
+        raise ValueError("Invalid admission")
+    base = read_json(base_manifest)
+    forbidden = {r["sha256"] for r in base["samples"] if r["split"] != "train"}
+    rows = [queue["samples"][i] for i in ids]
+    for r in rows:
+        path = (root / r["path"]).resolve()
+        frame = queue["frames"][r["frame_id"]]
+        if (r["split"] != "train" or r["label"] not in base["classes"]
+                or not r["session"].startswith("engdes2:indoor-frame-")
+                or frame["holdout_hamming"] <= 8 or r["sha256"] in forbidden
+                or r["id"] not in frame["crop_ids"]
+                or not path.is_relative_to(root) or sha256(path) != r["sha256"]):
+            raise ValueError("Invalid external training crop")
+    return rows
+
+
+def build(base_manifest, queue_root, review, output, control=False, repetitions=2):
+    output = Path(output)
+    if output.exists():
+        raise FileExistsError(output)
+    if not 1 <= repetitions <= 4:
+        raise ValueError("Require 1..4 repetitions")
+    config = read_json("configs/balloon-red-blue.json")
+    base = validate(base_manifest, config, splits=("train", "val"))
+    extra = admitted(queue_root, review, base_manifest)
+    output.mkdir(parents=True)
+    samples = []
+    for r in base["samples"]:
+        relative = f"original/{r['path']}"
+        if r["split"] != "test":
+            dest = output / relative
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(Path(base_manifest).parent/r["path"],dest)
+        # Test metadata remains for leakage checks; test pixels are not copied/opened.
+        samples.append(dict(r,path=relative))
+    rng = np.random.default_rng(42)
+    train = [r for r in samples if r["split"] == "train"]
+    for repetition in range(repetitions):
+        for r in extra:
+            if control:
+                same = [a for a in train if a["label"] == r["label"]]
+                chosen = dict(same[int(rng.integers(len(same)))],resample_control=True)
+            else:
+                relative = f"external/{r['path']}"
+                dest = output / relative
+                if not dest.exists():
+                    dest.parent.mkdir(parents=True,exist_ok=True)
+                    shutil.copyfile(Path(queue_root)/r["path"],dest)
+                chosen = dict(r,path=relative,label_origin="AI reviewed source crop",repetition=repetition)
+            samples.append(chosen)
+    doc = dict(base,samples=samples,training_approved=True,deployment_approved=False,
+               parent_manifest_sha256=sha256(base_manifest),external_queue_sha256=sha256(Path(queue_root)/"review.json"),
+               external_review_sha256=sha256(review),external_control=control,
+               test_pixels_materialized=False,
+               qualification=dict(base["qualification"], external="Two broad training-only filename families; no independently verified sessions",
+                                  augmentations="Public source includes flips/noise/blur; not new independent images"))
+    write_json(output / "manifest.json",doc)
+    validate(output / "manifest.json",config,splits=("train","val"))
+    receipt = dict(manifest_sha256=sha256(output/"manifest.json"),script_sha256=sha256(__file__),
+                   parent_manifest_sha256=sha256(base_manifest),control=control,repetitions=repetitions,
+                   added_entries=len(extra)*repetitions,unique_external_crops=0 if control else len(extra),
+                   counts=dict(Counter(f"{r['split']}/{r['label']}" for r in samples)),
+                   test_evaluated=False,deployment_approved=False)
+    write_json(output/"receipt.json",receipt)
+    print(receipt)
+
+
+if __name__ == "__main__":
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--manifest",required=True)
+    p.add_argument("--queue",required=True)
+    p.add_argument("--review",required=True)
+    p.add_argument("--output",required=True)
+    p.add_argument("--control",action="store_true")
+    args = p.parse_args()
+    build(args.manifest,args.queue,args.review,args.output,args.control)

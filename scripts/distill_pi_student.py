@@ -65,10 +65,14 @@ def main():
     parser.add_argument("--seed", type=int)
     parser.add_argument("--target-cache-run", help="Reuse hash-bound train-only teacher logits")
     parser.add_argument("--initialize-context", help="Existing context run for SVD warm-start; separable_context only")
+    parser.add_argument("--initialize-student", help="Existing same-architecture student; approved new training manifest allowed")
+    parser.add_argument("--learning-rate", type=float, default=1e-3)
     args = parser.parse_args()
     output = Path(args.output)
     if output.exists():
         raise FileExistsError(output)
+    if not 1e-6 <= args.learning_rate <= 1e-2 or (args.initialize_context and args.initialize_student):
+        parser.error("Require learning rate 1e-6..1e-2 and at most one initialization source")
     if not 1 <= args.epochs <= 25:
         parser.error("Choose 1..25 epochs")
     config = read_json(args.config)
@@ -93,6 +97,16 @@ def main():
             raise ValueError("Warm-start data/teacher/taxonomy mismatch")
         initial_path = initial_run / "student.keras"
         initial_hash = sha256(initial_path)
+    if args.initialize_student:
+        initial_run = Path(args.initialize_student)
+        previous = read_json(initial_run / "provenance.json")
+        if (previous.get("student_variant") != args.student_variant
+                or previous["config"]["classes"] != config["classes"]
+                or previous["config"]["student_size"] != config["student_size"]
+                or previous["config"]["task"] != config["task"]):
+            raise ValueError("Student warm-start architecture/taxonomy/input mismatch")
+        initial_path = initial_run / "student.keras"
+        initial_hash = sha256(initial_path)
     import tensorflow as tf
     tf.config.set_visible_devices([], "GPU")
     tf.config.threading.set_intra_op_parallelism_threads(4)
@@ -115,6 +129,7 @@ def main():
                       models_source_sha256=sha256(Path(__file__).resolve().parents[1] / "src/dtr/models.py"),
                       target_cache_run=args.target_cache_run,
                       initialize_context=args.initialize_context, initial_student_sha256=initial_hash,
+                      initialize_student=args.initialize_student, learning_rate=args.learning_rate,
                       teacher_targets_kind=("teacher_logits" if args.target_cache_run
                                             or config["alpha"] < 1 else "unused_zeros"),
                       test_evaluated=False, deployment_approved=False, pi_zero_verified=False,
@@ -187,14 +202,22 @@ def main():
             return keras.losses.categorical_crossentropy(y[:, :k], logits, from_logits=True)
 
         pupil = research_student(k, size, args.student_variant)
-        if initial_path is not None:
+        if args.initialize_student:
+            initial = keras.models.load_model(initial_path, compile=False)
+            pupil.set_weights(initial.get_weights())
+            provenance["initialization"] = dict(kind="same-architecture checkpoint",
+                parent_manifest_sha256=previous["manifest_sha256"], teacher_logits_reused=bool(args.target_cache_run))
+            write_json(output / "provenance.json", provenance)
+            write_json(output / "initial-validation.json", evaluate(pupil,val,config["classes"]))
+            del initial
+        elif initial_path is not None:
             from dtr.models import initialize_separable_context
             initial = keras.models.load_model(initial_path, compile=False)
             provenance["initialization"] = initialize_separable_context(initial, pupil)
             write_json(output / "provenance.json", provenance)
             write_json(output / "initial-validation.json", evaluate(pupil, val, config["classes"]))
             del initial
-        pupil.compile(optimizer=keras.optimizers.Adam(1e-3), loss=loss, metrics=[hard_loss])
+        pupil.compile(optimizer=keras.optimizers.Adam(args.learning_rate), loss=loss, metrics=[hard_loss])
 
         class Progress(keras.callbacks.Callback):
             def on_train_batch_end(self, batch, logs=None):
