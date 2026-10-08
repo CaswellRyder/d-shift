@@ -1,5 +1,9 @@
 # Red/blue balloon migration checkpoint — 2026-10-08
 
+Latest experiment: [combined retraining and twelve-scene development diagnostic](COMBINED_REFINEMENT.md).
+The added hard-negative candidate regresses and is not promoted. Sections below
+retain the initial migration checkpoint rather than replacing its historical evidence.
+
 ## Implemented
 
 - Additive `balloon_red_blue` profile; red hue wraparound and blue masks.
