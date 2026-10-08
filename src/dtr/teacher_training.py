@@ -107,7 +107,9 @@ def train_teacher(
     config = effective_config(config, smoke)
     if epoch_budget is not None and epoch_budget < 1:
         raise ValueError("Epoch budget must be positive")
-    doc = validate(manifest, config)
+    # Keep metadata leakage checks for every split, but never open reserved-test
+    # pixels as a side effect of training or validation-only model selection.
+    doc = validate(manifest, config, splits=("train", "val"))
     if doc.get("training_approved") is False:
         raise ValueError("Dataset is quarantined pending label review")
     if doc["synthetic"] and not smoke:
@@ -167,6 +169,8 @@ def train_teacher(
             "machine": platform.machine(),
             "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "resume_semantics": "committed epoch boundary; optimizer restored; RNG stream not restored",
+            "pixel_validation_splits": ["train", "val"],
+            "training_script_sha256": sha256(__file__),
         }
         state = dict(
             phase=0,
@@ -261,8 +265,10 @@ def train_teacher(
                         config["teacher_size"],
                         shuffle=True,
                         augment=True,
+                        validation_splits=("train", "val"),
                     ),
-                    validation_data=batches(manifest, config, "val", config["teacher_size"]),
+                    validation_data=batches(manifest, config, "val", config["teacher_size"],
+                                            validation_splits=("train", "val")),
                     initial_epoch=state["completed"],
                     epochs=config[epoch_key],
                     verbose=2,
@@ -375,9 +381,9 @@ def evaluate_teacher(run, manifest=None, split="val", output=None):
     config = read_json(root / "config.json")
     provenance = read_json(root / "provenance.json")
     manifest = manifest or provenance["manifest"]
-    doc = validate(manifest, config)
     if split not in ("val", "test"):
         raise ValueError("Evaluation split must be val or test")
+    doc = validate(manifest, config, splits=(split,))
     if sha256(manifest) != provenance["manifest_sha256"]:
         raise ValueError("Evaluation manifest differs from the recorded training dataset")
     if output and Path(output).exists():

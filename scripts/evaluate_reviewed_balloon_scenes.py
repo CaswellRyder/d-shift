@@ -6,10 +6,10 @@ import numpy as np
 from PIL import Image
 
 from dtr.data import read_json, sha256, write_json
-from dtr.runtime import Predictor
 from dtr.vision import RED_BLUE_PROFILE, suppress_duplicates, validate_model_profile
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.research_balloon_search import experimental, suppress_confirmed_balloon_parts
+from scripts.research_predictor import classify_candidates, load_predictor
 
 
 def reviewed_frames(root, decision_path):
@@ -56,7 +56,7 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
         raise ValueError("Frozen operating point changed")
     results = {}
     for name, path in models.items():
-        predictor = Predictor(path, allow_unvalidated=True)
+        predictor = load_predictor(path)
         validate_model_profile(predictor.metadata, RED_BLUE_PROFILE)
         if predictor.metadata["threshold"] != review["threshold"]:
             raise ValueError("Model threshold does not match frozen review")
@@ -65,10 +65,7 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
             total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
             outputs = []
             for row, rgb in frames:
-                found = []
-                for candidate in experimental(rgb, variant):
-                    a, b, c, d = candidate["crop_box"]
-                    found.append(dict(candidate, **predictor.predict(rgb[b:d, a:c])))
+                found = classify_candidates(predictor, rgb, experimental(rgb, variant))
                 detections = suppress_duplicates(found)
                 if variant in ("mser_confirmed_parts", "mser_chromatic"):
                     detections = suppress_confirmed_balloon_parts(detections)
@@ -80,11 +77,13 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
                                     truth=row["provisional_truth"], counts=counts, detections=detections))
             variants[variant] = dict(metrics=metrics(total), frames=outputs)
         results[name] = dict(model_sha256=sha256(path),
+                             runtime="keras_teacher" if Path(path).suffix == ".keras" else "tflite_student",
                              metadata_sha256=sha256(Path(path).with_suffix(".json")),
                              threshold=predictor.metadata["threshold"], full_frame=variants)
     return dict(scope=review["scope"], queue_sha256=review["queue_sha256"],
                 review_sha256=sha256(review_path), script_sha256=sha256(__file__),
                 search_script_sha256=sha256("scripts/research_balloon_search.py"),
+                predictor_script_sha256=sha256("scripts/research_predictor.py"),
                 matching_script_sha256=sha256("scripts/evaluate_red_blue_development.py"),
                 reviewed_frame_count=len(frames), excluded_frame_ids=review["exclude"],
                 independent_recording_sessions_verified=False, test_evaluated=False,
@@ -96,7 +95,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--queue", required=True)
     parser.add_argument("--review", required=True)
-    parser.add_argument("--model", action="append", required=True, help="name=path")
+    parser.add_argument("--model", action="append", required=True, help="name=path (.keras teacher or .tflite student)")
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic"))
     args = parser.parse_args()

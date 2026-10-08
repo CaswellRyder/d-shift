@@ -161,6 +161,25 @@ def test_acceptance_metrics_do_not_hide_rejections():
     assert no_accept["accepted_precision"] is None
 
 
+def test_teacher_training_and_validation_never_open_test_pixels(setup, monkeypatch):
+    config, manifest, pretrained, run = setup
+    from dtr import data
+    original_sha = data.sha256
+
+    def guard(path):
+        if "test" in Path(path).parts:
+            raise RuntimeError("Reserved test pixels opened")
+        return original_sha(path)
+
+    monkeypatch.setattr(data, "sha256", guard)
+    report = train_teacher(manifest, config, run, pretrained)
+    assert report["test_evaluated"] is False
+    assert evaluate_teacher(run, split="val")["split"] == "val"
+    assert read_json(run / "provenance.json")["pixel_validation_splits"] == ["train", "val"]
+    with pytest.raises(RuntimeError, match="Reserved test pixels"):
+        evaluate_teacher(run, split="test")
+
+
 def test_verified_warm_start_retains_classifier_and_rejects_mismatch(setup, monkeypatch):
     config, manifest, pretrained, run = setup
     train_teacher(manifest, config, run, pretrained)

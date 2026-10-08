@@ -11,10 +11,10 @@ import numpy as np
 from PIL import Image
 
 from dtr.data import read_json, sha256
-from dtr.runtime import Predictor
 from dtr.tracking import iou
 from dtr.vision import RED_BLUE_PROFILE, suppress_duplicates, validate_model_profile
 from scripts.research_balloon_search import experimental, suppress_confirmed_balloon_parts
+from scripts.research_predictor import classify_candidates, load_predictor
 
 LABELS = ("red_balloon", "blue_balloon")
 
@@ -66,7 +66,7 @@ def evaluate(manifest, scene_review, models, negatives, negative_review):
     extra = [queue["samples"][i] for i in decision["admit"]]
     results = {}
     for name, path in models.items():
-        predictor = Predictor(path, allow_unvalidated=True)
+        predictor = load_predictor(path)
         validate_model_profile(predictor.metadata, RED_BLUE_PROFILE)
         crop_counts = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
         for row in doc["samples"]:
@@ -98,10 +98,7 @@ def evaluate(manifest, scene_review, models, negatives, negative_review):
                         rgb = cv2.resize(np.asarray(image), (320, 240), interpolation=cv2.INTER_AREA)
                     truth = [dict(label=r["label"], box=[v*(320/image.width if i % 2 == 0 else 240/image.height)
                                                         for i, v in enumerate(r["box_xyxy"])]) for r in targets]
-                    found = []
-                    for candidate in experimental(rgb, variant):
-                        a, b, c, d = candidate["crop_box"]
-                        found.append(dict(candidate, **predictor.predict(rgb[b:d, a:c])))
+                    found = classify_candidates(predictor, rgb, experimental(rgb, variant))
                     detections = suppress_duplicates(found)
                     if variant == "mser_confirmed_parts":
                         detections = suppress_confirmed_balloon_parts(detections)
@@ -112,11 +109,14 @@ def evaluate(manifest, scene_review, models, negatives, negative_review):
                     frames.append(dict(source=source, truth=truth, counts=counts, detections=detections))
                 variants[variant] = dict(metrics=metrics(total), frames=frames)
         results[name] = dict(model_sha256=sha256(path), threshold=predictor.metadata["threshold"],
+                             metadata_sha256=sha256(Path(path).with_suffix(".json")),
+                             runtime="keras_teacher" if Path(path).suffix == ".keras" else "tflite_student",
                              thresholded_crop_validation=metrics(crop_counts),
                              reviewed_negative_training_fit=fits, full_frame=variants)
     return dict(scope="4 reviewed off-domain development photos, not flight qualification",
                 manifest_sha256=sha256(manifest), scene_review_sha256=sha256(scene_review),
                 negative_review_sha256=sha256(negative_review), script_sha256=sha256(__file__),
+                predictor_script_sha256=sha256("scripts/research_predictor.py"),
                 test_evaluated=False, deployment_approved=False, pi_timing_measured=False,
                 insufficient_for_94_percent_gate=True, results=results)
 

@@ -3,7 +3,7 @@ from PIL import Image
 import pytest
 
 from dtr.data import sha256, write_json
-from scripts.evaluate_reviewed_balloon_scenes import reviewed_frames
+from scripts.evaluate_reviewed_balloon_scenes import classify_candidates, load_predictor, reviewed_frames
 from scripts.prepare_balloon_scene_review import development_family
 
 
@@ -58,3 +58,34 @@ def test_photo_family_groups_variants_and_video_frames():
     assert development_family("IMG_5110_JPG.rf.abc.jpg") == "IMG_5110"
     assert development_family("IMG_6100_00113_jpg.rf.abc.jpg") == "IMG_6100"
     assert development_family("frame_0012_jpg.rf.abc.jpg") is None
+
+
+@pytest.mark.parametrize("teacher", [True, False])
+def test_scene_prediction_preserves_crop_order_and_bounds_teacher_batches(teacher):
+    calls = []
+
+    class FakePredictor:
+        metadata = {"kind": "keras_teacher" if teacher else "student"}
+
+        def predict_many(self, crops):
+            calls.append(len(crops))
+            return [{"score": int(crop[0, 0, 0])} for crop in crops]
+
+        def predict(self, crop):
+            return self.predict_many([crop])[0]
+
+    rgb = np.zeros((1, 130, 3), np.uint8)
+    rgb[0, :, 0] = np.arange(130)
+    candidates = [dict(crop_box=[i, 0, i + 1, 1], candidate_id=i) for i in range(130)]
+    result = classify_candidates(FakePredictor(), rgb, candidates)
+    assert [r["score"] for r in result] == list(range(130))
+    assert [r["candidate_id"] for r in result] == list(range(130))
+    assert calls == ([64, 64, 2] if teacher else [1] * 130)
+    calls.clear()
+    assert classify_candidates(FakePredictor(), rgb, []) == []
+    assert calls == []
+
+
+def test_scene_evaluator_rejects_unknown_model_format():
+    with pytest.raises(ValueError, match="Expected"):
+        load_predictor("model.unknown")
