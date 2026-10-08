@@ -48,13 +48,41 @@ def test_admission_is_explicit_and_hash_bound(tmp_path):
 
 
 @pytest.mark.parametrize("changes", [dict(split="test"),dict(label="unknown"),
-    dict(session="independent-holdout"),dict(sha256="reserved"),dict(path="../escape.png")])
+    dict(session="independent-holdout"),dict(sha256="reserved"),dict(path="../escape.png"),
+    dict(source_image="train/IMG_5123_JPG.rf.abcd.jpg")])
 def test_admission_rejects_unscoped_crops(tmp_path,changes):
     base,row,frame,queue,review = queue_fixture(tmp_path)
     write_json(queue,dict(base_manifest_sha256=sha256(base),samples=[dict(row,**changes)],frames=[frame]))
     write_json(review,dict(queue_sha256=sha256(queue),admit=[0],exclude=[]))
     with pytest.raises(ValueError,match="Invalid external"):
         admitted(tmp_path,review,base)
+
+
+@pytest.mark.parametrize("source,session,digest,allowed", [
+    ("train/a", "train-session", "new", True),
+    ("train/b", "train-session", "new", False),
+    ("train/a", "test-session", "new", False),
+    ("train/a", "train-session", "positive", False),
+    ("train/a", "train-session", "heldout", False),
+])
+def test_hard_negatives_require_original_training_source_and_no_label_conflict(
+        tmp_path, monkeypatch, source, session, digest, allowed):
+    from scripts import refine_pi_student
+    from scripts.build_indoor_balloon_training import checked_hard_negatives
+    base = dict(samples=[
+        dict(source_image="train/a", session="train-session", split="train",
+             label="red_balloon", sha256="positive"),
+        dict(source_image="val/a", session="val-session", split="val",
+             label="background", sha256="heldout")])
+    manifest = tmp_path / "manifest.json"
+    write_json(manifest, base)
+    rows = [dict(source_image=source, session=session, sha256=digest)]
+    monkeypatch.setattr(refine_pi_student, "reviewed_negatives", lambda *args: rows)
+    if allowed:
+        assert checked_hard_negatives(base, manifest, tmp_path, "unused") == rows
+    else:
+        with pytest.raises(ValueError, match="outside original"):
+            checked_hard_negatives(base, manifest, tmp_path, "unused")
 
 
 def test_near_holdout_is_not_training_material(tmp_path):

@@ -1,0 +1,20 @@
+{
+  "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+  "evaluation_approved": true,
+  "training_approved": false,
+  "deployment_approved": false,
+  "admit": [0, 1, 2, 3, 4, 5, 6, 8, 11, 12, 13, 14],
+  "exclude": [7, 9, 10, 15],
+  "truth_policy": "Use provisional boxes only on admitted, visually reviewed complete frames; no predictions consulted for selection.",
+  "reviewer": "AI visual review of both contact sheets and raw frames 7, 9 and 15 on 2026-10-08; not human-certified",
+  "decisions": {
+    "7": "Missing additional blue balloon on windowsill plus uncertain clipped red object at lower edge; incomplete truth.",
+    "9": "Three red balloons labeled but unlabeled blue fragment clipped at left edge; ambiguous extent.",
+    "10": "Unlabeled tiny blue object clipped at lower left; cannot establish complete-frame truth.",
+    "15": "Possible deflated blue balloon/fabric on bed; cannot certify this as balloon-free."
+  },
+  "independent_recording_sessions_verified": false,
+  "scope": "Seen-environment development diagnostic, not independent held-out qualification. Several rooms and props visibly match external training frames despite different filename families and passing perceptual duplicate screening. No accuracy claim for excluded frames.",
+  "threshold": 0.8,
+  "matching_iou": 0.5
+}

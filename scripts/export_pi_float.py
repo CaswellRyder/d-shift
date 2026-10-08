@@ -13,11 +13,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--checkpoint", choices=("student.keras", "latest.keras"),
+                        default="student.keras", help="Selected best or fixed final epoch; never overwrites weights")
     args = parser.parse_args()
     run, output = Path(args.run), Path(args.output)
     if output.exists() or output.with_suffix(".json").exists():
         raise FileExistsError(output)
-    model = keras.models.load_model(run / "student.keras", compile=False)
+    checkpoint = run / args.checkpoint
+    model = keras.models.load_model(checkpoint, compile=False)
     original = read_json(run / "student.int8.json")
     size = original["size"]
 
@@ -33,7 +36,8 @@ def main():
     meta = {**original, "sha256": sha256(output), "bytes": len(binary), "tensor_dtype": "float32",
             "integer_only_verified": False, "input_quantization": None, "output_quantization": None,
             "calibration_samples": 0, "calibration_split": None, "output": "float logits; softmax",
-            "source_student_sha256": sha256(run / "student.keras"), "pi_zero_verified": False}
+            "source_student_sha256": sha256(checkpoint), "source_checkpoint": args.checkpoint,
+            "deployment_approved": False, "pi_zero_verified": False}
     write_json(output.with_suffix(".json"), meta)
     print(dict(path=str(output), bytes=len(binary)))
 
