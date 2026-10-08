@@ -1,0 +1,2915 @@
+{
+  "scope": "Development error attribution only; no model or threshold changes",
+  "deployment_approved": false,
+  "qualification_established": false,
+  "results": {
+    "context-fp32": {
+      "model_sha256": "e7cf7bd12cf6ce51dfaecc9dd9c479f5a02b1fda97a377786e1fa57cd079c2b1",
+      "variants": {
+        "baseline": {
+          "counts": {
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 3,
+            "blue_balloon/wrong_class_on_localized_proposals": 1,
+            "red_balloon/correct_class_below_threshold": 2,
+            "red_balloon/detected": 6,
+            "red_balloon/no_localized_proposal": 2,
+            "red_balloon/wrong_class_on_localized_proposals": 1
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6846311475409836,
+                  "best_correct_class_score": 0.9213349223136902
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8138789670671475,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6603134576623145,
+                  "best_correct_class_score": 0.9030157327651978
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9100421134893414,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9056672184125483,
+                  "best_correct_class_score": 0.9992098808288574
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8179996218566837,
+                  "best_correct_class_score": 0.9996089339256287
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8701393336121183,
+                  "best_correct_class_score": 0.9866199493408203
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7916550719418572,
+                  "best_correct_class_score": 0.7901445031166077
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.33373605345096,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9483508792537233,
+                  "best_correct_class_score": 0.9993672966957092
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9187386899765911,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9353704976501402,
+                  "best_correct_class_score": 0.9860972762107849
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.37837533753375335,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8628421814032621,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.875834238708676,
+                  "best_correct_class_score": 0.9392979741096497
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8537224185219046,
+                  "best_correct_class_score": 0.9999943971633911
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8245014801079991,
+                  "best_correct_class_score": 0.854684054851532
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8787091023879378,
+                  "best_correct_class_score": 0.999607264995575
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.7946074604988098
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7896331419427711,
+                  "best_correct_class_score": 0.9641091823577881
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.27154465663580246,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3070264274691358,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 6,
+              "fp": 1,
+              "fn": 5,
+              "precision": 0.8571428571428571,
+              "recall": 0.5454545454545454
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 2,
+              "fn": 4,
+              "precision": 0.8,
+              "recall": 0.6666666666666666
+            }
+          }
+        },
+        "mser_confirmed_parts": {
+          "counts": {
+            "blue_balloon/correct_class_below_threshold": 1,
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 2,
+            "blue_balloon/wrong_class_on_localized_proposals": 1,
+            "red_balloon/correct_class_below_threshold": 2,
+            "red_balloon/detected": 9
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9693308160268512,
+                  "best_correct_class_score": 0.9833869338035583
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7681303857349844,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6189181369556878,
+                  "best_correct_class_score": 0.8599602580070496
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.9369894982497082,
+                  "best_correct_class_score": 0.5528501868247986
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8440946094186024,
+                  "best_correct_class_score": 0.999872088432312
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8258650028360749,
+                  "best_correct_class_score": 0.9995632767677307
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8942343218703175,
+                  "best_correct_class_score": 0.986339807510376
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3603894812630713,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8110360054496629,
+                  "best_correct_class_score": 0.9820804595947266
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9041737279785599,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9701697619786357,
+                  "best_correct_class_score": 0.9993277788162231
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9284012284335228,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073577240223831,
+                  "best_correct_class_score": 0.9843587875366211
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.02083146269192781,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.767098027593928,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8935866983372922,
+                  "best_correct_class_score": 0.9498149752616882
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.865431339424621,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.746243010251631,
+                  "best_correct_class_score": 0.6558579206466675
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7418879881268239,
+                  "best_correct_class_score": 0.9999996423721313
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.7946074604988098
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073647340768735,
+                  "best_correct_class_score": 0.9890017509460449
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9264407579969838,
+                  "best_correct_class_score": 0.9883279204368591
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.881022357939893,
+                  "best_correct_class_score": 0.9696781635284424
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.8181818181818182,
+              "recall": 0.8181818181818182
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 2,
+              "fn": 4,
+              "precision": 0.8,
+              "recall": 0.6666666666666666
+            }
+          }
+        }
+      }
+    },
+    "context-int8": {
+      "model_sha256": "fa0eeb9eaa70b546d997add5aedd7daa94f1f1ced7ec9166a95c09bb8498e680",
+      "variants": {
+        "baseline": {
+          "counts": {
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 3,
+            "blue_balloon/wrong_class_on_localized_proposals": 1,
+            "red_balloon/correct_class_below_threshold": 1,
+            "red_balloon/detected": 7,
+            "red_balloon/no_localized_proposal": 2,
+            "red_balloon/wrong_class_on_localized_proposals": 1
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6846311475409836,
+                  "best_correct_class_score": 0.926533579826355
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8138789670671475,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6603134576623145,
+                  "best_correct_class_score": 0.9129912257194519
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9100421134893414,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9056672184125483,
+                  "best_correct_class_score": 0.9989783763885498
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8179996218566837,
+                  "best_correct_class_score": 0.9995049238204956
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8701393336121183,
+                  "best_correct_class_score": 0.9871368408203125
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7916550719418572,
+                  "best_correct_class_score": 0.7803524732589722
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.33373605345096,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9483508792537233,
+                  "best_correct_class_score": 0.9992889165878296
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9187386899765911,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9353704976501402,
+                  "best_correct_class_score": 0.9872181415557861
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.37837533753375335,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8628421814032621,
+                  "best_correct_class_score": 0.9999998807907104
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.875834238708676,
+                  "best_correct_class_score": 0.9379999041557312
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8537224185219046,
+                  "best_correct_class_score": 0.9999935626983643
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8245014801079991,
+                  "best_correct_class_score": 0.8358127474784851
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8787091023879378,
+                  "best_correct_class_score": 0.9995054006576538
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.8096429109573364
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7896331419427711,
+                  "best_correct_class_score": 0.9629181623458862
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.27154465663580246,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3070264274691358,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 7,
+              "fp": 1,
+              "fn": 4,
+              "precision": 0.875,
+              "recall": 0.6363636363636364
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 1,
+              "fn": 4,
+              "precision": 0.8888888888888888,
+              "recall": 0.6666666666666666
+            }
+          }
+        },
+        "mser_confirmed_parts": {
+          "counts": {
+            "blue_balloon/correct_class_below_threshold": 1,
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 2,
+            "blue_balloon/wrong_class_on_localized_proposals": 1,
+            "red_balloon/correct_class_below_threshold": 1,
+            "red_balloon/detected": 10
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9693308160268512,
+                  "best_correct_class_score": 0.9816884398460388
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7681303857349844,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6189181369556878,
+                  "best_correct_class_score": 0.8796508312225342
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.9369894982497082,
+                  "best_correct_class_score": 0.5450972318649292
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8440946094186024,
+                  "best_correct_class_score": 0.9998328685760498
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8258650028360749,
+                  "best_correct_class_score": 0.9995049238204956
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8942343218703175,
+                  "best_correct_class_score": 0.9871368408203125
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3603894812630713,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8110360054496629,
+                  "best_correct_class_score": 0.9817274808883667
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9041737279785599,
+                  "best_correct_class_score": 1.0
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9701697619786357,
+                  "best_correct_class_score": 0.9991476535797119
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9284012284335228,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073577240223831,
+                  "best_correct_class_score": 0.9872181415557861
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.02083146269192781,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.767098027593928,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8935866983372922,
+                  "best_correct_class_score": 0.9560061693191528
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.865431339424621,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.746243010251631,
+                  "best_correct_class_score": 0.631963312625885
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7418879881268239,
+                  "best_correct_class_score": 0.9999995231628418
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.8096429109573364
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073647340768735,
+                  "best_correct_class_score": 0.9892271757125854
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9264407579969838,
+                  "best_correct_class_score": 0.9891776442527771
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.881022357939893,
+                  "best_correct_class_score": 0.973919689655304
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 2,
+              "fn": 1,
+              "precision": 0.8333333333333334,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 2,
+              "fn": 4,
+              "precision": 0.8,
+              "recall": 0.6666666666666666
+            }
+          }
+        }
+      }
+    },
+    "separable-fp32": {
+      "model_sha256": "427567c7d5ccfb6e6c2a59aa4894b9ce0bc451df0d7d1c8da50e6a1c53021a1f",
+      "variants": {
+        "baseline": {
+          "counts": {
+            "blue_balloon/detected": 7,
+            "blue_balloon/no_localized_proposal": 3,
+            "blue_balloon/wrong_class_on_localized_proposals": 2,
+            "red_balloon/detected": 9,
+            "red_balloon/no_localized_proposal": 2
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6846311475409836,
+                  "best_correct_class_score": 0.877289891242981
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8138789670671475,
+                  "best_correct_class_score": 0.9999959468841553
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6603134576623145,
+                  "best_correct_class_score": 0.8570541739463806
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9100421134893414,
+                  "best_correct_class_score": 0.9373855590820312
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9056672184125483,
+                  "best_correct_class_score": 0.9196541905403137
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8179996218566837,
+                  "best_correct_class_score": 0.9461738467216492
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8701393336121183,
+                  "best_correct_class_score": 0.9864782094955444
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7916550719418572,
+                  "best_correct_class_score": 0.9043541550636292
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.33373605345096,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9483508792537233,
+                  "best_correct_class_score": 0.914482057094574
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9187386899765911,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9353704976501402,
+                  "best_correct_class_score": 0.981726348400116
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.37837533753375335,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8628421814032621,
+                  "best_correct_class_score": 0.9998219609260559
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.875834238708676,
+                  "best_correct_class_score": 0.8868458271026611
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8537224185219046,
+                  "best_correct_class_score": 0.9999737739562988
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.8245014801079991,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8787091023879378,
+                  "best_correct_class_score": 0.9982213377952576
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.8018826842308044
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7896331419427711,
+                  "best_correct_class_score": 0.8826614618301392
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.27154465663580246,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3070264274691358,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9,
+              "recall": 0.8181818181818182
+            },
+            "blue_balloon": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 5,
+              "precision": 1.0,
+              "recall": 0.5833333333333334
+            }
+          }
+        },
+        "mser_confirmed_parts": {
+          "counts": {
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 2,
+            "blue_balloon/wrong_class_on_localized_proposals": 2,
+            "red_balloon/detected": 11
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9693308160268512,
+                  "best_correct_class_score": 0.9714165925979614
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7681303857349844,
+                  "best_correct_class_score": 0.999980092048645
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6189181369556878,
+                  "best_correct_class_score": 0.8000167608261108
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9369894982497082,
+                  "best_correct_class_score": 0.9533807039260864
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8440946094186024,
+                  "best_correct_class_score": 0.9792489409446716
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8258650028360749,
+                  "best_correct_class_score": 0.9402146339416504
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8942343218703175,
+                  "best_correct_class_score": 0.9860085844993591
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3603894812630713,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8110360054496629,
+                  "best_correct_class_score": 0.9874321222305298
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9041737279785599,
+                  "best_correct_class_score": 0.9999934434890747
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9701697619786357,
+                  "best_correct_class_score": 0.9177832007408142
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9284012284335228,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073577240223831,
+                  "best_correct_class_score": 0.9809620976448059
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.02083146269192781,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.767098027593928,
+                  "best_correct_class_score": 0.9999998807907104
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8935866983372922,
+                  "best_correct_class_score": 0.9025668501853943
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.865431339424621,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.746243010251631,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7418879881268239,
+                  "best_correct_class_score": 0.9999994039535522
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.8018826842308044
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073647340768735,
+                  "best_correct_class_score": 0.9559721946716309
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9264407579969838,
+                  "best_correct_class_score": 0.9782669544219971
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.881022357939893,
+                  "best_correct_class_score": 0.9535931348800659
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.8461538461538461,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 2,
+              "fn": 4,
+              "precision": 0.8,
+              "recall": 0.6666666666666666
+            }
+          }
+        }
+      }
+    },
+    "separable-int8": {
+      "model_sha256": "c3bf49dfe5d3a611b4deea71a4242ed65655bfa7f26ca508fb927062e166e442",
+      "variants": {
+        "baseline": {
+          "counts": {
+            "blue_balloon/detected": 7,
+            "blue_balloon/no_localized_proposal": 3,
+            "blue_balloon/wrong_class_on_localized_proposals": 2,
+            "red_balloon/correct_class_below_threshold": 1,
+            "red_balloon/detected": 8,
+            "red_balloon/no_localized_proposal": 2
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6846311475409836,
+                  "best_correct_class_score": 0.8779805302619934
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8138789670671475,
+                  "best_correct_class_score": 0.9999964237213135
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.6603134576623145,
+                  "best_correct_class_score": 0.8620445132255554
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9100421134893414,
+                  "best_correct_class_score": 0.9357316493988037
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9056672184125483,
+                  "best_correct_class_score": 0.9357311725616455
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8179996218566837,
+                  "best_correct_class_score": 0.9569406509399414
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8701393336121183,
+                  "best_correct_class_score": 0.9875028729438782
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7916550719418572,
+                  "best_correct_class_score": 0.9051111340522766
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.33373605345096,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9483508792537233,
+                  "best_correct_class_score": 0.9267153739929199
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9187386899765911,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9353704976501402,
+                  "best_correct_class_score": 0.9782462120056152
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.37837533753375335,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8628421814032621,
+                  "best_correct_class_score": 0.9998399019241333
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.875834238708676,
+                  "best_correct_class_score": 0.862060546875
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8537224185219046,
+                  "best_correct_class_score": 0.9999743700027466
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.8245014801079991,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8787091023879378,
+                  "best_correct_class_score": 0.998244047164917
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.7805073857307434
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7896331419427711,
+                  "best_correct_class_score": 0.8779794573783875
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.27154465663580246,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3070264274691358,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 8,
+              "fp": 1,
+              "fn": 3,
+              "precision": 0.8888888888888888,
+              "recall": 0.7272727272727273
+            },
+            "blue_balloon": {
+              "tp": 7,
+              "fp": 0,
+              "fn": 5,
+              "precision": 1.0,
+              "recall": 0.5833333333333334
+            }
+          }
+        },
+        "mser_confirmed_parts": {
+          "counts": {
+            "blue_balloon/detected": 8,
+            "blue_balloon/no_localized_proposal": 2,
+            "blue_balloon/wrong_class_on_localized_proposals": 2,
+            "red_balloon/correct_class_below_threshold": 2,
+            "red_balloon/detected": 9
+          },
+          "frames": [
+            {
+              "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    171.25,
+                    78.84375,
+                    262.25,
+                    127.03125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9693308160268512,
+                  "best_correct_class_score": 0.9713639616966248
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    11.75,
+                    129.28125,
+                    157.25,
+                    202.21875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7681303857349844,
+                  "best_correct_class_score": 0.9999806880950928
+                }
+              ]
+            },
+            {
+              "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    169.375,
+                    56.34375,
+                    299.625,
+                    123.65625
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.6189181369556878,
+                  "best_correct_class_score": 0.7804961800575256
+                }
+              ]
+            },
+            {
+              "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    199.25,
+                    84.1875,
+                    302.75,
+                    135.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9369894982497082,
+                  "best_correct_class_score": 0.950742781162262
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    16.625,
+                    30.375,
+                    117.375,
+                    78.0
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8440946094186024,
+                  "best_correct_class_score": 0.9810519218444824
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    50.5,
+                    119.8125,
+                    158.0,
+                    181.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8258650028360749,
+                  "best_correct_class_score": 0.950743556022644
+                }
+              ]
+            },
+            {
+              "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    173.125,
+                    88.96875,
+                    289.375,
+                    160.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8942343218703175,
+                  "best_correct_class_score": 0.9856385588645935
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    57.25,
+                    79.40625,
+                    143.75,
+                    129.46875
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.3603894812630713,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+              "targets": [
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    162.375,
+                    96.0,
+                    292.625,
+                    148.875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8110360054496629,
+                  "best_correct_class_score": 0.9875044226646423
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    9.125,
+                    95.4375,
+                    139.375,
+                    154.6875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9041737279785599,
+                  "best_correct_class_score": 0.9999936819076538
+                }
+              ]
+            },
+            {
+              "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    102.75,
+                    76.96875,
+                    218.25,
+                    131.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9701697619786357,
+                  "best_correct_class_score": 0.9267149567604065
+                }
+              ]
+            },
+            {
+              "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    142.75,
+                    71.53125,
+                    239.25,
+                    134.71875
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.9284012284335228,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    22.125,
+                    73.3125,
+                    101.375,
+                    123.1875
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073577240223831,
+                  "best_correct_class_score": 0.9782462120056152
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    188.375,
+                    211.5,
+                    232.625,
+                    240.0
+                  ],
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.02083146269192781,
+                  "best_correct_class_score": null
+                }
+              ]
+            },
+            {
+              "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    166.75,
+                    91.6875,
+                    262.25,
+                    151.3125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.767098027593928,
+                  "best_correct_class_score": 0.9999998807907104
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    8.75,
+                    93.09375,
+                    85.25,
+                    139.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.8935866983372922,
+                  "best_correct_class_score": 0.8922983407974243
+                }
+              ]
+            },
+            {
+              "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+              "targets": [
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    134.75,
+                    1.21875,
+                    211.25,
+                    66.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.865431339424621,
+                  "best_correct_class_score": 1.0
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    30.5,
+                    106.875,
+                    89.0,
+                    161.625
+                  ],
+                  "reason": "wrong_class_on_localized_proposals",
+                  "best_proposal_iou": 0.746243010251631,
+                  "best_correct_class_score": null
+                },
+                {
+                  "label": "blue_balloon",
+                  "box": [
+                    119.75,
+                    118.96875,
+                    195.25,
+                    171.28125
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.7418879881268239,
+                  "best_correct_class_score": 0.9999994039535522
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    63.875,
+                    50.625,
+                    124.625,
+                    105.375
+                  ],
+                  "reason": "correct_class_below_threshold",
+                  "best_proposal_iou": 0.7536366112775811,
+                  "best_correct_class_score": 0.7805073857307434
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    209.875,
+                    111.46875,
+                    291.125,
+                    188.90625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9073647340768735,
+                  "best_correct_class_score": 0.9569389224052429
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    114.375,
+                    175.59375,
+                    170.125,
+                    232.40625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.9264407579969838,
+                  "best_correct_class_score": 0.9782437086105347
+                },
+                {
+                  "label": "red_balloon",
+                  "box": [
+                    40.5,
+                    165.46875,
+                    100.0,
+                    225.65625
+                  ],
+                  "reason": "detected",
+                  "best_proposal_iou": 0.881022357939893,
+                  "best_correct_class_score": 0.9569395780563354
+                }
+              ]
+            },
+            {
+              "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+              "targets": []
+            },
+            {
+              "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+              "targets": []
+            }
+          ],
+          "detection_metrics": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.8181818181818182,
+              "recall": 0.8181818181818182
+            },
+            "blue_balloon": {
+              "tp": 8,
+              "fp": 3,
+              "fn": 4,
+              "precision": 0.7272727272727273,
+              "recall": 0.6666666666666666
+            }
+          }
+        }
+      }
+    }
+  },
+  "source_report_sha256": "9901d698a8a3d013d59659555df4bcbf3c92234bd1998396533909f2d6a8b055",
+  "script_sha256": "f5e8f03c47a2135fc9c3d6bcdf8b9d45adb607064d83fd0eebbddfea5889353d"
+}
