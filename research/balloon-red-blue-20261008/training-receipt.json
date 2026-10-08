@@ -1,0 +1,741 @@
+{
+  "status": "BOOTSTRAP_CANDIDATE_NOT_FLIGHT_READY",
+  "teacher_sha256": "9eaa9452f4ab33cf5631e1dec4e0f391025189f4a7236222ca3a60cea2e27236",
+  "student_keras_sha256": "20a52a65a32ef3791f5de32cca3f4863e0eeb6545703f749ff3c4bb8a78b1cbb",
+  "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+  "config": {
+    "task": "balloon",
+    "classes": [
+      "background",
+      "red_balloon",
+      "blue_balloon"
+    ],
+    "aliases": {
+      "Red Balloon": "red_balloon",
+      "Blue Balloon": "blue_balloon",
+      "redball": "red_balloon",
+      "blueball": "blue_balloon"
+    },
+    "teacher_size": 96,
+    "student_size": 64,
+    "batch_size": 16,
+    "head_epochs": 5,
+    "finetune_epochs": 15,
+    "student_epochs": 25,
+    "temperature": 4.0,
+    "alpha": 0.5,
+    "seed": 42,
+    "threshold": 0.8,
+    "calibration_samples": 500,
+    "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+    "status": "training specification only; no red/blue model trained or runtime qualified",
+    "deployment_approved": false
+  },
+  "models": {
+    "int8": {
+      "path": "runs/balloon-red-blue-context-20261008/student.int8.tflite",
+      "sha256": "b3799a0fdc408a17855accd2005efcbfe275ab178fbf808e8945742c451a10fa",
+      "bytes": 21888,
+      "metadata_sha256": "48537a0d6b0d149dfa07f217aadc375a3a46e6e0c5104e4752d6d92fb79eb0f1",
+      "threshold": 0.8
+    },
+    "float32": {
+      "path": "runs/balloon-red-blue-context-20261008/student.float32.tflite",
+      "sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+      "bytes": 66000,
+      "metadata_sha256": "ea8f564abd9d7664c494277d0fb1152ce83ad77e96932add3c343c588e4766ca",
+      "threshold": 0.8
+    }
+  },
+  "teacher_validation": {
+    "split": "val",
+    "dataset_qualification": {
+      "domain": "generic_real_balloon_photographs_NOT_DTR",
+      "label_review": "AI reviewed, not human certified",
+      "grouping": "source-pixel disjoint; recording-session independence UNVERIFIED",
+      "validation": "development only; previously inspected sources",
+      "negatives": "other-color balloons only; red/blue non-balloon clutter missing",
+      "test": "tiny off-domain holdout; insufficient for flight qualification",
+      "competition_accuracy_established": false,
+      "redistribution_approved": false
+    },
+    "synthetic_training": false,
+    "model_sha256": "9eaa9452f4ab33cf5631e1dec4e0f391025189f4a7236222ca3a60cea2e27236",
+    "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+    "deployment_approved": false,
+    "metrics": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "samples": 8,
+      "precision": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "f1": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "support": [
+        3,
+        2,
+        3
+      ],
+      "confusion_true_rows_predicted_columns": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "threshold": 0.8,
+      "accepted_count": 3,
+      "wrong_accepted_count": 0,
+      "accepted_precision": 1.0,
+      "correct_accepted_target_recall": 0.6,
+      "background_accept_rate": 0.0
+    },
+    "predictions": [
+      {
+        "path": "images/val/137-source.png",
+        "session": "photo:8f9109955376baa66b151c89251c284385f02bde8a063845941a7899fe7ae6fc",
+        "actual": "background",
+        "label": "background",
+        "score": 0.5120884776115417,
+        "scores": [
+          0.5120884776115417,
+          0.007830638438463211,
+          0.48008090257644653
+        ],
+        "accepted": false,
+        "latency_ms": 35.541375051252544,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/159-source.png",
+        "session": "photo:5316c656aa80b2d124a9fb1206635828c405acea71a65aed0db01ea9dc266843",
+        "actual": "background",
+        "label": "background",
+        "score": 0.5874789357185364,
+        "scores": [
+          0.5874789357185364,
+          0.004546634387224913,
+          0.4079744219779968
+        ],
+        "accepted": false,
+        "latency_ms": 27.70225005224347,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/160-source.png",
+        "session": "photo:5316c656aa80b2d124a9fb1206635828c405acea71a65aed0db01ea9dc266843",
+        "actual": "background",
+        "label": "background",
+        "score": 0.7633302211761475,
+        "scores": [
+          0.7633302211761475,
+          0.2361297607421875,
+          0.0005400634254328907
+        ],
+        "accepted": false,
+        "latency_ms": 28.521333006210625,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/136-source.png",
+        "session": "photo:8f9109955376baa66b151c89251c284385f02bde8a063845941a7899fe7ae6fc",
+        "actual": "red_balloon",
+        "label": "red_balloon",
+        "score": 0.9250909090042114,
+        "scores": [
+          0.0666988417506218,
+          0.9250909090042114,
+          0.00821024551987648
+        ],
+        "accepted": true,
+        "latency_ms": 30.00066603999585,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/150-source.png",
+        "session": "photo:506b283633d2f2eb6b92a39d80be17d2aab5ccf7ffb0b1f1ba94ff78ac1911ee",
+        "actual": "red_balloon",
+        "label": "red_balloon",
+        "score": 0.8072213530540466,
+        "scores": [
+          0.006292620208114386,
+          0.8072213530540466,
+          0.18648600578308105
+        ],
+        "accepted": true,
+        "latency_ms": 30.641458928585052,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/149-source.png",
+        "session": "photo:506b283633d2f2eb6b92a39d80be17d2aab5ccf7ffb0b1f1ba94ff78ac1911ee",
+        "actual": "blue_balloon",
+        "label": "blue_balloon",
+        "score": 0.9858590960502625,
+        "scores": [
+          0.013162549585103989,
+          0.0009783419081941247,
+          0.9858590960502625
+        ],
+        "accepted": true,
+        "latency_ms": 30.96866689156741,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/158-source.png",
+        "session": "photo:5316c656aa80b2d124a9fb1206635828c405acea71a65aed0db01ea9dc266843",
+        "actual": "blue_balloon",
+        "label": "blue_balloon",
+        "score": 0.46614399552345276,
+        "scores": [
+          0.3811379671096802,
+          0.1527179777622223,
+          0.46614399552345276
+        ],
+        "accepted": false,
+        "latency_ms": 27.21395797561854,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      },
+      {
+        "path": "images/val/162-source.png",
+        "session": "photo:0c39317974abbe2fa5ad8cec1150e68f9ce55070d7b3b503c30372dca17e73ee",
+        "actual": "blue_balloon",
+        "label": "blue_balloon",
+        "score": 0.6214615106582642,
+        "scores": [
+          0.3785230815410614,
+          1.5367893865914084e-05,
+          0.6214615106582642
+        ],
+        "accepted": false,
+        "latency_ms": 25.925250025466084,
+        "latency_kind": "amortized batch preprocessing and inference",
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "engine": "keras_teacher"
+      }
+    ],
+    "threshold_sweep": [
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.3,
+        "accepted_count": 5,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 1.0,
+        "background_accept_rate": 0.0
+      },
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.5,
+        "accepted_count": 4,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 0.8,
+        "background_accept_rate": 0.0
+      },
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.7,
+        "accepted_count": 3,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 0.6,
+        "background_accept_rate": 0.0
+      },
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.8,
+        "accepted_count": 3,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 0.6,
+        "background_accept_rate": 0.0
+      },
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.9,
+        "accepted_count": 2,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 0.4,
+        "background_accept_rate": 0.0
+      },
+      {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "samples": 8,
+        "precision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "recall": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "f1": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "support": [
+          3,
+          2,
+          3
+        ],
+        "confusion_true_rows_predicted_columns": [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            3
+          ]
+        ],
+        "threshold": 0.95,
+        "accepted_count": 1,
+        "wrong_accepted_count": 0,
+        "accepted_precision": 1.0,
+        "correct_accepted_target_recall": 0.2,
+        "background_accept_rate": 0.0
+      }
+    ]
+  },
+  "student_report": {
+    "status": "INTEGRATION_CANDIDATE_UNVALIDATED",
+    "student_parameters": 15667,
+    "validation_fp32": {
+      "accuracy": 1.0,
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "confusion_true_rows_predicted_columns": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "precision": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recall": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "samples": 8
+    },
+    "validation_int8": {
+      "accuracy": 1.0,
+      "confusion_true_rows_predicted_columns": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ]
+      ]
+    },
+    "export": {
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "logits; dequantize then softmax",
+      "threshold": 0.8,
+      "threshold_status": "provisional; tune on validation recordings",
+      "input_quantization": [
+        1.0,
+        -128
+      ],
+      "output_quantization": [
+        0.050608839839696884,
+        24
+      ],
+      "sha256": "b3799a0fdc408a17855accd2005efcbfe275ab178fbf808e8945742c451a10fa",
+      "bytes": 21888,
+      "calibration_samples": 212,
+      "calibration_split": "train",
+      "integer_only_verified": true,
+      "synthetic_training": false,
+      "deployment_approved": false,
+      "pi_zero_verified": false,
+      "training": {
+        "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-20261008/teacher.keras",
+        "teacher_sha256": "9eaa9452f4ab33cf5631e1dec4e0f391025189f4a7236222ca3a60cea2e27236",
+        "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-red-blue-bootstrap-20261008/manifest.json",
+        "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+        "config": {
+          "task": "balloon",
+          "classes": [
+            "background",
+            "red_balloon",
+            "blue_balloon"
+          ],
+          "aliases": {
+            "Red Balloon": "red_balloon",
+            "Blue Balloon": "blue_balloon",
+            "redball": "red_balloon",
+            "blueball": "blue_balloon"
+          },
+          "teacher_size": 96,
+          "student_size": 64,
+          "batch_size": 16,
+          "head_epochs": 5,
+          "finetune_epochs": 15,
+          "student_epochs": 25,
+          "temperature": 4.0,
+          "alpha": 0.5,
+          "seed": 42,
+          "threshold": 0.8,
+          "calibration_samples": 500,
+          "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+          "status": "training specification only; no red/blue model trained or runtime qualified",
+          "deployment_approved": false
+        },
+        "epochs": 25,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "augmentation": "none; cached logits for identical source crops",
+        "student_variant": "context",
+        "training_script_sha256": "b28ae2eb81475e86d164c34ab2506fcb8d9d72c580f8b49e481d635943324425",
+        "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+        "target_cache_run": null,
+        "initialize_context": null,
+        "initial_student_sha256": null,
+        "teacher_targets_kind": "teacher_logits",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false,
+        "purpose": "integration_research",
+        "tensorflow": "2.18.1",
+        "keras": "3.8.0"
+      }
+    },
+    "test_evaluated": false,
+    "deployment_approved": false,
+    "pi_zero_verified": false,
+    "scope": "Crop validation only; not full-frame detector accuracy"
+  },
+  "test_evaluated": false,
+  "end_to_end_94_percent_established": false,
+  "pi_zero_verified": false,
+  "deployment_approved": false
+}
