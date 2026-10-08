@@ -55,6 +55,11 @@ def main():
     parser.add_argument("--negative-queue", required=True)
     parser.add_argument("--review", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--positive-queue", help="Optional reviewed proposal-compatible training crops")
+    parser.add_argument("--positive-review")
+    parser.add_argument("--positive-repetitions", type=int, default=0)
+    parser.add_argument("--positive-control", action="store_true",
+                        help="Replace positive proposal views with same-class original crops and identical hard-label loss")
     parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--negative-repetitions", type=int, default=8, help="0 is matched no-new-data control")
     parser.add_argument("--control-repetitions", type=int, default=0,
@@ -63,6 +68,11 @@ def main():
     out, base, manifest = Path(args.output), Path(args.base_run), Path(args.manifest)
     if out.exists():
         raise FileExistsError(out)
+    if (not 0 <= args.positive_repetitions <= 12
+            or bool(args.positive_queue) != bool(args.positive_review)
+            or bool(args.positive_queue) != bool(args.positive_repetitions)
+            or (args.positive_control and not args.positive_queue)):
+        parser.error("Positive queue/review require 1..12 repetitions; control requires queue")
     if not 1 <= args.epochs <= 12 or not 0 <= args.negative_repetitions <= 12:
         parser.error("Bound epochs 1..12 and negative repetitions 0..12")
     if (not 0 <= args.control_repetitions <= 12
@@ -84,6 +94,12 @@ def main():
         raise ValueError("Negative source is not in original training partition")
     if any(r["sha256"] in forbidden_hashes for r in extra):
         raise ValueError("Negative conflicts with an existing positive or held-out crop")
+    positives = []
+    if args.positive_queue:
+        from scripts.build_red_blue_proposal_positives import checked_positives
+        positives = checked_positives(args.positive_queue, args.positive_review, manifest)
+        if {r["sha256"] for r in positives}.intersection(r["sha256"] for r in extra):
+            raise ValueError("Positive/negative label conflict")
     import tensorflow as tf
     tf.config.set_visible_devices([], "GPU")
     tf.config.threading.set_intra_op_parallelism_threads(4)
@@ -110,6 +126,17 @@ def main():
         control = [samples[int(i)] for i in rng.choice(len(samples),
                    size=len(extra)*args.control_repetitions, replace=True)]
         samples.extend(control)
+    positive_rng = np.random.default_rng(config["seed"])
+    for _ in range(args.positive_repetitions):
+        for row in positives:
+            target = np.zeros(2*k+1, np.float32)
+            target[config["classes"].index(row["label"])] = 1
+            target[-1] = 1  # No cached teacher output exists for new proposal views.
+            path = Path(args.positive_queue) / row["path"]
+            if args.positive_control:
+                original = [r for r in rows if r["label"] == row["label"]]
+                path = manifest.parent / original[int(positive_rng.integers(len(original)))]["path"]
+            samples.append((path, target))
     out.mkdir(parents=True)
     provenance = dict(
         config=config, student_variant=previous["student_variant"],
@@ -120,6 +147,11 @@ def main():
         review_sha256=sha256(args.review), script_sha256=sha256(__file__),
         negative_repetitions=args.negative_repetitions, unique_new_negatives=len(extra) if args.negative_repetitions else 0,
         control_repetitions=args.control_repetitions,
+        positive_queue_sha256=sha256(Path(args.positive_queue)/"review.json") if positives else None,
+        positive_review_sha256=sha256(args.positive_review) if positives else None,
+        positive_repetitions=args.positive_repetitions, positive_control=args.positive_control,
+        unique_positive_proposals=len(positives) if not args.positive_control else 0,
+        positive_loss="hard-label cross entropy only; same-class original resampling for control",
         original_train_entries=len(rows), training_entries=len(samples), epochs=args.epochs,
         learning_rate=1e-4, augmentation="none; exact original cached targets",
         new_negative_loss="hard-label cross entropy only", synthetic_training=False,
