@@ -164,3 +164,12 @@ coverage improvement that failed the full-scene false-positive check.
 
 Verification: 372 tests passed, two skipped, six known TensorFlow warnings;
 scoped Ruff passed. No flight readiness or speed improvement is established.
+
+The separate frozen-v1 release verifier does **not** pass against this research
+checkout: it stops at a source-hash mismatch in `scripts/build_public_balloon.py`.
+That file matches the pre-turn `bdfec3e8` revision exactly (SHA-256
+`9c51385b982df0659097a10fa41bcd751a3cb060106a833345afffb8dec040cc`).
+An explicit check verifies all 30 frozen artifact files, while eleven bound
+source files differ from the v1 manifest. None of those source files was edited
+in this turn. This is pre-existing research-source drift, not verified release
+compatibility. The v1 manifest and artifacts were not changed to hide it.
