@@ -1,10 +1,10 @@
 import numpy as np
 import pytest
 
-from scripts.research_balloon_search import experimental, select
+from scripts.research_balloon_search import experimental, remove_contained, select
 
 
-@pytest.mark.parametrize("variant", ["baseline", "opened", "multisat", "mser", "mser_blend"])
+@pytest.mark.parametrize("variant", ["baseline", "opened", "multisat", "mser", "mser_blend", "mser_components"])
 def test_search_is_bounded_and_blank_scene_stays_empty(variant):
     frame = np.zeros((240, 320, 3), np.uint8)
     assert experimental(frame, variant) == []
@@ -28,3 +28,13 @@ def test_selector_deduplicates_and_does_not_starve_either_color():
 def test_research_resolution_is_explicit():
     with pytest.raises(ValueError, match="320x240"):
         experimental(np.zeros((480, 640, 3), np.uint8), "mser")
+
+
+def test_components_remove_same_color_interior_but_keep_other_color_and_neighbors():
+    large = dict(box=[10, 10, 100, 100], color_group=0)
+    inner = dict(box=[20, 20, 25, 25], color_group=0)
+    other = dict(inner, color_group=1)
+    neighbor = dict(box=[101, 10, 130, 40], color_group=0)
+    kept = remove_contained([inner, neighbor, other, large])
+    assert large in kept and other in kept and neighbor in kept
+    assert inner not in kept

@@ -5,19 +5,32 @@ the original, unchanged crops. New reviewed negatives receive hard labels only.
 Control and intervention use the same starting weights, seed, optimizer and epochs.
 """
 import argparse
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 import numpy as np
 
 from dtr.data import read_json, sha256, validate, write_json, load_rgb
 
 
+def queue_path(queue_root):
+    root = Path(queue_root)
+    return root / ("queue.json" if (root / "queue.json").is_file() else "review.json")
+
+
 def reviewed_negatives(queue_root, decision_path, expected_manifest):
     root = Path(queue_root).resolve()
-    queue = read_json(root / "queue.json")
-    receipt, decision = read_json(root / "receipt.json"), read_json(decision_path)
+    path = queue_path(root)
+    if path.name == "queue.json":
+        queue, receipt = read_json(path), read_json(root / "receipt.json")
+        source_prefix = "train/"
+    else:
+        report = read_json(path)
+        queue = report["samples"]
+        receipt = dict(base_manifest_sha256=report["base_manifest_sha256"], queue_sha256=sha256(path))
+        source_prefix = "balloon/train/"
+    decision = read_json(decision_path)
     if (receipt["base_manifest_sha256"] != expected_manifest
-            or decision["queue_sha256"] != sha256(root / "queue.json")
+            or decision["queue_sha256"] != sha256(path)
             or receipt["queue_sha256"] != decision["queue_sha256"]):
         raise ValueError("Review/manifest hash mismatch")
     indices = decision["admit"]
@@ -28,7 +41,8 @@ def reviewed_negatives(queue_root, decision_path, expected_manifest):
     for row in rows:
         path = (root / row["path"]).resolve()
         if (row["split"] != "train" or row["label"] != "background"
-                or not row["source_image"].startswith("train/")
+                or not row["source_image"].startswith(source_prefix)
+                or ".." in PurePosixPath(row["source_image"]).parts
                 or not path.is_relative_to(root) or sha256(path) != row["sha256"]):
             raise ValueError("Invalid reviewed training crop")
     return rows
@@ -43,12 +57,17 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--epochs", type=int, default=8)
     parser.add_argument("--negative-repetitions", type=int, default=8, help="0 is matched no-new-data control")
+    parser.add_argument("--control-repetitions", type=int, default=0,
+                        help="Repeat original crops to match intervention updates; requires negative repetitions 0")
     args = parser.parse_args()
     out, base, manifest = Path(args.output), Path(args.base_run), Path(args.manifest)
     if out.exists():
         raise FileExistsError(out)
     if not 1 <= args.epochs <= 12 or not 0 <= args.negative_repetitions <= 12:
         parser.error("Bound epochs 1..12 and negative repetitions 0..12")
+    if (not 0 <= args.control_repetitions <= 12
+            or (args.control_repetitions and args.negative_repetitions)):
+        parser.error("Control repetitions must be 0..12 with negative repetitions 0")
     previous = read_json(base / "provenance.json")
     config = previous["config"]
     doc = validate(manifest, config, splits=("train", "val"))
@@ -86,15 +105,21 @@ def main():
     negative_target[-1] = 1  # Ignore teacher KL for reviewed negatives, not fake logits.
     for _ in range(args.negative_repetitions):
         samples.extend((Path(args.negative_queue)/r["path"], negative_target) for r in extra)
+    if args.control_repetitions:
+        rng = np.random.default_rng(config["seed"])
+        control = [samples[int(i)] for i in rng.choice(len(samples),
+                   size=len(extra)*args.control_repetitions, replace=True)]
+        samples.extend(control)
     out.mkdir(parents=True)
     provenance = dict(
         config=config, student_variant=previous["student_variant"],
         base_run=str(base.resolve()), base_student_sha256=sha256(base / "student.keras"),
         manifest=str(manifest.resolve()), manifest_sha256=sha256(manifest),
         teacher_sha256=previous["teacher_sha256"], target_cache_sha256=sha256(base / "train-targets.npy"),
-        negative_queue_sha256=sha256(Path(args.negative_queue)/"queue.json"),
+        negative_queue_sha256=sha256(queue_path(args.negative_queue)),
         review_sha256=sha256(args.review), script_sha256=sha256(__file__),
         negative_repetitions=args.negative_repetitions, unique_new_negatives=len(extra) if args.negative_repetitions else 0,
+        control_repetitions=args.control_repetitions,
         original_train_entries=len(rows), training_entries=len(samples), epochs=args.epochs,
         learning_rate=1e-4, augmentation="none; exact original cached targets",
         new_negative_loss="hard-label cross entropy only", synthetic_training=False,

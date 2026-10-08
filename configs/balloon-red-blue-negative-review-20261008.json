@@ -1,0 +1,17 @@
+{
+  "queue_sha256": "04b465e01cb195af5132329d7330ece7d1e21a5208a1203560e37297aba9bf34",
+  "admit": [0,1,2,3,4,5],
+  "exclude": [6],
+  "review": "AI visual review of all seven crops AND five full-photo context panels on 2026-10-08; not human-certified",
+  "decisions": {
+    "0": "Blue patch in patterned trousers, not a balloon",
+    "1": "Blue patch in clown wig, not a balloon",
+    "2": "Blue print on shirt, not a balloon",
+    "3": "Red rectangular container/sign on sofa, not a balloon",
+    "4": "Brown hair patch, not a balloon",
+    "5": "Brown hair patch, not a balloon",
+    "6": "EXCLUDED: full source clearly contains two real red balloons missing from upstream annotations; never admit as background"
+  },
+  "purpose": "train-only hard-negative refinement; fit checks are not generalization scores",
+  "deployment_approved": false
+}

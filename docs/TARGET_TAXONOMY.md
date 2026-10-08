@@ -24,8 +24,11 @@ reject red/blue weights with historical profiles. The webcam service selects the
 profile from red/blue model metadata without changing its goal search profile.
 Existing default models are NOT red/blue models and are not automatically replaced.
 
-Next balloon work must review red/blue source labels, retrain the teacher/student or a suitable candidate,
-and evaluate color confusion plus Pi performance. Never rename green/purple
+An off-domain bootstrap teacher and distilled student have now been retrained
+and exported as INT8/FP32; see [training evidence](../research/balloon-red-blue-20261008/RETRAINING.md).
+These are research candidates, not replacements for deployed/default weights.
+Next work must expand representative source labels, improve full-frame search and
+classification, and evaluate color confusion plus Pi performance. Never rename green/purple
 logits or map old labels to red/blue as a shortcut. This correction does not
 invalidate orange/yellow goal measurements, which are a separate task.
 

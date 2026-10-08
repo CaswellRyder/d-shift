@@ -57,3 +57,21 @@ def test_review_is_bound_to_exact_queue_manifest_and_image(tmp_path):
     crop.write_bytes(b"changed")
     with pytest.raises(ValueError,match="Invalid reviewed"):
         REFINE.reviewed_negatives(tmp_path,decision,"manifest")
+
+
+def test_public_photo_review_preserves_explicit_admission_and_source_boundary(tmp_path):
+    crop = tmp_path/"crop.png"
+    crop.write_bytes(b"fixture")
+    row = dict(path="crop.png", sha256=sha256(crop), split="train",
+               source_image="balloon/train/a.jpg", label="background")
+    queue = tmp_path/"review.json"
+    write_json(queue, dict(base_manifest_sha256="manifest", samples=[row, row],
+                          training_approved=False))
+    decision = tmp_path/"decision.json"
+    write_json(decision, dict(queue_sha256=sha256(queue), admit=[0], exclude=[1]))
+    assert REFINE.reviewed_negatives(tmp_path, decision, "manifest") == [row]
+    for source in ("balloon/val/a.jpg", "balloon/train/../val/a.jpg"):
+        write_json(queue, dict(base_manifest_sha256="manifest", samples=[dict(row, source_image=source)]))
+        write_json(decision, dict(queue_sha256=sha256(queue), admit=[0]))
+        with pytest.raises(ValueError, match="Invalid reviewed"):
+            REFINE.reviewed_negatives(tmp_path, decision, "manifest")

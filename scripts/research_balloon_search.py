@@ -29,6 +29,31 @@ def candidate(points, group, shape):
                 proposal_score=float(np.sqrt(area)*(area/(w*h))**2))
 
 
+def remove_contained(candidates):
+    """Experimental solid-object assumption, not safe for arbitrary overlapping instances.
+
+    Printed details/highlights inside a balloon are not separate balloon proposals.
+    Keep this separate from goal rims and preserve differently colored instances.
+    """
+    def area(c):
+        a, b, e, f = c["box"]
+        return (e-a)*(f-b)
+
+    kept = []
+    for c in sorted(candidates, key=area, reverse=True):
+        a, b, e, f = c["box"]
+        contained = False
+        for p in kept:
+            x, y, z, w = p["box"]
+            intersection = max(0, min(e, z)-max(a, x))*max(0, min(f, w)-max(b, y))
+            if c["color_group"] == p["color_group"] and intersection >= .95*area(c):
+                contained = True
+                break
+        if not contained:
+            kept.append(c)
+    return kept
+
+
 def select(candidates, limit=12):
     queues = [[c for c in sorted(candidates, key=lambda c: -c["proposal_score"])
                if c["color_group"] == group] for group in (0, 1)]
@@ -65,7 +90,7 @@ def experimental(rgb, variant):
                     c = candidate(contour, group, rgb.shape)
                     if c:
                         pool.append(c)
-    elif variant in ("mser", "mser_blend"):
+    elif variant in ("mser", "mser_blend", "mser_components"):
         planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
                   cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
         for group, plane in enumerate(planes):
@@ -76,6 +101,8 @@ def experimental(rgb, variant):
                 c = candidate(points, group, rgb.shape)
                 if c:
                     pool.append(c)
+        if variant == "mser_components":
+            pool = remove_contained(pool)
         if variant == "mser_blend":
             # Same total 12. Baseline gets eight slots, supplements use at most four.
             base = proposals(rgb, "balloon", limit=8, profile=RED_BLUE_PROFILE)
@@ -99,7 +126,7 @@ def run(manifest, archive):
         if row["split"] == "train" and row["label"] != "background":
             images[row["source_image"]][row["annotation_id"]] = row
     variants = {v: dict(rows=[], timing_ms=[]) for v in
-                ("baseline", "opened", "multisat", "mser", "mser_blend")}
+                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components")}
     with zipfile.ZipFile(archive) as zipped:
         for source, targets in sorted(images.items()):
             with Image.open(io.BytesIO(zipped.read(source))) as opened:

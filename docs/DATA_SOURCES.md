@@ -1,5 +1,12 @@
 # Public sources
 
+**Taxonomy correction, 2026-10-08:** current balloons are red/blue. The historical
+V10/V11 source below labels green/purple, so its balloon outputs do not satisfy
+the corrected task. Red/blue public-photo bootstrap training is documented in
+[the current retraining record](../research/balloon-red-blue-20261008/RETRAINING.md);
+it does not establish competition or flight accuracy. Historical goal data remains
+a separate orange/yellow task. Never rename old balloon logits as red/blue.
+
 **Update 2026-10-03:** the user supplied authorized export access. COCO V10 and V11 from
 Cheese/Cats-and-Dogs have been downloaded, with license files and archive checksums retained.
 Both contain all eight target classes. V10 was deduplicated and re-split into both task datasets.
