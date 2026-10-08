@@ -1,0 +1,284 @@
+{
+  "scope": "Device timing plus tiny off-domain development diagnostics",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "flight_ready": false,
+  "results": {
+    "replay-context-hsv-a.json": {
+      "report_sha256": "7569451332bb4bb1aba69b268b5795e6640078589436f9d2d70a6752c617ea6d",
+      "frames_sha256": "2667f912c21b47fede6e23e37e20fa6107ba4d0fa23bfbc34b82c986c95717f2",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "f7b488aad3062318c42f6afbc7a3a62d02c88b15db7fd57c7bcb384a525872e1",
+        "input_sha256": "63eb56ee824ca25d19ffb04ff4fa14c522f8523b9e4a63e53fa05714c12a64d5",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.40 0.41 0.40 1/240 4837",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "mask_backend": "hsv",
+        "mask_startup_ms": 2.2849840170238167,
+        "color_lookup_sha256": null,
+        "native_color_library_sha256": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 319.1944213991519,
+          "p50_ms": 360.8489770122105,
+          "p95_ms": 439.209890330676,
+          "max_ms": 442.4009089998435
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.49 0.43 0.40 1/241 4839",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 115044,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 99.6242044493556,
+        "crop_and_classify": 218.43782469950384,
+        "assemble_and_suppress": 1.1323922502924688
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.1328868330988224
+    },
+    "replay-context-hsv-b.json": {
+      "report_sha256": "c802639b9043f1215953903fa7d6da81988cdd135d8c78ec97fea96b02cec2ba",
+      "frames_sha256": "0e73125875cf8e6b7ce5f3e3da3c998449cbd4942720959f37beb0a2f3b23969",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "f7b488aad3062318c42f6afbc7a3a62d02c88b15db7fd57c7bcb384a525872e1",
+        "input_sha256": "63eb56ee824ca25d19ffb04ff4fa14c522f8523b9e4a63e53fa05714c12a64d5",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.91 0.59 0.47 1/239 4847",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "mask_backend": "hsv",
+        "mask_startup_ms": 2.1069830108899623,
+        "color_lookup_sha256": null,
+        "native_color_library_sha256": null,
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 322.9545774505823,
+          "p50_ms": 366.28369499521796,
+          "p95_ms": 440.90507575456286,
+          "max_ms": 472.47237400733866
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.91 0.60 0.47 1/239 4852",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 114620,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 98.70984425215283,
+        "crop_and_classify": 222.8756936470745,
+        "assemble_and_suppress": 1.3690395513549447
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.096410671414055
+    },
+    "replay-context-native-a.json": {
+      "report_sha256": "f9e70e854fec15d7ef9e694968e6253cc426773062464104c85fccea2dfebca7",
+      "frames_sha256": "6b353d177f62035e854b131683da37d53c7b463a5b8bbe7ccd192b3fcc3bd5a1",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "f7b488aad3062318c42f6afbc7a3a62d02c88b15db7fd57c7bcb384a525872e1",
+        "input_sha256": "63eb56ee824ca25d19ffb04ff4fa14c522f8523b9e4a63e53fa05714c12a64d5",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.67 0.47 0.42 1/239 4841",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "mask_backend": "native",
+        "mask_startup_ms": 1173.9355659810826,
+        "color_lookup_sha256": "3817ed4fd607bb43586adc77f5835a2a9331ed76cd81fc52b3668f99c192e44c",
+        "native_color_library_sha256": "5507aa6453baaad4cc2aa2f27f9d1fc3af1f3afad113ae9235af8877eaa12708",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 316.07496534852544,
+          "p50_ms": 362.3968819883885,
+          "p95_ms": 440.5753142971662,
+          "max_ms": 441.2498009914998
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.72 0.49 0.43 1/239 4842",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 137912,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 88.85025794879766,
+        "crop_and_classify": 226.05886595119955,
+        "assemble_and_suppress": 1.1658414485282265
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.1638064055384234
+    },
+    "replay-context-native-b.json": {
+      "report_sha256": "3bcecc379c46d9a0428490485d7528d03635128a45c99efe688a807f67a64c3f",
+      "frames_sha256": "06be30a7d36712cfc1a72e8702ea2b7f10dea6bbef93402e049e1867ae4662d4",
+      "report": {
+        "host": "vision",
+        "machine": "armv6l",
+        "mode": "replay",
+        "policy": "stateless",
+        "model": "context-fp32",
+        "model_sha256": "7fa1756812cccf7fe2da727328949aebeb4cd595ffdc6e695f8fb46b8a4739f5",
+        "bundle_sha256": "f7b488aad3062318c42f6afbc7a3a62d02c88b15db7fd57c7bcb384a525872e1",
+        "input_sha256": "63eb56ee824ca25d19ffb04ff4fa14c522f8523b9e4a63e53fa05714c12a64d5",
+        "runtime": "dtr.native_tflite",
+        "runtime_version": "2.20.0",
+        "max_golden_score_delta": 5.960464477539063e-08,
+        "budget": 12,
+        "health_before": {
+          "temperature_millicelsius": "43850",
+          "load_average": "0.83 0.54 0.45 1/239 4844",
+          "throttled": "throttled=0x0"
+        },
+        "deployment_approved": false,
+        "test_evaluated": false,
+        "flight_commands": null,
+        "mask_backend": "native",
+        "mask_startup_ms": 1145.5775020003784,
+        "color_lookup_sha256": "3817ed4fd607bb43586adc77f5835a2a9331ed76cd81fc52b3668f99c192e44c",
+        "native_color_library_sha256": "5507aa6453baaad4cc2aa2f27f9d1fc3af1f3afad113ae9235af8877eaa12708",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "scope": "Repeated off-domain development stills, processing only; not live FPS or held-out accuracy",
+        "timing": {
+          "mean_ms": 310.8252818507026,
+          "p50_ms": 352.5923714914825,
+          "p95_ms": 432.12493146711495,
+          "max_ms": 432.96377098886296
+        },
+        "frames": 20,
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.84 0.55 0.45 1/239 4845",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_platform_units": 137868,
+        "rss_units": "KiB on Linux, bytes on macOS"
+      },
+      "mean_stage_ms": {
+        "search": 87.86604475026252,
+        "crop_and_classify": 221.8133956514066,
+        "assemble_and_suppress": 1.145841449033469
+      },
+      "unique_development_photos": 4,
+      "development_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.4,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.3333333333333333
+        }
+      },
+      "processing_fps": 3.2172415128069467
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "contract": "dtr-native-rgb24-v1",
+  "sha256": "5507aa6453baaad4cc2aa2f27f9d1fc3af1f3afad113ae9235af8877eaa12708",
+  "source_sha256": "e2574c22119a4e8a25754359ee8d71582156f5e045405e7746481d4e37e53655",
+  "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+  "command": [
+    "cc",
+    "-O3",
+    "-std=c99",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fPIC",
+    "-shared",
+    "-mcpu=arm1176jzf-s",
+    "-mfpu=vfp",
+    "-mfloat-abi=hard",
+    "/home/pacman/red-blue-pi-native-lookup-20261008/dtr/native_color_lookup.c",
+    "-o",
+    "/home/pacman/red-blue-pi-native-lookup-20261008/native-color-lookup.so"
+  ],
+  "machine": "armv6l",
+  "deployment_approved": false
+}
