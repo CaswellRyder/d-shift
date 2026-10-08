@@ -49,7 +49,7 @@ def reviewed_frames(root, decision_path):
 
 
 def evaluate(root, review_path, models, search_variants=("baseline", "mser_confirmed_parts")):
-    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic") for v in search_variants):
+    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red") for v in search_variants):
         raise ValueError("Unknown or empty search variants")
     frames, review = reviewed_frames(root, review_path)
     if review["threshold"] != .8 or review["matching_iou"] != .5:
@@ -67,7 +67,7 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
             for row, rgb in frames:
                 found = classify_candidates(predictor, rgb, experimental(rgb, variant))
                 detections = suppress_duplicates(found)
-                if variant in ("mser_confirmed_parts", "mser_chromatic"):
+                if variant in ("mser_confirmed_parts", "mser_chromatic", "mser_blue_red"):
                     detections = suppress_confirmed_balloon_parts(detections)
                 counts = detection_counts(row["provisional_truth"], detections)
                 for label in LABELS:
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     parser.add_argument("--review", required=True)
     parser.add_argument("--model", action="append", required=True, help="name=path (.keras teacher or .tflite student)")
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic"))
+    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red"))
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)

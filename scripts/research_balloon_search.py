@@ -118,9 +118,13 @@ def experimental(rgb, variant):
                     c = candidate(contour, group, rgb.shape)
                     if c:
                         pool.append(c)
-    elif variant in ("mser", "mser_blend", "mser_components", "mser_confirmed_parts", "mser_chromatic"):
+    elif variant in ("mser", "mser_blend", "mser_components", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red"):
         planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
                   cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
+        if variant == "mser_blue_red":
+            # Research-only: retain cyan/blue contrast when green approaches blue.
+            # Gray stays zero, but cyan clutter can also become a proposal.
+            planes = (planes[0], cv2.subtract(rgb[:, :, 2], rgb[:, :, 0]))
         if variant == "mser_chromatic":
             # Normalize opponent-color contrast by brightness. Research-only:
             # dark colored regions gain contrast, but noise can gain it too.
@@ -161,7 +165,7 @@ def run(manifest, archive):
         if row["split"] == "train" and row["label"] != "background":
             images[row["source_image"]][row["annotation_id"]] = row
     variants = {v: dict(rows=[], timing_ms=[]) for v in
-                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_chromatic")}
+                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_chromatic", "mser_blue_red")}
     with zipfile.ZipFile(archive) as zipped:
         for source, targets in sorted(images.items()):
             with Image.open(io.BytesIO(zipped.read(source))) as opened:

@@ -24,7 +24,7 @@ def run(root, review, manifest, archive_path):
         doc = json.loads(bounded_read(archive, "train/_annotations.coco.json", 50_000_000))
     annotations = {r["id"]: r for r in doc["annotations"]}
     sources = {r["id"]: r for r in doc["images"]}
-    variants = {v: [] for v in ("baseline", "mser", "mser_chromatic")}
+    variants = {v: [] for v in ("baseline", "mser", "mser_chromatic", "mser_blue_red")}
     for frame in read_json(root / "review.json")["frames"]:
         targets = [r for r in rows if r["frame_id"] == frame["id"]]
         if not targets:
