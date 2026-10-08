@@ -48,7 +48,9 @@ def reviewed_frames(root, decision_path):
     return frames, review
 
 
-def evaluate(root, review_path, models):
+def evaluate(root, review_path, models, search_variants=("baseline", "mser_confirmed_parts")):
+    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic") for v in search_variants):
+        raise ValueError("Unknown or empty search variants")
     frames, review = reviewed_frames(root, review_path)
     if review["threshold"] != .8 or review["matching_iou"] != .5:
         raise ValueError("Frozen operating point changed")
@@ -59,7 +61,7 @@ def evaluate(root, review_path, models):
         if predictor.metadata["threshold"] != review["threshold"]:
             raise ValueError("Model threshold does not match frozen review")
         variants = {}
-        for variant in ("baseline", "mser_confirmed_parts"):
+        for variant in search_variants:
             total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
             outputs = []
             for row, rgb in frames:
@@ -68,7 +70,7 @@ def evaluate(root, review_path, models):
                     a, b, c, d = candidate["crop_box"]
                     found.append(dict(candidate, **predictor.predict(rgb[b:d, a:c])))
                 detections = suppress_duplicates(found)
-                if variant == "mser_confirmed_parts":
+                if variant in ("mser_confirmed_parts", "mser_chromatic"):
                     detections = suppress_confirmed_balloon_parts(detections)
                 counts = detection_counts(row["provisional_truth"], detections)
                 for label in LABELS:
@@ -96,13 +98,14 @@ if __name__ == "__main__":
     parser.add_argument("--review", required=True)
     parser.add_argument("--model", action="append", required=True, help="name=path")
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic"))
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
     models = dict(item.split("=", 1) for item in args.model)
     if len(models) != len(args.model):
         parser.error("Model names must be unique")
-    report = evaluate(args.queue, args.review, models)
+    report = evaluate(args.queue, args.review, models, args.variant or ("baseline", "mser_confirmed_parts"))
     write_json(args.output, report)
     for name, result in report["results"].items():
         print(name, {v: r["metrics"] for v, r in result["full_frame"].items()})

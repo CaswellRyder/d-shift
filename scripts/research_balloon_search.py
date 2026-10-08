@@ -118,9 +118,16 @@ def experimental(rgb, variant):
                     c = candidate(contour, group, rgb.shape)
                     if c:
                         pool.append(c)
-    elif variant in ("mser", "mser_blend", "mser_components", "mser_confirmed_parts"):
+    elif variant in ("mser", "mser_blend", "mser_components", "mser_confirmed_parts", "mser_chromatic"):
         planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
                   cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
+        if variant == "mser_chromatic":
+            # Normalize opponent-color contrast by brightness. Research-only:
+            # dark colored regions gain contrast, but noise can gain it too.
+            total = rgb.astype(np.float32).sum(axis=2)
+            valid = rgb.max(axis=2) >= 30
+            planes = tuple(np.where(valid, np.clip(p.astype(np.float32)*255/
+                           np.maximum(total, 1), 0, 255), 0).astype(np.uint8) for p in planes)
         for group, plane in enumerate(planes):
             regions, _ = cv2.MSER_create(5, 6, 25000).detectRegions(plane)
             for points in regions:
@@ -154,7 +161,7 @@ def run(manifest, archive):
         if row["split"] == "train" and row["label"] != "background":
             images[row["source_image"]][row["annotation_id"]] = row
     variants = {v: dict(rows=[], timing_ms=[]) for v in
-                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components")}
+                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_chromatic")}
     with zipfile.ZipFile(archive) as zipped:
         for source, targets in sorted(images.items()):
             with Image.open(io.BytesIO(zipped.read(source))) as opened:
