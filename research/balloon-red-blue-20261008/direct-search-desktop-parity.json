@@ -1,0 +1,43 @@
+{
+  "bundle_sha256": "9918b190f481e5682cbaf34986840f7e27fcad181ba0ac2c9820ae2952875ace",
+  "native_receipt": {
+    "contract": "dtr-balloon-regions-v1",
+    "sha256": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c",
+    "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "command": [
+      "cc",
+      "-O3",
+      "-std=c99",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fPIC",
+      "-shared",
+      "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/src/dtr/native_balloon_regions.c",
+      "-o",
+      "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/artifacts/balloon-regions-mac-20261008/regions.so"
+    ],
+    "machine": "arm64",
+    "deployment_approved": false
+  },
+  "script_sha256": "1a17143593bb95a0039a8f1f5c203ca78190962be50919997a1a69b77db48a05",
+  "results": {
+    "new-views-42": {
+      "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+      "max_golden_score_delta": 0.0,
+      "frames": 16
+    },
+    "new-views-43": {
+      "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+      "max_golden_score_delta": 0.0,
+      "frames": 16
+    }
+  },
+  "exact_proposals": true,
+  "exact_full_detections": true,
+  "scope": "Host parity only; no hardware speed or flight qualification",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_timing_measured": false
+}

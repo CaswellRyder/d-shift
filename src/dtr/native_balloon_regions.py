@@ -9,7 +9,10 @@ from .data import read_json, sha256
 
 
 class NativeBalloonRegions:
-    def __init__(self, path):
+    def __init__(self, path, direct=False):
+        if type(direct) is not bool:
+            raise ValueError("Direct-pointer mode must be explicit boolean")
+        self.direct = direct
         path = Path(path).resolve()
         receipt = read_json(path.with_suffix(".json"))
         if receipt.get("contract") != "dtr-balloon-regions-v1" or receipt.get("sha256") != sha256(
@@ -29,6 +32,15 @@ class NativeBalloonRegions:
             ct.POINTER(ct.c_int32),
         ]
         self.lib.dtr_balloon_region.restype = ct.c_int32
+        if direct:
+            # Buffers remain owned by the local arrays until this synchronous
+            # call returns. Avoid three NumPy/ctypes cast wrappers per region.
+            self.lib.dtr_balloon_region.argtypes = [
+                ct.c_void_p,
+                ct.c_void_p,
+                ct.c_size_t,
+                ct.c_void_p,
+            ]
 
     def reduce(self, plane, points):
         if plane.dtype != np.uint8 or plane.shape != (240, 320) or not plane.flags.c_contiguous:
@@ -42,12 +54,20 @@ class NativeBalloonRegions:
         ):
             raise ValueError("Expected contiguous nonempty Nx2 int32 points")
         out = np.empty((480, 2), dtype=np.int32)
-        n = self.lib.dtr_balloon_region(
-            plane.ctypes.data_as(ct.POINTER(ct.c_uint8)),
-            points.ctypes.data_as(ct.POINTER(ct.c_int32)),
-            len(points),
-            out.ctypes.data_as(ct.POINTER(ct.c_int32)),
-        )
+        if self.direct:
+            n = self.lib.dtr_balloon_region(
+                plane.ctypes.data,
+                points.ctypes.data,
+                len(points),
+                out.ctypes.data,
+            )
+        else:
+            n = self.lib.dtr_balloon_region(
+                plane.ctypes.data_as(ct.POINTER(ct.c_uint8)),
+                points.ctypes.data_as(ct.POINTER(ct.c_int32)),
+                len(points),
+                out.ctypes.data_as(ct.POINTER(ct.c_int32)),
+            )
         if not 0 <= n <= 480:
             raise ValueError("Invalid region coordinates or native result")
         return out[:n]

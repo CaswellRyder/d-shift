@@ -6,9 +6,9 @@ import pytest
 from scripts.compare_exact_balloon_search import compare
 
 
-def fixture(tmp_path):
+def fixture(tmp_path, methods=("mser", "mser_fast")):
     summary = dict(pooled={}, runs={})
-    for method, fps in (("mser", 2.0), ("mser_fast", 3.0)):
+    for method, fps in zip(methods, (2.0, 3.0), strict=True):
         names = [method + suffix for suffix in ("a", "b")]
         summary["pooled"]["new-views-42:" + method] = dict(
             trials=names,
@@ -27,6 +27,7 @@ def fixture(tmp_path):
                     "script_sha256",
                     "opencv",
                     "unique_frames",
+                    "region_library_sha256",
                 )
             }
             summary["runs"][name] = dict(report=report)
@@ -67,3 +68,19 @@ def test_rejects_mismatched_identity_and_missing_repeat(tmp_path):
     summary["pooled"]["new-views-42:mser_fast"]["trials"].pop()
     with pytest.raises(ValueError, match="two trials"):
         compare(summary, tmp_path)
+
+
+def test_direct_comparison_requires_identical_native_library(tmp_path):
+    methods = ("mser_fast", "mser_direct")
+    summary = fixture(tmp_path, methods)
+    result = compare(summary, tmp_path, methods=methods)
+    assert result["methods"] == list(methods)
+    assert result["exact_full_detection_parity"]
+    summary["runs"]["mser_directa"]["report"]["region_library_sha256"] = "changed"
+    with pytest.raises(ValueError, match="identities"):
+        compare(summary, tmp_path, methods=methods)
+    summary["runs"]["mser_directa"]["report"]["region_library_sha256"] = None
+    with pytest.raises(ValueError, match="bound native"):
+        compare(summary, tmp_path, methods=methods)
+    with pytest.raises(ValueError, match="Unsupported"):
+        compare(summary, tmp_path, methods=("mser_fast", "mser_fast"))

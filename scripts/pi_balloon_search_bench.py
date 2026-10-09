@@ -25,9 +25,9 @@ except ModuleNotFoundError:
 
 
 def process_frame(rgb, predictor, search, native=None):
-    if search not in ("baseline", "mser", "mser_fast"):
+    if search not in ("baseline", "mser", "mser_fast", "mser_direct"):
         raise ValueError("Unsupported search")
-    if search == "mser_fast":
+    if search in ("mser_fast", "mser_direct"):
         if native is None:
             raise ValueError("Fast search requires an explicit native reducer")
         try:
@@ -35,7 +35,11 @@ def process_frame(rgb, predictor, search, native=None):
         except ModuleNotFoundError:
             from scripts.research_balloon_search_fast import search_fast
     start = time.perf_counter()
-    proposals = search_fast(rgb, native) if search == "mser_fast" else experimental(rgb, search)
+    proposals = (
+        search_fast(rgb, native)
+        if search in ("mser_fast", "mser_direct")
+        else experimental(rgb, search)
+    )
     searched = time.perf_counter()
     found = []
     for proposal in proposals:
@@ -86,7 +90,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
     parser.add_argument("--model", required=True)
-    parser.add_argument("--search", choices=("baseline", "mser", "mser_fast"), required=True)
+    parser.add_argument(
+        "--search", choices=("baseline", "mser", "mser_fast", "mser_direct"), required=True
+    )
     parser.add_argument("--region-library")
     parser.add_argument("--rounds", type=int, default=2)
     parser.add_argument("--output", required=True)
@@ -99,12 +105,12 @@ def main():
         raise FileExistsError(out)
     verify_bundle(root)
     native = None
-    if args.search == "mser_fast":
+    if args.search in ("mser_fast", "mser_direct"):
         if not args.region_library:
             parser.error("Fast search requires --region-library")
         from dtr.native_balloon_regions import NativeBalloonRegions
 
-        native = NativeBalloonRegions(args.region_library)
+        native = NativeBalloonRegions(args.region_library, direct=args.search == "mser_direct")
         receipt = read_json(native.path.with_suffix(".json"))
         if receipt["source_sha256"] != sha256(root / "dtr/native_balloon_regions.c"):
             raise ValueError("Native region source receipt mismatch")
@@ -115,7 +121,7 @@ def main():
     cv2.setNumThreads(1)
     inputs = read_json(root / "inputs.json")
     # Optimized search must match the OLD search golden, not new self-reference.
-    golden_search = "mser" if args.search == "mser_fast" else args.search
+    golden_search = "mser" if args.search in ("mser_fast", "mser_direct") else args.search
     golden = read_json(root / "search-golden.json")[args.model][golden_search]
     records = inputs["frames"]
     if not records or len(golden) != len(records):

@@ -16,6 +16,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--search", choices=("mser", "mser_fast", "mser_direct"), default="mser")
+    parser.add_argument("--region-library")
     args = parser.parse_args()
     root, out = Path(args.base).resolve(), Path(args.output)
     if out.exists():
@@ -26,12 +28,28 @@ def main():
     from research_balloon_search import experimental
 
     verify_bundle(root)
+    native = None
+    if args.search in ("mser_fast", "mser_direct"):
+        if not args.region_library:
+            parser.error("Fast search requires --region-library")
+        from dtr.native_balloon_regions import NativeBalloonRegions
+        from research_balloon_search_fast import search_fast
+
+        native = NativeBalloonRegions(args.region_library, direct=args.search == "mser_direct")
+        if read_json(native.path.with_suffix(".json"))["source_sha256"] != sha256(
+            root / "dtr/native_balloon_regions.c"
+        ):
+            raise ValueError("Native region source receipt mismatch")
+    elif args.region_library:
+        parser.error("Region library requires fast search")
     inputs = read_json(root / "inputs.json")
     images = [np.asarray(Image.open(root / r["path"]).convert("RGB")) for r in inputs["frames"]]
     cv2.setNumThreads(1)
     profile = cProfile.Profile()
     profile.enable()
-    counts = [len(experimental(rgb, "mser")) for rgb in images]
+    counts = [
+        len(search_fast(rgb, native) if native else experimental(rgb, "mser")) for rgb in images
+    ]
     profile.disable()
     stats = pstats.Stats(profile)
     entries = []
@@ -50,6 +68,8 @@ def main():
     report = dict(
         machine=platform.machine(),
         opencv=cv2.__version__,
+        search=args.search,
+        region_library_sha256=sha256(native.path) if native else None,
         frames=len(images),
         proposals=counts,
         profile_total_seconds=stats.total_tt,

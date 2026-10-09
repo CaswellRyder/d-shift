@@ -9,11 +9,11 @@ from scripts.research_balloon_search import candidate, experimental
 from scripts.research_balloon_search_fast import search_fast
 
 
-@pytest.fixture(scope="module")
-def native(tmp_path_factory):
+@pytest.fixture(scope="module", params=[False, True], ids=["cast", "direct"])
+def native(tmp_path_factory, request):
     path = tmp_path_factory.mktemp("region-library") / "regions.so"
     build("src/dtr/native_balloon_regions.c", path)
-    return NativeBalloonRegions(path)
+    return NativeBalloonRegions(path, direct=request.param)
 
 
 def reference(plane, points):
@@ -81,6 +81,12 @@ def test_receipt_hash_mismatch_fails(native, tmp_path):
     write_json(path.with_suffix(".json"), receipt)
     with pytest.raises(ValueError, match="contract/hash"):
         NativeBalloonRegions(path)
+
+
+@pytest.mark.parametrize("mode", [None, 1, "true", np.bool_(True)])
+def test_pointer_mode_requires_explicit_boolean(native, mode):
+    with pytest.raises(ValueError, match="explicit boolean"):
+        NativeBalloonRegions(native.path, direct=mode)
 
 
 def test_full_search_parity_on_generated_scenes(native):
