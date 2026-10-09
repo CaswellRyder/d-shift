@@ -24,11 +24,18 @@ except ModuleNotFoundError:
     from scripts.pi_red_blue_bench import health, statistics, verify_bundle
 
 
-def process_frame(rgb, predictor, search):
-    if search not in ("baseline", "mser"):
+def process_frame(rgb, predictor, search, native=None):
+    if search not in ("baseline", "mser", "mser_fast"):
         raise ValueError("Unsupported search")
+    if search == "mser_fast":
+        if native is None:
+            raise ValueError("Fast search requires an explicit native reducer")
+        try:
+            from research_balloon_search_fast import search_fast
+        except ModuleNotFoundError:
+            from scripts.research_balloon_search_fast import search_fast
     start = time.perf_counter()
-    proposals = experimental(rgb, search)
+    proposals = search_fast(rgb, native) if search == "mser_fast" else experimental(rgb, search)
     searched = time.perf_counter()
     found = []
     for proposal in proposals:
@@ -79,7 +86,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
     parser.add_argument("--model", required=True)
-    parser.add_argument("--search", choices=("baseline", "mser"), required=True)
+    parser.add_argument("--search", choices=("baseline", "mser", "mser_fast"), required=True)
+    parser.add_argument("--region-library")
     parser.add_argument("--rounds", type=int, default=2)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
@@ -90,11 +98,25 @@ def main():
     if out.exists() or log.exists():
         raise FileExistsError(out)
     verify_bundle(root)
+    native = None
+    if args.search == "mser_fast":
+        if not args.region_library:
+            parser.error("Fast search requires --region-library")
+        from dtr.native_balloon_regions import NativeBalloonRegions
+
+        native = NativeBalloonRegions(args.region_library)
+        receipt = read_json(native.path.with_suffix(".json"))
+        if receipt["source_sha256"] != sha256(root / "dtr/native_balloon_regions.c"):
+            raise ValueError("Native region source receipt mismatch")
+    elif args.region_library:
+        parser.error("Region library is only used by mser_fast")
     for key in ("DTR_RED_BLUE_COLOR_LOOKUP", "DTR_RED_BLUE_LOOKUP_LIBRARY"):
         os.environ.pop(key, None)
     cv2.setNumThreads(1)
     inputs = read_json(root / "inputs.json")
-    golden = read_json(root / "search-golden.json")[args.model][args.search]
+    # Optimized search must match the OLD search golden, not new self-reference.
+    golden_search = "mser" if args.search == "mser_fast" else args.search
+    golden = read_json(root / "search-golden.json")[args.model][golden_search]
     records = inputs["frames"]
     if not records or len(golden) != len(records):
         raise ValueError("Golden frame coverage mismatch")
@@ -104,7 +126,7 @@ def main():
     max_delta = 0.0
     before = health()
     for rgb, expected in zip(images, golden):
-        observed = process_frame(rgb, predictor, args.search)
+        observed = process_frame(rgb, predictor, args.search, native)
         max_delta = max(
             max_delta, check_predictions(observed["detections"], expected["detections"])
         )
@@ -114,7 +136,7 @@ def main():
     started = time.perf_counter()
     for repeat in range(args.rounds):
         for index, (rgb, frame) in enumerate(zip(images, records)):
-            observed = process_frame(rgb, predictor, args.search)
+            observed = process_frame(rgb, predictor, args.search, native)
             max_delta = max(
                 max_delta, check_predictions(observed["detections"], golden[index]["detections"])
             )
@@ -144,6 +166,9 @@ def main():
         inputs_sha256=sha256(root / "inputs.json"),
         golden_sha256=sha256(root / "search-golden.json"),
         script_sha256=sha256(__file__),
+        region_library_sha256=sha256(native.path) if native else None,
+        region_build_receipt=read_json(native.path.with_suffix(".json")) if native else None,
+        golden_search=golden_search,
         frames=len(rows),
         unique_frames=len(records),
         rounds=args.rounds,

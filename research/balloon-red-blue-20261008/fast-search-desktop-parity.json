@@ -1,0 +1,33 @@
+{
+  "scope": "Desktop exact proposal parity plus full-scene old-golden comparison",
+  "frames": 16,
+  "exact_proposals": true,
+  "max_model_score_deltas": {
+    "new-views-42": 0.0,
+    "new-views-43": 0.0
+  },
+  "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+  "native_receipt": {
+    "contract": "dtr-balloon-regions-v1",
+    "sha256": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c",
+    "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "command": [
+      "cc",
+      "-O3",
+      "-std=c99",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fPIC",
+      "-shared",
+      "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/src/dtr/native_balloon_regions.c",
+      "-o",
+      "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/artifacts/balloon-regions-mac-20261008/regions.so"
+    ],
+    "machine": "arm64",
+    "deployment_approved": false
+  },
+  "test_evaluated": false,
+  "deployment_approved": false
+}
