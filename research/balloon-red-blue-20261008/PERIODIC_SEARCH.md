@@ -164,3 +164,12 @@ exercise proposals, so the comparison was stopped rather than completed. That
 trial is excluded from any future pooled result; rerun all four in a lit scene
 with new output names. Raw output stays ignored under
 `artifacts/balloon-live-scheduled-results-20261009`.
+
+## Offline synthetic-pan check (2026-10-09)
+
+Without live targets, `TEMPORAL_PAN.md` replays both policies over synthetic
+pans across twelve development photos, using the Pi-derived cost/latency model.
+Bright-only and full search found identical true-positive sets on all 1440
+views. Periodic therefore gained only from about 17% more frames: it detected
+more target episodes and had lower first-detection latency for both seeds.
+This is not real motion or occlusion evidence.
