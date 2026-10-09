@@ -1,0 +1,145 @@
+{
+  "report": {
+    "scope": "Unlabeled live stateless timing; no comparative accuracy or flight qualification",
+    "machine": "armv6l",
+    "opencv": "4.10.0",
+    "model": "new-views-42",
+    "search": "mser_fast",
+    "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+    "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+    "script_sha256": "dd178ce55e064a05aa0cbde46ea38591bd504190fa604d40a634488419878f1a",
+    "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+    "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+    "camera_rotation_degrees": 180,
+    "configured_transform": "<libcamera.Transform 'hvflip'>",
+    "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': False, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (2592, 1944), 'stride': 3264, 'framesize': 6345216}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10.0}, 'sensor': {'bit_depth': 10, 'output_size': (2592, 1944)}, 'display': 'main', 'encode': 'main'}",
+    "requested_camera_fps": 10.0,
+    "requested_sensor_size": [
+      2592,
+      1944
+    ],
+    "processing_size": [
+      320,
+      240
+    ],
+    "queue": false,
+    "max_pre_camera_golden_score_delta": 6.854534149169922e-07,
+    "requested_frames": 60,
+    "saved_sample_indices": [
+      0,
+      59
+    ],
+    "sample_policy": "First/last plus first eight accepted-detection frames; saved after timing",
+    "frames": 60,
+    "elapsed_s": 24.69963812800006,
+    "observed_live_fps": 2.42918538680867,
+    "stopped_at_time_limit": false,
+    "timing": {
+      "processing_ms": {
+        "mean_ms": 338.121555516697,
+        "p50_ms": 403.34801550011434,
+        "p95_ms": 455.61900130010144,
+        "max_ms": 573.741057999996
+      },
+      "search_ms": {
+        "mean_ms": 337.41791163331527,
+        "p50_ms": 403.02301850010736,
+        "p95_ms": 454.95935704987005,
+        "max_ms": 573.4040610000193
+      },
+      "inference_ms": {
+        "mean_ms": 0.019883066685603506,
+        "p50_ms": 0.01999950018216623,
+        "p95_ms": 0.021049950282758797,
+        "max_ms": 0.03299999980299617
+      },
+      "selection_ms": {
+        "mean_ms": 0.6837608166961218,
+        "p50_ms": 0.3049980000469077,
+        "p95_ms": 1.0158909499295985,
+        "max_ms": 10.978904999774386
+      },
+      "capture_and_convert_ms": {
+        "mean_ms": 72.24392451666972,
+        "p50_ms": 64.20844649983337,
+        "p95_ms": 152.12323750013184,
+        "max_ms": 184.1144139998505
+      },
+      "frame_wall_ms": {
+        "mean_ms": 410.73331013329454,
+        "p50_ms": 477.4543809999159,
+        "p95_ms": 590.0170585999603,
+        "max_ms": 758.0214710001201
+      }
+    },
+    "sensor_to_result": {
+      "mean_ms": 484.6179756833333,
+      "p50_ms": 565.81187,
+      "p95_ms": 631.7356554999999,
+      "max_ms": 756.829499
+    },
+    "invalid_timestamp_frames": 0,
+    "increasing_sensor_timestamps": true,
+    "sensor_clock": "CLOCK_BOOTTIME",
+    "mean_neural_calls": 0.0,
+    "accepted_counts": {
+      "red_balloon": 0,
+      "blue_balloon": 0
+    },
+    "health_before": {
+      "temperature_millicelsius": "42236",
+      "load_average": "0.54 0.27 0.30 3/245 1972",
+      "throttled": "throttled=0x0"
+    },
+    "health_after": {
+      "temperature_millicelsius": "46540",
+      "load_average": "1.30 0.48 0.37 2/241 1975",
+      "throttled": "throttled=0x0"
+    },
+    "max_rss_kib": 123704,
+    "files": {
+      "0000-raw.png": "ef2ebf70cf4e8854a9558277d1fe35009ebceb38f6ae766d514bae573e51c53d",
+      "0059-annotated.png": "871f229b1737fc6f6ad56b73e0bc7bb141c99ff30571295e7f04ad7c7e2b88fb",
+      "frames.jsonl": "eb243234514e8bf995ace28be81b80205879e17a0c22ba6bb857e10e67a5e762",
+      "0059-raw.png": "871f229b1737fc6f6ad56b73e0bc7bb141c99ff30571295e7f04ad7c7e2b88fb",
+      "0000-annotated.png": "ef2ebf70cf4e8854a9558277d1fe35009ebceb38f6ae766d514bae573e51c53d"
+    },
+    "camera_used": true,
+    "accuracy_measured": false,
+    "test_evaluated": false,
+    "deployment_approved": false,
+    "flight_commands": null
+  },
+  "report_sha256": "cc57ccb2c272ab5de9927b8594a934e83e21fd660b6080555e63ccd89853e0ff",
+  "review_script_sha256": "38c3a4e3f8e79f620f25570631797c85adc492099ada883af7a4f09635d7d65b",
+  "timing_validation": {
+    "valid_timestamp_frames": 60,
+    "strictly_increasing": true,
+    "temporal_observation_valid": true
+  },
+  "samples": {
+    "0000-raw.png": {
+      "mean_rgb": 28.243294270833335,
+      "max_channel": 129,
+      "peak_p95": 97.0,
+      "dark_pixel_fraction": 0.2675911458333333,
+      "nearly_black": false,
+      "scope": "Brightness diagnostic only; not lens obstruction diagnosis or target labels"
+    },
+    "0059-raw.png": {
+      "mean_rgb": 28.928680555555555,
+      "max_channel": 134,
+      "peak_p95": 100.0,
+      "dark_pixel_fraction": 0.24567708333333332,
+      "nearly_black": false,
+      "scope": "Brightness diagnostic only; not lens obstruction diagnosis or target labels"
+    }
+  },
+  "nearly_black_samples": 0,
+  "content_scope": "Only listed samples retained; not labels for unsaved frames",
+  "visual_orientation_confirmed": false,
+  "accuracy_measured": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "flight_qualified": false
+}

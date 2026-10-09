@@ -93,6 +93,30 @@ context experiment opt-in until better evidence exists.
 
 ## Current error direction
 
+### Subsequent lit-room recheck
+
+An additional isolated capture used the unchanged `new-views-42` model and
+event-retaining harness: 60 frames in 24.700 seconds, **2.429 live FPS**. Mean
+processing was 338.122 ms, of which search consumed 337.418 ms. Mean
+sensor-to-result age was 484.618 ms (p95 631.736 ms). All 60 timestamps were
+valid and strictly increasing; throttle flags remained `0x0`. No competing
+Python/camera process was observed immediately before or after the run.
+
+There were zero neural calls and zero accepted detections. Both retained
+first/last samples passed the brightness diagnostic; visual inspection of the
+first confirms a lit but tilted room view. This is not an independent labeled
+negative set or a target-recognition test. The different timing from earlier
+captures is not a measured code regression: scene and capture conditions were
+not held fixed. Search dominates this run and deserves profiling on fixed
+replay inputs before changing its recall-sensitive proposal policy.
+
+Raw artifacts remain ignored under
+`artifacts/balloon-live-lit-recheck-20261008`; the hash-verified review is
+`fast-search-live-lit-recheck.json`. Camera-loop and artifact-review tests:
+23 passed. No weights, deployment settings, training admissions, or actuator
+interfaces changed. Password-based SSH succeeded; key-only authentication did
+not. No SSH configuration was modified.
+
 Reinspection of the existing seed42 error report confirms that its three indoor
 blue misses split into two with no localized proposal and one with a localized
 proposal classified incorrectly. Its four blue false positives remain. A global
