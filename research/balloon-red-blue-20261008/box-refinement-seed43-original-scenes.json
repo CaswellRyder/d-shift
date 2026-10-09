@@ -1,0 +1,2396 @@
+{
+  "results": {
+    "parent": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        }
+      },
+      "frames": [
+        {
+          "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                196.25,
+                83.90625,
+                280.0,
+                148.359375
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "crop_box": [
+                78,
+                159,
+                175,
+                229
+              ],
+              "area": 3246.5,
+              "color_group": 0,
+              "proposal_score": 35.58587493997738,
+              "label": "background",
+              "score": 0.9981073141098022,
+              "scores": [
+                0.9981073141098022,
+                0.0018428718904033303,
+                4.986299609299749e-05
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                197,
+                84,
+                279,
+                145
+              ],
+              "crop_box": [
+                188,
+                75,
+                288,
+                154
+              ],
+              "area": 3621.5,
+              "color_group": 1,
+              "proposal_score": 31.54524095395016,
+              "label": "blue_balloon",
+              "score": 0.9999969005584717,
+              "scores": [
+                3.120107521681348e-06,
+                2.764123374632277e-09,
+                0.9999969005584717
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                49.375,
+                106.4714494875549,
+                180.625,
+                238.24304538799416
+              ]
+            },
+            {
+              "label": "blue_balloon",
+              "box": [
+                145.625,
+                4.919472913616398,
+                304.6875,
+                183.07467057101024
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                49,
+                106,
+                198,
+                239
+              ],
+              "crop_box": [
+                32,
+                89,
+                215,
+                240
+              ],
+              "area": 14658.0,
+              "color_group": 0,
+              "proposal_score": 66.23857405382297,
+              "label": "red_balloon",
+              "score": 0.9995976090431213,
+              "scores": [
+                8.264130156021565e-05,
+                0.9995976090431213,
+                0.0003197342448402196
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                146,
+                5,
+                304,
+                181
+              ],
+              "crop_box": [
+                125,
+                0,
+                320,
+                202
+              ],
+              "area": 21724.5,
+              "color_group": 1,
+              "proposal_score": 89.95700024846099,
+              "label": "blue_balloon",
+              "score": 0.9999909400939941,
+              "scores": [
+                9.028181921166833e-06,
+                1.8701109993912723e-08,
+                0.9999909400939941
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                100,
+                203,
+                133,
+                224
+              ],
+              "crop_box": [
+                97,
+                200,
+                136,
+                227
+              ],
+              "area": 423.5,
+              "color_group": 0,
+              "proposal_score": 7.685410465734748,
+              "label": "red_balloon",
+              "score": 0.8869582414627075,
+              "scores": [
+                0.1123473271727562,
+                0.8869582414627075,
+                0.0006944563938304782
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                107,
+                210,
+                130,
+                222
+              ],
+              "crop_box": [
+                105,
+                208,
+                132,
+                224
+              ],
+              "area": 196.5,
+              "color_group": 0,
+              "proposal_score": 7.105394944461374,
+              "label": "red_balloon",
+              "score": 0.8178044557571411,
+              "scores": [
+                0.18164551258087158,
+                0.8178044557571411,
+                0.0005500334082171321
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate"
+            },
+            {
+              "box": [
+                101,
+                204,
+                125,
+                222
+              ],
+              "crop_box": [
+                99,
+                202,
+                127,
+                224
+              ],
+              "area": 218.0,
+              "color_group": 0,
+              "proposal_score": 3.759877888773856,
+              "label": "red_balloon",
+              "score": 0.8823993802070618,
+              "scores": [
+                0.11693800240755081,
+                0.8823993802070618,
+                0.0006626388058066368
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate"
+            },
+            {
+              "box": [
+                141,
+                190,
+                151,
+                197
+              ],
+              "crop_box": [
+                140,
+                189,
+                152,
+                198
+              ],
+              "area": 45.5,
+              "color_group": 0,
+              "proposal_score": 2.849918310232769,
+              "label": "red_balloon",
+              "score": 0.8098996877670288,
+              "scores": [
+                0.18886698782444,
+                0.8098996877670288,
+                0.0012333269696682692
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "crop_box": [
+                150,
+                191,
+                159,
+                202
+              ],
+              "area": 35.5,
+              "color_group": 0,
+              "proposal_score": 1.8918634361887519,
+              "label": "red_balloon",
+              "score": 0.6963818073272705,
+              "scores": [
+                0.30175521969795227,
+                0.6963818073272705,
+                0.0018630330450832844
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                127,
+                200,
+                150,
+                219
+              ],
+              "crop_box": [
+                125,
+                198,
+                152,
+                221
+              ],
+              "area": 154.0,
+              "color_group": 0,
+              "proposal_score": 1.541128770577,
+              "label": "red_balloon",
+              "score": 0.8651291728019714,
+              "scores": [
+                0.13414955139160156,
+                0.8651291728019714,
+                0.0007213518256321549
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "crop_box": [
+                98,
+                211,
+                113,
+                229
+              ],
+              "area": 80.5,
+              "color_group": 0,
+              "proposal_score": 1.34388786072409,
+              "label": "background",
+              "score": 0.6924414038658142,
+              "scores": [
+                0.6924414038658142,
+                0.305578351020813,
+                0.0019802467431873083
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "crop_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "area": 19.5,
+              "color_group": 0,
+              "proposal_score": 1.0494615841941137,
+              "label": "red_balloon",
+              "score": 0.8511078357696533,
+              "scores": [
+                0.1475890874862671,
+                0.8511078357696533,
+                0.0013030407717451453
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "crop_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "area": 12.0,
+              "color_group": 0,
+              "proposal_score": 0.5542562584220408,
+              "label": "red_balloon",
+              "score": 0.9103845953941345,
+              "scores": [
+                0.08933088928461075,
+                0.9103845953941345,
+                0.00028443941846489906
+              ],
+              "accepted": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "crop_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "area": 6.5,
+              "color_group": 0,
+              "proposal_score": 0.4207687000962796,
+              "label": "background",
+              "score": 0.6376286149024963,
+              "scores": [
+                0.6376286149024963,
+                0.3619686961174011,
+                0.00040272626210935414
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                163.5370611183355,
+                148.828125,
+                231.36540962288686,
+                189.140625
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                164,
+                150,
+                230,
+                188
+              ],
+              "crop_box": [
+                157,
+                143,
+                237,
+                195
+              ],
+              "area": 1880.5,
+              "color_group": 0,
+              "proposal_score": 24.37969567165549,
+              "label": "red_balloon",
+              "score": 0.999993085861206,
+              "scores": [
+                6.637801561737433e-06,
+                0.999993085861206,
+                1.8952466973587434e-07
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "crop_box": [
+                107,
+                162,
+                195,
+                221
+              ],
+              "area": 2352.5,
+              "color_group": 1,
+              "proposal_score": 28.004135878948308,
+              "label": "background",
+              "score": 0.9992214441299438,
+              "scores": [
+                0.9992214441299438,
+                3.514984925345743e-08,
+                0.0007785878260619938
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "crop_box": [
+                130,
+                107,
+                194,
+                150
+              ],
+              "area": 1236.0,
+              "color_group": 0,
+              "proposal_score": 20.668839933295445,
+              "label": "background",
+              "score": 0.9999562501907349,
+              "scores": [
+                0.9999562501907349,
+                1.2782140402123332e-05,
+                3.103390918113291e-05
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "crop_box": [
+                147,
+                188,
+                158,
+                200
+              ],
+              "area": 59.0,
+              "color_group": 1,
+              "proposal_score": 3.3009960923864967,
+              "label": "background",
+              "score": 1.0,
+              "scores": [
+                1.0,
+                6.152010012527853e-10,
+                4.2734559002610695e-08
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "crop_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "area": 15.0,
+              "color_group": 0,
+              "proposal_score": 0.9682458365518543,
+              "label": "background",
+              "score": 0.9999974966049194,
+              "scores": [
+                0.9999974966049194,
+                8.855569433308119e-08,
+                2.4005325940379407e-06
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                172.8125,
+                5.046728971962616,
+                201.25,
+                36.44859813084112
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                38,
+                160,
+                63,
+                215
+              ],
+              "crop_box": [
+                32,
+                154,
+                69,
+                221
+              ],
+              "area": 824.5,
+              "color_group": 0,
+              "proposal_score": 10.324552895371708,
+              "label": "red_balloon",
+              "score": 0.9995655417442322,
+              "scores": [
+                0.0004328097857069224,
+                0.9995655417442322,
+                1.6421292912127683e-06
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "crop_box": [
+                0,
+                0,
+                320,
+                140
+              ],
+              "area": 25974.5,
+              "color_group": 1,
+              "proposal_score": 113.8809370174351,
+              "label": "background",
+              "score": 0.9999874830245972,
+              "scores": [
+                0.9999874830245972,
+                3.5046742397071284e-08,
+                1.2523999430413824e-05
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "crop_box": [
+                87,
+                144,
+                101,
+                168
+              ],
+              "area": 129.5,
+              "color_group": 0,
+              "proposal_score": 4.771055073015411,
+              "label": "background",
+              "score": 0.9999594688415527,
+              "scores": [
+                0.9999594688415527,
+                2.4018554540816694e-05,
+                1.6621816030237824e-05
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "crop_box": [
+                234,
+                158,
+                320,
+                223
+              ],
+              "area": 2130.0,
+              "color_group": 1,
+              "proposal_score": 16.822551080336726,
+              "label": "background",
+              "score": 0.9971529245376587,
+              "scores": [
+                0.9971529245376587,
+                5.7339238992426544e-06,
+                0.0028413082472980022
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "crop_box": [
+                256,
+                48,
+                277,
+                60
+              ],
+              "area": 94.0,
+              "color_group": 0,
+              "proposal_score": 4.631714881069494,
+              "label": "background",
+              "score": 0.9999619722366333,
+              "scores": [
+                0.9999619722366333,
+                3.1803083402337506e-05,
+                6.194080015120562e-06
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                174,
+                5,
+                200,
+                36
+              ],
+              "crop_box": [
+                171,
+                2,
+                203,
+                39
+              ],
+              "area": 572.0,
+              "color_group": 1,
+              "proposal_score": 12.045365660064679,
+              "label": "blue_balloon",
+              "score": 0.9999986886978149,
+              "scores": [
+                1.2896564385300735e-06,
+                1.115064129919574e-08,
+                0.9999986886978149
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                240,
+                96,
+                252,
+                104
+              ],
+              "crop_box": [
+                239,
+                95,
+                253,
+                105
+              ],
+              "area": 69.5,
+              "color_group": 0,
+              "proposal_score": 4.3693772729804055,
+              "label": "red_balloon",
+              "score": 0.9999383687973022,
+              "scores": [
+                6.096583092585206e-05,
+                0.9999383687973022,
+                6.754315791113186e-07
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "crop_box": [
+                296,
+                222,
+                320,
+                240
+              ],
+              "area": 238.0,
+              "color_group": 1,
+              "proposal_score": 8.80686390387456,
+              "label": "background",
+              "score": 0.9717537760734558,
+              "scores": [
+                0.9717537760734558,
+                1.16386172521743e-05,
+                0.028234636411070824
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "crop_box": [
+                259,
+                101,
+                280,
+                119
+              ],
+              "area": 143.0,
+              "color_group": 0,
+              "proposal_score": 4.3170410623487125,
+              "label": "background",
+              "score": 0.9986489415168762,
+              "scores": [
+                0.9986489415168762,
+                0.001316875801421702,
+                3.418591586523689e-05
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "crop_box": [
+                216,
+                46,
+                263,
+                72
+              ],
+              "area": 441.0,
+              "color_group": 1,
+              "proposal_score": 8.287475345167653,
+              "label": "background",
+              "score": 0.9991955161094666,
+              "scores": [
+                0.9991955161094666,
+                1.0387336857320406e-07,
+                0.0008044257992878556
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "crop_box": [
+                22,
+                86,
+                33,
+                103
+              ],
+              "area": 87.0,
+              "color_group": 0,
+              "proposal_score": 3.8737411277272567,
+              "label": "background",
+              "score": 0.9890931844711304,
+              "scores": [
+                0.9890931844711304,
+                0.010773140005767345,
+                0.00013365643098950386
+              ],
+              "accepted": false,
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                245,
+                217,
+                264,
+                234
+              ],
+              "crop_box": [
+                243,
+                215,
+                266,
+                236
+              ],
+              "area": 230.5,
+              "color_group": 1,
+              "proposal_score": 7.731651668104918,
+              "label": "blue_balloon",
+              "score": 0.934104323387146,
+              "scores": [
+                0.06589088588953018,
+                4.7481307774432935e-06,
+                0.934104323387146
+              ],
+              "accepted": true,
+              "raw_accepted": true,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          }
+        }
+      ]
+    },
+    "refined": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.3333333333333333,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        }
+      },
+      "frames": [
+        {
+          "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                196.25,
+                83.90625,
+                280.0,
+                148.359375
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "crop_box": [
+                78,
+                159,
+                175,
+                229
+              ],
+              "area": 3246.5,
+              "color_group": 0,
+              "proposal_score": 35.58587493997738,
+              "label": "background",
+              "score": 0.9981073141098022,
+              "scores": [
+                0.9981073141098022,
+                0.0018428718904033303,
+                4.986299609299749e-05
+              ],
+              "accepted": false,
+              "proposal_box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.19609278440475464,
+                0.18573199212551117,
+                0.8161592483520508,
+                0.7848533987998962
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                193.128276348114,
+                89.05804252624512,
+                273.0897014141083,
+                146.39834088087082
+              ],
+              "crop_box": [
+                188,
+                75,
+                288,
+                154
+              ],
+              "area": 3621.5,
+              "color_group": 1,
+              "proposal_score": 31.54524095395016,
+              "label": "blue_balloon",
+              "score": 0.9999969005584717,
+              "scores": [
+                3.120107521681348e-06,
+                2.764123374632277e-09,
+                0.9999969005584717
+              ],
+              "accepted": true,
+              "proposal_box": [
+                197,
+                84,
+                279,
+                145
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.05128276348114014,
+                0.1779499053955078,
+                0.8508970141410828,
+                0.9037764668464661
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                49.375,
+                106.4714494875549,
+                180.625,
+                238.24304538799416
+              ]
+            },
+            {
+              "label": "blue_balloon",
+              "box": [
+                145.625,
+                4.919472913616398,
+                304.6875,
+                183.07467057101024
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                44.030508026480675,
+                90.78614580631256,
+                185.85489010810852,
+                217.28244733810425
+              ],
+              "crop_box": [
+                32,
+                89,
+                215,
+                240
+              ],
+              "area": 14658.0,
+              "color_group": 0,
+              "proposal_score": 66.23857405382297,
+              "label": "red_balloon",
+              "score": 0.9995976090431213,
+              "scores": [
+                8.264130156021565e-05,
+                0.9995976090431213,
+                0.0003197342448402196
+              ],
+              "accepted": true,
+              "proposal_box": [
+                49,
+                106,
+                198,
+                239
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.06574048101902008,
+                0.011828780174255371,
+                0.8407371044158936,
+                0.8495526313781738
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                139.42039385437965,
+                26.966014683246613,
+                297.9296478629112,
+                170.03726172447205
+              ],
+              "crop_box": [
+                125,
+                0,
+                320,
+                202
+              ],
+              "area": 21724.5,
+              "color_group": 1,
+              "proposal_score": 89.95700024846099,
+              "label": "blue_balloon",
+              "score": 0.9999909400939941,
+              "scores": [
+                9.028181921166833e-06,
+                1.8701109993912723e-08,
+                0.9999909400939941
+              ],
+              "accepted": true,
+              "proposal_box": [
+                146,
+                5,
+                304,
+                181
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.07395073771476746,
+                0.13349512219429016,
+                0.8868187069892883,
+                0.8417686223983765
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                100.2254870980978,
+                201.92642326653004,
+                133.1703245639801,
+                225.9296247959137
+              ],
+              "crop_box": [
+                97,
+                200,
+                136,
+                227
+              ],
+              "area": 423.5,
+              "color_group": 0,
+              "proposal_score": 7.685410465734748,
+              "label": "red_balloon",
+              "score": 0.8869582414627075,
+              "scores": [
+                0.1123473271727562,
+                0.8869582414627075,
+                0.0006944563938304782
+              ],
+              "accepted": true,
+              "proposal_box": [
+                100,
+                203,
+                133,
+                224
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.08270479738712311,
+                0.07134900987148285,
+                0.9274442195892334,
+                0.9603564739227295
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                106.82761310040951,
+                208.4622664451599,
+                129.01832073926926,
+                222.88320636749268
+              ],
+              "crop_box": [
+                105,
+                208,
+                132,
+                224
+              ],
+              "area": 196.5,
+              "color_group": 0,
+              "proposal_score": 7.105394944461374,
+              "label": "red_balloon",
+              "score": 0.8178044557571411,
+              "scores": [
+                0.18164551258087158,
+                0.8178044557571411,
+                0.0005500334082171321
+              ],
+              "accepted": false,
+              "proposal_box": [
+                107,
+                210,
+                130,
+                222
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.06768937408924103,
+                0.028891652822494507,
+                0.8895674347877502,
+                0.9302003979682922
+              ],
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate"
+            },
+            {
+              "box": [
+                101.47550809383392,
+                203.7416723817587,
+                125.61336779594421,
+                222.92262756824493
+              ],
+              "crop_box": [
+                99,
+                202,
+                127,
+                224
+              ],
+              "area": 218.0,
+              "color_group": 0,
+              "proposal_score": 3.759877888773856,
+              "label": "red_balloon",
+              "score": 0.8823993802070618,
+              "scores": [
+                0.11693800240755081,
+                0.8823993802070618,
+                0.0006626388058066368
+              ],
+              "accepted": false,
+              "proposal_box": [
+                101,
+                204,
+                125,
+                222
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.08841100335121155,
+                0.07916692644357681,
+                0.9504774212837219,
+                0.9510285258293152
+              ],
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate"
+            },
+            {
+              "box": [
+                141.05734717845917,
+                189.41654900461435,
+                150.6590292453766,
+                197.8803005218506
+              ],
+              "crop_box": [
+                140,
+                189,
+                152,
+                198
+              ],
+              "area": 45.5,
+              "color_group": 0,
+              "proposal_score": 2.849918310232769,
+              "label": "red_balloon",
+              "score": 0.8098996877670288,
+              "scores": [
+                0.18886698782444,
+                0.8098996877670288,
+                0.0012333269696682692
+              ],
+              "accepted": false,
+              "proposal_box": [
+                141,
+                190,
+                151,
+                197
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.08811226487159729,
+                0.04628322273492813,
+                0.8882524371147156,
+                0.9867000579833984
+              ],
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "crop_box": [
+                150,
+                191,
+                159,
+                202
+              ],
+              "area": 35.5,
+              "color_group": 0,
+              "proposal_score": 1.8918634361887519,
+              "label": "red_balloon",
+              "score": 0.6963818073272705,
+              "scores": [
+                0.30175521969795227,
+                0.6963818073272705,
+                0.0018630330450832844
+              ],
+              "accepted": false,
+              "proposal_box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.08959352970123291,
+                0.07327362149953842,
+                0.9144306182861328,
+                0.970838189125061
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                126.8248116672039,
+                199.32152727991343,
+                149.45777440071106,
+                220.66027694940567
+              ],
+              "crop_box": [
+                125,
+                198,
+                152,
+                221
+              ],
+              "area": 154.0,
+              "color_group": 0,
+              "proposal_score": 1.541128770577,
+              "label": "red_balloon",
+              "score": 0.8651291728019714,
+              "scores": [
+                0.13414955139160156,
+                0.8651291728019714,
+                0.0007213518256321549
+              ],
+              "accepted": true,
+              "proposal_box": [
+                127,
+                200,
+                150,
+                219
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.06758561730384827,
+                0.057457707822322845,
+                0.9058434963226318,
+                0.9852294325828552
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "crop_box": [
+                98,
+                211,
+                113,
+                229
+              ],
+              "area": 80.5,
+              "color_group": 0,
+              "proposal_score": 1.34388786072409,
+              "label": "background",
+              "score": 0.6924414038658142,
+              "scores": [
+                0.6924414038658142,
+                0.305578351020813,
+                0.0019802467431873083
+              ],
+              "accepted": false,
+              "proposal_box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.11390607059001923,
+                0.06100909411907196,
+                0.9258230328559875,
+                0.9105555415153503
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                156.40230706334114,
+                199.146468937397,
+                160.50008034706116,
+                206.54783010482788
+              ],
+              "crop_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "area": 19.5,
+              "color_group": 0,
+              "proposal_score": 1.0494615841941137,
+              "label": "red_balloon",
+              "score": 0.8511078357696533,
+              "scores": [
+                0.1475890874862671,
+                0.8511078357696533,
+                0.0013030407717451453
+              ],
+              "accepted": false,
+              "proposal_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.08046141266822815,
+                0.018308617174625397,
+                0.9000160694122314,
+                0.9434787631034851
+              ],
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                148.29699251055717,
+                204.0,
+                152.33736562728882,
+                209.99399042129517
+              ],
+              "crop_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "area": 12.0,
+              "color_group": 0,
+              "proposal_score": 0.5542562584220408,
+              "label": "red_balloon",
+              "score": 0.9103845953941345,
+              "scores": [
+                0.08933088928461075,
+                0.9103845953941345,
+                0.00028443941846489906
+              ],
+              "accepted": false,
+              "proposal_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.059398502111434937,
+                -0.01949693262577057,
+                0.8674731254577637,
+                0.9989984035491943
+              ],
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "crop_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "area": 6.5,
+              "color_group": 0,
+              "proposal_score": 0.4207687000962796,
+              "label": "background",
+              "score": 0.6376286149024963,
+              "scores": [
+                0.6376286149024963,
+                0.3619686961174011,
+                0.00040272626210935414
+              ],
+              "accepted": false,
+              "proposal_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.09095761179924011,
+                0.024125605821609497,
+                0.8641114234924316,
+                0.9534250497817993
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                163.5370611183355,
+                148.828125,
+                231.36540962288686,
+                189.140625
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                167.55327653884888,
+                151.72797465324402,
+                226.70064640045166,
+                188.097416639328
+              ],
+              "crop_box": [
+                157,
+                143,
+                237,
+                195
+              ],
+              "area": 1880.5,
+              "color_group": 0,
+              "proposal_score": 24.37969567165549,
+              "label": "red_balloon",
+              "score": 0.999993085861206,
+              "scores": [
+                6.637801561737433e-06,
+                0.999993085861206,
+                1.8952466973587434e-07
+              ],
+              "accepted": true,
+              "proposal_box": [
+                164,
+                150,
+                230,
+                188
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.13191595673561096,
+                0.16784566640853882,
+                0.8712580800056458,
+                0.8672580122947693
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "crop_box": [
+                107,
+                162,
+                195,
+                221
+              ],
+              "area": 2352.5,
+              "color_group": 1,
+              "proposal_score": 28.004135878948308,
+              "label": "background",
+              "score": 0.9992214441299438,
+              "scores": [
+                0.9992214441299438,
+                3.514984925345743e-08,
+                0.0007785878260619938
+              ],
+              "accepted": false,
+              "proposal_box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.2958410382270813,
+                0.2847549021244049,
+                0.8050513863563538,
+                0.8143971562385559
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "crop_box": [
+                130,
+                107,
+                194,
+                150
+              ],
+              "area": 1236.0,
+              "color_group": 0,
+              "proposal_score": 20.668839933295445,
+              "label": "background",
+              "score": 0.9999562501907349,
+              "scores": [
+                0.9999562501907349,
+                1.2782140402123332e-05,
+                3.103390918113291e-05
+              ],
+              "accepted": false,
+              "proposal_box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.29946911334991455,
+                0.18781697750091553,
+                0.7639244198799133,
+                0.7983514666557312
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "crop_box": [
+                147,
+                188,
+                158,
+                200
+              ],
+              "area": 59.0,
+              "color_group": 1,
+              "proposal_score": 3.3009960923864967,
+              "label": "background",
+              "score": 1.0,
+              "scores": [
+                1.0,
+                6.152010012527853e-10,
+                4.2734559002610695e-08
+              ],
+              "accepted": false,
+              "proposal_box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.2714758515357971,
+                0.2059863954782486,
+                0.7031081914901733,
+                0.8424633741378784
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "crop_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "area": 15.0,
+              "color_group": 0,
+              "proposal_score": 0.9682458365518543,
+              "label": "background",
+              "score": 0.9999974966049194,
+              "scores": [
+                0.9999974966049194,
+                8.855569433308119e-08,
+                2.4005325940379407e-06
+              ],
+              "accepted": false,
+              "proposal_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.26638609170913696,
+                0.07204703241586685,
+                0.7677357792854309,
+                0.8631796836853027
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          }
+        },
+        {
+          "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                172.8125,
+                5.046728971962616,
+                201.25,
+                36.44859813084112
+              ]
+            }
+          ],
+          "detections": [
+            {
+              "box": [
+                37.36114375293255,
+                159.14684472233057,
+                62.44337433576584,
+                216.16279166936874
+              ],
+              "crop_box": [
+                32,
+                154,
+                69,
+                221
+              ],
+              "area": 824.5,
+              "color_group": 0,
+              "proposal_score": 10.324552895371708,
+              "label": "red_balloon",
+              "score": 0.9995655417442322,
+              "scores": [
+                0.0004328097857069224,
+                0.9995655417442322,
+                1.6421292912127683e-06
+              ],
+              "accepted": true,
+              "proposal_box": [
+                38,
+                160,
+                63,
+                215
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.1448957771062851,
+                0.07681857794523239,
+                0.8227939009666443,
+                0.9278028607368469
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "crop_box": [
+                0,
+                0,
+                320,
+                140
+              ],
+              "area": 25974.5,
+              "color_group": 1,
+              "proposal_score": 113.8809370174351,
+              "label": "background",
+              "score": 0.9999874830245972,
+              "scores": [
+                0.9999874830245972,
+                3.5046742397071284e-08,
+                1.2523999430413824e-05
+              ],
+              "accepted": false,
+              "proposal_box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.33116602897644043,
+                0.17680400609970093,
+                0.8237027525901794,
+                0.7791650295257568
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "crop_box": [
+                87,
+                144,
+                101,
+                168
+              ],
+              "area": 129.5,
+              "color_group": 0,
+              "proposal_score": 4.771055073015411,
+              "label": "background",
+              "score": 0.9999594688415527,
+              "scores": [
+                0.9999594688415527,
+                2.4018554540816694e-05,
+                1.6621816030237824e-05
+              ],
+              "accepted": false,
+              "proposal_box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.24168722331523895,
+                0.1676023304462433,
+                0.8229429125785828,
+                0.7618224620819092
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "crop_box": [
+                234,
+                158,
+                320,
+                223
+              ],
+              "area": 2130.0,
+              "color_group": 1,
+              "proposal_score": 16.822551080336726,
+              "label": "background",
+              "score": 0.9971529245376587,
+              "scores": [
+                0.9971529245376587,
+                5.7339238992426544e-06,
+                0.0028413082472980022
+              ],
+              "accepted": false,
+              "proposal_box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.22958719730377197,
+                0.20057690143585205,
+                0.7626418471336365,
+                0.767048716545105
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "crop_box": [
+                256,
+                48,
+                277,
+                60
+              ],
+              "area": 94.0,
+              "color_group": 0,
+              "proposal_score": 4.631714881069494,
+              "label": "background",
+              "score": 0.9999619722366333,
+              "scores": [
+                0.9999619722366333,
+                3.1803083402337506e-05,
+                6.194080015120562e-06
+              ],
+              "accepted": false,
+              "proposal_box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.26930052042007446,
+                0.1550040990114212,
+                0.7200740575790405,
+                0.8493543863296509
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                175.36894035339355,
+                4.104580849409103,
+                198.0026569366455,
+                34.569657146930695
+              ],
+              "crop_box": [
+                171,
+                2,
+                203,
+                39
+              ],
+              "area": 572.0,
+              "color_group": 1,
+              "proposal_score": 12.045365660064679,
+              "label": "blue_balloon",
+              "score": 0.9999986886978149,
+              "scores": [
+                1.2896564385300735e-06,
+                1.115064129919574e-08,
+                0.9999986886978149
+              ],
+              "accepted": true,
+              "proposal_box": [
+                174,
+                5,
+                200,
+                36
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.13652938604354858,
+                0.056880563497543335,
+                0.8438330292701721,
+                0.8802610039710999
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                240.18448013067245,
+                96.0174510627985,
+                251.93993985652924,
+                103.90362739562988
+              ],
+              "crop_box": [
+                239,
+                95,
+                253,
+                105
+              ],
+              "area": 69.5,
+              "color_group": 0,
+              "proposal_score": 4.3693772729804055,
+              "label": "red_balloon",
+              "score": 0.9999383687973022,
+              "scores": [
+                6.096583092585206e-05,
+                0.9999383687973022,
+                6.754315791113186e-07
+              ],
+              "accepted": true,
+              "proposal_box": [
+                240,
+                96,
+                252,
+                104
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.08460572361946106,
+                0.10174510627985,
+                0.9242814183235168,
+                0.8903627395629883
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            },
+            {
+              "box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "crop_box": [
+                296,
+                222,
+                320,
+                240
+              ],
+              "area": 238.0,
+              "color_group": 1,
+              "proposal_score": 8.80686390387456,
+              "label": "background",
+              "score": 0.9717537760734558,
+              "scores": [
+                0.9717537760734558,
+                1.16386172521743e-05,
+                0.028234636411070824
+              ],
+              "accepted": false,
+              "proposal_box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.2248973399400711,
+                0.19819751381874084,
+                0.8068128228187561,
+                0.8014296293258667
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "crop_box": [
+                259,
+                101,
+                280,
+                119
+              ],
+              "area": 143.0,
+              "color_group": 0,
+              "proposal_score": 4.3170410623487125,
+              "label": "background",
+              "score": 0.9986489415168762,
+              "scores": [
+                0.9986489415168762,
+                0.001316875801421702,
+                3.418591586523689e-05
+              ],
+              "accepted": false,
+              "proposal_box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.23202523589134216,
+                0.08841903507709503,
+                0.7311391830444336,
+                0.8834941387176514
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "crop_box": [
+                216,
+                46,
+                263,
+                72
+              ],
+              "area": 441.0,
+              "color_group": 1,
+              "proposal_score": 8.287475345167653,
+              "label": "background",
+              "score": 0.9991955161094666,
+              "scores": [
+                0.9991955161094666,
+                1.0387336857320406e-07,
+                0.0008044257992878556
+              ],
+              "accepted": false,
+              "proposal_box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.28658968210220337,
+                0.19699323177337646,
+                0.7598915696144104,
+                0.8375117778778076
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "crop_box": [
+                22,
+                86,
+                33,
+                103
+              ],
+              "area": 87.0,
+              "color_group": 0,
+              "proposal_score": 3.8737411277272567,
+              "label": "background",
+              "score": 0.9890931844711304,
+              "scores": [
+                0.9890931844711304,
+                0.010773140005767345,
+                0.00013365643098950386
+              ],
+              "accepted": false,
+              "proposal_box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "box_correction_applied": false,
+              "predicted_crop_xyxy": [
+                0.26336565613746643,
+                0.11210396885871887,
+                0.7788416147232056,
+                0.845240592956543
+              ],
+              "raw_accepted": false,
+              "suppressed": false
+            },
+            {
+              "box": [
+                246.63695687055588,
+                219.17537760734558,
+                262.3020926117897,
+                230.35090374946594
+              ],
+              "crop_box": [
+                243,
+                215,
+                266,
+                236
+              ],
+              "area": 230.5,
+              "color_group": 1,
+              "proposal_score": 7.731651668104918,
+              "label": "blue_balloon",
+              "score": 0.934104323387146,
+              "scores": [
+                0.06589088588953018,
+                4.7481307774432935e-06,
+                0.934104323387146
+              ],
+              "accepted": true,
+              "proposal_box": [
+                245,
+                217,
+                264,
+                234
+              ],
+              "box_correction_applied": true,
+              "predicted_crop_xyxy": [
+                0.158128559589386,
+                0.19882750511169434,
+                0.8392214179039001,
+                0.7309954166412354
+              ],
+              "raw_accepted": true,
+              "suppressed": false
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          }
+        }
+      ]
+    }
+  },
+  "panel": "original",
+  "model_sha256": "feccd90a5e6f0cf5de542a80d04c109a64e3be77c14ad9481e8b99395dde23ec",
+  "metadata_sha256": "2172bcf23c7e2a0c0ae829745225d06208c7358a91ae3b883b53beb3904fd2ba",
+  "source_report_sha256": "44c89aa24b791952055a59e2002a58508f2bfb2509d821d174b70c88be49c12f",
+  "max_class_probability_delta": 0.0,
+  "script_sha256": "1cffc4e90db84dfebad9d5aaa89713c4cff8d7066b84789fc1f87b0f41b632d6",
+  "helpers_sha256": {
+    "scripts/train_balloon_box_refinement.py": "213dccd17b1c4341cc5ceb7975ade527dcd60de99b083e02552de95bcee211cf",
+    "scripts/evaluate_balloon_quality.py": "ad38a92856debb7f72b96d6d94102547bb88fce56bdfc71c9e9d4d4eb1349da1",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/research_balloon_search.py": "b4f42466ff76329c55c70f8ead29c171aa37af199dcb85514993d41755bd3e5c",
+    "src/dtr/vision.py": "b062898f9556b4ab6e064243be711093aca14342f7e4a5b05f4a9701eb0227f3"
+  },
+  "scope": "Development-only fixed-proposal replay; frozen class scores, corrected geometry, fresh NMS",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_timing_measured": false
+}
