@@ -1,0 +1,21 @@
+{
+  "manifest": "data/balloon-red-blue-bootstrap-20261008/manifest.json",
+  "sources": [
+    {
+      "queue": "data/balloon-quality-review-20261008",
+      "review": "configs/balloon-quality-review-20261008.json",
+      "parent_queue": "data/engdes2-indoor-review-20261008",
+      "parent_review": "configs/engdes2-indoor-review-20261008.json"
+    },
+    {
+      "queue": "data/balloon-quality-expansion-review-20261008",
+      "review": "configs/balloon-quality-expansion-review-20261008.json",
+      "parent_queue": "data/engdes2-indoor-expansion-review-20261008",
+      "parent_review": "configs/engdes2-indoor-expansion-review-20261008.json"
+    }
+  ],
+  "ridge_penalty": 10.0,
+  "training_approved": true,
+  "deployment_approved": false,
+  "scope": "Fixed-penalty linear IoU head on frozen classifier features; no final-test or IMG fitting"
+}
