@@ -1,5 +1,6 @@
 import numpy as np
 
+from scripts.research_pixel_photometric import photometric
 from scripts.research_pixel_proposals import (BoxPixelMasks, CvPixelMasks, PixelMasks, component_candidate, coverage,
                                               pixel_search)
 
@@ -47,3 +48,10 @@ def test_fast_masks_match_numpy_masks():
         for cls in (CvPixelMasks, BoxPixelMasks):
             for fast, slow in zip(cls((RED, BLUE), threshold)(rgb), expected):
                 np.testing.assert_array_equal(fast != 0, slow != 0)
+
+
+def test_photometric_identity_and_gain_clip():
+    rgb = np.array([[[0, 128, 255], [10, 200, 250]]], np.uint8)
+    np.testing.assert_array_equal(photometric(rgb, (1., 1., 1.), 1.), rgb)
+    np.testing.assert_array_equal(photometric(rgb, (.5, 1., 1.25), 1.),
+                                  [[[0, 128, 255], [5, 200, 255]]])
