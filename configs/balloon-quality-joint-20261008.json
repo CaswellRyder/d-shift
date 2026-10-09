@@ -1,0 +1,13 @@
+{
+  "quality_config": "configs/balloon-quality-training-20261008.json",
+  "classification_manifest": "data/balloon-red-blue-expanded-views-20261008/manifest.json",
+  "epochs": 10,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "temperature": 4.0,
+  "quality_weight": 1.0,
+  "preservation_weight": 1.0,
+  "quality_holdout_fold": 0,
+  "checkpoint_selection": "fixed final epoch; no development scene or holdout selection",
+  "deployment_approved": false
+}
