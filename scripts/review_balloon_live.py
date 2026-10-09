@@ -104,7 +104,15 @@ def review(root):
         raise ValueError("Frame log is not hash-bound")
     rows = [json.loads(line) for line in (root / "frames.jsonl").read_text().splitlines()]
     timing_validation = validate_rows(report, rows)
-    names = [f"{i:04d}-raw.png" for i in (0, len(rows) - 1)]
+    indices = report.get("saved_sample_indices", [0, len(rows) - 1])
+    if (
+        not 2 <= len(indices) <= 10
+        or len(set(indices)) != len(indices)
+        or not {0, len(rows) - 1}.issubset(indices)
+        or any(type(i) is not int or not 0 <= i < len(rows) for i in indices)
+    ):
+        raise ValueError("Invalid bounded sample indices")
+    names = [f"{i:04d}-raw.png" for i in indices]
     if any(name not in report["files"] for name in names):
         raise ValueError("First/last sample not hash-bound")
     samples = {
@@ -117,7 +125,7 @@ def review(root):
         timing_validation=timing_validation,
         samples=samples,
         nearly_black_samples=sum(s["nearly_black"] for s in samples.values()),
-        content_scope="Only first/last images retained; not labels for intervening frames",
+        content_scope="Only listed samples retained; not labels for unsaved frames",
         visual_orientation_confirmed=False,
         accuracy_measured=False,
         test_evaluated=False,

@@ -119,6 +119,19 @@ def config():
     )
 
 
+def test_event_samples_are_bounded_and_last_frame_is_retained():
+    requests = [Request(i * 100 + 1) for i in range(12)]
+    clocks = iter(v for i in range(12) for v in (i * 100 + 2, i * 100 + 3, i * 100 + 4))
+
+    def infer(rgb):
+        return dict(detections=[dict(accepted=True)], processing_ms=1.0)
+
+    rows, samples, _ = run_camera(Camera(requests), infer, 12, 3, lambda: next(clocks))
+    assert len(rows) == 12
+    assert [i for i, _, _ in samples] == list(range(8)) + [11]
+    assert all(r.released for r in requests)
+
+
 def test_full_sensor_and_rotation_contract():
     validate_camera_config(config())
     for section, key, value in (

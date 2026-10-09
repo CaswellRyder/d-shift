@@ -79,7 +79,8 @@ def run_camera(camera, infer, count, seconds, clock_ns=None):
     if not 2 <= count <= 120 or not 3 <= seconds <= 60:
         raise ValueError("Require 2..120 frames and 3..60 seconds")
     clock_ns = clock_ns or (lambda: time.clock_gettime_ns(time.CLOCK_BOOTTIME))
-    rows, samples = [], []
+    rows, samples = [], {}
+    event_samples = 0
     started = time.perf_counter()
     previous = None
     last_rgb = None
@@ -106,14 +107,17 @@ def run_camera(camera, infer, count, seconds, clock_ns=None):
                 frame_wall_ms=(done - frame_start) * 1000,
             )
         )
-        if index == 0:
-            samples.append((index, rgb, observed["detections"]))
+        accepted = any(d["accepted"] for d in observed["detections"])
+        if index == 0 or (accepted and event_samples < 8):
+            samples[index] = (index, rgb, observed["detections"])
+            if accepted:
+                event_samples += 1
         last_rgb = rgb
     elapsed = time.perf_counter() - started
     if len(rows) < 2:
         raise ValueError("Too few live frames for timing")
-    samples.append((rows[-1]["index"], last_rgb, rows[-1]["detections"]))
-    return rows, samples, elapsed
+    samples[rows[-1]["index"]] = (rows[-1]["index"], last_rgb, rows[-1]["detections"])
+    return rows, list(samples.values()), elapsed
 
 
 def main():
@@ -228,6 +232,8 @@ def main():
         queue=False,
         max_pre_camera_golden_score_delta=max(deltas),
         requested_frames=args.count,
+        saved_sample_indices=[index for index, _, _ in samples],
+        sample_policy="First/last plus first eight accepted-detection frames; saved after timing",
         frames=len(rows),
         elapsed_s=elapsed,
         observed_live_fps=len(rows) / elapsed,
