@@ -1,0 +1,95 @@
+{
+ "purpose": "Exact pixel-mask timing on development frames; NOT qualification",
+ "deployment_approved": false,
+ "test_evaluated": false,
+ "runs": [
+  {
+   "purpose": "Exact pixel-mask timing on development frames; NOT qualification",
+   "deployment_approved": false,
+   "test_evaluated": false,
+   "threshold": 75.0,
+   "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+   "script_sha256": "ad1d57dec29d687655fafa975d6b0ccbf26e7fa9a9713d3aaf6318a25da5b879",
+   "machine": "armv6l",
+   "opencv": "4.10.0",
+   "numpy": "2.2.4",
+   "repeats": 5,
+   "masks": {
+    "numpy": {
+     "mean_ms": 78.58231973746115,
+     "p95_ms": 79.89611590091954
+    },
+    "cv2": {
+     "mean_ms": 48.72798297474219,
+     "p95_ms": 50.10025289884652
+    },
+    "box": {
+     "mean_ms": 44.689010987576694,
+     "p95_ms": 75.07238094913191
+    }
+   },
+   "search": {
+    "numpy": {
+     "mean_ms": 92.94577281252714,
+     "p95_ms": 99.80810884771927
+    },
+    "cv2": {
+     "mean_ms": 63.099422937966665,
+     "p95_ms": 68.9829089498744
+    },
+    "box": {
+     "mean_ms": 58.866866224980186,
+     "p95_ms": 91.05412690150843
+    }
+   },
+   "components": {
+    "mean_ms": 11.361553487404308,
+    "p95_ms": 12.423039900204458
+   }
+  },
+  {
+   "purpose": "Exact pixel-mask timing on development frames; NOT qualification",
+   "deployment_approved": false,
+   "test_evaluated": false,
+   "threshold": 90.0,
+   "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+   "script_sha256": "ad1d57dec29d687655fafa975d6b0ccbf26e7fa9a9713d3aaf6318a25da5b879",
+   "machine": "armv6l",
+   "opencv": "4.10.0",
+   "numpy": "2.2.4",
+   "repeats": 5,
+   "masks": {
+    "numpy": {
+     "mean_ms": 80.3674710249652,
+     "p95_ms": 81.0801627494584
+    },
+    "cv2": {
+     "mean_ms": 48.2425961626177,
+     "p95_ms": 49.897212800351554
+    },
+    "box": {
+     "mean_ms": 62.447853400271924,
+     "p95_ms": 102.43389295010275
+    }
+   },
+   "search": {
+    "numpy": {
+     "mean_ms": 98.01300909998645,
+     "p95_ms": 110.60568465181859
+    },
+    "cv2": {
+     "mean_ms": 65.96933266246197,
+     "p95_ms": 77.12456565095636
+    },
+    "box": {
+     "mean_ms": 79.94035626252298,
+     "p95_ms": 116.82396094947762
+    }
+   },
+   "components": {
+    "mean_ms": 11.49475356255607,
+    "p95_ms": 12.85823695216095
+   }
+  }
+ ]
+}

@@ -44,6 +44,59 @@ class PixelMasks:
         return masks
 
 
+class CvPixelMasks:
+    """The same masks with OpenCV: one 3-channel uint16 LUT per color, channel sum, compare.
+
+    Per-channel squares are capped at threshold^2 + 1, which changes no decision (that channel
+    alone already exceeds the threshold) and keeps the three-channel sum inside uint16.
+    """
+
+    def __init__(self, colors, threshold):
+        self.thr_sq = int(float(threshold) ** 2)
+        cap = self.thr_sq + 1
+        if 3 * cap > np.iinfo(np.uint16).max:
+            raise ValueError("Threshold too large for uint16 sums")
+        v = np.arange(256, dtype=np.int64)
+        self.luts = [np.stack([np.minimum((v - int(t)) ** 2, cap) for t in color], axis=-1)
+                     .astype(np.uint16).reshape(256, 1, 3) for color in colors]
+
+    def __call__(self, rgb):
+        masks = []
+        for lut in self.luts:
+            r, g, b = cv2.split(cv2.LUT(rgb, lut))
+            masks.append(cv2.compare(cv2.add(cv2.add(r, g), b), self.thr_sq, cv2.CMP_LE))
+        return masks
+
+
+class BoxPixelMasks:
+    """The same masks in two stages: an inRange box test, then the exact distance on its pixels.
+
+    Every pixel within the distance is inside the per-channel box, so the result is exact; the
+    cost of the second stage scales with how many pixels fall inside the box.
+    """
+
+    def __init__(self, colors, threshold):
+        self.thr_sq = int(float(threshold) ** 2)
+        reach = int(np.floor(float(threshold)))
+        self.colors = [np.array(c, dtype=np.int32) for c in colors]
+        self.bounds = [(np.clip(c - reach, 0, 255).astype(np.uint8),
+                        np.clip(c + reach, 0, 255).astype(np.uint8)) for c in self.colors]
+
+    def __call__(self, rgb):
+        masks = []
+        for ref, (lo, hi) in zip(self.colors, self.bounds):
+            mask = cv2.inRange(rgb, lo, hi)
+            ys, xs = np.nonzero(mask)
+            if len(ys):
+                far = ((rgb[ys, xs].astype(np.int32) - ref) ** 2).sum(axis=1) > self.thr_sq
+                mask[ys[far], xs[far]] = 0
+            masks.append(mask)
+        return masks
+
+
+MASKS = dict(numpy=PixelMasks, cv2=CvPixelMasks, box=BoxPixelMasks)
+
+
 def component_candidate(x, y, w, h, count, group, shape):
     """Same filters, padding and score as research_balloon_search.candidate, area = pixel count."""
     height, width = shape[:2]
@@ -57,14 +110,20 @@ def component_candidate(x, y, w, h, count, group, shape):
                 proposal_score=float(np.sqrt(count) * (count / (w * h)) ** 2))
 
 
-def pixel_search(rgb, masks, min_area):
+def pixel_search(rgb, masks, min_area, stride=1):
+    """Components of the color masks as proposals; ``stride`` > 1 masks every stride-th pixel.
+
+    Strided component stats are scaled back to 320x240 units (box and pixel count) before the
+    unchanged candidate filters, so ``min_area`` keeps its full-resolution meaning.
+    """
     if rgb.shape != (240, 320, 3) or rgb.dtype != np.uint8:
         raise ValueError("Pixel search requires 320x240 RGB uint8")
+    sample = rgb if stride == 1 else np.ascontiguousarray(rgb[::stride, ::stride])
     pool = []
-    for group, mask in enumerate(masks(rgb)):
+    for group, mask in enumerate(masks(sample)):
         # 8-connectivity matches the run-length joiner in the pixel demo.
         n, _, stats, _ = cv2.connectedComponentsWithStats(mask, connectivity=8)
-        for x, y, w, h, count in stats[1:n]:
+        for x, y, w, h, count in stats[1:n] * [stride, stride, stride, stride, stride * stride]:
             if count >= min_area:
                 c = component_candidate(int(x), int(y), int(w), int(h), int(count), group, rgb.shape)
                 if c:
@@ -72,9 +131,9 @@ def pixel_search(rgb, masks, min_area):
     return select(pool)
 
 
-def process_frame(rgb, predictor, masks, min_area):
+def process_frame(rgb, predictor, masks, min_area, stride=1):
     start = time.perf_counter()
-    proposals = pixel_search(rgb, masks, min_area)
+    proposals = pixel_search(rgb, masks, min_area, stride)
     searched = time.perf_counter()
     found = []
     for proposal in proposals:
@@ -107,22 +166,23 @@ def run(args):
     for model in args.model:
         predictor = Predictor(root / inputs["models"][model]["path"], allow_unvalidated=True)
         for threshold in args.threshold:
-            masks = PixelMasks((args.red, args.blue), threshold)
+            masks = MASKS[args.masks]((args.red, args.blue), threshold)
             for rgb in images:  # warm-up
-                process_frame(rgb, predictor, masks, args.min_area)
-            passes = [[process_frame(rgb, predictor, masks, args.min_area) for rgb in images]
+                process_frame(rgb, predictor, masks, args.min_area, args.stride)
+            passes = [[process_frame(rgb, predictor, masks, args.min_area, args.stride) for rgb in images]
                       for _ in range(args.repeats)]
             frames = passes[0]
             keys = ("processing_ms", "search_ms", "inference_ms", "selection_ms")
             timing = {k: float(np.mean([r[k] for p in passes for r in p])) for k in keys}
             timing["p95_processing_ms"] = float(np.percentile(
                 [r["processing_ms"] for p in passes for r in p], 95))
-            runs.append(dict(model=model, threshold=threshold, min_area=args.min_area,
+            runs.append(dict(model=model, threshold=threshold, min_area=args.min_area, masks=args.masks,
+                             stride=args.stride,
                              timing=timing, mean_neural_calls=float(np.mean(
                                  [r["neural_calls"] for r in frames])),
                              frames=[{k: r[k] for k in ("detections", "proposals", "proposal_groups")}
                                      for r in frames]))
-            print(f"{model} thr {threshold:g}: {timing['processing_ms']:.1f} ms "
+            print(f"{model} thr {threshold:g} stride {args.stride}: {timing['processing_ms']:.1f} ms "
                   f"(search {timing['search_ms']:.1f}, infer {timing['inference_ms']:.1f}, "
                   f"{runs[-1]['mean_neural_calls']:.2f} calls)", flush=True)
     return dict(purpose="Pixel-mask proposals + neural classifier; development frames, NOT qualification",
@@ -166,6 +226,8 @@ def main():
     parser.add_argument("--blue", type=color)
     parser.add_argument("--threshold", type=float, action="append")
     parser.add_argument("--min-area", type=int, default=53)
+    parser.add_argument("--masks", choices=sorted(MASKS), default="numpy")
+    parser.add_argument("--stride", type=int, choices=(1, 2), default=1)
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--output", required=True)
     parser.add_argument("--score", action="store_true", help="Score an existing --output report")

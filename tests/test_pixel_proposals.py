@@ -1,6 +1,7 @@
 import numpy as np
 
-from scripts.research_pixel_proposals import PixelMasks, component_candidate, coverage, pixel_search
+from scripts.research_pixel_proposals import (BoxPixelMasks, CvPixelMasks, PixelMasks, component_candidate, coverage,
+                                              pixel_search)
 
 RED, BLUE = (178, 28, 48), (26, 86, 179)
 
@@ -36,3 +37,13 @@ def test_pixel_search_proposes_each_color_blob_and_skips_small_ones():
     truth = [dict(label="red_balloon", box=[30, 20, 55, 50]),
              dict(label="blue_balloon", box=[30, 20, 55, 50])]
     assert coverage(truth, [p["box"] for p in proposals], [p["color_group"] for p in proposals]) == 1
+
+
+def test_fast_masks_match_numpy_masks():
+    rng = np.random.default_rng(1)
+    rgb = rng.integers(0, 256, (240, 320, 3), dtype=np.uint8)
+    for threshold in (60, 75, 90, 105, 147):
+        expected = PixelMasks((RED, BLUE), threshold)(rgb)
+        for cls in (CvPixelMasks, BoxPixelMasks):
+            for fast, slow in zip(cls((RED, BLUE), threshold)(rgb), expected):
+                np.testing.assert_array_equal(fast != 0, slow != 0)
