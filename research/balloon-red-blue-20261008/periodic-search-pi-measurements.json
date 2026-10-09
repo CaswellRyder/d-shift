@@ -1,0 +1,3036 @@
+{
+  "runs": {
+    "full-a": {
+      "report": {
+        "policy": "full",
+        "model": "new-views-42",
+        "machine": "armv6l",
+        "opencv": "4.10.0",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "ea21d1bf013b0a3467f722f27a04e893b4ec53ea05574d93a9d84cac507ca0aa",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "b3d32fc140702955018049d8490178c3babad4813f9f2d3c5943625def66c914",
+        "script_sha256": "24369a9be3e457d4519c3ced7e7d46f01bd96eea0e839fff7d4bb9f12efb2591",
+        "scheduler_sha256": "4fc08b53d47eb7c21db70bf2c1f4558ff3915e95c5203834a156a37f6d69085f",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "interval_ns": 500000000,
+        "max_bright_frames": 2,
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "mode_counts": {
+          "mser_direct": 32,
+          "mser_bright": 0
+        },
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 311.60137671864163,
+            "p50_ms": 273.7482225002168,
+            "p95_ms": 544.9696163492717,
+            "max_ms": 576.4362139998411
+          },
+          "scheduled_processing_ms": {
+            "mean_ms": 311.77387540625,
+            "p50_ms": 273.9212225,
+            "p95_ms": 545.1694147999999,
+            "max_ms": 576.641212
+          },
+          "search_ms": {
+            "mean_ms": 202.99043637501768,
+            "p50_ms": 188.46293299975514,
+            "p95_ms": 316.03837004963674,
+            "max_ms": 366.68295599974954
+          },
+          "inference_ms": {
+            "mean_ms": 107.66994818737885,
+            "p50_ms": 91.26274199979889,
+            "p95_ms": 230.55568280033185,
+            "max_ms": 243.09497800004465
+          },
+          "selection_ms": {
+            "mean_ms": 0.9409921562451018,
+            "p50_ms": 0.817993499822478,
+            "p95_ms": 2.284381349863905,
+            "max_ms": 3.362971999194997
+          }
+        },
+        "full_start_intervals_ms": [
+          183.791475,
+          507.593786,
+          276.523704,
+          576.84021,
+          261.28183,
+          241.825991,
+          264.276804,
+          409.547598,
+          271.695741,
+          318.048357,
+          310.468419,
+          278.627684,
+          519.785678,
+          197.007361,
+          182.136485,
+          204.892296,
+          183.067477,
+          505.152797,
+          277.954687,
+          576.633201,
+          261.082827,
+          241.934985,
+          265.295791,
+          409.733588,
+          271.714737,
+          304.762461,
+          311.03441,
+          279.424671,
+          507.780768,
+          196.628362,
+          182.399479
+        ],
+        "max_dispatch_lateness_ms": 76.84021,
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 9.983342955999433,
+        "timed_loop_cpu_seconds": 9.926087000000003,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.43 0.24 0.30 1/239 2112",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "45464",
+          "load_average": "0.59 0.29 0.32 1/240 2114",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_kib": 114868,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "temporal_recall_measured": false,
+        "hard_reacquisition_deadline_proven": false,
+        "scope": "Timing over arbitrary ordered development photos, not a representative motion sequence",
+        "frames_log_sha256": "29d581f71a482a4d3bc277485c4272e7b0b4f01c108204c2613117bc82355dd9"
+      },
+      "report_sha256": "0bb51543cfc9b9200e0e2ef82d04282cfb4a9ebb95bfa7c4fb541c5625e9925a",
+      "validated_schedule": {
+        "full_start_intervals_ms": [
+          183.791475,
+          507.593786,
+          276.523704,
+          576.84021,
+          261.28183,
+          241.825991,
+          264.276804,
+          409.547598,
+          271.695741,
+          318.048357,
+          310.468419,
+          278.627684,
+          519.785678,
+          197.007361,
+          182.136485,
+          204.892296,
+          183.067477,
+          505.152797,
+          277.954687,
+          576.633201,
+          261.082827,
+          241.934985,
+          265.295791,
+          409.733588,
+          271.714737,
+          304.762461,
+          311.03441,
+          279.424671,
+          507.780768,
+          196.628362,
+          182.399479
+        ],
+        "max_dispatch_lateness_ms": 76.84021,
+        "mode_counts": {
+          "mser_direct": 32,
+          "mser_bright": 0
+        }
+      },
+      "frame_checks": [
+        {
+          "round": 0,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 1,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 2,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 5,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 6,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 8,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 10,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 12,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 14,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 15,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 1,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 2,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 5,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 6,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 8,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 10,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 12,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 14,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 15,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        }
+      ]
+    },
+    "full-b": {
+      "report": {
+        "policy": "full",
+        "model": "new-views-42",
+        "machine": "armv6l",
+        "opencv": "4.10.0",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "ea21d1bf013b0a3467f722f27a04e893b4ec53ea05574d93a9d84cac507ca0aa",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "b3d32fc140702955018049d8490178c3babad4813f9f2d3c5943625def66c914",
+        "script_sha256": "24369a9be3e457d4519c3ced7e7d46f01bd96eea0e839fff7d4bb9f12efb2591",
+        "scheduler_sha256": "4fc08b53d47eb7c21db70bf2c1f4558ff3915e95c5203834a156a37f6d69085f",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "interval_ns": 500000000,
+        "max_bright_frames": 2,
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "mode_counts": {
+          "mser_direct": 32,
+          "mser_bright": 0
+        },
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 313.4006911875815,
+            "p50_ms": 275.0400885001909,
+            "p95_ms": 543.3752912001182,
+            "max_ms": 610.7886449999569
+          },
+          "scheduled_processing_ms": {
+            "mean_ms": 313.5772208125,
+            "p50_ms": 275.20608649999997,
+            "p95_ms": 543.5798391999999,
+            "max_ms": 610.994643
+          },
+          "search_ms": {
+            "mean_ms": 204.43220846883037,
+            "p50_ms": 187.98385400032203,
+            "p95_ms": 321.0436884497994,
+            "max_ms": 394.38554200023646
+          },
+          "inference_ms": {
+            "mean_ms": 108.0171473124949,
+            "p50_ms": 91.64319699993939,
+            "p95_ms": 232.2293155998068,
+            "max_ms": 232.95495900038077
+          },
+          "selection_ms": {
+            "mean_ms": 0.9513354062562485,
+            "p50_ms": 0.8324925001943484,
+            "p95_ms": 2.2041809000256745,
+            "max_ms": 3.465969999524532
+          }
+        },
+        "full_start_intervals_ms": [
+          183.802392,
+          509.66154,
+          279.069558,
+          577.078949,
+          270.428633,
+          242.820875,
+          265.645674,
+          411.816394,
+          272.112618,
+          304.76733,
+          314.04925,
+          279.494552,
+          509.283538,
+          197.882266,
+          182.861398,
+          204.849205,
+          184.218386,
+          516.532473,
+          275.466586,
+          611.195641,
+          263.493691,
+          242.80587,
+          264.402682,
+          411.886388,
+          275.329585,
+          303.583337,
+          313.020254,
+          279.332549,
+          507.952543,
+          197.613266,
+          183.757387
+        ],
+        "max_dispatch_lateness_ms": 111.195641,
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 10.041098011999566,
+        "timed_loop_cpu_seconds": 9.957805,
+        "health_before": {
+          "temperature_millicelsius": "47078",
+          "load_average": "1.05 0.55 0.41 1/239 2126",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "47616",
+          "load_average": "1.04 0.58 0.42 1/239 2127",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_kib": 114908,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "temporal_recall_measured": false,
+        "hard_reacquisition_deadline_proven": false,
+        "scope": "Timing over arbitrary ordered development photos, not a representative motion sequence",
+        "frames_log_sha256": "a82f306dda578d0dbaa89111588bb18ed285390959c480c53b7907ef130fec02"
+      },
+      "report_sha256": "ecfdee56285c1afa9bc5136440c6160f689a528fc8b444a9bfb45f1c443fc6d1",
+      "validated_schedule": {
+        "full_start_intervals_ms": [
+          183.802392,
+          509.66154,
+          279.069558,
+          577.078949,
+          270.428633,
+          242.820875,
+          265.645674,
+          411.816394,
+          272.112618,
+          304.76733,
+          314.04925,
+          279.494552,
+          509.283538,
+          197.882266,
+          182.861398,
+          204.849205,
+          184.218386,
+          516.532473,
+          275.466586,
+          611.195641,
+          263.493691,
+          242.80587,
+          264.402682,
+          411.886388,
+          275.329585,
+          303.583337,
+          313.020254,
+          279.332549,
+          507.952543,
+          197.613266,
+          183.757387
+        ],
+        "max_dispatch_lateness_ms": 111.195641,
+        "mode_counts": {
+          "mser_direct": 32,
+          "mser_bright": 0
+        }
+      },
+      "frame_checks": [
+        {
+          "round": 0,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 1,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 2,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 5,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 6,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 8,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 10,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 12,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 14,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 15,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 1,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 2,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 5,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 6,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 8,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 10,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 12,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 14,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 15,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        }
+      ]
+    },
+    "periodic-a": {
+      "report": {
+        "policy": "periodic",
+        "model": "new-views-42",
+        "machine": "armv6l",
+        "opencv": "4.10.0",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "ea21d1bf013b0a3467f722f27a04e893b4ec53ea05574d93a9d84cac507ca0aa",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "b3d32fc140702955018049d8490178c3babad4813f9f2d3c5943625def66c914",
+        "script_sha256": "24369a9be3e457d4519c3ced7e7d46f01bd96eea0e839fff7d4bb9f12efb2591",
+        "scheduler_sha256": "4fc08b53d47eb7c21db70bf2c1f4558ff3915e95c5203834a156a37f6d69085f",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "interval_ns": 500000000,
+        "max_bright_frames": 2,
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "mode_counts": {
+          "mser_direct": 14,
+          "mser_bright": 18
+        },
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 276.4650925624892,
+            "p50_ms": 251.80986250006754,
+            "p95_ms": 499.0445671002361,
+            "max_ms": 616.3527709995833
+          },
+          "scheduled_processing_ms": {
+            "mean_ms": 276.64365362499996,
+            "p50_ms": 251.981861,
+            "p95_ms": 499.2891646499999,
+            "max_ms": 616.559769
+          },
+          "search_ms": {
+            "mean_ms": 179.04826262494566,
+            "p50_ms": 171.41654649958582,
+            "p95_ms": 289.16594825018353,
+            "max_ms": 400.1196049994178
+          },
+          "inference_ms": {
+            "mean_ms": 96.55418103133684,
+            "p50_ms": 80.21632000054524,
+            "p95_ms": 209.0028754996638,
+            "max_ms": 215.98216999973374
+          },
+          "selection_ms": {
+            "mean_ms": 0.8626489062066867,
+            "p50_ms": 0.7659934999537654,
+            "p95_ms": 1.9442337004420538,
+            "max_ms": 2.8729749992635334
+          }
+        },
+        "full_start_intervals_ms": [
+          657.694431,
+          582.190068,
+          703.406041,
+          656.525436,
+          582.309064,
+          714.034946,
+          516.34362,
+          660.300399,
+          616.860766,
+          701.657044,
+          658.731408,
+          581.74906,
+          713.168942
+        ],
+        "max_dispatch_lateness_ms": 214.034946,
+        "mean_neural_calls": 4.8125,
+        "timed_loop_wall_seconds": 8.859954849999667,
+        "timed_loop_cpu_seconds": 8.795854000000006,
+        "health_before": {
+          "temperature_millicelsius": "45464",
+          "load_average": "0.73 0.35 0.34 1/239 2117",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "46540",
+          "load_average": "0.81 0.39 0.35 1/238 2118",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_kib": 114860,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "temporal_recall_measured": false,
+        "hard_reacquisition_deadline_proven": false,
+        "scope": "Timing over arbitrary ordered development photos, not a representative motion sequence",
+        "frames_log_sha256": "ab93e1fb2414009a6def8f833f428db9f2b0c18b371400934d8431a1a354fe4c"
+      },
+      "report_sha256": "05444be4de802a74dc56d1a7f991f7cabec66abf3b3725de9c3680d63752c5e1",
+      "validated_schedule": {
+        "full_start_intervals_ms": [
+          657.694431,
+          582.190068,
+          703.406041,
+          656.525436,
+          582.309064,
+          714.034946,
+          516.34362,
+          660.300399,
+          616.860766,
+          701.657044,
+          658.731408,
+          581.74906,
+          713.168942
+        ],
+        "max_dispatch_lateness_ms": 214.034946,
+        "mode_counts": {
+          "mser_direct": 14,
+          "mser_bright": 18
+        }
+      },
+      "frame_checks": [
+        {
+          "round": 0,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 1,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 2,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 5,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 6,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 8,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 10,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 12,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 14,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 15,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 1,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 2,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 5,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 6,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 8,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 10,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 12,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 14,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 15,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        }
+      ]
+    },
+    "periodic-b": {
+      "report": {
+        "policy": "periodic",
+        "model": "new-views-42",
+        "machine": "armv6l",
+        "opencv": "4.10.0",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "ea21d1bf013b0a3467f722f27a04e893b4ec53ea05574d93a9d84cac507ca0aa",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "b3d32fc140702955018049d8490178c3babad4813f9f2d3c5943625def66c914",
+        "script_sha256": "24369a9be3e457d4519c3ced7e7d46f01bd96eea0e839fff7d4bb9f12efb2591",
+        "scheduler_sha256": "4fc08b53d47eb7c21db70bf2c1f4558ff3915e95c5203834a156a37f6d69085f",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "interval_ns": 500000000,
+        "max_bright_frames": 2,
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "mode_counts": {
+          "mser_direct": 14,
+          "mser_bright": 18
+        },
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 278.6226274374144,
+            "p50_ms": 253.99580900011642,
+            "p95_ms": 546.6368881499875,
+            "max_ms": 583.7469620000775
+          },
+          "scheduled_processing_ms": {
+            "mean_ms": 278.79009484375,
+            "p50_ms": 254.1558075,
+            "p95_ms": 546.8330361499999,
+            "max_ms": 583.94396
+          },
+          "search_ms": {
+            "mean_ms": 182.9611716561601,
+            "p50_ms": 178.09646299974702,
+            "p95_ms": 339.78937144984224,
+            "max_ms": 371.71179199958715
+          },
+          "inference_ms": {
+            "mean_ms": 94.74802621878098,
+            "p50_ms": 78.88782000009087,
+            "p95_ms": 204.6683837497767,
+            "max_ms": 210.76318100040226
+          },
+          "selection_ms": {
+            "mean_ms": 0.9134295624733113,
+            "p50_ms": 0.7744935001028352,
+            "p95_ms": 2.120681800170131,
+            "max_ms": 3.1609719999323715
+          }
+        },
+        "full_start_intervals_ms": [
+          657.495336,
+          581.328991,
+          700.473963,
+          658.79732,
+          593.162886,
+          807.111039,
+          516.301546,
+          659.093313,
+          584.148958,
+          697.156982,
+          653.821355,
+          578.073007,
+          712.195848
+        ],
+        "max_dispatch_lateness_ms": 307.111039,
+        "mean_neural_calls": 4.8125,
+        "timed_loop_wall_seconds": 8.928102974000467,
+        "timed_loop_cpu_seconds": 8.773778,
+        "health_before": {
+          "temperature_millicelsius": "46540",
+          "load_average": "0.93 0.46 0.37 1/238 2121",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "47078",
+          "load_average": "0.95 0.49 0.39 1/239 2123",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss_kib": 114832,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "temporal_recall_measured": false,
+        "hard_reacquisition_deadline_proven": false,
+        "scope": "Timing over arbitrary ordered development photos, not a representative motion sequence",
+        "frames_log_sha256": "4d966421973e2d36e6ab5d09d8bd3c068335d0fab8062d6190e999f8ec3695b6"
+      },
+      "report_sha256": "456cf4f228b0c55a740ebfb942a937a941c60c154bfdc5939b179dfca47368c6",
+      "validated_schedule": {
+        "full_start_intervals_ms": [
+          657.495336,
+          581.328991,
+          700.473963,
+          658.79732,
+          593.162886,
+          807.111039,
+          516.301546,
+          659.093313,
+          584.148958,
+          697.156982,
+          653.821355,
+          578.073007,
+          712.195848
+        ],
+        "max_dispatch_lateness_ms": 307.111039,
+        "mode_counts": {
+          "mser_direct": 14,
+          "mser_bright": 18
+        }
+      },
+      "frame_checks": [
+        {
+          "round": 0,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 1,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 2,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 5,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 6,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 8,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 10,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 12,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 14,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 0,
+          "index": 15,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 0,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 1,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 2,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 3,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 4,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 5,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 6,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 2,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 7,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 8,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 9,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 10,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 2
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 11,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 12,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 13,
+          "mode": "mser_direct",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 14,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        },
+        {
+          "round": 1,
+          "index": 15,
+          "mode": "mser_bright",
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "same_counts_as_full": true
+        }
+      ]
+    }
+  },
+  "pooled": {
+    "full": {
+      "trials": [
+        "full-a",
+        "full-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 312.675548109375,
+        "p50_ms": 275.20608649999997,
+        "p95_ms": 567.9096243999996,
+        "max_ms": 610.994643
+      },
+      "processing_fps": 3.1982033966090517,
+      "mode_counts": {
+        "mser_direct": 64,
+        "mser_bright": 0
+      },
+      "full_start_intervals": {
+        "mean_ms": 316.3735237096774,
+        "p50_ms": 275.995145,
+        "p95_ms": 573.7908248499997,
+        "max_ms": 611.195641
+      },
+      "full_completion_intervals": {
+        "mean_ms": 317.04516295161295,
+        "p50_ms": 276.0266445,
+        "p95_ms": 573.7818748499998,
+        "max_ms": 611.184642
+      },
+      "mean_neural_calls": 5.625,
+      "max_dispatch_lateness_ms": 111.195641
+    },
+    "periodic": {
+      "trials": [
+        "periodic-a",
+        "periodic-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 277.716874234375,
+        "p50_ms": 254.1558075,
+        "p95_ms": 571.7668229499997,
+        "max_ms": 616.559769
+      },
+      "processing_fps": 3.6007894830188283,
+      "mode_counts": {
+        "mser_direct": 28,
+        "mser_bright": 36
+      },
+      "full_start_intervals": {
+        "mean_ms": 644.0050680384616,
+        "p50_ms": 657.5948834999999,
+        "p95_ms": 713.818445,
+        "max_ms": 807.111039
+      },
+      "full_completion_intervals": {
+        "mean_ms": 645.7534757307692,
+        "p50_ms": 567.7096449999999,
+        "p95_ms": 1058.76915525,
+        "max_ms": 1089.387758
+      },
+      "mean_neural_calls": 4.8125,
+      "max_dispatch_lateness_ms": 307.111039
+    }
+  },
+  "processing_speedup": 1.125878825229385,
+  "all_timed_counts_match_full": true,
+  "scope": "Clock-replayed scheduler evidence on arbitrary photos; not temporal target recall",
+  "reviewer_sha256": "8a72c9f79af9de14eb00606e1e50fa9b372d21bfa2d242360580b6376eb91bf9",
+  "camera_used": false,
+  "test_evaluated": false,
+  "temporal_recall_measured": false,
+  "hard_reacquisition_deadline_proven": false,
+  "deployment_approved": false,
+  "flight_qualified": false
+}

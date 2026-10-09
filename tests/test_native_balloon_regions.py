@@ -4,6 +4,7 @@ import pytest
 
 from dtr.data import read_json, write_json
 from dtr.native_balloon_regions import NativeBalloonRegions
+from dtr.research_search_schedule import SearchSchedule
 from scripts.build_native_balloon_regions import build
 from scripts.research_balloon_search import candidate, experimental
 from scripts.research_balloon_search_fast import search_fast
@@ -113,6 +114,21 @@ def test_bright_only_keeps_isolated_disks_but_is_not_semantically_exact(native):
     assert search_fast(rgb, native, bright_only=True) == []
     with pytest.raises(ValueError, match="explicit boolean"):
         search_fast(rgb, native, bright_only=1)
+
+
+@pytest.mark.parametrize("channel", [0, 2])
+def test_periodic_full_pass_recovers_persistent_dark_disk_proposal(native, channel):
+    background, disk = [0, 0, 0], [0, 0, 0]
+    background[channel], disk[channel] = 230, 100
+    rgb = np.full((240, 320, 3), background, np.uint8)
+    scheduler, counts = SearchSchedule(), []
+    for index in range(4):
+        if index == 1:
+            cv2.circle(rgb, (160, 120), 18, tuple(disk), -1)
+        decision = scheduler.begin(index * 100_000_000)
+        counts.append(len(search_fast(rgb, native, bright_only=decision["mode"] == "mser_bright")))
+        scheduler.finish(index * 100_000_000 + 50_000_000)
+    assert counts == [0, 0, 0, 1]  # Proposal recovery only; no neural/flight claim.
 
 
 def test_native_output_survives_next_call(native):
