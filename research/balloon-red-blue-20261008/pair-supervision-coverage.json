@@ -1,0 +1,1050 @@
+{
+  "results": {
+    "seed42": {
+      "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+      "metadata_sha256": "f7616dd781c055c25acd3d8dbaf0363b1dfe597d8c631e0a548816c4cf96c032",
+      "coverage": {
+        "parent": {
+          "pairs": 15,
+          "source_groups": 3,
+          "largest_source_fraction": 0.4666666666666667,
+          "by_domain": {
+            "matterport": 15
+          },
+          "by_color": {
+            "blue_balloon": 9,
+            "red_balloon": 6
+          },
+          "groups": {
+            "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703": 6,
+            "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae": 7,
+            "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a": 2
+          }
+        },
+        "child": {
+          "pairs": 3,
+          "source_groups": 3,
+          "largest_source_fraction": 0.3333333333333333,
+          "by_domain": {
+            "matterport": 1,
+            "engdes2": 2
+          },
+          "by_color": {
+            "red_balloon": 3
+          },
+          "groups": {
+            "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a": 1,
+            "frame_0260_jpg.jpg": 1,
+            "frame_0476_jpg.jpg": 1
+          }
+        }
+      },
+      "excluded": {
+        "no_clear_preference": 4,
+        "unmatched": 3,
+        "different_targets": 1
+      },
+      "pairs": [
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.022699147212573708,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 2,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            112,
+            85,
+            136,
+            112
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9995576739311218
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.023644945013097614,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 3,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            86,
+            87,
+            111,
+            114
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9996795654296875
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.01092921902827623,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 6,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            86,
+            88,
+            98,
+            114
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.999788224697113
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.010018450775919877,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 7,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            137,
+            86,
+            148,
+            112
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9999994039535522
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.009107682523563525,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 8,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            112,
+            86,
+            122,
+            112
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9998233914375305
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.003152659335079682,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 9,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            130,
+            117,
+            145,
+            123
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9988903403282166
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.0029424820460743698,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 10,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            91,
+            94,
+            98,
+            106
+          ],
+          "parent_score": 0.9977930784225464,
+          "child_score": 0.9999948740005493
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.21388496520371555,
+          "child_iou": 0.5677930258717662,
+          "target_id": 76,
+          "source": "balloon/train/5560377994_cb597a4af5_b.jpg",
+          "source_group": "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 6,
+          "parent_box": [
+            177,
+            9,
+            270,
+            78
+          ],
+          "child_box": [
+            214,
+            20,
+            250,
+            42
+          ],
+          "parent_score": 0.9837349653244019,
+          "child_score": 0.9962228536605835
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.7499712510044069,
+          "child_iou": 0.08029396325459316,
+          "target_id": 78,
+          "source": "balloon/train/5560377994_cb597a4af5_b.jpg",
+          "source_group": "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 5,
+          "parent_box": [
+            147,
+            9,
+            182,
+            50
+          ],
+          "child_box": [
+            156,
+            11,
+            167,
+            19
+          ],
+          "parent_score": 0.9999997615814209,
+          "child_score": 1.0
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.7499712510044069,
+          "child_iou": 0.025548079217370553,
+          "target_id": 78,
+          "source": "balloon/train/5560377994_cb597a4af5_b.jpg",
+          "source_group": "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 7,
+          "parent_box": [
+            147,
+            9,
+            182,
+            50
+          ],
+          "child_box": [
+            159,
+            12,
+            166,
+            16
+          ],
+          "parent_score": 0.9999997615814209,
+          "child_score": 0.999992847442627
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.2193815650444403,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 3,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            89,
+            70,
+            127,
+            161
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.9956985712051392
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.07771614146311145,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 5,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            91,
+            118,
+            126,
+            153
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.9837689995765686
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.07980971915150548,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 6,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            92,
+            72,
+            126,
+            109
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.9771931171417236
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.027533718689788052,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 7,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            136,
+            66,
+            150,
+            97
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.9487995505332947
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.0030452039103913055,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 10,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            152,
+            101,
+            158,
+            109
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.8445753455162048
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.0034258543991902185,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 11,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            142,
+            101,
+            148,
+            110
+          ],
+          "parent_score": 0.9965204000473022,
+          "child_score": 0.9724312424659729
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.3217232936340004,
+          "child_iou": 0.8139199085123437,
+          "target_id": 3,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "source_group": "frame_0260_jpg.jpg",
+          "domain": "engdes2",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 3,
+          "parent_box": [
+            73,
+            1,
+            212,
+            239
+          ],
+          "child_box": [
+            75,
+            40,
+            168,
+            163
+          ],
+          "parent_score": 0.8947516679763794,
+          "child_score": 0.9997802376747131
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.3286198099929627,
+          "child_iou": 0.8939888348260647,
+          "target_id": 2,
+          "source": "train/frame_0476_jpg.rf.3f2935b6c1b8fb91a7b4319f3792fd71.jpg",
+          "source_group": "frame_0476_jpg.jpg",
+          "domain": "engdes2",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 2,
+          "parent_box": [
+            1,
+            92,
+            146,
+            239
+          ],
+          "child_box": [
+            60,
+            123,
+            134,
+            218
+          ],
+          "parent_score": 0.973535418510437,
+          "child_score": 0.9999969005584717
+        }
+      ],
+      "source_coverage_floor_met": false,
+      "minimum_sources_per_choice": 10,
+      "pair_labels_reviewed": false,
+      "training_approved": false
+    },
+    "seed43": {
+      "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+      "metadata_sha256": "523ca9085d9340c84aa060bf2eba942527ce891b7bb3f236a4bde692d58f37b6",
+      "coverage": {
+        "parent": {
+          "pairs": 13,
+          "source_groups": 4,
+          "largest_source_fraction": 0.46153846153846156,
+          "by_domain": {
+            "matterport": 13
+          },
+          "by_color": {
+            "red_balloon": 8,
+            "blue_balloon": 5
+          },
+          "groups": {
+            "0a89cdc37ca7e67acba0897253a6c474819b0e884657f08c59df2f599fbd9aca": 2,
+            "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703": 6,
+            "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae": 4,
+            "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a": 1
+          }
+        },
+        "child": {
+          "pairs": 4,
+          "source_groups": 4,
+          "largest_source_fraction": 0.25,
+          "by_domain": {
+            "matterport": 2,
+            "engdes2": 2
+          },
+          "by_color": {
+            "red_balloon": 4
+          },
+          "groups": {
+            "a6d3dea87ba29956cb89736c0c71fedb5dde10d3ae725455e81837ac6262f98d": 1,
+            "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a": 1,
+            "frame_0260_jpg.jpg": 1,
+            "frame_0476_jpg.jpg": 1
+          }
+        }
+      },
+      "excluded": {
+        "no_clear_preference": 3,
+        "unmatched": 5,
+        "different_targets": 2
+      },
+      "pairs": [
+        {
+          "choice": "parent",
+          "parent_iou": 0.9901288466264982,
+          "child_iou": 0.0033964856821450434,
+          "target_id": 20,
+          "source": "balloon/train/17156759330_5af4f5a5b8_k.jpg",
+          "source_group": "0a89cdc37ca7e67acba0897253a6c474819b0e884657f08c59df2f599fbd9aca",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 1,
+          "parent_box": [
+            12,
+            17,
+            147,
+            170
+          ],
+          "child_box": [
+            96,
+            136,
+            106,
+            143
+          ],
+          "parent_score": 0.9999221563339233,
+          "child_score": 0.8637341856956482
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.9901288466264982,
+          "child_iou": 0.0023775399775015304,
+          "target_id": 20,
+          "source": "balloon/train/17156759330_5af4f5a5b8_k.jpg",
+          "source_group": "0a89cdc37ca7e67acba0897253a6c474819b0e884657f08c59df2f599fbd9aca",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 2,
+          "parent_box": [
+            12,
+            17,
+            147,
+            170
+          ],
+          "child_box": [
+            104,
+            144,
+            111,
+            151
+          ],
+          "parent_score": 0.9999221563339233,
+          "child_score": 0.9878278970718384
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.4237119811236284,
+          "child_iou": 0.6813275613275614,
+          "target_id": 152,
+          "source": "balloon/train/2354829160_3f65a6bf6f_b.jpg",
+          "source_group": "a6d3dea87ba29956cb89736c0c71fedb5dde10d3ae725455e81837ac6262f98d",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 3,
+          "child_index": 1,
+          "parent_box": [
+            264,
+            67,
+            319,
+            174
+          ],
+          "child_box": [
+            285,
+            69,
+            319,
+            121
+          ],
+          "parent_score": 0.9423612952232361,
+          "child_score": 0.9998001456260681
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.023644945013097614,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 3,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            86,
+            87,
+            111,
+            114
+          ],
+          "parent_score": 0.9999992847442627,
+          "child_score": 0.8977846503257751
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.01092921902827623,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 6,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            86,
+            88,
+            98,
+            114
+          ],
+          "parent_score": 0.9999992847442627,
+          "child_score": 0.9872283935546875
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.010018450775919877,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 7,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            137,
+            86,
+            148,
+            112
+          ],
+          "parent_score": 0.9999992847442627,
+          "child_score": 0.9999135732650757
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8798021317762366,
+          "child_iou": 0.0029424820460743698,
+          "target_id": 122,
+          "source": "balloon/train/4864857993_edb62f16ef_b.jpg",
+          "source_group": "e443755bab7f9ba88a39050753b8cbaca92a385a86cf0094b8076033b3a3eeae",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 10,
+          "parent_box": [
+            70,
+            34,
+            208,
+            216
+          ],
+          "child_box": [
+            91,
+            94,
+            98,
+            106
+          ],
+          "parent_score": 0.9999992847442627,
+          "child_score": 0.9999996423721313
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.21388496520371555,
+          "child_iou": 0.5677930258717662,
+          "target_id": 76,
+          "source": "balloon/train/5560377994_cb597a4af5_b.jpg",
+          "source_group": "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 6,
+          "parent_box": [
+            177,
+            9,
+            270,
+            78
+          ],
+          "child_box": [
+            214,
+            20,
+            250,
+            42
+          ],
+          "parent_score": 0.9981555342674255,
+          "child_score": 0.9999755620956421
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.7499712510044069,
+          "child_iou": 0.08029396325459316,
+          "target_id": 78,
+          "source": "balloon/train/5560377994_cb597a4af5_b.jpg",
+          "source_group": "f4a80860806c061d95aad8f82886aefcfdfdb861213fd0fe383bbdb29101bf0a",
+          "domain": "matterport",
+          "label": "blue_balloon",
+          "parent_index": 1,
+          "child_index": 5,
+          "parent_box": [
+            147,
+            9,
+            182,
+            50
+          ],
+          "child_box": [
+            156,
+            11,
+            167,
+            19
+          ],
+          "parent_score": 0.9999974966049194,
+          "child_score": 0.9994027614593506
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.2193815650444403,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 3,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            89,
+            70,
+            127,
+            161
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9998093247413635
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.07771614146311145,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 5,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            91,
+            118,
+            126,
+            153
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9946784973144531
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.07980971915150548,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 6,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            92,
+            72,
+            126,
+            109
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9992374181747437
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.048152286833062524,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 8,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            135,
+            65,
+            158,
+            98
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9897268414497375
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.0030452039103913055,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 10,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            152,
+            101,
+            158,
+            109
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9799096584320068
+        },
+        {
+          "choice": "parent",
+          "parent_iou": 0.8429505074451933,
+          "child_iou": 0.0034258543991902185,
+          "target_id": 66,
+          "source": "balloon/train/7488015492_0583857ca0_k.jpg",
+          "source_group": "4971ee36e9f58c11c662be2666903fe7ec0f3d94e4ef7f5d71b1baba098f0703",
+          "domain": "matterport",
+          "label": "red_balloon",
+          "parent_index": 1,
+          "child_index": 11,
+          "parent_box": [
+            85,
+            61,
+            188,
+            190
+          ],
+          "child_box": [
+            142,
+            101,
+            148,
+            110
+          ],
+          "parent_score": 0.9998526573181152,
+          "child_score": 0.9853681921958923
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.3217232936340004,
+          "child_iou": 0.8139199085123437,
+          "target_id": 3,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "source_group": "frame_0260_jpg.jpg",
+          "domain": "engdes2",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 3,
+          "parent_box": [
+            73,
+            1,
+            212,
+            239
+          ],
+          "child_box": [
+            75,
+            40,
+            168,
+            163
+          ],
+          "parent_score": 0.988287627696991,
+          "child_score": 0.9999972581863403
+        },
+        {
+          "choice": "child",
+          "parent_iou": 0.3286198099929627,
+          "child_iou": 0.8939888348260647,
+          "target_id": 2,
+          "source": "train/frame_0476_jpg.rf.3f2935b6c1b8fb91a7b4319f3792fd71.jpg",
+          "source_group": "frame_0476_jpg.jpg",
+          "domain": "engdes2",
+          "label": "red_balloon",
+          "parent_index": 0,
+          "child_index": 2,
+          "parent_box": [
+            1,
+            92,
+            146,
+            239
+          ],
+          "child_box": [
+            60,
+            123,
+            134,
+            218
+          ],
+          "parent_score": 0.9959145188331604,
+          "child_score": 0.9999942779541016
+        }
+      ],
+      "source_coverage_floor_met": false,
+      "minimum_sources_per_choice": 10,
+      "pair_labels_reviewed": false,
+      "training_approved": false
+    }
+  },
+  "frames": {
+    "matterport": 23,
+    "engdes2": 38
+  },
+  "manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+  "archive_sha256": "053797b8a0f3c210b80d1494af99e2e65c7830c5dccca581285e61048cb0bf1c",
+  "quality_config_sha256": "cc9f64fc2f3f70cca4151fddc489743bb4276ca4e7513197b62d1d4a82877fe6",
+  "quality_reviews": [
+    {
+      "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+      "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+    },
+    {
+      "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+      "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+    }
+  ],
+  "script_sha256": "3539af48fb0e255ed23e62465a39ab2f6c4ea82a83ff4b3cd5707c528007a25a",
+  "helper_sha256": {
+    "scripts/train_balloon_quality.py": "909f0f6cc7766f344a261f484e5444aa3406acf322b880773a5b74c944cb92c0",
+    "scripts/research_balloon_search.py": "b4f42466ff76329c55c70f8ead29c171aa37af199dcb85514993d41755bd3e5c",
+    "scripts/compare_balloon_containment.py": "ca5eefe73d30ab4e7730b5aaa9780a38bccd6df4eb69b81d79e40d0cde111b10",
+    "src/dtr/vision.py": "b062898f9556b4ab6e064243be711093aca14342f7e4a5b05f4a9701eb0227f3",
+    "src/dtr/runtime.py": "f0e20be95dd6fbc4d55446cd6fc8202b8554c8fab4ff961d77d9c0713fa96136"
+  },
+  "scope": "Training-only supervision coverage after frozen classifier and ordinary NMS; not accuracy",
+  "rules": "Same-class accepted nested pair, same known target, IoU straddles 0.5 with margin >=0.1",
+  "caveat": "Incomplete labels; source groups are not independently verified recording sessions",
+  "training_approved": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_timing_measured": false
+}
