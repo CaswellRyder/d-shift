@@ -1,0 +1,25 @@
+{
+  "queue": "data/balloon-containment-mining-20261008/review.json",
+  "queue_sha256": "5b079c0cfd2a914bfd9be451a915a71e25533a3e50a6236c31f6ce4e3dbb8f61",
+  "admit": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47],
+  "exclude": [0, 42],
+  "exclusion_reasons": {
+    "0": "Proposed keep-both example has an oversized parent spanning two red balloons; not two clean instance boxes. Reject ambiguous pair supervision.",
+    "42": "Proposed parent preference groups two distinct red balloons while the child covers one. Reject the automatic same-target preference."
+  },
+  "label_review_approved": true,
+  "training_approved": false,
+  "deployment_approved": false,
+  "reviewer": "AI visual review; not independent human certification",
+  "review_evidence": {
+    "contact_sheets": ["pairs-000.jpg", "pairs-006.jpg", "pairs-012.jpg", "pairs-018.jpg", "pairs-024.jpg", "pairs-030.jpg", "pairs-036.jpg", "pairs-042.jpg"],
+    "native_source_checks": [0, 38, 42]
+  },
+  "notes": [
+    "Admitted labels describe pairwise visible-box preference only, not complete-frame annotation or class-negative admission.",
+    "29 blue parent, 14 red child and 3 red parent examples pass visual review. No blue child or clean keep-both examples were admitted.",
+    "Do not train a selector from this color-confounded collection alone. Overall training remains unapproved pending balanced coverage and source-group partitioning.",
+    "Several source frames show the same environments, augmentations and partly clipped balloons. Source-group count is not independent recording-session count.",
+    "The entire IMG family and held-out split source groups remain excluded. No held-out pixels were opened by this acquisition."
+  ]
+}

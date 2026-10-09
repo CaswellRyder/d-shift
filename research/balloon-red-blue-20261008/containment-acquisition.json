@@ -1,0 +1,3056 @@
+{
+  "queue_sha256": "5b079c0cfd2a914bfd9be451a915a71e25533a3e50a6236c31f6ce4e3dbb8f61",
+  "review_sha256": "40fb2bff6d82327deb2589b410a5b938a0d8e7b7b5b3c540e3c7a4dbd3dfeebc",
+  "acquisition": {
+    "eligible_sources": 788,
+    "considered_sources": 788,
+    "scanned_sources": 711,
+    "exclusions": {
+      "no_annotations": 3,
+      "near_prior_training": 74
+    },
+    "all_candidate_pairs": 55,
+    "all_pair_counts": {
+      "red_balloon:child": 17,
+      "blue_balloon:parent": 33,
+      "red_balloon:parent": 4,
+      "red_balloon:keep_both": 1
+    },
+    "selected_pair_counts": {
+      "red_balloon:keep_both": 1,
+      "blue_balloon:parent": 29,
+      "red_balloon:child": 14,
+      "red_balloon:parent": 4
+    },
+    "archive_sha256": "da21324671a143c3783685443e913a6a611c5b3aaa5249231b34567bbdf84c5e",
+    "base_manifest_sha256": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+    "quality_config_sha256": "cc9f64fc2f3f70cca4151fddc489743bb4276ca4e7513197b62d1d4a82877fe6",
+    "prior_reviews": [
+      {
+        "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+        "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+      },
+      {
+        "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+        "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+      }
+    ],
+    "models": {
+      "seed42": {
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "metadata_sha256": "f7616dd781c055c25acd3d8dbaf0363b1dfe597d8c631e0a548816c4cf96c032"
+      },
+      "seed43": {
+        "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+        "metadata_sha256": "523ca9085d9340c84aa060bf2eba942527ce891b7bb3f236a4bde692d58f37b6"
+      }
+    },
+    "script_sha256": "ae8131c127e9333b9d8007635d39011a50c84904352268bfac7233da86347888",
+    "review_required": true,
+    "training_approved": false,
+    "test_evaluated": false,
+    "deployment_approved": false,
+    "caveat": "TRAIN quarantine. Prior-training perceptual dedup and reserved exact hashes only; no held-out pixels read. Not independent sessions."
+  },
+  "admitted_counts": {
+    "blue_balloon:parent": 29,
+    "red_balloon:child": 14,
+    "red_balloon:parent": 3
+  },
+  "admitted_source_groups": 46,
+  "admitted_pairs": [
+    {
+      "choice": "parent",
+      "parent_iou": 0.8105021879558242,
+      "child_iou": 0.013105137525937251,
+      "target_id": 16175,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        1,
+        42,
+        109,
+        120
+      ],
+      "child_box": [
+        84,
+        57,
+        109,
+        67
+      ],
+      "parent_score": 0.9999434947967529,
+      "child_score": 0.9999949932098389,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999434947967529,
+          "child_score": 0.9999949932098389
+        },
+        "seed43": {
+          "parent_score": 0.9995169639587402,
+          "child_score": 0.9999924898147583
+        }
+      },
+      "source": "train/frame_000060_jpg.rf.08c2cbd2ac739038b099e24e4eb329b7.jpg",
+      "source_group": "frame_000060_jpg.jpg",
+      "source_sha256": "4b82dbfa2d8398ee2e425351bc64bd58a5ad4dce284908c949afa399ae82a505",
+      "frame_path": "frames/0011.png",
+      "frame_sha256": "d6817b378e1410b4ff42f8d9252c69e728a5bbaf92aaef8bfa8df71e6818ee58",
+      "provisional_truth": [
+        {
+          "id": 16175,
+          "label": "blue_balloon",
+          "box": [
+            0.0,
+            37.125,
+            94.5,
+            120.375
+          ]
+        },
+        {
+          "id": 16176,
+          "label": "red_balloon",
+          "box": [
+            132.75,
+            110.0625,
+            207.75,
+            149.0625
+          ]
+        },
+        {
+          "id": 16177,
+          "label": "red_balloon",
+          "box": [
+            204.5,
+            94.21875,
+            311.5,
+            152.15625
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 1
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9538569676666766,
+      "child_iou": 0.06257245685884572,
+      "target_id": 3289,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        2,
+        120,
+        225,
+        211
+      ],
+      "child_box": [
+        1,
+        152,
+        38,
+        190
+      ],
+      "parent_score": 0.9998841285705566,
+      "child_score": 0.9922627210617065,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9998841285705566,
+          "child_score": 0.9922627210617065
+        },
+        "seed43": {
+          "parent_score": 0.9999744892120361,
+          "child_score": 0.9976332187652588
+        }
+      },
+      "source": "train/frame_000121_jpg.rf.10856fec98bff7290ac1f0904b3e520f.jpg",
+      "source_group": "frame_000121_jpg.jpg",
+      "source_sha256": "6d5c55f2a88b6e9f002bb7a2dd4e9166dc61a6579f0baf2eb1ce258bf003287a",
+      "frame_path": "frames/0026.png",
+      "frame_sha256": "017a04fd34454f69fbbeeff5c4fd4fe6499c1fdc8606ed0f07528b873002670b",
+      "provisional_truth": [
+        {
+          "id": 3289,
+          "label": "blue_balloon",
+          "box": [
+            4.0,
+            118.3125,
+            227.5,
+            210.1875
+          ]
+        },
+        {
+          "id": 3290,
+          "label": "red_balloon",
+          "box": [
+            66.5,
+            6.0,
+            320.0,
+            109.5
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 2
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8197290904079029,
+      "child_iou": 0.00396254159894745,
+      "target_id": 10697,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        8,
+        114,
+        138,
+        162
+      ],
+      "child_box": [
+        43,
+        117,
+        50,
+        121
+      ],
+      "parent_score": 0.9998624324798584,
+      "child_score": 0.9999996423721313,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9998624324798584,
+          "child_score": 0.9999996423721313
+        },
+        "seed43": {
+          "parent_score": 0.9999983310699463,
+          "child_score": 0.999976634979248
+        }
+      },
+      "source": "train/frame_000303_jpg.rf.12d0fe6f6d5ba13992978d954de1c4b5.jpg",
+      "source_group": "frame_000303_jpg.jpg",
+      "source_sha256": "3f739b5e2c6e8d2ca8efd5cfec56894cf7fcc59536eb815e491299139b68c99e",
+      "frame_path": "frames/0105.png",
+      "frame_sha256": "d4566fece6b720537dd5e2709d0abaa6e5574a8fcb50c77f4ac9567ff2b8e5bc",
+      "provisional_truth": [
+        {
+          "id": 10697,
+          "label": "blue_balloon",
+          "box": [
+            13.125,
+            110.15625,
+            140.875,
+            165.46875
+          ]
+        },
+        {
+          "id": 10698,
+          "label": "red_balloon",
+          "box": [
+            283.5,
+            93.375,
+            320.0,
+            136.5
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 3
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9243433765671619,
+      "child_iou": 0.0035952747817154596,
+      "target_id": 16433,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        49,
+        117,
+        116
+      ],
+      "child_box": [
+        50,
+        81,
+        57,
+        85
+      ],
+      "parent_score": 0.9999821186065674,
+      "child_score": 0.9948272109031677,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999821186065674,
+          "child_score": 0.9948272109031677
+        }
+      },
+      "source": "train/frame_000312_jpg.rf.7d0ea1e773b45fdbfa1b83bf0079cefd.jpg",
+      "source_group": "frame_000312_jpg.jpg",
+      "source_sha256": "ee8623789a5f020edcca190a47da33b822efd0ea132979958cf84e43659b4108",
+      "frame_path": "frames/0108.png",
+      "frame_sha256": "d637f1bb50214e6a958e16cf7bedf777bf4bc8789af32a0b26dbf7d01e278aa5",
+      "provisional_truth": [
+        {
+          "id": 16432,
+          "label": "red_balloon",
+          "box": [
+            187.875,
+            97.59375,
+            315.125,
+            148.40625
+          ]
+        },
+        {
+          "id": 16433,
+          "label": "blue_balloon",
+          "box": [
+            3.0,
+            48.5625,
+            121.0,
+            114.5625
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 4
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8350569528644249,
+      "child_iou": 0.003520103088733313,
+      "target_id": 17717,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        53,
+        105,
+        181,
+        171
+      ],
+      "child_box": [
+        120,
+        133,
+        127,
+        137
+      ],
+      "parent_score": 0.9998672008514404,
+      "child_score": 0.989632248878479,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9998672008514404,
+          "child_score": 0.989632248878479
+        }
+      },
+      "source": "train/frame_000324_jpg.rf.1b3688036c02f0629cb27a7337184c0b.jpg",
+      "source_group": "frame_000324_jpg.jpg",
+      "source_sha256": "b6df2ba2209c4a82ecbec6bedfda225dd6a084b5f2d429801ddd45a5882c0a67",
+      "frame_path": "frames/0114.png",
+      "frame_sha256": "cb8a89408ab7816fdaf5ca890e8a647a56c1e8bcd6c9c9fc5b0ad1f7c70a6953",
+      "provisional_truth": [
+        {
+          "id": 17716,
+          "label": "red_balloon",
+          "box": [
+            171.75,
+            57.28125,
+            290.75,
+            107.34375
+          ]
+        },
+        {
+          "id": 17717,
+          "label": "blue_balloon",
+          "box": [
+            49.875,
+            112.6875,
+            184.125,
+            171.9375
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 5
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9133721377935814,
+      "child_iou": 0.0034781663541751584,
+      "target_id": 5347,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        41,
+        107,
+        171,
+        172
+      ],
+      "child_box": [
+        109,
+        134,
+        116,
+        138
+      ],
+      "parent_score": 0.9999091625213623,
+      "child_score": 0.993237316608429,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999091625213623,
+          "child_score": 0.993237316608429
+        }
+      },
+      "source": "train/frame_000326_jpg.rf.01442c2284aad8242b8073b8b9d72819.jpg",
+      "source_group": "frame_000326_jpg.jpg",
+      "source_sha256": "9195aa439d03c31d5913a7a635089c80445703b765d8bb323055968e92370fbe",
+      "frame_path": "frames/0115.png",
+      "frame_sha256": "899274ab90a166b92e65bfb73c024d566b5379e46a43753b9ef38fa51e35c452",
+      "provisional_truth": [
+        {
+          "id": 5346,
+          "label": "red_balloon",
+          "box": [
+            164.25,
+            58.03125,
+            272.25,
+            106.96875
+          ]
+        },
+        {
+          "id": 5347,
+          "label": "blue_balloon",
+          "box": [
+            38.25,
+            110.34375,
+            168.75,
+            172.03125
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 6
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8483459133173169,
+      "child_iou": 0.007797080967812675,
+      "target_id": 6435,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        14,
+        88,
+        115,
+        140
+      ],
+      "child_box": [
+        58,
+        103,
+        67,
+        108
+      ],
+      "parent_score": 0.9999418258666992,
+      "child_score": 0.999408483505249,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999418258666992,
+          "child_score": 0.999408483505249
+        }
+      },
+      "source": "train/frame_000594_jpg.rf.21c6a6cf06667fc4a261b66e51d84a6e.jpg",
+      "source_group": "frame_000594_jpg.jpg",
+      "source_sha256": "b15d8d55d850fc244a23715fe88e36faf4fa77bfbd44e3476dd830971a07d58e",
+      "frame_path": "frames/0275.png",
+      "frame_sha256": "2da2262f80e9e39cae300f567ed7578600daa15468f70744cbc452929cfab571",
+      "provisional_truth": [
+        {
+          "id": 6434,
+          "label": "red_balloon",
+          "box": [
+            161.25,
+            86.53125,
+            236.75,
+            120.84375
+          ]
+        },
+        {
+          "id": 6435,
+          "label": "blue_balloon",
+          "box": [
+            8.875,
+            89.90625,
+            121.625,
+            141.09375
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 7
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8916600654993438,
+      "child_iou": 0.009685413237992546,
+      "target_id": 17049,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        43,
+        70,
+        140,
+        122
+      ],
+      "child_box": [
+        87,
+        86,
+        95,
+        92
+      ],
+      "parent_score": 0.9996737241744995,
+      "child_score": 0.8803580403327942,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9996737241744995,
+          "child_score": 0.8803580403327942
+        }
+      },
+      "source": "train/frame_000608_jpg.rf.40f00fb8092e2e9efde5e0e72a7d4667.jpg",
+      "source_group": "frame_000608_jpg.jpg",
+      "source_sha256": "0d6e4e885e3f7dd70914603e163833b01fd6117f55de6d7869ea81617ef290a1",
+      "frame_path": "frames/0280.png",
+      "frame_sha256": "ad70f9041991c8fc00f1562403432cab71bc7e1e23049c82a83e38ca104d18b1",
+      "provisional_truth": [
+        {
+          "id": 17048,
+          "label": "red_balloon",
+          "box": [
+            190.125,
+            73.59375,
+            265.875,
+            110.15625
+          ]
+        },
+        {
+          "id": 17049,
+          "label": "blue_balloon",
+          "box": [
+            41.0,
+            73.40625,
+            141.5,
+            122.71875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 8
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9035360678925035,
+      "child_iou": 0.01219047619047619,
+      "target_id": 6515,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        27,
+        83,
+        127,
+        134
+      ],
+      "child_box": [
+        74,
+        98,
+        85,
+        104
+      ],
+      "parent_score": 0.9998928308486938,
+      "child_score": 0.9999929666519165,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9998928308486938,
+          "child_score": 0.9999929666519165
+        }
+      },
+      "source": "train/frame_000615_jpg.rf.7df69463b6d271f8c5390d372f048fdf.jpg",
+      "source_group": "frame_000615_jpg.jpg",
+      "source_sha256": "96d5f7209745e02f93e0d353a2be0d2f95d639deea8feffa432fad6430c27169",
+      "frame_path": "frames/0284.png",
+      "frame_sha256": "c23141bded1e3f9b21617e57b0f2ac7d5e757d3540dd3fc1c1b1a298d2638928",
+      "provisional_truth": [
+        {
+          "id": 6514,
+          "label": "red_balloon",
+          "box": [
+            168.25,
+            88.875,
+            243.75,
+            124.875
+          ]
+        },
+        {
+          "id": 6515,
+          "label": "blue_balloon",
+          "box": [
+            26.5,
+            84.09375,
+            131.5,
+            135.65625
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 9
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.897921524550838,
+      "child_iou": 0.009892657793044225,
+      "target_id": 4674,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        41,
+        113,
+        140,
+        165
+      ],
+      "child_box": [
+        89,
+        144,
+        98,
+        150
+      ],
+      "parent_score": 0.9999326467514038,
+      "child_score": 0.9999587535858154,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999326467514038,
+          "child_score": 0.9999587535858154
+        }
+      },
+      "source": "train/frame_000617_jpg.rf.0c60452c30ab5ce8638a58aeb844a117.jpg",
+      "source_group": "frame_000617_jpg.jpg",
+      "source_sha256": "7ee8f9c67d5d8c6611177455a49584ff961afa4534124a2b29d5622ea1980339",
+      "frame_path": "frames/0286.png",
+      "frame_sha256": "d0672b82c61b9ba31d51b4cfdd389e0b0fd0d5529d1ea0cab09b6e5c10982e39",
+      "provisional_truth": [
+        {
+          "id": 4673,
+          "label": "red_balloon",
+          "box": [
+            189.5,
+            124.5,
+            268.0,
+            161.625
+          ]
+        },
+        {
+          "id": 4674,
+          "label": "blue_balloon",
+          "box": [
+            40.375,
+            112.3125,
+            146.625,
+            163.6875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 10
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8363844702596135,
+      "child_iou": 0.027228603926267442,
+      "target_id": 7977,
+      "label": "blue_balloon",
+      "parent_index": 0,
+      "child_index": 1,
+      "parent_box": [
+        83,
+        144,
+        184,
+        182
+      ],
+      "child_box": [
+        168,
+        149,
+        182,
+        156
+      ],
+      "parent_score": 0.9991016387939453,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9991016387939453,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9999969005584717,
+          "child_score": 1.0
+        }
+      },
+      "source": "train/frame_000682_jpg.rf.2b97387086a62c5b311e757fcbbfe753.jpg",
+      "source_group": "frame_000682_jpg.jpg",
+      "source_sha256": "a369bf22fb085f3e9a8ca620b496e406323c1b52bf04eae4c929c17f01817bdc",
+      "frame_path": "frames/0325.png",
+      "frame_sha256": "004405e3a57f579ee658b264725981a434193e2c1571edb3fa2cc4b2a1294a6d",
+      "provisional_truth": [
+        {
+          "id": 7977,
+          "label": "blue_balloon",
+          "box": [
+            86.75,
+            146.53125,
+            182.25,
+            184.21875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 11
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9643542823860707,
+      "child_iou": 0.0005471707691115688,
+      "target_id": 13116,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        7,
+        7,
+        180,
+        170
+      ],
+      "child_box": [
+        123,
+        115,
+        127,
+        119
+      ],
+      "parent_score": 0.9999990463256836,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999990463256836,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9999995231628418,
+          "child_score": 0.957502543926239
+        }
+      },
+      "source": "train/frame_0245_jpg.rf.2cd2d32378306d5a938fbfa335b26510.jpg",
+      "source_group": "frame_0245_jpg.jpg",
+      "source_sha256": "3e5de6137774687ae920c6e6414dfcf6c833f815ca00e95ed22e32e6a04ce813",
+      "frame_path": "frames/0468.png",
+      "frame_sha256": "8ba7688e6b93774fab95c8704cb736ed5dc45e39e6329951f96cf770b508ed3f",
+      "provisional_truth": [
+        {
+          "id": 13116,
+          "label": "blue_balloon",
+          "box": [
+            6.125,
+            4.78125,
+            180.375,
+            172.59375
+          ]
+        },
+        {
+          "id": 13117,
+          "label": "red_balloon",
+          "box": [
+            252.0,
+            88.78125,
+            319.0,
+            237.46875
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 12
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9584795211545873,
+      "child_iou": 0.0005076418943371158,
+      "target_id": 19616,
+      "label": "blue_balloon",
+      "parent_index": 0,
+      "child_index": 1,
+      "parent_box": [
+        75,
+        45,
+        254,
+        214
+      ],
+      "child_box": [
+        154,
+        136,
+        158,
+        140
+      ],
+      "parent_score": 0.9999555349349976,
+      "child_score": 0.9993065595626831,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999555349349976,
+          "child_score": 0.9993065595626831
+        }
+      },
+      "source": "train/frame_0251_jpg.rf.0b42845887cc38cc5ef910f924c064d9.jpg",
+      "source_group": "frame_0251_jpg.jpg",
+      "source_sha256": "a1407bc902ebce8d8e1ca9fec40f058baf22ba82f7443a0f1c11dd93bc848727",
+      "frame_path": "frames/0472.png",
+      "frame_sha256": "7c603557f48841c3febd2562b5aa1d4253b35a8fa7d9de94e3f7cc9fc28f6769",
+      "provisional_truth": [
+        {
+          "id": 19616,
+          "label": "blue_balloon",
+          "box": [
+            73.125,
+            42.9375,
+            253.875,
+            217.3125
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 13
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9661421965676691,
+      "child_iou": 0.0007758433417124415,
+      "target_id": 13213,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        66,
+        10,
+        247,
+        182
+      ],
+      "child_box": [
+        146,
+        85,
+        151,
+        90
+      ],
+      "parent_score": 0.9999531507492065,
+      "child_score": 0.9999080896377563,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999531507492065,
+          "child_score": 0.9999080896377563
+        }
+      },
+      "source": "train/frame_0252_jpg.rf.060988b258720ae990a6320f9b5fa857.jpg",
+      "source_group": "frame_0252_jpg.jpg",
+      "source_sha256": "182b4c40e36707f68f013f61b3eb9e9f961cbabe3d01b6516acd81dd5ec7f68d",
+      "frame_path": "frames/0473.png",
+      "frame_sha256": "0426a95cc03619282027d24d224a5a2fe1778edd828db7cf25ac360f1b03cdd0",
+      "provisional_truth": [
+        {
+          "id": 13213,
+          "label": "blue_balloon",
+          "box": [
+            64.5,
+            8.625,
+            248.5,
+            183.75
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 14
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.938387250554892,
+      "child_iou": 0.0008249089506745693,
+      "target_id": 5298,
+      "label": "blue_balloon",
+      "parent_index": 0,
+      "child_index": 1,
+      "parent_box": [
+        81,
+        80,
+        262,
+        239
+      ],
+      "child_box": [
+        195,
+        199,
+        200,
+        204
+      ],
+      "parent_score": 0.9999980926513672,
+      "child_score": 0.9999988079071045,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999980926513672,
+          "child_score": 0.9999988079071045
+        }
+      },
+      "source": "train/frame_0253_jpg.rf.018c76270b81e6c61fef0f0296c79817.jpg",
+      "source_group": "frame_0253_jpg.jpg",
+      "source_sha256": "3f047f8a3a5c91c264fa11de6e0f1e81acb3892a1902ccab37038c51639da64b",
+      "frame_path": "frames/0474.png",
+      "frame_sha256": "277c59368e9886a5fcf800db5a93cc3d9a2570f4776cfdff14b24097c36658a3",
+      "provisional_truth": [
+        {
+          "id": 5298,
+          "label": "blue_balloon",
+          "box": [
+            78.0,
+            75.09375,
+            264.0,
+            238.03125
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 15
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9358283331638361,
+      "child_iou": 0.0010259567046270648,
+      "target_id": 3897,
+      "label": "blue_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        56,
+        1,
+        228,
+        109
+      ],
+      "child_box": [
+        137,
+        7,
+        141,
+        12
+      ],
+      "parent_score": 0.9999926090240479,
+      "child_score": 0.9680492877960205,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999926090240479,
+          "child_score": 0.9680492877960205
+        }
+      },
+      "source": "train/frame_0255_jpg.rf.1229c385ca8f2b5650e6c79f13fc61a0.jpg",
+      "source_group": "frame_0255_jpg.jpg",
+      "source_sha256": "c01f3759fef2c99580daffb645d7ea42d770ef19f1adbf2e5aba7e762afb8126",
+      "frame_path": "frames/0475.png",
+      "frame_sha256": "9c6a22f3217fa5839a911012fb4108324f01c74d2ad127f9e422e0b72d3a0228",
+      "provisional_truth": [
+        {
+          "id": 3896,
+          "label": "blue_balloon",
+          "box": [
+            93.0,
+            211.875,
+            181.5,
+            240.0
+          ]
+        },
+        {
+          "id": 3897,
+          "label": "blue_balloon",
+          "box": [
+            55.5,
+            0.0,
+            236.0,
+            108.0
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 16
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9663463005339435,
+      "child_iou": 0.0009763539282990084,
+      "target_id": 10812,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        54,
+        108,
+        239
+      ],
+      "child_box": [
+        40,
+        183,
+        44,
+        188
+      ],
+      "parent_score": 0.9999988079071045,
+      "child_score": 0.9999998807907104,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999988079071045,
+          "child_score": 0.9999998807907104
+        }
+      },
+      "source": "train/frame_0277_jpg.rf.0fea5336bd9b51ddc3eee49fde9cc0db.jpg",
+      "source_group": "frame_0277_jpg.jpg",
+      "source_sha256": "2d2c55acfafcd55c311ff51154f4063a75fde68756703ab3adc6657244a4e72f",
+      "frame_path": "frames/0489.png",
+      "frame_sha256": "72a499e213812155c4d3f041a40e8d000dad2ee171bfc50e958c5da964781a37",
+      "provisional_truth": [
+        {
+          "id": 10811,
+          "label": "red_balloon",
+          "box": [
+            114.5,
+            48.1875,
+            229.0,
+            210.9375
+          ]
+        },
+        {
+          "id": 10812,
+          "label": "blue_balloon",
+          "box": [
+            0.125,
+            51.5625,
+            109.375,
+            239.0625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 17
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9574829057631998,
+      "child_iou": 0.000877418470344284,
+      "target_id": 7246,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 2,
+      "parent_box": [
+        229,
+        1,
+        319,
+        195
+      ],
+      "child_box": [
+        283,
+        59,
+        287,
+        63
+      ],
+      "parent_score": 0.9999996423721313,
+      "child_score": 0.9999959468841553,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999996423721313,
+          "child_score": 0.9999959468841553
+        }
+      },
+      "source": "train/frame_0278_jpg.rf.6a4570f75fd3a1325d51b5d0a0d22785.jpg",
+      "source_group": "frame_0278_jpg.jpg",
+      "source_sha256": "e8c83becdbba795c868cbbf5e9cc403b5d8207f95a1a1673e0940dc882fbf45e",
+      "frame_path": "frames/0490.png",
+      "frame_sha256": "2079dbbd60b57053db8610bdec123b6da7f24821691ae7a06102730cafceb210",
+      "provisional_truth": [
+        {
+          "id": 7245,
+          "label": "red_balloon",
+          "box": [
+            99.125,
+            27.28125,
+            220.875,
+            199.59375
+          ]
+        },
+        {
+          "id": 7246,
+          "label": "blue_balloon",
+          "box": [
+            228.125,
+            0.375,
+            319.875,
+            199.125
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 18
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8197308181475129,
+      "child_iou": 0.00682081316881997,
+      "target_id": 22023,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        224,
+        75,
+        319,
+        239
+      ],
+      "child_box": [
+        308,
+        231,
+        319,
+        239
+      ],
+      "parent_score": 0.9999996423721313,
+      "child_score": 0.9943566918373108,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999996423721313,
+          "child_score": 0.9943566918373108
+        },
+        "seed43": {
+          "parent_score": 0.9999957084655762,
+          "child_score": 0.9864515066146851
+        }
+      },
+      "source": "train/frame_0322_jpg.rf.3f10af4d7c7f0934ec4d120d86942348.jpg",
+      "source_group": "frame_0322_jpg.jpg",
+      "source_sha256": "a53f445d635b08b97ff7d867b238f79b5c60d5e92dac573919b45f0d8e0af804",
+      "frame_path": "frames/0519.png",
+      "frame_sha256": "86388505b100ef7e9dfb4098637f0e75186014b7278f3ffa0529501f08a90a31",
+      "provisional_truth": [
+        {
+          "id": 22021,
+          "label": "red_balloon",
+          "box": [
+            34.25,
+            42.09375,
+            113.25,
+            122.15625
+          ]
+        },
+        {
+          "id": 22022,
+          "label": "red_balloon",
+          "box": [
+            145.0,
+            154.5,
+            221.0,
+            240.0
+          ]
+        },
+        {
+          "id": 22023,
+          "label": "blue_balloon",
+          "box": [
+            240.0,
+            76.59375,
+            319.0,
+            239.90625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 19
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8601804196531295,
+      "child_iou": 0.011198432219489272,
+      "target_id": 932,
+      "label": "blue_balloon",
+      "parent_index": 3,
+      "child_index": 5,
+      "parent_box": [
+        69,
+        94,
+        125,
+        153
+      ],
+      "child_box": [
+        92,
+        130,
+        99,
+        135
+      ],
+      "parent_score": 0.9999182224273682,
+      "child_score": 0.9994539618492126,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999182224273682,
+          "child_score": 0.9994539618492126
+        }
+      },
+      "source": "train/frame_0445_jpg.rf.3fa9a47c4a3f610923215bc4a5a0f9bd.jpg",
+      "source_group": "frame_0445_jpg.jpg",
+      "source_sha256": "456e2aced39309ad2580db843c7fe985ea77742e8d49b5df3088ecda25141744",
+      "frame_path": "frames/0602.png",
+      "frame_sha256": "6001185bd59f8829685d7c932d0bd33808943285d6898c9acd8a396b03b4085d",
+      "provisional_truth": [
+        {
+          "id": 932,
+          "label": "blue_balloon",
+          "box": [
+            73.125,
+            92.0625,
+            125.875,
+            151.3125
+          ]
+        },
+        {
+          "id": 933,
+          "label": "red_balloon",
+          "box": [
+            23.375,
+            83.25,
+            66.625,
+            144.375
+          ]
+        },
+        {
+          "id": 934,
+          "label": "red_balloon",
+          "box": [
+            35.875,
+            0.46875,
+            80.625,
+            28.03125
+          ]
+        },
+        {
+          "id": 935,
+          "label": "blue_balloon",
+          "box": [
+            102.375,
+            2.71875,
+            154.625,
+            73.03125
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 20
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.6533525471822411,
+      "child_iou": 0.02213077907258204,
+      "target_id": 6754,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        91,
+        159,
+        167,
+        239
+      ],
+      "child_box": [
+        115,
+        192,
+        130,
+        198
+      ],
+      "parent_score": 0.958573579788208,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.958573579788208,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9978817105293274,
+          "child_score": 0.999942421913147
+        }
+      },
+      "source": "train/frame_0464_jpg.rf.105207444cf8b44e898dc7e00cffeddb.jpg",
+      "source_group": "frame_0464_jpg.jpg",
+      "source_sha256": "7f918eea9357ecdb48b3deef19b0ee78254f2cffbd5bd4c4fdde9172b7061b2e",
+      "frame_path": "frames/0615.png",
+      "frame_sha256": "2d13d50d391c7771a221d195044515976d023f82451532244525788918daa0be",
+      "provisional_truth": [
+        {
+          "id": 6752,
+          "label": "red_balloon",
+          "box": [
+            44.125,
+            168.1875,
+            89.375,
+            234.5625
+          ]
+        },
+        {
+          "id": 6753,
+          "label": "red_balloon",
+          "box": [
+            137.875,
+            16.3125,
+            200.125,
+            100.6875
+          ]
+        },
+        {
+          "id": 6754,
+          "label": "blue_balloon",
+          "box": [
+            90.625,
+            171.46875,
+            150.375,
+            239.53125
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 21
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9525444825181641,
+      "child_iou": 0.018258587241812164,
+      "target_id": 17696,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 3,
+      "parent_box": [
+        166,
+        168,
+        228,
+        233
+      ],
+      "child_box": [
+        188,
+        191,
+        203,
+        196
+      ],
+      "parent_score": 0.9999953508377075,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999953508377075,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9999990463256836,
+          "child_score": 0.9999440908432007
+        }
+      },
+      "source": "train/frame_0467_jpg.rf.2c405a16c02ba10ad5add8bdb1f95198.jpg",
+      "source_group": "frame_0467_jpg.jpg",
+      "source_sha256": "97b6eddf9e3878131e34619e755370967802d707910e3e5dc531f64e04306228",
+      "frame_path": "frames/0618.png",
+      "frame_sha256": "e70d903ade17d10faf31df2746e36d198479b1f6a1489002db431fa2a458204d",
+      "provisional_truth": [
+        {
+          "id": 17695,
+          "label": "red_balloon",
+          "box": [
+            231.0,
+            156.65625,
+            277.5,
+            222.84375
+          ]
+        },
+        {
+          "id": 17696,
+          "label": "blue_balloon",
+          "box": [
+            165.5,
+            167.34375,
+            229.0,
+            232.03125
+          ]
+        },
+        {
+          "id": 17697,
+          "label": "red_balloon",
+          "box": [
+            108.25,
+            13.3125,
+            172.75,
+            104.0625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 22
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.7887648659544446,
+      "child_iou": 0.0013629563374807669,
+      "target_id": 12260,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        112,
+        6,
+        233,
+        129
+      ],
+      "child_box": [
+        161,
+        79,
+        165,
+        83
+      ],
+      "parent_score": 0.9999526739120483,
+      "child_score": 0.9999998807907104,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999526739120483,
+          "child_score": 0.9999998807907104
+        }
+      },
+      "source": "train/frame_0576_jpg.rf.442d75052273d890ddc38fe71518b2cb.jpg",
+      "source_group": "frame_0576_jpg.jpg",
+      "source_sha256": "984a1ed612b35283b6b9065c8ef614cce71da6318eb92135eaa6ac8e08e6c04a",
+      "frame_path": "frames/0693.png",
+      "frame_sha256": "e5b5d1e03c3acf2c01b53d7cb54290a500954300b704c346067969cf6cf86f60",
+      "provisional_truth": [
+        {
+          "id": 12260,
+          "label": "blue_balloon",
+          "box": [
+            112.125,
+            15.1875,
+            226.375,
+            117.9375
+          ]
+        },
+        {
+          "id": 12261,
+          "label": "red_balloon",
+          "box": [
+            131.75,
+            129.28125,
+            235.25,
+            239.34375
+          ]
+        },
+        {
+          "id": 12262,
+          "label": "blue_balloon",
+          "box": [
+            0.0,
+            73.40625,
+            52.0,
+            167.34375
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 23
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9282934812195153,
+      "child_iou": 0.0013905410616998279,
+      "target_id": 19147,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 4,
+      "parent_box": [
+        110,
+        35,
+        215,
+        141
+      ],
+      "child_box": [
+        130,
+        70,
+        134,
+        74
+      ],
+      "parent_score": 0.9999988079071045,
+      "child_score": 0.9999998807907104,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999988079071045,
+          "child_score": 0.9999998807907104
+        }
+      },
+      "source": "train/frame_0580_jpg.rf.3510a64c7d09dfdd9e88ec505560d899.jpg",
+      "source_group": "frame_0580_jpg.jpg",
+      "source_sha256": "f55f2eaa4d11840c4958f9853a2749708bc43899ff8caf6aa841875aa75a32e6",
+      "frame_path": "frames/0696.png",
+      "frame_sha256": "0da78d6684be4b36edb587c04f0ef82e1af6034287228f629703162ba484a5d1",
+      "provisional_truth": [
+        {
+          "id": 19147,
+          "label": "blue_balloon",
+          "box": [
+            110.25,
+            33.46875,
+            219.25,
+            139.03125
+          ]
+        },
+        {
+          "id": 19148,
+          "label": "blue_balloon",
+          "box": [
+            0.875,
+            89.90625,
+            48.625,
+            184.96875
+          ]
+        },
+        {
+          "id": 19149,
+          "label": "red_balloon",
+          "box": [
+            127.25,
+            146.71875,
+            234.75,
+            239.90625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 24
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9417781742491823,
+      "child_iou": 0.0022202398651997223,
+      "target_id": 8124,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        104,
+        47,
+        215,
+        154
+      ],
+      "child_box": [
+        164,
+        78,
+        171,
+        82
+      ],
+      "parent_score": 0.999993085861206,
+      "child_score": 0.9999995231628418,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.999993085861206,
+          "child_score": 0.9999995231628418
+        }
+      },
+      "source": "train/frame_0581_jpg.rf.0064380f7e9c011296fabe932ab5890d.jpg",
+      "source_group": "frame_0581_jpg.jpg",
+      "source_sha256": "67109e62e6fc8a0d65c1312dd3c1ed0ed832bbebd48ea2c4a7c4929e87ba076a",
+      "frame_path": "frames/0697.png",
+      "frame_sha256": "8bdea3c43d7bbbb3d260296fcbe689afc7837891423db5ea9d9740be87513695",
+      "provisional_truth": [
+        {
+          "id": 8123,
+          "label": "blue_balloon",
+          "box": [
+            271.0,
+            99.65625,
+            320.0,
+            192.84375
+          ]
+        },
+        {
+          "id": 8124,
+          "label": "blue_balloon",
+          "box": [
+            102.0,
+            43.6875,
+            216.0,
+            154.3125
+          ]
+        },
+        {
+          "id": 8125,
+          "label": "red_balloon",
+          "box": [
+            85.375,
+            158.625,
+            198.625,
+            240.0
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 25
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8875129675702544,
+      "child_iou": 0.0016984664705468665,
+      "target_id": 1597,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 4,
+      "parent_box": [
+        114,
+        69,
+        217,
+        173
+      ],
+      "child_box": [
+        192,
+        103,
+        197,
+        107
+      ],
+      "parent_score": 0.9999985694885254,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999985694885254,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9999991655349731,
+          "child_score": 0.9434771537780762
+        }
+      },
+      "source": "train/frame_0582_jpg.rf.03e7482edc32bdb375d1cb4915c743c5.jpg",
+      "source_group": "frame_0582_jpg.jpg",
+      "source_sha256": "220d1b1cd27aa58e4f358a87f1f78df1051080794cf35df8ab7376a78b45c72d",
+      "frame_path": "frames/0698.png",
+      "frame_sha256": "b04832d8830e9a7182f30b4b4132409165c8a036bc8f37cd1d529658e94ac089",
+      "provisional_truth": [
+        {
+          "id": 1597,
+          "label": "blue_balloon",
+          "box": [
+            105.375,
+            67.21875,
+            218.125,
+            171.65625
+          ]
+        },
+        {
+          "id": 1598,
+          "label": "blue_balloon",
+          "box": [
+            273.625,
+            111.65625,
+            319.875,
+            203.71875
+          ]
+        },
+        {
+          "id": 1599,
+          "label": "blue_balloon",
+          "box": [
+            28.125,
+            0.5625,
+            93.375,
+            7.3125
+          ]
+        },
+        {
+          "id": 1600,
+          "label": "red_balloon",
+          "box": [
+            94.5,
+            180.0,
+            203.5,
+            240.0
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 26
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9344160307744958,
+      "child_iou": 0.0015881878528444693,
+      "target_id": 3440,
+      "label": "blue_balloon",
+      "parent_index": 1,
+      "child_index": 5,
+      "parent_box": [
+        109,
+        84,
+        222,
+        200
+      ],
+      "child_box": [
+        196,
+        126,
+        200,
+        131
+      ],
+      "parent_score": 0.9999735355377197,
+      "child_score": 0.9999998807907104,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999735355377197,
+          "child_score": 0.9999998807907104
+        }
+      },
+      "source": "train/frame_0583_jpg.rf.40608bfa225701f4955918307d49c511.jpg",
+      "source_group": "frame_0583_jpg.jpg",
+      "source_sha256": "f896443498edf446c2722b4dfc29460d000065f410cdd850a933c801667ea66b",
+      "frame_path": "frames/0699.png",
+      "frame_sha256": "6ab61f4b63c09cd021a4652abb1cc01dfc008b6198d192a626d3b2e017b35828",
+      "provisional_truth": [
+        {
+          "id": 3440,
+          "label": "blue_balloon",
+          "box": [
+            110.75,
+            88.40625,
+            223.25,
+            200.34375
+          ]
+        },
+        {
+          "id": 3441,
+          "label": "blue_balloon",
+          "box": [
+            274.625,
+            125.34375,
+            319.875,
+            219.65625
+          ]
+        },
+        {
+          "id": 3442,
+          "label": "blue_balloon",
+          "box": [
+            3.0,
+            0.84375,
+            118.0,
+            42.28125
+          ]
+        },
+        {
+          "id": 3443,
+          "label": "red_balloon",
+          "box": [
+            102.5,
+            203.25,
+            201.0,
+            240.0
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 27
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8227046301605505,
+      "child_iou": 0.001593057753010708,
+      "target_id": 20793,
+      "label": "blue_balloon",
+      "parent_index": 2,
+      "child_index": 4,
+      "parent_box": [
+        117,
+        114,
+        226,
+        226
+      ],
+      "child_box": [
+        200,
+        157,
+        204,
+        161
+      ],
+      "parent_score": 0.999901294708252,
+      "child_score": 0.9999998807907104,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.999901294708252,
+          "child_score": 0.9999998807907104
+        }
+      },
+      "source": "train/frame_0586_jpg.rf.2d4f996863a8c400a05982381c12983d.jpg",
+      "source_group": "frame_0586_jpg.jpg",
+      "source_sha256": "a881bed433c012481be899b0e197ea87d490c26515235dc7b78acae47dd59f43",
+      "frame_path": "frames/0702.png",
+      "frame_sha256": "7d6d67d2953bbaf6f427a78e26a1858bdf3bf743fd53fd6a2d2daa09fc067737",
+      "provisional_truth": [
+        {
+          "id": 20792,
+          "label": "blue_balloon",
+          "box": [
+            7.625,
+            0.0,
+            129.375,
+            100.875
+          ]
+        },
+        {
+          "id": 20793,
+          "label": "blue_balloon",
+          "box": [
+            125.375,
+            123.28125,
+            225.125,
+            223.96875
+          ]
+        },
+        {
+          "id": 20794,
+          "label": "blue_balloon",
+          "box": [
+            282.0,
+            130.3125,
+            320.0,
+            216.9375
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 28
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.9111916847957457,
+      "child_iou": 0.0020626863266457176,
+      "target_id": 15887,
+      "label": "blue_balloon",
+      "parent_index": 2,
+      "child_index": 4,
+      "parent_box": [
+        133,
+        131,
+        226,
+        226
+      ],
+      "child_box": [
+        201,
+        162,
+        206,
+        166
+      ],
+      "parent_score": 0.9999978542327881,
+      "child_score": 1.0,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9999978542327881,
+          "child_score": 1.0
+        },
+        "seed43": {
+          "parent_score": 0.9999991655349731,
+          "child_score": 0.9956322312355042
+        }
+      },
+      "source": "train/frame_0588_jpg.rf.22c9e65849d7e68fbe808771f4b972e0.jpg",
+      "source_group": "frame_0588_jpg.jpg",
+      "source_sha256": "63f4dc3e6c928ce161862ee59dc3275c4b065b0e7fc12d46d9c1d714109592b8",
+      "frame_path": "frames/0704.png",
+      "frame_sha256": "d1794823c128ae4fd4cd6989dae3f7f6a2b8c41ab55038bac97d63197a816900",
+      "provisional_truth": [
+        {
+          "id": 15886,
+          "label": "blue_balloon",
+          "box": [
+            15.125,
+            0.375,
+            133.375,
+            122.625
+          ]
+        },
+        {
+          "id": 15887,
+          "label": "blue_balloon",
+          "box": [
+            128.0,
+            128.15625,
+            226.5,
+            226.59375
+          ]
+        },
+        {
+          "id": 15888,
+          "label": "blue_balloon",
+          "box": [
+            277.0,
+            123.65625,
+            319.5,
+            205.96875
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 29
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.25926183677419495,
+      "child_iou": 0.9229220576730547,
+      "target_id": 10414,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        70,
+        304,
+        212
+      ],
+      "child_box": [
+        148,
+        126,
+        301,
+        196
+      ],
+      "parent_score": 0.9996126294136047,
+      "child_score": 0.9999897480010986,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9996126294136047,
+          "child_score": 0.9999897480010986
+        }
+      },
+      "source": "train/frame_000011_jpg.rf.0596a19d5dc3815e9a7cd407d0c70629.jpg",
+      "source_group": "frame_000011_jpg.jpg",
+      "source_sha256": "8566c2332f6444f260afb1053a9d1ddcc57440f0e2f3c7536c62e90044c6a8cd",
+      "frame_path": "frames/0002.png",
+      "frame_sha256": "21bb159f415a6a0badf255332092eda2ad717bfa708fa888532c468332e08ce0",
+      "provisional_truth": [
+        {
+          "id": 10413,
+          "label": "red_balloon",
+          "box": [
+            0.0,
+            116.34375,
+            92.5,
+            182.15625
+          ]
+        },
+        {
+          "id": 10414,
+          "label": "red_balloon",
+          "box": [
+            150.375,
+            124.875,
+            305.125,
+            197.625
+          ]
+        },
+        {
+          "id": 10415,
+          "label": "blue_balloon",
+          "box": [
+            0.0,
+            0.0,
+            87.0,
+            61.875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 30
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.12337539828945161,
+      "child_iou": 0.9197745872624813,
+      "target_id": 12239,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        24,
+        268,
+        225
+      ],
+      "child_box": [
+        155,
+        25,
+        260,
+        83
+      ],
+      "parent_score": 0.9883805513381958,
+      "child_score": 0.9964969754219055,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9883805513381958,
+          "child_score": 0.9964969754219055
+        },
+        "seed43": {
+          "parent_score": 0.9998522996902466,
+          "child_score": 0.9999281167984009
+        }
+      },
+      "source": "train/frame_000106_jpg.rf.144c06d3fbdc18b6dc20fd916c633a86.jpg",
+      "source_group": "frame_000106_jpg.jpg",
+      "source_sha256": "8fe61784dec16307728674bf6fbd7142cd0a479b70353c7b67ff3a5e3e498a36",
+      "frame_path": "frames/0020.png",
+      "frame_sha256": "32ea9baa8e59850210d66be5d34608959fab259706caedaed5de341164e8b1df",
+      "provisional_truth": [
+        {
+          "id": 12239,
+          "label": "red_balloon",
+          "box": [
+            154.875,
+            24.75,
+            266.625,
+            84.0
+          ]
+        },
+        {
+          "id": 12240,
+          "label": "red_balloon",
+          "box": [
+            53.375,
+            118.5,
+            165.125,
+            167.25
+          ]
+        },
+        {
+          "id": 12241,
+          "label": "red_balloon",
+          "box": [
+            0.125,
+            169.78125,
+            63.875,
+            222.84375
+          ]
+        },
+        {
+          "id": 12242,
+          "label": "blue_balloon",
+          "box": [
+            224.5,
+            146.25,
+            320.0,
+            215.25
+          ]
+        },
+        {
+          "id": 12243,
+          "label": "blue_balloon",
+          "box": [
+            11.75,
+            27.84375,
+            121.75,
+            86.53125
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 31
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.23291072961703865,
+      "child_iou": 0.7769166419538882,
+      "target_id": 15667,
+      "label": "red_balloon",
+      "parent_index": 2,
+      "child_index": 0,
+      "parent_box": [
+        38,
+        55,
+        319,
+        226
+      ],
+      "child_box": [
+        39,
+        152,
+        216,
+        226
+      ],
+      "parent_score": 0.9980679154396057,
+      "child_score": 0.9997243285179138,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9980679154396057,
+          "child_score": 0.9997243285179138
+        },
+        "seed43": {
+          "parent_score": 0.9998712539672852,
+          "child_score": 0.9999911785125732
+        }
+      },
+      "source": "train/frame_000110_jpg.rf.19b26060f76f83bf0e5f21ae6a5ad2f9.jpg",
+      "source_group": "frame_000110_jpg.jpg",
+      "source_sha256": "ead72643d124af8c75dee86d030aca1eb1b23e514f0cb8c1bca24e476bdf44f4",
+      "frame_path": "frames/0021.png",
+      "frame_sha256": "9e3116b3cdee432b9516c70c42230b745039eecf0dcac5667c15c25cd1ee538c",
+      "provisional_truth": [
+        {
+          "id": 15666,
+          "label": "blue_balloon",
+          "box": [
+            216.75,
+            154.40625,
+            318.75,
+            237.09375
+          ]
+        },
+        {
+          "id": 15667,
+          "label": "red_balloon",
+          "box": [
+            32.75,
+            150.0,
+            187.25,
+            227.625
+          ]
+        },
+        {
+          "id": 15668,
+          "label": "blue_balloon",
+          "box": [
+            25.625,
+            0.0,
+            194.375,
+            69.375
+          ]
+        },
+        {
+          "id": 15669,
+          "label": "red_balloon",
+          "box": [
+            229.75,
+            53.4375,
+            318.75,
+            118.6875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 32
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8993924439581927,
+      "child_iou": 0.040754273449676776,
+      "target_id": 12280,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 4,
+      "parent_box": [
+        69,
+        1,
+        319,
+        108
+      ],
+      "child_box": [
+        264,
+        1,
+        319,
+        23
+      ],
+      "parent_score": 0.9973767995834351,
+      "child_score": 0.9922060370445251,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9973767995834351,
+          "child_score": 0.9922060370445251
+        }
+      },
+      "source": "train/frame_000123_jpg.rf.1be99651d218343d010395f5394e0839.jpg",
+      "source_group": "frame_000123_jpg.jpg",
+      "source_sha256": "ef9feda7c69c20ef7e01ba54dc060eaa42aa55356863364f9349b8858cea01f3",
+      "frame_path": "frames/0027.png",
+      "frame_sha256": "fc5bb28e66743f245192946ff3f94e5f620edbe3ea48fbf3f73b39f1864fcc8c",
+      "provisional_truth": [
+        {
+          "id": 12279,
+          "label": "blue_balloon",
+          "box": [
+            15.5,
+            131.71875,
+            260.0,
+            229.03125
+          ]
+        },
+        {
+          "id": 12280,
+          "label": "red_balloon",
+          "box": [
+            76.0,
+            4.875,
+            320.0,
+            104.25
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 33
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.359973714953271,
+      "child_iou": 0.8715474075270554,
+      "target_id": 2734,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 4,
+      "parent_box": [
+        5,
+        83,
+        205,
+        190
+      ],
+      "child_box": [
+        43,
+        103,
+        156,
+        163
+      ],
+      "parent_score": 0.9948204755783081,
+      "child_score": 0.9993900060653687,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9948204755783081,
+          "child_score": 0.9993900060653687
+        }
+      },
+      "source": "train/frame_000199_jpg.rf.40069ff2f3baf47129a45951a52d557d.jpg",
+      "source_group": "frame_000199_jpg.jpg",
+      "source_sha256": "346e7a9a7784bdea3bf42dd1f8f6d4cf929cc9f69ea6a7c518b37dc62bf57702",
+      "frame_path": "frames/0058.png",
+      "frame_sha256": "9599608eda2800db2fce18685c41250af931eb2d7de0a41994d8691da592d2ec",
+      "provisional_truth": [
+        {
+          "id": 2733,
+          "label": "red_balloon",
+          "box": [
+            111.0,
+            80.90625,
+            208.0,
+            118.59375
+          ]
+        },
+        {
+          "id": 2734,
+          "label": "red_balloon",
+          "box": [
+            37.125,
+            103.3125,
+            160.875,
+            165.5625
+          ]
+        },
+        {
+          "id": 2735,
+          "label": "blue_balloon",
+          "box": [
+            256.75,
+            98.8125,
+            319.25,
+            144.9375
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 34
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.8194744576022128,
+      "child_iou": 0.0031327234534949825,
+      "target_id": 15964,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 1,
+      "parent_box": [
+        107,
+        99,
+        241,
+        159
+      ],
+      "child_box": [
+        230,
+        150,
+        237,
+        154
+      ],
+      "parent_score": 0.9994871616363525,
+      "child_score": 0.9965088963508606,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9994871616363525,
+          "child_score": 0.9965088963508606
+        }
+      },
+      "source": "train/frame_000294_jpg.rf.03c487e9b84441b6e380cc50d8547dfd.jpg",
+      "source_group": "frame_000294_jpg.jpg",
+      "source_sha256": "7a102ace7cea87ff82dad2ab1c5fef5e35c8036932e5569d29f0b30d711948f2",
+      "frame_path": "frames/0099.png",
+      "frame_sha256": "50e21e5d0915c3e9b1a3fbadef4dcd439fbc56c6004daf79c5f06dc128dd0ad8",
+      "provisional_truth": [
+        {
+          "id": 15964,
+          "label": "red_balloon",
+          "box": [
+            103.25,
+            100.40625,
+            249.25,
+            153.46875
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 35
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.18428103413246646,
+      "child_iou": 0.8460064703163732,
+      "target_id": 8129,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        54,
+        27,
+        238,
+        134
+      ],
+      "child_box": [
+        87,
+        89,
+        170,
+        128
+      ],
+      "parent_score": 0.9001296758651733,
+      "child_score": 0.9930123686790466,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9001296758651733,
+          "child_score": 0.9930123686790466
+        }
+      },
+      "source": "train/frame_000428_jpg.rf.04f16f6ae2519645ded78c60dfc33b50.jpg",
+      "source_group": "frame_000428_jpg.jpg",
+      "source_sha256": "7c13feb2612e606bf4ff9ab401dab876491a8b7bda455445cb52f32fdd7bb9c9",
+      "frame_path": "frames/0182.png",
+      "frame_sha256": "31ee1685f8c0a6fef60ed4dfa79d248c3d372bcd177b993a14a5371a24d35e33",
+      "provisional_truth": [
+        {
+          "id": 8129,
+          "label": "red_balloon",
+          "box": [
+            82.5,
+            90.09375,
+            172.5,
+            130.40625
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 36
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.24905873493975902,
+      "child_iou": 0.6216868075270708,
+      "target_id": 13727,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 4,
+      "parent_box": [
+        103,
+        43,
+        186,
+        111
+      ],
+      "child_box": [
+        105,
+        65,
+        165,
+        92
+      ],
+      "parent_score": 0.9643370509147644,
+      "child_score": 0.9999818801879883,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9643370509147644,
+          "child_score": 0.9999818801879883
+        }
+      },
+      "source": "train/frame_000574_jpg.rf.2fc282185d768576ea13906db9c9bd71.jpg",
+      "source_group": "frame_000574_jpg.jpg",
+      "source_sha256": "88e4d4e3187d5fa14d6f9c4bb26f24804ea5c6fe4d3765834a2536b5e2101eec",
+      "frame_path": "frames/0260.png",
+      "frame_sha256": "e39f0520c37c34924f4622ea779a451a503a4dff21a5823ef26e033a72fe9fd6",
+      "provisional_truth": [
+        {
+          "id": 13726,
+          "label": "blue_balloon",
+          "box": [
+            59.375,
+            80.25,
+            129.625,
+            109.875
+          ]
+        },
+        {
+          "id": 13727,
+          "label": "red_balloon",
+          "box": [
+            112.5,
+            64.78125,
+            175.5,
+            87.09375
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 37
+    },
+    {
+      "choice": "parent",
+      "parent_iou": 0.5405646359583952,
+      "child_iou": 0.3364485981308411,
+      "target_id": 15931,
+      "label": "red_balloon",
+      "parent_index": 2,
+      "child_index": 3,
+      "parent_box": [
+        118,
+        90,
+        152,
+        102
+      ],
+      "child_box": [
+        125,
+        93,
+        143,
+        99
+      ],
+      "parent_score": 0.9948257803916931,
+      "child_score": 0.9999957084655762,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9948257803916931,
+          "child_score": 0.9999957084655762
+        }
+      },
+      "source": "train/frame_000787_jpg.rf.0e83e1c56455d0461a17cd5d4e06a464.jpg",
+      "source_group": "frame_000787_jpg.jpg",
+      "source_sha256": "188e8d12335fab339a2c14a8ae799d3b4c3f9cdbdf679a1d9c2fa651884f85e2",
+      "frame_path": "frames/0379.png",
+      "frame_sha256": "409f4308b7aea70f6dc4e710863fc7585a66b12b79ba0cb06cb93e325bc4e507",
+      "provisional_truth": [
+        {
+          "id": 15931,
+          "label": "red_balloon",
+          "box": [
+            120.625,
+            87.5625,
+            147.375,
+            99.5625
+          ]
+        },
+        {
+          "id": 15932,
+          "label": "blue_balloon",
+          "box": [
+            134.125,
+            161.25,
+            167.375,
+            174.75
+          ]
+        }
+      ],
+      "family": "indoor-frame-6-digits",
+      "id": 38
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.16616048593350383,
+      "child_iou": 0.8746685001473332,
+      "target_id": 18288,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        214,
+        1,
+        306,
+        239
+      ],
+      "child_box": [
+        232,
+        74,
+        283,
+        143
+      ],
+      "parent_score": 0.9373582005500793,
+      "child_score": 0.9991401433944702,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9373582005500793,
+          "child_score": 0.9991401433944702
+        },
+        "seed43": {
+          "parent_score": 0.9870448708534241,
+          "child_score": 0.9995262622833252
+        }
+      },
+      "source": "train/frame_0116_jpg.rf.192657ceb710c79dd82c18ee75e3a4b3.jpg",
+      "source_group": "frame_0116_jpg.jpg",
+      "source_sha256": "35af11d77c09ed596a9feaadab6dce3c583f6c8c4e611cd3a792cf3b0b6b1086",
+      "frame_path": "frames/0431.png",
+      "frame_sha256": "ca8870d9df739ae7198799927b25f03e4511d5484ada85f6e6dc2cb481742e66",
+      "provisional_truth": [
+        {
+          "id": 18288,
+          "label": "red_balloon",
+          "box": [
+            234.25,
+            69.0,
+            283.75,
+            142.5
+          ]
+        },
+        {
+          "id": 18289,
+          "label": "blue_balloon",
+          "box": [
+            82.375,
+            28.78125,
+            144.125,
+            115.21875
+          ]
+        },
+        {
+          "id": 18290,
+          "label": "blue_balloon",
+          "box": [
+            128.625,
+            172.96875,
+            179.375,
+            239.90625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 39
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.29659090909090907,
+      "child_iou": 0.7828678628010592,
+      "target_id": 22597,
+      "label": "red_balloon",
+      "parent_index": 2,
+      "child_index": 4,
+      "parent_box": [
+        124,
+        1,
+        300,
+        216
+      ],
+      "child_box": [
+        197,
+        41,
+        298,
+        171
+      ],
+      "parent_score": 0.9917654395103455,
+      "child_score": 0.9999709129333496,
+      "observed_by": {
+        "seed42": {
+          "parent_score": 0.9917654395103455,
+          "child_score": 0.9999709129333496
+        },
+        "seed43": {
+          "parent_score": 0.995612621307373,
+          "child_score": 0.9999885559082031
+        }
+      },
+      "source": "train/frame_0250_jpg.rf.1b20175e60daf4b736dfe1a21eb0a59f.jpg",
+      "source_group": "frame_0250_jpg.jpg",
+      "source_sha256": "d54c853f6c38176fe1398ab9d1f93fadb543616297a0c38351c4bb3694eac0c3",
+      "frame_path": "frames/0471.png",
+      "frame_sha256": "395f18f13204804906797da3725838d3180619763258ccc25c7cd6c467fdcaa7",
+      "provisional_truth": [
+        {
+          "id": 22596,
+          "label": "blue_balloon",
+          "box": [
+            32.25,
+            4.125,
+            189.75,
+            240.0
+          ]
+        },
+        {
+          "id": 22597,
+          "label": "red_balloon",
+          "box": [
+            195.25,
+            45.5625,
+            282.25,
+            174.5625
+          ]
+        },
+        {
+          "id": 22598,
+          "label": "blue_balloon",
+          "box": [
+            251.0,
+            0.09375,
+            320.0,
+            38.90625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 40
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.2817347150064001,
+      "child_iou": 0.8777415012071815,
+      "target_id": 10692,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        97,
+        1,
+        268,
+        234
+      ],
+      "child_box": [
+        138,
+        13,
+        244,
+        131
+      ],
+      "parent_score": 0.8689300417900085,
+      "child_score": 0.999981164932251,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.8689300417900085,
+          "child_score": 0.999981164932251
+        }
+      },
+      "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+      "source_group": "frame_0282_jpg.jpg",
+      "source_sha256": "b5d535c3b72473ea35bd33f25ffaa041b7a125b3650913522fd8624c4b98fb4f",
+      "frame_path": "frames/0492.png",
+      "frame_sha256": "7ff136b6b5f3ebdeeec64a6a9c391f8ecaa8cc934ba30871b1ade3401681fa2b",
+      "provisional_truth": [
+        {
+          "id": 10692,
+          "label": "red_balloon",
+          "box": [
+            136.875,
+            13.875,
+            233.125,
+            130.5
+          ]
+        },
+        {
+          "id": 10693,
+          "label": "blue_balloon",
+          "box": [
+            64.25,
+            20.4375,
+            128.25,
+            110.4375
+          ]
+        },
+        {
+          "id": 10694,
+          "label": "blue_balloon",
+          "box": [
+            59.375,
+            117.0,
+            98.625,
+            190.875
+          ]
+        },
+        {
+          "id": 10695,
+          "label": "blue_balloon",
+          "box": [
+            165.125,
+            147.375,
+            250.875,
+            240.0
+          ]
+        },
+        {
+          "id": 10696,
+          "label": "red_balloon",
+          "box": [
+            99.375,
+            144.1875,
+            162.625,
+            228.1875
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 41
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.22914064001537574,
+      "child_iou": 0.8807295597484277,
+      "target_id": 3280,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        104,
+        118,
+        319,
+        239
+      ],
+      "child_box": [
+        162,
+        131,
+        227,
+        219
+      ],
+      "parent_score": 0.990378737449646,
+      "child_score": 0.9999972581863403,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.990378737449646,
+          "child_score": 0.9999972581863403
+        }
+      },
+      "source": "train/frame_0469_jpg.rf.3e3a11c913878dbd382d14774e21e471.jpg",
+      "source_group": "frame_0469_jpg.jpg",
+      "source_sha256": "f7caecd1d6326c7e21aa5d464cc24b3b992561489e28e34bfd88e39fceea0865",
+      "frame_path": "frames/0619.png",
+      "frame_sha256": "c5639bed183608a16f65fa6f382922827a36b47e8a69e888c2a1b69ba93a1441",
+      "provisional_truth": [
+        {
+          "id": 3278,
+          "label": "blue_balloon",
+          "box": [
+            95.625,
+            0.09375,
+            159.875,
+            66.28125
+          ]
+        },
+        {
+          "id": 3279,
+          "label": "red_balloon",
+          "box": [
+            46.375,
+            11.8125,
+            92.625,
+            84.5625
+          ]
+        },
+        {
+          "id": 3280,
+          "label": "red_balloon",
+          "box": [
+            159.5,
+            126.84375,
+            227.0,
+            215.15625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 43
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.2392488048368954,
+      "child_iou": 0.8610254913545797,
+      "target_id": 2230,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        112,
+        211,
+        239
+      ],
+      "child_box": [
+        88,
+        127,
+        154,
+        216
+      ],
+      "parent_score": 0.8264915347099304,
+      "child_score": 0.9999905824661255,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.8264915347099304,
+          "child_score": 0.9999905824661255
+        }
+      },
+      "source": "train/frame_0470_jpg.rf.192e72ac234c570acffdaa54bdb0ebd4.jpg",
+      "source_group": "frame_0470_jpg.jpg",
+      "source_sha256": "cc1809691017a41a5f3b5a969812a133bd3657b786d86c748bcf1e4ff9681bbf",
+      "frame_path": "frames/0620.png",
+      "frame_sha256": "0c1b79207926e335a47cd6da1ca83ef18d02583281a39baaf1f6d8ac4adf05f8",
+      "provisional_truth": [
+        {
+          "id": 2228,
+          "label": "red_balloon",
+          "box": [
+            230.375,
+            18.5625,
+            277.125,
+            82.6875
+          ]
+        },
+        {
+          "id": 2229,
+          "label": "blue_balloon",
+          "box": [
+            157.625,
+            0.0,
+            223.375,
+            65.625
+          ]
+        },
+        {
+          "id": 2230,
+          "label": "red_balloon",
+          "box": [
+            87.125,
+            122.71875,
+            157.875,
+            212.90625
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 44
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.2736479025989322,
+      "child_iou": 0.9107134451012434,
+      "target_id": 3217,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        1,
+        200,
+        129
+      ],
+      "child_box": [
+        83,
+        23,
+        152,
+        115
+      ],
+      "parent_score": 0.9594389796257019,
+      "child_score": 0.9999961853027344,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.9594389796257019,
+          "child_score": 0.9999961853027344
+        }
+      },
+      "source": "train/frame_0471_jpg.rf.5ccc693b05e69363b97d857ebdeedc6b.jpg",
+      "source_group": "frame_0471_jpg.jpg",
+      "source_sha256": "6a8135cbb0a227db8e4016fbd0aea14c31b2a56586dede7876ccfc63557b9b31",
+      "frame_path": "frames/0621.png",
+      "frame_sha256": "d8737195315c63ae40a673b71ebe72d4497eed2f47aa76277bec20d39916721e",
+      "provisional_truth": [
+        {
+          "id": 3215,
+          "label": "red_balloon",
+          "box": [
+            229.25,
+            150.9375,
+            280.25,
+            221.8125
+          ]
+        },
+        {
+          "id": 3216,
+          "label": "blue_balloon",
+          "box": [
+            156.5,
+            171.28125,
+            224.5,
+            238.96875
+          ]
+        },
+        {
+          "id": 3217,
+          "label": "red_balloon",
+          "box": [
+            82.125,
+            22.40625,
+            154.875,
+            118.21875
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 45
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.26455589804564167,
+      "child_iou": 0.8550226424573799,
+      "target_id": 19622,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        1,
+        108,
+        192,
+        239
+      ],
+      "child_box": [
+        81,
+        126,
+        149,
+        217
+      ],
+      "parent_score": 0.970415472984314,
+      "child_score": 0.9999939203262329,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.970415472984314,
+          "child_score": 0.9999939203262329
+        }
+      },
+      "source": "train/frame_0472_jpg.rf.2468cca6fdfc4364ea815c272359ffb2.jpg",
+      "source_group": "frame_0472_jpg.jpg",
+      "source_sha256": "7c3e6f0c066a11521ead4a40afc8e68f3ab8480f0c008003bddcf4499b3461b3",
+      "frame_path": "frames/0622.png",
+      "frame_sha256": "b27148c96fbc3b57943539b5bd28d27a4c7b3cf83e067f3513163bfc3e77472e",
+      "provisional_truth": [
+        {
+          "id": 19621,
+          "label": "red_balloon",
+          "box": [
+            232.25,
+            27.28125,
+            279.75,
+            93.84375
+          ]
+        },
+        {
+          "id": 19622,
+          "label": "red_balloon",
+          "box": [
+            77.625,
+            126.84375,
+            153.875,
+            213.65625
+          ]
+        },
+        {
+          "id": 19623,
+          "label": "blue_balloon",
+          "box": [
+            157.5,
+            4.5,
+            223.5,
+            72.375
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 46
+    },
+    {
+      "choice": "child",
+      "parent_iou": 0.29894226866883117,
+      "child_iou": 0.8842980558179208,
+      "target_id": 4596,
+      "label": "red_balloon",
+      "parent_index": 0,
+      "child_index": 2,
+      "parent_box": [
+        143,
+        106,
+        319,
+        239
+      ],
+      "child_box": [
+        175,
+        128,
+        243,
+        219
+      ],
+      "parent_score": 0.997818112373352,
+      "child_score": 0.9999983310699463,
+      "observed_by": {
+        "seed43": {
+          "parent_score": 0.997818112373352,
+          "child_score": 0.9999983310699463
+        }
+      },
+      "source": "train/frame_0473_jpg.rf.347d5380960c9d749d4f77fe74fd0ccc.jpg",
+      "source_group": "frame_0473_jpg.jpg",
+      "source_sha256": "50c735901821e41f35ca1a1e8beb75c5a87286c0149d75a81b06ae5b7f44b43b",
+      "frame_path": "frames/0623.png",
+      "frame_sha256": "6f5b8379d80accc8c95cb9f8ed8f6cc5e35e050bfdacd6894304834451b54c35",
+      "provisional_truth": [
+        {
+          "id": 4594,
+          "label": "red_balloon",
+          "box": [
+            38.875,
+            36.0,
+            88.625,
+            104.625
+          ]
+        },
+        {
+          "id": 4595,
+          "label": "blue_balloon",
+          "box": [
+            95.625,
+            10.21875,
+            162.875,
+            79.40625
+          ]
+        },
+        {
+          "id": 4596,
+          "label": "red_balloon",
+          "box": [
+            173.375,
+            125.15625,
+            246.125,
+            221.34375
+          ]
+        }
+      ],
+      "family": "indoor-frame-4-digits",
+      "id": 47
+    }
+  ],
+  "excluded": {
+    "0": "Proposed keep-both example has an oversized parent spanning two red balloons; not two clean instance boxes. Reject ambiguous pair supervision.",
+    "42": "Proposed parent preference groups two distinct red balloons while the child covers one. Reject the automatic same-target preference."
+  },
+  "label_review_approved": true,
+  "training_approved": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "scope": "AI-reviewed pair preferences, not human-certified complete-frame truth; missing blue child and keep-both cases"
+}
