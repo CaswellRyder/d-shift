@@ -1,0 +1,3358 @@
+{
+  "results": {
+    "parent_first": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        }
+      },
+      "frames": [
+        {
+          "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                196.25,
+                83.90625,
+                280.0,
+                148.359375
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "crop_box": [
+                78,
+                159,
+                175,
+                229
+              ],
+              "area": 3246.5,
+              "color_group": 0,
+              "proposal_score": 35.58587493997738,
+              "label": "background",
+              "score": 0.9981073141098022,
+              "scores": [
+                0.9981073141098022,
+                0.0018428718904033303,
+                4.986299609299749e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.12758400043821894,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.14683230221271515
+            },
+            {
+              "box": [
+                197,
+                84,
+                279,
+                145
+              ],
+              "crop_box": [
+                188,
+                75,
+                288,
+                154
+              ],
+              "area": 3621.5,
+              "color_group": 1,
+              "proposal_score": 31.54524095395016,
+              "label": "blue_balloon",
+              "score": 0.9999969005584717,
+              "scores": [
+                3.120107521681348e-06,
+                2.764123374632277e-09,
+                0.9999969005584717
+              ],
+              "accepted": true,
+              "latency_ms": 0.13216700244811364,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.951730489730835
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                49.375,
+                106.4714494875549,
+                180.625,
+                238.24304538799416
+              ]
+            },
+            {
+              "label": "blue_balloon",
+              "box": [
+                145.625,
+                4.919472913616398,
+                304.6875,
+                183.07467057101024
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                49,
+                106,
+                198,
+                239
+              ],
+              "crop_box": [
+                32,
+                89,
+                215,
+                240
+              ],
+              "area": 14658.0,
+              "color_group": 0,
+              "proposal_score": 66.23857405382297,
+              "label": "red_balloon",
+              "score": 0.9995976090431213,
+              "scores": [
+                8.264130156021565e-05,
+                0.9995976090431213,
+                0.0003197342448402196
+              ],
+              "accepted": true,
+              "latency_ms": 0.3831249996437691,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7387146949768066
+            },
+            {
+              "box": [
+                146,
+                5,
+                304,
+                181
+              ],
+              "crop_box": [
+                125,
+                0,
+                320,
+                202
+              ],
+              "area": 21724.5,
+              "color_group": 1,
+              "proposal_score": 89.95700024846099,
+              "label": "blue_balloon",
+              "score": 0.9999909400939941,
+              "scores": [
+                9.028181921166833e-06,
+                1.8701109993912723e-08,
+                0.9999909400939941
+              ],
+              "accepted": true,
+              "latency_ms": 0.4408749991853256,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.82818204164505
+            },
+            {
+              "box": [
+                100,
+                203,
+                133,
+                224
+              ],
+              "crop_box": [
+                97,
+                200,
+                136,
+                227
+              ],
+              "area": 423.5,
+              "color_group": 0,
+              "proposal_score": 7.685410465734748,
+              "label": "red_balloon",
+              "score": 0.8869582414627075,
+              "scores": [
+                0.1123473271727562,
+                0.8869582414627075,
+                0.0006944563938304782
+              ],
+              "accepted": false,
+              "latency_ms": 0.06262500028242357,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.38219010829925537,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                107,
+                210,
+                130,
+                222
+              ],
+              "crop_box": [
+                105,
+                208,
+                132,
+                224
+              ],
+              "area": 196.5,
+              "color_group": 0,
+              "proposal_score": 7.105394944461374,
+              "label": "red_balloon",
+              "score": 0.8178044557571411,
+              "scores": [
+                0.18164551258087158,
+                0.8178044557571411,
+                0.0005500334082171321
+              ],
+              "accepted": false,
+              "latency_ms": 0.05479199899127707,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3928457498550415
+            },
+            {
+              "box": [
+                101,
+                204,
+                125,
+                222
+              ],
+              "crop_box": [
+                99,
+                202,
+                127,
+                224
+              ],
+              "area": 218.0,
+              "color_group": 0,
+              "proposal_score": 3.759877888773856,
+              "label": "red_balloon",
+              "score": 0.8823993802070618,
+              "scores": [
+                0.11693800240755081,
+                0.8823993802070618,
+                0.0006626388058066368
+              ],
+              "accepted": false,
+              "latency_ms": 0.05662500188918784,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3821680545806885
+            },
+            {
+              "box": [
+                141,
+                190,
+                151,
+                197
+              ],
+              "crop_box": [
+                140,
+                189,
+                152,
+                198
+              ],
+              "area": 45.5,
+              "color_group": 0,
+              "proposal_score": 2.849918310232769,
+              "label": "red_balloon",
+              "score": 0.8098996877670288,
+              "scores": [
+                0.18886698782444,
+                0.8098996877670288,
+                0.0012333269696682692
+              ],
+              "accepted": false,
+              "latency_ms": 0.05012499968870543,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.3041970729827881,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "crop_box": [
+                150,
+                191,
+                159,
+                202
+              ],
+              "area": 35.5,
+              "color_group": 0,
+              "proposal_score": 1.8918634361887519,
+              "label": "red_balloon",
+              "score": 0.6963818073272705,
+              "scores": [
+                0.30175521969795227,
+                0.6963818073272705,
+                0.0018630330450832844
+              ],
+              "accepted": false,
+              "latency_ms": 0.049124999350169674,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.2787380814552307
+            },
+            {
+              "box": [
+                127,
+                200,
+                150,
+                219
+              ],
+              "crop_box": [
+                125,
+                198,
+                152,
+                221
+              ],
+              "area": 154.0,
+              "color_group": 0,
+              "proposal_score": 1.541128770577,
+              "label": "red_balloon",
+              "score": 0.8651291728019714,
+              "scores": [
+                0.13414955139160156,
+                0.8651291728019714,
+                0.0007213518256321549
+              ],
+              "accepted": false,
+              "latency_ms": 0.05416700150817633,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.36706656217575073,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "crop_box": [
+                98,
+                211,
+                113,
+                229
+              ],
+              "area": 80.5,
+              "color_group": 0,
+              "proposal_score": 1.34388786072409,
+              "label": "background",
+              "score": 0.6924414038658142,
+              "scores": [
+                0.6924414038658142,
+                0.305578351020813,
+                0.0019802467431873083
+              ],
+              "accepted": false,
+              "latency_ms": 0.0502500006405171,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.26961228251457214
+            },
+            {
+              "box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "crop_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "area": 19.5,
+              "color_group": 0,
+              "proposal_score": 1.0494615841941137,
+              "label": "red_balloon",
+              "score": 0.8511078357696533,
+              "scores": [
+                0.1475890874862671,
+                0.8511078357696533,
+                0.0013030407717451453
+              ],
+              "accepted": false,
+              "latency_ms": 0.04762499884236604,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.42254841327667236,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "crop_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "area": 12.0,
+              "color_group": 0,
+              "proposal_score": 0.5542562584220408,
+              "label": "red_balloon",
+              "score": 0.9103845953941345,
+              "scores": [
+                0.08933088928461075,
+                0.9103845953941345,
+                0.00028443941846489906
+              ],
+              "accepted": false,
+              "latency_ms": 0.046875000407453626,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.479763925075531,
+              "suppression_reason": "confirmed_balloon_part"
+            },
+            {
+              "box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "crop_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "area": 6.5,
+              "color_group": 0,
+              "proposal_score": 0.4207687000962796,
+              "label": "background",
+              "score": 0.6376286149024963,
+              "scores": [
+                0.6376286149024963,
+                0.3619686961174011,
+                0.00040272626210935414
+              ],
+              "accepted": false,
+              "latency_ms": 0.04579100277624093,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.27994704246520996
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                163.5370611183355,
+                148.828125,
+                231.36540962288686,
+                189.140625
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                164,
+                150,
+                230,
+                188
+              ],
+              "crop_box": [
+                157,
+                143,
+                237,
+                195
+              ],
+              "area": 1880.5,
+              "color_group": 0,
+              "proposal_score": 24.37969567165549,
+              "label": "red_balloon",
+              "score": 0.999993085861206,
+              "scores": [
+                6.637801561737433e-06,
+                0.999993085861206,
+                1.8952466973587434e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.10670799747458659,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.763646125793457
+            },
+            {
+              "box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "crop_box": [
+                107,
+                162,
+                195,
+                221
+              ],
+              "area": 2352.5,
+              "color_group": 1,
+              "proposal_score": 28.004135878948308,
+              "label": "background",
+              "score": 0.9992214441299438,
+              "scores": [
+                0.9992214441299438,
+                3.514984925345743e-08,
+                0.0007785878260619938
+              ],
+              "accepted": false,
+              "latency_ms": 0.10416599980089813,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "crop_box": [
+                130,
+                107,
+                194,
+                150
+              ],
+              "area": 1236.0,
+              "color_group": 0,
+              "proposal_score": 20.668839933295445,
+              "label": "background",
+              "score": 0.9999562501907349,
+              "scores": [
+                0.9999562501907349,
+                1.2782140402123332e-05,
+                3.103390918113291e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.07237499812617898,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "crop_box": [
+                147,
+                188,
+                158,
+                200
+              ],
+              "area": 59.0,
+              "color_group": 1,
+              "proposal_score": 3.3009960923864967,
+              "label": "background",
+              "score": 1.0,
+              "scores": [
+                1.0,
+                6.152010012527853e-10,
+                4.2734559002610695e-08
+              ],
+              "accepted": false,
+              "latency_ms": 0.04950000220560469,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "crop_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "area": 15.0,
+              "color_group": 0,
+              "proposal_score": 0.9682458365518543,
+              "label": "background",
+              "score": 0.9999974966049194,
+              "scores": [
+                0.9999974966049194,
+                8.855569433308119e-08,
+                2.4005325940379407e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.04645899753086269,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                172.8125,
+                5.046728971962616,
+                201.25,
+                36.44859813084112
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                38,
+                160,
+                63,
+                215
+              ],
+              "crop_box": [
+                32,
+                154,
+                69,
+                221
+              ],
+              "area": 824.5,
+              "color_group": 0,
+              "proposal_score": 10.324552895371708,
+              "label": "red_balloon",
+              "score": 0.9995655417442322,
+              "scores": [
+                0.0004328097857069224,
+                0.9995655417442322,
+                1.6421292912127683e-06
+              ],
+              "accepted": true,
+              "latency_ms": 0.15629200061084703,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7724218368530273
+            },
+            {
+              "box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "crop_box": [
+                0,
+                0,
+                320,
+                140
+              ],
+              "area": 25974.5,
+              "color_group": 1,
+              "proposal_score": 113.8809370174351,
+              "label": "background",
+              "score": 0.9999874830245972,
+              "scores": [
+                0.9999874830245972,
+                3.5046742397071284e-08,
+                1.2523999430413824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.1302499986195471,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "crop_box": [
+                87,
+                144,
+                101,
+                168
+              ],
+              "area": 129.5,
+              "color_group": 0,
+              "proposal_score": 4.771055073015411,
+              "label": "background",
+              "score": 0.9999594688415527,
+              "scores": [
+                0.9999594688415527,
+                2.4018554540816694e-05,
+                1.6621816030237824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.057457997172605246,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.010756909847259521
+            },
+            {
+              "box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "crop_box": [
+                234,
+                158,
+                320,
+                223
+              ],
+              "area": 2130.0,
+              "color_group": 1,
+              "proposal_score": 16.822551080336726,
+              "label": "background",
+              "score": 0.9971529245376587,
+              "scores": [
+                0.9971529245376587,
+                5.7339238992426544e-06,
+                0.0028413082472980022
+              ],
+              "accepted": false,
+              "latency_ms": 0.10458300312166102,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.03489023447036743
+            },
+            {
+              "box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "crop_box": [
+                256,
+                48,
+                277,
+                60
+              ],
+              "area": 94.0,
+              "color_group": 0,
+              "proposal_score": 4.631714881069494,
+              "label": "background",
+              "score": 0.9999619722366333,
+              "scores": [
+                0.9999619722366333,
+                3.1803083402337506e-05,
+                6.194080015120562e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.05062499985797331,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                174,
+                5,
+                200,
+                36
+              ],
+              "crop_box": [
+                171,
+                2,
+                203,
+                39
+              ],
+              "area": 572.0,
+              "color_group": 1,
+              "proposal_score": 12.045365660064679,
+              "label": "blue_balloon",
+              "score": 0.9999986886978149,
+              "scores": [
+                1.2896564385300735e-06,
+                1.115064129919574e-08,
+                0.9999986886978149
+              ],
+              "accepted": true,
+              "latency_ms": 0.06337499871733598,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.9066227078437805
+            },
+            {
+              "box": [
+                240,
+                96,
+                252,
+                104
+              ],
+              "crop_box": [
+                239,
+                95,
+                253,
+                105
+              ],
+              "area": 69.5,
+              "color_group": 0,
+              "proposal_score": 4.3693772729804055,
+              "label": "red_balloon",
+              "score": 0.9999383687973022,
+              "scores": [
+                6.096583092585206e-05,
+                0.9999383687973022,
+                6.754315791113186e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.049457998102298006,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7732247710227966
+            },
+            {
+              "box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "crop_box": [
+                296,
+                222,
+                320,
+                240
+              ],
+              "area": 238.0,
+              "color_group": 1,
+              "proposal_score": 8.80686390387456,
+              "label": "background",
+              "score": 0.9717537760734558,
+              "scores": [
+                0.9717537760734558,
+                1.16386172521743e-05,
+                0.028234636411070824
+              ],
+              "accepted": false,
+              "latency_ms": 0.05562499791267328,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.17502464354038239
+            },
+            {
+              "box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "crop_box": [
+                259,
+                101,
+                280,
+                119
+              ],
+              "area": 143.0,
+              "color_group": 0,
+              "proposal_score": 4.3170410623487125,
+              "label": "background",
+              "score": 0.9986489415168762,
+              "scores": [
+                0.9986489415168762,
+                0.001316875801421702,
+                3.418591586523689e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.051333001465536654,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.08769175410270691
+            },
+            {
+              "box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "crop_box": [
+                216,
+                46,
+                263,
+                72
+              ],
+              "area": 441.0,
+              "color_group": 1,
+              "proposal_score": 8.287475345167653,
+              "label": "background",
+              "score": 0.9991955161094666,
+              "scores": [
+                0.9991955161094666,
+                1.0387336857320406e-07,
+                0.0008044257992878556
+              ],
+              "accepted": false,
+              "latency_ms": 0.05929100007051602,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.050421252846717834
+            },
+            {
+              "box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "crop_box": [
+                22,
+                86,
+                33,
+                103
+              ],
+              "area": 87.0,
+              "color_group": 0,
+              "proposal_score": 3.8737411277272567,
+              "label": "background",
+              "score": 0.9890931844711304,
+              "scores": [
+                0.9890931844711304,
+                0.010773140005767345,
+                0.00013365643098950386
+              ],
+              "accepted": false,
+              "latency_ms": 0.049041998863685876,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.16519758105278015
+            },
+            {
+              "box": [
+                245,
+                217,
+                264,
+                234
+              ],
+              "crop_box": [
+                243,
+                215,
+                266,
+                236
+              ],
+              "area": 230.5,
+              "color_group": 1,
+              "proposal_score": 7.731651668104918,
+              "label": "blue_balloon",
+              "score": 0.934104323387146,
+              "scores": [
+                0.06589088588953018,
+                4.7481307774432935e-06,
+                0.934104323387146
+              ],
+              "accepted": true,
+              "latency_ms": 0.053333002142608166,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.3895756006240845
+            }
+          ]
+        }
+      ]
+    },
+    "confidence_ordered": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        }
+      },
+      "frames": [
+        {
+          "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                196.25,
+                83.90625,
+                280.0,
+                148.359375
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "crop_box": [
+                78,
+                159,
+                175,
+                229
+              ],
+              "area": 3246.5,
+              "color_group": 0,
+              "proposal_score": 35.58587493997738,
+              "label": "background",
+              "score": 0.9981073141098022,
+              "scores": [
+                0.9981073141098022,
+                0.0018428718904033303,
+                4.986299609299749e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.12758400043821894,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.14683230221271515
+            },
+            {
+              "box": [
+                197,
+                84,
+                279,
+                145
+              ],
+              "crop_box": [
+                188,
+                75,
+                288,
+                154
+              ],
+              "area": 3621.5,
+              "color_group": 1,
+              "proposal_score": 31.54524095395016,
+              "label": "blue_balloon",
+              "score": 0.9999969005584717,
+              "scores": [
+                3.120107521681348e-06,
+                2.764123374632277e-09,
+                0.9999969005584717
+              ],
+              "accepted": true,
+              "latency_ms": 0.13216700244811364,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.951730489730835
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                49.375,
+                106.4714494875549,
+                180.625,
+                238.24304538799416
+              ]
+            },
+            {
+              "label": "blue_balloon",
+              "box": [
+                145.625,
+                4.919472913616398,
+                304.6875,
+                183.07467057101024
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                49,
+                106,
+                198,
+                239
+              ],
+              "crop_box": [
+                32,
+                89,
+                215,
+                240
+              ],
+              "area": 14658.0,
+              "color_group": 0,
+              "proposal_score": 66.23857405382297,
+              "label": "red_balloon",
+              "score": 0.9995976090431213,
+              "scores": [
+                8.264130156021565e-05,
+                0.9995976090431213,
+                0.0003197342448402196
+              ],
+              "accepted": true,
+              "latency_ms": 0.3831249996437691,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7387146949768066
+            },
+            {
+              "box": [
+                146,
+                5,
+                304,
+                181
+              ],
+              "crop_box": [
+                125,
+                0,
+                320,
+                202
+              ],
+              "area": 21724.5,
+              "color_group": 1,
+              "proposal_score": 89.95700024846099,
+              "label": "blue_balloon",
+              "score": 0.9999909400939941,
+              "scores": [
+                9.028181921166833e-06,
+                1.8701109993912723e-08,
+                0.9999909400939941
+              ],
+              "accepted": true,
+              "latency_ms": 0.4408749991853256,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.82818204164505
+            },
+            {
+              "box": [
+                100,
+                203,
+                133,
+                224
+              ],
+              "crop_box": [
+                97,
+                200,
+                136,
+                227
+              ],
+              "area": 423.5,
+              "color_group": 0,
+              "proposal_score": 7.685410465734748,
+              "label": "red_balloon",
+              "score": 0.8869582414627075,
+              "scores": [
+                0.1123473271727562,
+                0.8869582414627075,
+                0.0006944563938304782
+              ],
+              "accepted": false,
+              "latency_ms": 0.06262500028242357,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.38219010829925537,
+              "suppression_reason": "confidence_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                107,
+                210,
+                130,
+                222
+              ],
+              "crop_box": [
+                105,
+                208,
+                132,
+                224
+              ],
+              "area": 196.5,
+              "color_group": 0,
+              "proposal_score": 7.105394944461374,
+              "label": "red_balloon",
+              "score": 0.8178044557571411,
+              "scores": [
+                0.18164551258087158,
+                0.8178044557571411,
+                0.0005500334082171321
+              ],
+              "accepted": false,
+              "latency_ms": 0.05479199899127707,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3928457498550415
+            },
+            {
+              "box": [
+                101,
+                204,
+                125,
+                222
+              ],
+              "crop_box": [
+                99,
+                202,
+                127,
+                224
+              ],
+              "area": 218.0,
+              "color_group": 0,
+              "proposal_score": 3.759877888773856,
+              "label": "red_balloon",
+              "score": 0.8823993802070618,
+              "scores": [
+                0.11693800240755081,
+                0.8823993802070618,
+                0.0006626388058066368
+              ],
+              "accepted": false,
+              "latency_ms": 0.05662500188918784,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3821680545806885
+            },
+            {
+              "box": [
+                141,
+                190,
+                151,
+                197
+              ],
+              "crop_box": [
+                140,
+                189,
+                152,
+                198
+              ],
+              "area": 45.5,
+              "color_group": 0,
+              "proposal_score": 2.849918310232769,
+              "label": "red_balloon",
+              "score": 0.8098996877670288,
+              "scores": [
+                0.18886698782444,
+                0.8098996877670288,
+                0.0012333269696682692
+              ],
+              "accepted": false,
+              "latency_ms": 0.05012499968870543,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.3041970729827881,
+              "suppression_reason": "confidence_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "crop_box": [
+                150,
+                191,
+                159,
+                202
+              ],
+              "area": 35.5,
+              "color_group": 0,
+              "proposal_score": 1.8918634361887519,
+              "label": "red_balloon",
+              "score": 0.6963818073272705,
+              "scores": [
+                0.30175521969795227,
+                0.6963818073272705,
+                0.0018630330450832844
+              ],
+              "accepted": false,
+              "latency_ms": 0.049124999350169674,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.2787380814552307
+            },
+            {
+              "box": [
+                127,
+                200,
+                150,
+                219
+              ],
+              "crop_box": [
+                125,
+                198,
+                152,
+                221
+              ],
+              "area": 154.0,
+              "color_group": 0,
+              "proposal_score": 1.541128770577,
+              "label": "red_balloon",
+              "score": 0.8651291728019714,
+              "scores": [
+                0.13414955139160156,
+                0.8651291728019714,
+                0.0007213518256321549
+              ],
+              "accepted": false,
+              "latency_ms": 0.05416700150817633,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.36706656217575073,
+              "suppression_reason": "confidence_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "crop_box": [
+                98,
+                211,
+                113,
+                229
+              ],
+              "area": 80.5,
+              "color_group": 0,
+              "proposal_score": 1.34388786072409,
+              "label": "background",
+              "score": 0.6924414038658142,
+              "scores": [
+                0.6924414038658142,
+                0.305578351020813,
+                0.0019802467431873083
+              ],
+              "accepted": false,
+              "latency_ms": 0.0502500006405171,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.26961228251457214
+            },
+            {
+              "box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "crop_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "area": 19.5,
+              "color_group": 0,
+              "proposal_score": 1.0494615841941137,
+              "label": "red_balloon",
+              "score": 0.8511078357696533,
+              "scores": [
+                0.1475890874862671,
+                0.8511078357696533,
+                0.0013030407717451453
+              ],
+              "accepted": false,
+              "latency_ms": 0.04762499884236604,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.42254841327667236,
+              "suppression_reason": "confidence_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "crop_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "area": 12.0,
+              "color_group": 0,
+              "proposal_score": 0.5542562584220408,
+              "label": "red_balloon",
+              "score": 0.9103845953941345,
+              "scores": [
+                0.08933088928461075,
+                0.9103845953941345,
+                0.00028443941846489906
+              ],
+              "accepted": false,
+              "latency_ms": 0.046875000407453626,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.479763925075531,
+              "suppression_reason": "confidence_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "crop_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "area": 6.5,
+              "color_group": 0,
+              "proposal_score": 0.4207687000962796,
+              "label": "background",
+              "score": 0.6376286149024963,
+              "scores": [
+                0.6376286149024963,
+                0.3619686961174011,
+                0.00040272626210935414
+              ],
+              "accepted": false,
+              "latency_ms": 0.04579100277624093,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.27994704246520996
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                163.5370611183355,
+                148.828125,
+                231.36540962288686,
+                189.140625
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                164,
+                150,
+                230,
+                188
+              ],
+              "crop_box": [
+                157,
+                143,
+                237,
+                195
+              ],
+              "area": 1880.5,
+              "color_group": 0,
+              "proposal_score": 24.37969567165549,
+              "label": "red_balloon",
+              "score": 0.999993085861206,
+              "scores": [
+                6.637801561737433e-06,
+                0.999993085861206,
+                1.8952466973587434e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.10670799747458659,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.763646125793457
+            },
+            {
+              "box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "crop_box": [
+                107,
+                162,
+                195,
+                221
+              ],
+              "area": 2352.5,
+              "color_group": 1,
+              "proposal_score": 28.004135878948308,
+              "label": "background",
+              "score": 0.9992214441299438,
+              "scores": [
+                0.9992214441299438,
+                3.514984925345743e-08,
+                0.0007785878260619938
+              ],
+              "accepted": false,
+              "latency_ms": 0.10416599980089813,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "crop_box": [
+                130,
+                107,
+                194,
+                150
+              ],
+              "area": 1236.0,
+              "color_group": 0,
+              "proposal_score": 20.668839933295445,
+              "label": "background",
+              "score": 0.9999562501907349,
+              "scores": [
+                0.9999562501907349,
+                1.2782140402123332e-05,
+                3.103390918113291e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.07237499812617898,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "crop_box": [
+                147,
+                188,
+                158,
+                200
+              ],
+              "area": 59.0,
+              "color_group": 1,
+              "proposal_score": 3.3009960923864967,
+              "label": "background",
+              "score": 1.0,
+              "scores": [
+                1.0,
+                6.152010012527853e-10,
+                4.2734559002610695e-08
+              ],
+              "accepted": false,
+              "latency_ms": 0.04950000220560469,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "crop_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "area": 15.0,
+              "color_group": 0,
+              "proposal_score": 0.9682458365518543,
+              "label": "background",
+              "score": 0.9999974966049194,
+              "scores": [
+                0.9999974966049194,
+                8.855569433308119e-08,
+                2.4005325940379407e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.04645899753086269,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                172.8125,
+                5.046728971962616,
+                201.25,
+                36.44859813084112
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                38,
+                160,
+                63,
+                215
+              ],
+              "crop_box": [
+                32,
+                154,
+                69,
+                221
+              ],
+              "area": 824.5,
+              "color_group": 0,
+              "proposal_score": 10.324552895371708,
+              "label": "red_balloon",
+              "score": 0.9995655417442322,
+              "scores": [
+                0.0004328097857069224,
+                0.9995655417442322,
+                1.6421292912127683e-06
+              ],
+              "accepted": true,
+              "latency_ms": 0.15629200061084703,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7724218368530273
+            },
+            {
+              "box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "crop_box": [
+                0,
+                0,
+                320,
+                140
+              ],
+              "area": 25974.5,
+              "color_group": 1,
+              "proposal_score": 113.8809370174351,
+              "label": "background",
+              "score": 0.9999874830245972,
+              "scores": [
+                0.9999874830245972,
+                3.5046742397071284e-08,
+                1.2523999430413824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.1302499986195471,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "crop_box": [
+                87,
+                144,
+                101,
+                168
+              ],
+              "area": 129.5,
+              "color_group": 0,
+              "proposal_score": 4.771055073015411,
+              "label": "background",
+              "score": 0.9999594688415527,
+              "scores": [
+                0.9999594688415527,
+                2.4018554540816694e-05,
+                1.6621816030237824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.057457997172605246,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.010756909847259521
+            },
+            {
+              "box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "crop_box": [
+                234,
+                158,
+                320,
+                223
+              ],
+              "area": 2130.0,
+              "color_group": 1,
+              "proposal_score": 16.822551080336726,
+              "label": "background",
+              "score": 0.9971529245376587,
+              "scores": [
+                0.9971529245376587,
+                5.7339238992426544e-06,
+                0.0028413082472980022
+              ],
+              "accepted": false,
+              "latency_ms": 0.10458300312166102,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.03489023447036743
+            },
+            {
+              "box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "crop_box": [
+                256,
+                48,
+                277,
+                60
+              ],
+              "area": 94.0,
+              "color_group": 0,
+              "proposal_score": 4.631714881069494,
+              "label": "background",
+              "score": 0.9999619722366333,
+              "scores": [
+                0.9999619722366333,
+                3.1803083402337506e-05,
+                6.194080015120562e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.05062499985797331,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                174,
+                5,
+                200,
+                36
+              ],
+              "crop_box": [
+                171,
+                2,
+                203,
+                39
+              ],
+              "area": 572.0,
+              "color_group": 1,
+              "proposal_score": 12.045365660064679,
+              "label": "blue_balloon",
+              "score": 0.9999986886978149,
+              "scores": [
+                1.2896564385300735e-06,
+                1.115064129919574e-08,
+                0.9999986886978149
+              ],
+              "accepted": true,
+              "latency_ms": 0.06337499871733598,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.9066227078437805
+            },
+            {
+              "box": [
+                240,
+                96,
+                252,
+                104
+              ],
+              "crop_box": [
+                239,
+                95,
+                253,
+                105
+              ],
+              "area": 69.5,
+              "color_group": 0,
+              "proposal_score": 4.3693772729804055,
+              "label": "red_balloon",
+              "score": 0.9999383687973022,
+              "scores": [
+                6.096583092585206e-05,
+                0.9999383687973022,
+                6.754315791113186e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.049457998102298006,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7732247710227966
+            },
+            {
+              "box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "crop_box": [
+                296,
+                222,
+                320,
+                240
+              ],
+              "area": 238.0,
+              "color_group": 1,
+              "proposal_score": 8.80686390387456,
+              "label": "background",
+              "score": 0.9717537760734558,
+              "scores": [
+                0.9717537760734558,
+                1.16386172521743e-05,
+                0.028234636411070824
+              ],
+              "accepted": false,
+              "latency_ms": 0.05562499791267328,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.17502464354038239
+            },
+            {
+              "box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "crop_box": [
+                259,
+                101,
+                280,
+                119
+              ],
+              "area": 143.0,
+              "color_group": 0,
+              "proposal_score": 4.3170410623487125,
+              "label": "background",
+              "score": 0.9986489415168762,
+              "scores": [
+                0.9986489415168762,
+                0.001316875801421702,
+                3.418591586523689e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.051333001465536654,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.08769175410270691
+            },
+            {
+              "box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "crop_box": [
+                216,
+                46,
+                263,
+                72
+              ],
+              "area": 441.0,
+              "color_group": 1,
+              "proposal_score": 8.287475345167653,
+              "label": "background",
+              "score": 0.9991955161094666,
+              "scores": [
+                0.9991955161094666,
+                1.0387336857320406e-07,
+                0.0008044257992878556
+              ],
+              "accepted": false,
+              "latency_ms": 0.05929100007051602,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.050421252846717834
+            },
+            {
+              "box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "crop_box": [
+                22,
+                86,
+                33,
+                103
+              ],
+              "area": 87.0,
+              "color_group": 0,
+              "proposal_score": 3.8737411277272567,
+              "label": "background",
+              "score": 0.9890931844711304,
+              "scores": [
+                0.9890931844711304,
+                0.010773140005767345,
+                0.00013365643098950386
+              ],
+              "accepted": false,
+              "latency_ms": 0.049041998863685876,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.16519758105278015
+            },
+            {
+              "box": [
+                245,
+                217,
+                264,
+                234
+              ],
+              "crop_box": [
+                243,
+                215,
+                266,
+                236
+              ],
+              "area": 230.5,
+              "color_group": 1,
+              "proposal_score": 7.731651668104918,
+              "label": "blue_balloon",
+              "score": 0.934104323387146,
+              "scores": [
+                0.06589088588953018,
+                4.7481307774432935e-06,
+                0.934104323387146
+              ],
+              "accepted": true,
+              "latency_ms": 0.053333002142608166,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.3895756006240845
+            }
+          ]
+        }
+      ]
+    },
+    "quality_ordered": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.5,
+          "recall": 1.0
+        },
+        "blue_balloon": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.75,
+          "recall": 1.0
+        }
+      },
+      "frames": [
+        {
+          "source": "balloon/train/1297451346_5b92bdac08_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                196.25,
+                83.90625,
+                280.0,
+                148.359375
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                87,
+                168,
+                166,
+                220
+              ],
+              "crop_box": [
+                78,
+                159,
+                175,
+                229
+              ],
+              "area": 3246.5,
+              "color_group": 0,
+              "proposal_score": 35.58587493997738,
+              "label": "background",
+              "score": 0.9981073141098022,
+              "scores": [
+                0.9981073141098022,
+                0.0018428718904033303,
+                4.986299609299749e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.12758400043821894,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.14683230221271515
+            },
+            {
+              "box": [
+                197,
+                84,
+                279,
+                145
+              ],
+              "crop_box": [
+                188,
+                75,
+                288,
+                154
+              ],
+              "area": 3621.5,
+              "color_group": 1,
+              "proposal_score": 31.54524095395016,
+              "label": "blue_balloon",
+              "score": 0.9999969005584717,
+              "scores": [
+                3.120107521681348e-06,
+                2.764123374632277e-09,
+                0.9999969005584717
+              ],
+              "accepted": true,
+              "latency_ms": 0.13216700244811364,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.951730489730835
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/2685563244_b0d5f7eb67_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                49.375,
+                106.4714494875549,
+                180.625,
+                238.24304538799416
+              ]
+            },
+            {
+              "label": "blue_balloon",
+              "box": [
+                145.625,
+                4.919472913616398,
+                304.6875,
+                183.07467057101024
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                49,
+                106,
+                198,
+                239
+              ],
+              "crop_box": [
+                32,
+                89,
+                215,
+                240
+              ],
+              "area": 14658.0,
+              "color_group": 0,
+              "proposal_score": 66.23857405382297,
+              "label": "red_balloon",
+              "score": 0.9995976090431213,
+              "scores": [
+                8.264130156021565e-05,
+                0.9995976090431213,
+                0.0003197342448402196
+              ],
+              "accepted": true,
+              "latency_ms": 0.3831249996437691,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7387146949768066
+            },
+            {
+              "box": [
+                146,
+                5,
+                304,
+                181
+              ],
+              "crop_box": [
+                125,
+                0,
+                320,
+                202
+              ],
+              "area": 21724.5,
+              "color_group": 1,
+              "proposal_score": 89.95700024846099,
+              "label": "blue_balloon",
+              "score": 0.9999909400939941,
+              "scores": [
+                9.028181921166833e-06,
+                1.8701109993912723e-08,
+                0.9999909400939941
+              ],
+              "accepted": true,
+              "latency_ms": 0.4408749991853256,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.82818204164505
+            },
+            {
+              "box": [
+                100,
+                203,
+                133,
+                224
+              ],
+              "crop_box": [
+                97,
+                200,
+                136,
+                227
+              ],
+              "area": 423.5,
+              "color_group": 0,
+              "proposal_score": 7.685410465734748,
+              "label": "red_balloon",
+              "score": 0.8869582414627075,
+              "scores": [
+                0.1123473271727562,
+                0.8869582414627075,
+                0.0006944563938304782
+              ],
+              "accepted": false,
+              "latency_ms": 0.06262500028242357,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.38219010829925537,
+              "suppression_reason": "quality_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                107,
+                210,
+                130,
+                222
+              ],
+              "crop_box": [
+                105,
+                208,
+                132,
+                224
+              ],
+              "area": 196.5,
+              "color_group": 0,
+              "proposal_score": 7.105394944461374,
+              "label": "red_balloon",
+              "score": 0.8178044557571411,
+              "scores": [
+                0.18164551258087158,
+                0.8178044557571411,
+                0.0005500334082171321
+              ],
+              "accepted": false,
+              "latency_ms": 0.05479199899127707,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3928457498550415
+            },
+            {
+              "box": [
+                101,
+                204,
+                125,
+                222
+              ],
+              "crop_box": [
+                99,
+                202,
+                127,
+                224
+              ],
+              "area": 218.0,
+              "color_group": 0,
+              "proposal_score": 3.759877888773856,
+              "label": "red_balloon",
+              "score": 0.8823993802070618,
+              "scores": [
+                0.11693800240755081,
+                0.8823993802070618,
+                0.0006626388058066368
+              ],
+              "accepted": false,
+              "latency_ms": 0.05662500188918784,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "suppressed_by": 2,
+              "rejection_reason": "duplicate",
+              "box_quality": 0.3821680545806885
+            },
+            {
+              "box": [
+                141,
+                190,
+                151,
+                197
+              ],
+              "crop_box": [
+                140,
+                189,
+                152,
+                198
+              ],
+              "area": 45.5,
+              "color_group": 0,
+              "proposal_score": 2.849918310232769,
+              "label": "red_balloon",
+              "score": 0.8098996877670288,
+              "scores": [
+                0.18886698782444,
+                0.8098996877670288,
+                0.0012333269696682692
+              ],
+              "accepted": false,
+              "latency_ms": 0.05012499968870543,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.3041970729827881,
+              "suppression_reason": "quality_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                151,
+                192,
+                158,
+                201
+              ],
+              "crop_box": [
+                150,
+                191,
+                159,
+                202
+              ],
+              "area": 35.5,
+              "color_group": 0,
+              "proposal_score": 1.8918634361887519,
+              "label": "red_balloon",
+              "score": 0.6963818073272705,
+              "scores": [
+                0.30175521969795227,
+                0.6963818073272705,
+                0.0018630330450832844
+              ],
+              "accepted": false,
+              "latency_ms": 0.049124999350169674,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.2787380814552307
+            },
+            {
+              "box": [
+                127,
+                200,
+                150,
+                219
+              ],
+              "crop_box": [
+                125,
+                198,
+                152,
+                221
+              ],
+              "area": 154.0,
+              "color_group": 0,
+              "proposal_score": 1.541128770577,
+              "label": "red_balloon",
+              "score": 0.8651291728019714,
+              "scores": [
+                0.13414955139160156,
+                0.8651291728019714,
+                0.0007213518256321549
+              ],
+              "accepted": false,
+              "latency_ms": 0.05416700150817633,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.36706656217575073,
+              "suppression_reason": "quality_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                99,
+                212,
+                112,
+                228
+              ],
+              "crop_box": [
+                98,
+                211,
+                113,
+                229
+              ],
+              "area": 80.5,
+              "color_group": 0,
+              "proposal_score": 1.34388786072409,
+              "label": "background",
+              "score": 0.6924414038658142,
+              "scores": [
+                0.6924414038658142,
+                0.305578351020813,
+                0.0019802467431873083
+              ],
+              "accepted": false,
+              "latency_ms": 0.0502500006405171,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.26961228251457214
+            },
+            {
+              "box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "crop_box": [
+                156,
+                199,
+                161,
+                207
+              ],
+              "area": 19.5,
+              "color_group": 0,
+              "proposal_score": 1.0494615841941137,
+              "label": "red_balloon",
+              "score": 0.8511078357696533,
+              "scores": [
+                0.1475890874862671,
+                0.8511078357696533,
+                0.0013030407717451453
+              ],
+              "accepted": false,
+              "latency_ms": 0.04762499884236604,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.42254841327667236,
+              "suppression_reason": "quality_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "crop_box": [
+                148,
+                204,
+                153,
+                210
+              ],
+              "area": 12.0,
+              "color_group": 0,
+              "proposal_score": 0.5542562584220408,
+              "label": "red_balloon",
+              "score": 0.9103845953941345,
+              "scores": [
+                0.08933088928461075,
+                0.9103845953941345,
+                0.00028443941846489906
+              ],
+              "accepted": false,
+              "latency_ms": 0.046875000407453626,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": true,
+              "box_quality": 0.479763925075531,
+              "suppression_reason": "quality_ordered_containment",
+              "suppressed_by_index": 0
+            },
+            {
+              "box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "crop_box": [
+                149,
+                204,
+                153,
+                208
+              ],
+              "area": 6.5,
+              "color_group": 0,
+              "proposal_score": 0.4207687000962796,
+              "label": "background",
+              "score": 0.6376286149024963,
+              "scores": [
+                0.6376286149024963,
+                0.3619686961174011,
+                0.00040272626210935414
+              ],
+              "accepted": false,
+              "latency_ms": 0.04579100277624093,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.27994704246520996
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/4057490235_2ffdf7d68b_b.jpg",
+          "truth": [
+            {
+              "label": "red_balloon",
+              "box": [
+                163.5370611183355,
+                148.828125,
+                231.36540962288686,
+                189.140625
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                164,
+                150,
+                230,
+                188
+              ],
+              "crop_box": [
+                157,
+                143,
+                237,
+                195
+              ],
+              "area": 1880.5,
+              "color_group": 0,
+              "proposal_score": 24.37969567165549,
+              "label": "red_balloon",
+              "score": 0.999993085861206,
+              "scores": [
+                6.637801561737433e-06,
+                0.999993085861206,
+                1.8952466973587434e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.10670799747458659,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.763646125793457
+            },
+            {
+              "box": [
+                115,
+                170,
+                187,
+                213
+              ],
+              "crop_box": [
+                107,
+                162,
+                195,
+                221
+              ],
+              "area": 2352.5,
+              "color_group": 1,
+              "proposal_score": 28.004135878948308,
+              "label": "background",
+              "score": 0.9992214441299438,
+              "scores": [
+                0.9992214441299438,
+                3.514984925345743e-08,
+                0.0007785878260619938
+              ],
+              "accepted": false,
+              "latency_ms": 0.10416599980089813,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                136,
+                113,
+                188,
+                144
+              ],
+              "crop_box": [
+                130,
+                107,
+                194,
+                150
+              ],
+              "area": 1236.0,
+              "color_group": 0,
+              "proposal_score": 20.668839933295445,
+              "label": "background",
+              "score": 0.9999562501907349,
+              "scores": [
+                0.9999562501907349,
+                1.2782140402123332e-05,
+                3.103390918113291e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.07237499812617898,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                148,
+                189,
+                157,
+                199
+              ],
+              "crop_box": [
+                147,
+                188,
+                158,
+                200
+              ],
+              "area": 59.0,
+              "color_group": 1,
+              "proposal_score": 3.3009960923864967,
+              "label": "background",
+              "score": 1.0,
+              "scores": [
+                1.0,
+                6.152010012527853e-10,
+                4.2734559002610695e-08
+              ],
+              "accepted": false,
+              "latency_ms": 0.04950000220560469,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "crop_box": [
+                194,
+                170,
+                200,
+                175
+              ],
+              "area": 15.0,
+              "color_group": 0,
+              "proposal_score": 0.9682458365518543,
+              "label": "background",
+              "score": 0.9999974966049194,
+              "scores": [
+                0.9999974966049194,
+                8.855569433308119e-08,
+                2.4005325940379407e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.04645899753086269,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            }
+          ]
+        },
+        {
+          "source": "balloon/train/873768102_7d931e5fa3_b.jpg",
+          "truth": [
+            {
+              "label": "blue_balloon",
+              "box": [
+                172.8125,
+                5.046728971962616,
+                201.25,
+                36.44859813084112
+              ]
+            }
+          ],
+          "counts": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 1,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "detections": [
+            {
+              "box": [
+                38,
+                160,
+                63,
+                215
+              ],
+              "crop_box": [
+                32,
+                154,
+                69,
+                221
+              ],
+              "area": 824.5,
+              "color_group": 0,
+              "proposal_score": 10.324552895371708,
+              "label": "red_balloon",
+              "score": 0.9995655417442322,
+              "scores": [
+                0.0004328097857069224,
+                0.9995655417442322,
+                1.6421292912127683e-06
+              ],
+              "accepted": true,
+              "latency_ms": 0.15629200061084703,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7724218368530273
+            },
+            {
+              "box": [
+                1,
+                1,
+                301,
+                104
+              ],
+              "crop_box": [
+                0,
+                0,
+                320,
+                140
+              ],
+              "area": 25974.5,
+              "color_group": 1,
+              "proposal_score": 113.8809370174351,
+              "label": "background",
+              "score": 0.9999874830245972,
+              "scores": [
+                0.9999874830245972,
+                3.5046742397071284e-08,
+                1.2523999430413824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.1302499986195471,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                89,
+                146,
+                99,
+                166
+              ],
+              "crop_box": [
+                87,
+                144,
+                101,
+                168
+              ],
+              "area": 129.5,
+              "color_group": 0,
+              "proposal_score": 4.771055073015411,
+              "label": "background",
+              "score": 0.9999594688415527,
+              "scores": [
+                0.9999594688415527,
+                2.4018554540816694e-05,
+                1.6621816030237824e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.057457997172605246,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.010756909847259521
+            },
+            {
+              "box": [
+                242,
+                166,
+                314,
+                215
+              ],
+              "crop_box": [
+                234,
+                158,
+                320,
+                223
+              ],
+              "area": 2130.0,
+              "color_group": 1,
+              "proposal_score": 16.822551080336726,
+              "label": "background",
+              "score": 0.9971529245376587,
+              "scores": [
+                0.9971529245376587,
+                5.7339238992426544e-06,
+                0.0028413082472980022
+              ],
+              "accepted": false,
+              "latency_ms": 0.10458300312166102,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.03489023447036743
+            },
+            {
+              "box": [
+                258,
+                50,
+                275,
+                58
+              ],
+              "crop_box": [
+                256,
+                48,
+                277,
+                60
+              ],
+              "area": 94.0,
+              "color_group": 0,
+              "proposal_score": 4.631714881069494,
+              "label": "background",
+              "score": 0.9999619722366333,
+              "scores": [
+                0.9999619722366333,
+                3.1803083402337506e-05,
+                6.194080015120562e-06
+              ],
+              "accepted": false,
+              "latency_ms": 0.05062499985797331,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.0
+            },
+            {
+              "box": [
+                174,
+                5,
+                200,
+                36
+              ],
+              "crop_box": [
+                171,
+                2,
+                203,
+                39
+              ],
+              "area": 572.0,
+              "color_group": 1,
+              "proposal_score": 12.045365660064679,
+              "label": "blue_balloon",
+              "score": 0.9999986886978149,
+              "scores": [
+                1.2896564385300735e-06,
+                1.115064129919574e-08,
+                0.9999986886978149
+              ],
+              "accepted": true,
+              "latency_ms": 0.06337499871733598,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.9066227078437805
+            },
+            {
+              "box": [
+                240,
+                96,
+                252,
+                104
+              ],
+              "crop_box": [
+                239,
+                95,
+                253,
+                105
+              ],
+              "area": 69.5,
+              "color_group": 0,
+              "proposal_score": 4.3693772729804055,
+              "label": "red_balloon",
+              "score": 0.9999383687973022,
+              "scores": [
+                6.096583092585206e-05,
+                0.9999383687973022,
+                6.754315791113186e-07
+              ],
+              "accepted": true,
+              "latency_ms": 0.049457998102298006,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.7732247710227966
+            },
+            {
+              "box": [
+                298,
+                224,
+                319,
+                239
+              ],
+              "crop_box": [
+                296,
+                222,
+                320,
+                240
+              ],
+              "area": 238.0,
+              "color_group": 1,
+              "proposal_score": 8.80686390387456,
+              "label": "background",
+              "score": 0.9717537760734558,
+              "scores": [
+                0.9717537760734558,
+                1.16386172521743e-05,
+                0.028234636411070824
+              ],
+              "accepted": false,
+              "latency_ms": 0.05562499791267328,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.17502464354038239
+            },
+            {
+              "box": [
+                261,
+                103,
+                278,
+                117
+              ],
+              "crop_box": [
+                259,
+                101,
+                280,
+                119
+              ],
+              "area": 143.0,
+              "color_group": 0,
+              "proposal_score": 4.3170410623487125,
+              "label": "background",
+              "score": 0.9986489415168762,
+              "scores": [
+                0.9986489415168762,
+                0.001316875801421702,
+                3.418591586523689e-05
+              ],
+              "accepted": false,
+              "latency_ms": 0.051333001465536654,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.08769175410270691
+            },
+            {
+              "box": [
+                220,
+                50,
+                259,
+                68
+              ],
+              "crop_box": [
+                216,
+                46,
+                263,
+                72
+              ],
+              "area": 441.0,
+              "color_group": 1,
+              "proposal_score": 8.287475345167653,
+              "label": "background",
+              "score": 0.9991955161094666,
+              "scores": [
+                0.9991955161094666,
+                1.0387336857320406e-07,
+                0.0008044257992878556
+              ],
+              "accepted": false,
+              "latency_ms": 0.05929100007051602,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.050421252846717834
+            },
+            {
+              "box": [
+                23,
+                87,
+                32,
+                102
+              ],
+              "crop_box": [
+                22,
+                86,
+                33,
+                103
+              ],
+              "area": 87.0,
+              "color_group": 0,
+              "proposal_score": 3.8737411277272567,
+              "label": "background",
+              "score": 0.9890931844711304,
+              "scores": [
+                0.9890931844711304,
+                0.010773140005767345,
+                0.00013365643098950386
+              ],
+              "accepted": false,
+              "latency_ms": 0.049041998863685876,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": false,
+              "suppressed": false,
+              "box_quality": 0.16519758105278015
+            },
+            {
+              "box": [
+                245,
+                217,
+                264,
+                234
+              ],
+              "crop_box": [
+                243,
+                215,
+                266,
+                236
+              ],
+              "area": 230.5,
+              "color_group": 1,
+              "proposal_score": 7.731651668104918,
+              "label": "blue_balloon",
+              "score": 0.934104323387146,
+              "scores": [
+                0.06589088588953018,
+                4.7481307774432935e-06,
+                0.934104323387146
+              ],
+              "accepted": true,
+              "latency_ms": 0.053333002142608166,
+              "synthetic_training": false,
+              "deployment_approved": false,
+              "raw_accepted": true,
+              "suppressed": false,
+              "box_quality": 0.3895756006240845
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "model_sha256": "7fba3d53b92727b31950a000ec98ee87857010715be5c2ebb1faa0f3cf6511e5",
+  "metadata_sha256": "1bfecc1087e77cbef8ae656685f417d3645ae1fa13df692f2b1a3fabc82d321b",
+  "source_report_sha256": "44c89aa24b791952055a59e2002a58508f2bfb2509d821d174b70c88be49c12f",
+  "source_model": "new_views_fp32",
+  "panel": "original",
+  "max_class_probability_delta": 0.0,
+  "script_sha256": "ad38a92856debb7f72b96d6d94102547bb88fce56bdfc71c9e9d4d4eb1349da1",
+  "scope": "Development quality-head ranking; old proposals and class acceptance preserved",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_timing_measured": false
+}
