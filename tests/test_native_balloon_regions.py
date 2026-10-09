@@ -100,6 +100,21 @@ def test_full_search_parity_on_generated_scenes(native):
         assert search_fast(rgb, native) == experimental(rgb, "mser")
 
 
+def test_bright_only_keeps_isolated_disks_but_is_not_semantically_exact(native):
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    cv2.circle(rgb, (80, 100), 18, (200, 0, 0), -1)
+    cv2.circle(rgb, (220, 100), 18, (0, 0, 200), -1)
+    assert search_fast(rgb, native, bright_only=True) == search_fast(rgb, native)
+    # A dark red disk on a brighter red field is a real proposal counterexample.
+    # Generated geometry is NOT a labeled real balloon or qualification sample.
+    rgb[:] = (230, 0, 0)
+    cv2.circle(rgb, (160, 120), 18, (100, 0, 0), -1)
+    assert len(search_fast(rgb, native)) == 1
+    assert search_fast(rgb, native, bright_only=True) == []
+    with pytest.raises(ValueError, match="explicit boolean"):
+        search_fast(rgb, native, bright_only=1)
+
+
 def test_native_output_survives_next_call(native):
     plane = np.full((240, 320), 30, np.uint8)
     points = np.array([[0, 0], [10, 10], [4, 2], [5, 2]], np.int32)
