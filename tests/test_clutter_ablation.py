@@ -84,3 +84,25 @@ def test_expanded_partition_conflicts_fail_before_output(inputs, monkeypatch, co
     with pytest.raises(ValueError, match="conflicts"):
         module.build(*inputs, "admit")
     assert not inputs[-1].exists()
+
+
+def test_lineage_links_later_base_to_reviewed_original(inputs):
+    expanded, original, queue, review, out = inputs
+    later = expanded.with_name("later.json")
+    write_json(later, dict(read_json(expanded), parent_manifest_sha256=sha256(expanded)))
+    with pytest.raises(ValueError, match="previously added"):
+        module.build(later, original, queue, review, out, "admit")
+    result = module.build(later, original, queue, review, out, "admit", lineage=[expanded])
+    assert result["lineage_manifest_sha256"] == [sha256(expanded)]
+    assert read_json(out / "manifest.json")["lineage_manifest_sha256"] == [sha256(expanded)]
+
+
+def test_lineage_rejects_clutter_in_intermediate(inputs):
+    expanded, original, queue, review, out = inputs
+    later = expanded.with_name("later.json")
+    write_json(later, dict(read_json(expanded), parent_manifest_sha256=sha256(expanded)))
+    write_json(expanded, dict(read_json(expanded), hard_negative_mode="admit"))
+    write_json(later, dict(read_json(later), parent_manifest_sha256=sha256(expanded)))
+    with pytest.raises(ValueError, match="previously added"):
+        module.build(later, original, queue, review, out, "admit", lineage=[expanded])
+    assert not out.exists()

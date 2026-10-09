@@ -10,7 +10,7 @@ from dtr.data import read_json, sha256, validate, write_json
 from scripts.build_indoor_balloon_training import checked_hard_negatives
 
 
-def build(manifest, original_manifest, queue, review, output, mode, repetitions=1):
+def build(manifest, original_manifest, queue, review, output, mode, repetitions=1, lineage=()):
     if mode not in ("admit", "control") or type(repetitions) is not int or not 1 <= repetitions <= 4:
         raise ValueError("Require admit/control and 1..4 repetitions")
     output = Path(output)
@@ -19,9 +19,12 @@ def build(manifest, original_manifest, queue, review, output, mode, repetitions=
     config = read_json("configs/balloon-red-blue.json")
     base = validate(manifest, config, splits=("train", "val"))
     original = validate(original_manifest, config, splits=("train", "val"))
-    if (base.get("synthetic", True) or base.get("training_approved") is not True
-            or base.get("parent_manifest_sha256") != sha256(original_manifest)
-            or base.get("hard_negative_mode") != "none"):
+    # Optional intermediate manifests link a later base back to the reviewed original.
+    chain = [base] + [validate(m, config, splits=("train", "val")) for m in lineage]
+    parents = [sha256(m) for m in lineage] + [sha256(original_manifest)]
+    if any(doc.get("synthetic", True) or doc.get("training_approved") is not True
+           or doc.get("parent_manifest_sha256") != parent
+           or doc.get("hard_negative_mode") != "none" for doc, parent in zip(chain, parents)):
         raise ValueError("Require approved expanded data without previously added clutter")
     negatives = checked_hard_negatives(original, original_manifest, queue, review)
     for row in [r for r in base["samples"] if r["split"] == "train"] + negatives:
@@ -61,6 +64,8 @@ def build(manifest, original_manifest, queue, review, output, mode, repetitions=
                hard_negative_queue_sha256=sha256(Path(queue) / "review.json"),
                hard_negative_review_sha256=sha256(review), test_pixels_materialized=False,
                deployment_approved=False)
+    if lineage:
+        doc["lineage_manifest_sha256"] = parents[:-1]
     write_json(output / "manifest.json", doc)
     validate(output / "manifest.json", config, splits=("train", "val"))
     receipt = dict(manifest_sha256=sha256(output / "manifest.json"),
@@ -70,6 +75,8 @@ def build(manifest, original_manifest, queue, review, output, mode, repetitions=
                    mode=mode, repetitions=repetitions, added_entries=len(negatives)*repetitions,
                    counts=dict(Counter(f"{r['split']}/{r['label']}" for r in samples)),
                    test_evaluated=False, deployment_approved=False)
+    if lineage:
+        receipt["lineage_manifest_sha256"] = parents[:-1]
     write_json(output / "receipt.json", receipt)
     return receipt
 
@@ -80,6 +87,8 @@ if __name__ == "__main__":
         parser.add_argument(f"--{name}", required=True)
     parser.add_argument("--mode", choices=("admit", "control"), required=True)
     parser.add_argument("--repetitions", type=int, default=1)
+    parser.add_argument("--lineage", action="append", default=[],
+                        help="Intermediate manifest between --manifest and --original-manifest, newest first")
     args = parser.parse_args()
     print(build(args.manifest, args.original_manifest, args.queue, args.review,
-                args.output, args.mode, args.repetitions))
+                args.output, args.mode, args.repetitions, args.lineage))
