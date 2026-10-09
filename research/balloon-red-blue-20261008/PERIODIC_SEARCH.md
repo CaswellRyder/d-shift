@@ -137,3 +137,30 @@ appearance, occlusion and loss on representative recorded sequences. The
 500-ms/two-frame research policy does not itself establish an acceptable blimp
 reacquisition deadline. No ESP32, serial, motor or network-configuration commands
 are part of this experiment.
+
+## Live camera harness (2026-10-09, paused)
+
+`scripts/pi_balloon_live_schedule_bench.py` runs either policy on live OV5647
+frames with the existing camera configuration (320x240 RGB888, 180-degree
+transform, `queue=False`). The scheduler and sensor timestamps share
+CLOCK_BOOTTIME. Besides each frame's own sensor-to-result age, it records the
+**full-observation age**: at every result, the time since the newest full-search
+frame's exposure. Bright frames can be fresh while this age grows. A full frame
+with an invalid sensor timestamp makes the age unknown until the next valid full
+search; an older observation is never relabeled fresh.
+`scripts/review_live_scheduled_search.py` verifies hashes, replays scheduler
+decisions from raw timestamps, recomputes every row-derived summary and pools
+at least two trials per policy. Ten unit tests use a fake camera and clock.
+
+Both scripts were copied beside the unchanged scheduled bundle on the Pi
+(bundle, runtime and reducer hashes matched the replay trials). Planned order:
+full A, periodic A, periodic B, full B, 60 frames each at a requested 10 FPS.
+
+Only full A ran. Its frames were nearly black (mean RGB about 1/255; exposure
+and gain saturated at 66.7 ms and 8.0), so the room lights were off. It recorded
+5.00 FPS, about 155 ms search per frame, zero neural calls and a sensor-to-result
+mean of 277 ms (max 293 ms), with all 60 timestamps valid. A dark scene does not
+exercise proposals, so the comparison was stopped rather than completed. That
+trial is excluded from any future pooled result; rerun all four in a lit scene
+with new output names. Raw output stays ignored under
+`artifacts/balloon-live-scheduled-results-20261009`.
