@@ -38,13 +38,29 @@ def holdout_distance(rgb, fingerprints):
                for view in (rgb, rgb[::-1], rgb[:, ::-1], rgb[::-1, ::-1]) for h in fingerprints)
 
 
-def build(root, manifest, output):
+def build(root, manifest, output, per_family=8, exclude_queue=None):
+    if type(per_family) is not int or not 1 <= per_family <= 24:
+        raise ValueError("Require 1..24 candidate frames per training family")
     root, output = Path(root), Path(output)
     if output.exists():
         raise FileExistsError(output)
     archive_path = root / "dataset.zip"
     if sha256(archive_path) != ARCHIVE_SHA:
         raise ValueError("Public source archive changed")
+    excluded_groups, prior_fingerprints = set(), []
+    if exclude_queue:
+        prior_path = Path(exclude_queue).resolve()
+        prior = read_json(prior_path)
+        if prior["archive_sha256"] != ARCHIVE_SHA or prior["base_manifest_sha256"] != sha256(manifest):
+            raise ValueError("Prior queue identity changed")
+        for frame in prior["frames"]:
+            path = (prior_path.parent / frame["path"]).resolve()
+            if (not path.is_relative_to(prior_path.parent) or sha256(path) != frame["sha256"]
+                    or family(Path(frame["source"]).name) is None):
+                raise ValueError("Invalid prior training frame")
+            excluded_groups.add(source_group(Path(frame["source"]).name))
+            with Image.open(path) as im:
+                prior_fingerprints.append(fingerprint(np.asarray(im.convert("RGB"))))
     base = read_json(manifest)
     old_archive = Path("data/raw/matterport-balloon/balloon_dataset.zip")
     if sha256(old_archive) != base["source_archive_sha256"]:
@@ -72,19 +88,21 @@ def build(root, manifest, output):
             f = family(row["file_name"])
             group = source_group(row["file_name"])
             labels = {categories[a["category_id"]] for a in anns[row["id"]]}
-            if f and group not in forbidden and labels and labels <= MAP.keys():
+            if f and group not in forbidden | excluded_groups and labels and labels <= MAP.keys():
                 choices[f].setdefault(group, row)
         for f, groups in sorted(choices.items()):
             eligible = sorted(groups.values(), key=lambda r:r["file_name"])
-            for idx in np.linspace(0, len(eligible)-1, min(8, len(eligible)), dtype=int):
+            for idx in np.linspace(0, len(eligible)-1, min(per_family, len(eligible)), dtype=int):
                 row = eligible[int(idx)]
                 raw = bounded_read(archive, f"train/{row['file_name']}", 20_000_000)
                 with Image.open(io.BytesIO(raw)) as im:
                     rgb = np.asarray(im.convert("RGB"))
                 digest = hashlib.sha256(rgb.tobytes()).hexdigest()
                 distance = holdout_distance(rgb, fingerprints)
-                if distance <= 8 or digest in seen:
-                    rejected.append(dict(source=row["file_name"], holdout_hamming=distance, duplicate=digest in seen))
+                prior_distance = holdout_distance(rgb, prior_fingerprints) if prior_fingerprints else None
+                if distance <= 8 or digest in seen or (prior_distance is not None and prior_distance <= 8):
+                    rejected.append(dict(source=row["file_name"], holdout_hamming=distance,
+                                         prior_training_hamming=prior_distance, duplicate=digest in seen))
                     continue
                 seen.add(digest)
                 scan = cv2.resize(rgb, (320, 240), interpolation=cv2.INTER_AREA)
@@ -107,7 +125,13 @@ def build(root, manifest, output):
                                            label=MAP[categories[annotation["category_id"]]],
                                            annotation_id=annotation["id"]))
                 # Missing boxes are NOT background approval; these still need visual review.
-                negatives = [c for c in proposals(scan,"balloon",limit=12,profile=RED_BLUE_PROFILE)
+                # Expansion reviews use the same proposal shape as the research detector.
+                if exclude_queue:
+                    from scripts.research_balloon_search import experimental
+                    proposed = experimental(scan, "mser")
+                else:
+                    proposed = proposals(scan,"balloon",limit=12,profile=RED_BLUE_PROFILE)
+                negatives = [c for c in proposed
                              if safe_negative(c["crop_box"], boxes)]
                 candidates.extend(dict(crop_box=c["crop_box"],label="background",annotation_id=None)
                                   for c in negatives[:3])
@@ -123,13 +147,17 @@ def build(root, manifest, output):
                                      source_sha256=digest,source_group=source_group(row["file_name"]),
                                      frame_id=frame_id,**c))
                 frames.append(dict(id=frame_id,path=full,sha256=sha256(output/full),family=f,
-                                   source=row["file_name"],holdout_hamming=distance,crop_ids=ids,boxes=boxes))
+                                   source=row["file_name"],holdout_hamming=distance,
+                                   prior_training_hamming=prior_distance,crop_ids=ids,boxes=boxes))
     queue = dict(archive_sha256=ARCHIVE_SHA,base_manifest_sha256=sha256(manifest),samples=rows,frames=frames,
                  rejected=rejected,script_sha256=sha256(__file__),training_approved=False,review_required=True,
                  deployment_approved=False,test_evaluated=False,
                  holdout_pixel_use="Automated perceptual duplicate screening only; no display/inference/fitting",
                  caveat="Two filename families assigned training-only; no independent new benchmark. Perceptual hash is heuristic.",
-                 class_mapping=MAP)
+                 class_mapping=MAP, candidate_frames_per_family=per_family,
+                 excluded_queue_sha256=sha256(exclude_queue) if exclude_queue else None,
+                 negative_search="mser" if exclude_queue else "baseline",
+                 search_sha256=sha256("scripts/research_balloon_search.py") if exclude_queue else None)
     write_json(output / "review.json", queue)
     for start in range(0,len(rows),48):
         sheet = Image.new("RGB",(960,720),"#ddd")
@@ -158,5 +186,7 @@ if __name__ == "__main__":
     p.add_argument("--root",required=True)
     p.add_argument("--manifest",required=True)
     p.add_argument("--output",required=True)
+    p.add_argument("--per-family",type=int,default=8)
+    p.add_argument("--exclude-queue",help="Prior training review.json; exclude its groups and near-duplicate frames")
     args = p.parse_args()
-    build(args.root,args.manifest,args.output)
+    build(args.root,args.manifest,args.output,args.per_family,args.exclude_queue)
