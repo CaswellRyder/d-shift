@@ -1,0 +1,302 @@
+{
+  "machine": "armv6l",
+  "opencv": "4.10.0",
+  "frames": 16,
+  "proposals": [
+    2,
+    12,
+    5,
+    12,
+    4,
+    5,
+    3,
+    9,
+    5,
+    7,
+    6,
+    4,
+    12,
+    1,
+    1,
+    2
+  ],
+  "profile_total_seconds": 5.723118457,
+  "entries": [
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/research_balloon_search.py",
+      "line": 101,
+      "function": "experimental",
+      "calls": 16,
+      "primitive_calls": 16,
+      "total_seconds": 0.631755127,
+      "cumulative_seconds": 5.722641465000001
+    },
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/research_balloon_search.py",
+      "line": 19,
+      "function": "candidate",
+      "calls": 773,
+      "primitive_calls": 773,
+      "total_seconds": 0.292634448,
+      "cumulative_seconds": 1.92354291
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'detectRegions' of 'cv2.MSER' objects>",
+      "calls": 32,
+      "primitive_calls": 32,
+      "total_seconds": 1.903339222,
+      "cumulative_seconds": 1.903339222
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<convexHull>",
+      "calls": 773,
+      "primitive_calls": 773,
+      "total_seconds": 1.4318895900000002,
+      "cumulative_seconds": 1.4318895900000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'mean' of 'numpy.ndarray' objects>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.043395309,
+      "cumulative_seconds": 0.692340163
+    },
+    {
+      "file": "/usr/lib/python3/dist-packages/numpy/_core/_methods.py",
+      "line": 118,
+      "function": "_mean",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.168970369,
+      "cumulative_seconds": 0.648944854
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.300512294,
+      "cumulative_seconds": 0.300512294
+    },
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/research_balloon_search.py",
+      "line": 85,
+      "function": "select",
+      "calls": 16,
+      "primitive_calls": 16,
+      "total_seconds": 0.032690489,
+      "cumulative_seconds": 0.252233056
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.any>",
+      "calls": 587,
+      "primitive_calls": 587,
+      "total_seconds": 0.018179721000000003,
+      "cumulative_seconds": 0.188620055
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<max>",
+      "calls": 32,
+      "primitive_calls": 32,
+      "total_seconds": 0.18535509900000002,
+      "cumulative_seconds": 0.18535509900000002
+    },
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/research_balloon_search.py",
+      "line": 93,
+      "function": "<genexpr>",
+      "calls": 1485,
+      "primitive_calls": 1485,
+      "total_seconds": 0.033381524,
+      "cumulative_seconds": 0.170440334
+    },
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/dtr/tracking.py",
+      "line": 6,
+      "function": "iou",
+      "calls": 1395,
+      "primitive_calls": 1395,
+      "total_seconds": 0.08287971400000001,
+      "cumulative_seconds": 0.13705881
+    },
+    {
+      "file": "/usr/lib/python3/dist-packages/numpy/_core/_methods.py",
+      "line": 76,
+      "function": "_count_reduce_items",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.12043711200000001,
+      "cumulative_seconds": 0.132273933
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<subtract>",
+      "calls": 32,
+      "primitive_calls": 32,
+      "total_seconds": 0.12125210400000001,
+      "cumulative_seconds": 0.12125210400000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<boundingRect>",
+      "calls": 773,
+      "primitive_calls": 773,
+      "total_seconds": 0.110352266,
+      "cumulative_seconds": 0.110352266
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.max>",
+      "calls": 8091,
+      "primitive_calls": 8091,
+      "total_seconds": 0.057309066000000006,
+      "cumulative_seconds": 0.057309066000000006
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<contourArea>",
+      "calls": 773,
+      "primitive_calls": 773,
+      "total_seconds": 0.047040255,
+      "cumulative_seconds": 0.047040255
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.min>",
+      "calls": 4711,
+      "primitive_calls": 4711,
+      "total_seconds": 0.038496381,
+      "cumulative_seconds": 0.038496381
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.sorted>",
+      "calls": 32,
+      "primitive_calls": 32,
+      "total_seconds": 0.011396819,
+      "cumulative_seconds": 0.020766675000000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.013968791000000001,
+      "cumulative_seconds": 0.013968791000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.hasattr>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.012454795000000001,
+      "cumulative_seconds": 0.012454795000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.lib.array_utils.normalize_axis_index>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.011836821,
+      "cumulative_seconds": 0.011836821
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'append' of 'list' objects>",
+      "calls": 696,
+      "primitive_calls": 696,
+      "total_seconds": 0.011647795,
+      "cumulative_seconds": 0.011647795
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.issubclass>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.010511838,
+      "cumulative_seconds": 0.010511838
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.asanyarray>",
+      "calls": 816,
+      "primitive_calls": 816,
+      "total_seconds": 0.010252834,
+      "cumulative_seconds": 0.010252834
+    },
+    {
+      "file": "/home/pacman/balloon-pi-current-20261008/research_balloon_search.py",
+      "line": 86,
+      "function": "<lambda>",
+      "calls": 1212,
+      "primitive_calls": 1212,
+      "total_seconds": 0.009369856000000001,
+      "cumulative_seconds": 0.009369856000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'pop' of 'list' objects>",
+      "calls": 506,
+      "primitive_calls": 506,
+      "total_seconds": 0.007439887,
+      "cumulative_seconds": 0.007439887
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<MSER_create>",
+      "calls": 32,
+      "primitive_calls": 32,
+      "total_seconds": 0.002307964,
+      "cumulative_seconds": 0.002307964
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.len>",
+      "calls": 213,
+      "primitive_calls": 213,
+      "total_seconds": 0.0018319710000000002,
+      "cumulative_seconds": 0.0018319710000000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'disable' of '_lsprof.Profiler' objects>",
+      "calls": 1,
+      "primitive_calls": 1,
+      "total_seconds": 0.000228996,
+      "cumulative_seconds": 0.000228996
+    }
+  ],
+  "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+  "script_sha256": "eae1c6e2fcaa01791590e680b44b6221b88623002300e78805c069012229aab2",
+  "scope": "Instrumented search-only profile, not normal FPS or accuracy",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "camera_used": false
+}

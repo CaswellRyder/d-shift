@@ -1,0 +1,774 @@
+{
+  "runs": {
+    "seed42-baseline-a": {
+      "report": {
+        "model": "new-views-42",
+        "search": "baseline",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 5.066394805908203e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 250.39490446875234,
+            "p50_ms": 292.01365449995365,
+            "p95_ms": 372.12907969999947,
+            "max_ms": 480.2270550000003
+          },
+          "search_ms": {
+            "mean_ms": 83.72221862499529,
+            "p50_ms": 73.36516600003051,
+            "p95_ms": 140.30171145002438,
+            "max_ms": 159.9883520000276
+          },
+          "inference_ms": {
+            "mean_ms": 165.80977768750316,
+            "p50_ms": 206.12496050000573,
+            "p95_ms": 240.25933340004713,
+            "max_ms": 353.94477900001675
+          },
+          "selection_ms": {
+            "mean_ms": 0.8629081562538943,
+            "p50_ms": 0.8555019999789693,
+            "p95_ms": 1.425402900031258,
+            "max_ms": 1.8620040000314475
+          }
+        },
+        "mean_neural_calls": 8.75,
+        "timed_loop_wall_seconds": 8.254210482000076,
+        "timed_loop_cpu_seconds": 7.990901000000001,
+        "cpu_wall_ratio": 0.9680999796922707,
+        "health_before": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.82 0.94 0.91 1/238 1764",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.85 0.94 0.91 1/237 1765",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 106236,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "1b731dd3574206f935a0af9384ad345382a152e0c0ae465d1eecc5c2c760259e"
+      },
+      "report_sha256": "1d99bd4d66aa4741d2efa6c0c1fb394e0d493c8e8a4e1624b45d39acf981aa5f",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.8181818181818182
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 4,
+            "precision": 0.8888888888888888,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666
+          }
+        }
+      }
+    },
+    "seed42-baseline-b": {
+      "report": {
+        "model": "new-views-42",
+        "search": "baseline",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 5.066394805908203e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 265.3280585937381,
+            "p50_ms": 271.84453399996755,
+            "p95_ms": 427.07967339997015,
+            "max_ms": 819.6283689999291
+          },
+          "search_ms": {
+            "mean_ms": 92.49890212499068,
+            "p50_ms": 74.19223149997833,
+            "p95_ms": 191.48345084994952,
+            "max_ms": 280.92290299991873
+          },
+          "inference_ms": {
+            "mean_ms": 171.90932828125938,
+            "p50_ms": 198.71942999998282,
+            "p95_ms": 231.12106910001557,
+            "max_ms": 586.5532079999412
+          },
+          "selection_ms": {
+            "mean_ms": 0.9198281874880365,
+            "p50_ms": 0.8504565000180264,
+            "p95_ms": 1.8187589500087142,
+            "max_ms": 2.0418960000370134
+          }
+        },
+        "mean_neural_calls": 8.75,
+        "timed_loop_wall_seconds": 8.739221210999972,
+        "timed_loop_cpu_seconds": 8.014067,
+        "cpu_wall_ratio": 0.917023016869372,
+        "health_before": {
+          "temperature_millicelsius": "46002",
+          "load_average": "0.98 0.92 0.91 1/238 1780",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "46540",
+          "load_average": "0.98 0.93 0.91 1/238 1784",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 112436,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "5946c3fe25a05fb5aea06c78a02905623490d3f39b06bab81310756a46f85208"
+      },
+      "report_sha256": "8699149e0c64dd6944d2fc436278bf599dc5e869fedbcf681a94ee3dd44d859d",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.8181818181818182
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 4,
+            "precision": 0.8888888888888888,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666
+          }
+        }
+      }
+    },
+    "seed42-mser-a": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 421.94823384373944,
+            "p50_ms": 367.67801999991434,
+            "p95_ms": 752.6683852499842,
+            "max_ms": 834.0413170000147
+          },
+          "search_ms": {
+            "mean_ms": 314.2853724062533,
+            "p50_ms": 284.64428999996017,
+            "p95_ms": 534.83833129996,
+            "max_ms": 605.7986830001028
+          },
+          "inference_ms": {
+            "mean_ms": 106.77623390623125,
+            "p50_ms": 91.00275250000323,
+            "p95_ms": 228.89483304999771,
+            "max_ms": 230.28664199989635
+          },
+          "selection_ms": {
+            "mean_ms": 0.8866275312549021,
+            "p50_ms": 0.7825024999874586,
+            "p95_ms": 2.060205700007599,
+            "max_ms": 3.2730090000541168
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.668203941999991,
+        "timed_loop_cpu_seconds": 13.599958,
+        "cpu_wall_ratio": 0.9950069561231609,
+        "health_before": {
+          "temperature_millicelsius": "43850",
+          "load_average": "0.89 0.89 0.89 1/238 1774",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "45464",
+          "load_average": "0.92 0.90 0.90 1/238 1775",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114024,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "872c27e2d6666aae809796ad8064ad14b35e436c3718ddfbadcc48cd0f773303"
+      },
+      "report_sha256": "0cb1f2ca11c5b0d119e37298b5073cdfcd45bc15252e2b91a4e4058140999906",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed42-mser-b": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 422.2901539687385,
+            "p50_ms": 368.4237389999794,
+            "p95_ms": 752.0361343000046,
+            "max_ms": 840.9141829999953
+          },
+          "search_ms": {
+            "mean_ms": 314.50912081249527,
+            "p50_ms": 284.6075665000285,
+            "p95_ms": 534.2779015000132,
+            "max_ms": 609.4401730000527
+          },
+          "inference_ms": {
+            "mean_ms": 106.86211312500404,
+            "p50_ms": 90.74777449995963,
+            "p95_ms": 230.11737484998207,
+            "max_ms": 230.8533710000802
+          },
+          "selection_ms": {
+            "mean_ms": 0.9189200312391677,
+            "p50_ms": 0.8049269999901298,
+            "p95_ms": 2.2323104499491806,
+            "max_ms": 3.3347039999398476
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.673429907000013,
+        "timed_loop_cpu_seconds": 13.601242,
+        "cpu_wall_ratio": 0.9947205706621527,
+        "health_before": {
+          "temperature_millicelsius": "44926",
+          "load_average": "0.95 0.91 0.90 1/238 1777",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "45464",
+          "load_average": "0.96 0.91 0.91 1/238 1778",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114344,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "0add7fe34c131aef8036b92011ae172f82a568ed6c2c48f45aa10a52e2992df4"
+      },
+      "report_sha256": "0c7ce8dd29978b80d6a92ab04d7426c4e92e0bc3ddc95f5d24c903184d1573eb",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed43-mser-a": {
+      "report": {
+        "model": "new-views-43",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 3.2782554626464844e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 423.96506278126014,
+            "p50_ms": 367.59859549999874,
+            "p95_ms": 758.3279866500276,
+            "max_ms": 859.0397429999257
+          },
+          "search_ms": {
+            "mean_ms": 315.3593298437585,
+            "p50_ms": 285.03987749996895,
+            "p95_ms": 538.1282379000082,
+            "max_ms": 611.5488609999602
+          },
+          "inference_ms": {
+            "mean_ms": 107.53514103124218,
+            "p50_ms": 91.0970430000475,
+            "p95_ms": 230.33717304992933,
+            "max_ms": 244.52997900004902
+          },
+          "selection_ms": {
+            "mean_ms": 1.070591906259466,
+            "p50_ms": 0.7789754999407705,
+            "p95_ms": 3.361145999997461,
+            "max_ms": 3.7758900000426365
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.726754065000023,
+        "timed_loop_cpu_seconds": 13.635286,
+        "cpu_wall_ratio": 0.9933365117079468,
+        "health_before": {
+          "temperature_millicelsius": "46540",
+          "load_average": "0.99 0.94 0.91 1/238 1786",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "47078",
+          "load_average": "0.99 0.94 0.92 1/237 1787",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114308,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "f091d99fc294bded0d2591a1bb088ae286a716086799b8e8d6d0a047bc0ff4e2"
+      },
+      "report_sha256": "c202267a863a44f3533676cc6d0e54ccb68b9bcac6ceab7ae0220d64b3499c15",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8333333333333334,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed43-mser-b": {
+      "report": {
+        "model": "new-views-43",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+        "bundle_sha256": "76d6ae3ecb72889122d895c6754255441d1b57f45f3b570b5da7f48fcaec6e5b",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "67d380fe41ed668f74e1099df1b9f1b05025da6ed4fbbe81795d61595e1069c0",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 3.2782554626464844e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 425.0247947499979,
+            "p50_ms": 369.80151300002717,
+            "p95_ms": 758.9732379500048,
+            "max_ms": 851.8733310000925
+          },
+          "search_ms": {
+            "mean_ms": 316.8360798437604,
+            "p50_ms": 286.21204399996714,
+            "p95_ms": 538.0727658000011,
+            "max_ms": 619.6051290000923
+          },
+          "inference_ms": {
+            "mean_ms": 107.14670549997152,
+            "p50_ms": 91.2205804999644,
+            "p95_ms": 230.04215239993755,
+            "max_ms": 231.15538399997604
+          },
+          "selection_ms": {
+            "mean_ms": 1.0420094062659757,
+            "p50_ms": 0.7899834999989253,
+            "p95_ms": 3.2746313500013002,
+            "max_ms": 3.453927000009571
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.762893059999897,
+        "timed_loop_cpu_seconds": 13.664807000000003,
+        "cpu_wall_ratio": 0.992873151046638,
+        "health_before": {
+          "temperature_millicelsius": "47078",
+          "load_average": "1.00 0.95 0.92 1/238 1790",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "47078",
+          "load_average": "1.00 0.95 0.92 1/238 1791",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114376,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "d59359c3f542969cd78dc0bdfbb6d5da70322fd170955f6fba6528437da4ef71"
+      },
+      "report_sha256": "769c8f532df5407a7aa032b0835a7750688c30f64873abcf4a23b9f909b9164f",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8333333333333334,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        }
+      }
+    }
+  },
+  "pooled": {
+    "new-views-42:baseline": {
+      "trials": [
+        "seed42-baseline-a",
+        "seed42-baseline-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 257.8614815312452,
+        "p50_ms": 286.4292924999745,
+        "p95_ms": 372.7155766000408,
+        "max_ms": 819.6283689999291
+      },
+      "processing_fps": 3.8780510918565767,
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 2,
+            "precision": 1.0,
+            "recall": 0.8181818181818182
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 4,
+            "precision": 0.8888888888888888,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666
+          }
+        }
+      }
+    },
+    "new-views-42:mser": {
+      "trials": [
+        "seed42-mser-a",
+        "seed42-mser-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 422.119193906239,
+        "p50_ms": 368.4237389999794,
+        "p95_ms": 810.2177120000127,
+        "max_ms": 840.9141829999953
+      },
+      "processing_fps": 2.368999122608293,
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "new-views-43:mser": {
+      "trials": [
+        "seed43-mser-a",
+        "seed43-mser-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 424.49492876562897,
+        "p50_ms": 368.4077240000079,
+        "p95_ms": 820.3182503499922,
+        "max_ms": 859.0397429999257
+      },
+      "processing_fps": 2.3557407456146957,
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8333333333333334,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        }
+      }
+    }
+  },
+  "script_sha256": "c0f06068dd789b42084129f930a0e7114695860ace83008bb43477773897431a",
+  "matcher_sha256": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+  "scope": "Processing-only replay; unique scenes counted once per model/search, not across repeats",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "camera_used": false
+}
