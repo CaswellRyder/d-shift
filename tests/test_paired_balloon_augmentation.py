@@ -6,7 +6,8 @@ import pytest
 
 from dtr.data import load_rgb, read_json, sha256, synthetic, write_json
 from scripts import build_paired_balloon_augmentation as augmentation
-from scripts.build_paired_balloon_augmentation import build, transform
+from scripts.build_paired_balloon_augmentation import (PHOTOMETRIC_RANGES, build, photometric, photometric_params,
+                                                       transform)
 from scripts.distill_pi_student import checked_cache
 
 
@@ -132,3 +133,39 @@ def test_failed_output_validation_stays_unapproved(manifest, tmp_path, monkeypat
     with pytest.raises(ValueError, match="output validation"):
         build(manifest, tmp_path / "out")
     assert read_json(tmp_path / "out/manifest.json")["training_approved"] is False
+
+
+def test_photometric_view_matches_evaluation_transform_and_stays_in_range():
+    from scripts.research_pixel_photometric import photometric as evaluation_photometric
+
+    rng = np.random.default_rng(0)
+    rgb = rng.integers(0, 256, (9, 11, 3), dtype=np.uint8)
+    for _ in range(50):
+        gain, gamma = photometric_params(rng)
+        overall = gain[1]
+        assert PHOTOMETRIC_RANGES["gain"][0] <= overall <= PHOTOMETRIC_RANGES["gain"][1]
+        assert PHOTOMETRIC_RANGES["gamma"][0] <= gamma <= PHOTOMETRIC_RANGES["gamma"][1]
+        for channel in (0, 2):
+            assert PHOTOMETRIC_RANGES["cast"][0] <= gain[channel] / overall <= PHOTOMETRIC_RANGES["cast"][1]
+        np.testing.assert_array_equal(photometric(rgb, gain, gamma), evaluation_photometric(rgb, gain, gamma))
+    np.testing.assert_array_equal(photometric(rgb, [1., 1., 1.], 1.), rgb)
+
+
+def test_photometric_views_pair_with_identity_control(manifest, tmp_path):
+    with pytest.raises(ValueError, match="kind"):
+        build(manifest, tmp_path / "bad", kind="hue")
+    a = build(manifest, tmp_path / "aug", kind="photometric")
+    b = build(manifest, tmp_path / "control", control=True, kind="photometric")
+    assert a["counts"] == b["counts"] and a["kind"] == "photometric"
+    base, adoc, bdoc = [read_json(p) for p in
+        (manifest, tmp_path / "aug/manifest.json", tmp_path / "control/manifest.json")]
+    assert adoc["paired_augmentation"]["kind"] == "fixed-photometric"
+    assert bdoc["paired_augmentation"]["kind"] == "identity-control"
+    for ar, br in zip(adoc["samples"][len(base["samples"]):], bdoc["samples"][len(base["samples"]):]):
+        assert ar["proposed_augmentation_gain"] == br["proposed_augmentation_gain"] == ar["augmentation_gain"]
+        assert br["augmentation_gain"] == [1., 1., 1.] and br["augmentation_gamma"] == 1.
+        assert ar["label"] == br["label"] == base["samples"][ar["augmentation_parent_row"]]["label"]
+        original = base["samples"][ar["augmentation_parent_row"]]
+        with Image.open(manifest.parent / original["path"]) as im, Image.open(tmp_path / "aug" / ar["path"]) as view:
+            np.testing.assert_array_equal(np.asarray(view.convert("RGB")), photometric(
+                np.asarray(im.convert("RGB")), ar["augmentation_gain"], ar["augmentation_gamma"]))

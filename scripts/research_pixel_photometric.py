@@ -58,10 +58,11 @@ def main():
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
-    parser.add_argument("--model", required=True)
+    parser.add_argument("--model", required=True, help="bundle model key, or a .tflite path")
+    parser.add_argument("--searches", choices=("all", "mser"), default="all")
     parser.add_argument("--red", type=color, required=True)
     parser.add_argument("--blue", type=color, required=True)
-    parser.add_argument("--threshold", type=float, action="append", required=True)
+    parser.add_argument("--threshold", type=float, action="append", default=[])
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     if Path(args.output).exists():
@@ -71,9 +72,11 @@ def main():
     frames = inputs["frames"]
     images = [np.asarray(Image.open(root / f["path"]).convert("RGB")) for f in frames]
     cv2.setNumThreads(1)
-    predictor = Predictor(root / inputs["models"][args.model]["path"], allow_unvalidated=True)
+    model = (Path(args.model) if args.model.endswith(".tflite")
+             else root / inputs["models"][args.model]["path"])
+    predictor = Predictor(model, allow_unvalidated=True)
     searches = {"mser": lambda rgb: experimental(rgb, "mser")}
-    for threshold in args.threshold:
+    for threshold in args.threshold if args.searches == "all" else ():
         masks = CvPixelMasks((args.red, args.blue), threshold)
         for stride in (1, 2):
             searches[f"pixel_t{threshold:g}_s{stride}"] = (
@@ -97,7 +100,7 @@ def main():
     write_json(args.output, dict(
         purpose="Synthetic photometric robustness of proposals; development frames, NOT "
                 "qualification; synthetic shifts are not real lighting",
-        deployment_approved=False, test_evaluated=False, model=args.model,
+        deployment_approved=False, test_evaluated=False, model=args.model, model_sha256=sha256(model),
         colors=dict(red_balloon=list(args.red), blue_balloon=list(args.blue)),
         inputs_sha256=sha256(root / "inputs.json"), script_sha256=sha256(__file__),
         rows=rows))

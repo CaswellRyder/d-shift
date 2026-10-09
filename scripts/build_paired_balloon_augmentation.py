@@ -1,6 +1,9 @@
-"""Freeze color-preserving TRAIN views so teacher and student share exact geometry.
+"""Freeze TRAIN views so teacher and student see exactly the same pixels.
 
-No synthetic backgrounds, new labels, test pixels, inference or device access.
+Kind d4 adds color-preserving rotations/reflections. Kind photometric adds one random gain,
+gamma and red/blue white-balance shift per entry, within fixed ranges that keep red and blue
+balloons distinguishable. No synthetic backgrounds, new labels, test pixels, inference or
+device access.
 Distillation must compute fresh teacher logits for this manifest; a parent cache
 is intentionally incompatible. The control repeats each identical source entry.
 """
@@ -14,6 +17,10 @@ from PIL import Image
 
 from dtr.data import read_json, sha256, validate, write_json
 
+# Log-uniform ranges, fixed before training. Overall gain, gamma, then separate red and blue
+# channel multipliers. The research_pixel_photometric evaluation shifts lie inside them.
+PHOTOMETRIC_RANGES = dict(gain=(.55, 1.35), gamma=(.65, 1.5), cast=(.85, 1.18))
+
 
 def transform(rgb, code):
     """D4 symmetry on the entire rectangular crop; no truncation or hue changes."""
@@ -24,6 +31,24 @@ def transform(rgb, code):
     if code >= 4:
         result = result[:, ::-1]
     return np.ascontiguousarray(result)
+
+
+def photometric(rgb, gain, gamma):
+    """clip(rint(255 * (gain * x / 255) ** gamma)) per channel; same formula as the evaluation."""
+    if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8 or len(gain) != 3:
+        raise ValueError("Require uint8 RGB crop and three channel gains")
+    v = np.arange(256, dtype=np.float64)
+    lut = np.stack([np.clip(np.rint(255 * np.clip(g * v / 255, 0, None) ** gamma), 0, 255)
+                    for g in gain], axis=1).astype(np.uint8)
+    return lut[rgb, np.arange(3)]
+
+
+def photometric_params(rng):
+    def draw(lo, hi):
+        return float(np.exp(rng.uniform(np.log(lo), np.log(hi))))
+    gain, gamma = draw(*PHOTOMETRIC_RANGES["gain"]), draw(*PHOTOMETRIC_RANGES["gamma"])
+    red, blue = draw(*PHOTOMETRIC_RANGES["cast"]), draw(*PHOTOMETRIC_RANGES["cast"])
+    return [gain * red, gain, gain * blue], gamma
 
 
 def checked_base(manifest, config):
@@ -47,10 +72,13 @@ def checked_base(manifest, config):
     return doc
 
 
-def build(manifest, output, control=False, seed=42):
+def build(manifest, output, control=False, seed=42, kind="d4"):
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
+    if kind not in ("d4", "photometric"):
+        raise ValueError("Unknown augmentation kind")
+    photo = kind == "photometric"
     if type(seed) is not int or not 0 <= seed <= 2**32 - 1:
         raise ValueError("Require integer augmentation seed 0..2**32-1")
     config = read_json("configs/balloon-red-blue.json")
@@ -71,9 +99,18 @@ def build(manifest, output, control=False, seed=42):
     rng = np.random.default_rng(seed)
     train = [(i, r) for i, r in enumerate(doc["samples"]) if r["split"] == "train"]
     for i, row in train:
-        # One non-identity geometric view per exposure in both seeded arms.
-        proposed_code = int(rng.integers(1, 8))
-        code = 0 if control else proposed_code
+        if photo:
+            gain, gamma = photometric_params(rng)
+            origin = "Reviewed parent label; whole-crop gain, gamma and color cast"
+            details = dict(augmentation_gain=[1., 1., 1.] if control else gain,
+                           augmentation_gamma=1. if control else gamma,
+                           proposed_augmentation_gain=gain, proposed_augmentation_gamma=gamma)
+        else:
+            # One non-identity geometric view per exposure in both seeded arms.
+            proposed_code = int(rng.integers(1, 8))
+            code = 0 if control else proposed_code
+            origin = "Reviewed parent label; whole-crop pixel permutation"
+            details = dict(augmentation_code=code, proposed_augmentation_code=proposed_code)
         if control:
             relative, digest = f"base/{row['path']}", row["sha256"]
         else:
@@ -82,19 +119,23 @@ def build(manifest, output, control=False, seed=42):
             dest.parent.mkdir(exist_ok=True)
             with Image.open(output / "base" / row["path"]) as im:
                 rgb = np.asarray(im.convert("RGB"))
-            Image.fromarray(transform(rgb, code)).save(dest)
+            view = photometric(rgb, gain, gamma) if photo else transform(rgb, code)
+            Image.fromarray(view).save(dest)
             digest = sha256(dest)
-        samples.append(dict(row, path=relative, sha256=digest,
-                            label_origin="Reviewed parent label; whole-crop pixel permutation",
-                            augmentation_parent_row=i, augmentation_parent_sha256=row["sha256"],
-                            augmentation_code=code, proposed_augmentation_code=proposed_code))
+        samples.append(dict(row, path=relative, sha256=digest, label_origin=origin,
+                            augmentation_parent_row=i, augmentation_parent_sha256=row["sha256"], **details))
     if sha256(manifest) != parent_hash:
         raise ValueError("Training base changed while building")
+    described = ("Fixed TRAIN-only whole-crop gain, gamma and red/blue cast within "
+                 f"{PHOTOMETRIC_RANGES}" if photo
+                 else "Fixed TRAIN-only whole-crop right-angle rotation/reflection")
     qualification = dict(doc.get("qualification", {}),
-        augmentations="Fixed TRAIN-only whole-crop right-angle rotation/reflection; not independent data",
+        augmentations=f"{described}; not independent data",
         negatives="Inherited reviewed backgrounds and non-balloon clutter; see parent and sample provenance")
     result = dict(doc, samples=samples, parent_manifest_sha256=parent_hash,
-                  paired_augmentation=dict(kind="identity-control" if control else "fixed-D4",
+                  paired_augmentation=dict(
+                      kind="identity-control" if control else f"fixed-{'photometric' if photo else 'D4'}",
+                      **(dict(proposed_kind=kind, ranges=PHOTOMETRIC_RANGES) if photo else {}),
                       seed=seed, extra_views_per_training_entry=1,
                       targets="Recompute teacher logits from these exact files; never reuse parent cache"),
                   qualification=qualification, test_pixels_materialized=False, training_approved=False,
@@ -109,7 +150,7 @@ def build(manifest, output, control=False, seed=42):
     write_json(output / "manifest.json", result)
     receipt = dict(manifest_sha256=sha256(output / "manifest.json"),
                    parent_manifest_sha256=parent_hash, builder_sha256=sha256(__file__),
-                   control=control, seed=seed, added_entries=len(train),
+                   control=control, **(dict(kind=kind) if photo else {}), seed=seed, added_entries=len(train),
                    unique_training_crops=len({r["sha256"] for r in samples if r["split"] == "train"}),
                    counts=dict(Counter(f"{r['split']}/{r['label']}" for r in samples)),
                    test_evaluated=False, deployment_approved=False)
@@ -123,5 +164,6 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--control", action="store_true")
+    parser.add_argument("--kind", choices=("d4", "photometric"), default="d4")
     args = parser.parse_args()
-    print(build(args.manifest, args.output, args.control, args.seed))
+    print(build(args.manifest, args.output, args.control, args.seed, args.kind))
