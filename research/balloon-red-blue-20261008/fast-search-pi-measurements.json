@@ -1,0 +1,595 @@
+{
+  "runs": {
+    "seed42-fast-a": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser_fast",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "fa1a44f8d644330bfe6e34faca662b9306e47b588600fc11d8a7367f56533db5",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-fast-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-fast-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 332.6584539374693,
+            "p50_ms": 284.3189089999214,
+            "p95_ms": 591.5062282499888,
+            "max_ms": 694.4202239999413
+          },
+          "search_ms": {
+            "mean_ms": 223.47161446872832,
+            "p50_ms": 200.57296599998153,
+            "p95_ms": 366.9519649001244,
+            "max_ms": 468.3070809999208
+          },
+          "inference_ms": {
+            "mean_ms": 108.18822709374132,
+            "p50_ms": 94.61630500004503,
+            "p95_ms": 230.8001852500638,
+            "max_ms": 232.51206299983096
+          },
+          "selection_ms": {
+            "mean_ms": 0.9986123749996523,
+            "p50_ms": 0.8639889999813022,
+            "p95_ms": 3.0394120500773165,
+            "max_ms": 3.5629550000066956
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 10.810945433999905,
+        "timed_loop_cpu_seconds": 10.641093000000001,
+        "cpu_wall_ratio": 0.9842888455004384,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.90 0.51 0.65 1/237 1839",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "46002",
+          "load_average": "0.99 0.56 0.67 1/237 1840",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 115152,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "bea309dda8c62ba1115eb43a39b1b66da4e205914c4b1b8fec6781a6eea538c2"
+      },
+      "report_sha256": "089bea50e5fa697ab9d16228c36fa7d1efd09ed1ec9bd7934a0ca4653e743d29",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed42-fast-b": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser_fast",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "fa1a44f8d644330bfe6e34faca662b9306e47b588600fc11d8a7367f56533db5",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-fast-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-fast-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 336.01196918750986,
+            "p50_ms": 293.4666459999562,
+            "p95_ms": 598.1705499998724,
+            "max_ms": 673.5370880001028
+          },
+          "search_ms": {
+            "mean_ms": 227.13585578126327,
+            "p50_ms": 201.7294035000532,
+            "p95_ms": 373.2817547998478,
+            "max_ms": 459.70069999998486
+          },
+          "inference_ms": {
+            "mean_ms": 107.94536618748651,
+            "p50_ms": 91.42173949999233,
+            "p95_ms": 230.22515200012776,
+            "max_ms": 241.98327599992808
+          },
+          "selection_ms": {
+            "mean_ms": 0.9307472187600752,
+            "p50_ms": 0.86449699995228,
+            "p95_ms": 2.2524428499991687,
+            "max_ms": 3.422989000000598
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 10.91365553300011,
+        "timed_loop_cpu_seconds": 10.807451,
+        "cpu_wall_ratio": 0.9902686563013672,
+        "health_before": {
+          "temperature_millicelsius": "45464",
+          "load_average": "1.00 0.59 0.68 1/237 1842",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "46540",
+          "load_average": "1.08 0.63 0.69 1/237 1843",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 115088,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "fab24e3b4ab3aeffa2adef02a7cf672ea383d8be123752990ab7a279a9862259"
+      },
+      "report_sha256": "cdc81a9a7e70dc4c071d47b637a79cfbef8ace27bf11d982f85cadc1421c4cb1",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed42-mser-a": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "fa1a44f8d644330bfe6e34faca662b9306e47b588600fc11d8a7367f56533db5",
+        "region_library_sha256": null,
+        "region_build_receipt": null,
+        "golden_search": "mser",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 430.406626093756,
+            "p50_ms": 383.1491355001617,
+            "p95_ms": 763.4529929999757,
+            "max_ms": 864.6980159999202
+          },
+          "search_ms": {
+            "mean_ms": 321.194263437512,
+            "p50_ms": 292.7302814999848,
+            "p95_ms": 544.2584297000734,
+            "max_ms": 636.0499200000049
+          },
+          "inference_ms": {
+            "mean_ms": 108.286280656273,
+            "p50_ms": 94.85879450005541,
+            "p95_ms": 228.9070918999755,
+            "max_ms": 244.59189300000617
+          },
+          "selection_ms": {
+            "mean_ms": 0.9260819999710179,
+            "p50_ms": 0.7929900000362977,
+            "p95_ms": 2.318019999893294,
+            "max_ms": 3.3869569999751548
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.934067991999882,
+        "timed_loop_cpu_seconds": 13.746876999999998,
+        "cpu_wall_ratio": 0.9865659481418234,
+        "health_before": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.46 0.37 0.62 1/237 1833",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.76 0.45 0.64 2/237 1834",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114380,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "f642d53bb16def153b182e6045070130b86ffee7e93fa87477b1adae19e288a8"
+      },
+      "report_sha256": "7a0f97c0849e255db31bef36c25d62fa0322daf5f4071a918eb87dc62e25d266",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "seed42-mser-b": {
+      "report": {
+        "model": "new-views-42",
+        "search": "mser",
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+        "bundle_sha256": "782f7715f552266478968dafcb85539e8422574fdca6efbdf8b3bff7d7c3ef01",
+        "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+        "golden_sha256": "83b2f9c8196e1438eb4bd979383d32e19f79435a5baf6eb7f90b4642a8af1b3f",
+        "script_sha256": "fa1a44f8d644330bfe6e34faca662b9306e47b588600fc11d8a7367f56533db5",
+        "region_library_sha256": null,
+        "region_build_receipt": null,
+        "golden_search": "mser",
+        "frames": 32,
+        "unique_frames": 16,
+        "rounds": 2,
+        "max_host_pi_score_delta": 6.854534149169922e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 428.354039937517,
+            "p50_ms": 374.1348695000397,
+            "p95_ms": 775.0828727500106,
+            "max_ms": 846.8562959999417
+          },
+          "search_ms": {
+            "mean_ms": 319.9778243750231,
+            "p50_ms": 291.0582315000738,
+            "p95_ms": 556.9991104001018,
+            "max_ms": 618.560294999952
+          },
+          "inference_ms": {
+            "mean_ms": 107.37625115623928,
+            "p50_ms": 91.52160500002537,
+            "p95_ms": 229.07795774998476,
+            "max_ms": 231.42200000006596
+          },
+          "selection_ms": {
+            "mean_ms": 0.9999644062546054,
+            "p50_ms": 0.7954965000180891,
+            "p95_ms": 3.3810350999601724,
+            "max_ms": 3.942982000125994
+          }
+        },
+        "mean_neural_calls": 5.625,
+        "timed_loop_wall_seconds": 13.866465584000025,
+        "timed_loop_cpu_seconds": 13.754792000000002,
+        "cpu_wall_ratio": 0.9919464997534138,
+        "health_before": {
+          "temperature_millicelsius": "46002",
+          "load_average": "1.05 0.67 0.70 1/237 1845",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "46540",
+          "load_average": "1.03 0.69 0.71 1/237 1846",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 114184,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "4e7d36fb1de2df219d4aaa8971a3201fad592da342a3750811ad2d17be593839"
+      },
+      "report_sha256": "2984740de1b9c81a873f0f13b0498680c7e987f05a25b74cf4969fb2dee49d10",
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    }
+  },
+  "pooled": {
+    "new-views-42:mser_fast": {
+      "trials": [
+        "seed42-fast-a",
+        "seed42-fast-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 334.3352115624896,
+        "p50_ms": 290.70226649992037,
+        "p95_ms": 643.0007603499341,
+        "max_ms": 694.4202239999413
+      },
+      "processing_fps": 2.991010116244047,
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    "new-views-42:mser": {
+      "trials": [
+        "seed42-mser-a",
+        "seed42-mser-b"
+      ],
+      "timing_samples": 64,
+      "timing": {
+        "mean_ms": 429.3803330156365,
+        "p50_ms": 377.10177700000713,
+        "p95_ms": 826.9771187500389,
+        "max_ms": 864.6980159999202
+      },
+      "processing_fps": 2.328937594735117,
+      "unique_scene_metrics": {
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        }
+      }
+    }
+  },
+  "script_sha256": "c0f06068dd789b42084129f930a0e7114695860ace83008bb43477773897431a",
+  "matcher_sha256": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+  "scope": "Processing-only replay; unique scenes counted once per model/search, not across repeats",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "camera_used": false,
+  "exact_search_comparison": {
+    "model": "new-views-42",
+    "exact_full_detection_parity": true,
+    "unique_frames": 16,
+    "old_processing_fps": 2.328937594735117,
+    "fast_processing_fps": 2.991010116244047,
+    "processing_speedup": 1.2842809197660066,
+    "mean_latency_reduction_fraction": 0.22135415654839907,
+    "p95_latency_reduction_fraction": 0.22246849910210542,
+    "trials": [
+      "seed42-mser-a",
+      "seed42-mser-b",
+      "seed42-fast-a",
+      "seed42-fast-b"
+    ]
+  },
+  "comparison_script_sha256": "3ffcad01900a391236508d1627b3dcd0db5ae23267e5879f8dc987bf10bfcbca"
+}
