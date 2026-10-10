@@ -1,0 +1,8205 @@
+{
+  "scope": "Second IMG_ development panel, synthetic shifts; not final test, not Pi recordings, no deployment",
+  "panel": {
+    "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+    "review": "configs/engdes2-development-panel2-20261010.json",
+    "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+    "inputs_sha256": "d9f55548176f887bdb4c8477c9acbe9ad126994d52cb1bd7a710ac30d14ad81c",
+    "frames": 62,
+    "negative_frames": 12,
+    "targets": {
+      "red_balloon": 65,
+      "blue_balloon": 67
+    }
+  },
+  "scripts": {
+    "scripts/prepare_development_panel.py": "ef95c0c8bd77bc21950ee13ddb6dc7b0c1f69733ad8247b60c0f4d713d3679ea",
+    "scripts/build_development_panel_bundle.py": "0ddd7b2a0611f7daf69636ab70ccf2426c9224499300fb8d03e2dfb0c3903169",
+    "scripts/research_pixel_photometric.py": "4e386c58fe7ba7b71a4f0dc09d0f6666fb68c3c5ed689735ddb9241c114a760d",
+    "scripts/research_balloon_search.py": "5a9126dc89fbe9f19a23f1ff2be66899505894ca64cbf2e247ae79c9d7141830"
+  },
+  "sweep_settings": {
+    "purpose": "Synthetic photometric robustness of proposals; development frames, NOT qualification; synthetic shifts are not real lighting",
+    "deployment_approved": false,
+    "test_evaluated": false,
+    "colors": {
+      "red_balloon": [
+        178,
+        28,
+        48
+      ],
+      "blue_balloon": [
+        26,
+        86,
+        179
+      ]
+    },
+    "inputs_sha256": "d9f55548176f887bdb4c8477c9acbe9ad126994d52cb1bd7a710ac30d14ad81c",
+    "script_sha256": "4e386c58fe7ba7b71a4f0dc09d0f6666fb68c3c5ed689735ddb9241c114a760d"
+  },
+  "statistics": {
+    "note": "Exact two-sided permutation for 6 vs 6; 20,000 random permutations (seed 0) for pooled 12 vs 12",
+    "totals": {
+      "mser|identity|b_fp": {
+        "groups": {
+          "soft-admit": [
+            34,
+            31,
+            43,
+            36,
+            39,
+            27
+          ],
+          "soft-control": [
+            43,
+            43,
+            39,
+            45,
+            45,
+            40
+          ],
+          "hard-admit": [
+            40,
+            29,
+            36,
+            30,
+            31,
+            24
+          ],
+          "hard-control": [
+            33,
+            42,
+            42,
+            47,
+            45,
+            34
+          ]
+        },
+        "p_soft_admit_vs_control": 0.021645021645021644,
+        "p_hard_vs_soft_admit": 0.3484848484848485,
+        "p_pooled_clutter_vs_control": 0.0008
+      },
+      "mser|identity|b_tp": {
+        "groups": {
+          "soft-admit": [
+            53,
+            54,
+            52,
+            52,
+            51,
+            48
+          ],
+          "soft-control": [
+            49,
+            50,
+            49,
+            49,
+            50,
+            49
+          ],
+          "hard-admit": [
+            51,
+            54,
+            53,
+            52,
+            53,
+            49
+          ],
+          "hard-control": [
+            49,
+            51,
+            50,
+            50,
+            50,
+            49
+          ]
+        },
+        "p_soft_admit_vs_control": 0.03896103896103896,
+        "p_hard_vs_soft_admit": 0.8766233766233766,
+        "p_pooled_clutter_vs_control": 0.00155
+      },
+      "mser|identity|r_fp": {
+        "groups": {
+          "soft-admit": [
+            8,
+            6,
+            7,
+            10,
+            6,
+            6
+          ],
+          "soft-control": [
+            9,
+            9,
+            9,
+            8,
+            7,
+            7
+          ],
+          "hard-admit": [
+            7,
+            10,
+            9,
+            11,
+            6,
+            4
+          ],
+          "hard-control": [
+            9,
+            9,
+            11,
+            8,
+            8,
+            8
+          ]
+        },
+        "p_soft_admit_vs_control": 0.30735930735930733,
+        "p_hard_vs_soft_admit": 0.6926406926406926,
+        "p_pooled_clutter_vs_control": 0.2009
+      },
+      "mser|identity|r_tp": {
+        "groups": {
+          "soft-admit": [
+            64,
+            64,
+            63,
+            64,
+            64,
+            64
+          ],
+          "soft-control": [
+            64,
+            64,
+            64,
+            64,
+            64,
+            64
+          ],
+          "hard-admit": [
+            64,
+            64,
+            63,
+            63,
+            64,
+            62
+          ],
+          "hard-control": [
+            64,
+            64,
+            64,
+            64,
+            64,
+            64
+          ]
+        },
+        "p_soft_admit_vs_control": 1.0,
+        "p_hard_vs_soft_admit": 0.42424242424242425,
+        "p_pooled_clutter_vs_control": 0.0938
+      },
+      "mser|sweep|b_fp": {
+        "groups": {
+          "soft-admit": [
+            245,
+            232,
+            302,
+            254,
+            259,
+            204
+          ],
+          "soft-control": [
+            308,
+            302,
+            273,
+            304,
+            296,
+            291
+          ],
+          "hard-admit": [
+            267,
+            220,
+            259,
+            222,
+            233,
+            180
+          ],
+          "hard-control": [
+            241,
+            300,
+            302,
+            324,
+            292,
+            237
+          ]
+        },
+        "p_soft_admit_vs_control": 0.010822510822510822,
+        "p_hard_vs_soft_admit": 0.329004329004329,
+        "p_pooled_clutter_vs_control": 0.0006
+      },
+      "mser|sweep|b_tp": {
+        "groups": {
+          "soft-admit": [
+            417,
+            418,
+            424,
+            420,
+            428,
+            401
+          ],
+          "soft-control": [
+            400,
+            402,
+            391,
+            404,
+            413,
+            384
+          ],
+          "hard-admit": [
+            421,
+            422,
+            417,
+            422,
+            428,
+            382
+          ],
+          "hard-control": [
+            401,
+            410,
+            396,
+            407,
+            407,
+            374
+          ]
+        },
+        "p_soft_admit_vs_control": 0.008658008658008658,
+        "p_hard_vs_soft_admit": 0.7878787878787878,
+        "p_pooled_clutter_vs_control": 0.00185
+      },
+      "mser|sweep|r_fp": {
+        "groups": {
+          "soft-admit": [
+            54,
+            42,
+            52,
+            62,
+            44,
+            36
+          ],
+          "soft-control": [
+            54,
+            56,
+            64,
+            40,
+            54,
+            42
+          ],
+          "hard-admit": [
+            58,
+            68,
+            62,
+            59,
+            48,
+            30
+          ],
+          "hard-control": [
+            68,
+            66,
+            72,
+            44,
+            55,
+            43
+          ]
+        },
+        "p_soft_admit_vs_control": 0.5822510822510822,
+        "p_hard_vs_soft_admit": 0.41774891774891776,
+        "p_pooled_clutter_vs_control": 0.45215
+      },
+      "mser|sweep|r_tp": {
+        "groups": {
+          "soft-admit": [
+            498,
+            489,
+            494,
+            499,
+            506,
+            491
+          ],
+          "soft-control": [
+            485,
+            504,
+            504,
+            443,
+            499,
+            473
+          ],
+          "hard-admit": [
+            506,
+            508,
+            494,
+            502,
+            503,
+            457
+          ],
+          "hard-control": [
+            507,
+            505,
+            506,
+            472,
+            505,
+            479
+          ]
+        },
+        "p_soft_admit_vs_control": 0.3225108225108225,
+        "p_hard_vs_soft_admit": 0.9696969696969697,
+        "p_pooled_clutter_vs_control": 0.46585
+      },
+      "mser_split|identity|b_fp": {
+        "groups": {
+          "soft-admit": [
+            34,
+            31,
+            43,
+            36,
+            39,
+            27
+          ],
+          "soft-control": [
+            43,
+            43,
+            39,
+            45,
+            45,
+            40
+          ],
+          "hard-admit": [
+            40,
+            29,
+            36,
+            30,
+            31,
+            24
+          ],
+          "hard-control": [
+            33,
+            42,
+            42,
+            47,
+            45,
+            34
+          ]
+        },
+        "p_soft_admit_vs_control": 0.021645021645021644,
+        "p_hard_vs_soft_admit": 0.3484848484848485,
+        "p_pooled_clutter_vs_control": 0.0008
+      },
+      "mser_split|identity|b_tp": {
+        "groups": {
+          "soft-admit": [
+            53,
+            54,
+            52,
+            52,
+            51,
+            48
+          ],
+          "soft-control": [
+            49,
+            50,
+            49,
+            49,
+            50,
+            49
+          ],
+          "hard-admit": [
+            51,
+            54,
+            53,
+            52,
+            53,
+            49
+          ],
+          "hard-control": [
+            49,
+            51,
+            50,
+            50,
+            50,
+            49
+          ]
+        },
+        "p_soft_admit_vs_control": 0.03896103896103896,
+        "p_hard_vs_soft_admit": 0.8766233766233766,
+        "p_pooled_clutter_vs_control": 0.00155
+      },
+      "mser_split|identity|r_fp": {
+        "groups": {
+          "soft-admit": [
+            5,
+            4,
+            4,
+            8,
+            4,
+            4
+          ],
+          "soft-control": [
+            6,
+            6,
+            6,
+            5,
+            4,
+            4
+          ],
+          "hard-admit": [
+            4,
+            7,
+            6,
+            8,
+            4,
+            2
+          ],
+          "hard-control": [
+            6,
+            6,
+            8,
+            5,
+            5,
+            5
+          ]
+        },
+        "p_soft_admit_vs_control": 0.8593073593073594,
+        "p_hard_vs_soft_admit": 0.8917748917748918,
+        "p_pooled_clutter_vs_control": 0.51285
+      },
+      "mser_split|identity|r_tp": {
+        "groups": {
+          "soft-admit": [
+            65,
+            65,
+            64,
+            65,
+            65,
+            65
+          ],
+          "soft-control": [
+            65,
+            65,
+            65,
+            65,
+            65,
+            65
+          ],
+          "hard-admit": [
+            65,
+            65,
+            64,
+            64,
+            65,
+            63
+          ],
+          "hard-control": [
+            65,
+            65,
+            65,
+            65,
+            65,
+            65
+          ]
+        },
+        "p_soft_admit_vs_control": 1.0,
+        "p_hard_vs_soft_admit": 0.42424242424242425,
+        "p_pooled_clutter_vs_control": 0.0938
+      },
+      "mser_split|sweep|b_fp": {
+        "groups": {
+          "soft-admit": [
+            245,
+            232,
+            302,
+            254,
+            259,
+            204
+          ],
+          "soft-control": [
+            308,
+            302,
+            273,
+            304,
+            296,
+            291
+          ],
+          "hard-admit": [
+            267,
+            220,
+            259,
+            222,
+            233,
+            180
+          ],
+          "hard-control": [
+            241,
+            300,
+            302,
+            324,
+            292,
+            237
+          ]
+        },
+        "p_soft_admit_vs_control": 0.010822510822510822,
+        "p_hard_vs_soft_admit": 0.329004329004329,
+        "p_pooled_clutter_vs_control": 0.0006
+      },
+      "mser_split|sweep|b_tp": {
+        "groups": {
+          "soft-admit": [
+            417,
+            418,
+            424,
+            420,
+            428,
+            401
+          ],
+          "soft-control": [
+            400,
+            402,
+            391,
+            404,
+            413,
+            384
+          ],
+          "hard-admit": [
+            421,
+            422,
+            417,
+            422,
+            428,
+            382
+          ],
+          "hard-control": [
+            401,
+            410,
+            396,
+            407,
+            407,
+            374
+          ]
+        },
+        "p_soft_admit_vs_control": 0.008658008658008658,
+        "p_hard_vs_soft_admit": 0.7878787878787878,
+        "p_pooled_clutter_vs_control": 0.00185
+      },
+      "mser_split|sweep|r_fp": {
+        "groups": {
+          "soft-admit": [
+            34,
+            29,
+            33,
+            47,
+            30,
+            26
+          ],
+          "soft-control": [
+            33,
+            39,
+            43,
+            28,
+            31,
+            26
+          ],
+          "hard-admit": [
+            37,
+            47,
+            42,
+            45,
+            31,
+            19
+          ],
+          "hard-control": [
+            45,
+            43,
+            51,
+            29,
+            32,
+            27
+          ]
+        },
+        "p_soft_admit_vs_control": 1.0,
+        "p_hard_vs_soft_admit": 0.5064935064935064,
+        "p_pooled_clutter_vs_control": 0.8839
+      },
+      "mser_split|sweep|r_tp": {
+        "groups": {
+          "soft-admit": [
+            509,
+            497,
+            504,
+            508,
+            515,
+            498
+          ],
+          "soft-control": [
+            496,
+            515,
+            515,
+            452,
+            510,
+            484
+          ],
+          "hard-admit": [
+            517,
+            519,
+            505,
+            510,
+            514,
+            466
+          ],
+          "hard-control": [
+            518,
+            516,
+            517,
+            482,
+            516,
+            490
+          ]
+        },
+        "p_soft_admit_vs_control": 0.42857142857142855,
+        "p_hard_vs_soft_admit": 1.0,
+        "p_pooled_clutter_vs_control": 0.57945
+      }
+    },
+    "false_positives_by_frame_type": {
+      "identity|neg_fp": {
+        "soft_admit": [
+          27,
+          23,
+          28,
+          27,
+          24,
+          22
+        ],
+        "soft_control": [
+          30,
+          27,
+          28,
+          28,
+          28,
+          25
+        ],
+        "hard_admit": [
+          27,
+          24,
+          26,
+          25,
+          22,
+          18
+        ],
+        "hard_control": [
+          25,
+          29,
+          28,
+          29,
+          28,
+          24
+        ],
+        "p_soft_admit_vs_control": 0.08225108225108226,
+        "p_pooled_clutter_vs_control": 0.00585
+      },
+      "identity|pos_blue_fp": {
+        "soft_admit": [
+          10,
+          11,
+          18,
+          14,
+          18,
+          8
+        ],
+        "soft_control": [
+          17,
+          20,
+          15,
+          20,
+          19,
+          17
+        ],
+        "hard_admit": [
+          16,
+          9,
+          14,
+          9,
+          11,
+          7
+        ],
+        "hard_control": [
+          12,
+          17,
+          18,
+          21,
+          19,
+          13
+        ],
+        "p_soft_admit_vs_control": 0.04329004329004329,
+        "p_pooled_clutter_vs_control": 0.0013
+      },
+      "sweep|neg_fp": {
+        "soft_admit": [
+          171,
+          169,
+          198,
+          184,
+          172,
+          164
+        ],
+        "soft_control": [
+          198,
+          193,
+          192,
+          191,
+          194,
+          177
+        ],
+        "hard_admit": [
+          183,
+          177,
+          184,
+          174,
+          170,
+          138
+        ],
+        "hard_control": [
+          182,
+          200,
+          194,
+          203,
+          191,
+          166
+        ],
+        "p_soft_admit_vs_control": 0.03896103896103896,
+        "p_pooled_clutter_vs_control": 0.0032
+      },
+      "sweep|pos_blue_fp": {
+        "soft_admit": [
+          91,
+          79,
+          121,
+          93,
+          102,
+          57
+        ],
+        "soft_control": [
+          126,
+          127,
+          100,
+          127,
+          116,
+          127
+        ],
+        "hard_admit": [
+          103,
+          64,
+          96,
+          68,
+          77,
+          53
+        ],
+        "hard_control": [
+          81,
+          119,
+          129,
+          136,
+          115,
+          86
+        ],
+        "p_soft_admit_vs_control": 0.010822510822510822,
+        "p_pooled_clutter_vs_control": 0.00075
+      }
+    }
+  },
+  "split_rule_audit": {
+    "changed_model_shift_rows_by_queue_frame": {
+      "52": 176,
+      "53": 137,
+      "54": 191
+    },
+    "rows_worse": 0
+  },
+  "runs": {
+    "hard-admit-42": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-20261010/student.fp32.tflite",
+      "model_sha256": "569a62e33a4ab74793fbfc7817231050fdad03896326b0537cb512d7763d757d",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 506,
+          "r_fp": 58,
+          "r_fn": 14,
+          "b_tp": 421,
+          "b_fp": 267,
+          "b_fn": 115
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 7,
+          "r_fn": 1,
+          "b_tp": 51,
+          "b_fp": 40,
+          "b_fn": 16
+        },
+        "mser_split|sweep": {
+          "r_tp": 517,
+          "r_fp": 37,
+          "r_fn": 3,
+          "b_tp": 421,
+          "b_fp": 267,
+          "b_fn": 115
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 51,
+          "b_fp": 40,
+          "b_fn": 16
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 27,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 16,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 183,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 103,
+          "pos_red_fp": 18
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 40,
+            "fn": 16
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 40,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 15,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 15,
+            "fn": 15
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 25,
+            "fn": 12
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 25,
+            "fn": 12
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 46,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 46,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 23,
+            "fn": 14
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 23,
+            "fn": 14
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 40,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 40,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 25,
+            "fn": 18
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 25,
+            "fn": 18
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        }
+      }
+    },
+    "hard-admit-43": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "bc7b7dcdfbc43b8fda7d973b79a0f0207ba8579d017cd4056864e13a663c162c",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 508,
+          "r_fp": 68,
+          "r_fn": 12,
+          "b_tp": 422,
+          "b_fp": 220,
+          "b_fn": 114
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 10,
+          "r_fn": 1,
+          "b_tp": 54,
+          "b_fp": 29,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 519,
+          "r_fp": 47,
+          "r_fn": 1,
+          "b_tp": 422,
+          "b_fp": 220,
+          "b_fn": 114
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 7,
+          "r_fn": 0,
+          "b_tp": 54,
+          "b_fp": 29,
+          "b_fn": 13
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 24,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 9,
+          "pos_red_fp": 3
+        },
+        "sweep": {
+          "neg_fp": 177,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 64,
+          "pos_red_fp": 26
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 29,
+            "fn": 13
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 29,
+            "fn": 13
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 13,
+            "fn": 19
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 13,
+            "fn": 19
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 20,
+            "fn": 12
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 20,
+            "fn": 12
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 11,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 42,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 42,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 17,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 17,
+            "fn": 13
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 33,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 33,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 18,
+            "fn": 18
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 18,
+            "fn": 18
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 48,
+            "fn": 12
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 48,
+            "fn": 12
+          }
+        }
+      }
+    },
+    "hard-admit-44": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "8976ca390dc05d2610207d0b4133d0ddc201c194d8294fe343706c8969e8264f",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 494,
+          "r_fp": 62,
+          "r_fn": 26,
+          "b_tp": 417,
+          "b_fp": 259,
+          "b_fn": 119
+        },
+        "mser|identity": {
+          "r_tp": 63,
+          "r_fp": 9,
+          "r_fn": 2,
+          "b_tp": 53,
+          "b_fp": 36,
+          "b_fn": 14
+        },
+        "mser_split|sweep": {
+          "r_tp": 505,
+          "r_fp": 42,
+          "r_fn": 15,
+          "b_tp": 417,
+          "b_fp": 259,
+          "b_fn": 119
+        },
+        "mser_split|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 53,
+          "b_fp": 36,
+          "b_fn": 14
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 26,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 14,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 184,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 96,
+          "pos_red_fp": 21
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 36,
+            "fn": 14
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 36,
+            "fn": 14
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 3,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 12,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 3,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 12,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 6,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 24,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 24,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 12,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 44,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 44,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 7,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 23,
+            "fn": 17
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 23,
+            "fn": 17
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 11,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 41,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 41,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 19,
+            "fn": 18
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 19,
+            "fn": 18
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 5,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 60,
+            "fn": 12
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 60,
+            "fn": 12
+          }
+        }
+      }
+    },
+    "hard-admit-45": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "18b87b95b0facbae08c1dafacb1ccd599b02c2ed3f22bdd7c8d69ad0bbb27b7a",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 502,
+          "r_fp": 59,
+          "r_fn": 18,
+          "b_tp": 422,
+          "b_fp": 222,
+          "b_fn": 114
+        },
+        "mser|identity": {
+          "r_tp": 63,
+          "r_fp": 11,
+          "r_fn": 2,
+          "b_tp": 52,
+          "b_fp": 30,
+          "b_fn": 15
+        },
+        "mser_split|sweep": {
+          "r_tp": 510,
+          "r_fp": 45,
+          "r_fn": 10,
+          "b_tp": 422,
+          "b_fp": 222,
+          "b_fn": 114
+        },
+        "mser_split|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 52,
+          "b_fp": 30,
+          "b_fn": 15
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 25,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 9,
+          "pos_red_fp": 4
+        },
+        "sweep": {
+          "neg_fp": 174,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 68,
+          "pos_red_fp": 25
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 11,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 30,
+            "fn": 15
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 30,
+            "fn": 15
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 14,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 14,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 20,
+            "fn": 13
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 20,
+            "fn": 13
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 13,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 38,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 11,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 38,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 7,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 5,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 31,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 31,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 20,
+            "fn": 15
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 20,
+            "fn": 15
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 47,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 47,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "hard-admit-46": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "17066e12b2302adf773e6b85c26aea824dccf7e1bc6c51bfbcc0281d448a57c8",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 503,
+          "r_fp": 48,
+          "r_fn": 17,
+          "b_tp": 428,
+          "b_fp": 233,
+          "b_fn": 108
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 53,
+          "b_fp": 31,
+          "b_fn": 14
+        },
+        "mser_split|sweep": {
+          "r_tp": 514,
+          "r_fp": 31,
+          "r_fn": 6,
+          "b_tp": 428,
+          "b_fp": 233,
+          "b_fn": 108
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 53,
+          "b_fp": 31,
+          "b_fn": 14
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 22,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 11,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 170,
+          "neg_frames_with_fp": 80,
+          "pos_blue_fp": 77,
+          "pos_red_fp": 17
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 31,
+            "fn": 14
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 31,
+            "fn": 14
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 14,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 14,
+            "fn": 15
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 22,
+            "fn": 13
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 22,
+            "fn": 13
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 8,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 43,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 43,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 20,
+            "fn": 14
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 20,
+            "fn": 14
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 35,
+            "fn": 10
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 35,
+            "fn": 10
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 47,
+            "fn": 10
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 47,
+            "fn": 10
+          }
+        }
+      }
+    },
+    "hard-admit-47": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "82846a5d01b51535285dc2d82010f5463aa21cd352ea64304e529ca4b2db9593",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 457,
+          "r_fp": 30,
+          "r_fn": 63,
+          "b_tp": 382,
+          "b_fp": 180,
+          "b_fn": 154
+        },
+        "mser|identity": {
+          "r_tp": 62,
+          "r_fp": 4,
+          "r_fn": 3,
+          "b_tp": 49,
+          "b_fp": 24,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 466,
+          "r_fp": 19,
+          "r_fn": 54,
+          "b_tp": 382,
+          "b_fp": 180,
+          "b_fn": 154
+        },
+        "mser_split|identity": {
+          "r_tp": 63,
+          "r_fp": 2,
+          "r_fn": 2,
+          "b_tp": 49,
+          "b_fp": 24,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 18,
+          "neg_frames_with_fp": 8,
+          "pos_blue_fp": 7,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 138,
+          "neg_frames_with_fp": 66,
+          "pos_blue_fp": 53,
+          "pos_red_fp": 8
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 39,
+            "fp": 1,
+            "fn": 26
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 9,
+            "fn": 26
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 39,
+            "fp": 1,
+            "fn": 26
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 9,
+            "fn": 26
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 3,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 15,
+            "fn": 19
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 15,
+            "fn": 19
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 7,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 31,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 31,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 52,
+            "fp": 2,
+            "fn": 13
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 15,
+            "fn": 24
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 52,
+            "fp": 1,
+            "fn": 13
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 15,
+            "fn": 24
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 33,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 33,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 13,
+            "fn": 24
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 13,
+            "fn": 24
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 4,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 40,
+            "fn": 12
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 2,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 40,
+            "fn": 12
+          }
+        }
+      }
+    },
+    "hard-control-42": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-20261010/student.fp32.tflite",
+      "model_sha256": "a6c405e77e39a9881a079c8b8b915d52595ca22f807f8074228b62a6d43036f4",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 507,
+          "r_fp": 68,
+          "r_fn": 13,
+          "b_tp": 401,
+          "b_fp": 241,
+          "b_fn": 135
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 33,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 518,
+          "r_fp": 45,
+          "r_fn": 2,
+          "b_tp": 401,
+          "b_fp": 241,
+          "b_fn": 135
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 33,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 25,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 12,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 182,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 81,
+          "pos_red_fp": 23
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 33,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 33,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 18,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 18,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 37,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 37,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 20,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 20,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 39,
+            "fn": 11
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 39,
+            "fn": 11
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 24,
+            "fn": 24
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 24,
+            "fn": 24
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 48,
+            "fn": 13
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 48,
+            "fn": 13
+          }
+        }
+      }
+    },
+    "hard-control-43": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "094e492670b0873052afcdc1f1c3b332e920de3de7c829a778d039c565492a8b",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 505,
+          "r_fp": 66,
+          "r_fn": 15,
+          "b_tp": 410,
+          "b_fp": 300,
+          "b_fn": 126
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 51,
+          "b_fp": 42,
+          "b_fn": 16
+        },
+        "mser_split|sweep": {
+          "r_tp": 516,
+          "r_fp": 43,
+          "r_fn": 4,
+          "b_tp": 410,
+          "b_fp": 300,
+          "b_fn": 126
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 51,
+          "b_fp": 42,
+          "b_fn": 16
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 29,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 17,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 200,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 119,
+          "pos_red_fp": 24
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 42,
+            "fn": 16
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 42,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 25,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 25,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 50,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 50,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 8,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 5,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 13,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 50,
+            "fn": 14
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 10,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 50,
+            "fn": 14
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 21,
+            "fn": 19
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 21,
+            "fn": 19
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 67,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 67,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "hard-control-44": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "fa052d9ce4a8f64eff6a7e75f79ff581fd0bca4b9fb2f0bb38c6c8cd56129a6b",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 506,
+          "r_fp": 72,
+          "r_fn": 14,
+          "b_tp": 396,
+          "b_fp": 302,
+          "b_fn": 140
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 11,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 42,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 517,
+          "r_fp": 51,
+          "r_fn": 3,
+          "b_tp": 396,
+          "b_fp": 302,
+          "b_fn": 140
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 8,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 42,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 18,
+          "pos_red_fp": 4
+        },
+        "sweep": {
+          "neg_fp": 194,
+          "neg_frames_with_fp": 84,
+          "pos_blue_fp": 129,
+          "pos_red_fp": 30
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 11,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 42,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 42,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 20,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 20,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 29,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 29,
+            "fn": 16
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 13,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 49,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 10,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 49,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 27,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 27,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 13,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 52,
+            "fn": 15
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 10,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 52,
+            "fn": 15
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 44,
+            "fp": 21,
+            "fn": 23
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 44,
+            "fp": 21,
+            "fn": 23
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 62,
+            "fn": 16
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 62,
+            "fn": 16
+          }
+        }
+      }
+    },
+    "hard-control-45": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "ae2670f8c893bc966ef8311072bc1887e70ae26ea3fd5a9ef08f78d193d8508e",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 472,
+          "r_fp": 44,
+          "r_fn": 48,
+          "b_tp": 407,
+          "b_fp": 324,
+          "b_fn": 129
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 47,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 482,
+          "r_fp": 29,
+          "r_fn": 38,
+          "b_tp": 407,
+          "b_fp": 324,
+          "b_fn": 129
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 47,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 29,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 21,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 203,
+          "neg_frames_with_fp": 84,
+          "pos_blue_fp": 136,
+          "pos_red_fp": 14
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 47,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 47,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 55,
+            "fp": 2,
+            "fn": 10
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 27,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 55,
+            "fp": 2,
+            "fn": 10
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 27,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 31,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 31,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 9,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 51,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 51,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 4,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 27,
+            "fn": 18
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 4,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 27,
+            "fn": 18
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 51,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 51,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 24,
+            "fn": 19
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 24,
+            "fn": 19
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 66,
+            "fn": 16
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 66,
+            "fn": 16
+          }
+        }
+      }
+    },
+    "hard-control-46": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "5f4fafbb563abcbc91f0bb6773446d57cace06a2aa9eca1baae1d422ffefdd72",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 505,
+          "r_fp": 55,
+          "r_fn": 15,
+          "b_tp": 407,
+          "b_fp": 292,
+          "b_fn": 129
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 45,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 516,
+          "r_fp": 32,
+          "r_fn": 4,
+          "b_tp": 407,
+          "b_fp": 292,
+          "b_fn": 129
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 45,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 19,
+          "pos_red_fp": 3
+        },
+        "sweep": {
+          "neg_fp": 191,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 115,
+          "pos_red_fp": 18
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 45,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 45,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 17,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 17,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 29,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 29,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 25,
+            "fn": 17
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 25,
+            "fn": 17
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 47,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 47,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 7,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 24,
+            "fn": 21
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 24,
+            "fn": 21
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 56,
+            "fn": 13
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 56,
+            "fn": 13
+          }
+        }
+      }
+    },
+    "hard-control-47": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "8967379f7f8f818f987c0191b38fa946aee65bd73f4468e6995a9f20ad2a7d5b",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 479,
+          "r_fp": 43,
+          "r_fn": 41,
+          "b_tp": 374,
+          "b_fp": 237,
+          "b_fn": 162
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 34,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 490,
+          "r_fp": 27,
+          "r_fn": 30,
+          "b_tp": 374,
+          "b_fp": 237,
+          "b_fn": 162
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 34,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 24,
+          "neg_frames_with_fp": 10,
+          "pos_blue_fp": 13,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 166,
+          "neg_frames_with_fp": 78,
+          "pos_blue_fp": 86,
+          "pos_red_fp": 12
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 34,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 34,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 42,
+            "fp": 1,
+            "fn": 23
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 16,
+            "fn": 25
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 42,
+            "fp": 1,
+            "fn": 23
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 16,
+            "fn": 25
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 37,
+            "fn": 20
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 37,
+            "fn": 20
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 3,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 21,
+            "fn": 26
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 2,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 21,
+            "fn": 26
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 41,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 41,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 39,
+            "fp": 18,
+            "fn": 28
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 39,
+            "fp": 18,
+            "fn": 28
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 46,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 46,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "new-views-42": {
+      "model": "artifacts/balloon-pi-scheduled-search-20261008/models/new-views-42.tflite",
+      "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 354,
+          "r_fp": 20,
+          "r_fn": 166,
+          "b_tp": 373,
+          "b_fp": 253,
+          "b_fn": 163
+        },
+        "mser|identity": {
+          "r_tp": 61,
+          "r_fp": 2,
+          "r_fn": 4,
+          "b_tp": 50,
+          "b_fp": 39,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 358,
+          "r_fp": 17,
+          "r_fn": 162,
+          "b_tp": 373,
+          "b_fp": 253,
+          "b_fn": 163
+        },
+        "mser_split|identity": {
+          "r_tp": 61,
+          "r_fp": 2,
+          "r_fn": 4,
+          "b_tp": 50,
+          "b_fp": 39,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 25,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 15,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 163,
+          "neg_frames_with_fp": 74,
+          "pos_blue_fp": 100,
+          "pos_red_fp": 7
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 39,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 39,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 63
+          },
+          "blue_balloon": {
+            "tp": 35,
+            "fp": 6,
+            "fn": 32
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 63
+          },
+          "blue_balloon": {
+            "tp": 35,
+            "fp": 6,
+            "fn": 32
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 41,
+            "fp": 1,
+            "fn": 24
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 16,
+            "fn": 21
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 41,
+            "fp": 1,
+            "fn": 24
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 16,
+            "fn": 21
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 6,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 47,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 5,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 47,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 30,
+            "fp": 1,
+            "fn": 35
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 25,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 30,
+            "fp": 1,
+            "fn": 35
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 25,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 42,
+            "fn": 16
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 42,
+            "fn": 16
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 14,
+            "fn": 25
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 14,
+            "fn": 25
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 33,
+            "fp": 1,
+            "fn": 32
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 64,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 33,
+            "fp": 1,
+            "fn": 32
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 64,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "new-views-43": {
+      "model": "artifacts/balloon-pi-scheduled-search-20261008/models/new-views-43.tflite",
+      "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 423,
+          "r_fp": 38,
+          "r_fn": 97,
+          "b_tp": 388,
+          "b_fp": 275,
+          "b_fn": 148
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 7,
+          "r_fn": 1,
+          "b_tp": 48,
+          "b_fp": 39,
+          "b_fn": 19
+        },
+        "mser_split|sweep": {
+          "r_tp": 432,
+          "r_fp": 26,
+          "r_fn": 88,
+          "b_tp": 388,
+          "b_fp": 275,
+          "b_fn": 148
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 48,
+          "b_fp": 39,
+          "b_fn": 19
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 25,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 16,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 180,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 107,
+          "pos_red_fp": 14
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 39,
+            "fn": 19
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 39,
+            "fn": 19
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 2,
+            "fn": 54
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 17,
+            "fn": 19
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 2,
+            "fn": 54
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 17,
+            "fn": 19
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 2,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 29,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 2,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 29,
+            "fn": 17
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 8,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 43,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 43,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 51,
+            "fp": 3,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 27,
+            "fn": 22
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 51,
+            "fp": 3,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 27,
+            "fn": 22
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 46,
+            "fn": 15
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 46,
+            "fn": 15
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 19,
+            "fn": 24
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 19,
+            "fn": 24
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 55,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 55,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "nophoto-42": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-20261008/student.fp32.tflite",
+      "model_sha256": "b80555a5cfd54d8852259d00b40af3757a58f3c6e66ebfc541bad3faf3af5073",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 450,
+          "r_fp": 44,
+          "r_fn": 70,
+          "b_tp": 388,
+          "b_fp": 251,
+          "b_fn": 148
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 7,
+          "r_fn": 1,
+          "b_tp": 51,
+          "b_fp": 37,
+          "b_fn": 16
+        },
+        "mser_split|sweep": {
+          "r_tp": 459,
+          "r_fp": 33,
+          "r_fn": 61,
+          "b_tp": 388,
+          "b_fp": 251,
+          "b_fn": 148
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 51,
+          "b_fp": 37,
+          "b_fn": 16
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 27,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 13,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 180,
+          "neg_frames_with_fp": 80,
+          "pos_blue_fp": 86,
+          "pos_red_fp": 18
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 37,
+            "fn": 16
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 37,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 21,
+            "fp": 1,
+            "fn": 44
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 8,
+            "fn": 25
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 21,
+            "fp": 1,
+            "fn": 44
+          },
+          "blue_balloon": {
+            "tp": 42,
+            "fp": 8,
+            "fn": 25
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 19,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 19,
+            "fn": 16
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 10,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 51,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 51,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 57,
+            "fp": 5,
+            "fn": 8
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 23,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 57,
+            "fp": 4,
+            "fn": 8
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 23,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 38,
+            "fn": 16
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 38,
+            "fn": 16
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 44,
+            "fp": 16,
+            "fn": 23
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 44,
+            "fp": 16,
+            "fn": 23
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 57,
+            "fp": 2,
+            "fn": 8
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 59,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 57,
+            "fp": 2,
+            "fn": 8
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 59,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "nophoto-43": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-seed43-20261008/student.fp32.tflite",
+      "model_sha256": "fc9c883a9c12b159d12fabf429da9fd4ec4de66bbb2e50d2ebaa8baaf2c91d6a",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 410,
+          "r_fp": 36,
+          "r_fn": 110,
+          "b_tp": 387,
+          "b_fp": 250,
+          "b_fn": 149
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 5,
+          "r_fn": 1,
+          "b_tp": 47,
+          "b_fp": 37,
+          "b_fn": 20
+        },
+        "mser_split|sweep": {
+          "r_tp": 419,
+          "r_fp": 26,
+          "r_fn": 101,
+          "b_tp": 387,
+          "b_fp": 250,
+          "b_fn": 149
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 47,
+          "b_fp": 37,
+          "b_fn": 20
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 26,
+          "neg_frames_with_fp": 10,
+          "pos_blue_fp": 13,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 170,
+          "neg_frames_with_fp": 79,
+          "pos_blue_fp": 92,
+          "pos_red_fp": 14
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 37,
+            "fn": 20
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 37,
+            "fn": 20
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 63
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 14,
+            "fn": 21
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 63
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 14,
+            "fn": 21
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 2,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 23,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 2,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 23,
+            "fn": 16
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 8,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 38,
+            "fn": 19
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 38,
+            "fn": 19
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 3,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 3,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 47,
+            "fn": 15
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 47,
+            "fn": 15
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 18,
+            "fn": 24
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 43,
+            "fp": 18,
+            "fn": 24
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 49,
+            "fp": 2,
+            "fn": 16
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 51,
+            "fn": 12
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 49,
+            "fp": 2,
+            "fn": 16
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 51,
+            "fn": 12
+          }
+        }
+      }
+    },
+    "photo-42": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-20261009/student.fp32.tflite",
+      "model_sha256": "1a4781753b7fcf31c8ff30c9fec7eb14ebe6a9b6fc1343436a01df375c5b5ae2",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 503,
+          "r_fp": 67,
+          "r_fn": 17,
+          "b_tp": 403,
+          "b_fp": 309,
+          "b_fn": 133
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 10,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 44,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 514,
+          "r_fp": 46,
+          "r_fn": 6,
+          "b_tp": 403,
+          "b_fp": 309,
+          "b_fn": 133
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 7,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 44,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 29,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 19,
+          "pos_red_fp": 3
+        },
+        "sweep": {
+          "neg_fp": 200,
+          "neg_frames_with_fp": 84,
+          "pos_blue_fp": 130,
+          "pos_red_fp": 25
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 44,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 44,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 21,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 21,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 10,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 52,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 52,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 8,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 28,
+            "fn": 19
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 5,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 28,
+            "fn": 19
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 52,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 52,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 11,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 63,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 63,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "photo-43": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-seed43-20261009/student.fp32.tflite",
+      "model_sha256": "f6b95f82800c53578dd08b0e9a037d9508d552e0b6becd266e0fcada9555e0db",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 506,
+          "r_fp": 65,
+          "r_fn": 14,
+          "b_tp": 402,
+          "b_fp": 308,
+          "b_fn": 134
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 46,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 517,
+          "r_fp": 44,
+          "r_fn": 3,
+          "b_tp": 402,
+          "b_fp": 308,
+          "b_fn": 134
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 46,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 29,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 21,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 202,
+          "neg_frames_with_fp": 84,
+          "pos_blue_fp": 126,
+          "pos_red_fp": 24
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 46,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 46,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 21,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 21,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 30,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 30,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 24,
+            "fn": 19
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 24,
+            "fn": 19
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 10,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 21,
+            "fn": 21
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 21,
+            "fn": 21
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 64,
+            "fn": 15
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 64,
+            "fn": 15
+          }
+        }
+      }
+    },
+    "soft-admit-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-20261010/student.fp32.tflite",
+      "model_sha256": "cb8d5dc9dcf05f653721ec032cb557417695b6f0d5005cd3f56abc6508e087c6",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 498,
+          "r_fp": 54,
+          "r_fn": 22,
+          "b_tp": 417,
+          "b_fp": 245,
+          "b_fn": 119
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 53,
+          "b_fp": 34,
+          "b_fn": 14
+        },
+        "mser_split|sweep": {
+          "r_tp": 509,
+          "r_fp": 34,
+          "r_fn": 11,
+          "b_tp": 417,
+          "b_fp": 245,
+          "b_fn": 119
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 53,
+          "b_fp": 34,
+          "b_fn": 14
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 27,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 10,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 171,
+          "neg_frames_with_fp": 80,
+          "pos_blue_fp": 91,
+          "pos_red_fp": 17
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 34,
+            "fn": 14
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 34,
+            "fn": 14
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 54,
+            "fp": 2,
+            "fn": 11
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 15,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 54,
+            "fp": 2,
+            "fn": 11
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 15,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 22,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 40,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 40,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 21,
+            "fn": 19
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 21,
+            "fn": 19
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 33,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 33,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 56,
+            "fn": 11
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 56,
+            "fn": 11
+          }
+        }
+      }
+    },
+    "soft-admit-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "44d2d46374d3eca348899de731734190397538e18fe4e8f30a435334e13548f2",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 489,
+          "r_fp": 42,
+          "r_fn": 31,
+          "b_tp": 418,
+          "b_fp": 232,
+          "b_fn": 118
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 54,
+          "b_fp": 31,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 497,
+          "r_fp": 29,
+          "r_fn": 23,
+          "b_tp": 418,
+          "b_fp": 232,
+          "b_fn": 118
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 54,
+          "b_fp": 31,
+          "b_fn": 13
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 23,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 11,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 169,
+          "neg_frames_with_fp": 79,
+          "pos_blue_fp": 79,
+          "pos_red_fp": 13
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 31,
+            "fn": 13
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 31,
+            "fn": 13
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 2,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 14,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 50,
+            "fp": 2,
+            "fn": 15
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 14,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 20,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 20,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 7,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 41,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 41,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 6,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 18,
+            "fn": 16
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 18,
+            "fn": 16
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 38,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 38,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 17,
+            "fn": 20
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 17,
+            "fn": 20
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 4,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 53,
+            "fn": 10
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 53,
+            "fn": 10
+          }
+        }
+      }
+    },
+    "soft-admit-44": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "95b00034f5235a146873f2bbd15f7d24ee87c2133e86e15bc83795e0abb283dc",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 494,
+          "r_fp": 52,
+          "r_fn": 26,
+          "b_tp": 424,
+          "b_fp": 302,
+          "b_fn": 112
+        },
+        "mser|identity": {
+          "r_tp": 63,
+          "r_fp": 7,
+          "r_fn": 2,
+          "b_tp": 52,
+          "b_fp": 43,
+          "b_fn": 15
+        },
+        "mser_split|sweep": {
+          "r_tp": 504,
+          "r_fp": 33,
+          "r_fn": 16,
+          "b_tp": 424,
+          "b_fp": 302,
+          "b_fn": 112
+        },
+        "mser_split|identity": {
+          "r_tp": 64,
+          "r_fp": 4,
+          "r_fn": 1,
+          "b_tp": 52,
+          "b_fp": 43,
+          "b_fn": 15
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 18,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 198,
+          "neg_frames_with_fp": 84,
+          "pos_blue_fp": 121,
+          "pos_red_fp": 16
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 7,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 43,
+            "fn": 15
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 43,
+            "fn": 15
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 3,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 21,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 3,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 21,
+            "fn": 14
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 26,
+            "fn": 11
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 26,
+            "fn": 11
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 8,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 54,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 54,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 6,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 27,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 27,
+            "fn": 13
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 44,
+            "fn": 11
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 44,
+            "fn": 11
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 8,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 25,
+            "fn": 18
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 25,
+            "fn": 18
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 4,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 62,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 62,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "soft-admit-45": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "fd194d1e53ae66e491782f3292da6a66966539881c9405bd23efe7e42a746137",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 499,
+          "r_fp": 62,
+          "r_fn": 21,
+          "b_tp": 420,
+          "b_fp": 254,
+          "b_fn": 116
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 10,
+          "r_fn": 1,
+          "b_tp": 52,
+          "b_fp": 36,
+          "b_fn": 15
+        },
+        "mser_split|sweep": {
+          "r_tp": 508,
+          "r_fp": 47,
+          "r_fn": 12,
+          "b_tp": 420,
+          "b_fp": 254,
+          "b_fn": 116
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 8,
+          "r_fn": 0,
+          "b_tp": 52,
+          "b_fp": 36,
+          "b_fn": 15
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 27,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 14,
+          "pos_red_fp": 3
+        },
+        "sweep": {
+          "neg_fp": 184,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 93,
+          "pos_red_fp": 24
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 36,
+            "fn": 15
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 36,
+            "fn": 15
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 2,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 18,
+            "fn": 17
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 2,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 18,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 22,
+            "fn": 13
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 22,
+            "fn": 13
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 13,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 40,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 11,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 40,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 26,
+            "fn": 15
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 26,
+            "fn": 15
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 10,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 34,
+            "fn": 11
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 34,
+            "fn": 11
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 22,
+            "fn": 16
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 22,
+            "fn": 16
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 5,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 56,
+            "fn": 13
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 56,
+            "fn": 13
+          }
+        }
+      }
+    },
+    "soft-admit-46": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "49aae3d0c6ead19a0cf184e0483d955a8491edafa82f7255922999a641c0eb7c",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 506,
+          "r_fp": 44,
+          "r_fn": 14,
+          "b_tp": 428,
+          "b_fp": 259,
+          "b_fn": 108
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 51,
+          "b_fp": 39,
+          "b_fn": 16
+        },
+        "mser_split|sweep": {
+          "r_tp": 515,
+          "r_fp": 30,
+          "r_fn": 5,
+          "b_tp": 428,
+          "b_fp": 259,
+          "b_fn": 108
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 51,
+          "b_fp": 39,
+          "b_fn": 16
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 24,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 18,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 172,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 102,
+          "pos_red_fp": 15
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 39,
+            "fn": 16
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 39,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 16,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 16,
+            "fn": 14
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 23,
+            "fn": 12
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 23,
+            "fn": 12
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 7,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 44,
+            "fn": 15
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 44,
+            "fn": 15
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 23,
+            "fn": 15
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 23,
+            "fn": 15
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 38,
+            "fn": 10
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 38,
+            "fn": 10
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 51,
+            "fn": 10
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 51,
+            "fn": 10
+          }
+        }
+      }
+    },
+    "soft-admit-47": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 491,
+          "r_fp": 36,
+          "r_fn": 29,
+          "b_tp": 401,
+          "b_fp": 204,
+          "b_fn": 135
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 48,
+          "b_fp": 27,
+          "b_fn": 19
+        },
+        "mser_split|sweep": {
+          "r_tp": 498,
+          "r_fp": 26,
+          "r_fn": 22,
+          "b_tp": 401,
+          "b_fp": 204,
+          "b_fn": 135
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 48,
+          "b_fp": 27,
+          "b_fn": 19
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 22,
+          "neg_frames_with_fp": 9,
+          "pos_blue_fp": 8,
+          "pos_red_fp": 1
+        },
+        "sweep": {
+          "neg_fp": 164,
+          "neg_frames_with_fp": 77,
+          "pos_blue_fp": 57,
+          "pos_red_fp": 9
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 27,
+            "fn": 19
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 27,
+            "fn": 19
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 51,
+            "fp": 1,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 12,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 51,
+            "fp": 1,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 12,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 4,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 21,
+            "fn": 16
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 35,
+            "fn": 19
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 35,
+            "fn": 19
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 5,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 21,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 4,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 21,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 32,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 32,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 16,
+            "fn": 20
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 16,
+            "fn": 20
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 3,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 40,
+            "fn": 13
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 40,
+            "fn": 13
+          }
+        }
+      }
+    },
+    "soft-control-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-20261010/student.fp32.tflite",
+      "model_sha256": "94f86771804e54b2ec96bdfe04039e9ae1eb76dbd484545fe36b6800899535f9",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 485,
+          "r_fp": 54,
+          "r_fn": 35,
+          "b_tp": 400,
+          "b_fp": 308,
+          "b_fn": 136
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 43,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 496,
+          "r_fp": 33,
+          "r_fn": 24,
+          "b_tp": 400,
+          "b_fp": 308,
+          "b_fn": 136
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 43,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 30,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 17,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 198,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 126,
+          "pos_red_fp": 17
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 43,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 43,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 56,
+            "fp": 2,
+            "fn": 9
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 23,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 56,
+            "fp": 2,
+            "fn": 9
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 23,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 28,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 28,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 50,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 50,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 56,
+            "fp": 7,
+            "fn": 9
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 28,
+            "fn": 19
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 56,
+            "fp": 4,
+            "fn": 9
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 28,
+            "fn": 19
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 52,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 52,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 7,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 24,
+            "fn": 22
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 24,
+            "fn": 22
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 5,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 60,
+            "fn": 15
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 2,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 60,
+            "fn": 15
+          }
+        }
+      }
+    },
+    "soft-control-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "b00143ca2284f865a2c05ec29dbd20f78c6541d397d664105e7d0363829efcaa",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 504,
+          "r_fp": 56,
+          "r_fn": 16,
+          "b_tp": 402,
+          "b_fp": 302,
+          "b_fn": 134
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 43,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 515,
+          "r_fp": 39,
+          "r_fn": 5,
+          "b_tp": 402,
+          "b_fp": 302,
+          "b_fn": 134
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 43,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 27,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 20,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 193,
+          "neg_frames_with_fp": 83,
+          "pos_blue_fp": 127,
+          "pos_red_fp": 21
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 43,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 43,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 23,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 23,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 49,
+            "fn": 17
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 6,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 26,
+            "fn": 20
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 5,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 26,
+            "fn": 20
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 53,
+            "fn": 12
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 21,
+            "fn": 20
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 21,
+            "fn": 20
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 60,
+            "fn": 15
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 60,
+            "fn": 15
+          }
+        }
+      }
+    },
+    "soft-control-44": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "afa81aea3943cb034b6b2068fd7e85596d26a6b91b488459debe5382e1002a6c",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 504,
+          "r_fp": 64,
+          "r_fn": 16,
+          "b_tp": 391,
+          "b_fp": 273,
+          "b_fn": 145
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 39,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 515,
+          "r_fp": 43,
+          "r_fn": 5,
+          "b_tp": 391,
+          "b_fp": 273,
+          "b_fn": 145
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 6,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 39,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 15,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 192,
+          "neg_frames_with_fp": 82,
+          "pos_blue_fp": 100,
+          "pos_red_fp": 24
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 9,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 39,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 39,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 20,
+            "fn": 18
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 20,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 26,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 26,
+            "fn": 16
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 11,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 41,
+            "fn": 18
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 8,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 41,
+            "fn": 18
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 25,
+            "fn": 21
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 25,
+            "fn": 21
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 45,
+            "fn": 13
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 9,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 45,
+            "fn": 13
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 10,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 22,
+            "fn": 26
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 7,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 22,
+            "fn": 26
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 5,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 55,
+            "fn": 15
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 55,
+            "fn": 15
+          }
+        }
+      }
+    },
+    "soft-control-45": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "e973062b657fd2819d92affb770bfdc384f86df8da769c6750689ed71a73580e",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 443,
+          "r_fp": 40,
+          "r_fn": 77,
+          "b_tp": 404,
+          "b_fp": 304,
+          "b_fn": 132
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 45,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 452,
+          "r_fp": 28,
+          "r_fn": 68,
+          "b_tp": 404,
+          "b_fp": 304,
+          "b_fn": 132
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 5,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 45,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 12,
+          "pos_blue_fp": 20,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 191,
+          "neg_frames_with_fp": 82,
+          "pos_blue_fp": 127,
+          "pos_red_fp": 14
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 8,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 45,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 45,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 37,
+            "fp": 2,
+            "fn": 28
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 24,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 37,
+            "fp": 2,
+            "fn": 28
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 24,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 2,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 29,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 2,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 29,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 58,
+            "fp": 9,
+            "fn": 7
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 47,
+            "fn": 17
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 6,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 47,
+            "fn": 17
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 46,
+            "fp": 3,
+            "fn": 19
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 27,
+            "fn": 19
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 46,
+            "fp": 3,
+            "fn": 19
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 27,
+            "fn": 19
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 48,
+            "fn": 11
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 48,
+            "fn": 11
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 22,
+            "fn": 22
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 62,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 53,
+            "fp": 2,
+            "fn": 12
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 62,
+            "fn": 14
+          }
+        }
+      }
+    },
+    "soft-control-46": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "5fd58ec1dddff6c9bbf50a7e2dcb957afb03179c894d65ab79be4450064ef43a",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 499,
+          "r_fp": 54,
+          "r_fn": 21,
+          "b_tp": 413,
+          "b_fp": 296,
+          "b_fn": 123
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 7,
+          "r_fn": 1,
+          "b_tp": 50,
+          "b_fp": 45,
+          "b_fn": 17
+        },
+        "mser_split|sweep": {
+          "r_tp": 510,
+          "r_fp": 31,
+          "r_fn": 10,
+          "b_tp": 413,
+          "b_fp": 296,
+          "b_fn": 123
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 50,
+          "b_fp": 45,
+          "b_fn": 17
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 28,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 19,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 194,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 116,
+          "pos_red_fp": 17
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 45,
+            "fn": 17
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 45,
+            "fn": 17
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 5,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 17,
+            "fn": 16
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 17,
+            "fn": 16
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 6,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 27,
+            "fn": 14
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 27,
+            "fn": 14
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 50,
+            "fn": 16
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 50,
+            "fn": 16
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 6,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 25,
+            "fn": 17
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 3,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 25,
+            "fn": 17
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 9,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 50,
+            "fn": 10
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 50,
+            "fn": 10
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 7,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 22,
+            "fn": 20
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 22,
+            "fn": 20
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 5,
+            "fn": 3
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 60,
+            "fn": 13
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 60,
+            "fn": 13
+          }
+        }
+      }
+    },
+    "soft-control-47": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "1b09adf75d9fe8e5a0e7454c43d5acecf118a4a84fde98722dae1225bf49d1b3",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 473,
+          "r_fp": 42,
+          "r_fn": 47,
+          "b_tp": 384,
+          "b_fp": 291,
+          "b_fn": 152
+        },
+        "mser|identity": {
+          "r_tp": 64,
+          "r_fp": 7,
+          "r_fn": 1,
+          "b_tp": 49,
+          "b_fp": 40,
+          "b_fn": 18
+        },
+        "mser_split|sweep": {
+          "r_tp": 484,
+          "r_fp": 26,
+          "r_fn": 36,
+          "b_tp": 384,
+          "b_fp": 291,
+          "b_fn": 152
+        },
+        "mser_split|identity": {
+          "r_tp": 65,
+          "r_fp": 4,
+          "r_fn": 0,
+          "b_tp": 49,
+          "b_fp": 40,
+          "b_fn": 18
+        }
+      },
+      "false_positives_by_frame_type": {
+        "identity": {
+          "neg_fp": 25,
+          "neg_frames_with_fp": 11,
+          "pos_blue_fp": 17,
+          "pos_red_fp": 2
+        },
+        "sweep": {
+          "neg_fp": 177,
+          "neg_frames_with_fp": 81,
+          "pos_blue_fp": 127,
+          "pos_red_fp": 13
+        }
+      },
+      "per_shift": {
+        "mser|identity": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 7,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 40,
+            "fn": 18
+          }
+        },
+        "mser_split|identity": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 40,
+            "fn": 18
+          }
+        },
+        "mser|darker_0.6": {
+          "red_balloon": {
+            "tp": 48,
+            "fp": 2,
+            "fn": 17
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 24,
+            "fn": 22
+          }
+        },
+        "mser_split|darker_0.6": {
+          "red_balloon": {
+            "tp": 48,
+            "fp": 2,
+            "fn": 17
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 24,
+            "fn": 22
+          }
+        },
+        "mser|darker_0.8": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser_split|darker_0.8": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 27,
+            "fn": 15
+          }
+        },
+        "mser|brighter_1.25": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 9,
+            "fn": 4
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 44,
+            "fn": 19
+          }
+        },
+        "mser_split|brighter_1.25": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 6,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 44,
+            "fn": 19
+          }
+        },
+        "mser|gamma_0.7": {
+          "red_balloon": {
+            "tp": 52,
+            "fp": 3,
+            "fn": 13
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 27,
+            "fn": 22
+          }
+        },
+        "mser_split|gamma_0.7": {
+          "red_balloon": {
+            "tp": 52,
+            "fp": 2,
+            "fn": 13
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 27,
+            "fn": 22
+          }
+        },
+        "mser|gamma_1.4": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 8,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 50,
+            "fn": 16
+          }
+        },
+        "mser_split|gamma_1.4": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 5,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 50,
+            "fn": 16
+          }
+        },
+        "mser|warm_cast": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 6,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 26,
+            "fn": 26
+          }
+        },
+        "mser_split|warm_cast": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 41,
+            "fp": 26,
+            "fn": 26
+          }
+        },
+        "mser|cool_cast": {
+          "red_balloon": {
+            "tp": 59,
+            "fp": 4,
+            "fn": 6
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 53,
+            "fn": 14
+          }
+        },
+        "mser_split|cool_cast": {
+          "red_balloon": {
+            "tp": 60,
+            "fp": 2,
+            "fn": 5
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 53,
+            "fn": 14
+          }
+        }
+      }
+    }
+  }
+}
