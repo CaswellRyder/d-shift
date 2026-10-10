@@ -13,6 +13,34 @@ import numpy as np
 from dtr.data import load_rgb, read_json, sha256, validate, write_json
 
 
+def geometric_crop(rgb, rng):
+    """Eight exact square symmetries; preserve color, pixels and balloon identity."""
+    if rgb.ndim != 3 or rgb.shape[0] != rgb.shape[1] or rgb.shape[2] != 3:
+        raise ValueError("Geometric augmentation requires square RGB crops")
+    result = np.rot90(rgb, int(rng.integers(4)))
+    if rng.integers(2):
+        result = result[:, ::-1]
+    return np.ascontiguousarray(result)
+
+
+def check_augmentation(mode, config, target_cache):
+    if mode not in ("none", "balloon-geometric"):
+        raise ValueError("Unknown augmentation")
+    if mode != "none" and (config["task"] != "balloon" or config["alpha"] != 1 or target_cache):
+        raise ValueError("Augmentation requires balloon hard labels only, without cached teacher logits")
+
+
+def row_alphas(rows, alpha, hard_label_clutter):
+    """Per-row hard-label weight; reviewed clutter-ablation rows may drop the teacher term."""
+    alphas = np.full(len(rows), alpha, dtype=np.float32)
+    if hard_label_clutter:
+        flagged = [i for i, row in enumerate(rows) if "clutter_ablation_mode" in row]
+        if not flagged or alpha >= 1:
+            raise ValueError("Clutter hard labels require clutter-ablation rows and alpha < 1")
+        alphas[flagged] = 1
+    return alphas
+
+
 def require_finite_metrics(logs):
     if not logs or not all(np.isfinite(float(value)) for value in logs.values()):
         raise ValueError("Missing or non-finite training metrics; refusing export")
@@ -67,6 +95,9 @@ def main():
     parser.add_argument("--initialize-context", help="Existing context run for SVD warm-start; separable_context only")
     parser.add_argument("--initialize-student", help="Existing same-architecture student; approved new training manifest allowed")
     parser.add_argument("--learning-rate", type=float, default=1e-3)
+    parser.add_argument("--augmentation", choices=("none", "balloon-geometric"), default="none")
+    parser.add_argument("--hard-label-clutter", action="store_true",
+                        help="Drop the teacher term on clutter-ablation rows (both admit and control arms)")
     args = parser.parse_args()
     output = Path(args.output)
     if output.exists():
@@ -83,6 +114,7 @@ def main():
         parser.error("Require alpha in [0,1] and positive temperature")
     if config["student_size"] < 32 or config["student_size"] % 16:
         parser.error("Require crop size >=32 divisible by 16")
+    check_augmentation(args.augmentation, config, args.target_cache_run)
     doc, meta = checked_inputs(args.manifest, config, args.teacher)
     initial_path, initial_hash = None, None
     if args.initialize_context:
@@ -123,7 +155,9 @@ def main():
     provenance = dict(teacher=str(Path(args.teacher).resolve()), teacher_sha256=meta["sha256"],
                       manifest=str(Path(args.manifest).resolve()), manifest_sha256=sha256(args.manifest),
                       config=config, epochs=args.epochs, temperature=config["temperature"],
-                      alpha=config["alpha"], augmentation="none; cached logits for identical source crops",
+                      alpha=config["alpha"],
+                      augmentation=("none; cached logits for identical source crops" if args.augmentation == "none"
+                                    else "TRAIN only: random right-angle rotation and reflection; hard labels only"),
                       student_variant=args.student_variant,
                       training_script_sha256=sha256(__file__),
                       models_source_sha256=sha256(Path(__file__).resolve().parents[1] / "src/dtr/models.py"),
@@ -140,6 +174,10 @@ def main():
         k = len(config["classes"])
         root = Path(args.manifest).resolve().parent
         rows = [r for r in doc["samples"] if r["split"] == "train"]
+        alphas = row_alphas(rows, config["alpha"], args.hard_label_clutter)
+        if args.hard_label_clutter:
+            provenance["hard_label_rows"] = dict(field="clutter_ablation_mode", count=int((alphas == 1).sum()))
+            write_json(output / "provenance.json", provenance)
         targets = np.empty((len(rows), 2*k), dtype=np.float32)
         batch_size = config["batch_size"]
         if args.target_cache_run:
@@ -170,13 +208,19 @@ def main():
         # Cache use and teacher loading must not change student initialization/shuffle.
         keras.utils.set_random_seed(config["seed"])
 
+        augmentation_rng = np.random.default_rng(config["seed"])
+
         def generate():
-            for row, target in zip(rows, targets):
-                yield load_rgb(root / row["path"], config["student_size"]), target
+            for row, target, row_alpha in zip(rows, targets, alphas):
+                rgb = load_rgb(root / row["path"], config["student_size"])
+                if args.augmentation == "balloon-geometric":
+                    rgb = geometric_crop(rgb, augmentation_rng)
+                yield rgb, (np.append(target, row_alpha) if args.hard_label_clutter else target)
 
         size = config["student_size"]
         ds = tf.data.Dataset.from_generator(generate, output_signature=(
-            tf.TensorSpec((size, size, 3), tf.float32), tf.TensorSpec((2*k,), tf.float32)))
+            tf.TensorSpec((size, size, 3), tf.float32),
+            tf.TensorSpec((2*k+args.hard_label_clutter,), tf.float32)))
         ds = ds.apply(tf.data.experimental.assert_cardinality(len(rows)))
         options = tf.data.Options()
         options.threading.private_threadpool_size = 2
@@ -184,7 +228,10 @@ def main():
         val = batches(args.manifest, config, "val", size, validation_splits=("train", "val"))
         # Selection uses val_hard_loss, never the padded-logit validation KL loss.
         def padded_labels(x, y):
-            return x, tf.concat([tf.one_hot(y, k), tf.zeros((tf.shape(y)[0], k))], axis=1)
+            labels = [tf.one_hot(y, k), tf.zeros((tf.shape(y)[0], k))]
+            if args.hard_label_clutter:
+                labels.append(tf.fill((tf.shape(y)[0], 1), config["alpha"]))
+            return x, tf.concat(labels, axis=1)
 
         temperature, alpha = config["temperature"], config["alpha"]
         if temperature <= 0 or not 0 <= alpha <= 1:
@@ -192,10 +239,13 @@ def main():
 
         def loss(y, logits):
             hard = keras.losses.categorical_crossentropy(y[:, :k], logits, from_logits=True)
-            teacher_logits = y[:, k:]
+            teacher_logits = y[:, k:2*k]
             p = tf.nn.softmax(teacher_logits / temperature)
             soft = tf.reduce_sum(p * (tf.nn.log_softmax(teacher_logits / temperature)
                                      - tf.nn.log_softmax(logits / temperature)), axis=-1) * temperature**2
+            if args.hard_label_clutter:
+                weight = y[:, 2*k]
+                return weight * hard + (1-weight) * soft
             return alpha * hard + (1-alpha) * soft
 
         def hard_loss(y, logits):
