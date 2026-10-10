@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from scripts.research_balloon_search import (experimental, remove_contained, select, split_merged_balloon_parents,
+from scripts.research_balloon_search import (experimental, remove_contained, replace_oversized_balloon_parents,
+                                             select, split_merged_balloon_parents,
                                              suppress_confirmed_balloon_parts)
 
 
@@ -49,6 +50,31 @@ def test_merged_parent_split_requires_two_disjoint_round_same_color_children():
     goal = dict(parent, label="orange_circle_goal")
     assert split_merged_balloon_parents([goal, dict(left, label=goal["label"]),
                                          dict(right, label=goal["label"])])[0]["accepted"]
+
+
+def test_oversized_parent_is_replaced_by_its_largest_substantial_part():
+    # Balloon plus clutter: the balloon is 25% of the accepted box; a highlight is tiny.
+    parent = dict(box=[0, 0, 200, 100], label="blue_balloon", accepted=True, score=.9)
+    balloon = dict(box=[10, 10, 110, 60], label="blue_balloon", accepted=True, score=1.)
+    inner = dict(box=[20, 20, 60, 50], label="blue_balloon", accepted=True, score=1.)  # 24% of balloon
+    highlight = dict(box=[150, 70, 160, 80], label="blue_balloon", accepted=True, score=1.)
+    rows = suppress_confirmed_balloon_parts(replace_oversized_balloon_parents([parent, balloon, inner, highlight]))
+    assert [r["accepted"] for r in rows] == [False, True, False, False]
+    assert rows[0]["suppression_reason"] == "oversized_balloon_parent" and parent["accepted"]
+    # Only parts of the replaced parent are touched, and the kept part is not cascaded.
+    assert rows[2]["suppression_reason"] == "confirmed_balloon_part"
+
+
+def test_oversized_parent_rule_keeps_parents_with_only_tiny_or_unrelated_parts():
+    parent = dict(box=[0, 0, 200, 100], label="red_balloon", accepted=True, score=.9)
+    part = dict(box=[10, 10, 110, 60], label="red_balloon", accepted=True, score=1.)
+    for variant in (dict(part, box=[10, 10, 50, 40]),  # 6%: a highlight
+                    dict(part, box=[0, 0, 150, 100]),  # 75%: not a part
+                    dict(part, label="blue_balloon"), dict(part, accepted=False),
+                    dict(part, box=[150, 10, 250, 60])):  # leaves the parent
+        assert replace_oversized_balloon_parents([parent, variant])[0]["accepted"]
+    goal = dict(parent, label="orange_circle_goal")
+    assert replace_oversized_balloon_parents([goal, dict(part, label=goal["label"])])[0]["accepted"]
 
 
 @pytest.mark.parametrize("variant", ["baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_confirmed_parts"])

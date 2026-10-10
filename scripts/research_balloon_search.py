@@ -118,6 +118,45 @@ def split_merged_balloon_parents(observations, min_fraction=.15, max_fraction=.6
     return rows
 
 
+def replace_oversized_balloon_parents(observations, min_fraction=.15, max_fraction=.35):
+    """Research-only: replace an accepted box by its largest substantial same-color part.
+
+    Apply after merged-parent splitting and before confirmed-part suppression. A
+    correct balloon box contains only tiny accepted parts (highlights, prints); a
+    box spanning a balloon and nearby clutter contains the balloon as a part of
+    15-35% of its area. Largest parents first: the parent is rejected, its largest
+    such part is kept, and its other parts stay suppressed as they would have been.
+    Designed on development panels 1-2 only; a geometric heuristic, not segmentation.
+    """
+    rows = [dict(row) for row in observations]
+    labels = {"red_balloon", "blue_balloon"}
+
+    def area(box):
+        return max(0, box[2]-box[0])*max(0, box[3]-box[1])
+
+    def part(child, parent):
+        a, p = child["box"], parent["box"]
+        overlap = area([max(a[0], p[0]), max(a[1], p[1]), min(a[2], p[2]), min(a[3], p[3])])
+        return (child is not parent and child["accepted"] and child["label"] == parent["label"]
+                and area(a) <= max_fraction*area(p) and overlap >= .95*area(a))
+
+    kept = set()
+    for parent in sorted(rows, key=lambda r: -area(r["box"])):
+        if id(parent) in kept or not parent["accepted"] or parent["label"] not in labels:
+            continue
+        parts = [c for c in rows if part(c, parent)]
+        large = [c for c in parts if area(c["box"]) >= min_fraction*area(parent["box"])]
+        if not large:
+            continue
+        keep = max(large, key=lambda c: area(c["box"]))
+        kept.add(id(keep))
+        parent.update(accepted=False, suppressed=True, suppression_reason="oversized_balloon_parent")
+        for c in parts:
+            if c is not keep:
+                c.update(accepted=False, suppressed=True, suppression_reason="confirmed_balloon_part")
+    return rows
+
+
 def select(candidates, limit=12):
     queues = [[c for c in sorted(candidates, key=lambda c: -c["proposal_score"])
                if c["color_group"] == group] for group in (0, 1)]

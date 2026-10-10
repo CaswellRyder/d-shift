@@ -17,11 +17,12 @@ from dtr.runtime import Predictor
 from dtr.vision import suppress_duplicates
 
 try:
-    from research_balloon_search import (experimental, split_merged_balloon_parents,
-                                         suppress_confirmed_balloon_parts)
+    from research_balloon_search import (experimental, replace_oversized_balloon_parents,
+                                         split_merged_balloon_parents, suppress_confirmed_balloon_parts)
     from research_pixel_proposals import CvPixelMasks, color, coverage, pixel_search
 except ModuleNotFoundError:
-    from scripts.research_balloon_search import (experimental, split_merged_balloon_parents,
+    from scripts.research_balloon_search import (experimental, replace_oversized_balloon_parents,
+                                                 split_merged_balloon_parents,
                                                  suppress_confirmed_balloon_parts)
     from scripts.research_pixel_proposals import CvPixelMasks, color, coverage, pixel_search
 
@@ -46,7 +47,7 @@ def photometric(rgb, gain, gamma):
     return cv2.LUT(rgb, lut)
 
 
-def classify(rgb, proposals, predictor, split=False):
+def classify(rgb, proposals, predictor, split=False, oversized=False):
     found = []
     for proposal in proposals:
         a, b, c, d = proposal["crop_box"]
@@ -55,10 +56,13 @@ def classify(rgb, proposals, predictor, split=False):
     rows = suppress_duplicates(found)
     if split:
         rows = split_merged_balloon_parents(rows)
+    if oversized:
+        rows = replace_oversized_balloon_parents(rows)
     return suppress_confirmed_balloon_parts(rows)
 
 
 def main():
+    from scripts.evaluate_red_blue_development import detection_counts
     from scripts.review_pixel_balloon_bench import panel_counts
 
     parser = argparse.ArgumentParser(description=__doc__)
@@ -70,6 +74,8 @@ def main():
     parser.add_argument("--threshold", type=float, action="append", default=[])
     parser.add_argument("--split-merged", action="store_true",
                         help="also report MSER with merged-parent splitting (mser_split)")
+    parser.add_argument("--oversized-parents", action="store_true",
+                        help="also report mser_split plus oversized-parent replacement (mser_split_oversized)")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     if Path(args.output).exists():
@@ -85,6 +91,8 @@ def main():
     searches = {"mser": lambda rgb: experimental(rgb, "mser")}
     if args.split_merged:
         searches["mser_split"] = searches["mser"]
+    if args.oversized_parents:
+        searches["mser_split_oversized"] = searches["mser"]
     for threshold in args.threshold if args.searches == "all" else ():
         masks = CvPixelMasks((args.red, args.blue), threshold)
         for stride in (1, 2):
@@ -95,7 +103,8 @@ def main():
         shifted = [photometric(rgb, gain, gamma) for rgb in images]
         for search, fn in searches.items():
             proposals = [fn(rgb) for rgb in shifted]
-            detections = [classify(rgb, p, predictor, search == "mser_split")
+            detections = [classify(rgb, p, predictor, search.startswith("mser_split"),
+                                   search == "mser_split_oversized")
                           for rgb, p in zip(shifted, proposals)]
             counts = panel_counts(frames, detections)
             total = {k: sum(c[k] for by in counts.values() for c in by.values())
@@ -103,8 +112,10 @@ def main():
             covered = sum(coverage(f["truth"], [p["box"] for p in ps], [p["color_group"] for p in ps])
                           for f, ps in zip(frames, proposals))
             calls = sum(len(p) for p in proposals) / len(frames)
+            frame_counts = [detection_counts(f["truth"], d) for f, d in zip(frames, detections)]
             rows.append(dict(transform=name, gain=list(gain), gamma=gamma, search=search,
-                             coverage=covered, calls_per_frame=calls, counts=counts, total=total))
+                             coverage=covered, calls_per_frame=calls, counts=counts, total=total,
+                             frame_counts=frame_counts))
             print(f"{name:14s} {search:16s} cover {covered:2d}/28 calls {calls:4.2f} "
                   f"TP/FP/FN {total['tp']}/{total['fp']}/{total['fn']}", flush=True)
     write_json(args.output, dict(
