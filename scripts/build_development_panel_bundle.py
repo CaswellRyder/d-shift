@@ -2,10 +2,13 @@
 
 The output is a `research_pixel_photometric.py --base` directory. Only frames the
 frozen review admits are copied, with their provisional upstream boxes as truth.
+Frames listed in the review's optional `vertical_flip` are turned upright, boxes too.
 """
 import argparse
 from pathlib import Path
 import shutil
+
+from PIL import Image
 
 from dtr.data import read_json, sha256, write_json
 
@@ -19,6 +22,9 @@ def bundle(queue_root, review_path, output, split="development_panel2"):
         raise ValueError("Queue changed after review")
     if set(review["admit"]) & set(review["exclude"]):
         raise ValueError("Frame both admitted and excluded")
+    flips = set(review.get("vertical_flip", []))
+    if not flips <= set(review["admit"]):
+        raise ValueError("Flip listed for a frame that is not admitted")
     if output.exists():
         raise FileExistsError(output)
     queue = read_json(queue_root / "review.json")
@@ -29,9 +35,16 @@ def bundle(queue_root, review_path, output, split="development_panel2"):
         if sha256(queue_root / row["path"]) != row["sha256"]:
             raise ValueError("Panel frame changed")
         path = f"frames/{i:03d}.png"
-        shutil.copy(queue_root / row["path"], output / path)
-        frames.append(dict(path=path, source=row["source"], panel="indoor",
-                           truth=row["provisional_truth"], queue_id=i))
+        truth = row["provisional_truth"]
+        if i in flips:
+            with Image.open(queue_root / row["path"]) as im:
+                height = im.height
+                im.transpose(Image.Transpose.FLIP_TOP_BOTTOM).save(output / path)
+            truth = [dict(t, box=[t["box"][0], height - t["box"][3], t["box"][2], height - t["box"][1]])
+                     for t in truth]
+        else:
+            shutil.copy(queue_root / row["path"], output / path)
+        frames.append(dict(path=path, source=row["source"], panel="indoor", truth=truth, queue_id=i))
     write_json(output / "inputs.json", dict(split=split, frames=frames, models={},
                                             queue_sha256=review["queue_sha256"],
                                             review_sha256=sha256(review_path)))
