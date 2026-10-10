@@ -17,10 +17,12 @@ from dtr.runtime import Predictor
 from dtr.vision import suppress_duplicates
 
 try:
-    from research_balloon_search import experimental, suppress_confirmed_balloon_parts
+    from research_balloon_search import (experimental, split_merged_balloon_parents,
+                                         suppress_confirmed_balloon_parts)
     from research_pixel_proposals import CvPixelMasks, color, coverage, pixel_search
 except ModuleNotFoundError:
-    from scripts.research_balloon_search import experimental, suppress_confirmed_balloon_parts
+    from scripts.research_balloon_search import (experimental, split_merged_balloon_parents,
+                                                 suppress_confirmed_balloon_parts)
     from scripts.research_pixel_proposals import CvPixelMasks, color, coverage, pixel_search
 
 # (name, per-channel RGB gain, gamma); applied as clip(255 * (gain * x / 255) ** gamma).
@@ -44,13 +46,16 @@ def photometric(rgb, gain, gamma):
     return cv2.LUT(rgb, lut)
 
 
-def classify(rgb, proposals, predictor):
+def classify(rgb, proposals, predictor, split=False):
     found = []
     for proposal in proposals:
         a, b, c, d = proposal["crop_box"]
         pred = predictor.predict(rgb[b:d, a:c])
         found.append(dict(proposal, **{k: pred[k] for k in ("label", "scores", "score", "accepted")}))
-    return suppress_confirmed_balloon_parts(suppress_duplicates(found))
+    rows = suppress_duplicates(found)
+    if split:
+        rows = split_merged_balloon_parents(rows)
+    return suppress_confirmed_balloon_parts(rows)
 
 
 def main():
@@ -63,6 +68,8 @@ def main():
     parser.add_argument("--red", type=color, required=True)
     parser.add_argument("--blue", type=color, required=True)
     parser.add_argument("--threshold", type=float, action="append", default=[])
+    parser.add_argument("--split-merged", action="store_true",
+                        help="also report MSER with merged-parent splitting (mser_split)")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     if Path(args.output).exists():
@@ -76,6 +83,8 @@ def main():
              else root / inputs["models"][args.model]["path"])
     predictor = Predictor(model, allow_unvalidated=True)
     searches = {"mser": lambda rgb: experimental(rgb, "mser")}
+    if args.split_merged:
+        searches["mser_split"] = searches["mser"]
     for threshold in args.threshold if args.searches == "all" else ():
         masks = CvPixelMasks((args.red, args.blue), threshold)
         for stride in (1, 2):
@@ -86,7 +95,8 @@ def main():
         shifted = [photometric(rgb, gain, gamma) for rgb in images]
         for search, fn in searches.items():
             proposals = [fn(rgb) for rgb in shifted]
-            detections = [classify(rgb, p, predictor) for rgb, p in zip(shifted, proposals)]
+            detections = [classify(rgb, p, predictor, search == "mser_split")
+                          for rgb, p in zip(shifted, proposals)]
             counts = panel_counts(frames, detections)
             total = {k: sum(c[k] for by in counts.values() for c in by.values())
                      for k in ("tp", "fp", "fn")}

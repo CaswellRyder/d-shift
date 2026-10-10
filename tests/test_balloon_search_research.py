@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from scripts.research_balloon_search import experimental, remove_contained, select, suppress_confirmed_balloon_parts
+from scripts.research_balloon_search import (experimental, remove_contained, select, split_merged_balloon_parents,
+                                             suppress_confirmed_balloon_parts)
 
 
 def test_confirmed_parts_require_accepted_same_color_parent_and_do_not_mutate():
@@ -18,6 +19,36 @@ def test_confirmed_parts_require_accepted_same_color_parent_and_do_not_mutate():
     assert suppress_confirmed_balloon_parts([parent, big_overlap])[1]["accepted"]
     goals = [dict(row, label="orange_circle_goal") for row in (parent, child)]
     assert all(row["accepted"] for row in suppress_confirmed_balloon_parts(goals))
+
+
+def test_merged_parent_split_keeps_two_separate_round_children():
+    # Frame-11 geometry: one wide accepted box spanning two separate red balloons.
+    parent = dict(box=[42, 163, 175, 233], label="red_balloon", accepted=True, score=.99)
+    left = dict(box=[43, 166, 104, 225], label="red_balloon", accepted=True, score=1.)
+    right = dict(box=[113, 177, 169, 232], label="red_balloon", accepted=True, score=1.)
+    rows = split_merged_balloon_parents([parent, left, right])
+    assert [r["accepted"] for r in rows] == [False, True, True]
+    assert rows[0]["suppression_reason"] == "merged_balloon_parent" and parent["accepted"]
+    kept = suppress_confirmed_balloon_parts(rows)
+    assert [r["accepted"] for r in kept] == [False, True, True]
+    # Without splitting, the confirmed parent hides the smaller balloon.
+    assert not suppress_confirmed_balloon_parts([parent, left, right])[2]["accepted"]
+
+
+def test_merged_parent_split_requires_two_disjoint_round_same_color_children():
+    parent = dict(box=[0, 0, 100, 50], label="red_balloon", accepted=True, score=.9)
+    left = dict(box=[2, 2, 42, 42], label="red_balloon", accepted=True, score=.9)
+    right = dict(box=[55, 5, 95, 45], label="red_balloon", accepted=True, score=.9)
+    assert not split_merged_balloon_parents([parent, left, right])[0]["accepted"]
+    for variant in ([left], [left, dict(right, label="blue_balloon")], [left, dict(right, accepted=False)],
+                    [left, dict(right, box=[20, 2, 60, 42])],  # children overlap: one balloon
+                    [dict(left, box=[0, 0, 48, 20]), dict(right, box=[52, 0, 100, 20])],  # elongated halves
+                    [left, dict(right, box=[80, 30, 90, 40])],  # child too small
+                    [left, dict(right, box=[70, 5, 110, 45])]):  # child leaves parent
+        assert split_merged_balloon_parents([parent, *variant])[0]["accepted"]
+    goal = dict(parent, label="orange_circle_goal")
+    assert split_merged_balloon_parents([goal, dict(left, label=goal["label"]),
+                                         dict(right, label=goal["label"])])[0]["accepted"]
 
 
 @pytest.mark.parametrize("variant", ["baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_confirmed_parts"])

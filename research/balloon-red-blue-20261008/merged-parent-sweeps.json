@@ -1,0 +1,4666 @@
+{
+  "purpose": "Synthetic photometric sweep, MSER with and without merged-parent splitting; development frames, NOT qualification; synthetic shifts are not real lighting",
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "inputs_sha256": "fc3c0897511c080b187043e26c1ceec589b5fcfe158abc60610417e15108341f",
+  "script_sha256": "4e386c58fe7ba7b71a4f0dc09d0f6666fb68c3c5ed689735ddb9241c114a760d",
+  "rule_script_sha256": "5a9126dc89fbe9f19a23f1ff2be66899505894ca64cbf2e247ae79c9d7141830",
+  "runs": {
+    "clutter-admit-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-20261010/student.fp32.tflite",
+      "model_sha256": "cb8d5dc9dcf05f653721ec032cb557417695b6f0d5005cd3f56abc6508e087c6",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 7,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 6,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 0,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 3,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 0,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 3,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 2,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 2,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 5,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 13,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 12,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 7,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 5,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 16,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 4,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 15,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 9,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 8,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 16,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 15,
+            "fn": 3
+          }
+        }
+      ]
+    },
+    "clutter-admit-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "44d2d46374d3eca348899de731734190397538e18fe4e8f30a435334e13548f2",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 8,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 7,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 4,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 4,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 5,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 5,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 7,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 12,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 7,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 11,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 3,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 3,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 10,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 14,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 10,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 13,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 4,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 3,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 14,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 14,
+            "fn": 3
+          }
+        }
+      ]
+    },
+    "clutter-control-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-20261010/student.fp32.tflite",
+      "model_sha256": "94f86771804e54b2ec96bdfe04039e9ae1eb76dbd484545fe36b6800899535f9",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 5,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 10,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 5,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 9,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 8,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 7,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 9,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 14,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 9,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 13,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 8,
+                "fp": 2,
+                "fn": 3
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 20,
+            "fp": 8,
+            "fn": 8
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 7,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 13,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 2,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 20,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 13,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 2,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 19,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 6,
+                "fp": 2,
+                "fn": 6
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 7,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 6,
+                "fp": 2,
+                "fn": 6
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 2,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 19,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 2,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 19,
+            "fn": 2
+          }
+        }
+      ]
+    },
+    "clutter-control-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "b00143ca2284f865a2c05ec29dbd20f78c6541d397d664105e7d0363829efcaa",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 6,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 11,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 6,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 10,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 6,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 6,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 8,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 7,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 8,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 13,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 8,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 12,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 7,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 7,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 13,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 20,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 13,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 19,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 5,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 15,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 19,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 15,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 19,
+            "fn": 2
+          }
+        }
+      ]
+    },
+    "control-42": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-20261008/student.fp32.tflite",
+      "model_sha256": "b80555a5cfd54d8852259d00b40af3757a58f3c6e66ebfc541bad3faf3af5073",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 6,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 6,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 9
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 0,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 13,
+            "fp": 2,
+            "fn": 15
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 9
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 0,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 13,
+            "fp": 2,
+            "fn": 15
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 4,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 4,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 7,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 12,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 7,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 11,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 12,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 8,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 12,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 0,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 20,
+            "fp": 6,
+            "fn": 8
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 0,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 5,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 18,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 1,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 18,
+            "fn": 3
+          }
+        }
+      ]
+    },
+    "control-43": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-seed43-20261008/student.fp32.tflite",
+      "model_sha256": "fc9c883a9c12b159d12fabf429da9fd4ec4de66bbb2e50d2ebaa8baaf2c91d6a",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 8,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 8,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 11
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 16
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 0,
+                "fp": 0,
+                "fn": 11
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 16
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 3,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 3,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 6,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 6,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 11,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 6,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 10,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 3
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 3,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 18,
+            "fp": 6,
+            "fn": 10
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 8,
+                "fp": 1,
+                "fn": 3
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 3,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 18,
+            "fp": 6,
+            "fn": 10
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 11,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 15,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 11,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 15,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 1,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 20,
+            "fp": 5,
+            "fn": 8
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 5,
+                "fp": 1,
+                "fn": 7
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 21,
+            "fp": 4,
+            "fn": 7
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 7,
+                "fp": 1,
+                "fn": 4
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 12,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 16,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 7,
+                "fp": 1,
+                "fn": 4
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 12,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 16,
+            "fn": 6
+          }
+        }
+      ]
+    },
+    "photo-42": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-20261009/student.fp32.tflite",
+      "model_sha256": "1a4781753b7fcf31c8ff30c9fec7eb14ebe6a9b6fc1343436a01df375c5b5ae2",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 3,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 5,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 11,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 5,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 10,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 4,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 1,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 0,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 4,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 7,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 6,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 9,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 14,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 9,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 13,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 7,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 3,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 6,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 18,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 11,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 17,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 8,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 7,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 18,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 18,
+            "fn": 2
+          }
+        }
+      ]
+    },
+    "photo-43": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-seed43-20261009/student.fp32.tflite",
+      "model_sha256": "f6b95f82800c53578dd08b0e9a037d9508d552e0b6becd266e0fcada9555e0db",
+      "rows": [
+        {
+          "transform": "identity",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 6,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 11,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "identity",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 6,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 10,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 6,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.6",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 2,
+                "fp": 1,
+                "fn": 1
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 6,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 8,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "darker_0.8",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 9,
+                "fp": 3,
+                "fn": 3
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 7,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 9,
+                "fp": 2,
+                "fn": 2
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 8,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 13,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "brighter_1.25",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 8,
+                "fp": 8,
+                "fn": 4
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 24,
+            "fp": 12,
+            "fn": 4
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 8,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "gamma_0.7",
+          "search": "mser_split",
+          "coverage": 26,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 4,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 7,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 5,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 22,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "gamma_1.4",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 4,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 14,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 21,
+            "fn": 2
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 4,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 22,
+            "fp": 8,
+            "fn": 6
+          }
+        },
+        {
+          "transform": "warm_cast",
+          "search": "mser_split",
+          "coverage": 25,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 3,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 7,
+                "fp": 2,
+                "fn": 5
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 0,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 23,
+            "fp": 7,
+            "fn": 5
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 10,
+                "fp": 2,
+                "fn": 1
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 13,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 25,
+            "fp": 18,
+            "fn": 3
+          }
+        },
+        {
+          "transform": "cool_cast",
+          "search": "mser_split",
+          "coverage": 27,
+          "counts": {
+            "indoor": {
+              "red_balloon": {
+                "tp": 11,
+                "fp": 1,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 10,
+                "fp": 13,
+                "fn": 2
+              }
+            },
+            "original": {
+              "red_balloon": {
+                "tp": 2,
+                "fp": 2,
+                "fn": 0
+              },
+              "blue_balloon": {
+                "tp": 3,
+                "fp": 1,
+                "fn": 0
+              }
+            }
+          },
+          "total": {
+            "tp": 26,
+            "fp": 17,
+            "fn": 2
+          }
+        }
+      ]
+    }
+  }
+}

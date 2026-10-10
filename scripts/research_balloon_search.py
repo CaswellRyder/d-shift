@@ -82,6 +82,42 @@ def suppress_confirmed_balloon_parts(observations):
     return rows
 
 
+def split_merged_balloon_parents(observations, min_fraction=.15, max_fraction=.6, max_aspect=1.5):
+    """Research-only: reject an accepted box that merges two separate same-color balloons.
+
+    Apply after duplicate suppression and before confirmed-part suppression. A
+    parent is rejected when it contains two accepted, roughly round, same-color
+    children that do not overlap each other; the children are kept. A single
+    balloon split into two halves is guarded against only by the roundness and
+    size limits, so this is a geometric heuristic, not instance segmentation.
+    """
+    rows = [dict(row) for row in observations]
+    labels = {"red_balloon", "blue_balloon"}
+
+    def area(box):
+        return max(0, box[2]-box[0])*max(0, box[3]-box[1])
+
+    def round_child(child, parent):
+        a, p = child["box"], parent["box"]
+        w, h = a[2]-a[0], a[3]-a[1]
+        overlap = area([max(a[0], p[0]), max(a[1], p[1]), min(a[2], p[2]), min(a[3], p[3])])
+        return (child["accepted"] and child["label"] == parent["label"]
+                and w > 0 and h > 0 and max(w/h, h/w) <= max_aspect
+                and min_fraction*area(p) <= area(a) <= max_fraction*area(p)
+                and overlap >= .9*area(a))
+
+    merged = []
+    for i, parent in enumerate(observations):
+        if not parent["accepted"] or parent["label"] not in labels:
+            continue
+        children = [c for j, c in enumerate(observations) if j != i and round_child(c, parent)]
+        if any(iou(a["box"], b["box"]) < .1 for k, a in enumerate(children) for b in children[k+1:]):
+            merged.append(i)
+    for i in merged:
+        rows[i].update(accepted=False, suppressed=True, suppression_reason="merged_balloon_parent")
+    return rows
+
+
 def select(candidates, limit=12):
     queues = [[c for c in sorted(candidates, key=lambda c: -c["proposal_score"])
                if c["color_group"] == group] for group in (0, 1)]
