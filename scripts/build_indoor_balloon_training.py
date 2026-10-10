@@ -47,8 +47,30 @@ def checked_hard_negatives(base, base_manifest, root, review):
     return rows
 
 
+def checked_proposal_views(root, review, manifest, parent_root, parent_review):
+    from dtr.tracking import iou
+    queue = read_json(Path(root) / "review.json")
+    if (queue["parent_queue_sha256"] != sha256(Path(parent_root) / "review.json")
+            or queue["parent_review_sha256"] != sha256(parent_review)):
+        raise ValueError("Proposal parent identity changed")
+    anchors = {r["id"]: r for r in admitted(parent_root, parent_review, manifest)}
+    rows = admitted(root, review, manifest)
+    for row in rows:
+        anchor = anchors.get(row["anchor_id"])
+        boxes = (row["box"], row["crop_box"], row["scan_box"])
+        valid = all(len(b) == 4 and np.isfinite(b).all()
+                    and 0 <= b[0] < b[2] <= 320 and 0 <= b[1] < b[3] <= 240 for b in boxes)
+        if (not anchor or row["label"] == "background" or not valid
+                or any(row[k] != anchor[k] for k in
+                       ("label", "source_image", "source_sha256", "session", "annotation_id", "frame_id"))
+                or iou(row["box"], row["scan_box"]) < .7):
+            raise ValueError("Invalid proposal anchor or geometry")
+    return rows
+
+
 def build(base_manifest, queue_root, review, output, control=False, repetitions=2,
-          hard_negative_mode="none", hard_negative_queue=None, hard_negative_review=None):
+          hard_negative_mode="none", hard_negative_queue=None, hard_negative_review=None,
+          proposal_mode="none", proposal_queue=None, proposal_review=None):
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -64,6 +86,13 @@ def build(base_manifest, queue_root, review, output, control=False, repetitions=
         if not hard_negative_queue or not hard_negative_review:
             raise ValueError("Hard-negative queue and review required")
         hard = checked_hard_negatives(base,base_manifest,hard_negative_queue,hard_negative_review)
+    if proposal_mode not in ("none", "control", "admit"):
+        raise ValueError("Invalid proposal mode")
+    views = []
+    if proposal_mode != "none":
+        if not proposal_queue or not proposal_review:
+            raise ValueError("Proposal queue and review required")
+        views = checked_proposal_views(proposal_queue, proposal_review, base_manifest, queue_root, review)
     output.mkdir(parents=True)
     samples = []
     for r in base["samples"]:
@@ -89,6 +118,20 @@ def build(base_manifest, queue_root, review, output, control=False, repetitions=
                     shutil.copyfile(Path(queue_root)/r["path"],dest)
                 chosen = dict(r,path=relative,label_origin="AI reviewed source crop",repetition=repetition)
             samples.append(chosen)
+    positive_pool = [r for r in samples if r["split"] == "train" and r["label"] != "background"]
+    for repetition in range(2):
+        for r in views:
+            if proposal_mode == "control":
+                same = [a for a in positive_pool if a["label"] == r["label"]]
+                chosen = dict(same[int(rng.integers(len(same)))], proposal_control=True)
+            else:
+                relative = f"proposals/{r['path']}"
+                dest = output / relative
+                if not dest.exists():
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(Path(proposal_queue) / r["path"], dest)
+                chosen = dict(r, path=relative, label_origin="AI reviewed detector-shaped positive", repetition=repetition)
+            samples.append(chosen)
     backgrounds = [r for r in samples if r["split"] == "train" and r["label"] == "background"]
     for repetition in range(4):
         for r in hard:
@@ -108,6 +151,9 @@ def build(base_manifest, queue_root, review, output, control=False, repetitions=
                hard_negative_mode=hard_negative_mode,
                hard_negative_queue_sha256=sha256(Path(hard_negative_queue)/"review.json") if hard else None,
                hard_negative_review_sha256=sha256(hard_negative_review) if hard else None,
+               proposal_mode=proposal_mode,
+               proposal_queue_sha256=sha256(Path(proposal_queue)/"review.json") if views else None,
+               proposal_review_sha256=sha256(proposal_review) if views else None,
                test_pixels_materialized=False,
                qualification=dict(base["qualification"], external="Two broad training-only filename families; no independently verified sessions",
                                   augmentations="Public source includes flips/noise/blur; not new independent images"))
@@ -117,6 +163,7 @@ def build(base_manifest, queue_root, review, output, control=False, repetitions=
                    parent_manifest_sha256=sha256(base_manifest),control=control,repetitions=repetitions,
                    added_entries=len(extra)*repetitions,unique_external_crops=0 if control else len(extra),
                    hard_negative_mode=hard_negative_mode,hard_negative_entries=len(hard)*4,
+                   proposal_mode=proposal_mode,proposal_entries=len(views)*2,
                    counts=dict(Counter(f"{r['split']}/{r['label']}" for r in samples)),
                    test_evaluated=False,deployment_approved=False)
     write_json(output/"receipt.json",receipt)
@@ -133,7 +180,11 @@ if __name__ == "__main__":
     p.add_argument("--hard-negative-mode",choices=("none","control","admit"),default="none")
     p.add_argument("--hard-negative-queue")
     p.add_argument("--hard-negative-review")
+    p.add_argument("--proposal-mode", choices=("none", "control", "admit"), default="none")
+    p.add_argument("--proposal-queue")
+    p.add_argument("--proposal-review")
     args = p.parse_args()
     build(args.manifest,args.queue,args.review,args.output,args.control,
           hard_negative_mode=args.hard_negative_mode,hard_negative_queue=args.hard_negative_queue,
-          hard_negative_review=args.hard_negative_review)
+          hard_negative_review=args.hard_negative_review,
+          proposal_mode=args.proposal_mode, proposal_queue=args.proposal_queue, proposal_review=args.proposal_review)
