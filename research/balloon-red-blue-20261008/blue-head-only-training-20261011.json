@@ -1,0 +1,155 @@
+{
+  "results": {
+    "control": {
+      "path": "runs/blue-head-only-control-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_head_only",
+        "arm": "control",
+        "sha256": "c2b0880995012055f64ed911659401a09bb3f7c321a52034de3686cdf68f805f",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "1aa1c0e0b7f9ee48660e8bdfc6be756553ba89726c5f501bf0cc7aa8a0104144",
+        "provenance_sha256": "9a5d6b7f9a61891dc78c883ca86beee22d1eb00fa6eb08b25020eabbdc2b68f2",
+        "protocol_sha256": "3a03562aa30dc4f50aec44a2333992395daa479745cdfe4710105d333ffee46e",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "ed5a22a2a36d84a2ebf8934f5e87c2acdd34694f4bd661cb3b9edfe20c63c440",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 6.67572021484375e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "optimizer_trace": [
+        {
+          "iteration": 0,
+          "loss": 0.0,
+          "gradient_inf": 0.0
+        }
+      ],
+      "frozen_output_max_delta": 0.0,
+      "control_parent_exact": true,
+      "parent_negative_proposals": [
+        10,
+        6,
+        12,
+        8,
+        12,
+        12,
+        12,
+        12
+      ],
+      "candidate_negative_proposals": [
+        10,
+        6,
+        12,
+        8,
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    "background": {
+      "path": "runs/blue-head-only-background-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_head_only",
+        "arm": "background",
+        "sha256": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "9c7070d24213cd1cfb3a6477479ecb84986f70b7e2506e5a727e8fee07dd1bd0",
+        "provenance_sha256": "03908e53acae1a59d82252437da8d398dbb89fbdf446f170455a05d114649713",
+        "protocol_sha256": "3a03562aa30dc4f50aec44a2333992395daa479745cdfe4710105d333ffee46e",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "ed5a22a2a36d84a2ebf8934f5e87c2acdd34694f4bd661cb3b9edfe20c63c440",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 6.67572021484375e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "optimizer_trace": [
+        {
+          "iteration": 0,
+          "loss": 0.05601971386067742,
+          "gradient_inf": 0.049786546466620424
+        },
+        {
+          "iteration": 1,
+          "loss": 0.054963888878429124,
+          "gradient_inf": 2.4524098116762705e-05
+        },
+        {
+          "iteration": 2,
+          "loss": 0.054963888526275755,
+          "gradient_inf": 9.180219084914398e-12
+        }
+      ],
+      "frozen_output_max_delta": 0.0,
+      "control_parent_exact": false,
+      "parent_negative_proposals": [
+        10,
+        6,
+        12,
+        8,
+        12,
+        12,
+        12,
+        12
+      ],
+      "candidate_negative_proposals": [
+        9,
+        6,
+        12,
+        8,
+        12,
+        12,
+        12,
+        12
+      ]
+    }
+  },
+  "protocol_sha256": "3a03562aa30dc4f50aec44a2333992395daa479745cdfe4710105d333ffee46e",
+  "script_sha256": "ed5a22a2a36d84a2ebf8934f5e87c2acdd34694f4bd661cb3b9edfe20c63c440",
+  "scope": "Reconstructed TRAIN-only25-parameter convex fit and export parity. No scene accuracy selection or independent qualification.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
