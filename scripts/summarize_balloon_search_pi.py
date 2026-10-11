@@ -2,13 +2,14 @@
 
 import argparse
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from dtr.data import read_json, sha256, write_json
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_red_blue_bench import statistics
 from scripts.pi_balloon_search_bench import check_predictions
+from scripts.audit_balloon_scene_errors import attribute
 
 
 def group_key(report):
@@ -93,7 +94,7 @@ def summarize(base, results):
         rows = [json.loads(line) for line in raw.read_text().splitlines()]
         unique = validate_trial(report, rows, inputs)
         checked_delta = verify_golden_policy(report, rows, golden)
-        counts = {}
+        counts, error_counts = {}, {}
         for panel in {r["panel"] for r in unique}:
             total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
             for row in (r for r in unique if r["panel"] == panel):
@@ -102,9 +103,15 @@ def summarize(base, results):
                     for key in ("tp", "fp", "fn"):
                         total[label][key] += found[label][key]
             counts[panel] = metrics(total)
+            reasons = Counter()
+            for row in (r for r in unique if r["panel"] == panel):
+                frame = dict(truth=inputs["frames"][row["index"]]["truth"], detections=row["detections"])
+                reasons.update(f"{t['label']}/{t['reason']}" for t in attribute(frame))
+            error_counts[panel] = dict(sorted(reasons.items()))
         runs[path.stem] = dict(
             report=report, report_sha256=sha256(path), unique_scene_metrics=counts,
             verified_logged_score_delta=checked_delta,
+            unique_scene_error_counts=error_counts,
         )
         groups[group_key(report)].append((path.stem, rows))
     if not runs:
@@ -128,12 +135,14 @@ def summarize(base, results):
             stage_timing={stage: statistics([r[stage] for _, rows in trials for r in rows])
                           for stage in ("search_ms", "inference_ms", "selection_ms")},
             unique_scene_metrics=runs[names[0]]["unique_scene_metrics"],
+            unique_scene_error_counts=runs[names[0]]["unique_scene_error_counts"],
         )
     return dict(
         runs=runs,
         pooled=pooled,
         script_sha256=sha256(__file__),
         matcher_sha256=sha256("scripts/evaluate_red_blue_development.py"),
+        error_attribution_sha256=sha256("scripts/audit_balloon_scene_errors.py"),
         scope="Processing-only replay; unique scenes counted once per model/search/selection, not across repeats",
         test_evaluated=False,
         deployment_approved=False,

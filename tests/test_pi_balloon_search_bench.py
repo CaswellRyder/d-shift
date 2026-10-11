@@ -1,10 +1,13 @@
 import copy
+import json
 
 import numpy as np
 import pytest
 
 from scripts import pi_balloon_search_bench as bench
 from scripts.summarize_balloon_search_pi import group_key, validate_trial, verify_golden_policy
+from scripts.summarize_balloon_search_pi import summarize
+from dtr.data import sha256, write_json
 
 
 def observation():
@@ -148,6 +151,39 @@ def replay_fixture():
 def test_repetitions_never_inflate_accuracy_sample_count():
     report, rows, inputs = replay_fixture()
     assert len(validate_trial(report, rows, inputs)) == 1
+
+
+def test_summary_counts_miss_reasons_once_per_scene_not_per_repeat(tmp_path):
+    base, results = tmp_path / "bundle", tmp_path / "results"
+    base.mkdir()
+    results.mkdir()
+    report, rows, inputs = replay_fixture()
+    inputs["frames"][0]["truth"] = [
+        dict(label="red_balloon", box=[10, 10, 30, 30]),
+        dict(label="blue_balloon", box=[60, 60, 80, 80]),
+    ]
+    inputs["models"] = {"student": {"path": "model.json"}}
+    for row in rows:
+        row["detections"][0]["score"] = .98
+    write_json(base / "inputs.json", inputs)
+    write_json(base / "bundle.json", {})
+    write_json(base / "model.json", {})
+    write_json(base / "search-golden.json", {"student": {"mser": [rows[0]]}})
+    raw = results / "trial.frames.jsonl"
+    raw.write_text("\n".join(json.dumps(row) for row in rows))
+    report.update(model="student", search="mser_direct", golden_search="mser",
+                  frames_log_sha256=sha256(raw), bundle_sha256=sha256(base / "bundle.json"),
+                  inputs_sha256=sha256(base / "inputs.json"),
+                  golden_sha256=sha256(base / "search-golden.json"),
+                  model_sha256=sha256(base / "model.json"))
+    write_json(results / "trial.json", report)
+    pooled = summarize(base, results)["pooled"]["student:mser_direct"]
+    assert pooled["timing_samples"] == 2
+    assert pooled["unique_scene_metrics"]["indoor"]["red_balloon"]["tp"] == 1
+    assert pooled["unique_scene_metrics"]["indoor"]["blue_balloon"]["fn"] == 1
+    assert pooled["unique_scene_error_counts"]["indoor"] == {
+        "red_balloon/detected": 1, "blue_balloon/no_localized_proposal": 1,
+    }
 
 
 @pytest.mark.parametrize(
