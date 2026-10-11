@@ -1,0 +1,891 @@
+{
+  "results": {
+    "mser_blue_cores": {
+      "error_counts": {
+        "blue_balloon/added_localizer/no_annotated_target_overlap": 1,
+        "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 12,
+        "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 1,
+        "red_balloon/baseline_search/no_annotated_target_overlap": 7,
+        "red_balloon/baseline_search/overlaps_target_below_matching_iou": 6
+      },
+      "errors": [
+        {
+          "label": "red_balloon",
+          "box": [
+            283,
+            107,
+            293,
+            111
+          ],
+          "score": 0.9883289337158203,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000001_jpg.rf.1011fd371055d6ebb90f0c22097f6c31.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            192,
+            43,
+            279,
+            130
+          ],
+          "score": 0.9998263716697693,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.39544071885598403,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            304,
+            60,
+            312,
+            72
+          ],
+          "score": 0.9978638291358948,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.006451206451206451,
+          "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            112,
+            78,
+            189,
+            155
+          ],
+          "score": 0.9986338019371033,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.4446335568642135,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000152_jpg.rf.008d27d3e5cdee6a500baaeb1e42ed58.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            288,
+            196,
+            308,
+            213
+          ],
+          "score": 0.9432372450828552,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000152_jpg.rf.008d27d3e5cdee6a500baaeb1e42ed58.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            120,
+            107,
+            185,
+            172
+          ],
+          "score": 0.9743994474411011,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.40170620875776536,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000349_jpg.rf.46633af2d9e2a972486a8e128eb5a935.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            61,
+            77,
+            86,
+            102
+          ],
+          "score": 0.9996629953384399,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.48797736916548795,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000546_jpg.rf.14d04f7932e702d6600c0e85e33b15b1.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            157,
+            70,
+            206,
+            119
+          ],
+          "score": 0.9998557567596436,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.4834088404554916,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000575_jpg.rf.1c25b9069e6d978fb211a0c12495c053.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            59,
+            86,
+            100,
+            127
+          ],
+          "score": 0.9996827840805054,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.39921824558954405,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000759_jpg.rf.67d8d8c7b79d6e8c066c44cd0b220784.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            160,
+            69,
+            252,
+            146
+          ],
+          "score": 0.9340580105781555,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.098242959486166,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            161,
+            152,
+            186,
+            170
+          ],
+          "score": 0.9931595325469971,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            156,
+            152,
+            192,
+            187
+          ],
+          "score": 0.9427458047866821,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            153,
+            24,
+            167,
+            40
+          ],
+          "score": 0.989504337310791,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000863_jpg.rf.1799a8a01dde21da805b1f4ee084a380.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            302,
+            50,
+            319,
+            62
+          ],
+          "score": 0.9838084578514099,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000863_jpg.rf.1799a8a01dde21da805b1f4ee084a380.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            173,
+            25,
+            185,
+            40
+          ],
+          "score": 0.9618692398071289,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000864_jpg.rf.06bb2a33f852b2d6f251a8c7758d5a55.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            313,
+            173,
+            320,
+            182
+          ],
+          "score": 0.8936553001403809,
+          "origin": "added_localizer",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0225_jpg.rf.1806c057bcc7ad9f2a7c2a83398986d5.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            25,
+            70,
+            127,
+            239
+          ],
+          "score": 0.9009257555007935,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.1603532951946196,
+          "best_other_color_iou": 0.3740008580991795,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            73,
+            1,
+            212,
+            239
+          ],
+          "score": 0.8128319978713989,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.3217232936340004,
+          "best_other_color_iou": 0.14310211291817673,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            58,
+            19,
+            138,
+            190
+          ],
+          "score": 0.9976075887680054,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.42105263157894735,
+          "best_other_color_iou": 0.10273803902464249,
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            78,
+            91,
+            143,
+            156
+          ],
+          "score": 0.9948365688323975,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.12727012019955797,
+          "best_other_color_iou": 0.057113887486654726,
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            172,
+            60,
+            239,
+            127
+          ],
+          "score": 0.9886411428451538,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.29476279116566884,
+          "best_other_color_iou": 0.034003045490161296,
+          "source": "train/frame_0289_jpg.rf.09b8ee575c6bb4f259de567fbdcdd836.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            193,
+            0,
+            222,
+            25
+          ],
+          "score": 0.8060977458953857,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.30499561787905344,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            0,
+            133,
+            27,
+            164
+          ],
+          "score": 0.9914906620979309,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.35121324495576256,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            0,
+            147,
+            30,
+            182
+          ],
+          "score": 0.9604974389076233,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.3761460266459851,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            16,
+            56,
+            101,
+            122
+          ],
+          "score": 0.9999982118606567,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.4964840183900231,
+          "best_other_color_iou": 0.009821510019156505,
+          "source": "train/frame_0426_jpg.rf.7e6e2211cba4695f2b773697676e167e.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            230,
+            0,
+            249,
+            16
+          ],
+          "score": 0.8325023055076599,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.3931034482758621,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            60,
+            133,
+            319,
+            239
+          ],
+          "score": 0.8166305422782898,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.2268112114810228,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0465_jpg.rf.1848a30e51e87df4aa04a6953e2f8612.jpg",
+          "touches_image_edge": false
+        }
+      ],
+      "gained_targets": [
+        {
+          "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 8985,
+            "box": [
+              50.625,
+              1.875,
+              215.875,
+              225.0
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 14155,
+            "box": [
+              176.75,
+              0.09375,
+              318.25,
+              239.90625
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 14156,
+            "box": [
+              25.375,
+              164.34375,
+              112.125,
+              239.90625
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10693,
+            "box": [
+              64.25,
+              20.4375,
+              128.25,
+              110.4375
+            ]
+          }
+        }
+      ],
+      "lost_targets": []
+    },
+    "mser_blue_ellipse": {
+      "error_counts": {
+        "blue_balloon/added_localizer/no_annotated_target_overlap": 1,
+        "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 5,
+        "red_balloon/baseline_search/no_annotated_target_overlap": 7,
+        "red_balloon/baseline_search/overlaps_target_below_matching_iou": 6
+      },
+      "errors": [
+        {
+          "label": "red_balloon",
+          "box": [
+            283,
+            107,
+            293,
+            111
+          ],
+          "score": 0.9883289337158203,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000001_jpg.rf.1011fd371055d6ebb90f0c22097f6c31.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            192,
+            43,
+            279,
+            130
+          ],
+          "score": 0.9998263716697693,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.39544071885598403,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            304,
+            60,
+            312,
+            72
+          ],
+          "score": 0.9978638291358948,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.006451206451206451,
+          "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            288,
+            196,
+            308,
+            213
+          ],
+          "score": 0.9432372450828552,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000152_jpg.rf.008d27d3e5cdee6a500baaeb1e42ed58.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            160,
+            69,
+            252,
+            146
+          ],
+          "score": 0.9340580105781555,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.098242959486166,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            161,
+            152,
+            186,
+            170
+          ],
+          "score": 0.9931595325469971,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            156,
+            152,
+            192,
+            187
+          ],
+          "score": 0.9427458047866821,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            153,
+            24,
+            167,
+            40
+          ],
+          "score": 0.989504337310791,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000863_jpg.rf.1799a8a01dde21da805b1f4ee084a380.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            302,
+            50,
+            319,
+            62
+          ],
+          "score": 0.9838084578514099,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000863_jpg.rf.1799a8a01dde21da805b1f4ee084a380.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            173,
+            25,
+            185,
+            40
+          ],
+          "score": 0.9618692398071289,
+          "origin": "baseline_search",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_000864_jpg.rf.06bb2a33f852b2d6f251a8c7758d5a55.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            313,
+            173,
+            320,
+            182
+          ],
+          "score": 0.8936553001403809,
+          "origin": "added_localizer",
+          "reason": "no_annotated_target_overlap",
+          "best_same_color_iou": 0.0,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0225_jpg.rf.1806c057bcc7ad9f2a7c2a83398986d5.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            25,
+            70,
+            127,
+            239
+          ],
+          "score": 0.9009257555007935,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.1603532951946196,
+          "best_other_color_iou": 0.3740008580991795,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            73,
+            1,
+            212,
+            239
+          ],
+          "score": 0.8128319978713989,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.3217232936340004,
+          "best_other_color_iou": 0.14310211291817673,
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            73,
+            55,
+            148,
+            192
+          ],
+          "score": 0.9996125102043152,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.23611651467755865,
+          "best_other_color_iou": 0.1752893214795023,
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            193,
+            0,
+            222,
+            25
+          ],
+          "score": 0.8060977458953857,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.30499561787905344,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            0,
+            133,
+            27,
+            164
+          ],
+          "score": 0.9914906620979309,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.35121324495576256,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "blue_balloon",
+          "box": [
+            0,
+            147,
+            30,
+            182
+          ],
+          "score": 0.9604974389076233,
+          "origin": "added_localizer",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.3761460266459851,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+          "touches_image_edge": true
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            16,
+            56,
+            101,
+            122
+          ],
+          "score": 0.9999982118606567,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.4964840183900231,
+          "best_other_color_iou": 0.009821510019156505,
+          "source": "train/frame_0426_jpg.rf.7e6e2211cba4695f2b773697676e167e.jpg",
+          "touches_image_edge": false
+        },
+        {
+          "label": "red_balloon",
+          "box": [
+            60,
+            133,
+            319,
+            239
+          ],
+          "score": 0.8166305422782898,
+          "origin": "baseline_search",
+          "reason": "overlaps_target_below_matching_iou",
+          "best_same_color_iou": 0.2268112114810228,
+          "best_other_color_iou": 0.0,
+          "source": "train/frame_0465_jpg.rf.1848a30e51e87df4aa04a6953e2f8612.jpg",
+          "touches_image_edge": false
+        }
+      ],
+      "gained_targets": [
+        {
+          "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 8985,
+            "box": [
+              50.625,
+              1.875,
+              215.875,
+              225.0
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 14155,
+            "box": [
+              176.75,
+              0.09375,
+              318.25,
+              239.90625
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 14156,
+            "box": [
+              25.375,
+              164.34375,
+              112.125,
+              239.90625
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10693,
+            "box": [
+              64.25,
+              20.4375,
+              128.25,
+              110.4375
+            ]
+          }
+        },
+        {
+          "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 16949,
+            "box": [
+              220.75,
+              0.0,
+              262.75,
+              12.0
+            ]
+          }
+        }
+      ],
+      "lost_targets": []
+    }
+  },
+  "trial_sha256": "10469c962a9977f033256c4da4791f7043bdb0312dc68ec5826c33c6ad79308f",
+  "raw_sha256": "9eb97c5f807ba02e6411a3f0fbe853206a545ec00be8d3ee5315f10cbd374a33",
+  "script_sha256": "a728169572355ade348c9ed7c2944efc91ae806fe96b93ecdb9c0788ce9bf58c",
+  "scope": "Known complete-reviewed FIT scenes only. Geometric association is not visual relabeling. No thresholds changed and no runtime filter selected.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

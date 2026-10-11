@@ -1,0 +1,103 @@
+{
+  "results": {
+    "mser": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 90,
+          "fp": 13,
+          "fn": 8,
+          "precision": 0.8737864077669902,
+          "recall": 0.9183673469387755
+        },
+        "blue_balloon": {
+          "tp": 82,
+          "fp": 1,
+          "fn": 11,
+          "precision": 0.9879518072289156,
+          "recall": 0.8817204301075269
+        }
+      },
+      "calls": 321,
+      "extra_calls": 0,
+      "max_extra_calls": 0
+    },
+    "mser_blue_cores": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 90,
+          "fp": 13,
+          "fn": 8,
+          "precision": 0.8737864077669902,
+          "recall": 0.9183673469387755
+        },
+        "blue_balloon": {
+          "tp": 86,
+          "fp": 14,
+          "fn": 7,
+          "precision": 0.86,
+          "recall": 0.9247311827956989
+        }
+      },
+      "calls": 382,
+      "extra_calls": 61,
+      "max_extra_calls": 2
+    },
+    "mser_blue_ellipse": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 90,
+          "fp": 13,
+          "fn": 8,
+          "precision": 0.8737864077669902,
+          "recall": 0.9183673469387755
+        },
+        "blue_balloon": {
+          "tp": 87,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.9354838709677419,
+          "recall": 0.9354838709677419
+        }
+      },
+      "calls": 358,
+      "extra_calls": 37,
+      "max_extra_calls": 2
+    }
+  },
+  "training_gate": {
+    "mser_blue_cores": false,
+    "mser_blue_ellipse": false
+  },
+  "raw": {
+    "path": "runs/current-blue-search-training-20261011.json",
+    "sha256": "9eb97c5f807ba02e6411a3f0fbe853206a545ec00be8d3ee5315f10cbd374a33"
+  },
+  "classifier": {
+    "path": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite",
+    "sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+    "metadata_sha256": "1a8a6f50f59863ec16061c324058e42a4ab0f9e4a8352d0d04c83af78b4d4c45"
+  },
+  "script_sha256": "661d6e1c99730a284be8ec43b329d89e9c03754e848a72407561c4808bdfa01b",
+  "helpers_sha256": {
+    "scripts/prepare_blue_false_alarm_review.py": "b1177d5ef348caf152179116df0864f5e999e466b87cab62a95a643598053c67",
+    "scripts/research_balloon_search.py": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/pi_balloon_search_bench.py": "f162e676caaef5d56ebbaa5bf4198a7bc43dc0bbfbdab13e6d942c5856359f3d",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8"
+  },
+  "frames": 64,
+  "classifier_threshold": 0.8,
+  "matching_iou": 0.5,
+  "max_total_proposals": 12,
+  "max_extra_proposals": 2,
+  "selection": "split_merged",
+  "split_max_aspect": 2.42913421076193,
+  "gate_description": "Strict blue TP gain, no red TP loss, no FP increase for either color, same64 complete FIT scenes.",
+  "scope": "Existing search alternatives, fixed improved classifier and TRAIN operating point. No model retraining, independent accuracy, development tuning or Pi timing claim.",
+  "test_evaluated": false,
+  "development_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
