@@ -17,7 +17,8 @@ from dtr.runtime import Predictor
 from scripts.pi_balloon_search_bench import check_predictions, process_frame
 from scripts.pi_red_blue_bench import verify_bundle
 
-LIVE_SCRIPTS = ("pi_balloon_live_bench.py", "pi_balloon_live_schedule_bench.py")
+LIVE_SCRIPTS = ("pi_balloon_live_bench.py", "pi_balloon_live_schedule_bench.py",
+                "pi_balloon_web.py", "pi_balloon_web.html")
 
 
 def prepare(reference, output, library, name, model):

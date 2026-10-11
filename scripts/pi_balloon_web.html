@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pi balloon viewer</title>
+<style>
+  :root { --blue: #147df5; --red: #e5383b; --line: #d6dbe1; --muted: #5f6b7a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.4 system-ui, -apple-system, sans-serif; color: #17202a; background: #f4f6f8; }
+  header { display: flex; align-items: center; gap: 16px; padding: 10px 18px; background: #fff; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 16px; margin: 0; }
+  header .meta { color: var(--muted); font-size: 13px; }
+  .warning { padding: 6px 18px; background: #fff4d6; border-bottom: 1px solid #f0d58a; font-size: 13px; }
+  .error { padding: 8px 18px; background: #fde2e2; border-bottom: 1px solid #f3a5a5; display: none; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; padding: 16px 18px; }
+  .stage { background: #111; border-radius: 8px; position: relative; display: flex; justify-content: center; align-items: center; min-height: 300px; }
+  canvas { width: 100%; max-width: 960px; height: auto; image-rendering: auto; display: block; }
+  .badge { position: absolute; top: 10px; left: 10px; padding: 3px 8px; border-radius: 4px; background: rgba(0,0,0,.6); color: #fff; font-size: 12px; }
+  .badge.rec { left: auto; right: 10px; background: var(--red); display: none; }
+  .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 10px 0; }
+  .controls label { display: flex; align-items: center; gap: 6px; }
+  button { font: inherit; padding: 5px 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; cursor: pointer; }
+  button.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+  button.stop { background: var(--red); border-color: var(--red); color: #fff; }
+  button:disabled { opacity: .5; cursor: default; }
+  aside section { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+  aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin: 0; }
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  form { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: center; }
+  form input, form select { font: inherit; padding: 3px 6px; border: 1px solid var(--line); border-radius: 4px; width: 100%; }
+  form .wide { grid-column: 1 / -1; }
+  #recStatus { font-size: 13px; color: var(--muted); margin-top: 8px; word-break: break-all; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .dim { color: var(--muted); }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pi balloon viewer</h1>
+  <span class="meta" id="meta">Connecting…</span>
+</header>
+<div class="warning">Research model on a bench test. Detections here are not flight-qualified, and recorded frames are for evaluation only, not training.</div>
+<div class="error" id="error"></div>
+<main>
+  <div>
+    <div class="stage">
+      <canvas id="view" width="960" height="720"></canvas>
+      <span class="badge" id="badge">waiting for frames</span>
+      <span class="badge rec" id="recBadge">REC</span>
+    </div>
+    <div class="controls">
+      <button id="pause">Pause</button>
+      <button id="save">Save frame</button>
+      <label><input type="checkbox" id="showRejected"> Rejected candidates</label>
+      <label><input type="checkbox" id="showSuppressed"> Suppressed parts</label>
+      <label>Display threshold <input type="range" id="threshold" min="0.3" max="0.99" step="0.01"> <span id="thresholdValue"></span></label>
+      <label>Search
+        <select id="policy"><option value="full">full every frame</option><option value="periodic">periodic</option></select>
+      </label>
+    </div>
+    <table>
+      <thead><tr><th>Label</th><th>Score</th><th>State</th><th>Box (x1,y1,x2,y2)</th><th>Size</th></tr></thead>
+      <tbody id="detections"><tr><td colspan="5" class="dim">No candidates yet</td></tr></tbody>
+    </table>
+  </div>
+  <aside>
+    <section>
+      <h2>Now</h2>
+      <dl>
+        <dt>Red accepted</dt><dd id="nRed">–</dd>
+        <dt>Blue accepted</dt><dd id="nBlue">–</dd>
+        <dt>Candidates</dt><dd id="nCand">–</dd>
+        <dt>Search mode</dt><dd id="mode">–</dd>
+        <dt>Frame age</dt><dd id="age">–</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Speed (last 30 frames)</h2>
+      <dl>
+        <dt>Frames per second</dt><dd id="fps">–</dd>
+        <dt>Processing</dt><dd id="proc">–</dd>
+        <dt>Search</dt><dd id="search">–</dd>
+        <dt>Classifier</dt><dd id="infer">–</dd>
+        <dt>Classifier calls</dt><dd id="calls">–</dd>
+        <dt>Sensor to result</dt><dd id="latency">–</dd>
+        <dt>Exposure / gain</dt><dd id="exposure">–</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Pi</h2>
+      <dl>
+        <dt>Temperature</dt><dd id="temp">–</dd>
+        <dt>Load</dt><dd id="load">–</dd>
+        <dt>Throttled</dt><dd id="throttled">–</dd>
+        <dt>Model</dt><dd id="model">–</dd>
+        <dt>Accept threshold</dt><dd id="modelThreshold">–</dd>
+        <dt>Golden check</dt><dd id="golden">–</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Record a scene</h2>
+      <form id="recForm">
+        <label for="scene">Scene</label><input id="scene" placeholder="red-2m-lit" maxlength="48" required>
+        <label for="red">Red in view</label><input id="red" type="number" min="0" max="20" value="1">
+        <label for="blue">Blue in view</label><input id="blue" type="number" min="0" max="20" value="0">
+        <label for="seconds">Seconds</label><input id="seconds" type="number" min="0" max="120" value="10">
+        <label for="notes">Notes</label><input id="notes" maxlength="300" placeholder="distance, lighting, clutter">
+        <div class="wide controls" style="margin:4px 0 0">
+          <button type="submit" class="primary" id="record">Record</button>
+          <button type="button" id="snapshot">Save one frame</button>
+          <button type="button" class="stop" id="stop" disabled>Stop</button>
+        </div>
+      </form>
+      <div id="recStatus">Saved on the Pi under the sessions folder.</div>
+    </section>
+  </aside>
+</main>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const canvas = $("view"), ctx = canvas.getContext("2d");
+const SCALE = 3;
+const COLORS = { red_balloon: "#ff3b30", blue_balloon: "#1e90ff", background: "#9aa4ae" };
+let token = null, config = null, sequence = 0, paused = false, last = null, image = null;
+
+const fmt = (v, digits = 1, unit = "") => v == null || Number.isNaN(v) ? "–" : `${Number(v).toFixed(digits)}${unit}`;
+
+function displayed(d) {
+  // Client-side view only; the recorded `accepted` flag still uses the model threshold.
+  const threshold = Number($("threshold").value);
+  return d.label !== "background" && !d.suppressed && d.score >= threshold;
+}
+
+function draw() {
+  if (image) ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  else { ctx.fillStyle = "#111"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+  if (!last) return;
+  const showRejected = $("showRejected").checked, showSuppressed = $("showSuppressed").checked;
+  const rows = last.row.detections;
+  const order = [...rows].sort((a, b) => displayed(a) - displayed(b));
+  for (const d of order) {
+    const shown = displayed(d);
+    if (!shown && d.suppressed && !showSuppressed) continue;
+    if (!shown && !d.suppressed && !showRejected) continue;
+    const [x1, y1, x2, y2] = d.box.map((v) => v * SCALE);
+    ctx.save();
+    ctx.lineWidth = shown ? 3 : 1.5;
+    ctx.setLineDash(shown ? [] : d.suppressed ? [2, 4] : [6, 4]);
+    ctx.strokeStyle = shown ? COLORS[d.label] : d.suppressed ? "#ffb347" : "#c8ced5";
+    ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+    const text = `${d.label.replace("_balloon", "")} ${d.score.toFixed(2)}${d.suppressed ? " (part)" : ""}`;
+    ctx.font = shown ? "bold 15px system-ui" : "12px system-ui";
+    const w = ctx.measureText(text).width + 8, h = shown ? 20 : 16;
+    const ty = y1 - h >= 0 ? y1 - h : y2;
+    ctx.globalAlpha = shown ? 1 : 0.75;
+    ctx.fillStyle = shown ? COLORS[d.label] : "#333";
+    ctx.fillRect(x1, ty, w, h);
+    ctx.fillStyle = "#fff";
+    ctx.fillText(text, x1 + 4, ty + h - 5);
+    ctx.restore();
+  }
+}
+
+function table(rows) {
+  const body = $("detections");
+  body.replaceChildren();
+  if (!rows.length) {
+    const tr = body.insertRow(), td = tr.insertCell();
+    td.colSpan = 5; td.className = "dim"; td.textContent = "No candidates in this frame";
+    return;
+  }
+  for (const d of [...rows].sort((a, b) => displayed(b) - displayed(a) || b.score - a.score)) {
+    const tr = body.insertRow();
+    const label = tr.insertCell(), sw = document.createElement("span");
+    sw.className = "swatch"; sw.style.background = COLORS[d.label];
+    label.append(sw, d.label);
+    tr.insertCell().textContent = d.score.toFixed(3);
+    tr.insertCell().textContent = displayed(d) ? "shown" : d.suppressed ? (d.suppression_reason || "suppressed").replaceAll("_", " ") : d.label === "background" ? "background" : "below threshold";
+    tr.insertCell().textContent = d.box.join(", ");
+    tr.insertCell().textContent = `${d.box[2] - d.box[0]}×${d.box[3] - d.box[1]}`;
+    if (!displayed(d)) tr.className = "dim";
+  }
+}
+
+function setText(id, value) { $(id).textContent = value; }
+
+function update(state) {
+  $("error").style.display = state.error ? "block" : "none";
+  $("error").textContent = state.error ? `Camera loop stopped: ${state.error}. Restart the script on the Pi.` : "";
+  if (document.activeElement !== $("policy")) $("policy").value = state.policy;
+  const s = state.stats || {};
+  setText("fps", fmt(s.fps, 1));
+  setText("proc", fmt(s.processing_ms, 0, " ms"));
+  setText("search", fmt(s.search_ms, 0, " ms"));
+  setText("infer", fmt(s.inference_ms, 0, " ms"));
+  setText("calls", fmt(s.neural_calls, 1));
+  setText("latency", fmt(s.sensor_to_result_ms, 0, " ms"));
+  const h = state.health || {};
+  setText("temp", h.temperature_millicelsius ? `${(h.temperature_millicelsius / 1000).toFixed(1)} °C` : "–");
+  setText("load", h.load_average ? h.load_average.split(" ").slice(0, 3).join(" ") : "–");
+  setText("throttled", h.throttled ? h.throttled.replace("throttled=", "") : "–");
+  recording(state.recording);
+  if (state.sequence == null) return;
+  sequence = state.sequence;
+  if (paused) return;
+  last = state;
+  const row = state.row;
+  setText("nRed", row.detections.filter((d) => d.accepted && d.label === "red_balloon").length);
+  setText("nBlue", row.detections.filter((d) => d.accepted && d.label === "blue_balloon").length);
+  setText("nCand", row.detections.length);
+  setText("mode", row.mode.replace("mser_", ""));
+  setText("age", fmt(state.age_ms, 0, " ms"));
+  setText("exposure", row.exposure_us ? `${(row.exposure_us / 1000).toFixed(1)} ms / ${fmt(row.analogue_gain, 1)}×` : "–");
+  setText("badge", `frame ${state.sequence} · ${config.source}`);
+  table(row.detections);
+  if (state.frame) {
+    const next = new Image();
+    next.onload = () => { image = next; draw(); };
+    next.src = `data:image/jpeg;base64,${state.frame}`;
+  } else draw();
+}
+
+function recording(r) {
+  if (!r) return;
+  $("recBadge").style.display = r.active ? "block" : "none";
+  $("record").disabled = $("snapshot").disabled = r.active;
+  $("stop").disabled = !r.active;
+  if (r.active) setText("recStatus", `Recording ${r.folder}: ${r.frames} frames, ${r.remaining_s.toFixed(0)} s left`);
+  else if (r.last) setText("recStatus", `Saved ${r.last.frames} frames to ${r.last.folder} (accepted red ${r.last.accepted.red_balloon}, blue ${r.last.accepted.blue_balloon})`);
+}
+
+async function post(path, body = {}) {
+  const response = await fetch(path, {
+    method: "POST", headers: { "Content-Type": "application/json", "X-Token": token }, body: JSON.stringify(body),
+  });
+  const result = await response.json();
+  if (!response.ok) { setText("recStatus", result.error || `HTTP ${response.status}`); return null; }
+  recording(result.recording);
+  return result;
+}
+
+function sceneBody(seconds) {
+  return { scene: $("scene").value, red: Number($("red").value), blue: Number($("blue").value),
+           seconds, notes: $("notes").value };
+}
+
+async function poll() {
+  for (;;) {
+    try {
+      const response = await fetch(`/api/state?after=${sequence}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      update(await response.json());
+    } catch (err) {
+      setText("badge", `connection lost (${err.message}); retrying`);
+      await new Promise((r) => setTimeout(r, 1000));
+    }
+  }
+}
+
+async function start() {
+  const response = await fetch("/api/config");
+  config = await response.json();
+  if (!response.ok) { setText("meta", config.error || "Not allowed"); return; }
+  token = config.token;
+  setText("meta", `${config.model} · ${config.source} · threshold ${config.threshold}`);
+  setText("model", config.model);
+  setText("modelThreshold", config.threshold);
+  setText("golden", `${config.golden_frames} frames, Δ ${config.max_golden_score_delta.toExponential(1)}`);
+  $("threshold").value = config.threshold;
+  setText("thresholdValue", Number(config.threshold).toFixed(2));
+  poll();
+}
+
+$("threshold").addEventListener("input", () => {
+  setText("thresholdValue", Number($("threshold").value).toFixed(2));
+  if (last) { table(last.row.detections); draw(); }
+});
+for (const id of ["showRejected", "showSuppressed"]) $(id).addEventListener("change", draw);
+$("pause").addEventListener("click", () => { paused = !paused; $("pause").textContent = paused ? "Resume" : "Pause"; });
+$("save").addEventListener("click", () => {
+  const link = document.createElement("a");
+  link.download = `pi-frame-${last ? last.sequence : 0}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+});
+$("policy").addEventListener("change", () => post("/api/policy", { policy: $("policy").value }));
+$("recForm").addEventListener("submit", (e) => { e.preventDefault(); post("/api/record", sceneBody(Number($("seconds").value))); });
+$("snapshot").addEventListener("click", () => { if ($("recForm").reportValidity()) post("/api/record", sceneBody(0)); });
+$("stop").addEventListener("click", () => post("/api/stop"));
+start();
+</script>
+</body>
+</html>
