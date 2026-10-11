@@ -118,3 +118,9 @@ def test_scene_prediction_preserves_crop_order_and_bounds_teacher_batches(teache
 def test_scene_evaluator_rejects_unknown_model_format():
     with pytest.raises(ValueError, match="Expected"):
         load_predictor("model.unknown")
+
+
+def test_unknown_selection_rejected_before_loading_frames():
+    from scripts.evaluate_reviewed_balloon_scenes import evaluate
+    with pytest.raises(ValueError, match="selection policy"):
+        evaluate("absent", "absent", {}, selection="unknown")

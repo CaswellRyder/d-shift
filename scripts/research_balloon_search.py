@@ -194,16 +194,60 @@ def blue_level_candidates(rgb):
     return select(pool)
 
 
+def instance_split_candidates(rgb):
+    """Research-only watershed of multi-lobed opponent-color components.
+
+    Fill interior highlight holes before distance seeding. A component must have
+    2..4 disconnected thick cores to be split; a single core adds no candidates.
+    Fixed geometry, not learned or tuned on development/qualification frames.
+    """
+    pool = []
+    planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
+              cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
+    for group, plane in enumerate(planes):
+        contours, _ = cv2.findContours(cv2.compare(plane, 15, cv2.CMP_GE),
+                                       cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # Bound work in highly textured scenes independently of object labels.
+        for contour in sorted(contours, key=cv2.contourArea, reverse=True)[:16]:
+            x, y, w, h = cv2.boundingRect(contour)
+            if cv2.contourArea(contour) < 40 or min(w, h) < 8:
+                continue
+            mask = np.zeros((h+2, w+2), np.uint8)
+            cv2.drawContours(mask, [contour - np.array([[[x-1, y-1]]])], -1, 255, -1)
+            distance = cv2.distanceTransform(mask, cv2.DIST_L2, 5)
+            if distance.max() < 4:
+                continue
+            count, cores = cv2.connectedComponents((distance >= .6*distance.max()).astype(np.uint8))
+            if not 2 <= count-1 <= 4:
+                continue
+            markers = (cores + 1).astype(np.int32)
+            markers[(mask != 0) & (cores == 0)] = 0
+            # Image gradients guide growth; the filled mask fixes the background.
+            padded = np.zeros((h+2, w+2, 3), np.uint8)
+            padded[1:-1, 1:-1] = rgb[y:y+h, x:x+w]
+            cv2.watershed(padded, markers)
+            for label in range(2, count+1):
+                ys, xs = np.nonzero((markers == label) & (mask != 0))
+                if len(xs) < .12*np.count_nonzero(mask):
+                    continue
+                points = np.column_stack((xs+x-1, ys+y-1)).astype(np.int32)
+                c = candidate(points, group, rgb.shape)
+                if c:
+                    pool.append(c)
+    return select(pool)
+
+
 def experimental(rgb, variant):
     if rgb.shape != (240, 320, 3) or rgb.dtype != np.uint8:
         raise ValueError("Experimental search requires 320x240 RGB uint8")
     if variant == "baseline":
         return proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
-    if variant == "mser_blue_levels":
+    if variant in ("mser_blue_levels", "mser_instance_split"):
         # Preserve every baseline slot; at most four additions, twelve total.
         base = experimental(rgb, "mser")
         additions = 0
-        for c in blue_level_candidates(rgb):
+        supplement = blue_level_candidates if variant == "mser_blue_levels" else instance_split_candidates
+        for c in supplement(rgb):
             if len(base) >= 12 or additions >= 4:
                 break
             if not any(iou(c["box"], p["box"]) > .65 for p in base):
@@ -274,7 +318,7 @@ def run(manifest, archive):
                 raise ValueError("Reserved IMG family cannot enter training search audit")
             images[row["source_image"]][row["annotation_id"]] = row
     variants = {v: dict(rows=[], timing_ms=[]) for v in
-                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_chromatic", "mser_blue_red", "mser_blue_levels")}
+                ("baseline", "opened", "multisat", "mser", "mser_blend", "mser_components", "mser_chromatic", "mser_blue_red", "mser_blue_levels", "mser_instance_split")}
     with zipfile.ZipFile(archive) as zipped:
         for source, targets in sorted(images.items()):
             with Image.open(io.BytesIO(zipped.read(source))) as opened:
