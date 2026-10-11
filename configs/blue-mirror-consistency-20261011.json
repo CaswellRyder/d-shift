@@ -1,0 +1,14 @@
+{
+  "arms": ["parent", "mirror"],
+  "classifier": "real-blue-clutter-convergence-admit-seed48",
+  "parent_pipeline": "blue-bright-hybrid",
+  "threshold": 0.8,
+  "matching_iou": 0.5,
+  "transform": "Same source crop, PIL bilinear to 64x64 RGB uint8, then horizontal reflection. One additional inference only for already-selected accepted blue detections.",
+  "rule": "Keep blue detection only if mirrored crop also predicts accepted blue at the unchanged 0.8 threshold. Original scores and boxes unchanged; no suppressed detection resurrection, no reselection. Red decisions unchanged.",
+  "motivation": "TRAIN spatial probe preserved all 29 blue crops under mirroring and reduced accepted clutter. Transformed views are not new labeled training data.",
+  "design": "Freeze before scene evaluation. Screen64 complete TRAIN scenes, then all three related repeated development panels regardless of outcome. Report identity-level target losses and added calls. No threshold sweep or development fitting. No Pi performance claims without direct timing.",
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "test_evaluated": false
+}
