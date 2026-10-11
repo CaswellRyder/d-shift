@@ -1,0 +1,374 @@
+{
+  "models": {
+    "control47": {
+      "model_sha256": "906377255e825ada0dcfd38104e0820572591c83c27c27a4fba61565a9f8841d",
+      "path": "runs/balloon-expansion4-control-seed47-20261011/student.fp32.tflite",
+      "provenance_sha256": "2e7c2d306069aa2494f813580b25134ff8e3a0fe02a07c829f783a2122b40818",
+      "bytes": 34844,
+      "fit": {
+        "training_correct": 1480,
+        "training_rows": 1507,
+        "reviewed_crop_correct": 1,
+        "reviewed_crop_count": 5,
+        "reviewed_negative_background_correct": 1,
+        "reviewed_negative_count": 4,
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "control48": {
+      "model_sha256": "06da60a69505e9f888c3a5bf2c35e0413794b489736aab31d6a5e2b5a7698af2",
+      "path": "runs/balloon-expansion4-control-seed48-20261011/student.fp32.tflite",
+      "provenance_sha256": "b848280c90cf441adf8f3747e266aea2c4871ca3b40a175cfe06ca714ff900dc",
+      "bytes": 34844,
+      "fit": {
+        "training_correct": 1480,
+        "training_rows": 1507,
+        "reviewed_crop_correct": 1,
+        "reviewed_crop_count": 5,
+        "reviewed_negative_background_correct": 1,
+        "reviewed_negative_count": 4,
+        "max_keras_tflite_delta": 9.5367431640625e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "admit47": {
+      "model_sha256": "03e0592d93b09ee9203060bf1213b2ab7de3709ab9de5821868d0caf07089459",
+      "path": "runs/balloon-expansion4-admit-seed47-20261011/student.fp32.tflite",
+      "provenance_sha256": "cc2232f98d83ce443666fab208ce22a32b7f44e2a0e1907b75d3a817f5fca02f",
+      "bytes": 34844,
+      "fit": {
+        "training_correct": 1463,
+        "training_rows": 1507,
+        "reviewed_crop_correct": 1,
+        "reviewed_crop_count": 5,
+        "reviewed_negative_background_correct": 1,
+        "reviewed_negative_count": 4,
+        "max_keras_tflite_delta": 8.58306884765625e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "admit48": {
+      "model_sha256": "5d9d4575ea0f8b80e8efee92108fe1a26e40ea8a3c7a3f318ac156cb3210f4b3",
+      "path": "runs/balloon-expansion4-admit-seed48-20261011/student.fp32.tflite",
+      "provenance_sha256": "07f5248d87a912ecab2d80a7b387f29133f1d60ed0187dd522e5f281db52cfc6",
+      "bytes": 34844,
+      "fit": {
+        "training_correct": 1463,
+        "training_rows": 1507,
+        "reviewed_crop_correct": 1,
+        "reviewed_crop_count": 5,
+        "reviewed_negative_background_correct": 1,
+        "reviewed_negative_count": 4,
+        "max_keras_tflite_delta": 1.33514404296875e-05,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/balloon-expansion4-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "13136970228b60c0f6286c3533ce9a3b673e298337a9f7af36c13a4ef25653d9",
+      "frames": 67,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/balloon-expansion4-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "7d0ed0cd2af94de925614288a32a878f6c9b692cb3bc293a70ae1a3385ecff05",
+      "frames": 62,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/balloon-expansion4-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "89b3dfdfceb15c3a079fc3fd79b471c00b86dd55a9c2b0233ec3fce4dc467494",
+      "frames": 12,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "protocol_sha256": "3fae656fbf17d9c751fe5aa72f7c68be4feca0563636802dcb45c168cfb9a000",
+  "review_sha256": "21fc6f0eb7715b58bb22f79420c212692d3ce29251754cc452ebe2de6add08ac",
+  "queue_sha256": "80b38eb4c3e4abee02d66573a6460e8e6423e7a5c99250e26f107752c579520d",
+  "parent_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+  "script_sha256": "8a1cd24a58ddd7abd597d00e999e87aafaeab6eeee57eaabbff56c9748b5dd28",
+  "reviewed_frames": 31,
+  "candidate_crops": 95,
+  "rejected_frames": 17,
+  "admitted_counts": {
+    "red_balloon": 37,
+    "blue_balloon": 32,
+    "background": 12
+  },
+  "hard_crop_ids": [
+    48,
+    52,
+    56,
+    89,
+    93
+  ],
+  "hard_counts": {
+    "red_balloon": 1,
+    "background": 4
+  },
+  "scope": "Assistant-reviewed public TRAIN hard mining with matched controls and fixed epochs; repeated development only.",
+  "caveats": [
+    "New training frames still share environments with earlier public data.",
+    "All 81 approved crops were reviewed; only five low-confidence reviewed crops enter the new hard-label emphasis.",
+    "No blue-positive crop met the fixed hard-mining rule; blue improvement is not implied by training fit.",
+    "No Pi, camera, ESP32 or motor changes in this trial."
+  ],
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

@@ -1,0 +1,15 @@
+{
+  "parent_trial": "configs/balloon-expansion4-hard-trial-20261011.json",
+  "selected_crop_ids": [48,52,56,89,93],
+  "hard_weight": 16,
+  "ordinary_weight": 1,
+  "arms": ["control","admit"],
+  "seeds": [47,48],
+  "epochs": 8,
+  "learning_rate": 0.0001,
+  "purpose": "Training-only learnability diagnostic after unweighted arms corrected just one of five reviewed hard crops. Keep architecture, examples, seed, batches and fixed epoch unchanged; only increase hard-row loss influence in both arms.",
+  "feasibility_rule": "Before considering any new development evaluation, both admit seeds must classify at least four of five reviewed hard crops correctly and retain at least 95 percent accuracy on preserved ordinary training rows. This is a training diagnostic, not an accuracy or promotion gate.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

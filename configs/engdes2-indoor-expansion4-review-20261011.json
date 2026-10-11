@@ -1,0 +1,14 @@
+{
+  "queue_sha256": "80b38eb4c3e4abee02d66573a6460e8e6423e7a5c99250e26f107752c579520d",
+  "admit": [0,1,2,3,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,27,28,29,31,32,33,34,35,36,38,39,40,41,43,45,46,48,51,52,53,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,77,79,80,81,82,83,85,86,87,88,89,90,91,93,94],
+  "exclude": [4,22,30,37,42,44,47,49,50,54,76,78,84,92],
+  "excluded_categories": {
+    "substantially_clipped_balloon_or_fragment": [4,22,30,37,42,44,47,54,84],
+    "deflated_or_uncertain_blue_latex": [49,76,78],
+    "ambiguous_blur_or_red_surface": [50,92]
+  },
+  "review": "Assistant inspected both crop sheets and all four full-frame sheets. Admitted foreground crops visibly contain the specified real balloon color. Admitted backgrounds include patterned wall/floor, car panel/reflection, flags, tape, stand, trees, clothing and car paint. Uncertain latex, extreme fragments and unresolved blur are excluded rather than relabeled. Review is crop-only; incomplete source annotations do not establish complete scene truth.",
+  "training_approved": true,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

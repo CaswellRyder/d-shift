@@ -1,0 +1,25 @@
+{
+  "unweighted_evidence": "research/balloon-red-blue-20261008/expansion4-hard-trial-20261011.json",
+  "weighted_training_evidence": "research/balloon-red-blue-20261008/expansion4-weight16-diagnostic-20261011.json",
+  "review": {
+    "candidate_frames": 48,
+    "rejected_by_duplicate_checks": 17,
+    "reviewed_frames": 31,
+    "reviewed_crops": 95,
+    "approved_crops": 81,
+    "excluded_uncertain_or_fragment_crops": 14,
+    "approved_labels": {"red_balloon": 37, "blue_balloon": 32, "background": 12},
+    "frozen_parent_hard_ids": [48,52,56,89,93]
+  },
+  "unweighted_result": "No attribution to new hard examples: blue scene counts match the corresponding control in both seeds on all three development panels. Seed48 removes one blue false positive on the 67-frame panel in BOTH arms. Admit47 additionally loses one red true positive on the 12-frame panel. Reject promotion.",
+  "weighted_result": "Both weighted admit seeds correctly classify two of the five reviewed hard training crops, versus one for the matched controls. Preserved ordinary training accuracy is 1449/1487 and 1451/1487. Neither meets the predeclared four-of-five learnability requirement, so neither was evaluated on development scenes.",
+  "training_runs_completed": 8,
+  "architecture_changed": false,
+  "threshold_changed": false,
+  "next_direction": "Check longer training-only convergence and per-crop probability trajectories with the same guarded labels and matched control. Loss was still decreasing after eight epochs; this diagnostic does not prove a capacity ceiling. Require fit and retention before further development evaluation. New full frames may also support localization review, but current crop approval does not certify complete scene truth.",
+  "tests": {"passed": 1103, "skipped": 2, "existing_tensorflow_warnings": 6, "targeted_ruff": "passed"},
+  "pi_model_changed": false,
+  "esp32_or_motor_commands": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

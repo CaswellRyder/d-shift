@@ -54,13 +54,20 @@ def loss_function():
     return loss
 
 
-def train(mode, seed, output, expansion=False):
+def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
     out = Path(output)
     if out.exists():
         raise FileExistsError(out)
     if seed not in (47, 48):
         raise ValueError('Require predeclared seed')
-    if expansion:
+    if expansion and expansion4:
+        raise ValueError('Choose one expansion experiment')
+    if hard_weight not in (1,16) or (hard_weight != 1 and not expansion4):
+        raise ValueError('Hard weighting requires expansion4 and fixed weight 1 or 16')
+    if expansion4:
+        from scripts.balloon_expansion4 import data as expansion_data,QUEUE as queue,REVIEW as review
+        rows, negatives = expansion_data(mode)
+    elif expansion:
         from scripts.balloon_expansion3 import data as expansion_data,QUEUE as queue,REVIEW as review
         rows, negatives = expansion_data(mode)
     else:
@@ -90,19 +97,25 @@ def train(mode, seed, output, expansion=False):
     provenance = dict(mode=mode, seed=seed, epochs=8, learning_rate=.0001, batch_size=16,
         manifest_sha256=sha256(MANIFEST), review_sha256=sha256(review),
         queue_sha256=sha256(Path(queue)/'review.json'), script_sha256=sha256(__file__),
-        experiment='expansion3' if expansion else 'reviewed_clutter',
-        data_helper_sha256=sha256('scripts/balloon_expansion3.py') if expansion else None,
+        experiment='expansion4_hard' if expansion4 else ('expansion3' if expansion else 'reviewed_clutter'),
+        data_helper_sha256=(sha256('scripts/balloon_expansion4.py') if expansion4 else
+                           (sha256('scripts/balloon_expansion3.py') if expansion else None)),
         parent_model_sha256=parent['sha256'], parent_checkpoint_sha256=sha256(PARENT/'color.keras'),
         parent_metadata_sha256=sha256(PARENT/'color.fp32.json'),
         sample_identity=[{k: r[k] for k in ('source_image', 'sha256', 'label', 'preserve')} for r in rows],
         ordinary_rows=len(rows)-hard_rows, hard_label_rows=hard_rows,
         reviewed_unique_crops=len(negatives),
         reviewed_unique_negatives=sum(r['label']=='background' for r in negatives),
+        hard_weight=hard_weight,
         fixed_final_epoch=True, classes=CLASSES, test_evaluated=False, deployment_approved=False)
     write_json(out/'provenance.json', provenance)
     write_json(out/'status.json', dict(state='running'))
     try:
-        ds = tf.data.Dataset.from_tensor_slices((x, targets)).shuffle(len(x), seed=seed).batch(16)
+        tensors = (x, targets)
+        if hard_weight != 1:
+            weights = np.array([1. if r['preserve'] else float(hard_weight) for r in rows],np.float32)
+            tensors = (x,targets,weights)
+        ds = tf.data.Dataset.from_tensor_slices(tensors).shuffle(len(x), seed=seed).batch(16)
         options = tf.data.Options()
         options.threading.private_threadpool_size = 2
         ds = ds.with_options(options).prefetch(1)
@@ -152,6 +165,8 @@ def train(mode, seed, output, expansion=False):
         reviewed_labels = np.array([CLASSES.index(r['label']) for r in negatives])
         background = reviewed_labels==0
         report = dict(training_correct=int((final.argmax(1) == labels).sum()), training_rows=len(rows),
+            ordinary_training_correct=int(((final.argmax(1)==labels)&np.array([r['preserve'] for r in rows])).sum()),
+            ordinary_training_rows=sum(r['preserve'] for r in rows),
             reviewed_crop_correct=int((negative_logits.argmax(1)==reviewed_labels).sum()),
             reviewed_crop_count=len(negatives),
             reviewed_negative_background_correct=int((negative_logits.argmax(1)[background] == 0).sum()),
@@ -170,6 +185,10 @@ if __name__ == '__main__':
     p.add_argument('--mode', choices=('control', 'admit'), required=True)
     p.add_argument('--seed', type=int, choices=(47, 48), required=True)
     p.add_argument('--output', required=True)
-    p.add_argument('--expansion3',action='store_true',help='Use reviewed expansion3 views and matched class-count controls')
+    group = p.add_mutually_exclusive_group()
+    group.add_argument('--expansion3',action='store_true',help='Use reviewed expansion3 views and matched class-count controls')
+    group.add_argument('--expansion4',action='store_true',help='Use frozen-parent hard crops from reviewed expansion4 TRAIN views')
+    p.add_argument('--hard-weight',type=int,choices=(1,16),default=1,
+                   help='Training-only learnability diagnostic; same weighting in matched controls')
     args = p.parse_args()
-    train(args.mode, args.seed, args.output,args.expansion3)
+    train(args.mode, args.seed, args.output,args.expansion3,args.expansion4,args.hard_weight)
