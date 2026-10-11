@@ -7,6 +7,7 @@ from PIL import Image
 
 from dtr.data import read_json, sha256, write_json
 from dtr.runtime import Predictor
+from scripts.calibrate_balloon_split_geometry import calibration_bound
 from scripts.compare_calibrated_balloon_selection import raw_candidates
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_balloon_search_bench import check_predictions, golden_key, process_frame, select_detections
@@ -26,7 +27,11 @@ def evaluate(base, output):
             or calibration.get("test_evaluated") is not False
             or calibration.get("deployment_approved") is not False):
         raise ValueError("Require bound training-only calibration")
-    aspect = calibration["max_aspect"]
+    aspect = calibration_bound(calibration)
+    if (not inputs.get("split", "").startswith(("development", "lockbox_panel"))
+            or receipt.get("test_evaluated") is not False
+            or receipt.get("deployment_approved") is not False):
+        raise ValueError("Require evaluation-only development bundle")
     model = inputs["default_model"]
     path = base/inputs["models"][model]["path"]
     predictor = Predictor(path, allow_unvalidated=True)

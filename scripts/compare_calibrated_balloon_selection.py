@@ -9,6 +9,7 @@ from pathlib import Path
 
 from dtr.data import read_json, sha256, write_json
 from scripts.audit_balloon_pipeline_errors import audit
+from scripts.calibrate_balloon_split_geometry import calibration_bound
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_balloon_search_bench import select_detections
 
@@ -38,6 +39,7 @@ def compare(report_path, calibration_path, queue, review):
     # Verifies saved per-frame evidence and counts against hash-bound review.
     audit([report_path], queue, review)
     source, calibration = read_json(report_path), read_json(calibration_path)
+    bound = calibration_bound(calibration)
     if (source["selection"] != "split_merged"
             or calibration.get("schema") != "balloon-split-geometry-v1"
             or calibration.get("training_only") is not True
@@ -62,7 +64,7 @@ def compare(report_path, calibration_path, queue, review):
                         or any(any(a.get(k) != b.get(k) for k in SELECTION_KEYS)
                                for a,b in zip(control, frame["detections"], strict=True))):
                     raise ValueError("Frozen selection could not be reproduced")
-                changed = calibrated_selection(raw, calibration["max_aspect"])
+                changed = calibrated_selection(raw, bound)
                 counts = detection_counts(frame["truth"], changed)
                 for label in LABELS:
                     for k in total[label]:

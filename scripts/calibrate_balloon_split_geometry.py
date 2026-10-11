@@ -8,6 +8,35 @@ from dtr.data import sha256, write_json
 from scripts.audit_balloon_search_stages import original_frames, indoor_frames, training_source
 
 
+def calibration_bound(report):
+    """Check the retained fixed recipe instead of trusting a free-form threshold."""
+    if (report.get("schema") != "balloon-split-geometry-v1"
+            or report.get("training_only") is not True
+            or report.get("test_evaluated") is not False
+            or report.get("deployment_approved") is not False
+            or report.get("quantile") != .95
+            or report.get("control_max_aspect") != 1.5
+            or report.get("candidate_max_aspect") != 3.):
+        raise ValueError("Require fixed training-only geometry recipe")
+    rows = report["annotations"]
+    if not rows or len(rows) != report["annotation_count"]:
+        raise ValueError("Calibration annotation coverage mismatch")
+    ids = set()
+    for row in rows:
+        training_source(row["source"])
+        key = (row["panel"], row["source"], row["annotation_id"])
+        if (key in ids or row["label"] not in ("red_balloon", "blue_balloon")
+                or not np.isfinite(row["aspect_ratio"]) or row["aspect_ratio"] < 1):
+            raise ValueError("Invalid calibration annotation")
+        ids.add(key)
+    quantile = float(np.quantile([r["aspect_ratio"] for r in rows], .95))
+    bound = max(1.5, min(3., quantile))
+    if (report["raw_aspect_quantile"] != quantile or report["max_aspect"] != bound
+            or report["source_count"] != len({(r["panel"], r["source"]) for r in rows})):
+        raise ValueError("Calibration does not reproduce its training annotations")
+    return bound
+
+
 def calibrate(panels):
     rows, seen = [], set()
     for panel, frames in panels.items():

@@ -9,6 +9,7 @@ from PIL import Image
 from dtr.data import read_json, sha256, write_json
 from dtr.native_balloon_regions import NativeBalloonRegions
 from dtr.runtime import Predictor
+from scripts.calibrate_balloon_split_geometry import calibration_bound
 from scripts.pi_balloon_search_bench import check_predictions, golden_key, process_frame
 from scripts.pi_red_blue_bench import verify_bundle
 
@@ -25,7 +26,11 @@ def prepare(reference, calibration_path, output, library):
             or calibration.get("test_evaluated") is not False
             or calibration.get("deployment_approved") is not False):
         raise ValueError("Require training-only calibration")
-    bound = calibration["max_aspect"]
+    bound = calibration_bound(calibration)
+    if (not inputs.get("split", "").startswith(("development", "lockbox_panel"))
+            or receipt.get("test_evaluated") is not False
+            or receipt.get("deployment_approved") is not False):
+        raise ValueError("Require an evaluation-only development reference bundle")
     golden_key("mser", "split_merged", bound)  # Validate before writing.
     name = inputs["default_model"]
     for relative in receipt["files"]:
