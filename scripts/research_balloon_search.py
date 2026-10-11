@@ -272,20 +272,68 @@ def opening_split_candidates(rgb):
     return select(pool)
 
 
+def blue_core_candidates(rgb):
+    """Bounded inscribed-core hypotheses for blue balloons joined to blue clutter.
+
+    A distance maximum estimates a locally thick object center even when a color
+    component has an oversized bounding box. The square hypothesis extends the
+    inscribed radius by a fixed 1.25 factor. It is not a balloon decision and must
+    still pass the classifier. No development labels or model scores are used.
+    """
+    plane = cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1]))
+    contours, _ = cv2.findContours(cv2.compare(plane, 15, cv2.CMP_GE),
+                                   cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    mask = np.zeros((242, 322), np.uint8)
+    for contour in contours:
+        cv2.drawContours(mask, [contour + 1], -1, 255, -1)
+    distance = cv2.distanceTransform(mask, cv2.DIST_L2, 5)
+    peaks = ((distance >= 3.) & (distance == cv2.dilate(distance, np.ones((9, 9), np.uint8)))).astype(np.uint8)
+    count, _, _, centers = cv2.connectedComponentsWithStats(peaks)
+    hypotheses = []
+    for center in centers[1:count]:
+        x, y = np.rint(center).astype(int)
+        radius = float(distance[y, x])
+        if radius >= 3:
+            hypotheses.append((radius, int(x)-1, int(y)-1))
+    accepted, pool = [], []
+    # Bound Python work after the fixed-size native image operations.
+    for radius, x, y in sorted(hypotheses, reverse=True)[:64]:
+        if any((x-px)**2+(y-py)**2 < max(radius, pr)**2 for pr,px,py in accepted):
+            continue
+        extent = int(np.ceil(1.25*radius))
+        a, b, c, d = max(0,x-extent), max(0,y-extent), min(320,x+extent+1), min(240,y+extent+1)
+        w, h = c-a, d-b
+        if min(w,h) < 4 or max(w/h,h/w) > 3 or w*h > .75*320*240:
+            continue
+        area = float(np.count_nonzero(mask[b+1:d+1, a+1:c+1]))
+        if area < 6:
+            continue
+        pad = int(max(w,h)*.12)
+        pool.append(dict(box=[a,b,c,d], crop_box=[max(0,a-pad),max(0,b-pad),min(320,c+pad),min(240,d+pad)],
+                         area=area, color_group=1, proposal_score=float(np.sqrt(area)*(area/(w*h))**2),
+                         proposal_source="blue_distance_core", core_radius=radius, core_center=[x,y]))
+        accepted.append((radius,x,y))
+        if len(pool) >= 16:
+            break
+    return select(pool)
+
+
 def experimental(rgb, variant):
     if rgb.shape != (240, 320, 3) or rgb.dtype != np.uint8:
         raise ValueError("Experimental search requires 320x240 RGB uint8")
     if variant == "baseline":
         return proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
-    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split"):
+    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores"):
         # Preserve every baseline slot; at most four additions, twelve total.
         base = experimental(rgb, "mser")
         additions = 0
         supplement = {"mser_blue_levels": blue_level_candidates,
                       "mser_instance_split": instance_split_candidates,
-                      "mser_opening_split": opening_split_candidates}[variant]
+                      "mser_opening_split": opening_split_candidates,
+                      "mser_blue_cores": blue_core_candidates}[variant]
+        limit = 2 if variant == "mser_blue_cores" else 4
         for c in supplement(rgb):
-            if len(base) >= 12 or additions >= 4:
+            if len(base) >= 12 or additions >= limit:
                 break
             if not any(iou(c["box"], p["box"]) > .65 for p in base):
                 base.append(c)

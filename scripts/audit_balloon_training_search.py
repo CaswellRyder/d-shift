@@ -11,9 +11,9 @@ from scripts.audit_balloon_search_stages import original_frames, indoor_frames
 from scripts.research_balloon_search import experimental
 
 
-def compare(frames):
+def compare(frames, variants=("mser", "mser_instance_split", "mser_opening_split")):
     results = {}
-    for variant in ("mser", "mser_instance_split", "mser_opening_split"):
+    for variant in variants:
         rows, timings, calls = [], [], []
         for source, rgb, truth in frames:
             start = time.perf_counter()
@@ -39,11 +39,13 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("manifest", "original-archive", "queue", "review", "indoor-archive", "output"):
         p.add_argument(f"--{name}", required=True, type=Path)
+    p.add_argument("--variant", action="append", choices=("mser", "mser_instance_split", "mser_opening_split", "mser_blue_cores"))
     a = p.parse_args()
     if a.output.exists():
         raise FileExistsError(a.output)
-    panels = dict(original=compare(list(original_frames(a.manifest, a.original_archive))),
-                  indoor=compare(list(indoor_frames(a.queue, a.review, a.manifest, a.indoor_archive))))
+    variants = a.variant or ("mser", "mser_instance_split", "mser_opening_split")
+    panels = dict(original=compare(list(original_frames(a.manifest, a.original_archive)), variants),
+                  indoor=compare(list(indoor_frames(a.queue, a.review, a.manifest, a.indoor_archive)), variants))
     write_json(a.output, dict(panels=panels, script_sha256=sha256(__file__),
         search_sha256=sha256("scripts/research_balloon_search.py"),
         inputs={name: sha256(path) for name, path in dict(manifest=a.manifest,
