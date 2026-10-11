@@ -1,0 +1,7 @@
+{
+  "recipe": "Fixed1.5x context around current crop, minimum16pixels on each dimension, clamp/shift inside320x240frame. Localization box,64x64network input,0.8threshold and proposal count unchanged. Original research parent only; no fitted weights.",
+  "evaluation": "64TRAIN scenes with385frozen proposals and13previously reviewed TRAIN background targets. Match original scores and counts before ablation. This is hypothesis testing, not training or independent validation. No DEV read in this experiment.",
+  "next_gate": "Only consider development comparison if all original TRAIN targets are retained, neither color gains false positives, and reviewed background acceptances decline. Otherwise investigate matched-context training; do not tune on DEV.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
