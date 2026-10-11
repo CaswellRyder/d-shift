@@ -1,0 +1,13 @@
+{
+  "arms": ["control", "hue"],
+  "seeds": [47,48],
+  "repetitions": 4,
+  "rows": 2675,
+  "optimizer_steps": 13440,
+  "recipe": "Same original research parent, fresh Adam, fixed80epochs,batch16,lr1e-4cosine alpha0.1,7763parameters,64RGB in both arms. Base2547window1-hard rows unchanged. Insert32visually approved TRAIN crops repeated4times before385scene constraints. Control replays originals; hue uses reviewed opposite-color renders and swapped foreground labels. Equal per-class counts, weights4 and sources. No background augmentation; no pseudo labels or DEV-dependent epoch selection.",
+  "gate": "Both hue seeds must preserve every parent-detected target on64old and6new TRAIN scenes, not increase per-color false positives on either set or13negative-probe false accepts, and improve at least one target count or false-positive count across these TRAIN scenes. Compare same-seed controls separately. Passing permits export/parity and repeated-development full-search tests only; it does not prove94percent or live readiness.",
+  "scope": "Synthetic TRAIN-only color-sharing hypothesis. Source-capped at2crops per identifier before selection. Correlated source IDs are not independent photos. No proposal, architecture, threshold, runtime or Pi changes. All IMG_ and reserved test sources excluded.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

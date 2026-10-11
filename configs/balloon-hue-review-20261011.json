@@ -1,0 +1,14 @@
+{
+  "queue": "data/balloon-hue-review-20261011",
+  "queue_sha256": "9bfcb11e7cfa13e0ec13ae383a4f2e3511b356fb61745f194a4bdf89e5c4b4c1",
+  "approved_ids": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,21,22,23,24,25,26,27,28,29,30,31,33,34,35],
+  "excluded": {"0":"Severely clipped foreground; exclude to balance colors after ambiguous blue exclusions.","17":"Severely clipped foreground; exclude to balance colors.","20":"Multiple overlapping blue balloons, ambiguous single-target synthetic crop.","32":"Blurred partial balloon among multiple other colors; avoid synthetic label ambiguity."},
+  "review": "Main agent directly inspected all36 original/transformed pairs in all3 sheets. Approved16red-to-blue and16blue-to-red renderings have recognizable target shape and intended output color. Hue operation can also recolor same-color background surfaces; these are synthetic interventions, not pixel-level object segmentations or real-world accuracy evidence.",
+  "sheets_sha256": {"paired-000.jpg":"ed4d1c8c15b593585f87362cc53cc76ea41c8d78c22b47e1a31bacfa44ba986c","paired-012.jpg":"10ded572c156da23abb176823b7831520a10ebdcef6220b201fd0cb6065ed5f6","paired-024.jpg":"35ebeae2956d11d0d26bfd7894ff893c9a6ad9805d7b1a4e4328462162cbd9bf"},
+  "rejected_rgb_swap_queue": "data/balloon-rb-swap-preview-20261011/review.json",
+  "rejected_rgb_swap_sha256": "a56dbb5abc2f7a5791fc667e18e71f08cfe5b2b2fdbe106cacdfb06a48579008",
+  "rejected_rgb_swap_reason": "Direct RGB channel swap turns cyan/light blue balloons orange/yellow and pink red balloons violet; class permutation is not valid. Never train this queue.",
+  "training_approved": true,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
