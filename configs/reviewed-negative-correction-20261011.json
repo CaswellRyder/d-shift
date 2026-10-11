@@ -1,0 +1,32 @@
+{
+  "admission": "research/balloon-red-blue-20261008/direct-hybrid-negative-admission-20261011.json",
+  "admission_sha256": "dc7a6392ada988dcbb9a8b0723e6b352921f911c017c9853aec21702b201e22c",
+  "parent_audit": "research/balloon-red-blue-20261008/window2-retraining-20261011.json",
+  "parent_audit_sha256": "046c467fcb0146eb38548b6324af89c0885e6750b7556e7ab7bcdff4119acb48",
+  "parents": {
+    "47": {"path": "runs/window2-retraining-admit-seed47-20261011/student.keras", "sha256": "a309f87475328b3a32f94ab685c191cfc00e060cb9e24aab505b3e0cf0d44322"},
+    "48": {"path": "runs/window2-retraining-admit-seed48-20261011/student.keras", "sha256": "ad8799b6f7b9801489375e73a6847cc3ba54013cab0d53cede4bea54997a3d97"}
+  },
+  "arms": ["control", "corrected"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "rows": 2639,
+  "optimizer_steps": 13200,
+  "parameters": 7763,
+  "repetitions": 4,
+  "hard_weight": 4,
+  "scene_kl_weight": 8,
+  "scene_centered_logit_weight": 0.5,
+  "corrected_scene_rows": [162, 182],
+  "design": "Each seed starts both arms from its corresponding window2 admission checkpoint. Retain2607original TRAIN rows; append the same8reviewed backgrounds repeated4times in both arms. The control retains all385scene-distillation targets, deliberately reproducing contradictory teacher preservation for two reviewed negatives. The corrected arm changes only scene rows162and182 from unlabeled teacher retention to approved background hard labels/weight4. Other pixels, targets, sampling, schedule and architecture remain matched. This isolates correction of stale teacher targets from simply adding negatives.",
+  "gate": "Freshly audit checkpoints and replay both current-blue-supplement and fixed direct-hybrid policies on82TRAIN scenes. Require both corrected seeds to preserve all incumbent target identities, no per-color FP increase on each panel, and a target recovery or strict FP reduction before separate export/DEV investigation. Record matched control effects, all8negative decisions, original correct-crop retention, and13prior negative probes. No checkpoint selection or threshold sweep.",
+  "training_approved": true,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
