@@ -1,0 +1,201 @@
+{
+  "training": {
+    "original": {
+      "frames": 23,
+      "coverage": {
+        "red_balloon": {
+          "targets": 22,
+          "baseline": 19,
+          "edge": 19
+        },
+        "blue_balloon": {
+          "targets": 15,
+          "baseline": 7,
+          "edge": 7
+        }
+      },
+      "added_calls": 2
+    },
+    "engdes2-indoor-review-20261008": {
+      "frames": 16,
+      "coverage": {
+        "red_balloon": {
+          "targets": 24,
+          "baseline": 24,
+          "edge": 24
+        },
+        "blue_balloon": {
+          "targets": 24,
+          "baseline": 20,
+          "edge": 21
+        }
+      },
+      "added_calls": 9
+    },
+    "engdes2-indoor-expansion-review-20261008": {
+      "frames": 22,
+      "coverage": {
+        "red_balloon": {
+          "targets": 31,
+          "baseline": 29,
+          "edge": 29
+        },
+        "blue_balloon": {
+          "targets": 28,
+          "baseline": 27,
+          "edge": 27
+        }
+      },
+      "added_calls": 12
+    },
+    "engdes2-indoor-expansion2-review-20261011": {
+      "frames": 47,
+      "coverage": {
+        "red_balloon": {
+          "targets": 72,
+          "baseline": 71,
+          "edge": 71
+        },
+        "blue_balloon": {
+          "targets": 65,
+          "baseline": 57,
+          "edge": 58
+        }
+      },
+      "added_calls": 31
+    }
+  },
+  "training_report_sha256": "c3d966c555eb256fe02e72bfcd3976751f50fdd788625e1d35d8009d33c0752d",
+  "training_scope": "One-to-one TRAIN proposal coverage ceiling; incomplete scene truth, not detector precision or Pi timing",
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "report_sha256": "1b4712f88c25f24c8d66db7c0e049fb57b21dacbae54853a7a5593ef8707dcf2",
+      "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+      "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+      "frames": 67,
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "edge": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 22,
+            "fn": 9,
+            "precision": 0.7380952380952381,
+            "recall": 0.8732394366197183
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "report_sha256": "98f2c5ef398871eea541d648f7b1c544ec12c0615be6c1358c07b1b94424c958",
+      "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+      "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+      "frames": 62,
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "edge": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 33,
+            "fn": 17,
+            "precision": 0.6024096385542169,
+            "recall": 0.746268656716418
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "report_sha256": "cf4718474962dc60cc5d7a94f2877cf5478bbfc631500ac99b6b508262241bdf",
+      "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+      "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e",
+      "frames": 12,
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "edge": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 5,
+            "fn": 3,
+            "precision": 0.6428571428571429,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "search_sha256": "30800b4b32f5dcd8377b4cfe4909f6e5681b6ba042810025364e08eb755d8f67",
+  "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+  "script_sha256": "8a5b747446bb622e3bd9d6cdda28d73fc63e2da62c432ad995bc5ea40e5a96c5",
+  "decision": "Do not promote: blue recall gains are accompanied by lower precision on all three development panels",
+  "scope": "Previously inspected, overlapping development imagery; no independent qualification",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
