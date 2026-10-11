@@ -1,0 +1,13 @@
+{
+  "feature_source": "Fixed324-dimensional grayscale HOG from balloon-hog-gate-20261011; canonical64x64 RGB crops",
+  "parent": "Frozen real-blue-clutter-convergence-admit-seed48 classifier; no neural weight changes",
+  "fit": "Five existing source-grouped TRAIN folds. Within fitting groups use blue/background only, inverse class-frequency weights summing to0.5 each. Weighted feature mean/std(min0.001), logistic correction added to frozen parent log(blue/background) odds. L2 penalty0.1 on all correction coefficients including bias; initialize zero correction. L-BFGS-B max500 iterations, ftol1e-12, gtol1e-8. No sweep or withheld-fold calibration.",
+  "inference": "Redistribute only the parent's blue+background probability mass using corrected conditional odds. Preserve red probability exactly; freeze all parent red-argmax rows. Existing acceptance threshold0.8 unchanged. A correction may rescue or reject blue; report both.",
+  "progress_gate": "Source-held-out TRAIN blue F1 improves, blue false positives decrease, and neither color's min(precision,recall) decreases. Require these on both all views and deduplicated crop/view pairs. Only then consider full-scene development evaluation. This is not final94percent qualification.",
+  "scope": "TRAIN-only screening, not independently held-out end-to-end accuracy. The parent classifier was already fitted on this TRAIN curriculum. Recording sessions may span multiple groups. IMG family and reserved test untouched.",
+  "ridge_penalty": 0.1,
+  "folds": 5,
+  "development_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
