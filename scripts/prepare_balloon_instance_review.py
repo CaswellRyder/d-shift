@@ -12,9 +12,11 @@ from scripts.research_balloon_search import experimental
 
 
 def prepare(manifest, original_manifest, original_archive, queue, review, indoor_archive, output,
-            indoor_only=False, candidate_scope="added"):
+            indoor_only=False, candidate_scope="added", variant="mser_instance_split"):
     if candidate_scope not in ("added", "all"):
         raise ValueError("Unknown candidate scope")
+    if variant not in ("mser_instance_split", "mser_blue_cores"):
+        raise ValueError("Unknown training proposal variant")
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -37,7 +39,7 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                 raise ValueError("Source not in current training manifest")
             parent = allowed[source]
             baseline = experimental(rgb, "mser")
-            additions = experimental(rgb, "mser_instance_split")
+            additions = experimental(rgb, variant)
             if candidate_scope == "added":
                 additions = additions[len(baseline):]
             if not additions:
@@ -63,7 +65,7 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                                  overlaps=[dict(label=t["label"], iou=iou(candidate["box"], t["box"]))
                                            for t in truth]))
     doc = dict(samples=rows, frames=frames, base_manifest_sha256=sha256(manifest),
-               indoor_only=indoor_only, candidate_scope=candidate_scope,
+               indoor_only=indoor_only, candidate_scope=candidate_scope, proposal_variant=variant,
                inputs={"original_manifest": sha256(original_manifest), "original_archive": sha256(original_archive),
                        "queue": sha256(Path(queue)/"review.json"), "review": sha256(review),
                        "indoor_archive": sha256(indoor_archive)},
@@ -142,6 +144,8 @@ if __name__ == "__main__":
     p.add_argument("--indoor-only", action="store_true", help="Skip original sources when expanding an existing queue")
     p.add_argument("--candidate-scope", choices=("added", "all"), default="added",
                    help="Review only split additions or all candidates for proposal-domain training")
+    p.add_argument("--variant", choices=("mser_instance_split", "mser_blue_cores"),
+                   default="mser_instance_split", help="Training-only proposal generator; no automatic labels")
     a = p.parse_args()
     print(prepare(a.manifest, a.original_manifest, a.original_archive, a.queue, a.review, a.indoor_archive, a.output,
-                  a.indoor_only, a.candidate_scope))
+                  a.indoor_only, a.candidate_scope, a.variant))

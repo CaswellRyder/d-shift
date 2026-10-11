@@ -47,8 +47,14 @@ def test_bad_candidate_scope_rejected_before_loading_data():
         prepare(*(["absent"] * 7), candidate_scope="unknown")
 
 
+def test_bad_proposal_variant_rejected_before_loading_data():
+    with pytest.raises(ValueError, match="proposal variant"):
+        prepare(*(["absent"] * 7), variant="unknown")
+
+
 @pytest.mark.parametrize("scope,count", [("added", 1), ("all", 2)])
-def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_path, monkeypatch, scope, count):
+@pytest.mark.parametrize("variant", ["mser_instance_split", "mser_blue_cores"])
+def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_path, monkeypatch, scope, count, variant):
     from scripts import prepare_balloon_instance_review as module
     manifest, queue, review = inputs
     archive = tmp_path/"unused.zip"
@@ -57,13 +63,20 @@ def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_pa
     pixels = np.full((240, 320, 3), 20, np.uint8)
     monkeypatch.setattr(module, "indoor_frames", lambda *a: [("background.jpg", pixels, [])])
     proposals = [dict(box=b, crop_box=b, color_group=1) for b in ([0,0,10,10], [20,20,30,30])]
-    monkeypatch.setattr(module, "experimental", lambda rgb, variant: proposals[:1] if variant == "mser" else proposals)
+    calls = []
+
+    def search(rgb, search_variant):
+        calls.append(search_variant)
+        return proposals[:1] if search_variant == "mser" else proposals
+
+    monkeypatch.setattr(module, "experimental", search)
     out = tmp_path/"review-expansion"
     result = prepare(manifest, manifest, archive, queue, review, archive, out,
-                     indoor_only=True, candidate_scope=scope)
+                     indoor_only=True, candidate_scope=scope, variant=variant)
     assert result["crops"] == count
     generated = read_json(out/"review.json")
     assert generated["candidate_scope"] == scope and generated["indoor_only"]
+    assert generated["proposal_variant"] == variant and calls == ["mser", variant]
     assert all(r["label"] == "unreviewed" for r in generated["samples"])
 
 

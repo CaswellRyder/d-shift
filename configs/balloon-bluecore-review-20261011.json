@@ -1,0 +1,198 @@
+{
+  "queue_sha256": "bdff7aa839373ba83843568fc4a97d860ead7b7efa82382f14419233b80c3693",
+  "labels": [
+    {
+      "id": 0,
+      "label": "background"
+    },
+    {
+      "id": 1,
+      "label": "background"
+    },
+    {
+      "id": 3,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 5,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 6,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 8,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 13,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 18,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 19,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 20,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 21,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 22,
+      "label": "background"
+    },
+    {
+      "id": 23,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 24,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 25,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 26,
+      "label": "background"
+    },
+    {
+      "id": 27,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 28,
+      "label": "background"
+    },
+    {
+      "id": 29,
+      "label": "background"
+    },
+    {
+      "id": 30,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 32,
+      "label": "background"
+    },
+    {
+      "id": 33,
+      "label": "background"
+    },
+    {
+      "id": 34,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 35,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 36,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 37,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 38,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 39,
+      "label": "background"
+    },
+    {
+      "id": 40,
+      "label": "background"
+    },
+    {
+      "id": 41,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 42,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 43,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 44,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 45,
+      "label": "background"
+    },
+    {
+      "id": 46,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 47,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 48,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 49,
+      "label": "blue_balloon"
+    },
+    {
+      "id": 50,
+      "label": "background"
+    },
+    {
+      "id": 51,
+      "label": "background"
+    }
+  ],
+  "exclude": [
+    2,
+    4,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    31
+  ],
+  "training_approved": true,
+  "deployment_approved": false,
+  "review": "AI visual review of all 52 crop thumbnails and all 33 corresponding training frames; not human-certified.",
+  "decisions": {
+    "2": "Exclude cyan balloon in multicolor cluster; uncertain red/blue taxonomy.",
+    "7": "Exclude crop mixing neighboring blue balloon portions.",
+    "22": "Building/window surface.",
+    "26": "Stove/metal edge.",
+    "31": "Exclude balloon knot/neck; not background.",
+    "39": "Clothing/ground stripe, not balloon.",
+    "43": "Real blue balloon on windowsill; nearby blue dumbbells remain background, not relabeled.",
+    "45": "Dark cabinet region.",
+    "0,1": "Blue jacket, not balloon.",
+    "4,17": "Exclude tiny clipped blue regions at image edges.",
+    "9,10,11,12,14,15,16": "Exclude small clipped fragments without adequate object extent.",
+    "28,29": "Distant tree/background patches; no balloon in these bottom-edge crops.",
+    "32,33,40,50,51": "Sky patches."
+  },
+  "scope": "Only added blue-core proposals from previously admitted training sources; no development or reserved test inference/fitting. Positives identified visually, not by overlap alone. No automatic negative labels; ambiguous balloon fragments excluded."
+}
