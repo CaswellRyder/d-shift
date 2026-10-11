@@ -1,0 +1,269 @@
+{
+  "results": {
+    "control47": {
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_scene_localizer",
+        "arm": "control",
+        "seed": 47,
+        "sha256": "f9a806af9bc61c7be4056e184e06819b9c59e41b91a703b8cf031e2de1b1825c",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "5e3d0bf574e8eec6ce9da497e79ac4f17fa6a07746d640765ddcfc6331d74f29",
+        "provenance_sha256": "f4993110a15abeba5be8f3d8fbac76ac81f3876611b4b279cb24e55ae89317a1",
+        "protocol_sha256": "6fc2024faf4dbcae3fc6665f6c0d48e12ad967df1156f3cff7777ab30ae366cb",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "f22c180612434eb0541eb6a4230f7fbbf7ca4e2d0c7ff3189e0e6d604e923684",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 5.245208740234375e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "diagnostics": {
+        "parent_negative_proposals": [
+          10,
+          6,
+          12,
+          8,
+          12,
+          12,
+          12,
+          12
+        ],
+        "final_negative_proposals": [
+          11,
+          6,
+          12,
+          9,
+          12,
+          12,
+          12,
+          12
+        ],
+        "fit_loss": 1.1298056840896606,
+        "holdout_loss": 1.6514077186584473
+      },
+      "epochs_sha256": "6462739060e513c7defcc430d61668a93588b5a305a3cb4bb59d633b10aab803",
+      "report_sha256": "c2b74f5355731224f3ab3fb081829e3bca40e9db6d06a8c8064221c250a8030c",
+      "scope": "Rebuilt TRAIN supervision and checkpoint/export parity; all arms evaluated without train-accuracy selection."
+    },
+    "control48": {
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_scene_localizer",
+        "arm": "control",
+        "seed": 48,
+        "sha256": "f9d2bfc5ff06d741dcf16840f572b65a9164e55885bb923154eb9c1108a9456c",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "219068c221b0beb6cc1a810b1de81b4bb60360e742822299fd92953b8e042d20",
+        "provenance_sha256": "7fc64552a1e8f1bec00aa3a5eb3794d67269d6ec3eed35c8d8537df3fd8e4125",
+        "protocol_sha256": "6fc2024faf4dbcae3fc6665f6c0d48e12ad967df1156f3cff7777ab30ae366cb",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "f22c180612434eb0541eb6a4230f7fbbf7ca4e2d0c7ff3189e0e6d604e923684",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 4.76837158203125e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "diagnostics": {
+        "parent_negative_proposals": [
+          10,
+          6,
+          12,
+          8,
+          12,
+          12,
+          12,
+          12
+        ],
+        "final_negative_proposals": [
+          10,
+          6,
+          12,
+          9,
+          12,
+          12,
+          12,
+          12
+        ],
+        "fit_loss": 1.1289030313491821,
+        "holdout_loss": 1.655243158340454
+      },
+      "epochs_sha256": "17dc31c034275a8ae77d7f0214d507557ed53575fd67897b5bd7edd64bc83f93",
+      "report_sha256": "68584bafda75f66e6813f5fcb468ce3f00d1088ad1f8ca5591b58b65305d10c9",
+      "scope": "Rebuilt TRAIN supervision and checkpoint/export parity; all arms evaluated without train-accuracy selection."
+    },
+    "background47": {
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_scene_localizer",
+        "arm": "background",
+        "seed": 47,
+        "sha256": "648d1405ad622d32dd42e4e117825825c850334b3609ac41208b4044d7d8111d",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "ed4c5d3e834f75a6d3799ff7deef802ae4fde30884c38818de186f1360cd27c3",
+        "provenance_sha256": "f659a5fba2da4a02046bb9f7c440d88ace3a40e2bf333ff8e34225855a4851c7",
+        "protocol_sha256": "6fc2024faf4dbcae3fc6665f6c0d48e12ad967df1156f3cff7777ab30ae366cb",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "f22c180612434eb0541eb6a4230f7fbbf7ca4e2d0c7ff3189e0e6d604e923684",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 6.198883056640625e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "diagnostics": {
+        "parent_negative_proposals": [
+          10,
+          6,
+          12,
+          8,
+          12,
+          12,
+          12,
+          12
+        ],
+        "final_negative_proposals": [
+          7,
+          3,
+          12,
+          8,
+          12,
+          12,
+          12,
+          12
+        ],
+        "fit_loss": 1.1700330972671509,
+        "holdout_loss": 1.6624035835266113
+      },
+      "epochs_sha256": "1ae195c6c92697388f1c30937fda9715d572c1a2628c3d61f547220b21f7efcd",
+      "report_sha256": "88e6b19b2d313c2a428ce3b7d125c8eea496be9dd4bb1cba0d04d859c53464e3",
+      "scope": "Rebuilt TRAIN supervision and checkpoint/export parity; all arms evaluated without train-accuracy selection."
+    },
+    "background48": {
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "blue_scene_localizer",
+        "arm": "background",
+        "seed": 48,
+        "sha256": "62917f2ffaa0edb73768f529541ccd4e5d9f39a79f5e6d98a38c1fbfcd9e54d7",
+        "bytes": 14420,
+        "source_checkpoint_sha256": "feb622a792ecb8f053496d3094f59d17729c7a2a96ea30b3fd347336136caadb",
+        "provenance_sha256": "d2e31cffbb7c4c177b29b2d6abacd97dd5a646f928e8b4f43727218b53f0b308",
+        "protocol_sha256": "6fc2024faf4dbcae3fc6665f6c0d48e12ad967df1156f3cff7777ab30ae366cb",
+        "parameters": 2342,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "export_script_sha256": "f22c180612434eb0541eb6a4230f7fbbf7ca4e2d0c7ff3189e0e6d604e923684",
+        "preprocessing": "320x240 RGB uint8 to160x120 INTER_AREA float32 range0..255",
+        "max_tensor_delta": 4.76837158203125e-06,
+        "decoded_parity_frames": 137,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "diagnostics": {
+        "parent_negative_proposals": [
+          10,
+          6,
+          12,
+          8,
+          12,
+          12,
+          12,
+          12
+        ],
+        "final_negative_proposals": [
+          7,
+          3,
+          12,
+          7,
+          12,
+          12,
+          12,
+          12
+        ],
+        "fit_loss": 1.1706249713897705,
+        "holdout_loss": 1.663572072982788
+      },
+      "epochs_sha256": "7c652203c53a304b26946bd3e84e37696152a00de02ce94144a460f313672938",
+      "report_sha256": "48dc34713fe9538acfcce7f845198d904d4402aee92e8610884b31800bb3aaab",
+      "scope": "Rebuilt TRAIN supervision and checkpoint/export parity; all arms evaluated without train-accuracy selection."
+    }
+  },
+  "script_sha256": "f22c180612434eb0541eb6a4230f7fbbf7ca4e2d0c7ff3189e0e6d604e923684",
+  "protocol_sha256": "6fc2024faf4dbcae3fc6665f6c0d48e12ad967df1156f3cff7777ab30ae366cb",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false
+}

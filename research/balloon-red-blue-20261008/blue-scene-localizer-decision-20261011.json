@@ -1,0 +1,38 @@
+{
+  "gates": {
+    "background47": {
+      "nonregression_vs_parent": true,
+      "retains_parent_target_identities": true,
+      "nonregression_vs_control": true,
+      "meets_94_every_panel": false
+    },
+    "background48": {
+      "nonregression_vs_parent": false,
+      "retains_parent_target_identities": false,
+      "nonregression_vs_control": false,
+      "meets_94_every_panel": false
+    }
+  },
+  "decision": "Retain background47 as research candidate; do not replace Pi model. Background supervision reduced false detections on the67-frame panel, but benefit was not nonregressing across both seeds. No candidate reaches94 percent precision and recall on every development panel.",
+  "next_step": "Address remaining blue false-positive sources and suppression/localization losses with TRAIN-only annotations. Keep current classifier and incumbent controls; do not tune against reserved qualification data.",
+  "development_sha256": "d5729c8c25226c8ea0dda93182c97d25d71d236c98b03b5bc6593e9bd68d0c3f",
+  "training_sha256": "ebdfd87a55eb5c944b5b18e8e69645736020ccf125a97d4619913d34549f8992",
+  "raw_sha256": "6f57f8284df4253a70151fabc6469069716e5ce17777b8f74110d3b57a5cba88",
+  "script_sha256": "e4eadca994647d909bb717ca50d2a43158d78d79fe0d9f85bc9872f447621e05",
+  "tests": {
+    "passed": 1314,
+    "skipped": 2,
+    "warnings": 6,
+    "log_sha256": "962dd771eaf68b55b4ee4cd669294fd25f7a6102e781517f7e43aefe9f883be1"
+  },
+  "limitations": [
+    "All three panels are repeatedly inspected related development scenes, not independent qualification.",
+    "Eight new complete-negative scenes are training evidence only.",
+    "Unchanged2342-parameter architecture and14420-byte exports do not establish Pi latency.",
+    "No Pi replacement, live candidate execution, ESP32 or motor commands."
+  ],
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
