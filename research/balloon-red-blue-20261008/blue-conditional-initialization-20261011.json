@@ -1,0 +1,98 @@
+{
+  "parent": {
+    "path": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+    "sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8"
+  },
+  "checks": [
+    {
+      "group": "",
+      "rows": 1786,
+      "max_probability_delta": 1.1920928955078125e-07,
+      "tensor_sha256": "2bc81650d0ba5f82cf7d626f28314836b3a0a4d60a0c11f04c6bb719b3388588"
+    },
+    {
+      "group": "blue_",
+      "rows": 23,
+      "max_probability_delta": 1.862645149230957e-09,
+      "tensor_sha256": "ef970d698acdcfe821f5a284b814864af26fd61553733e2dae12ad63ebb5880c"
+    },
+    {
+      "group": "clutter_",
+      "rows": 22,
+      "max_probability_delta": 1.1920928955078125e-07,
+      "tensor_sha256": "310ef6e805e7ca10d43c96848bb223c173191c909b2a9417fcdfb617f5c36a3b"
+    },
+    {
+      "group": "real_",
+      "rows": 39,
+      "max_probability_delta": 1.4901161193847656e-08,
+      "tensor_sha256": "06a8ea45d1d32f2bdc7b06f3bcf2f963ac6bd7b5db9e786ac87a602c66aecfeb"
+    },
+    {
+      "group": "new_",
+      "rows": 13,
+      "max_probability_delta": 1.7053025658242404e-12,
+      "tensor_sha256": "258be3d0d697c28066eaae10c3f173565dcc12b5970de17d9a1e7a2d1eecdfcc"
+    },
+    {
+      "group": "runtime_",
+      "rows": 69,
+      "max_probability_delta": 1.4901161193847656e-08,
+      "tensor_sha256": "5e9bbf7b75c742442217b0f81e3fc8381800065761ce4bc48df874c0b8c66582"
+    },
+    {
+      "group": "photo_",
+      "rows": 7,
+      "max_probability_delta": 1.4901161193847656e-08,
+      "tensor_sha256": "90201cdce00120a39529d79849240813d3b69e9bb99a2c6d9a74c1b81804a610"
+    },
+    {
+      "group": "batch_",
+      "rows": 11,
+      "max_probability_delta": 5.684341886080801e-13,
+      "tensor_sha256": "2e2e638a903c7bcbf4ab034f91d86eb1ae4e649127fc35344d392234803e4975"
+    }
+  ],
+  "red_invariance": [
+    {
+      "correction": -10.0,
+      "max_red_probability_delta": 1.1920928955078125e-07
+    },
+    {
+      "correction": 10.0,
+      "max_red_probability_delta": 1.1920928955078125e-07
+    }
+  ],
+  "total_probe_rows": 1970,
+  "parameters": 9844,
+  "trainable_parameters": 2081,
+  "blue_training_rows_with_parent_red_mass_above_point2": 0,
+  "new_photo_probes_with_parent_red_mass_above_point2": 0,
+  "max_export_probability_delta": 1.7881393432617188e-06,
+  "export_bytes": 50700,
+  "builtin_only_conversion": true,
+  "initial_artifacts": {
+    "runs/blue-conditional-initialization-20261011/initial.keras": "5fd06baed4d4a4e5c209adc52619a4e173c9f3701f568bbc9e8b683b9d8f2e33",
+    "runs/blue-conditional-initialization-20261011/initial.fp32.tflite": "35c23d13a1a6e5380fbf43b65a94f5271942ad6e09bb2dd73c35f0afe5f5f9a5"
+  },
+  "sources_sha256": {
+    "configs/blue-batch-trial-20261011.json": "89f8dfedeba2e47db281e68f3c9c25ea0c003703ec6c1c6c6d99128afce526e5",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_blue_conditional_adapter.py": "2a0689c8e8e077ba4148756f3e3556fea7cbe0523107fae611e301b5f7e95425",
+    "scripts/blue_conditional_adapter.py": "3ab01e6a08e5e65acf038b5e72fb42d69d7b1162179699b9ad46caa12a761df1",
+    "scripts/blue_batch_trial_data.py": "daa85ea811de952778f574ae61c6be1c6a4d9b4495bde6969f67366aec291204",
+    "scripts/blue_balloon_batch_data.py": "dec182b18e0c9e812ddfff6d0010198331a00a435002673bdf82e0cf1952ffa8",
+    "scripts/train_blue_batch_trial.py": "5b4973066d5c642b88abc18d050e7e61357a1069740f6259988a172d92b06c5f"
+  },
+  "limitations": [
+    "No learned correction or scene accuracy gain demonstrated.",
+    "Red probability preservation does not guarantee unchanged downstream box selection.",
+    "Frozen red mistakes cannot be corrected; blue probability is bounded by1-parent_red.",
+    "Builtin conversion on desktop is not ARMv6 operator support or latency proof."
+  ],
+  "next_action": "Matched fixed TRAIN correction trials, then full-scene nonregression and separate ARMv6 execution checks.",
+  "trained": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
