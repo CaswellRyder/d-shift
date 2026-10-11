@@ -1,0 +1,10 @@
+{
+  "queue": "data/blue-balloon-batch5-review-20261011",
+  "queue_sha256": "26f76e47900f3cdef953d2f6e5ec0617e10771eb6fbf14f9202f387703dffaf8",
+  "complete_red_blue_frames": {"1": [3, 4], "4": [8], "15": [52], "17": [54, 55, 56], "25": [68]},
+  "labels": {"3": "blue_balloon", "4": "blue_balloon", "8": "blue_balloon", "52": "blue_balloon", "54": "blue_balloon", "55": "blue_balloon", "56": "blue_balloon", "68": "blue_balloon"},
+  "review": "Main assistant inspected original full-resolution photos and320x240review sheets. Frame1has two blue latex balloons at the cake table;4one held blue balloon;15one printed blue latex balloon on gift display;17three blue latex balloons including the small partially obscured one at lower left;25one blue balloon partly behind green costume. No red latex targets in these five frames. Original upstream boxes identify the same visible instances. Crop54 was excluded from crop training by per-photo cap/occlusion, not labeled background; it remains a real full-scene target. No new negative-crop labels are created.",
+  "scope": "Five newly reviewed public TRAIN source photos and8correlated targets. Full-scene diagnostic, not independent evaluation or flight qualification. Same frozen0.8threshold andIoU0.5.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

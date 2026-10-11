@@ -1,0 +1,13 @@
+{
+  "queue": "data/blue-balloon-batch5-hard-review-20261011",
+  "queue_sha256": "e0ff27bf5fd847a4aa96eba25096b979fab3565c7de216caa27964a5b54989d6",
+  "split": "train",
+  "training_approved": true,
+  "labels": {"0": "blue_balloon"},
+  "crop_sha256": {"0": "a0bde37ba168ca71c3ee771a07429726e608e268e86d2bbd43d9f8888fb5318a"},
+  "review": "Main assistant inspected the actual18x23runtime crop, original full-resolution photo164e65d85b105381, and320x240frame17. Small dark blue inflated balloon at lower left is partially occluded by green foliage. Runtime proposal overlaps upstream visually verified target54 atIoU0.97276. Blue label comes from visual object/context review, not the parent prediction (which calls it background).",
+  "relationship": "Same photograph as easy crops55and56, not a new source or independent example. In a capped2crops-per-photo training experiment, replace one easy crop with this hard crop instead of counting it as a third independent source.",
+  "scope": "Explicit TRAIN-only crop label mined from newly reviewed TRAIN scenes. No IMG-family fitting, held-out evaluation or qualification.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

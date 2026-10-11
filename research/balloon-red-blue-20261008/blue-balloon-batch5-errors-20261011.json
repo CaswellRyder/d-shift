@@ -1,0 +1,165 @@
+{
+  "metrics": {
+    "red_balloon": {
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": null,
+      "recall": null
+    },
+    "blue_balloon": {
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.875
+    }
+  },
+  "frame_errors": [
+    {
+      "id": 1,
+      "source": "openimages/train/12dc204fa3b61a41",
+      "counts": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "blue_balloon": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "truth_count": 2,
+      "matched_upper_bounds": {
+        "geometry_oracle": 2,
+        "raw_classified": 2,
+        "selected_classified": 2
+      },
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "id": 4,
+      "source": "openimages/train/13a18a61d9e4c676",
+      "counts": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "truth_count": 1,
+      "matched_upper_bounds": {
+        "geometry_oracle": 1,
+        "raw_classified": 1,
+        "selected_classified": 1
+      },
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "id": 15,
+      "source": "openimages/train/161833d7fb14024a",
+      "counts": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "truth_count": 1,
+      "matched_upper_bounds": {
+        "geometry_oracle": 1,
+        "raw_classified": 1,
+        "selected_classified": 1
+      },
+      "false_positives": [],
+      "false_negatives": []
+    },
+    {
+      "id": 17,
+      "source": "openimages/train/164e65d85b105381",
+      "counts": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "blue_balloon": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 1
+        }
+      },
+      "truth_count": 3,
+      "matched_upper_bounds": {
+        "geometry_oracle": 3,
+        "raw_classified": 2,
+        "selected_classified": 2
+      },
+      "false_positives": [],
+      "false_negatives": [
+        {
+          "index": 0,
+          "label": "blue_balloon",
+          "reason": "different_predicted_class",
+          "best_proposal_iou": 0.9727624677379072
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "source": "openimages/train/189462716371fa0b",
+      "counts": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "blue_balloon": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "truth_count": 1,
+      "matched_upper_bounds": {
+        "geometry_oracle": 1,
+        "raw_classified": 1,
+        "selected_classified": 1
+      },
+      "false_positives": [],
+      "false_negatives": []
+    }
+  ],
+  "source_sha256": "8ce0b62c031bb8c64543811ce229de6aa29468b2b929426b940b6f750b243495",
+  "inputs_sha256": {
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/summarize_batch5_scene_errors.py": "56b939301d09e1b37e1b1dce148698b71a4c4c0d028aae6e3c499c18e39b0463",
+    "scripts/audit_balloon_pipeline_errors.py": "5e00e9888e400acbc8867e6e35e2fe1183689b6349901556fa5e613ba4e73deb",
+    "configs/blue-balloon-batch5-scenes-20261011.json": "21b6e700107e1a421a03514672dbaf8c727dbdfc14392d3feac544065113ab00"
+  },
+  "hard_queue": {
+    "path": "data/blue-balloon-batch5-hard-review-20261011",
+    "sha256": "e0ff27bf5fd847a4aa96eba25096b979fab3565c7de216caa27964a5b54989d6"
+  },
+  "hard_crops": 1,
+  "scope": "Training-only error attribution. Geometry oracle is an upper bound, not achieved accuracy. No inference threshold change or model fitting.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
