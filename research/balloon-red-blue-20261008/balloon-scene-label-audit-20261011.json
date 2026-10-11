@@ -1,0 +1,50 @@
+{
+  "frames": 64,
+  "proposals": 385,
+  "counts": {
+    "original/empty_crop/not_accepted": 109,
+    "original/empty_crop/red_balloon": 7,
+    "original/matched_blue_balloon/blue_balloon": 66,
+    "original/matched_blue_balloon/not_accepted": 3,
+    "original/matched_red_balloon/not_accepted": 2,
+    "original/matched_red_balloon/red_balloon": 67,
+    "original/partial_or_mixed/blue_balloon": 41,
+    "original/partial_or_mixed/not_accepted": 46,
+    "original/partial_or_mixed/red_balloon": 44,
+    "wider/empty_crop/not_accepted": 102,
+    "wider/empty_crop/red_balloon": 6,
+    "wider/matched_blue_balloon/blue_balloon": 46,
+    "wider/matched_blue_balloon/not_accepted": 3,
+    "wider/matched_red_balloon/not_accepted": 2,
+    "wider/matched_red_balloon/red_balloon": 48,
+    "wider/partial_or_mixed/blue_balloon": 61,
+    "wider/partial_or_mixed/not_accepted": 53,
+    "wider/partial_or_mixed/red_balloon": 64
+  },
+  "geometry_transitions": {
+    "empty_crop -> empty_crop": 108,
+    "empty_crop -> partial_or_mixed": 8,
+    "matched_blue_balloon -> matched_blue_balloon": 49,
+    "matched_blue_balloon -> partial_or_mixed": 20,
+    "matched_red_balloon -> matched_red_balloon": 50,
+    "matched_red_balloon -> partial_or_mixed": 19,
+    "partial_or_mixed -> partial_or_mixed": 131
+  },
+  "raw_training_sha256": "8d485eb538810c24f202acb26090aad70646511c14ed54418bf4a40bffa82a95",
+  "detail": {
+    "path": "runs/balloon-scene-label-audit-20261011.json",
+    "sha256": "9df81a14187ab6829b82f0e455df08f24bca0af3f78d6f2932e617f028eb0c02"
+  },
+  "sources_sha256": {
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/balloon_scene_label_audit.py": "e0d55869e0b0869fa1d4c85e838f0b632981dbbd25a719a73c3652dd6d2ad074",
+    "scripts/balloon_scene_constraints.py": "689d34e76e7e78f27d01915fdc589edf8dac1492743e6bcdb723f5d81073f354",
+    "scripts/balloon_wider_crop.py": "0244023ac94a380f2368cc226882f6dc92b1326b10dc1f3c9e8668754c0f44de"
+  },
+  "scope": "Annotation diagnosis only. Geometric categories are not approved training labels. Partial/mixed crops are never treated as background. No threshold tuning or model changes.",
+  "labels_created": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
