@@ -1,0 +1,228 @@
+{
+  "protocol_sha256": "05b819b3260f557820bb93ca4d35db76a67e910711f5a0a8598755a756e9e2c4",
+  "script_sha256": "bd69fdb1de20c9314df71db28b3975f4e4f56c047f0962deef2ee8d60329f478",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "previous_provenance": {
+    "path": "runs/runtime-balanced-trial-admit-seed47-20261011/provenance.json",
+    "sha256": "bd3f5c435b3ad1d41d0c6de0bbd48571949c5fb222a9c355b4ade5abfc419b43"
+  },
+  "helpers_sha256": {
+    "scripts/blue_prototype_rejection.py": "b1b9bfec42798a988ff7713b9ffa55f0267ff7e5f2bba0241589ae97e035bed5",
+    "scripts/runtime_balanced_data.py": "98f9f2ad152639da0d614c97ca9ff2a720d022077922db8fe1242ab4f659ec1f",
+    "scripts/blue_object_round2_data.py": "424c0481fa25a3a08749c4ba9575691ec4572aaa7afc47c6d59ef76045c56945",
+    "scripts/grid_clutter_data.py": "bcfff19e0d8ebe0b237c5becc9891cb6d9ce0696c2a9a5111bd422654d797b96"
+  },
+  "bank": {
+    "path": "runs/blue-prototype-rejection-20261011/bank.npz",
+    "sha256": "774d9b4cbc9d5c82ec926d7bdd94b818f2511829b8940229d9e2b845a592548b"
+  },
+  "training": {
+    "path": "runs/blue-prototype-rejection-20261011/training.npz",
+    "sha256": "48845a6b37686c75cb51ac2b1c2c07bdd9af844a448d4be9fc6ea9cb11967f2a"
+  },
+  "rows": 2074,
+  "protected_positive_rows": 1344,
+  "changed_positive_rows": 0,
+  "prototypes": 12,
+  "usable_prototypes": 12,
+  "prototype_results": [
+    {
+      "source": "openimages/train/00043d188e7dec73",
+      "sha256": "4c0c0732afe296b1fccffc3b8223a1895811e2d87a1f6b209e0622945f846c73",
+      "before": [
+        0.001737383776344359,
+        2.2158241336001083e-05,
+        0.9982404708862305
+      ],
+      "after": [
+        0.9996425120580134,
+        2.2158241336001083e-05,
+        0.0003353426045614682
+      ],
+      "radius_squared": 10.818747239966745,
+      "correction": 14.353614091873169
+    },
+    {
+      "source": "openimages/train/008469bd8213a981",
+      "sha256": "401e8327f2b043ec7ac2d9f796ff5c0db4a00027d7ad723778085be318b2e081",
+      "before": [
+        0.014798094518482685,
+        8.276445129240528e-08,
+        0.9852017760276794
+      ],
+      "after": [
+        0.9996645204591504,
+        8.276445129240528e-08,
+        0.00033535008701164994
+      ],
+      "radius_squared": 9.96836654834851,
+      "correction": 12.198348045349121
+    },
+    {
+      "source": "openimages/train/008469bd8213a981",
+      "sha256": "8840545ef9f6f12fb89491b57cee5efb7fd54214fd635bdfa1722d0b7b5037f4",
+      "before": [
+        0.1284249722957611,
+        4.066815506575949e-07,
+        0.8715746402740479
+      ],
+      "after": [
+        0.9996642625435397,
+        4.066815506575949e-07,
+        0.00033535002626925104
+      ],
+      "radius_squared": 13.799520281930494,
+      "correction": 9.91495656967163
+    },
+    {
+      "source": "openimages/train/01d88d70ab447b9c",
+      "sha256": "1e753796fc1f6a5fc439daa8931dfd43182c523795b1fd6e2c365bf733e57b89",
+      "before": [
+        0.49860435724258423,
+        2.744644461927237e-06,
+        0.5013929009437561
+      ],
+      "after": [
+        0.999661908965369,
+        2.744644461927237e-06,
+        0.0003353492209713076
+      ],
+      "radius_squared": 11.120910000669909,
+      "correction": 8.005577087402344
+    },
+    {
+      "source": "openimages/train/03aa8080ec942669",
+      "sha256": "7bd3d8caa1f7130bd0c7a12e6206c4bfa4fb016c8a5f0460b19d7169b9f39bae",
+      "before": [
+        0.015886735171079636,
+        7.903502563522125e-08,
+        0.9841131567955017
+      ],
+      "after": [
+        0.9996645418970813,
+        7.903502563522125e-08,
+        0.00033535006950005143
+      ],
+      "radius_squared": 4.480788382950817,
+      "correction": 12.126256465911865
+    },
+    {
+      "source": "openimages/train/03aa8080ec942669",
+      "sha256": "57b6942451ad9e906b9e259111aa7c2727d34c0249af7f6e8dc2a4f9552d9ae2",
+      "before": [
+        0.05804971605539322,
+        1.8773706642605248e-06,
+        0.941948413848877
+      ],
+      "after": [
+        0.9996627803887705,
+        1.8773706642605248e-06,
+        0.0003353495154995974
+      ],
+      "radius_squared": 4.371071781004357,
+      "correction": 10.786650657653809
+    },
+    {
+      "source": "openimages/train/0000ec18c34241ad",
+      "sha256": "b715a580fe665b2c9c28b00fcc3093677fc04a9859fcde7a5cf377c42bce7443",
+      "before": [
+        0.3837008476257324,
+        0.00012749145389534533,
+        0.616171658039093
+      ],
+      "after": [
+        0.9995371982870459,
+        0.00012749145389534533,
+        0.0003353073777795794
+      ],
+      "radius_squared": 3.2679728821853677,
+      "correction": 8.473662376403809
+    },
+    {
+      "source": "openimages/train/00cffb2013e0d87d",
+      "sha256": "134ff60623b09d0c17610484a6adc65afa493a2e9617db150be132b6b233c7a0",
+      "before": [
+        0.015161802992224693,
+        1.3675376976607367e-05,
+        0.9848244786262512
+      ],
+      "after": [
+        0.9996509360861912,
+        1.3675376976607367e-05,
+        0.00033534553228478284
+      ],
+      "radius_squared": 5.525876649526163,
+      "correction": 12.173684120178223
+    },
+    {
+      "source": "openimages/train/005415b295122795",
+      "sha256": "18aa333b8b250a4122f5865c2ad68df531fca3a4e90c47a4804df2cdc894d609",
+      "before": [
+        0.024039944633841515,
+        2.1944191757938825e-05,
+        0.9759381413459778
+      ],
+      "after": [
+        0.9996427432064628,
+        2.1944191757938825e-05,
+        0.0003353427733565028
+      ],
+      "radius_squared": 5.639136846246933,
+      "correction": 11.70368242263794
+    },
+    {
+      "source": "openimages/train/0348510a31b1ecc6",
+      "sha256": "04f7cd954102b98aebaafde94d345d23f103e48a28599587290fc9f5673b1bfc",
+      "before": [
+        0.006700406316667795,
+        2.9073370377830088e-09,
+        0.9932996034622192
+      ],
+      "after": [
+        0.9996646596480636,
+        2.9073370377830088e-09,
+        0.0003353501308234484
+      ],
+      "radius_squared": 17.40280868194273,
+      "correction": 12.99886417388916
+    },
+    {
+      "source": "openimages/train/008dcfa1ae527944",
+      "sha256": "cbf103e44ca9dfc085331e282ceff4dd8d421f189d9021b2606d89de24839054",
+      "before": [
+        0.005809208378195763,
+        1.4356285760186438e-07,
+        0.9941906929016113
+      ],
+      "after": [
+        0.9996645511632286,
+        1.4356285760186438e-07,
+        0.00033535011657847386
+      ],
+      "radius_squared": 6.634783005522948,
+      "correction": 13.142484664916992
+    },
+    {
+      "source": "openimages/train/008dcfa1ae527944",
+      "sha256": "04f443953da4ad34b5c972117b0ff344b9a7ab66ef08aa9ff90895d54d60389d",
+      "before": [
+        0.10260957479476929,
+        5.276130650599953e-06,
+        0.8973851203918457
+      ],
+      "after": [
+        0.9996593468239067,
+        5.276130650599953e-06,
+        0.0003353483627083628
+      ],
+      "radius_squared": 5.038439372883925,
+      "correction": 10.168553829193115
+    }
+  ],
+  "changed_training_rows": 24,
+  "training_gate_pass": true,
+  "scope": "Deterministic TRAIN-only prototype fit; all classifier weights frozen. No development pixels/labels used in fitting, no neural runtime export or speed claim.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
