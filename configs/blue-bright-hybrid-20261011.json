@@ -1,0 +1,14 @@
+{
+  "arms": ["full", "blue_bright"],
+  "classifier": "real-blue-clutter-convergence-admit-seed48",
+  "localizer": "coarse47",
+  "selection": "confidence",
+  "threshold": 0.8,
+  "matching_iou": 0.5,
+  "extra_blue_proposals": 2,
+  "max_total_proposals": 12,
+  "design": "Fixed full-red plus blue-only second MSER pass with existing classifier and learned blue supplement. Full arm includes an exact bounding-box rejection prefilter and must reproduce original proposals/decisions. Screen64 complete TRAIN scenes before all three related development panels. Report both arms regardless of TRAIN outcome. No threshold tuning, no new training, no default changes.",
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "test_evaluated": false
+}
