@@ -11,12 +11,32 @@ from scripts.audit_balloon_search_stages import original_frames, indoor_frames, 
 from scripts.research_balloon_search import experimental
 
 
+def unmatched_acceptances(rgb, candidates, truth, predictor):
+    """Find suspicious TRAIN predictions for review, never assign negative labels.
+
+    Missing annotations are not evidence of background. Store the prediction as
+    provenance only; admitted/excluded labels must still come from visual review.
+    """
+    rows = []
+    for candidate in candidates:
+        if any(iou(candidate["box"], t["box"]) >= .1 for t in truth):
+            continue
+        x, y, z, w = candidate["crop_box"]
+        prediction = predictor.predict(rgb[y:w, x:z])
+        if prediction["accepted"] and prediction["label"] in ("red_balloon", "blue_balloon"):
+            rows.append(dict(candidate, mining_prediction={
+                k: prediction[k] for k in ("label", "score", "scores", "accepted")}))
+    return rows
+
+
 def prepare(manifest, original_manifest, original_archive, queue, review, indoor_archive, output,
-            indoor_only=False, candidate_scope="added", variant="mser_instance_split"):
+            indoor_only=False, candidate_scope="added", variant="mser_instance_split", mining_model=None):
     if candidate_scope not in ("added", "all"):
         raise ValueError("Unknown candidate scope")
     if variant not in ("mser_instance_split", "mser_blue_cores"):
         raise ValueError("Unknown training proposal variant")
+    if mining_model and candidate_scope != "all":
+        raise ValueError("Mining requires all candidate proposals")
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -25,6 +45,16 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
     if base.get("training_approved") is not True or base.get("synthetic", True):
         raise ValueError("Require approved real base data")
     allowed = {r["source_image"]: r for r in base["samples"] if r["split"] == "train"}
+    predictor, mining = None, None
+    if mining_model:
+        from scripts.research_predictor import load_predictor
+        from dtr.vision import RED_BLUE_PROFILE, validate_model_profile
+        predictor = load_predictor(mining_model)
+        validate_model_profile(predictor.metadata, RED_BLUE_PROFILE)
+        mining = dict(model_sha256=sha256(mining_model),
+                      metadata_sha256=sha256(Path(mining_model).with_suffix(".json")),
+                      maximum_annotation_iou_exclusive=.1,
+                      threshold=predictor.metadata["threshold"], labels_automatic=False)
     panels = {} if indoor_only else {"original": original_frames(original_manifest, original_archive)}
     panels["indoor"] = indoor_frames(queue, review, original_manifest, indoor_archive)
     output.mkdir(parents=True)
@@ -42,6 +72,8 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
             additions = experimental(rgb, variant)
             if candidate_scope == "added":
                 additions = additions[len(baseline):]
+            if predictor is not None:
+                additions = unmatched_acceptances(rgb, additions, truth, predictor)
             if not additions:
                 continue
             frame_id = len(frames)
@@ -65,7 +97,7 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                                  overlaps=[dict(label=t["label"], iou=iou(candidate["box"], t["box"]))
                                            for t in truth]))
     doc = dict(samples=rows, frames=frames, base_manifest_sha256=sha256(manifest),
-               indoor_only=indoor_only, candidate_scope=candidate_scope, proposal_variant=variant,
+               indoor_only=indoor_only, candidate_scope=candidate_scope, proposal_variant=variant, mining=mining,
                inputs={"original_manifest": sha256(original_manifest), "original_archive": sha256(original_archive),
                        "queue": sha256(Path(queue)/"review.json"), "review": sha256(review),
                        "indoor_archive": sha256(indoor_archive)},
@@ -146,6 +178,7 @@ if __name__ == "__main__":
                    help="Review only split additions or all candidates for proposal-domain training")
     p.add_argument("--variant", choices=("mser_instance_split", "mser_blue_cores"),
                    default="mser_instance_split", help="Training-only proposal generator; no automatic labels")
+    p.add_argument("--mining-model", help="Review only accepted proposals with <0.1 IoU to annotated TRAIN targets; requires --candidate-scope all")
     a = p.parse_args()
     print(prepare(a.manifest, a.original_manifest, a.original_archive, a.queue, a.review, a.indoor_archive, a.output,
-                  a.indoor_only, a.candidate_scope, a.variant))
+                  a.indoor_only, a.candidate_scope, a.variant, a.mining_model))

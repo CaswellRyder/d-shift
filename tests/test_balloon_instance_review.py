@@ -6,7 +6,7 @@ from PIL import Image
 
 from dtr.data import read_json, sha256, synthetic, write_json
 from scripts.prepare_balloon_instance_review import checked_rows
-from scripts.prepare_balloon_instance_review import prepare
+from scripts.prepare_balloon_instance_review import prepare, unmatched_acceptances
 from scripts.build_balloon_instance_ablation import build
 
 
@@ -50,6 +50,40 @@ def test_bad_candidate_scope_rejected_before_loading_data():
 def test_bad_proposal_variant_rejected_before_loading_data():
     with pytest.raises(ValueError, match="proposal variant"):
         prepare(*(["absent"] * 7), variant="unknown")
+
+
+def test_mining_requires_all_candidates_before_io():
+    with pytest.raises(ValueError, match="all candidate"):
+        prepare(*(["absent"] * 7), mining_model="missing.tflite")
+
+
+def test_mining_preserves_unlabeled_status_and_skips_annotated_targets():
+    calls = []
+
+    class FakePredictor:
+        def predict(self, crop):
+            calls.append(crop.shape)
+            return dict(label="blue_balloon", score=.9, scores=[.1,0.,.9], accepted=True,
+                        latency_ms=999)
+
+    rgb = np.zeros((240,320,3), np.uint8)
+    boxes = [[0,0,20,20], [100,100,130,130]]
+    candidates = [dict(box=b, crop_box=b) for b in boxes]
+    rows = unmatched_acceptances(rgb, candidates, [dict(box=boxes[0])], FakePredictor())
+    assert calls == [(30,30,3)]
+    assert len(rows) == 1 and rows[0]["box"] == boxes[1]
+    assert "label" not in rows[0] and "mining_prediction" not in candidates[1]
+    assert rows[0]["mining_prediction"] == dict(label="blue_balloon", score=.9, scores=[.1,0.,.9], accepted=True)
+
+
+@pytest.mark.parametrize("label,accepted", [("background", True), ("blue_balloon", False)])
+def test_mining_skips_rejected_or_background_predictions(label, accepted):
+    class FakePredictor:
+        def predict(self, crop):
+            return dict(label=label, accepted=accepted)
+
+    rgb = np.zeros((240,320,3), np.uint8)
+    assert unmatched_acceptances(rgb, [dict(box=[0,0,10,10], crop_box=[0,0,10,10])], [], FakePredictor()) == []
 
 
 @pytest.mark.parametrize("scope,count", [("added", 1), ("all", 2)])

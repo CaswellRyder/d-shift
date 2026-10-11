@@ -1,0 +1,116 @@
+{
+  "queue_sha256": "8589cfd9c8e07a1ca9fba461241ce2da82993100734375a4836cda5704cacb6c",
+  "labels": [
+    {
+      "id": 4,
+      "label": "background"
+    },
+    {
+      "id": 13,
+      "label": "background"
+    },
+    {
+      "id": 17,
+      "label": "background"
+    },
+    {
+      "id": 22,
+      "label": "background"
+    },
+    {
+      "id": 32,
+      "label": "background"
+    },
+    {
+      "id": 37,
+      "label": "background"
+    },
+    {
+      "id": 40,
+      "label": "background"
+    },
+    {
+      "id": 41,
+      "label": "background"
+    },
+    {
+      "id": 42,
+      "label": "background"
+    },
+    {
+      "id": 43,
+      "label": "background"
+    },
+    {
+      "id": 44,
+      "label": "background"
+    },
+    {
+      "id": 48,
+      "label": "background"
+    },
+    {
+      "id": 49,
+      "label": "background"
+    }
+  ],
+  "exclude": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    21,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    33,
+    34,
+    35,
+    36,
+    38,
+    39,
+    45,
+    46,
+    47
+  ],
+  "training_approved": true,
+  "deployment_approved": false,
+  "review": "AI visual review of all 50 crop thumbnails and 21 full frames, with individual inspection of crops 6,16,22,37. Not human-certified.",
+  "scope": "Only current-model accepted, annotation-unmatched proposals from approved training sources. Missing annotation was not treated as proof of background. Real balloons, multicolor clusters, deflated latex, mixed crops containing balloons, and tiny uncertain patches excluded.",
+  "decisions": {
+    "4": "Blue shirt with face; not balloon.",
+    "6": "Exclude five-pixel ambiguous blue patch.",
+    "13": "Blue backpack/jacket.",
+    "17": "Blue printed advertising sign.",
+    "22": "Red curtain in building window.",
+    "32": "Blue vertical fence/sign support.",
+    "37": "Blue-white patterned hat fabric.",
+    "42": "Red Chicago hoodie.",
+    "49": "Red sleeve at frame edge.",
+    "40,41": "Blue dumbbells on windowsill; nearby real balloon excluded from these crops.",
+    "43,44,48": "Red car-body panels.",
+    "3,5,16,45,46,47": "Exclude mixed or balloon-adjacent crops rather than risk suppressing true balloon parts.",
+    "38,39": "Exclude deflated latex; taxonomy uncertain.",
+    "other_exclusions": "Real balloons, balloon fragments, multicolor mixtures, or uncertain color; not admitted as negatives."
+  }
+}
