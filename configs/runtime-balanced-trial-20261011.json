@@ -1,0 +1,23 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 7763,
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "decay_steps": 52000,
+  "alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Both arms share1946 rows: the earlier1922-row indoor curriculum plus12 reviewed blue-object negatives repeated twice. Add64 manually reviewed runtime crops (33red29blue2background), original and horizontal reflection, versus64 class-count-matched old protected crops with the same two views.2074rows,1602protected. Original parent, fresh Adam,400epochs52000steps, fixed final checkpoint; seeds47/48.",
+  "augmentation": "For these64 admitted or matched-control sources only, retain reviewed semantic label under horizontal reflection after canonical64x64 PIL bilinear resizing. Explicit new training augmentation. No tile/pixel shuffles, rotations, inferred negatives, or transformed development imagery.",
+  "training_gate": "Both admitted seeds must pass all previous protection/crop gates plus12/12 reviewed object backgrounds and64/64 reviewed runtime crops in both original and mirrored views. Background argmax and foreground correct at0.8. Controls measured too; their unseen-probe gate is not required.",
+  "evaluation": "Only after paired TRAIN gates pass, export final checkpoints and evaluate all four arms with frozen current blue-bright search, coarse47 localizer and confidence selection. Compare identical full scenes and identities, not only crop metrics. Related development panels are not independent qualification.",
+  "scope": "No architecture growth or extra inference calls. TRAIN-only sources guarded against whole IMG family; no Pi data or reserved test used for fitting. No deployment change.",
+  "deployment_approved": false,
+  "test_evaluated": false
+}
