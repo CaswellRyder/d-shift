@@ -1,0 +1,62 @@
+{
+  "parent_audit": "research/balloon-red-blue-20261008/peak-ranking-localizer-20261011.json",
+  "parent_audit_sha256": "84446ce57d0323b6b0322207417465009805532b382c3dba0d69fb7eca5949f1",
+  "diagnosis": "research/balloon-red-blue-20261008/peak-ranking-localizer-20261011.json",
+  "diagnosis_sha256": "84446ce57d0323b6b0322207417465009805532b382c3dba0d69fb7eca5949f1",
+  "coverage_diagnosis": "research/balloon-red-blue-20261008/proposal-ceiling-diagnosis-20261011.json",
+  "coverage_diagnosis_sha256": "126f26d6bb3e8fdac4b6bab9faf481bfa5def9f271e97e54e504879cb4cb25dd",
+  "classifier_audit": "research/balloon-red-blue-20261008/source-resolved-negative-20261011.json",
+  "classifier_audit_sha256": "894867241f99d5cc80275ce3a14dbbca0c7a58662fd73bf256207a3682150af4",
+  "classifiers": {
+    "47": {
+      "path": "runs/source-resolved-negative-corrected-seed47-20261011/student.keras",
+      "sha256": "19ec2edfecd67471feacd2756def33ebb4166411c7686ac80492e0fec5497652"
+    },
+    "48": {
+      "path": "runs/source-resolved-negative-corrected-seed48-20261011/student.keras",
+      "sha256": "24c73b607bef3ec1e92a373a7a518a2ffbf6d84e750d66c89c1f9f70cb61cb09"
+    }
+  },
+  "parents": {
+    "47": {
+      "path": "runs/peak-ranking-localizer-ranked-seed47-20261011/proposal.keras",
+      "sha256": "b689f2e16ce80057bd35b997cf2af4918376471c9f09047e2222a99bfbd5cb5f"
+    },
+    "48": {
+      "path": "runs/peak-ranking-localizer-ranked-seed48-20261011/proposal.keras",
+      "sha256": "9a309caf14414efdb090584ddb8376f89e90a36898790694901be23186acba9d"
+    }
+  },
+  "arms": [
+    "control",
+    "presence"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "epochs": 200,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "optimizer_steps": 5000,
+  "fit_rows": 193,
+  "parameters": 2342,
+  "peak_margin_logits": 0.5,
+  "peak_weight": 1,
+  "design": "Both arms retain identical193TRAIN rows and start from corresponding verified peak-ranked checkpoints. Control peak_ranking_loss; presence adds mean squared hinge max(0,0.5-logit)^2 only at explicitly supervised annotated true centers. Unknown cells, noncenters and geometry get no direct added loss. Same graph2342parameters, seed, optimizer,200epochs and5000steps. Separate fixed decoder factor: preserve original blue-blended peaks and optionally add nonpeaks at unchanged direct acceptance0.5 only if all stronger same-color3x3neighbors and existing peaks have boxIoU<0.5. Existing global same-colorIoU0.65NMS and12box ceiling remain. No truth in decoding. Hypotheses: unary center confidence prevents absolute-score regressions from ordering loss; box-distinct neighbors can preserve adjacent true objects. Neither guarantees recall or Pi performance.",
+  "evaluation": "Verify all fixed final checkpoints and identical training tensors. Audit48variants: six localizers(parent/control/presence, two seeds) x two decoders x current/pooled/base_first/direct. Freeze classifier checkpoints from prior source-resolved-negative audit, crop0.8/direct0.5 thresholds and12crop plus one localizer-call maximum. Reproduce parent/frozen direct-hybrid outputs before comparing. Independently recount full82TRAIN scenes, matched training effects, decoder-only effects and incumbent retention. Require no incumbent target losses or per-colorFPincrease on any panel and strict recovery orFP reduction in both seeds before separate export/DEV. No heldout training, threshold sweep or Pi model swap.",
+  "training_approved": true,
+  "original_holdout_evaluated": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "center_margin_logits": 0.5,
+  "center_presence_weight": 1,
+  "decoders": [
+    "frozen",
+    "independent_neighbor"
+  ]
+}

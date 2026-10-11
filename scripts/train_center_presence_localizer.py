@@ -1,0 +1,93 @@
+"""Matched absolute center-presence trial with unchanged data, decoder and inference graph."""
+import argparse
+import math
+
+import numpy as np
+
+from dtr.data import sha256, write_json
+from scripts.center_presence_localizer_data import tensors, matched, dependencies, run_path
+from scripts.public_scene_localizer_data import tensor_hash
+
+
+def train(arm, seed):
+    out = run_path(arm, seed)
+    if out.exists():
+        raise FileExistsError(out)
+    arms = {a: tensors(a, seed) for a in ('control', 'presence')}
+    matched(arms['control'], arms['presence'])
+    data = arms[arm]
+    x, y, p = data['x'], data['y'], data['settings']
+    import tensorflow as tf
+    tf.config.set_visible_devices([], 'GPU')
+    tf.config.threading.set_intra_op_parallelism_threads(4)
+    tf.config.threading.set_inter_op_parallelism_threads(1)
+    import keras
+    from scripts.balloon_relative_box_loss import relative_loss
+    from scripts.balloon_peak_ranking_loss import peak_ranking_loss, local_peak_penalty
+    from scripts.balloon_center_presence_loss import center_presence_loss, center_presence_penalty
+    loss_fn = peak_ranking_loss if arm == 'control' else center_presence_loss
+    keras.utils.set_random_seed(seed)
+    model = keras.models.load_model(data['parent']['path'], compile=False)
+    if model.count_params() != p['parameters'] or model.output_shape != (None, 15, 20, 6):
+        raise ValueError('Architecture changed')
+    if any(isinstance(layer, (keras.layers.BatchNormalization, keras.layers.Dropout)) for layer in model.layers):
+        raise ValueError('Control inputs must not influence hidden normalization or dropout state')
+    steps = math.ceil(len(x)/p['batch_size'])*p['epochs']
+    if steps != p['optimizer_steps']:
+        raise ValueError('Optimizer schedule mismatch')
+    sources = dependencies()
+    model.compile(optimizer=keras.optimizers.Adam(keras.optimizers.schedules.CosineDecay(
+        p['learning_rate'], steps, alpha=p['cosine_alpha'])), loss=loss_fn)
+    out.mkdir(parents=True)
+    provenance = dict(arm=arm, seed=seed, sources_sha256=sources,
+        inputs_sha256=tensor_hash(x), targets_sha256=tensor_hash(y),
+        **{k: v for k, v in data.items() if k not in ('x', 'y', 'panels', 'arm', 'seed')},
+        fresh_optimizer=True, fixed_final_checkpoint=True, fit_frames=len(x), excluded_original_holdout_frames=16,
+        original_holdout_evaluated=False, development_evaluated=False, test_evaluated=False,
+        pi_tested=False, deployment_approved=False, qualification_achieved=False)
+    write_json(out/'provenance.json', provenance)
+    write_json(out/'status.json', dict(state='running'))
+    try:
+        ds = tf.data.Dataset.from_tensor_slices((x, y)).shuffle(len(x), seed=seed).batch(p['batch_size'])
+        options = tf.data.Options()
+        options.threading.private_threadpool_size = 2
+        ds = ds.with_options(options).prefetch(1)
+
+        class Progress(keras.callbacks.Callback):
+            def on_epoch_end(self, epoch, logs=None):
+                if not logs or not all(np.isfinite(v) for v in logs.values()):
+                    raise ValueError('Nonfinite training')
+                write_json(out/'status.json', dict(state='running', epoch=epoch+1, metrics=logs))
+                if (epoch+1) % 25 == 0:
+                    print(dict(arm=arm, seed=seed, epoch=epoch+1, loss=logs['loss']), flush=True)
+
+        model.fit(ds, epochs=p['epochs'], verbose=0,
+            callbacks=[Progress(), keras.callbacks.CSVLogger(str(out/'epochs.csv'))])
+        if int(model.optimizer.iterations) != steps or any(sha256(path) != h for path, h in sources.items()):
+            raise ValueError('Wrong optimizer steps or sources changed during training')
+        model.save(out/'proposal.keras')
+        pred = model(x, training=False).numpy()
+        if pred.shape != (193, 15, 20, 6) or not np.isfinite(pred).all():
+            raise ValueError('Invalid final predictions')
+        np.save(out/'predictions.npy', pred, allow_pickle=False)
+        report = dict(model_sha256=sha256(out/'proposal.keras'), predictions_sha256=sha256(out/'predictions.npy'),
+            provenance_sha256=sha256(out/'provenance.json'), optimizer_steps=int(model.optimizer.iterations),
+            fit_loss=float(loss_fn(tf.constant(y), tf.constant(pred))),
+            relative_fit_loss=float(relative_loss(tf.constant(y), tf.constant(pred))),
+            peak_penalty=float(local_peak_penalty(tf.constant(y), tf.constant(pred))),
+            presence_penalty=float(center_presence_penalty(tf.constant(y), tf.constant(pred))),
+            scope='TRAIN fitting loss only; no detection accuracy or qualification claim.')
+        write_json(out/'report.json', report)
+        write_json(out/'status.json', dict(state='complete'))
+        print(dict(arm=arm, seed=seed, **report), flush=True)
+    except BaseException as exc:
+        write_json(out/'status.json', dict(state='failed', error=str(exc)))
+        raise
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--arm', choices=('control', 'presence'), required=True)
+    parser.add_argument('--seed', type=int, choices=(47, 48), required=True)
+    args = parser.parse_args()
+    train(args.arm, args.seed)
