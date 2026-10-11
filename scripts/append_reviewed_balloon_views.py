@@ -17,7 +17,7 @@ def build(manifest, original_manifest, queue, review, output, control=False):
     config = read_json("configs/balloon-red-blue.json")
     base = validate(manifest, config, splits=("train", "val"))
     if (base.get("synthetic", True) or base.get("training_approved") is not True
-            or base.get("parent_manifest_sha256") != sha256(original_manifest)):
+            or base.get("original_manifest_sha256", base.get("parent_manifest_sha256")) != sha256(original_manifest)):
         raise ValueError("Require approved expanded manifest with original parent identity")
     decision = read_json(review)
     queue_doc = read_json(Path(queue) / "review.json")

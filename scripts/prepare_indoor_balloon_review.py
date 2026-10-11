@@ -38,6 +38,29 @@ def holdout_distance(rgb, fingerprints):
                for view in (rgb, rgb[::-1], rgb[:, ::-1], rgb[::-1, ::-1]) for h in fingerprints)
 
 
+def exclusion_context(exclude_queue, manifest):
+    paths = [] if exclude_queue is None else (
+        list(exclude_queue) if isinstance(exclude_queue, (list, tuple)) else [exclude_queue])
+    paths = [Path(p).resolve() for p in paths]
+    if len(set(paths)) != len(paths):
+        raise ValueError("Duplicate prior training queue")
+    groups, fingerprints, hashes = set(), [], []
+    for prior_path in paths:
+        prior = read_json(prior_path)
+        if prior["archive_sha256"] != ARCHIVE_SHA or prior["base_manifest_sha256"] != sha256(manifest):
+            raise ValueError("Prior queue identity changed")
+        for frame in prior["frames"]:
+            path = (prior_path.parent / frame["path"]).resolve()
+            if (not path.is_relative_to(prior_path.parent) or sha256(path) != frame["sha256"]
+                    or family(Path(frame["source"]).name) is None):
+                raise ValueError("Invalid prior training frame")
+            groups.add(source_group(Path(frame["source"]).name))
+            with Image.open(path) as im:
+                fingerprints.append(fingerprint(np.asarray(im.convert("RGB"))))
+        hashes.append(sha256(prior_path))
+    return groups, fingerprints, hashes
+
+
 def build(root, manifest, output, per_family=8, exclude_queue=None):
     if type(per_family) is not int or not 1 <= per_family <= 24:
         raise ValueError("Require 1..24 candidate frames per training family")
@@ -47,20 +70,7 @@ def build(root, manifest, output, per_family=8, exclude_queue=None):
     archive_path = root / "dataset.zip"
     if sha256(archive_path) != ARCHIVE_SHA:
         raise ValueError("Public source archive changed")
-    excluded_groups, prior_fingerprints = set(), []
-    if exclude_queue:
-        prior_path = Path(exclude_queue).resolve()
-        prior = read_json(prior_path)
-        if prior["archive_sha256"] != ARCHIVE_SHA or prior["base_manifest_sha256"] != sha256(manifest):
-            raise ValueError("Prior queue identity changed")
-        for frame in prior["frames"]:
-            path = (prior_path.parent / frame["path"]).resolve()
-            if (not path.is_relative_to(prior_path.parent) or sha256(path) != frame["sha256"]
-                    or family(Path(frame["source"]).name) is None):
-                raise ValueError("Invalid prior training frame")
-            excluded_groups.add(source_group(Path(frame["source"]).name))
-            with Image.open(path) as im:
-                prior_fingerprints.append(fingerprint(np.asarray(im.convert("RGB"))))
+    excluded_groups, prior_fingerprints, prior_hashes = exclusion_context(exclude_queue, manifest)
     base = read_json(manifest)
     old_archive = Path("data/raw/matterport-balloon/balloon_dataset.zip")
     if sha256(old_archive) != base["source_archive_sha256"]:
@@ -155,7 +165,8 @@ def build(root, manifest, output, per_family=8, exclude_queue=None):
                  holdout_pixel_use="Automated perceptual duplicate screening only; no display/inference/fitting",
                  caveat="Two filename families assigned training-only; no independent new benchmark. Perceptual hash is heuristic.",
                  class_mapping=MAP, candidate_frames_per_family=per_family,
-                 excluded_queue_sha256=sha256(exclude_queue) if exclude_queue else None,
+                 excluded_queue_sha256=prior_hashes[0] if len(prior_hashes) == 1 else None,
+                 excluded_queue_sha256s=prior_hashes,
                  negative_search="mser" if exclude_queue else "baseline",
                  search_sha256=sha256("scripts/research_balloon_search.py") if exclude_queue else None)
     write_json(output / "review.json", queue)
@@ -187,6 +198,7 @@ if __name__ == "__main__":
     p.add_argument("--manifest",required=True)
     p.add_argument("--output",required=True)
     p.add_argument("--per-family",type=int,default=8)
-    p.add_argument("--exclude-queue",help="Prior training review.json; exclude its groups and near-duplicate frames")
+    p.add_argument("--exclude-queue", action="append",
+                   help="Prior training review.json; repeat to exclude all prior groups and near-duplicates")
     args = p.parse_args()
     build(args.root,args.manifest,args.output,args.per_family,args.exclude_queue)

@@ -39,6 +39,30 @@ def test_prior_queue_must_be_matching_training_only(tmp_path, monkeypatch, inval
     assert not (tmp_path / "out").exists()
 
 
+def test_multiple_prior_queues_are_all_excluded_and_hash_bound(tmp_path):
+    manifest = tmp_path / "manifest.json"
+    write_json(manifest, {})
+    paths = []
+    for i in range(2):
+        prior = tmp_path/str(i)
+        prior.mkdir()
+        Image.new("RGB", (20,20), (i*50,20,200)).save(prior/"frame.png")
+        frame = dict(path="frame.png", sha256=sha256(prior/"frame.png"),
+                     source=f"frame_{i:04d}_jpg.rf.abc.jpg")
+        write_json(prior/"review.json", dict(archive_sha256=preparer.ARCHIVE_SHA,
+            base_manifest_sha256=sha256(manifest), frames=[frame]))
+        paths.append(prior/"review.json")
+    groups, fingerprints, hashes = preparer.exclusion_context(paths, manifest)
+    assert len(groups) == len(fingerprints) == len(hashes) == 2
+    assert hashes == [sha256(p) for p in paths]
+    assert preparer.exclusion_context(paths[0], manifest)[0] < groups
+    with pytest.raises(ValueError, match="Duplicate prior"):
+        preparer.exclusion_context([paths[0], paths[0]], manifest)
+    Image.new("RGB", (20,20), "white").save(paths[1].parent/"frame.png")
+    with pytest.raises(ValueError, match="Invalid prior"):
+        preparer.exclusion_context(paths, manifest)
+
+
 @pytest.fixture
 def inputs(tmp_path, monkeypatch):
     config = read_json("configs/balloon-red-blue.json")
@@ -84,5 +108,22 @@ def test_expansion_matches_labels_and_preserves_reserved_metadata(inputs, contro
 def test_incomplete_or_unsafe_review_rejected(inputs, decision):
     write_json(inputs[3], dict(training_approved=True) | decision)
     with pytest.raises(ValueError, match="complete training-only review"):
+        appender.build(*inputs)
+    assert not inputs[-1].exists()
+
+
+def test_nested_expansion_requires_original_lineage(inputs):
+    manifest = read_json(inputs[0])
+    manifest["original_manifest_sha256"] = sha256(inputs[1])
+    manifest["parent_manifest_sha256"] = "intermediate-parent"
+    write_json(inputs[0], manifest)
+    assert appender.build(*inputs)["added_entries"] == 1
+
+
+def test_nested_expansion_rejects_changed_original(inputs):
+    manifest = read_json(inputs[0])
+    manifest["original_manifest_sha256"] = "wrong-original"
+    write_json(inputs[0], manifest)
+    with pytest.raises(ValueError, match="original parent identity"):
         appender.build(*inputs)
     assert not inputs[-1].exists()
