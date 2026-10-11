@@ -115,7 +115,7 @@ def main():
     for name in ("base", "region-library", "output"):
         parser.add_argument(f"--{name}", required=True)
     parser.add_argument("--policy", choices=("full", "periodic"), required=True)
-    parser.add_argument("--model", default="new-views-42")
+    parser.add_argument("--model", help="bundle model alias; default is the bundle's default_model")
     parser.add_argument("--count", type=int, default=60)
     parser.add_argument("--seconds", type=float, default=30)
     parser.add_argument("--fps", type=float, default=10)
@@ -134,6 +134,7 @@ def main():
         os.environ.pop(key, None)
     cv2.setNumThreads(1)
     inputs = read_json(root / "inputs.json")
+    args.model = args.model or inputs.get("default_model", "new-views-42")
     golden = read_json(root / "search-golden.json")[args.model]
     model = root / inputs["models"][args.model]["path"]
     predictor = Predictor(model, allow_unvalidated=True)

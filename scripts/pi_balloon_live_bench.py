@@ -124,7 +124,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--model", default="new-views-42")
+    parser.add_argument("--model", help="bundle model alias; default is the bundle's default_model")
     parser.add_argument("--search", choices=("mser", "mser_fast"), default="mser_fast")
     parser.add_argument("--region-library")
     parser.add_argument("--count", type=int, default=40)
@@ -151,6 +151,7 @@ def main():
         os.environ.pop(key, None)
     cv2.setNumThreads(1)
     inputs = read_json(root / "inputs.json")
+    args.model = args.model or inputs.get("default_model", "new-views-42")
     model = root / inputs["models"][args.model]["path"]
     predictor = Predictor(model, allow_unvalidated=True)
 
