@@ -1,0 +1,900 @@
+{
+  "runs": {
+    "calibrated-a": {
+      "report": {
+        "model": "soft-admit-47",
+        "search": "mser_direct",
+        "selection": "split_merged",
+        "split_max_aspect": 2.42913421076193,
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "bundle_sha256": "8cccf20a0ea6f377991425ca833a72f21381b15cfc2ae60cef93983d023a7880",
+        "inputs_sha256": "f787fad5dcf693efcd38b7aab804122d8ce68ead145241a3ff0473264a7a4cbf",
+        "golden_sha256": "ef9ca880bb5f9eef86ecc4976f0fe82b502b3dc9bf7340270d8ddf4d4c6bd2cc",
+        "script_sha256": "f162e676caaef5d56ebbaa5bf4198a7bc43dc0bbfbdab13e6d942c5856359f3d",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser_split_merged_aspect_2.42913421076193",
+        "frames": 83,
+        "unique_frames": 83,
+        "rounds": 1,
+        "max_host_pi_score_delta": 8.940696716308594e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 287.1078768680545,
+            "p50_ms": 262.61078199604526,
+            "p95_ms": 492.50146331032727,
+            "max_ms": 579.6318859793246
+          },
+          "search_ms": {
+            "mean_ms": 188.5118208214057,
+            "p50_ms": 178.26481399242766,
+            "p95_ms": 277.1078999969177,
+            "max_ms": 365.8865089819301
+          },
+          "inference_ms": {
+            "mean_ms": 96.99416007139686,
+            "p50_ms": 81.02700600284152,
+            "p95_ms": 210.37341879564335,
+            "max_ms": 231.2491629854776
+          },
+          "selection_ms": {
+            "mean_ms": 1.6018959752519626,
+            "p50_ms": 1.1509860050864518,
+            "p95_ms": 4.739442482241425,
+            "max_ms": 7.151912024710327
+          }
+        },
+        "mean_neural_calls": 4.879518072289157,
+        "timed_loop_wall_seconds": 24.214144072000636,
+        "timed_loop_cpu_seconds": 24.02642,
+        "cpu_wall_ratio": 0.9922473381077425,
+        "health_before": {
+          "temperature_millicelsius": "41698",
+          "load_average": "0.63 0.36 0.18 2/239 4570",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.84 0.46 0.23 1/239 4573",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 132548,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "64916db78e700eb8a7c22d3c31dfabdd86ffab78cbb9f08d2453f5edc24c6e67"
+      },
+      "report_sha256": "0a4164bec5e996e716c7725fd4532177779123ae028c2ce1e2875fe8569ac175",
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "verified_logged_score_delta": 8.940696716308594e-07,
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 70
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    },
+    "calibrated-b": {
+      "report": {
+        "model": "soft-admit-47",
+        "search": "mser_direct",
+        "selection": "split_merged",
+        "split_max_aspect": 2.42913421076193,
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "bundle_sha256": "8cccf20a0ea6f377991425ca833a72f21381b15cfc2ae60cef93983d023a7880",
+        "inputs_sha256": "f787fad5dcf693efcd38b7aab804122d8ce68ead145241a3ff0473264a7a4cbf",
+        "golden_sha256": "ef9ca880bb5f9eef86ecc4976f0fe82b502b3dc9bf7340270d8ddf4d4c6bd2cc",
+        "script_sha256": "f162e676caaef5d56ebbaa5bf4198a7bc43dc0bbfbdab13e6d942c5856359f3d",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser_split_merged_aspect_2.42913421076193",
+        "frames": 83,
+        "unique_frames": 83,
+        "rounds": 1,
+        "max_host_pi_score_delta": 8.940696716308594e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 286.8534169287466,
+            "p50_ms": 259.54183700378053,
+            "p95_ms": 487.73855288745824,
+            "max_ms": 570.901032013353
+          },
+          "search_ms": {
+            "mean_ms": 187.8833469274841,
+            "p50_ms": 178.42182199819945,
+            "p95_ms": 271.0623913822928,
+            "max_ms": 359.246615000302
+          },
+          "inference_ms": {
+            "mean_ms": 97.35821015818651,
+            "p50_ms": 82.55999200628139,
+            "p95_ms": 210.38493331288916,
+            "max_ms": 238.85008500656113
+          },
+          "selection_ms": {
+            "mean_ms": 1.6118598430759712,
+            "p50_ms": 1.1689859966281801,
+            "p95_ms": 4.684842185815795,
+            "max_ms": 6.796917004976422
+          }
+        },
+        "mean_neural_calls": 4.879518072289157,
+        "timed_loop_wall_seconds": 24.200519831996644,
+        "timed_loop_cpu_seconds": 24.00423899999999,
+        "cpu_wall_ratio": 0.9918893960394545,
+        "health_before": {
+          "temperature_millicelsius": "43850",
+          "load_average": "0.90 0.51 0.25 1/237 4576",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "44388",
+          "load_average": "0.96 0.58 0.29 1/237 4577",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 132856,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "f0086e74d3ea02e79234bdbd5c4bc8891a795ed3954e87eb096b35f2abc8d8bb"
+      },
+      "report_sha256": "7d6e9ceab5a3916fdbead5337325a277381d09f1d3684c31e13f27b8f60a95b1",
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "verified_logged_score_delta": 8.940696716308594e-07,
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 70
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    },
+    "control-a": {
+      "report": {
+        "model": "soft-admit-47",
+        "search": "mser_direct",
+        "selection": "split_merged",
+        "split_max_aspect": 1.5,
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "bundle_sha256": "8cccf20a0ea6f377991425ca833a72f21381b15cfc2ae60cef93983d023a7880",
+        "inputs_sha256": "f787fad5dcf693efcd38b7aab804122d8ce68ead145241a3ff0473264a7a4cbf",
+        "golden_sha256": "ef9ca880bb5f9eef86ecc4976f0fe82b502b3dc9bf7340270d8ddf4d4c6bd2cc",
+        "script_sha256": "f162e676caaef5d56ebbaa5bf4198a7bc43dc0bbfbdab13e6d942c5856359f3d",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser_split_merged",
+        "frames": 83,
+        "unique_frames": 83,
+        "rounds": 1,
+        "max_host_pi_score_delta": 8.940696716308594e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 294.083877783956,
+            "p50_ms": 264.6677120064851,
+            "p95_ms": 502.19095708744123,
+            "max_ms": 588.9666920120362
+          },
+          "search_ms": {
+            "mean_ms": 193.63407704822092,
+            "p50_ms": 181.35374700068496,
+            "p95_ms": 285.363258596044,
+            "max_ms": 365.71145299240015
+          },
+          "inference_ms": {
+            "mean_ms": 98.73696653199023,
+            "p50_ms": 80.31100200605579,
+            "p95_ms": 220.4039645061129,
+            "max_ms": 236.30906699690968
+          },
+          "selection_ms": {
+            "mean_ms": 1.7128342037448234,
+            "p50_ms": 1.2119850143790245,
+            "p95_ms": 4.612743202596901,
+            "max_ms": 11.666856007650495
+          }
+        },
+        "mean_neural_calls": 4.879518072289157,
+        "timed_loop_wall_seconds": 24.786031169001944,
+        "timed_loop_cpu_seconds": 24.277078999999993,
+        "cpu_wall_ratio": 0.9794661692494577,
+        "health_before": {
+          "temperature_millicelsius": "40622",
+          "load_average": "0.52 0.20 0.11 1/238 4562",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.83 0.34 0.16 1/238 4567",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 132664,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "faf966b487e39e3325f0a9fd5ab7fe4397979d8c772b0ae60ce37a25abc7db3a"
+      },
+      "report_sha256": "bb8be6e6d2bab4336cc665833abad95e413cc34a211f7d4230a233aa806c3d60",
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.92,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "verified_logged_score_delta": 8.940696716308594e-07,
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 69,
+          "red_balloon/suppression_involved": 1
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    },
+    "control-b": {
+      "report": {
+        "model": "soft-admit-47",
+        "search": "mser_direct",
+        "selection": "split_merged",
+        "split_max_aspect": 1.5,
+        "machine": "armv6l",
+        "host": "vision",
+        "opencv": "4.10.0",
+        "runtime": "dtr.native_tflite",
+        "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+        "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "bundle_sha256": "8cccf20a0ea6f377991425ca833a72f21381b15cfc2ae60cef93983d023a7880",
+        "inputs_sha256": "f787fad5dcf693efcd38b7aab804122d8ce68ead145241a3ff0473264a7a4cbf",
+        "golden_sha256": "ef9ca880bb5f9eef86ecc4976f0fe82b502b3dc9bf7340270d8ddf4d4c6bd2cc",
+        "script_sha256": "f162e676caaef5d56ebbaa5bf4198a7bc43dc0bbfbdab13e6d942c5856359f3d",
+        "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+        "region_build_receipt": {
+          "contract": "dtr-balloon-regions-v1",
+          "sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+          "source_sha256": "d6a446e2b49742682c2369b052dda17ca71d2531a606196cd4eeaf46cfa01ad0",
+          "compiler": "cc (Raspbian 14.2.0-19+rpi1) 14.2.0",
+          "command": [
+            "cc",
+            "-O3",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fPIC",
+            "-shared",
+            "-mcpu=arm1176jzf-s",
+            "-mfpu=vfp",
+            "-mfloat-abi=hard",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/dtr/native_balloon_regions.c",
+            "-o",
+            "/home/pacman/balloon-pi-scheduled-search-20261008/native/regions.so"
+          ],
+          "machine": "armv6l",
+          "deployment_approved": false
+        },
+        "golden_search": "mser_split_merged",
+        "frames": 83,
+        "unique_frames": 83,
+        "rounds": 1,
+        "max_host_pi_score_delta": 8.940696716308594e-07,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 283.97785331485846,
+            "p50_ms": 258.70485801715404,
+            "p95_ms": 485.34400869684754,
+            "max_ms": 568.9810869807843
+          },
+          "search_ms": {
+            "mean_ms": 185.4360015541792,
+            "p50_ms": 175.27187100495212,
+            "p95_ms": 267.4290514958556,
+            "max_ms": 356.69066599803045
+          },
+          "inference_ms": {
+            "mean_ms": 97.01962936220758,
+            "p50_ms": 82.67599702230655,
+            "p95_ms": 209.22115898574702,
+            "max_ms": 231.0471939854324
+          },
+          "selection_ms": {
+            "mean_ms": 1.5222223984717156,
+            "p50_ms": 1.1609860230237246,
+            "p95_ms": 4.517545000999235,
+            "max_ms": 6.596920022275299
+          }
+        },
+        "mean_neural_calls": 4.879518072289157,
+        "timed_loop_wall_seconds": 23.962211071018828,
+        "timed_loop_cpu_seconds": 23.815991999999994,
+        "cpu_wall_ratio": 0.9938979307633393,
+        "health_before": {
+          "temperature_millicelsius": "44388",
+          "load_average": "1.04 0.64 0.32 1/237 4580",
+          "throttled": "throttled=0x0"
+        },
+        "health_after": {
+          "temperature_millicelsius": "45464",
+          "load_average": "1.02 0.70 0.36 1/237 4581",
+          "throttled": "throttled=0x0"
+        },
+        "max_rss": 132852,
+        "rss_units": "KiB on Linux; bytes on macOS",
+        "camera_used": false,
+        "flight_commands": null,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "scope": "Warmed development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        "frames_log_sha256": "677a632f740769a7d77a34624f8dfc07adb3d9c9ad57603b33a32b11022304f6"
+      },
+      "report_sha256": "7ee43c9321c56d6b938e02940be9931d3d50a1738f597293b10af59b69f1cd6b",
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.92,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "verified_logged_score_delta": 8.940696716308594e-07,
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 69,
+          "red_balloon/suppression_involved": 1
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    }
+  },
+  "pooled": {
+    "soft-admit-47:mser_direct:split_merged:aspect=2.42913421076193": {
+      "selection": "split_merged",
+      "split_max_aspect": 2.42913421076193,
+      "trials": [
+        "calibrated-a",
+        "calibrated-b"
+      ],
+      "timing_samples": 166,
+      "timing": {
+        "mean_ms": 286.98064689840055,
+        "p50_ms": 260.92830699053593,
+        "p95_ms": 492.7104685048107,
+        "max_ms": 579.6318859793246
+      },
+      "processing_fps": 3.4845555294675634,
+      "stage_timing": {
+        "search_ms": {
+          "mean_ms": 188.19758387444492,
+          "p50_ms": 178.34331799531356,
+          "p95_ms": 274.8116357688559,
+          "max_ms": 365.8865089819301
+        },
+        "inference_ms": {
+          "mean_ms": 97.17618511479168,
+          "p50_ms": 81.79349900456145,
+          "p95_ms": 210.58442725916393,
+          "max_ms": 238.85008500656113
+        },
+        "selection_ms": {
+          "mean_ms": 1.6068779091639669,
+          "p50_ms": 1.158485989435576,
+          "p95_ms": 4.762441254570149,
+          "max_ms": 7.151912024710327
+        }
+      },
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 70
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    },
+    "soft-admit-47:mser_direct:split_merged": {
+      "selection": "split_merged",
+      "split_max_aspect": 1.5,
+      "trials": [
+        "control-a",
+        "control-b"
+      ],
+      "timing_samples": 166,
+      "timing": {
+        "mean_ms": 289.0308655494072,
+        "p50_ms": 260.9907580044819,
+        "p95_ms": 497.95016776624834,
+        "max_ms": 588.9666920120362
+      },
+      "processing_fps": 3.4598380975649086,
+      "stage_timing": {
+        "search_ms": {
+          "mean_ms": 189.53503930120004,
+          "p50_ms": 179.08930049452465,
+          "p95_ms": 280.27153975563124,
+          "max_ms": 365.71145299240015
+        },
+        "inference_ms": {
+          "mean_ms": 97.8782979470989,
+          "p50_ms": 81.49349951418117,
+          "p95_ms": 216.24861050077016,
+          "max_ms": 236.30906699690968
+        },
+        "selection_ms": {
+          "mean_ms": 1.6175283011082695,
+          "p50_ms": 1.165484994999133,
+          "p95_ms": 4.605943504429888,
+          "max_ms": 11.666856007650495
+        }
+      },
+      "unique_scene_metrics": {
+        "lockbox_panel3": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.92,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "original": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.75,
+            "recall": 1.0
+          }
+        },
+        "indoor": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "unique_scene_error_counts": {
+        "lockbox_panel3": {
+          "blue_balloon/detected": 59,
+          "blue_balloon/no_localized_proposal": 10,
+          "blue_balloon/suppression_involved": 1,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/correct_class_below_threshold": 1,
+          "red_balloon/detected": 69,
+          "red_balloon/suppression_involved": 1
+        },
+        "original": {
+          "blue_balloon/detected": 3,
+          "red_balloon/detected": 2
+        },
+        "indoor": {
+          "blue_balloon/detected": 9,
+          "blue_balloon/no_localized_proposal": 2,
+          "blue_balloon/wrong_class_on_localized_proposals": 1,
+          "red_balloon/detected": 11
+        }
+      }
+    }
+  },
+  "script_sha256": "e9545eb525d92884c81d52aca139f340379ca7cc522a0848a7869d0749b9672e",
+  "matcher_sha256": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+  "error_attribution_sha256": "f5e8f03c47a2135fc9c3d6bcdf8b9d45adb607064d83fd0eebbddfea5889353d",
+  "scope": "Processing-only replay; unique scenes counted once per model/search/selection, not across repeats",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "camera_used": false
+}
