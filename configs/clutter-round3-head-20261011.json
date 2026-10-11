@@ -1,0 +1,18 @@
+{
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "old_rows": 2074,
+  "new_rows": 13,
+  "new_review": "configs/blue-object-round3-review-20261011.json",
+  "arms": ["control", "admit"],
+  "parameters": 7763,
+  "updated_parameters": 258,
+  "objective": "Minimize squared TRAIN-logit drift plus0.001standardized-parameter ridge; all convolution and background-head weights frozen.",
+  "constraints": "Retain old correct decisions, forbid newly accepted wrong colors, retain385TRAIN scene-proposal decisions. New13backgrounds require background argmax with0.001logit safety margin. No added15positive-batch4 examples; no stronger all-background correction.",
+  "control": "Replace13new negative crops with13unique existing preserved original backgrounds selected by the fixed seed47 class-matched sampler. Both arms use identical deterministic optimization and constraints.",
+  "solvers": "HiGHS feasible L1 start capped60seconds, SLSQP minimum drift capped120seconds with KKT checks.",
+  "evaluation": "Reproduce TRAIN inputs and checkpoints; export FP32 with2472crop parity; evaluate64TRAIN scenes, then existing related development panels only after TRAIN scene retention. No threshold selection on development.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
