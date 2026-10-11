@@ -1,0 +1,10 @@
+{
+  "purpose": "Read-only failure attribution, not model selection or promotion. Compare all four fixed80epoch feature checkpoints before/after their deterministic correction, alongside the original parent. Previous failed TRAIN gates remain failed.",
+  "variants": ["parent", "feature/control47", "feature/control48", "feature/admit47", "feature/admit48", "corrected/control47", "corrected/control48", "corrected/admit47", "corrected/admit48"],
+  "panels": ["training", "engdes2-lockbox-panel3-20261010", "engdes2-development-panel2-20261010", "engdes2-development-scenes-20261008"],
+  "method": "Rebuild crops from verified original images and frozen proposal geometry. Run saved Keras checkpoints at fixed0.8, reapply unchanged selection and one-to-oneIoU0.5matching. Reproduce saved parent and corrected TFLite outputs within1e-5score tolerance and exactly match decisions/counts. Attribute changes to extra training, new negative data, and subsequent correction using both matched seeds.",
+  "scope": "Repeated related development, not independent qualification. No training, new checkpoints, threshold tuning, export, Pi changes, ESP32 or motor commands. Even a favorable diagnostic result does not override the failed admission protocol.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
