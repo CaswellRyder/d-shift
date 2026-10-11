@@ -1,0 +1,23 @@
+{
+  "queue": "data/blue-object-round2-review-20261011",
+  "queue_sha256": "293ed04f48e1fa99ee526bf27000ca06a361b9202973927e2fa9f1ed7623327b",
+  "complete_empty_frames": [3, 6, 7, 8, 9, 11, 12, 13],
+  "review": "Main agent individually viewed complete 320x240 frames 001,003,006,007,008,009,011,012,013. Eight admitted frames have no visible balloons: blue-shirt man eating, open illustrated book, mountain hikers, street walkers, bridge hikers, printed blue shirts, travelers with luggage, mountain hikers. Exclude dim party frame001 because dark background is ambiguous. Other frames not admitted. Complete-visible-scene labels, not assertions about hidden objects.",
+  "training_approved": true,
+  "parent": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.keras",
+  "parent_sha256": "7188ee9d0f69d42bd1047e4e40598260faf027f85e0695a8eb5e12598727507c",
+  "arms": ["control", "background"],
+  "seeds": [47, 48],
+  "epochs": 200,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "design": "Same parent weights, fresh Adam, inputs, order, steps and original supervision. Eight added TRAIN frames carry zero loss mask in control and complete negative heat supervision in background. Existing grouped holdout unchanged. No normalization or dropout layers. Fixed final checkpoint; export and evaluate all finite reproducible runs regardless of TRAIN diagnostic scores.",
+  "classifier_frozen": true,
+  "proposal_threshold": 0.1,
+  "max_added_blue_proposals": 2,
+  "max_total_proposals": 12,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false
+}
