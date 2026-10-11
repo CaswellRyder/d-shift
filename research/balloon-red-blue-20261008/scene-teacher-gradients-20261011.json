@@ -1,0 +1,209 @@
+{
+  "results": {
+    "parent": {
+      "model": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+      "model_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+      "losses": {
+        "old_crops": {
+          "rows": 2074,
+          "mean_loss": 0.6080865984081707,
+          "contribution": 0.5022587037429495
+        },
+        "new_negatives": {
+          "rows": 52,
+          "mean_loss": 12.433034300804138,
+          "contribution": 0.2574742268585485
+        },
+        "retained_scenes": {
+          "rows": 375,
+          "mean_loss": -4.6004997427314304e-11,
+          "contribution": -6.870519329049329e-12
+        },
+        "reviewed_corrections": {
+          "rows": 10,
+          "mean_loss": 12.849017810821532,
+          "contribution": 0.051170919198811365
+        }
+      },
+      "gradients": {
+        "pairs": {
+          "old_crops/new_negatives": {
+            "cosine": 0.8598082787619554,
+            "directional_derivative": -7.2931007085052215
+          },
+          "old_crops/retained_scenes": {
+            "cosine": -0.38574870888998547,
+            "directional_derivative": 3.27201336809809
+          },
+          "old_crops/reviewed_corrections": {
+            "cosine": -0.17642850527778794,
+            "directional_derivative": 1.4965090341938754
+          },
+          "new_negatives/retained_scenes": {
+            "cosine": -0.2361669470285912,
+            "directional_derivative": 67.47128434994987
+          },
+          "new_negatives/reviewed_corrections": {
+            "cosine": -0.032427500526755415,
+            "directional_derivative": 9.264315503616963
+          },
+          "retained_scenes/reviewed_corrections": {
+            "cosine": 0.16041245775814902,
+            "directional_derivative": -3.538833133794542e-07
+          }
+        },
+        "contribution_norms": {
+          "old_crops": 7.006040242230093,
+          "new_negatives": 5.916385891286019,
+          "retained_scenes": 3.2946292285440727e-07,
+          "reviewed_corrections": 0.7527676921812879
+        },
+        "total_gradient_norm": 12.40096589193895,
+        "cancellation_ratio": 0.9068219252491897
+      }
+    },
+    "reviewed47": {
+      "model": "runs/scene-teacher-supervision-reviewed-seed47-20261011/student.keras",
+      "model_sha256": "b7372905dcf031911a54040a17af61c353f9e742e563c147fa4f4053b85f9e57",
+      "losses": {
+        "old_crops": {
+          "rows": 2074,
+          "mean_loss": 0.26015034829113337,
+          "contribution": 0.21487527772035467
+        },
+        "new_negatives": {
+          "rows": 52,
+          "mean_loss": 3.8582080705807758,
+          "contribution": 0.07989917151342109
+        },
+        "retained_scenes": {
+          "rows": 375,
+          "mean_loss": 0.2028437732884971,
+          "contribution": 0.030293275580719398
+        },
+        "reviewed_corrections": {
+          "rows": 10,
+          "mean_loss": 6.627377390861511,
+          "contribution": 0.02639337869717846
+        }
+      },
+      "gradients": {
+        "pairs": {
+          "old_crops/new_negatives": {
+            "cosine": 0.07410701784376807,
+            "directional_derivative": -0.15352336090884594
+          },
+          "old_crops/retained_scenes": {
+            "cosine": 0.013066891183750385,
+            "directional_derivative": -0.027069947078274256
+          },
+          "old_crops/reviewed_corrections": {
+            "cosine": -0.6896099150422915,
+            "directional_derivative": 1.42862626177393
+          },
+          "new_negatives/retained_scenes": {
+            "cosine": -0.8946652841513717,
+            "directional_derivative": 123.66079526323782
+          },
+          "new_negatives/reviewed_corrections": {
+            "cosine": 0.12036650062939719,
+            "directional_derivative": -16.637079201081292
+          },
+          "retained_scenes/reviewed_corrections": {
+            "cosine": -0.42110005199151235,
+            "directional_derivative": 5.401627836872656
+          }
+        },
+        "contribution_norms": {
+          "old_crops": 1.7111070143170608,
+          "new_negatives": 2.8623852176119224,
+          "retained_scenes": 1.9156842060531891,
+          "reviewed_corrections": 0.5684863133029442
+        },
+        "total_gradient_norm": 2.060826416649826,
+        "cancellation_ratio": 0.29199842628844425
+      }
+    },
+    "reviewed48": {
+      "model": "runs/scene-teacher-supervision-reviewed-seed48-20261011/student.keras",
+      "model_sha256": "6deb8810a72861f621bdc8a5ae5acc8062bba8fc048c9074bfccebc06ce837a9",
+      "losses": {
+        "old_crops": {
+          "rows": 2074,
+          "mean_loss": 0.2584324522146874,
+          "contribution": 0.2134563543979537
+        },
+        "new_negatives": {
+          "rows": 52,
+          "mean_loss": 3.8217221819437466,
+          "contribution": 0.0791435895902329
+        },
+        "retained_scenes": {
+          "rows": 375,
+          "mean_loss": 0.20866133661863084,
+          "contribution": 0.031162087308636625
+        },
+        "reviewed_corrections": {
+          "rows": 10,
+          "mean_loss": 6.711142194271088,
+          "contribution": 0.02672697010860648
+        }
+      },
+      "gradients": {
+        "pairs": {
+          "old_crops/new_negatives": {
+            "cosine": -0.900594346882734,
+            "directional_derivative": 2.4434708634635736
+          },
+          "old_crops/retained_scenes": {
+            "cosine": 0.8386502611727061,
+            "directional_derivative": -2.2754056639425597
+          },
+          "old_crops/reviewed_corrections": {
+            "cosine": 0.13811817696380116,
+            "directional_derivative": -0.37473890691621004
+          },
+          "new_negatives/retained_scenes": {
+            "cosine": -0.9308653414162552,
+            "directional_derivative": 122.69801372479012
+          },
+          "new_negatives/reviewed_corrections": {
+            "cosine": 0.18201326142648994,
+            "directional_derivative": -23.991295684747996
+          },
+          "retained_scenes/reviewed_corrections": {
+            "cosine": -0.1921097386328627,
+            "directional_derivative": 2.279234588621069
+          }
+        },
+        "contribution_norms": {
+          "old_crops": 2.24099035601604,
+          "new_negatives": 2.729652123436131,
+          "retained_scenes": 1.7718387718847315,
+          "reviewed_corrections": 0.5819781495620103
+        },
+        "total_gradient_norm": 1.7695101214297366,
+        "cancellation_ratio": 0.24158917738182417
+      }
+    }
+  },
+  "audit_sha256": "130d25d58ba87d10a858d97884d998518aa0d137cc070f980bf70fea2cdde167",
+  "sources_sha256": {
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/diagnose_scene_teacher_gradients.py": "951b0c25ea992c8d2d8049ae72da1f94769b0a531b91ddc88ea8e3ac02340f26",
+    "configs/scene-teacher-supervision-20261011.json": "5bd946ff29c5f44c7f41c81e3d876868494d365647f839bebef6d885f90f6963",
+    "scripts/scene_teacher_supervision.py": "252783839bd94107a8fa250608bccddb2524b8adcd45e91fac8b960d3518c8d9",
+    "scripts/balloon_gradient_summary.py": "e972ddead2a1523b8a09a99f83bc141fd57f1cc89d6bc967f3ecc48d61f13c9e"
+  },
+  "archive": {
+    "path": "runs/scene-teacher-gradients-20261011.npz",
+    "sha256": "f374bf6327f54cd19d01511ab64b73cb0382f3fe3b3f838b3401a34027d8c046"
+  },
+  "scope": "Frozen TRAIN loss/gradient diagnosis only. Negative cosine is local opposition, not a proof of insufficient model capacity or of an impossible fit.",
+  "weights_changed": false,
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
