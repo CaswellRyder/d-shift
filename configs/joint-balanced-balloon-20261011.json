@@ -1,0 +1,22 @@
+{
+  "localizer_audit": "research/balloon-red-blue-20261008/balanced-localizer-20261011.json",
+  "localizer_audit_sha256": "e5f102c57904a2da0dd6770ed4942e2599c62d1c94142ff05642cc1992c4d335",
+  "classifier_audit": "research/balloon-red-blue-20261008/window2-retraining-20261011.json",
+  "classifier_audit_sha256": "046c467fcb0146eb38548b6324af89c0885e6750b7556e7ab7bcdff4119acb48",
+  "parent_classifier": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_classifier_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "seeds": [47, 48],
+  "policies": ["current", "reserved"],
+  "panels": {"original": 64, "window1": 6, "window2": 12},
+  "threshold": 0.8,
+  "maximum_candidates": 12,
+  "hypothesis": "The balanced localizer recovers difficult red geometry, while window2 crop retraining recovers blue classification. Evaluate their composition and both component controls before deciding whether those complementary improvements survive full-scene retention checks.",
+  "design": "For each seed and policy, cross parent/control/balanced localizer proposals with parent/control/admit classifiers. Reuse hash-verified fixed proposals; freshly classify all crops and rerun selection. Reproduce every parent-classifier result from the localizer audit. No ensembling, extra per-frame inference calls, new training, threshold search or label-conditioned routing.",
+  "gate": "For both seeds, candidate balanced+admit must lose no incumbent target and add no per-color false positives on each of the three TRAIN panels, with at least one recovered target overall. Passing permits a separate export and development investigation only. Record comparisons with full matched control and each component ablation; neither previously rejected component is independently promoted.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

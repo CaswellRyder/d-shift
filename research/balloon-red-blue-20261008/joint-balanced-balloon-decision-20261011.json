@@ -1,0 +1,346 @@
+{
+  "audit_sha256": "2b2078796de8559ed8689322b7a872d9968aaf05a8a4ef4db057a756bd1bd3de",
+  "raw_sha256": "1445c8c0de0db20007c40b5b72444385911400f5d5b75f35aa4a13be94b0e0bf",
+  "script_sha256": "e16e8885bf401452a821cc290b5392f8783640694e693869389df113eabb4813",
+  "eligible_for_separate_export_development": {
+    "current": false,
+    "reserved": false
+  },
+  "lost_target_diagnosis": {
+    "original": {
+      "balanced_admit47_current": [
+        {
+          "source": "train/frame_0418_jpg.rf.66cab38fe52b747a505664570e4ea76d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 5557,
+            "box": [
+              293.625,
+              198.75,
+              319.875,
+              240.0
+            ]
+          },
+          "diagnosis": {
+            "index": 4,
+            "label": "red_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.6009782468786201
+          }
+        },
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          },
+          "diagnosis": {
+            "index": 5,
+            "label": "red_balloon",
+            "reason": "below_acceptance_threshold",
+            "best_proposal_iou": 0.6959152798789713
+          }
+        }
+      ],
+      "balanced_admit47_reserved": [
+        {
+          "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 16643,
+            "box": [
+              0.0,
+              40.59375,
+              36.0,
+              71.15625
+            ]
+          },
+          "diagnosis": {
+            "index": 0,
+            "label": "red_balloon",
+            "reason": "different_predicted_class",
+            "best_proposal_iou": 0.7669111654441728
+          }
+        },
+        {
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 21410,
+            "box": [
+              214.125,
+              126.65625,
+              250.875,
+              145.59375
+            ]
+          },
+          "diagnosis": {
+            "index": 1,
+            "label": "red_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.8381395100343947
+          }
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 14156,
+            "box": [
+              25.375,
+              164.34375,
+              112.125,
+              239.90625
+            ]
+          },
+          "diagnosis": {
+            "index": 1,
+            "label": "blue_balloon",
+            "reason": "no_localized_proposal",
+            "best_proposal_iou": 0.3740008580991795
+          }
+        },
+        {
+          "source": "train/frame_0418_jpg.rf.66cab38fe52b747a505664570e4ea76d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 5557,
+            "box": [
+              293.625,
+              198.75,
+              319.875,
+              240.0
+            ]
+          },
+          "diagnosis": {
+            "index": 4,
+            "label": "red_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.6009782468786201
+          }
+        },
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          },
+          "diagnosis": {
+            "index": 5,
+            "label": "red_balloon",
+            "reason": "below_acceptance_threshold",
+            "best_proposal_iou": 0.8453201655550552
+          }
+        }
+      ],
+      "balanced_admit48_current": [
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10693,
+            "box": [
+              64.25,
+              20.4375,
+              128.25,
+              110.4375
+            ]
+          },
+          "diagnosis": {
+            "index": 1,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.681823963235911
+          }
+        },
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10694,
+            "box": [
+              59.375,
+              117.0,
+              98.625,
+              190.875
+            ]
+          },
+          "diagnosis": {
+            "index": 2,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.7268620508895905
+          }
+        },
+        {
+          "source": "train/frame_0576_jpg.rf.442d75052273d890ddc38fe71518b2cb.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 12262,
+            "box": [
+              0.0,
+              73.40625,
+              52.0,
+              167.34375
+            ]
+          },
+          "diagnosis": {
+            "index": 2,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.7526139747005074
+          }
+        },
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          },
+          "diagnosis": {
+            "index": 5,
+            "label": "red_balloon",
+            "reason": "below_acceptance_threshold",
+            "best_proposal_iou": 0.6959152798789713
+          }
+        }
+      ],
+      "balanced_admit48_reserved": [
+        {
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 21410,
+            "box": [
+              214.125,
+              126.65625,
+              250.875,
+              145.59375
+            ]
+          },
+          "diagnosis": {
+            "index": 1,
+            "label": "red_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.7449996082073618
+          }
+        },
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10693,
+            "box": [
+              64.25,
+              20.4375,
+              128.25,
+              110.4375
+            ]
+          },
+          "diagnosis": {
+            "index": 1,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.681823963235911
+          }
+        },
+        {
+          "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 10694,
+            "box": [
+              59.375,
+              117.0,
+              98.625,
+              190.875
+            ]
+          },
+          "diagnosis": {
+            "index": 2,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.7268620508895905
+          }
+        },
+        {
+          "source": "train/frame_0576_jpg.rf.442d75052273d890ddc38fe71518b2cb.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "annotation_id": 12262,
+            "box": [
+              0.0,
+              73.40625,
+              52.0,
+              167.34375
+            ]
+          },
+          "diagnosis": {
+            "index": 2,
+            "label": "blue_balloon",
+            "reason": "suppressed",
+            "best_proposal_iou": 0.7526139747005074
+          }
+        },
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          },
+          "diagnosis": {
+            "index": 5,
+            "label": "red_balloon",
+            "reason": "below_acceptance_threshold",
+            "best_proposal_iou": 0.7994226643381297
+          }
+        }
+      ]
+    },
+    "window1": {
+      "balanced_admit47_current": [],
+      "balanced_admit47_reserved": [],
+      "balanced_admit48_current": [],
+      "balanced_admit48_reserved": []
+    },
+    "window2": {
+      "balanced_admit47_current": [],
+      "balanced_admit47_reserved": [],
+      "balanced_admit48_current": [],
+      "balanced_admit48_reserved": []
+    }
+  },
+  "decision": "Reject composition: paired TRAIN target retention and recovery gate failed.",
+  "next_experiment": "Investigate proposal provenance and suppression: several old targets have localized boxes but are suppressed after new learned boxes are added. Freeze a source-aware merge experiment before replay; separately address classifier boundary regressions. Do not tune on IMG_ development or reserved qualification scenes.",
+  "scope": "Independent recount of all36factorial variants across82TRAIN scenes. Error attribution is truth-assisted diagnosis, not an inference policy or held-out result. Components and composition remain unpromoted.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
