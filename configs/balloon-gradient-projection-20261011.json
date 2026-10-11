@@ -1,0 +1,15 @@
+{
+  "arms": ["sum", "project"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "optimizer_steps": 12560,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "recipe": "Both arms use the exact wider-context TRAIN tensors/teacher targets from balloon-context-distillation. Same parent, fresh Adam,80epochs,2511rows,NumPy seed-specific epoch permutations. On each minibatch, separate weighted supervised(old+negative) loss and scene-distillation loss, each divided by full batch size. Control sums their gradients. Treatment applies symmetric two-task PCGrad, using original unprojected opposing gradients, then sums. Zero task gradients are safe. Final epoch only. No extra inference layers, input changes or classifier calls.",
+  "gate": "Same full TRAIN scene gate as context-distillation: paired treatment seeds retain all originally detected targets, do not increase per-color false positives, and do not increase false balloon accepts among13reviewed targets. Perfect crop fit is diagnostic only. Then export parity and repeatedDEV. Final94%precision AND recall per color plus separate livePi qualification unchanged.",
+  "source": "https://arxiv.org/abs/2001.06782",
+  "scope": "TRAIN-only optimizer experiment. No DEV-based tuning, test access, Pi deployment or motor commands.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

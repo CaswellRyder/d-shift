@@ -1,0 +1,163 @@
+{
+  "audit_sha256": "7859eb1a1e73901d78158e32e983eaba48763db3371d3135df95c3017a8a5a69",
+  "script_sha256": "7d9e6267a0347c57f89a6f7be1bedb1a0c6ae760424d103903d4defe51cc700e",
+  "parent_metrics": {
+    "red_balloon": {
+      "tp": 94,
+      "fp": 10,
+      "fn": 4,
+      "precision": 0.9038461538461539,
+      "recall": 0.9591836734693877
+    },
+    "blue_balloon": {
+      "tp": 89,
+      "fp": 4,
+      "fn": 4,
+      "precision": 0.956989247311828,
+      "recall": 0.956989247311828
+    }
+  },
+  "results": {
+    "sum47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 80,
+          "fp": 8,
+          "fn": 18,
+          "precision": 0.9090909090909091,
+          "recall": 0.8163265306122449
+        },
+        "blue_balloon": {
+          "tp": 77,
+          "fp": 4,
+          "fn": 16,
+          "precision": 0.9506172839506173,
+          "recall": 0.8279569892473119
+        }
+      },
+      "lost": 26,
+      "gained": 0,
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false
+    },
+    "sum48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 81,
+          "fp": 8,
+          "fn": 17,
+          "precision": 0.9101123595505618,
+          "recall": 0.826530612244898
+        },
+        "blue_balloon": {
+          "tp": 78,
+          "fp": 4,
+          "fn": 15,
+          "precision": 0.9512195121951219,
+          "recall": 0.8387096774193549
+        }
+      },
+      "lost": 24,
+      "gained": 0,
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false
+    },
+    "project47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 80,
+          "fp": 7,
+          "fn": 18,
+          "precision": 0.9195402298850575,
+          "recall": 0.8163265306122449
+        },
+        "blue_balloon": {
+          "tp": 78,
+          "fp": 4,
+          "fn": 15,
+          "precision": 0.9512195121951219,
+          "recall": 0.8387096774193549
+        }
+      },
+      "lost": 25,
+      "gained": 0,
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "against_matched_control": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 1,
+            "fp": 0,
+            "fn": -1
+          }
+        },
+        "lost": 0,
+        "gained": 1
+      }
+    },
+    "project48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 80,
+          "fp": 9,
+          "fn": 18,
+          "precision": 0.898876404494382,
+          "recall": 0.8163265306122449
+        },
+        "blue_balloon": {
+          "tp": 78,
+          "fp": 4,
+          "fn": 15,
+          "precision": 0.9512195121951219,
+          "recall": 0.8387096774193549
+        }
+      },
+      "lost": 25,
+      "gained": 0,
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "against_matched_control": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -1,
+            "fp": 1,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost": 1,
+        "gained": 0
+      }
+    }
+  },
+  "eligible_for_export_and_development": false,
+  "decision": "Reject projected-gradient pair: TRAIN scene nonregression not achieved.",
+  "next_step": "Use the measured matched-control effects to decide whether optimization is sufficient; do not force a post-hoc perfect-crop correction or deploy failed models.",
+  "scope": "Matched summed versus projected gradient updates; same wider-context data and teacher, both seeds. All scene counts and saved negative-probe decisions reproduced. Training data only; no Pi or flight qualification.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
