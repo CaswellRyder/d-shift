@@ -27,6 +27,10 @@ def reviewed_frames(root, decision_path):
             or len(set(all_ids)) != len(all_ids)
             or set(all_ids) != set(range(len(queue["frames"])))):
         raise ValueError("Review must decide every frame exactly once")
+    flips = review.get("vertical_flip", [])
+    if (not isinstance(flips, list) or any(type(i) is not int for i in flips)
+            or len(set(flips)) != len(flips) or not set(flips) <= set(admit)):
+        raise ValueError("Vertical flips must uniquely identify admitted frames")
     frames = []
     for i in admit:
         row = queue["frames"][i]
@@ -44,12 +48,20 @@ def reviewed_frames(root, decision_path):
                     or not 0 <= box[0] < box[2] <= 320
                     or not 0 <= box[1] < box[3] <= 240):
                 raise ValueError("Invalid reviewed target")
+        # Match the development-panel bundle: orientation belongs to the review,
+        # and half-open boxes must move with pixels, not just the displayed image.
+        row = dict(row, vertical_flip=i in flips)
+        if i in flips:
+            rgb = np.ascontiguousarray(rgb[::-1])
+            row["provisional_truth"] = [
+                dict(t, box=[t["box"][0], 240-t["box"][3], t["box"][2], 240-t["box"][1]])
+                for t in row["provisional_truth"]]
         frames.append((row, rgb))
     return frames, review
 
 
 def evaluate(root, review_path, models, search_variants=("baseline", "mser_confirmed_parts")):
-    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red") for v in search_variants):
+    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels") for v in search_variants):
         raise ValueError("Unknown or empty search variants")
     frames, review = reviewed_frames(root, review_path)
     if review["threshold"] != .8 or review["matching_iou"] != .5:
@@ -67,13 +79,14 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
             for row, rgb in frames:
                 found = classify_candidates(predictor, rgb, experimental(rgb, variant))
                 detections = suppress_duplicates(found)
-                if variant in ("mser_confirmed_parts", "mser_chromatic", "mser_blue_red"):
+                if variant in ("mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels"):
                     detections = suppress_confirmed_balloon_parts(detections)
                 counts = detection_counts(row["provisional_truth"], detections)
                 for label in LABELS:
                     for key in ("tp", "fp", "fn"):
                         total[label][key] += counts[label][key]
                 outputs.append(dict(id=row["id"], source=row["source"], frame_sha256=row["sha256"],
+                                    vertical_flip=row["vertical_flip"],
                                     truth=row["provisional_truth"], counts=counts, detections=detections))
             variants[variant] = dict(metrics=metrics(total), frames=outputs)
         results[name] = dict(model_sha256=sha256(path),
@@ -97,7 +110,7 @@ if __name__ == "__main__":
     parser.add_argument("--review", required=True)
     parser.add_argument("--model", action="append", required=True, help="name=path (.keras teacher or .tflite student)")
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red"))
+    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels"))
     args = parser.parse_args()
     if args.output.exists():
         raise FileExistsError(args.output)
