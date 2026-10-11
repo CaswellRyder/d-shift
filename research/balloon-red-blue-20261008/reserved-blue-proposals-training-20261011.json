@@ -1,0 +1,151 @@
+{
+  "results": {
+    "parent": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 89,
+            "geometric_oracle_recall": 0.956989247311828,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": []
+      },
+      "nonregression": true,
+      "neural_calls": 385
+    },
+    "reserved": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 94,
+            "geometric_oracle_recall": 0.9591836734693877,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 4
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 89,
+            "geometric_oracle_recall": 0.956989247311828,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 21410,
+              "box": [
+                214.125,
+                126.65625,
+                250.875,
+                145.59375
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "nonregression": false,
+      "neural_calls": 385
+    }
+  },
+  "changed_scenes": [
+    "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+    "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+    "train/frame_000828_jpg.rf.5c6e00eb92561ecf8fc5be1a5fed947d.jpg",
+    "train/frame_000863_jpg.rf.1799a8a01dde21da805b1f4ee084a380.jpg",
+    "train/frame_000864_jpg.rf.06bb2a33f852b2d6f251a8c7758d5a55.jpg",
+    "train/frame_000865_jpg.rf.6939eb75e78f81d740ebac96fcfe6b07.jpg"
+  ],
+  "raw": {
+    "path": "runs/reserved-blue-proposals-training-20261011.json",
+    "sha256": "dfdd89bd2dafb56bf370f570d1d82d96bafdb2cbca0427615faeb83e0af25f83"
+  },
+  "script_sha256": "631338f620e65601e416049e0b2a3fd3724ce7c02d4873df6f3b43b4866e582e",
+  "policy_sha256": "675a07c83964c1a0cc7408bd5d97bc027748d2f1674e3abffd30e237caf9e061",
+  "baseline_sha256": "e826e9b0d785d19d13df9359db2a909d34354d5887db1c8eba7e456509bc774b",
+  "classifier_sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+  "localizer_sha256": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+  "native_sha256": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c",
+  "eligible_for_development": false,
+  "scope": "Fixed2slot learned-blue reservation on64completeTRAIN scenes. Parent detections exactly reproduced. Classifier calls never increased; this is not measured Pi speed. No classifier retraining or threshold tuning.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
