@@ -1,0 +1,21 @@
+{
+  "queue": "data/blue-clutter-round2-review-20261011",
+  "queue_sha256": "83786a1616811ea6282849b955257845d8fc8456442a9628c1f2fa916ce1ed76",
+  "split": "train",
+  "training_approved": false,
+  "deployment_approved": false,
+  "labels_by_class": {"background": [], "red_balloon": [], "blue_balloon": []},
+  "exclude": [0, 1],
+  "exclusion_reasons": {
+    "0": "Tiny blurred violet foreground patch in a dark concert audience. Likely audience/clothing but insufficient crop detail for a confident new background label.",
+    "1": "Partial blurred violet rounded foreground patch in the same dark concert audience. Keep ambiguous low-detail material out of supervised training."
+  },
+  "reviewed_sheets": {
+    "crops-000.jpg": "f716c3959a8f3e30524807ec9aa0c1a878c2e189e32cd01f1d16c305a72008eb",
+    "frames-000.jpg": "8e96faf48599d09b0c939139fc437337f466e2e83f4f9b690d23107580fd58d1"
+  },
+  "review": "Agent viewed the complete source-frame sheet and both crop thumbnails. No new crop admitted. Both predictions are already rejected at the unchanged classifier threshold0.8 (scores0.64734 and0.50514).",
+  "scope": "Scanned120 TRAIN source frames not present in previous clutter review. Examined785 guarded unique crops; two blue argmax candidates at threshold0.5, zero accepted at0.8. These guarded regions are not an independently labeled false-positive benchmark. No deployment or qualification claim.",
+  "next_step": "Use existing approved blue positives and real clutter to improve sparse proposal localization instead of retraining a classifier on these two ambiguous patches.",
+  "test_evaluated": false
+}
