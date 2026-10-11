@@ -1,0 +1,833 @@
+{
+  "panels": {
+    "training": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 8,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 385
+      },
+      "control": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 8,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 385
+      },
+      "admit": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 8,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 385
+      }
+    },
+    "engdes2-lockbox-panel3-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 65,
+            "fp": 14,
+            "fn": 6,
+            "precision": 0.8227848101265823,
+            "recall": 0.9154929577464789
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 71,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 69,
+              "geometric_oracle_recall": 0.971830985915493,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 8,
+                  "little_or_no_annotated_overlap": 5,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 2,
+                  "below_acceptance_threshold": 3,
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 343
+      },
+      "control": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 65,
+            "fp": 14,
+            "fn": 6,
+            "precision": 0.8227848101265823,
+            "recall": 0.9154929577464789
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 71,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 69,
+              "geometric_oracle_recall": 0.971830985915493,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 8,
+                  "little_or_no_annotated_overlap": 5,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 2,
+                  "below_acceptance_threshold": 3,
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 343
+      },
+      "admit": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 66,
+            "fp": 16,
+            "fn": 5,
+            "precision": 0.8048780487804879,
+            "recall": 0.9295774647887324
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 71,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 69,
+              "geometric_oracle_recall": 0.971830985915493,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 8,
+                  "little_or_no_annotated_overlap": 7,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 2,
+                  "different_predicted_class": 2,
+                  "below_acceptance_threshold": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": [
+            {
+              "source": "IMG_5395_jpg.rf.0293f97dab38673d239b80bfbb318841.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  159.5,
+                  77.25,
+                  286.0,
+                  150.375
+                ]
+              }
+            }
+          ]
+        },
+        "nonregression": false,
+        "meets_94": false,
+        "neural_calls": 343
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 65,
+              "geometric_oracle_covered": 65,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "below_acceptance_threshold": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 67,
+              "geometric_oracle_covered": 63,
+              "geometric_oracle_recall": 0.9402985074626866,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 22,
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2,
+                  "no_localized_proposal": 4,
+                  "different_predicted_class": 2
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "control": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 65,
+              "geometric_oracle_covered": 65,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "below_acceptance_threshold": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 67,
+              "geometric_oracle_covered": 63,
+              "geometric_oracle_recall": 0.9402985074626866,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 22,
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2,
+                  "no_localized_proposal": 4,
+                  "different_predicted_class": 2
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "admit": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 28,
+            "fn": 9,
+            "precision": 0.6744186046511628,
+            "recall": 0.8656716417910447
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 65,
+              "geometric_oracle_covered": 65,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 67,
+              "geometric_oracle_covered": 63,
+              "geometric_oracle_recall": 0.9402985074626866,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 23,
+                  "duplicate": 1,
+                  "localization_overlap": 4
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 4,
+                  "no_localized_proposal": 4,
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [
+            {
+              "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  21.625,
+                  67.78125,
+                  98.875,
+                  112.21875
+                ]
+              }
+            },
+            {
+              "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  265.5,
+                  73.96875,
+                  320.0,
+                  151.40625
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        },
+        "nonregression": false,
+        "meets_94": false,
+        "neural_calls": 345
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 11,
+              "geometric_oracle_covered": 11,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {},
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 12,
+              "geometric_oracle_covered": 12,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 71
+      },
+      "control": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 11,
+              "geometric_oracle_covered": 11,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {},
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 12,
+              "geometric_oracle_covered": 12,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": true,
+        "meets_94": false,
+        "neural_calls": 71
+      },
+      "admit": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8461538461538461,
+            "recall": 0.9166666666666666
+          }
+        },
+        "comparison": {
+          "colors": {
+            "red_balloon": {
+              "targets": 11,
+              "geometric_oracle_covered": 11,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {},
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 12,
+              "geometric_oracle_covered": 12,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        },
+        "nonregression": false,
+        "meets_94": false,
+        "neural_calls": 71
+      }
+    }
+  },
+  "eligible_for_development": [
+    "control",
+    "admit"
+  ],
+  "eligible_for_pi_comparison": [],
+  "exports": {
+    "control": {
+      "path": "runs/guarded-drift-balloon-head-control-20261011/student.fp32.tflite",
+      "metadata_sha256": "eb9bf8d4dea3d0a4750c0132ab0d20c36b9106587ae6b5f3a0cc782ede423589",
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "1842c1d7273ee196340d96f293619bd3216950e9345e3e163f811bd6b9887319",
+      "bytes": 34844,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Reviewed real TRAIN photos plus inherited synthetic color and reflection views",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "f8802cf4b60aaf0a97f2838169f5e11667da868e78630bc36a85cd6d01094d49",
+      "fitting_receipt_sha256": "95488515a2a91d0f297b4ecec3e9236f5af5294d6605c350c471c97fbbf02553",
+      "training_trial_sha256": "e35312a987fc73fb42fe58e4b4194d51c8922782698618f1b5ac17b85ee8a4af",
+      "export_script_sha256": "c15a046177545284b8a6443736e6e508c25d8789be5cd088cd95f0d44aff7e80",
+      "parity_rows": 2474,
+      "max_keras_tflite_delta": 1.1444091796875e-05,
+      "decision_parity": true,
+      "experiment_role": "matched_control",
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    },
+    "admit": {
+      "path": "runs/guarded-drift-balloon-head-admit-20261011/student.fp32.tflite",
+      "metadata_sha256": "436669bd92bd19a1af946a9aaf17300b0032663f6b132d3bb2da129f7b856b7c",
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "c54ab9859b07cfcd8d39803e5fb998eb658cd133a419f13e47af53d9bc961522",
+      "bytes": 34844,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Reviewed real TRAIN photos plus inherited synthetic color and reflection views",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "a4d3270e1bfde413c1e8bc1eb1e33345b133f7c837674965c4b55c2438e12d4f",
+      "fitting_receipt_sha256": "95488515a2a91d0f297b4ecec3e9236f5af5294d6605c350c471c97fbbf02553",
+      "training_trial_sha256": "e35312a987fc73fb42fe58e4b4194d51c8922782698618f1b5ac17b85ee8a4af",
+      "export_script_sha256": "c15a046177545284b8a6443736e6e508c25d8789be5cd088cd95f0d44aff7e80",
+      "parity_rows": 2474,
+      "max_keras_tflite_delta": 9.5367431640625e-06,
+      "decision_parity": true,
+      "experiment_role": "admission_candidate",
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    }
+  },
+  "localizer_sha256": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+  "parent_sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+  "native_sha256": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c",
+  "inputs": {
+    "configs/engdes2-lockbox-panel3-20261010.json": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+    "configs/engdes2-development-panel2-20261010.json": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+    "configs/engdes2-development-scenes-20261008.json": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+  },
+  "baseline_sha256": "e826e9b0d785d19d13df9359db2a909d34354d5887db1c8eba7e456509bc774b",
+  "training_audit_sha256": "e35312a987fc73fb42fe58e4b4194d51c8922782698618f1b5ac17b85ee8a4af",
+  "script_sha256": "e4620bfdb9bfdd80c32844d71f1e168ee78913b57f6ba9cb82f60ffed38decea",
+  "helpers_sha256": {
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_blue_peak_blend.py": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+    "scripts/research_confident_containment.py": "7afa7104a86a928ade2295c92933b8fc759f5c810d5e8f1f59d77b7e6b2e3c0d",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "scripts/audit_indoor5_outcomes.py": "54b9c7f9056a1870999bf680bbaa98185074d4ed6784b3a5c37db291f0efbc4a"
+  },
+  "raw": {
+    "path": "runs/guarded-drift-balloon-head-scenes-20261011.json",
+    "sha256": "539a5d94ff8b4f8c6b3686265605f5b57e2ef254cc8c359a1925c0a74878d92a"
+  },
+  "scope": "Deterministic constrained classifier comparison on64TRAIN scenes then related repeated development only if admission passes TRAIN nonregression. Unchanged class-matched control accompanies admission for attribution, not promotion. Same proposals, classifier threshold0.8, IoU0.5 and containment. No independent holdout or runtime timing claim.",
+  "development_evaluated": true,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
