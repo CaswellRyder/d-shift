@@ -1,0 +1,20 @@
+{
+  "queue": "data/balloon-expansion3-failure-review-v2-20261011/review.json",
+  "queue_sha256": "9113c3585993349947a8bada41fb7344b5b1e549536408c63b9dca00cc3bf28e",
+  "review_method": "Assistant visual inspection of all nine suspect crops, with previously reviewed identical full-frame training context. Diagnostic categories only; not a training-label admission.",
+  "assessments": [
+    {"id": 0, "category": "loose_box_on_real_target", "note": "Tall wall/door region contains an actual red balloon; do not label the crop background."},
+    {"id": 1, "category": "unannotated_partial_target", "note": "Clipped red balloon at the top edge, absent from the reviewed upstream boxes."},
+    {"id": 2, "category": "deflated_latex_ambiguous", "note": "Deflated blue latex. Excluded from training until target taxonomy is clarified."},
+    {"id": 3, "category": "deflated_latex_ambiguous", "note": "Deflated blue latex with red target edge in the crop; not clean background."},
+    {"id": 4, "category": "deflated_latex_ambiguous", "note": "Deflated blue latex. Excluded from training until target taxonomy is clarified."},
+    {"id": 5, "category": "loose_box_on_real_target", "note": "Real red balloon in front of person; a tighter accepted candidate is suppressed."},
+    {"id": 6, "category": "loose_box_on_real_target", "note": "Real red balloon with person/building context; tighter candidate is suppressed."},
+    {"id": 7, "category": "background_clutter", "note": "Red trash-bin/sign fixture in scene background, not a balloon."},
+    {"id": 8, "category": "mixed_target_and_clutter", "note": "Red sleeve/arm plus clipped blue balloon; unsuitable as a pure background training crop."}
+  ],
+  "scope": "Reviewed public TRAIN frames only. Suspect acceptances are not a false-positive count. No new geometry, automatic negatives or evaluation labels created.",
+  "training_approved": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
