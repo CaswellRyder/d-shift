@@ -1,0 +1,16 @@
+{
+  "source_audit": "research/balloon-red-blue-20261008/joint-balanced-balloon-20261011.json",
+  "source_audit_sha256": "2b2078796de8559ed8689322b7a872d9968aaf05a8a4ef4db057a756bd1bd3de",
+  "hypothesis": "Classifier confidence is not box quality. Keeping accepted MSER boxes ahead of conflicting learned boxes may recover incumbent detections while retaining novel learned targets.",
+  "design": "Reconstruct exact proposal provenance from fresh native MSER search and the audited localizers. Replay all36previous factorial variants with unchanged raw classifier predictions and candidate order. Select within each source using the incumbent selector, then reject learned detections conflicting with accepted MSER detections of the same color. Use existing IoU, concentric and nested tests, without threshold fitting. Keep all classifications and their actual scores unchanged.",
+  "maximum_candidates": 12,
+  "threshold": 0.8,
+  "panels": {"original": 64, "window1": 6, "window2": 12},
+  "gate": "Both balanced+admit seeds must retain every incumbent target, not increase either color's false positives on any panel, and recover at least one target. Compare source-aware and original selection for every control and component ablation. Passing permits separate export/DEV investigation only.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
