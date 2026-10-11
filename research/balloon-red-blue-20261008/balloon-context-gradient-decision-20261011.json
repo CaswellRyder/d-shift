@@ -1,0 +1,115 @@
+{
+  "source_sha256": "20a005ba80fb33ddb15a42f757448a1b8bd8d6d9a2e5bfebf1066a284ab17073",
+  "script_sha256": "0db3a6402f871f416c9d62e66562e2898f1e2f21b009aafa56dd567d1abcea2f",
+  "results": {
+    "control/parent": {
+      "objective": 0.7597329305999578,
+      "cancellation_ratio": 0.9645737296161521,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": 0.8598082787619554,
+          "directional_derivative": -7.2931007085052215
+        }
+      }
+    },
+    "control/47": {
+      "objective": 0.3147649181193488,
+      "cancellation_ratio": 0.373786349511146,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": 0.3163250875488482,
+          "directional_derivative": -0.6293473782438312
+        },
+        "old_crops/scene_distillation": {
+          "cosine": -0.3998481602429105,
+          "directional_derivative": 0.795521446921706
+        },
+        "new_negatives/scene_distillation": {
+          "cosine": -0.9329037008634796,
+          "directional_derivative": 128.32522774763393
+        }
+      }
+    },
+    "control/48": {
+      "objective": 0.3182915364596509,
+      "cancellation_ratio": 0.3144160741371658,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": -0.7554459198401479,
+          "directional_derivative": 2.1614969465303666
+        },
+        "old_crops/scene_distillation": {
+          "cosine": 0.8353509601322422,
+          "directional_derivative": -2.3901228429284758
+        },
+        "new_negatives/scene_distillation": {
+          "cosine": -0.8797388824269012,
+          "directional_derivative": 117.21063698308942
+        }
+      }
+    },
+    "admit/parent": {
+      "objective": 2.4551474202751633,
+      "cancellation_ratio": 0.6629322874946217,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": 0.7615542862313088,
+          "directional_derivative": -6.459686701872801
+        },
+        "old_crops/scene_distillation": {
+          "cosine": -0.44905900443867,
+          "directional_derivative": 3.8090265287373803
+        },
+        "new_negatives/scene_distillation": {
+          "cosine": -0.6339772422104097,
+          "directional_derivative": 77.97176670696476
+        }
+      }
+    },
+    "admit/47": {
+      "objective": 0.9469426285633356,
+      "cancellation_ratio": 0.23873495379263313,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": 0.740994722427618,
+          "directional_derivative": -5.36012028820043
+        },
+        "old_crops/scene_distillation": {
+          "cosine": -0.9131683743985131,
+          "directional_derivative": 6.605569759148454
+        },
+        "new_negatives/scene_distillation": {
+          "cosine": -0.8759062710828396,
+          "directional_derivative": 88.97042395416582
+        }
+      }
+    },
+    "admit/48": {
+      "objective": 0.9420196120230153,
+      "cancellation_ratio": 0.0721268451088635,
+      "meaningful_pairs": {
+        "old_crops/new_negatives": {
+          "cosine": 0.659128391398654,
+          "directional_derivative": -3.1083807795896443
+        },
+        "old_crops/scene_distillation": {
+          "cosine": -0.9401590380725273,
+          "directional_derivative": 4.4336920118111305
+        },
+        "new_negatives/scene_distillation": {
+          "cosine": -0.850699367599225,
+          "directional_derivative": 84.77984321011273
+        }
+      }
+    }
+  },
+  "finding": "Both context checkpoints exhibit strong local conflict between old-crop and scene objectives. This does not prove additional epochs or model capacity cannot help.",
+  "next_experiment": "Matched two-task gradient projection versus ordinary summed gradients on the same wider-context TRAIN tensors, seeds, batches and optimizer schedule. No inference architecture change.",
+  "primary_reference": "https://arxiv.org/abs/2001.06782",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
