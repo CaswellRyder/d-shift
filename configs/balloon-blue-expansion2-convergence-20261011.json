@@ -1,0 +1,12 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "initial_epoch": 24,
+  "final_epoch": 80,
+  "settings": "configs/balloon-blue-expansion2-trial-20261011.json",
+  "rationale": "At fixed24 both admit seeds classified22/23 new blue TRAIN probes correctly but accepted only20/23 and19/23 at0.8. Controls stayed18/23. Continue all four arms equally for56 additional epochs, restore Adam, preserve all source pixels and original parent targets. No new development evaluation preceded this choice.",
+  "checkpoint_policy": "Fixed final80 only; shuffle restarts at continuation boundary; no best-epoch selection.",
+  "training_gate": "Unchanged original trial gate; both admit seeds must pass before any export or development comparison.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
