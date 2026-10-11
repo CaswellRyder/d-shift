@@ -1,0 +1,180 @@
+{
+  "models": {
+    "47": {
+      "frame_entries": 141,
+      "dense_calls": 28,
+      "skipped_calls": 113,
+      "max_host_score_delta": 1.0728836059570312e-06,
+      "exact_geometry_and_decisions": true,
+      "report": "runs/balloon-dense-full-pi47-20261011.json",
+      "report_sha256": "bec16ad6585d83ca9349ebd3196a01444ed5a8a357718fc91aed126d12443588",
+      "classifier_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+      "dense_sha256": "e3aca8bc4470a80c03d2e97041dc50244755703997e5301b941e0bd9cfbf5bbb",
+      "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+      "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+      "health_before": {
+        "temperature_millicelsius": "52996",
+        "load_average": "2.65 2.04 1.79 2/250 5884",
+        "throttled": "throttled=0x0"
+      },
+      "health_after": {
+        "temperature_millicelsius": "52996",
+        "load_average": "3.06 2.34 1.92 3/252 5904",
+        "throttled": "throttled=0x0"
+      }
+    },
+    "48": {
+      "frame_entries": 141,
+      "dense_calls": 28,
+      "skipped_calls": 113,
+      "max_host_score_delta": 1.0728836059570312e-06,
+      "exact_geometry_and_decisions": true,
+      "report": "runs/balloon-dense-full-pi48-20261011.json",
+      "report_sha256": "c4fd6c8c74aab1cce5e83058cab1c1a0a1240aec9744721b4692816c76f40c7a",
+      "classifier_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+      "dense_sha256": "ed537cfc8270db64fe7481eac89a379082466ce756f4ae3df6346cb2aa46bc4e",
+      "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+      "runtime_library_sha256": "54ed7fdda0b5b5f6db05a538eb800b7bc7ecd70d32f67dc13d1e78817d8b653a",
+      "health_before": {
+        "temperature_millicelsius": "52996",
+        "load_average": "3.03 2.45 1.98 3/250 5925",
+        "throttled": "throttled=0x0"
+      },
+      "health_after": {
+        "temperature_millicelsius": "52996",
+        "load_average": "2.98 2.63 2.10 2/248 5946",
+        "throttled": "throttled=0x0"
+      }
+    }
+  },
+  "bundle_sha256": "031adb04d932fc8808e871dd1bb113c69475a99bc03fa03e2db58d90ce350ec6",
+  "development_references": {
+    "runs/balloon-dense-supported-gated-engdes2-lockbox-panel3-20261010-20261011.json": {
+      "sha256": "8e835ea89dcfd00c1a58cc6aba26c7296b431077b034110a22aca498665c90cd",
+      "frame_entries": 67,
+      "metrics": {
+        "47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        }
+      }
+    },
+    "runs/balloon-dense-supported-gated-engdes2-development-panel2-20261010-20261011.json": {
+      "sha256": "48d845c1af15c6a54a1efa9c135397abffe3389fa21cd405e01f0bc3bce3f71c",
+      "frame_entries": 62,
+      "metrics": {
+        "47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        }
+      }
+    },
+    "runs/balloon-dense-supported-gated-engdes2-development-scenes-20261008-20261011.json": {
+      "sha256": "06a0b65a4410005beb3d2b4dbd2b3b53a387dbb27dc76ebca3987710cd63d92c",
+      "frame_entries": 12,
+      "metrics": {
+        "47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "unique_processed_image_hashes": 141,
+  "decision": "Both localizer seeds preserve frozen full-pipeline decisions on ARMv6 replay. Remain opt-in research; no active model replacement.",
+  "caveats": [
+    "Repeated, overlapping development panels are not independent qualification.",
+    "Camera app remained running; these are not isolated performance tests.",
+    "Baseline selection is computed additionally for parity diagnostics.",
+    "No new accuracy improvement is established by platform parity.",
+    "Camera capture, temporal tracking and autonomous navigation were not tested."
+  ],
+  "camera_tested": false,
+  "isolated_speed_measured": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

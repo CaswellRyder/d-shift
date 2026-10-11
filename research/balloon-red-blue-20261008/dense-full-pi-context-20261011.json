@@ -1,0 +1,39 @@
+{
+  "verification": "research/balloon-red-blue-20261008/dense-full-pi-replay-20261011.json",
+  "bundle": "artifacts/balloon-dense-full-replay-20261011",
+  "remote_directory": "/home/pacman/balloon-dense-probe-20261011.0qTn2u/full",
+  "host_reports": [
+    "runs/balloon-dense-full-host47-20261011.json",
+    "runs/balloon-dense-full-host48-20261011.json"
+  ],
+  "pi_reports": [
+    "runs/balloon-dense-full-pi47-20261011.json",
+    "runs/balloon-dense-full-pi48-20261011.json"
+  ],
+  "execution": {
+    "separate_sequential_seed_processes": true,
+    "tensorflow_threads": 1,
+    "opencv_threads": 1,
+    "nice_priority": 15,
+    "camera_web_process_before_and_after": 4876,
+    "camera_web_command": "python3 -u pi_balloon_web.py --base . --region-library native/regions.so",
+    "active_symlink_before_and_after": "balloon-pi-student-swap-20261010",
+    "throttled_after": "0x0",
+    "replay_processes_running_after": false
+  },
+  "fallback": "On first RuntimeError, ValueError or OSError from localizer prediction, disable further localizer calls in that process and retain baseline selection. A fallback event fails the parity run visibly. Both Pi runs had zero such events.",
+  "tests": {
+    "passed": 1098,
+    "skipped": 2,
+    "existing_tensorflow_warnings": 6,
+    "targeted_ruff": "passed"
+  },
+  "decision": "Full replay compatibility is demonstrated. Keep this selector opt-in pending accuracy and isolated speed evidence; do not replace active deployment.",
+  "next_accuracy_work": "Continue training-only review and localization/false-positive work for blue balloons. The 67-frame development panel remains at 60 TP, 13 FP and 11 FN for blue, below the target. Repeated development results are not independent qualification.",
+  "next_hardware_work": "Isolated timing requires an idle Pi or permission to stop and restore the camera web app. Representative real-camera footage is still needed for independent accuracy and live readiness.",
+  "camera_app_stopped": false,
+  "active_model_changed": false,
+  "esp32_or_motor_commands": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
