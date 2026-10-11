@@ -54,13 +54,19 @@ def loss_function():
     return loss
 
 
-def train(mode, seed, output):
+def train(mode, seed, output, expansion=False):
     out = Path(output)
     if out.exists():
         raise FileExistsError(out)
     if seed not in (47, 48):
         raise ValueError('Require predeclared seed')
-    rows, negatives = data(mode)
+    if expansion:
+        from scripts.balloon_expansion3 import data as expansion_data,QUEUE as queue,REVIEW as review
+        rows, negatives = expansion_data(mode)
+    else:
+        rows, negatives = data(mode)
+        queue, review = QUEUE, REVIEW
+    hard_rows = sum(not r['preserve'] for r in rows)
     parent = read_json(PARENT/'color.fp32.json')
     if (parent['sha256'] != sha256(PARENT/'color.fp32.tflite')
             or parent['source_student_sha256'] != sha256(PARENT/'color.keras')
@@ -82,12 +88,16 @@ def train(mode, seed, output):
     targets = np.column_stack((np.eye(3)[labels], old, [r['preserve'] for r in rows])).astype(np.float32)
     out.mkdir(parents=True)
     provenance = dict(mode=mode, seed=seed, epochs=8, learning_rate=.0001, batch_size=16,
-        manifest_sha256=sha256(MANIFEST), review_sha256=sha256(REVIEW),
-        queue_sha256=sha256(Path(QUEUE)/'review.json'), script_sha256=sha256(__file__),
+        manifest_sha256=sha256(MANIFEST), review_sha256=sha256(review),
+        queue_sha256=sha256(Path(queue)/'review.json'), script_sha256=sha256(__file__),
+        experiment='expansion3' if expansion else 'reviewed_clutter',
+        data_helper_sha256=sha256('scripts/balloon_expansion3.py') if expansion else None,
         parent_model_sha256=parent['sha256'], parent_checkpoint_sha256=sha256(PARENT/'color.keras'),
         parent_metadata_sha256=sha256(PARENT/'color.fp32.json'),
         sample_identity=[{k: r[k] for k in ('source_image', 'sha256', 'label', 'preserve')} for r in rows],
-        ordinary_rows=len(rows)-36, hard_label_rows=36, reviewed_unique_negatives=9,
+        ordinary_rows=len(rows)-hard_rows, hard_label_rows=hard_rows,
+        reviewed_unique_crops=len(negatives),
+        reviewed_unique_negatives=sum(r['label']=='background' for r in negatives),
         fixed_final_epoch=True, classes=CLASSES, test_evaluated=False, deployment_approved=False)
     write_json(out/'provenance.json', provenance)
     write_json(out/'status.json', dict(state='running'))
@@ -138,10 +148,14 @@ def train(mode, seed, output):
                     'export_script_sha256', 'max_probe_keras_tflite_delta', 'probability_caveat'):
             metadata.pop(key, None)
         write_json(path.with_suffix('.json'), metadata)
-        negative_logits = model(np.stack([load_rgb(Path(QUEUE)/r['path'], 64) for r in negatives]), training=False).numpy()
+        negative_logits = model(np.stack([load_rgb(Path(queue)/r['path'], 64) for r in negatives]), training=False).numpy()
+        reviewed_labels = np.array([CLASSES.index(r['label']) for r in negatives])
+        background = reviewed_labels==0
         report = dict(training_correct=int((final.argmax(1) == labels).sum()), training_rows=len(rows),
-            reviewed_negative_background_correct=int((negative_logits.argmax(1) == 0).sum()),
-            reviewed_negative_count=9, max_keras_tflite_delta=delta,
+            reviewed_crop_correct=int((negative_logits.argmax(1)==reviewed_labels).sum()),
+            reviewed_crop_count=len(negatives),
+            reviewed_negative_background_correct=int((negative_logits.argmax(1)[background] == 0).sum()),
+            reviewed_negative_count=int(background.sum()), max_keras_tflite_delta=delta,
             scope='Training fit only, not held-out validation', test_evaluated=False, deployment_approved=False)
         write_json(out/'report.json', report)
         write_json(out/'status.json', dict(state='complete'))
@@ -156,5 +170,6 @@ if __name__ == '__main__':
     p.add_argument('--mode', choices=('control', 'admit'), required=True)
     p.add_argument('--seed', type=int, choices=(47, 48), required=True)
     p.add_argument('--output', required=True)
+    p.add_argument('--expansion3',action='store_true',help='Use reviewed expansion3 views and matched class-count controls')
     args = p.parse_args()
-    train(args.mode, args.seed, args.output)
+    train(args.mode, args.seed, args.output,args.expansion3)

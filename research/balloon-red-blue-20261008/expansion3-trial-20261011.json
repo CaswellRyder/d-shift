@@ -1,0 +1,478 @@
+{
+  "models": {
+    "control47": {
+      "path": "runs/balloon-expansion3-control-seed47-20261011/student.fp32.tflite",
+      "sha256": "7f1735a3f37ce4f2ae73759c344bc26a194347ab56447a60743a4c404b127a3e",
+      "bytes": 34844,
+      "provenance_sha256": "1979d084975c7a65cba7817a9ee60b3f550cec2f393e80321b0c6a61d603afd5",
+      "design": {
+        "mode": "control",
+        "seed": 47,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "ec86da7495c191abaeeabdb129c8c64fa9cb1c7534157ac26a0b27b178933e06",
+        "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+        "script_sha256": "4856fce0585e337085eda7566bebc5ea1e2f86781d0d4de177a39ae6329878c9",
+        "experiment": "expansion3",
+        "data_helper_sha256": "f57d5dbd6c299629a070d9ec45032a5ea8667b084447d4d98b0a7a3b6da1c9bd",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 158,
+        "reviewed_unique_crops": 79,
+        "reviewed_unique_negatives": 11,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1615,
+        "training_rows": 1645,
+        "reviewed_crop_correct": 77,
+        "reviewed_crop_count": 79,
+        "reviewed_negative_background_correct": 11,
+        "reviewed_negative_count": 11,
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "control48": {
+      "path": "runs/balloon-expansion3-control-seed48-20261011/student.fp32.tflite",
+      "sha256": "0c520a322a77ea1a799f4aba80f43f12be72a35369e248023385b907ebdd8626",
+      "bytes": 34844,
+      "provenance_sha256": "d2761581164190661ae481e42dc366ab1d5fc4e9a7cafde515ffd0063b107c5e",
+      "design": {
+        "mode": "control",
+        "seed": 48,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "ec86da7495c191abaeeabdb129c8c64fa9cb1c7534157ac26a0b27b178933e06",
+        "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+        "script_sha256": "4856fce0585e337085eda7566bebc5ea1e2f86781d0d4de177a39ae6329878c9",
+        "experiment": "expansion3",
+        "data_helper_sha256": "f57d5dbd6c299629a070d9ec45032a5ea8667b084447d4d98b0a7a3b6da1c9bd",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 158,
+        "reviewed_unique_crops": 79,
+        "reviewed_unique_negatives": 11,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1614,
+        "training_rows": 1645,
+        "reviewed_crop_correct": 77,
+        "reviewed_crop_count": 79,
+        "reviewed_negative_background_correct": 11,
+        "reviewed_negative_count": 11,
+        "max_keras_tflite_delta": 1.1444091796875e-05,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "admit47": {
+      "path": "runs/balloon-expansion3-admit-seed47-20261011/student.fp32.tflite",
+      "sha256": "de8b2a1dcd3d659140eb0fb321b60c32e7b311614a12495adb9adfd730b900a6",
+      "bytes": 34844,
+      "provenance_sha256": "37b2409ff2e83b28653e83c4892efe64a1cd4d1e670867afe89709ebbfb115d4",
+      "design": {
+        "mode": "admit",
+        "seed": 47,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "ec86da7495c191abaeeabdb129c8c64fa9cb1c7534157ac26a0b27b178933e06",
+        "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+        "script_sha256": "4856fce0585e337085eda7566bebc5ea1e2f86781d0d4de177a39ae6329878c9",
+        "experiment": "expansion3",
+        "data_helper_sha256": "f57d5dbd6c299629a070d9ec45032a5ea8667b084447d4d98b0a7a3b6da1c9bd",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 158,
+        "reviewed_unique_crops": 79,
+        "reviewed_unique_negatives": 11,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1615,
+        "training_rows": 1645,
+        "reviewed_crop_correct": 78,
+        "reviewed_crop_count": 79,
+        "reviewed_negative_background_correct": 11,
+        "reviewed_negative_count": 11,
+        "max_keras_tflite_delta": 8.58306884765625e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "admit48": {
+      "path": "runs/balloon-expansion3-admit-seed48-20261011/student.fp32.tflite",
+      "sha256": "541741fd86ccb8318f5310ad6e70aac436dfe014ff098bf190e86b84c2c84394",
+      "bytes": 34844,
+      "provenance_sha256": "4cf12d95d6a9353dcf048413d74694cacd60a077e40aeedab3770cec654b57b1",
+      "design": {
+        "mode": "admit",
+        "seed": 48,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "ec86da7495c191abaeeabdb129c8c64fa9cb1c7534157ac26a0b27b178933e06",
+        "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+        "script_sha256": "4856fce0585e337085eda7566bebc5ea1e2f86781d0d4de177a39ae6329878c9",
+        "experiment": "expansion3",
+        "data_helper_sha256": "f57d5dbd6c299629a070d9ec45032a5ea8667b084447d4d98b0a7a3b6da1c9bd",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 158,
+        "reviewed_unique_crops": 79,
+        "reviewed_unique_negatives": 11,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1617,
+        "training_rows": 1645,
+        "reviewed_crop_correct": 78,
+        "reviewed_crop_count": 79,
+        "reviewed_negative_background_correct": 11,
+        "reviewed_negative_count": 11,
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "parent": {
+      "path": "runs/balloon-fragment-control-seed47-20261011/color.fp32.tflite",
+      "sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888"
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/balloon-expansion3-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "1a81e8149be85540262c012274fe192427ff3134a7aa4c2f46fdb18dbf1cdd22",
+      "frames": 67,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 15,
+            "fn": 13,
+            "precision": 0.7945205479452054,
+            "recall": 0.8169014084507042
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 14,
+            "fn": 12,
+            "precision": 0.8082191780821918,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/balloon-expansion3-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "556e6e68c2f984ed97c7946bdc86657e580131722dd661b72a2f32fd62ca30f4",
+      "frames": 62,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 26,
+            "fn": 14,
+            "precision": 0.6708860759493671,
+            "recall": 0.7910447761194029
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 27,
+            "fn": 14,
+            "precision": 0.6625,
+            "recall": 0.7910447761194029
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/balloon-expansion3-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "a6abd5e938496e1315fd1e7e4f784f52c028390c20e123e693a2d32e4325d460",
+      "frames": 12,
+      "results": {
+        "parent": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+  "review_sha256": "ec86da7495c191abaeeabdb129c8c64fa9cb1c7534157ac26a0b27b178933e06",
+  "frames": 27,
+  "rejected_candidates": 21,
+  "admitted_counts": {
+    "red_balloon": 35,
+    "blue_balloon": 33,
+    "background": 11
+  },
+  "script_sha256": "26402d84c379398bd4bb42b832b77641ed979a7d38ca694fbaddc41d1dcba909",
+  "decision": "No promotion: expansion effects are small and inconsistent across seeds/panels; admit48 also loses a red target on the small panel. Keep the earlier color-control integration candidate.",
+  "next_direction": "Use approved new full frames for localization or mine reviewed training-only failure crops. More easy color crops alone did not resolve full-scene errors.",
+  "caveats": [
+    "Assistant-reviewed public training data, not independent human certification.",
+    "Same training filename families; additional frames are not new independent environments.",
+    "Development panels overlap and have been repeatedly inspected, not final qualification.",
+    "Matched class-count controls show training-step effects separately from new-data effects.",
+    "Pi model, camera service and ESP32 untouched."
+  ],
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "qualification_achieved": false
+}

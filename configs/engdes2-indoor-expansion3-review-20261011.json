@@ -1,0 +1,22 @@
+{
+  "queue_sha256": "3ae555179147285f07147b5fa8437783fe168e5ddac3b7c3c784672e3d0d830d",
+  "admit": [0,1,2,3,4,5,6,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,31,32,33,34,35,36,37,38,39,41,42,43,44,45,46,50,51,52,53,55,56,57,58,59,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,88],
+  "exclude": [7,12,30,40,47,48,49,54,60,87],
+  "decisions": {
+    "7": "Proposed background is a clipped red balloon.",
+    "12": "Proposed background contains a red balloon edge.",
+    "30": "Proposed background contains a blue balloon edge.",
+    "40": "Proposed background contains a red balloon edge.",
+    "47": "Deflated red latex; ambiguous target taxonomy.",
+    "48": "Deflated blue latex; ambiguous target taxonomy.",
+    "49": "Deflated blue latex; ambiguous target taxonomy.",
+    "54": "Deflated blue latex; ambiguous target taxonomy.",
+    "60": "Tiny purple blurred background patch; identity uncertain.",
+    "87": "Tiny purple blurred background patch; identity uncertain."
+  },
+  "review": "Assistant visual review of all 89 crop thumbnails and all 27 full frames on four prediction-free scene sheets. Not independent human certification. Positive clipped balloons retained where identity is clear in context. Background admissions include signs, packaging, faces, sky and a light reflection; never assume unannotated means background.",
+  "scope": "Additional sources from existing training-only numeric filename families. Not independent recording sessions. IMG family excluded. Perceptual duplicate screening is heuristic. No full-scene completeness claim.",
+  "training_approved": true,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
