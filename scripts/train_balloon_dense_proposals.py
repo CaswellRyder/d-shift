@@ -90,12 +90,16 @@ def checked_data(root):
     return doc,np.asarray(images,np.float32),saved,folds,groups
 
 
-def train(root,seed,output):
+def train(root,seed,output,box_objective='l1'):
     out = Path(output)
     if out.exists():
         raise FileExistsError(out)
     if seed not in (47,48):
         raise ValueError('Require fixed seed')
+    if box_objective not in ('l1','l1_giou'):
+        raise ValueError('Unknown box objective')
+    from scripts.balloon_dense_iou_loss import giou_loss
+    loss_fn = sparse_loss if box_objective=='l1' else giou_loss
     doc,x,y,folds,groups = checked_data(root)
     fit,hold = folds!=0,folds==0
     import tensorflow as tf
@@ -111,6 +115,8 @@ def train(root,seed,output):
         parameters=model.count_params(),fixed_final_epoch=True,folds=folds.tolist(),groups=groups,
         scope=doc['scope'],
         complete_background=doc.get('complete_background'),
+        box_objective=box_objective,giou_weight=2 if box_objective=='l1_giou' else 0,
+        loss_helper_sha256=sha256('scripts/balloon_dense_iou_loss.py'),
         test_evaluated=False,deployment_approved=False,pi_tested=False)
     write_json(out/'provenance.json',provenance)
     write_json(out/'status.json',dict(state='running'))
@@ -119,7 +125,7 @@ def train(root,seed,output):
         options = tf.data.Options()
         options.threading.private_threadpool_size = 2
         ds = ds.with_options(options).prefetch(1)
-        model.compile(optimizer=keras.optimizers.Adam(.001),loss=sparse_loss)
+        model.compile(optimizer=keras.optimizers.Adam(.001),loss=loss_fn)
 
         class Progress(keras.callbacks.Callback):
             def on_epoch_end(self,epoch,logs=None):
@@ -133,8 +139,10 @@ def train(root,seed,output):
         if values.shape != (len(x),15,20,6) or not np.isfinite(values).all():
             raise ValueError('Invalid proposal outputs')
         np.save(out/'predictions.npy',values,allow_pickle=False)
-        report = dict(training_loss=float(sparse_loss(tf.constant(y[fit]),tf.constant(values[fit]))),
-            grouped_holdout_loss=float(sparse_loss(tf.constant(y[hold]),tf.constant(values[hold]))),
+        report = dict(training_loss=float(loss_fn(tf.constant(y[fit]),tf.constant(values[fit]))),
+            grouped_holdout_loss=float(loss_fn(tf.constant(y[hold]),tf.constant(values[hold]))),
+            reference_sparse_training_loss=float(sparse_loss(tf.constant(y[fit]),tf.constant(values[fit]))),
+            reference_sparse_holdout_loss=float(sparse_loss(tf.constant(y[hold]),tf.constant(values[hold]))),
             fit_frames=int(fit.sum()),holdout_frames=int(hold.sum()),parameters=model.count_params(),
             model_sha256=sha256(out/'proposal.keras'),predictions_sha256=sha256(out/'predictions.npy'),
             provenance_sha256=sha256(out/'provenance.json'),
@@ -153,5 +161,6 @@ if __name__ == '__main__':
     p.add_argument('--data',required=True)
     p.add_argument('--seed',type=int,choices=(47,48),required=True)
     p.add_argument('--output',required=True)
+    p.add_argument('--box-objective',choices=('l1','l1_giou'),default='l1')
     a = p.parse_args()
-    train(a.data,a.seed,a.output)
+    train(a.data,a.seed,a.output,a.box_objective)
