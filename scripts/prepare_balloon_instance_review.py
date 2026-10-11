@@ -11,7 +11,10 @@ from scripts.audit_balloon_search_stages import original_frames, indoor_frames, 
 from scripts.research_balloon_search import experimental
 
 
-def prepare(manifest, original_manifest, original_archive, queue, review, indoor_archive, output):
+def prepare(manifest, original_manifest, original_archive, queue, review, indoor_archive, output,
+            indoor_only=False, candidate_scope="added"):
+    if candidate_scope not in ("added", "all"):
+        raise ValueError("Unknown candidate scope")
     output = Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -20,10 +23,8 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
     if base.get("training_approved") is not True or base.get("synthetic", True):
         raise ValueError("Require approved real base data")
     allowed = {r["source_image"]: r for r in base["samples"] if r["split"] == "train"}
-    panels = {
-        "original": original_frames(original_manifest, original_archive),
-        "indoor": indoor_frames(queue, review, original_manifest, indoor_archive),
-    }
+    panels = {} if indoor_only else {"original": original_frames(original_manifest, original_archive)}
+    panels["indoor"] = indoor_frames(queue, review, original_manifest, indoor_archive)
     output.mkdir(parents=True)
     (output / "crops").mkdir()
     (output / "frames").mkdir()
@@ -36,7 +37,9 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                 raise ValueError("Source not in current training manifest")
             parent = allowed[source]
             baseline = experimental(rgb, "mser")
-            additions = experimental(rgb, "mser_instance_split")[len(baseline):]
+            additions = experimental(rgb, "mser_instance_split")
+            if candidate_scope == "added":
+                additions = additions[len(baseline):]
             if not additions:
                 continue
             frame_id = len(frames)
@@ -60,12 +63,13 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                                  overlaps=[dict(label=t["label"], iou=iou(candidate["box"], t["box"]))
                                            for t in truth]))
     doc = dict(samples=rows, frames=frames, base_manifest_sha256=sha256(manifest),
+               indoor_only=indoor_only, candidate_scope=candidate_scope,
                inputs={"original_manifest": sha256(original_manifest), "original_archive": sha256(original_archive),
                        "queue": sha256(Path(queue)/"review.json"), "review": sha256(review),
                        "indoor_archive": sha256(indoor_archive)},
                script_sha256=sha256(__file__), search_sha256=sha256("scripts/research_balloon_search.py"),
                training_approved=False, deployment_approved=False, review_required=True,
-               scope="Additional candidate crops of already admitted training scenes; incomplete scene labels")
+               scope="Candidate crops of already admitted training scenes; incomplete scene labels; not independent photos")
     write_json(output / "review.json", doc)
     for start in range(0, len(rows), 24):
         sheet = Image.new("RGB", (960, 640), "#ddd")
@@ -135,5 +139,9 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("manifest", "original-manifest", "original-archive", "queue", "review", "indoor-archive", "output"):
         p.add_argument(f"--{name}", required=True)
+    p.add_argument("--indoor-only", action="store_true", help="Skip original sources when expanding an existing queue")
+    p.add_argument("--candidate-scope", choices=("added", "all"), default="added",
+                   help="Review only split additions or all candidates for proposal-domain training")
     a = p.parse_args()
-    print(prepare(a.manifest, a.original_manifest, a.original_archive, a.queue, a.review, a.indoor_archive, a.output))
+    print(prepare(a.manifest, a.original_manifest, a.original_archive, a.queue, a.review, a.indoor_archive, a.output,
+                  a.indoor_only, a.candidate_scope))

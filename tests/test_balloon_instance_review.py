@@ -1,10 +1,12 @@
 from pathlib import Path
 
+import numpy as np
 import pytest
 from PIL import Image
 
 from dtr.data import read_json, sha256, synthetic, write_json
 from scripts.prepare_balloon_instance_review import checked_rows
+from scripts.prepare_balloon_instance_review import prepare
 from scripts.build_balloon_instance_ablation import build
 
 
@@ -38,6 +40,31 @@ def inputs(tmp_path):
 def test_admission_requires_source_crop_parity_and_keeps_review_labels(inputs):
     rows = checked_rows(*inputs)
     assert len(rows) == 1 and rows[0]["label"] == "background"
+
+
+def test_bad_candidate_scope_rejected_before_loading_data():
+    with pytest.raises(ValueError, match="candidate scope"):
+        prepare(*(["absent"] * 7), candidate_scope="unknown")
+
+
+@pytest.mark.parametrize("scope,count", [("added", 1), ("all", 2)])
+def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_path, monkeypatch, scope, count):
+    from scripts import prepare_balloon_instance_review as module
+    manifest, queue, review = inputs
+    archive = tmp_path/"unused.zip"
+    archive.write_bytes(b"fixture")
+    monkeypatch.setattr(module, "original_frames", lambda *a: pytest.fail("Original sources must be skipped"))
+    pixels = np.full((240, 320, 3), 20, np.uint8)
+    monkeypatch.setattr(module, "indoor_frames", lambda *a: [("background.jpg", pixels, [])])
+    proposals = [dict(box=b, crop_box=b, color_group=1) for b in ([0,0,10,10], [20,20,30,30])]
+    monkeypatch.setattr(module, "experimental", lambda rgb, variant: proposals[:1] if variant == "mser" else proposals)
+    out = tmp_path/"review-expansion"
+    result = prepare(manifest, manifest, archive, queue, review, archive, out,
+                     indoor_only=True, candidate_scope=scope)
+    assert result["crops"] == count
+    generated = read_json(out/"review.json")
+    assert generated["candidate_scope"] == scope and generated["indoor_only"]
+    assert all(r["label"] == "unreviewed" for r in generated["samples"])
 
 
 @pytest.mark.parametrize("fault", ["hash", "missing", "duplicate", "approval", "reserved", "source", "crop", "escape", "bounds"])
