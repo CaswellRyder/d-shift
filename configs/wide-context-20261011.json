@@ -1,0 +1,28 @@
+{
+  "arms": [
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Same1824rows, parent, seeds47/48, weights including reviewed conflict16, fresh Adam,240epochs and27360steps as weight16 controls. Only change: identity-initialized 5x5 depthwise residual after separable_context. All layers trainable in both arms. Teacher outputs remain from frozen original parent. No new data or threshold change.",
+  "training_gate": "Both seeds retain every previously accepted original positive, all previous clutter gates and139/139reviewedruntime positives. Identical initial outputs required. Export/development only after both seeds pass.",
+  "checkpoint_policy": "Final240 only; no early stopping or checkpoint selection.",
+  "scope": "Same TRAIN photos, newly protected crop views, not independent data. No inference/search changes. Fixed threshold and operating point. Repeated development cannot qualify flight.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "control_trial": "research/balloon-red-blue-20261008/runtime-positive-weight16-training-20261011.json",
+  "control_trial_sha256": "04177139c937f4863a1acc2fa4552e34fb722a63032ed9570e5bd7d1b50cf5e2",
+  "positive_weight": 16,
+  "architecture": "8563parameters; added800, convolution/denseMACs+51200. Research only. No Pi timing claim."
+}
