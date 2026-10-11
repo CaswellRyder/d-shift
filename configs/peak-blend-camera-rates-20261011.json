@@ -1,0 +1,15 @@
+{
+  "order": [5, 10, 10, 5],
+  "frames_per_block": 24,
+  "seconds_per_block": 30,
+  "settle_seconds": 1,
+  "policy": "head_blend",
+  "sensor_size": [2592, 1944],
+  "processing_size": [320, 240],
+  "rotation_degrees": 180,
+  "queue": false,
+  "scope": "Sequential ABBA live-camera cadence comparison. Same model, search and threshold. Every processed RGB retained; file writes after all timed blocks. Keep all startup/outlier samples. Live views may differ; not matched-scene accuracy or independent arena qualification.",
+  "selection": "Report every block and all-sample aggregate. Prefer higher cadence only if both observed 10 FPS blocks have higher completed-result throughput than both 5 FPS blocks, aggregate p95 sensor age does not increase, timestamps are valid/increasing, and no throttle flags occur. This gate permits further research only, never deployment or an accuracy claim.",
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
