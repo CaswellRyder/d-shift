@@ -22,6 +22,24 @@ from scripts.research_predictor import classify_candidates
 OUTPUT = Path('research/balloon-red-blue-20261008/peak-blend-camera-rates-20261011.json')
 
 
+def cpu_activity(before, after):
+    def parse(line):
+        fields = line.split()
+        if fields[0] != 'cpu' or len(fields) < 9:
+            raise ValueError('Require aggregate Linux CPU counters')
+        # user/nice already include guest time; do not double-count fields9/10.
+        return np.asarray([int(v) for v in fields[1:9]], np.int64)
+
+    delta = parse(after)-parse(before)
+    if np.any(delta < 0) or delta.sum() <= 0:
+        raise ValueError('CPU counters did not advance monotonically')
+    idle = int(delta[3]+delta[4])
+    total = int(delta.sum())
+    return dict(total_ticks=total, idle_and_iowait_ticks=idle,
+        busy_percent=100*(total-idle)/total,
+        scope='System-wide counter interval including boundary telemetry; not model-only CPU time. I/O wait treated as nonbusy; guest time not counted twice.')
+
+
 def validate_clock_and_rate(rows, fps):
     previous = None
     for row in rows:
@@ -83,7 +101,8 @@ def audit():
             proposals = supplement(base, decode(grid, True))
             detections = confidence_selection(classify_candidates(classifier, rgb, proposals))
             deltas.append(compare(detections, row['detections']))
-        blocks.append({k:block[k] for k in ('requested_fps', 'summary', 'before', 'after', 'camera_config')})
+        blocks.append(dict({k:block[k] for k in ('requested_fps', 'summary', 'before', 'after', 'camera_config')},
+            cpu_activity=cpu_activity(block['before']['cpu_ticks'], block['after']['cpu_ticks'])))
     write_json(OUTPUT, dict(comparison=comparison, blocks=blocks, host_pi_parity_frames=len(deltas),
         max_score_delta=max(d[0] for d in deltas), max_box_delta=max(d[1] for d in deltas),
         raw=dict(path=str(path), sha256=sha256(path)), retained_frames=files,

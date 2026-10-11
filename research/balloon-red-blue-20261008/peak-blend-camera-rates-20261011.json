@@ -1,0 +1,679 @@
+{
+  "comparison": {
+    "rates": {
+      "5": {
+        "frames": 48,
+        "elapsed_s": 20.180596608988708,
+        "live_fps": 2.378522346490993,
+        "block_live_fps": [
+          2.3824007210571656,
+          2.3746565788234046
+        ],
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 230.95389247707013,
+            "p50_ms": 229.23447500215843,
+            "p95_ms": 244.61435460543726,
+            "max_ms": 266.78506200551055
+          },
+          "search_ms": {
+            "mean_ms": 108.86215462414839,
+            "p50_ms": 109.04079899773933,
+            "p95_ms": 117.32880774798105,
+            "max_ms": 130.64056198345497
+          },
+          "localizer_ms": {
+            "mean_ms": 72.66736576942397,
+            "p50_ms": 68.47724500403274,
+            "p95_ms": 89.20911766472273,
+            "max_ms": 106.44482698990032
+          },
+          "classifier_ms": {
+            "mean_ms": 48.93162743792345,
+            "p50_ms": 51.80492901126854,
+            "p95_ms": 54.472399048972875,
+            "max_ms": 54.64539799140766
+          },
+          "selection_ms": {
+            "mean_ms": 0.4927446455743241,
+            "p50_ms": 0.48299500485882163,
+            "p95_ms": 0.5947433513938449,
+            "max_ms": 0.6089929956942797
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 189.06458322877975,
+            "p50_ms": 169.78762800863478,
+            "p95_ms": 179.81786804739386,
+            "max_ms": 689.1824030026328
+          },
+          "frame_wall_ms": {
+            "mean_ms": 420.1741197278655,
+            "p50_ms": 398.39510949968826,
+            "p95_ms": 412.01866176124895,
+            "max_ms": 932.8837160137482
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 352.6535498333333,
+          "p50_ms": 350.92160650000005,
+          "p95_ms": 369.7041857,
+          "max_ms": 395.607142
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "neural_calls": 96,
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "exposure_ms": {
+          "mean_ms": 63.31499999999999,
+          "p50_ms": 63.315,
+          "p95_ms": 66.663,
+          "max_ms": 66.663
+        },
+        "frame_duration_ms": {
+          "mean_ms": 199.99,
+          "p50_ms": 199.99,
+          "p95_ms": 199.99,
+          "max_ms": 199.99
+        }
+      },
+      "10": {
+        "frames": 48,
+        "elapsed_s": 14.681435209000483,
+        "live_fps": 3.2694351278799707,
+        "block_live_fps": [
+          3.2641297105606797,
+          3.2747578198053153
+        ],
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 263.6239907066435,
+            "p50_ms": 261.37361901055556,
+            "p95_ms": 286.1354465872864,
+            "max_ms": 290.84779499680735
+          },
+          "search_ms": {
+            "mean_ms": 137.05107304122066,
+            "p50_ms": 136.02300098864362,
+            "p95_ms": 148.3483653588337,
+            "max_ms": 157.5492639967706
+          },
+          "localizer_ms": {
+            "mean_ms": 86.18236274984763,
+            "p50_ms": 85.97755299706478,
+            "p95_ms": 91.47919141250895,
+            "max_ms": 102.4358709983062
+          },
+          "classifier_ms": {
+            "mean_ms": 39.703395875524926,
+            "p50_ms": 39.42006599390879,
+            "p95_ms": 49.996298662154004,
+            "max_ms": 56.61237597814761
+          },
+          "selection_ms": {
+            "mean_ms": 0.6871590400502706,
+            "p50_ms": 0.4899949999526143,
+            "p95_ms": 1.902229344705117,
+            "max_ms": 4.720947006717324
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 41.769081414410415,
+            "p50_ms": 38.207078992854804,
+            "p95_ms": 70.69622040726244,
+            "max_ms": 110.34578399267048
+          },
+          "frame_wall_ms": {
+            "mean_ms": 305.5553827252879,
+            "p50_ms": 300.2981909812661,
+            "p95_ms": 334.0528690969222,
+            "max_ms": 372.03989998670295
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 388.2537300000001,
+          "p50_ms": 385.270529,
+          "p95_ms": 412.58193305000003,
+          "max_ms": 427.491888
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "neural_calls": 93,
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "exposure_ms": {
+          "mean_ms": 66.08404166666666,
+          "p50_ms": 66.663,
+          "p95_ms": 66.663,
+          "max_ms": 66.663
+        },
+        "frame_duration_ms": {
+          "mean_ms": 99.978,
+          "p50_ms": 99.978,
+          "p95_ms": 99.978,
+          "max_ms": 99.978
+        }
+      }
+    },
+    "no_throttle_flags": true,
+    "timestamps_valid": true,
+    "faster_in_both_blocks": true,
+    "p95_age_nonregressing": false,
+    "eligible_for_further_10fps_research": false
+  },
+  "blocks": [
+    {
+      "requested_fps": 5,
+      "summary": {
+        "frames": 24,
+        "elapsed_s": 10.073872034990927,
+        "live_fps": 2.3824007210571656,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 234.7346228743845,
+            "p50_ms": 231.53745000308845,
+            "p95_ms": 252.7046165501815,
+            "max_ms": 266.78506200551055
+          },
+          "search_ms": {
+            "mean_ms": 111.67789491810254,
+            "p50_ms": 110.23728549480438,
+            "p95_ms": 117.40760674729245,
+            "max_ms": 130.64056198345497
+          },
+          "localizer_ms": {
+            "mean_ms": 74.37722232983408,
+            "p50_ms": 69.95422948966734,
+            "p95_ms": 99.07990816282106,
+            "max_ms": 106.44482698990032
+          },
+          "classifier_ms": {
+            "mean_ms": 48.17392766926787,
+            "p50_ms": 50.48094400262926,
+            "p95_ms": 53.356112010078505,
+            "max_ms": 54.58839898346923
+          },
+          "selection_ms": {
+            "mean_ms": 0.5055779571800182,
+            "p50_ms": 0.4854949947912246,
+            "p95_ms": 0.5999938555760309,
+            "max_ms": 0.6089929956942797
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 184.57284191511766,
+            "p50_ms": 166.9186610088218,
+            "p95_ms": 176.89870129834162,
+            "max_ms": 654.2577939981129
+          },
+          "frame_wall_ms": {
+            "mean_ms": 419.4636713740086,
+            "p50_ms": 398.9701054961188,
+            "p95_ms": 412.8322527583805,
+            "max_ms": 921.2178539892193
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 355.8419556250001,
+          "p50_ms": 352.839837,
+          "p95_ms": 373.0008222,
+          "max_ms": 395.607142
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "result_intervals_ms": {
+          "mean_ms": 397.9302253913043,
+          "p50_ms": 398.237614,
+          "p95_ms": 409.56398839999997,
+          "max_ms": 413.663443
+        },
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "neural_calls": 48
+      },
+      "before": {
+        "health": {
+          "temperature_millicelsius": "40084",
+          "load_average": "0.51 0.26 0.26 2/246 8629",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2288673 19240 516666 20016915 5822 0 8872 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:45\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-as  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-the  0.1 00:00:00\n 8607 sshd-session     0.3 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         91.2 00:00:30\n 8621 kworker/0:0H     0.0 00:00:00\n 8631 ps               220 00:00:00\n",
+        "max_rss_kib": 123072
+      },
+      "after": {
+        "health": {
+          "temperature_millicelsius": "41160",
+          "load_average": "0.67 0.30 0.28 1/246 8631",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2289232 19240 516761 20017266 5824 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:45\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-kb  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-fl  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.3 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         84.6 00:00:37\n 8621 kworker/0:0H     0.0 00:00:00\n 8633 ps               350 00:00:00\n",
+        "max_rss_kib": 131784
+      },
+      "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': False, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (2592, 1944), 'stride': 3264, 'framesize': 6345216}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 5}, 'sensor': {'bit_depth': 10, 'output_size': (2592, 1944)}, 'display': 'main', 'encode': 'main'}",
+      "cpu_activity": {
+        "total_ticks": 1008,
+        "idle_and_iowait_ticks": 353,
+        "busy_percent": 64.98015873015873,
+        "scope": "System-wide counter interval including boundary telemetry; not model-only CPU time. I/O wait treated as nonbusy; guest time not counted twice."
+      }
+    },
+    {
+      "requested_fps": 10,
+      "summary": {
+        "frames": 24,
+        "elapsed_s": 7.3526489840005524,
+        "live_fps": 3.2641297105606797,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 265.94202795483096,
+            "p50_ms": 260.25063199631404,
+            "p95_ms": 289.18471331126057,
+            "max_ms": 290.84779499680735
+          },
+          "search_ms": {
+            "mean_ms": 137.34223658199576,
+            "p50_ms": 135.59300549968611,
+            "p95_ms": 154.35429932113036,
+            "max_ms": 157.5492639967706
+          },
+          "localizer_ms": {
+            "mean_ms": 86.51900499899057,
+            "p50_ms": 85.97755299706478,
+            "p95_ms": 91.43899211921962,
+            "max_ms": 102.4358709983062
+          },
+          "classifier_ms": {
+            "mean_ms": 41.37004425138002,
+            "p50_ms": 39.32106700085569,
+            "p95_ms": 50.326094863703474,
+            "max_ms": 56.05738298618235
+          },
+          "selection_ms": {
+            "mean_ms": 0.7107421224645805,
+            "p50_ms": 0.4899949999526143,
+            "p95_ms": 2.2952251427341213,
+            "max_ms": 3.5779610043391585
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 40.00522591619907,
+            "p50_ms": 37.938582492643036,
+            "p95_ms": 68.34289625548985,
+            "max_ms": 96.75093399710022
+          },
+          "frame_wall_ms": {
+            "mean_ms": 306.10979370370234,
+            "p50_ms": 300.2981909812661,
+            "p95_ms": 334.8742598973331,
+            "max_ms": 356.7500689823646
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 390.63987112499996,
+          "p50_ms": 385.9579475,
+          "p95_ms": 416.46808839999994,
+          "max_ms": 427.491888
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "result_intervals_ms": {
+          "mean_ms": 305.2602016086957,
+          "p50_ms": 299.835696,
+          "p95_ms": 334.728711,
+          "max_ms": 356.977067
+        },
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "neural_calls": 48
+      },
+      "before": {
+        "health": {
+          "temperature_millicelsius": "41160",
+          "load_average": "0.67 0.30 0.28 1/246 8639",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2289314 19240 516798 20017346 5830 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:45\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-fl  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.3 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         83.1 00:00:38\n 8621 kworker/0:0H     0.0 00:00:00\n 8641 ps               225 00:00:00\n",
+        "max_rss_kib": 131784
+      },
+      "after": {
+        "health": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.88 0.36 0.30 3/246 8641",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2289921 19240 516922 20017373 5830 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:45\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-kb  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-fl  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.2 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         84.4 00:00:45\n 8621 kworker/0:0H     0.0 00:00:00\n 8643 ps               400 00:00:00\n",
+        "max_rss_kib": 138516
+      },
+      "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': False, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (2592, 1944), 'stride': 3264, 'framesize': 6345216}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (2592, 1944)}, 'display': 'main', 'encode': 'main'}",
+      "cpu_activity": {
+        "total_ticks": 758,
+        "idle_and_iowait_ticks": 27,
+        "busy_percent": 96.43799472295514,
+        "scope": "System-wide counter interval including boundary telemetry; not model-only CPU time. I/O wait treated as nonbusy; guest time not counted twice."
+      }
+    },
+    {
+      "requested_fps": 10,
+      "summary": {
+        "frames": 24,
+        "elapsed_s": 7.328786224999931,
+        "live_fps": 3.2747578198053153,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 261.30595345845603,
+            "p50_ms": 261.4951185096288,
+            "p95_ms": 272.8585429053055,
+            "max_ms": 287.88682699087076
+          },
+          "search_ms": {
+            "mean_ms": 136.75990950044556,
+            "p50_ms": 136.50849550322164,
+            "p95_ms": 143.40506979933707,
+            "max_ms": 150.91733701410703
+          },
+          "localizer_ms": {
+            "mean_ms": 85.84572050070467,
+            "p50_ms": 86.02105200407095,
+            "p95_ms": 91.04389594285749,
+            "max_ms": 93.77496701199561
+          },
+          "classifier_ms": {
+            "mean_ms": 38.03674749966982,
+            "p50_ms": 39.49256500345655,
+            "p95_ms": 44.59945850539952,
+            "max_ms": 56.61237597814761
+          },
+          "selection_ms": {
+            "mean_ms": 0.6635759576359609,
+            "p50_ms": 0.48949450138024986,
+            "p95_ms": 0.608593170181848,
+            "max_ms": 4.720947006717324
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 43.53293691262176,
+            "p50_ms": 38.72657300962601,
+            "p95_ms": 67.77680275699822,
+            "max_ms": 110.34578399267048
+          },
+          "frame_wall_ms": {
+            "mean_ms": 305.0009717468735,
+            "p50_ms": 301.2051804980729,
+            "p95_ms": 327.4135408006259,
+            "max_ms": 372.03989998670295
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 385.86758887499997,
+          "p50_ms": 385.270529,
+          "p95_ms": 400.26942690000004,
+          "max_ms": 412.910701
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "result_intervals_ms": {
+          "mean_ms": 304.63277286956526,
+          "p50_ms": 299.4147,
+          "p95_ms": 327.599389,
+          "max_ms": 372.267898
+        },
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "neural_calls": 45
+      },
+      "before": {
+        "health": {
+          "temperature_millicelsius": "42236",
+          "load_average": "0.88 0.36 0.30 1/246 8649",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2289990 19240 516956 20017448 5831 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:45\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-as  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.2 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         83.2 00:00:46\n 8621 kworker/0:0H     0.0 00:00:00\n 8651 ps               150 00:00:00\n",
+        "max_rss_kib": 138516
+      },
+      "after": {
+        "health": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.89 0.37 0.30 1/246 8651",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2290560 19240 517114 20017480 5831 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:46\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-wr  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-ip  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.2 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         84.3 00:00:52\n 8621 kworker/0:0H     0.0 00:00:00\n 8653 ps               400 00:00:00\n",
+        "max_rss_kib": 144108
+      },
+      "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': False, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (2592, 1944), 'stride': 3264, 'framesize': 6345216}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 10}, 'sensor': {'bit_depth': 10, 'output_size': (2592, 1944)}, 'display': 'main', 'encode': 'main'}",
+      "cpu_activity": {
+        "total_ticks": 760,
+        "idle_and_iowait_ticks": 32,
+        "busy_percent": 95.78947368421052,
+        "scope": "System-wide counter interval including boundary telemetry; not model-only CPU time. I/O wait treated as nonbusy; guest time not counted twice."
+      }
+    },
+    {
+      "requested_fps": 5,
+      "summary": {
+        "frames": 24,
+        "elapsed_s": 10.10672457399778,
+        "live_fps": 2.3746565788234046,
+        "timing": {
+          "processing_ms": {
+            "mean_ms": 227.17316207975577,
+            "p50_ms": 226.25450548366643,
+            "p95_ms": 234.06821963581024,
+            "max_ms": 243.5503150045406
+          },
+          "search_ms": {
+            "mean_ms": 106.04641433019424,
+            "p50_ms": 104.78834449895658,
+            "p95_ms": 110.64093083841725,
+            "max_ms": 124.20263100648299
+          },
+          "localizer_ms": {
+            "mean_ms": 70.95750920901385,
+            "p50_ms": 67.66475350013934,
+            "p95_ms": 87.27868788846536,
+            "max_ms": 87.82103098928928
+          },
+          "classifier_ms": {
+            "mean_ms": 49.68932720657904,
+            "p50_ms": 53.04441550106276,
+            "p95_ms": 54.5123984455131,
+            "max_ms": 54.64539799140766
+          },
+          "selection_ms": {
+            "mean_ms": 0.47991133396863006,
+            "p50_ms": 0.47949497820809484,
+            "p95_ms": 0.4859949985984713,
+            "max_ms": 0.48799399519339204
+          },
+          "capture_and_convert_ms": {
+            "mean_ms": 193.55632454244187,
+            "p50_ms": 172.59059748903383,
+            "p95_ms": 179.87566743977368,
+            "max_ms": 689.1824030026328
+          },
+          "frame_wall_ms": {
+            "mean_ms": 420.8845680817224,
+            "p50_ms": 398.3781079878099,
+            "p95_ms": 407.8150533459848,
+            "max_ms": 932.8837160137482
+          }
+        },
+        "sensor_to_result": {
+          "mean_ms": 349.4651440416667,
+          "p50_ms": 347.946783,
+          "p95_ms": 355.17142709999996,
+          "max_ms": 372.173022
+        },
+        "invalid_timestamp_frames": 0,
+        "increasing_sensor_timestamps": true,
+        "result_intervals_ms": {
+          "mean_ms": 398.85147217391307,
+          "p50_ms": 398.20361,
+          "p95_ms": 407.2788095,
+          "max_ms": 408.1685
+        },
+        "accepted_counts": {
+          "red_balloon": 0,
+          "blue_balloon": 0
+        },
+        "neural_calls": 48
+      },
+      "before": {
+        "health": {
+          "temperature_millicelsius": "42774",
+          "load_average": "0.98 0.40 0.31 1/246 8659",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2290607 19240 517145 20017572 5831 0 8873 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0+br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:46\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-as  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-eve  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.2 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         83.0 00:00:53\n 8621 kworker/0:0H     0.0 00:00:00\n 8661 ps               180 00:00:00\n",
+        "max_rss_kib": 144108
+      },
+      "after": {
+        "health": {
+          "temperature_millicelsius": "43312",
+          "load_average": "0.91 0.40 0.31 1/246 8661",
+          "throttled": "throttled=0x0"
+        },
+        "cpu_ticks": "cpu  2291144 19240 517245 20017944 5831 0 8874 0 0 0",
+        "processes": "  PID COMMAND         %CPU     TIME\n    1 systemd          0.0 00:00:55\n    2 kthreadd         0.0 00:00:00\n    3 pool_workqueue_  0.0 00:00:00\n    4 kworker/R-slub_  0.0 00:00:00\n    5 kworker/R-netns  0.0 00:00:00\n    9 kworker/R-mm_pe  0.0 00:00:00\n   10 ksoftirqd/0      0.0 00:00:29\n   11 kdevtmpfs        0.0 00:00:00\n   13 kworker/R-inet_  0.0 00:00:00\n   14 rcu_tasks_rude_  0.0 00:00:00\n   15 rcu_tasks_trace  0.0 00:00:00\n   16 kauditd          0.0 00:00:00\n   17 khungtaskd       0.0 00:00:00\n   18 oom_reaper       0.0 00:00:00\n   20 kworker/R-write  0.0 00:00:00\n   21 kcompactd0       0.0 00:00:41\n   22 kworker/R-kbloc  0.0 00:00:00\n   23 kworker/R-blkcg  0.0 00:00:00\n   24 kworker/R-kinte  0.0 00:00:00\n   25 watchdogd        0.0 00:00:01\n   28 kworker/R-quota  0.0 00:00:00\n   29 kworker/R-rpcio  0.0 00:00:00\n   30 kworker/R-xprti  0.0 00:00:00\n   31 kswapd0          0.0 00:00:33\n   32 kworker/R-nfsio  0.0 00:00:00\n   33 kworker/u5:0-br  0.1 00:05:36\n   37 hwrng            0.0 00:00:00\n   38 kworker/R-iscsi  0.0 00:00:00\n   39 kworker/R-DWC N  0.0 00:00:00\n   40 vchiq-slot/0     0.0 00:01:46\n   41 vchiq-recy/0     0.0 00:00:07\n   42 vchiq-sync/0     0.0 00:00:00\n   43 kworker/R-kstrp  0.0 00:00:00\n   45 irq/80-mmc0      0.0 00:00:00\n   65 kworker/R-mmc_c  0.0 00:00:00\n   67 kworker/0:1H-mm  0.0 00:00:03\n   88 cec-vc4-hdmi     0.0 00:00:00\n   89 irq/64-vc4 hdmi  0.0 00:00:00\n   90 card0-crtc0      0.0 00:00:00\n   91 card0-crtc1      0.0 00:00:00\n   92 card0-crtc2      0.0 00:00:00\n   93 card0-crtc3      0.0 00:00:00\n  119 jbd2/mmcblk0p2-  0.0 00:00:02\n  120 kworker/R-ext4-  0.0 00:00:00\n  139 kworker/R-mld    0.0 00:00:00\n  140 kworker/R-ipv6_  0.0 00:00:00\n  244 systemd-journal  0.0 00:00:09\n  293 systemd-timesyn  0.0 00:00:02\n  303 systemd-udevd    0.0 00:00:03\n  372 vchiq-keep/0     0.0 00:00:00\n  411 SMIO             0.0 00:00:00\n  418 kworker/R-mmal-  0.0 00:00:00\n  422 kworker/R-mmal-  0.0 00:00:00\n  424 rpcbind          0.0 00:00:01\n  425 kworker/R-mmal-  0.0 00:00:00\n  426 kworker/R-mmal-  0.0 00:00:00\n  427 kworker/R-mmal-  0.0 00:00:00\n  428 kworker/R-mmal-  0.0 00:00:00\n  429 kworker/R-mmal-  0.0 00:00:00\n  435 blkmapd          0.0 00:00:00\n  440 kworker/u5:1-hc  0.0 00:00:00\n  454 kworker/R-cfg80  0.0 00:00:00\n  455 kworker/R-brcmf  0.0 00:00:00\n  456 brcmf_wdog/mmc1  0.0 00:00:48\n  530 accounts-daemon  0.0 00:00:01\n  532 avahi-daemon     0.2 00:11:03\n  533 bluetoothd       0.0 00:00:00\n  534 cron             0.0 00:00:01\n  535 dbus-daemon      0.0 00:01:43\n  542 avahi-daemon     0.0 00:00:00\n  547 systemd-logind   0.0 00:00:07\n  548 udisksd          0.0 00:00:16\n  628 krfcommd         0.0 00:00:00\n  630 wpa_supplicant   0.0 00:00:25\n  642 polkitd          0.0 00:00:28\n  650 NetworkManager   0.0 00:03:39\n 1104 lightdm          0.0 00:00:00\n 1107 sshd             0.0 00:00:05\n 1122 dnsmasq          0.0 00:00:06\n 1129 lightdm          0.0 00:00:00\n 1130 login            0.0 00:00:00\n 1147 systemd          0.0 00:00:03\n 1155 (sd-pam)         0.0 00:00:00\n 1206 dbus-daemon      0.0 00:00:00\n 1207 pipewire         0.0 00:00:01\n 1208 pipewire         0.0 00:00:00\n 1209 wireplumber      0.0 00:00:04\n 1210 labwc            0.0 00:00:13\n 1211 bash             0.0 00:00:00\n 1212 pipewire-pulse   0.0 00:00:00\n 1239 mpris-proxy      0.0 00:00:00\n 1275 ssh-agent        0.0 00:00:04\n 1344 xdg-permission-  0.0 00:00:00\n 1364 lwrespawn        0.0 00:00:00\n 1365 lwrespawn        0.0 00:00:00\n 1366 kanshi           0.0 00:00:00\n 1393 systemd-inhibit  0.0 00:00:00\n 1397 polkit-mate-aut  0.0 00:00:02\n 1402 rpi-gui-nop      0.0 00:00:00\n 1415 pcmanfm-pi       0.0 00:00:00\n 1416 wf-panel-pi      0.2 00:09:34\n 1422 pcmanfm          0.0 00:00:27\n 1433 gvfsd            0.0 00:00:00\n 1447 gvfsd-fuse       0.0 00:00:00\n 1469 xdg-desktop-por  0.0 00:00:01\n 1485 xdg-document-po  0.0 00:00:00\n 1491 fusermount3      0.0 00:00:00\n 1497 xdg-desktop-por  0.0 00:00:01\n 1504 gvfs-udisks2-vo  0.0 00:00:00\n 1523 gvfs-gphoto2-vo  0.0 00:00:00\n 1528 gvfs-afc-volume  0.0 00:00:39\n 1535 gvfs-goa-volume  0.0 00:00:00\n 1541 gvfs-mtp-volume  0.0 00:00:00\n 1549 xdg-desktop-por  0.0 00:00:00\n 1551 gvfsd-trash      0.0 00:00:00\n 1562 menu-cached      0.0 00:00:00\n 3218 kworker/u4:2-wr  0.0 00:00:01\n 4293 kworker/u4:0-as  0.0 00:00:01\n 4656 kworker/u4:3-as  0.0 00:00:00\n 8325 kworker/0:1-the  0.0 00:00:02\n 8350 kworker/0:2-eve  0.1 00:00:01\n 8538 kworker/0:2H     0.0 00:00:00\n 8550 kworker/0:0-eve  0.1 00:00:00\n 8607 sshd-session     0.2 00:00:00\n 8616 sshd-session     0.0 00:00:00\n 8617 timeout          0.0 00:00:00\n 8620 python3         80.0 00:00:59\n 8621 kworker/0:0H     0.0 00:00:00\n 8663 ps               350 00:00:00\n",
+        "max_rss_kib": 149588
+      },
+      "camera_config": "{'use_case': 'video', 'transform': <libcamera.Transform 'hvflip'>, 'colour_space': <libcamera.ColorSpace 'SMPTE170M'>, 'buffer_count': 2, 'queue': False, 'main': {'format': 'RGB888', 'size': (320, 240), 'preserve_ar': True, 'stride': 960, 'framesize': 230400}, 'lores': None, 'raw': {'format': 'SGRBG10_CSI2P', 'size': (2592, 1944), 'stride': 3264, 'framesize': 6345216}, 'controls': {'NoiseReductionMode': <NoiseReductionModeEnum.Fast: 1>, 'FrameDurationLimits': (33333, 33333), 'FrameRate': 5}, 'sensor': {'bit_depth': 10, 'output_size': (2592, 1944)}, 'display': 'main', 'encode': 'main'}",
+      "cpu_activity": {
+        "total_ticks": 1010,
+        "idle_and_iowait_ticks": 372,
+        "busy_percent": 63.16831683168317,
+        "scope": "System-wide counter interval including boundary telemetry; not model-only CPU time. I/O wait treated as nonbusy; guest time not counted twice."
+      }
+    }
+  ],
+  "host_pi_parity_frames": 96,
+  "max_score_delta": 1.1920928955078125e-07,
+  "max_box_delta": 1.9073486328125e-05,
+  "raw": {
+    "path": "runs/peak-blend-camera-rates-pi-20261011/camera/report.json",
+    "sha256": "c95f98fd0d4d5879079f873ed411ff43f95cca56ac8c45c696dfbc80839eec64"
+  },
+  "retained_frames": {
+    "0-0000-raw.png": "8cdf057864af1e9e92404304957d51cc0f4701603dfcbdeba1cafa3f67985049",
+    "0-0001-raw.png": "4d1849a978bddc0be93981190e0efbac1098560aea52e19a85dcf07a4bf4c46b",
+    "0-0002-raw.png": "44a7a2011aaee5aab9ead50cc2f17961907e23e74cadddfc208d27926f092952",
+    "0-0003-raw.png": "37d7aa4f4a20f8a5304df3ee1b0011a59f41bea5736ac197e096c2ec8f87a578",
+    "0-0004-raw.png": "e0ee6a7da25e0ddd647e364f9a54a32a0b4cd13859ad7e5e0bf17e78511b08d3",
+    "0-0005-raw.png": "9268dee5c27b8c13e281335156647fc23c82b32607c664174271b8e5b18aa99e",
+    "0-0006-raw.png": "bfac7962f55186e09f13a242c6eea4d4e20900fd65082356e07b8abf446887a7",
+    "0-0007-raw.png": "c6b68fff02641c2bedeb4eba1f27b51c1cc529980cde2c14334fe63c7d3d6ef0",
+    "0-0008-raw.png": "bcaf46a069dc261aa4b43b4efa694313fc7de2aa72d0fa5edd358596fd3a3aff",
+    "0-0009-raw.png": "809c49ac98b3e5b11c656cecf835b7112c85f16d57b058e0c5bee633245636ce",
+    "0-0010-raw.png": "b0c09fd812e50b0ba44e015c695c7d9e5b24911482dcc4f81066550187cd6ca1",
+    "0-0011-raw.png": "ade08ce5fa0e9d63db3fd93e2d86ef4d5a50ef8753ba0c7dfdf0cdfce56217c3",
+    "0-0012-raw.png": "2ec6251b519fb5d387b00bdc9f490b3ec466bbd4c35a927724aef006f612a1ae",
+    "0-0013-raw.png": "ffbfec2a645635925efa72ad7ac78880cf6efb41c83e05ad1de97eb3524486b2",
+    "0-0014-raw.png": "7327979952014011a13ba21c4bf45df3931f290acb5261dcd19ea7dcfc91c3b8",
+    "0-0015-raw.png": "7bad1ad64159cc680bd3067d73bc8233a59b39c661aadae29d3cd2725f789dfa",
+    "0-0016-raw.png": "99d88fab68ad6a86695123a2165c04669fc7c7f8546a6a86737ac998344e776e",
+    "0-0017-raw.png": "6014446ad104494f2b9e66633dafdd571109cca1eb9ce01972402382a0d41930",
+    "0-0018-raw.png": "cd335484d337fd002cb936895d5b78b674ce3fb07147f37aa08085c0d32bff7e",
+    "0-0019-raw.png": "aa386ea17a6bb70e04d208c68b5e070f30bc099a596f846a7986cf4118677c98",
+    "0-0020-raw.png": "2215bd015f39f48f919b5bd0dcd799ba4b1377ebc6e3beaf64984c6398434a55",
+    "0-0021-raw.png": "0d6d4a06f60b5ad9d3b589837735fcb39549f43383c0a275ba0a7d3a236ae2ac",
+    "0-0022-raw.png": "526c9c247e8d711371fe43b07cd3b1557089170e6d11af723b4ca7cbe22546d1",
+    "0-0023-raw.png": "3be27f6b48c1a0f20eec3703ba461c1e1855acad1268e421953cc6e01a59277a",
+    "1-0000-raw.png": "850444aebb80ca6cd63e112f4867f22f4381a21867eb158a1bfc355ed356ad96",
+    "1-0001-raw.png": "c7c3233a05ac8a45c0c15597fbcc4efeec597b1ba2bc01a69eb539b6c6f55fa4",
+    "1-0002-raw.png": "2146ac86ae3b748108eb8ffd0d9ed396d16034e438089a6b84951701ff1f9e82",
+    "1-0003-raw.png": "70a5b61212362c5b12f1fc2fbbed9c8b0e4e366aa5dc0b49632ebee245f32e26",
+    "1-0004-raw.png": "0aa13a026b0fb7edc20eb7a293151d16ad823ee7e5fcfeadcd510da6f5cfaf44",
+    "1-0005-raw.png": "2f800ee3a8f82c7832ada2a3d42fa3986ca8d8a50fc243f74345d07d31c8988f",
+    "1-0006-raw.png": "cae022936f77a27ebc14fa2f629f5e885ef1f11c4408a631f701f3aae5a559ff",
+    "1-0007-raw.png": "c64875068859380250d204bf1d5c380ef0efdd837adcff048c5b09650f454b01",
+    "1-0008-raw.png": "2287f6c217b9f651168c9726498bc9a419c6ad7e6f4226355af873148f5948a6",
+    "1-0009-raw.png": "e7b23dc556e8da7c3b43c8feff5e3719df9b7b176f5af698064bbb6e440a5212",
+    "1-0010-raw.png": "cb2c9381e311d8ea866836eb5af19c54bf0c98ed5c3db8d72fc16ed017ce99ab",
+    "1-0011-raw.png": "f6c128afd039de7de18f156997a14c39caef8c3b7e6305a402f53ac34af829e6",
+    "1-0012-raw.png": "a260c521cb2dd838f8cbc33f405887e3f6c2a1babea1f35c23e9001e05d4f2ba",
+    "1-0013-raw.png": "a534484aff4ee0357fa6fddf84864652985dfbe02651e6791ac957ac54d0a76b",
+    "1-0014-raw.png": "715cc75329d6cb3fdac4d30981a5481e872336349f31bbe0f6a7adc9bb3039da",
+    "1-0015-raw.png": "b544bd57282a83c5e96b8a524cd6fab42d116a9c6f364a3ae50878be72ee4bba",
+    "1-0016-raw.png": "62afb12d5b917e19311556c9a43fefaa6004729c71211a12f9a77d178e36351c",
+    "1-0017-raw.png": "d5468ffb9b20175b3c29ddfc4f53fd6b6588ea77fadf288611148eba917471ed",
+    "1-0018-raw.png": "e8426f07c190e925e687390eb5d0f9d5d72b19f21271dcc3afe60a4d50303dc7",
+    "1-0019-raw.png": "86b352aff8563d1968e2773974217a4ea99a0b673c4927c511810f4eb49da55f",
+    "1-0020-raw.png": "064d180960ba9eee61d99f2a570aaf1bde9e929e67bf86d80f7609d085390b09",
+    "1-0021-raw.png": "cb99c4393604e9fc99ef0c514a813f414c81b10bdc83dca4c5b6ee8cafa03dfc",
+    "1-0022-raw.png": "f752057fb8e23420436a2513c4ee25b6c0d22ec0b1c0804be0122f86ddd3cde1",
+    "1-0023-raw.png": "d738009569613df9d2268dea15972e2c3de85e244a1ae021a75b003b2ade064d",
+    "2-0000-raw.png": "b01967dad646b9ccbe9c0315c39caa55d02343d4acd9729069d2e1bc2f886e03",
+    "2-0001-raw.png": "c8f7f0269a8a5d8ae0a8ed6d920bf021e527918df378e4ff6e1c8710273d813b",
+    "2-0002-raw.png": "34993c6bf0feac778dfd445edb976f946f519cd724f3e2484a7a9f71285487fe",
+    "2-0003-raw.png": "5a01dfe448a21335aa9b67f1bd929e3ad2080419219dc3b6291a445f0caaca1c",
+    "2-0004-raw.png": "5cc4e7e26eb35bdd47499307b0264dcb40b10e799c783f48600e89c220455cad",
+    "2-0005-raw.png": "7e4516f337f6cbd208d08aed388f54ce0c5022bd2772989e71d34440a358fd85",
+    "2-0006-raw.png": "0286eaff67a5895bce60fe94d7d2a32dde8c300ce386434ebf018668e90e582f",
+    "2-0007-raw.png": "85d135947524c196897456d888c7a2a6c31bdcee2daaf0a0a3e5ce5912854efb",
+    "2-0008-raw.png": "76aff86135136a482ac5302a027c40a8724dcdb3b3cb1834752fe6be79509ebc",
+    "2-0009-raw.png": "b6a9fcb228309719ce7ac181fb7f86eb58eaffa05de6b302e22627ff46f81481",
+    "2-0010-raw.png": "91d556e6d4f446d95e11d27db5bf9ffe37f78a153a712a3f1eda877c31dc4d14",
+    "2-0011-raw.png": "3ec96a4f9a4b0c63697d7b0cf959ede3da66963982b58c88eba3765f80de0256",
+    "2-0012-raw.png": "a6ca6afd7a723d9d0578983701a0a6a54ba3d713003a26f519c2d10532ad48ed",
+    "2-0013-raw.png": "95126c3cf69a0f2d9481a10e8580fdfb9b5d57f76e555259821b52de4147b114",
+    "2-0014-raw.png": "b0df73d5e5d9ed7e3762e4b6ae82a207d09a5ceeaf4db17e8616281fc0e56485",
+    "2-0015-raw.png": "033af329e55633f77c8dd72d8aeff2a5a52f1254c630e4bfedc1e50b3382e773",
+    "2-0016-raw.png": "27e6987646b6206aa8fa0220c8e019f766bf5279b6e15c5804fe8fa840c85c11",
+    "2-0017-raw.png": "02483cb2c6fe19ee7f2e0aa075b1355eceb055445611e85bde324a7dca477bd7",
+    "2-0018-raw.png": "c2e306036d4e50165e37471194e1ac8bbe0a4c9d1abaaa6e1905c18eba7edb75",
+    "2-0019-raw.png": "bc755ad9d723e8b83d469a0a1289a4602b3ac9dfb697c9f16d3125930f0dc1cc",
+    "2-0020-raw.png": "1f552c24aa229bc2b4090358c3e9608618e94955e6977a78cdb5cc8d9a124745",
+    "2-0021-raw.png": "16c49866be281081ab32cf6a118d8b1f7fca1e8faea461da41da874d4599583b",
+    "2-0022-raw.png": "1fd4c61a571e18889ceab8e417c3da6873b52ba79db1a345200e858daf0c5c36",
+    "2-0023-raw.png": "4057a065829da891b322a199c27d473a33b27d99fb0e0b59a887462a7ec2d055",
+    "3-0000-raw.png": "22702860022a7c8c9421b0a78e4a134ca12198868c584cbfdc28284c8824e112",
+    "3-0001-raw.png": "87a9ec7ef61394c21ba1164621a9ce9d5fb78e3d97d8a6a4e4209ff564da98f7",
+    "3-0002-raw.png": "937accf48a64cbd5ff8657e56c66c38fc256d7e210f2ff741b768ce93c41d62a",
+    "3-0003-raw.png": "6ad4fdcc08d0a9c997de0972f9a59a5ad7592f56b74b448355f56fb8d0fcbb61",
+    "3-0004-raw.png": "a5eb6891d6a47ca71a3e9acb6b5672c03bc6670f2bc084dc9e183bf3563e4b08",
+    "3-0005-raw.png": "c6a4f2c422f86b0b7eae5d047655b4d6083cee64a82de42bffd3db2fc8cc62a6",
+    "3-0006-raw.png": "f8af0e22ff0392c1aedd1f068ea61855b641c100e1a0a656c0c93a32e657c6ee",
+    "3-0007-raw.png": "289669c6c849bcee207fb01bd609f55e053c4549df1070519cebd5ab5fee6e19",
+    "3-0008-raw.png": "fb8e4ff2a1b0097c2042364589bd7d5ecc375ed17c076ab27c76d1913c6d0674",
+    "3-0009-raw.png": "68d65973847dc8c472acdb9b508df4ff82fd679d1bc9e3e71f31e9f3160c9729",
+    "3-0010-raw.png": "7e7be1518558b4e3df4f24f077469ce809787febc572e2e9306c909343baf0c6",
+    "3-0011-raw.png": "e5ad255f16bdc738bf38b5ceecb00da208b4f53b56b205abc3fad684e45afc2b",
+    "3-0012-raw.png": "b3c4fb4f063c87f065416fd177c1e3564e3dc5d2ab70cd3fd1e208f6f15fba45",
+    "3-0013-raw.png": "8a32f2b72cd65ce9b088479d34004219fa7c7d97c22bf109e9944e56b2f8a1b5",
+    "3-0014-raw.png": "742dbb494ee8747683b4646a2bc772383fed316f320213cb19d6a9f8710d64d3",
+    "3-0015-raw.png": "3c330883aa8c584bca17ef51d3dfe17618476b91a2071a776baf4b5f8a6f1074",
+    "3-0016-raw.png": "3e5a4beeca47ac8305a481498bfce156e90ce61eee50e78d8998e8ae9d4458f7",
+    "3-0017-raw.png": "25a6f45956592025976611dd715177290f3a03388d324795f974e774ad10c715",
+    "3-0018-raw.png": "a95781b03b7214d697fb92e294127ab25b639da25e4ba984f476f9bd152e3949",
+    "3-0019-raw.png": "21c0f0ea3a222391616e963b3ba910d94bb00d4d527b548c6c004cac32849afa",
+    "3-0020-raw.png": "4d241a20899f2c1b86bfdcf52db9758a5c752459279a09124aad0c9ff50df813",
+    "3-0021-raw.png": "cd3ec803837a8a6727aa2c6cf7834a2241c79d04954adf855dd2aee139c15f32",
+    "3-0022-raw.png": "40ae9151cc287c24898e218c2412a179b6a07d1766972557c6a9870bf5e07b6c",
+    "3-0023-raw.png": "f1a88717d6fb61415a10dd3a1579f37ac5d61d0dd5d15b0a297a732ac59e6b3b"
+  },
+  "bundle_sha256": "e67c733cbaa36df1ad032694c4107fcc29673a2b98bd7c49ba9977ec1417da6b",
+  "protocol_sha256": "61ea5ed06c3594fd2b656ce6220e39acff72e019e95fd11f76edfdf1d761e934",
+  "script_sha256": "1fd7a1d2af715658bd8ca64f1015ad8da2b65fed06e00d4c59af6ccbd470197b",
+  "max_rss_kib": 150016,
+  "retained_rgb_bytes": 22118400,
+  "scope": "Sequential ABBA camera-inclusive timing in unlabeled live views. Sensor periods validated within5%of requested cadence. All startup and outlier samples retained. Not matched-scene accuracy or independent qualification.",
+  "camera_used": true,
+  "accuracy_measured": false,
+  "model_replaced": false,
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "esp32_commands_sent": false,
+  "motor_commands_sent": false
+}

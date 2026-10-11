@@ -1,6 +1,6 @@
 import pytest
 
-from scripts.audit_peak_blend_camera_rates import validate_clock_and_rate
+from scripts.audit_peak_blend_camera_rates import cpu_activity, validate_clock_and_rate
 from scripts.pi_balloon_live_bench import frame_timing
 
 
@@ -29,3 +29,16 @@ def test_forged_timestamp_or_bad_cadence_rejected(field, value):
 def test_duplicate_sensor_frame_rejected():
     with pytest.raises(ValueError, match='timestamp'):
         validate_clock_and_rate([row(), row()], 10)
+
+
+def test_cpu_busy_does_not_double_count_guest_or_iowait():
+    result = cpu_activity('cpu 10 0 10 50 5 0 0 0 5 0', 'cpu 30 0 20 100 15 0 10 0 10 0')
+    assert result['total_ticks'] == 100 and result['idle_and_iowait_ticks'] == 60
+    assert result['busy_percent'] == 40
+
+
+def test_invalid_cpu_counters_rejected():
+    with pytest.raises(ValueError):
+        cpu_activity('cpu 0 0', 'cpu 1 2')
+    with pytest.raises(ValueError):
+        cpu_activity('cpu 10 0 0 0 0 0 0 0', 'cpu 0 0 0 0 0 0 0 0')
