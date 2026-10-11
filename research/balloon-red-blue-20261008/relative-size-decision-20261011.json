@@ -1,0 +1,31 @@
+{
+  "decision": "Reject relative-size objective before development evaluation",
+  "training_receipt": "research/balloon-red-blue-20261008/relative-size-training-20261011.json",
+  "training_receipt_sha256": "74dc27e17db64a0a76c507500bf897d6db42cb1227eba1d3d62847816aba50b1",
+  "reason": "Neither seed passes the preregistered TRAIN gate. Seed47 public blue localization falls from 5/18 to 3/18, with original-fit blue falling from 96/119 to 95/119. Seed48 public blue improves from 2/18 to 3/18, but public red falls from 2/12 to 1/12. Do not select the more favorable seed or tune against development scenes.",
+  "exports": {
+    "47": {
+      "sha256": "c32fa5149d28f2662c653fa37509bcd9acaf442ffcb2b09846100a00933971d1",
+      "bytes": 14420,
+      "parameters": 2342,
+      "max_tensor_delta": 0.0000019073486328125,
+      "decoded_parity_frames": 129
+    },
+    "48": {
+      "sha256": "6a7ffcf726f70d3668988c058789d2096e4ce10cec55183cd6d10d9bb3ba4042",
+      "bytes": 14420,
+      "parameters": 2342,
+      "max_tensor_delta": 0.0000021457672119140625,
+      "decoded_parity_frames": 129
+    }
+  },
+  "tests": {"passed": 1127, "skipped": 2, "warnings": 6},
+  "next_direction": "Investigate spatial-resolution and center-collision limits on FIT data before increasing model capacity or changing runtime search. Oversized predictions alone do not justify another loss-weight sweep.",
+  "scope": "Known TRAIN target coverage and host export parity only, not complete-scene accuracy or live Pi readiness",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "pi_active_model_changed": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

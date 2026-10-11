@@ -1,0 +1,22 @@
+{
+  "data": "data/balloon-dense-public-admit-20261011",
+  "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "size_weight": 1.0,
+  "size_epsilon": 0.0001,
+  "objective": "Unchanged focal plus 5*L1 plus 2*GIoU, add mean smooth-L1(log(predicted_size/true_size)) at supervised noncolliding centers only",
+  "architecture": "Unchanged 2342-parameter graph, input120x160, output15x20x6",
+  "controls": {
+    "47": "runs/balloon-dense-public-admit-seed47-20261011",
+    "48": "runs/balloon-dense-public-admit-seed48-20261011"
+  },
+  "checkpoint_policy": "Final epoch80 only, no sweep or intermediate selection",
+  "training_gate": "Both seeds must improve decoded known blue target coverage on extra public FIT scenes, without reducing known red coverage there or known red/blue coverage on original FIT scenes. Do not use holdout to choose an epoch or penalty weight.",
+  "evaluation": "After training gate, export with unchanged decoder and evaluate both seeds on all three repeated development panels with unchanged classifier, thresholds and crop budget. Independent Pi-camera qualification remains required.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
