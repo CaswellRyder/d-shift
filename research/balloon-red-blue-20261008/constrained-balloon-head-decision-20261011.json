@@ -1,0 +1,174 @@
+{
+  "scene_receipt_sha256": "081f5211d5e6cb3bbb56b838930589340df42656938202b6ad25070c875ba3ab",
+  "script_sha256": "9d8ac29bed79cd1fde211e4e110ebf65cb2a8d443901dcbe43b7a62f7b1eb8a0",
+  "summaries": {
+    "training": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 8,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 4
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "control": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 8,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 4
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "admit": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 5,
+            "fn": 4,
+            "precision": 0.9468085106382979,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": false,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 8,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 4,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 8,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 4,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        }
+      }
+    }
+  },
+  "eligible_for_pi_comparison": [],
+  "decision": "Do not promote these classifiers; the constrained admission fails scene nonregression.",
+  "scope": "Recounted full-scene TRAIN and any related repeated development. Deterministic unchanged control isolates the new-data intervention; related panels must not be pooled as independent accuracy. No Pi timing or qualification.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
