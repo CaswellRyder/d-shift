@@ -1,0 +1,1300 @@
+{
+  "scene_receipt_sha256": "460216bd79639f5f91c4526ab5e526bb5106ee13f4bb4e2fd0c29ffd3a5d94be",
+  "script_sha256": "adc2798c14320a2103ae31a7461beb588c9c9674fd30bf2f31a3ef1870682556",
+  "summaries": {
+    "training": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 8,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 4
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 8,
+            "fn": 4,
+            "precision": 0.9215686274509803,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 3,
+            "fn": 4,
+            "precision": 0.967391304347826,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 6,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 2,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 8,
+            "fn": 4,
+            "precision": 0.9215686274509803,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 3,
+            "fn": 4,
+            "precision": 0.967391304347826,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 6,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 2,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 8,
+            "fn": 4,
+            "precision": 0.9215686274509803,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 3,
+            "fn": 4,
+            "precision": 0.967391304347826,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 6,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 2,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 6,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 2,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        }
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 8,
+            "fn": 4,
+            "precision": 0.9215686274509803,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 3,
+            "fn": 4,
+            "precision": 0.967391304347826,
+            "recall": 0.956989247311828
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 6,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "no_localized_proposal": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 2,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 98,
+              "geometric_oracle_covered": 95,
+              "geometric_oracle_recall": 0.9693877551020408,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 6,
+                  "localization_overlap": 2
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1,
+                  "no_localized_proposal": 3
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 93,
+              "geometric_oracle_covered": 89,
+              "geometric_oracle_recall": 0.956989247311828,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 2,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        }
+      }
+    },
+    "engdes2-lockbox-panel3-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 65,
+            "fp": 14,
+            "fn": 6,
+            "precision": 0.8227848101265823,
+            "recall": 0.9154929577464789
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 2
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 8,
+              "little_or_no_annotated_overlap": 5,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 2,
+              "below_acceptance_threshold": 3,
+              "different_predicted_class": 1
+            }
+          }
+        }
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 12,
+            "fn": 8,
+            "precision": 0.84,
+            "recall": 0.8873239436619719
+          }
+        },
+        "nonregression": false,
+        "lost": 5,
+        "gained": 2,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 6,
+              "little_or_no_annotated_overlap": 5,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "no_localized_proposal": 2,
+              "below_acceptance_threshold": 3,
+              "different_predicted_class": 3
+            }
+          }
+        }
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 13,
+            "fn": 9,
+            "precision": 0.8266666666666667,
+            "recall": 0.8732394366197183
+          }
+        },
+        "nonregression": false,
+        "lost": 6,
+        "gained": 2,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 7,
+              "little_or_no_annotated_overlap": 5,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "suppressed": 1,
+              "no_localized_proposal": 2,
+              "below_acceptance_threshold": 3,
+              "different_predicted_class": 3
+            }
+          }
+        }
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 13,
+            "fn": 9,
+            "precision": 0.8266666666666667,
+            "recall": 0.8732394366197183
+          }
+        },
+        "nonregression": false,
+        "lost": 6,
+        "gained": 3,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 2
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 7,
+              "little_or_no_annotated_overlap": 5,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3,
+              "suppressed": 1,
+              "no_localized_proposal": 2,
+              "different_predicted_class": 3
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 71,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 69,
+              "geometric_oracle_recall": 0.971830985915493,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 7,
+                  "little_or_no_annotated_overlap": 5,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 3,
+                  "suppressed": 1,
+                  "no_localized_proposal": 2,
+                  "different_predicted_class": 3
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [
+            {
+              "source": "IMG_5162_JPG.rf.02a79731cebd335c53f3b9171752adea.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  134.0,
+                  94.875,
+                  238.5,
+                  148.875
+                ]
+              }
+            },
+            {
+              "source": "IMG_5166_JPG.rf.47e8960d1bc91b9228d8695f0fbbc5c5.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  107.0,
+                  83.625,
+                  197.5,
+                  139.875
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "IMG_5150_JPG.rf.2607ef789cecd6cddbf3e674cc0ca3b4.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  191.0,
+                  63.46875,
+                  280.0,
+                  114.65625
+                ]
+              }
+            },
+            {
+              "source": "IMG_5408_jpg.rf.0b1f2664f4c8bd644482d58ac067fd05.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  13.0,
+                  0.0,
+                  176.5,
+                  124.875
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 13,
+            "fn": 10,
+            "precision": 0.8243243243243243,
+            "recall": 0.8591549295774648
+          }
+        },
+        "nonregression": false,
+        "lost": 7,
+        "gained": 3,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 2
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 7,
+              "little_or_no_annotated_overlap": 5,
+              "duplicate": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3,
+              "suppressed": 1,
+              "no_localized_proposal": 2,
+              "different_predicted_class": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 71,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 71,
+              "geometric_oracle_covered": 69,
+              "geometric_oracle_recall": 0.971830985915493,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 7,
+                  "little_or_no_annotated_overlap": 5,
+                  "duplicate": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 3,
+                  "suppressed": 1,
+                  "no_localized_proposal": 2,
+                  "different_predicted_class": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [
+            {
+              "source": "IMG_5162_JPG.rf.02a79731cebd335c53f3b9171752adea.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  134.0,
+                  94.875,
+                  238.5,
+                  148.875
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "IMG_5150_JPG.rf.2607ef789cecd6cddbf3e674cc0ca3b4.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  191.0,
+                  63.46875,
+                  280.0,
+                  114.65625
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 2
+            },
+            "false_negatives": {
+              "different_predicted_class": 1,
+              "below_acceptance_threshold": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 22,
+              "localization_overlap": 4
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 2,
+              "no_localized_proposal": 4,
+              "different_predicted_class": 2
+            }
+          }
+        }
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4,
+            "precision": 0.9682539682539683,
+            "recall": 0.9384615384615385
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 17,
+            "fn": 12,
+            "precision": 0.7638888888888888,
+            "recall": 0.8208955223880597
+          }
+        },
+        "nonregression": false,
+        "lost": 8,
+        "gained": 2,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3,
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 15,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 5,
+              "different_predicted_class": 3,
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4,
+            "precision": 0.9682539682539683,
+            "recall": 0.9384615384615385
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 17,
+            "fn": 12,
+            "precision": 0.7638888888888888,
+            "recall": 0.8208955223880597
+          }
+        },
+        "nonregression": false,
+        "lost": 8,
+        "gained": 2,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 3,
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 15,
+              "localization_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 5,
+              "different_predicted_class": 3,
+              "no_localized_proposal": 4
+            }
+          }
+        }
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 16,
+            "fn": 12,
+            "precision": 0.7746478873239436,
+            "recall": 0.8208955223880597
+          }
+        },
+        "nonregression": false,
+        "lost": 7,
+        "gained": 3,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 1,
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 15,
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 6,
+              "different_predicted_class": 2,
+              "no_localized_proposal": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 65,
+              "geometric_oracle_covered": 65,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 1,
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 67,
+              "geometric_oracle_covered": 63,
+              "geometric_oracle_recall": 0.9402985074626866,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 15,
+                  "localization_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 6,
+                  "different_predicted_class": 2,
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [
+            {
+              "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  98.125,
+                  61.40625,
+                  228.375,
+                  119.34375
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "IMG_5182_JPG.rf.537c75be1abb9dff5f743b0fdce9c245.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  11.875,
+                  53.71875,
+                  149.625,
+                  116.53125
+                ]
+              }
+            },
+            {
+              "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  21.625,
+                  67.78125,
+                  98.875,
+                  112.21875
+                ]
+              }
+            },
+            {
+              "source": "IMG_5307_JPG.rf.6cfbe3f15b0e0a579b50868ebd6c5451.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  97.25,
+                  93.5625,
+                  201.25,
+                  154.6875
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 16,
+            "fn": 13,
+            "precision": 0.7714285714285715,
+            "recall": 0.8059701492537313
+          }
+        },
+        "nonregression": false,
+        "lost": 9,
+        "gained": 3,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 2
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 2,
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 15,
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "below_acceptance_threshold": 6,
+              "different_predicted_class": 3,
+              "no_localized_proposal": 4
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 65,
+              "geometric_oracle_covered": 65,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 2
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 2,
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 67,
+              "geometric_oracle_covered": 63,
+              "geometric_oracle_recall": 0.9402985074626866,
+              "errors": {
+                "false_positives": {
+                  "little_or_no_annotated_overlap": 15,
+                  "localization_overlap": 1
+                },
+                "false_negatives": {
+                  "below_acceptance_threshold": 6,
+                  "different_predicted_class": 3,
+                  "no_localized_proposal": 4
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [
+            {
+              "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  98.125,
+                  61.40625,
+                  228.375,
+                  119.34375
+                ]
+              }
+            },
+            {
+              "source": "IMG_5168_JPG.rf.e6dc1d7b8467430e406e82bd38e8a61c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  22.25,
+                  84.09375,
+                  129.25,
+                  144.65625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "IMG_5182_JPG.rf.537c75be1abb9dff5f743b0fdce9c245.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  11.875,
+                  53.71875,
+                  149.625,
+                  116.53125
+                ]
+              }
+            },
+            {
+              "source": "IMG_5307_JPG.rf.6cfbe3f15b0e0a579b50868ebd6c5451.jpg",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  97.25,
+                  93.5625,
+                  201.25,
+                  154.6875
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {},
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "little_or_no_annotated_overlap": 1
+            },
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          }
+        }
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {},
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          }
+        }
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {},
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          }
+        }
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {},
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 11,
+              "geometric_oracle_covered": 11,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {},
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 12,
+              "geometric_oracle_covered": 12,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 1
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        }
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "nonregression": true,
+        "lost": 0,
+        "gained": 0,
+        "errors": {
+          "red_balloon": {
+            "false_positives": {},
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          },
+          "blue_balloon": {
+            "false_positives": {
+              "localization_overlap": 1
+            },
+            "false_negatives": {
+              "different_predicted_class": 1
+            }
+          }
+        },
+        "against_matched_control": {
+          "colors": {
+            "red_balloon": {
+              "targets": 11,
+              "geometric_oracle_covered": 11,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {},
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            },
+            "blue_balloon": {
+              "targets": 12,
+              "geometric_oracle_covered": 12,
+              "geometric_oracle_recall": 1.0,
+              "errors": {
+                "false_positives": {
+                  "localization_overlap": 1
+                },
+                "false_negatives": {
+                  "different_predicted_class": 1
+                }
+              }
+            }
+          },
+          "lost_parent_targets": [],
+          "gained_targets": []
+        }
+      }
+    }
+  },
+  "eligible_for_pi_comparison": [],
+  "decision": "Do not promote these classifiers; no admission pair passes scene nonregression.",
+  "scope": "Recounted full-scene TRAIN and any related repeated development. Matched control isolates the new-data intervention; related panels must not be pooled as independent accuracy. No Pi timing or qualification.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
