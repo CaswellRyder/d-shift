@@ -1,0 +1,1929 @@
+{
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "source_sha256": "0db80bf53131e80a24fb7db99c52d517ee7e39bdf51fc3d2973dc7d7568e7b20",
+      "results": {
+        "parent/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 68,
+              "fp": 3,
+              "fn": 3,
+              "precision": 0.9577464788732394,
+              "recall": 0.9577464788732394
+            },
+            "blue_balloon": {
+              "tp": 55,
+              "fp": 8,
+              "fn": 16,
+              "precision": 0.873015873015873,
+              "recall": 0.7746478873239436
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 4,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 10,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 61,
+              "total": 71,
+              "fraction": 0.8591549295774648
+            }
+          }
+        },
+        "parent/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 68,
+              "fp": 3,
+              "fn": 3,
+              "precision": 0.9577464788732394,
+              "recall": 0.9577464788732394
+            },
+            "blue_balloon": {
+              "tp": 63,
+              "fp": 18,
+              "fn": 8,
+              "precision": 0.7777777777777778,
+              "recall": 0.8873239436619719
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/duplicate_localized_same_color": 1,
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 4,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 6,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 4,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "parent/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 68,
+              "fp": 3,
+              "fn": 3,
+              "precision": 0.9577464788732394,
+              "recall": 0.9577464788732394
+            },
+            "blue_balloon": {
+              "tp": 61,
+              "fp": 19,
+              "fn": 10,
+              "precision": 0.7625,
+              "recall": 0.8591549295774648
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 7,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 4,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 4,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 4,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "control47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 55,
+              "fp": 10,
+              "fn": 16,
+              "precision": 0.8461538461538461,
+              "recall": 0.7746478873239436
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 10,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 61,
+              "total": 71,
+              "fraction": 0.8591549295774648
+            }
+          }
+        },
+        "control47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 62,
+              "fp": 20,
+              "fn": 9,
+              "precision": 0.7560975609756098,
+              "recall": 0.8732394366197183
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/duplicate_localized_same_color": 1,
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 4,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 6,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 5,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "control47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 60,
+              "fp": 21,
+              "fn": 11,
+              "precision": 0.7407407407407407,
+              "recall": 0.8450704225352113
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 7,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 4,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 4,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "control48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 55,
+              "fp": 10,
+              "fn": 16,
+              "precision": 0.8461538461538461,
+              "recall": 0.7746478873239436
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 10,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 61,
+              "total": 71,
+              "fraction": 0.8591549295774648
+            }
+          }
+        },
+        "control48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 62,
+              "fp": 20,
+              "fn": 9,
+              "precision": 0.7560975609756098,
+              "recall": 0.8732394366197183
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/duplicate_localized_same_color": 1,
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 4,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 6,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 5,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "control48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.9583333333333334,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 60,
+              "fp": 21,
+              "fn": 11,
+              "precision": 0.7407407407407407,
+              "recall": 0.8450704225352113
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 7,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 4,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 6,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 4,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "red_balloon/baseline_search/overlaps_target_below_matching_iou": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 4,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/suppressed_correct_detection": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "admit47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9859154929577465,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 54,
+              "fp": 5,
+              "fn": 17,
+              "precision": 0.9152542372881356,
+              "recall": 0.7605633802816901
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 2,
+            "blue_balloon/no_geometric_proposal": 10,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 61,
+              "total": 71,
+              "fraction": 0.8591549295774648
+            }
+          }
+        },
+        "admit47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9859154929577465,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 60,
+              "fp": 14,
+              "fn": 11,
+              "precision": 0.8108108108108109,
+              "recall": 0.8450704225352113
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 2,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 6,
+            "blue_balloon/baseline_search/duplicate_localized_same_color": 1,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 5,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "admit47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9859154929577465,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 59,
+              "fp": 16,
+              "fn": 12,
+              "precision": 0.7866666666666666,
+              "recall": 0.8309859154929577
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 7,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 4,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 2,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 3,
+            "red_balloon/correct_label_below_threshold": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "admit48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9857142857142858,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 55,
+              "fp": 6,
+              "fn": 16,
+              "precision": 0.9016393442622951,
+              "recall": 0.7746478873239436
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 10,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 61,
+              "total": 71,
+              "fraction": 0.8591549295774648
+            }
+          }
+        },
+        "admit48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9857142857142858,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 64,
+              "fp": 15,
+              "fn": 7,
+              "precision": 0.810126582278481,
+              "recall": 0.9014084507042254
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 2,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 7,
+            "blue_balloon/baseline_search/duplicate_localized_same_color": 1,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 2,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/correct_label_below_threshold": 2
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        },
+        "admit48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 69,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9857142857142858,
+              "recall": 0.971830985915493
+            },
+            "blue_balloon": {
+              "tp": 61,
+              "fp": 17,
+              "fn": 10,
+              "precision": 0.782051282051282,
+              "recall": 0.8591549295774648
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 7,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 4,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 4,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 2,
+            "blue_balloon/suppressed_correct_detection": 3,
+            "red_balloon/correct_label_below_threshold": 2
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 71,
+              "total": 71,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 69,
+              "total": 71,
+              "fraction": 0.971830985915493
+            }
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "source_sha256": "7985653e5051d44809c89b1f4ffeb4c73f4880eb59338f42c34b74abb3b3e280",
+      "results": {
+        "parent/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 50,
+              "fp": 21,
+              "fn": 17,
+              "precision": 0.704225352112676,
+              "recall": 0.746268656716418
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 18,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 1,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 11,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 56,
+              "total": 67,
+              "fraction": 0.835820895522388
+            }
+          }
+        },
+        "parent/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 58,
+              "fp": 32,
+              "fn": 9,
+              "precision": 0.6444444444444445,
+              "recall": 0.8656716417910447
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 9,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 17,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 4,
+            "blue_balloon/no_geometric_proposal": 4,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 63,
+              "total": 67,
+              "fraction": 0.9402985074626866
+            }
+          }
+        },
+        "parent/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 34,
+              "fn": 10,
+              "precision": 0.6263736263736264,
+              "recall": 0.8507462686567164
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 10,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 18,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 1,
+            "blue_balloon/localized_but_wrong_label": 4,
+            "blue_balloon/no_geometric_proposal": 3,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 64,
+              "total": 67,
+              "fraction": 0.9552238805970149
+            }
+          }
+        },
+        "control47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 50,
+              "fp": 23,
+              "fn": 17,
+              "precision": 0.684931506849315,
+              "recall": 0.746268656716418
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 20,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 1,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 11,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 56,
+              "total": 67,
+              "fraction": 0.835820895522388
+            }
+          }
+        },
+        "control47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 38,
+              "fn": 10,
+              "precision": 0.6,
+              "recall": 0.8507462686567164
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 13,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 19,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 1,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 4,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 63,
+              "total": 67,
+              "fraction": 0.9402985074626866
+            }
+          }
+        },
+        "control47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 56,
+              "fp": 37,
+              "fn": 11,
+              "precision": 0.6021505376344086,
+              "recall": 0.835820895522388
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 11,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 20,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 2,
+            "blue_balloon/localized_but_wrong_label": 4,
+            "blue_balloon/no_geometric_proposal": 3,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 64,
+              "total": 67,
+              "fraction": 0.9552238805970149
+            }
+          }
+        },
+        "control48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 50,
+              "fp": 22,
+              "fn": 17,
+              "precision": 0.6944444444444444,
+              "recall": 0.746268656716418
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 19,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 4,
+            "blue_balloon/no_geometric_proposal": 11,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 56,
+              "total": 67,
+              "fraction": 0.835820895522388
+            }
+          }
+        },
+        "control48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 36,
+              "fn": 10,
+              "precision": 0.6129032258064516,
+              "recall": 0.8507462686567164
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 12,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 18,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 4,
+            "blue_balloon/no_geometric_proposal": 4,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 63,
+              "total": 67,
+              "fraction": 0.9402985074626866
+            }
+          }
+        },
+        "control48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 62,
+              "fp": 2,
+              "fn": 3,
+              "precision": 0.96875,
+              "recall": 0.9538461538461539
+            },
+            "blue_balloon": {
+              "tp": 56,
+              "fp": 35,
+              "fn": 11,
+              "precision": 0.6153846153846154,
+              "recall": 0.835820895522388
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 10,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 3,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 19,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 1,
+            "blue_balloon/localized_but_wrong_label": 5,
+            "blue_balloon/no_geometric_proposal": 3,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 64,
+              "total": 67,
+              "fraction": 0.9552238805970149
+            }
+          }
+        },
+        "admit47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 45,
+              "fp": 18,
+              "fn": 22,
+              "precision": 0.7142857142857143,
+              "recall": 0.6716417910447762
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 15,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 7,
+            "blue_balloon/localized_but_wrong_label": 2,
+            "blue_balloon/no_geometric_proposal": 11,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 56,
+              "total": 67,
+              "fraction": 0.835820895522388
+            }
+          }
+        },
+        "admit47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 53,
+              "fp": 25,
+              "fn": 14,
+              "precision": 0.6794871794871795,
+              "recall": 0.7910447761194029
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/duplicate_localized_same_color": 1,
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 6,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 2,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 13,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 5,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 4,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 63,
+              "total": 67,
+              "fraction": 0.9402985074626866
+            }
+          }
+        },
+        "admit47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 52,
+              "fp": 25,
+              "fn": 15,
+              "precision": 0.6753246753246753,
+              "recall": 0.7761194029850746
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 5,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 2,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 15,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 7,
+            "blue_balloon/localized_but_wrong_label": 3,
+            "blue_balloon/no_geometric_proposal": 3,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 64,
+              "total": 67,
+              "fraction": 0.9552238805970149
+            }
+          }
+        },
+        "admit48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 50,
+              "fp": 19,
+              "fn": 17,
+              "precision": 0.7246376811594203,
+              "recall": 0.746268656716418
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 16,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 1,
+            "blue_balloon/no_geometric_proposal": 11,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 56,
+              "total": 67,
+              "fraction": 0.835820895522388
+            }
+          }
+        },
+        "admit48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 58,
+              "fp": 26,
+              "fn": 9,
+              "precision": 0.6904761904761905,
+              "recall": 0.8656716417910447
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/duplicate_localized_same_color": 1,
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 6,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 2,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 14,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 2,
+            "blue_balloon/localized_but_wrong_label": 2,
+            "blue_balloon/no_geometric_proposal": 4,
+            "blue_balloon/suppressed_correct_detection": 1,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 63,
+              "total": 67,
+              "fraction": 0.9402985074626866
+            }
+          }
+        },
+        "admit48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 63,
+              "fp": 2,
+              "fn": 2,
+              "precision": 0.9692307692307692,
+              "recall": 0.9692307692307692
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 27,
+              "fn": 10,
+              "precision": 0.6785714285714286,
+              "recall": 0.8507462686567164
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 6,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 2,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 16,
+            "blue_balloon/baseline_search/overlaps_target_below_matching_iou": 3,
+            "red_balloon/baseline_search/no_annotated_target_overlap": 2
+          },
+          "false_negative_counts": {
+            "blue_balloon/correct_label_below_threshold": 3,
+            "blue_balloon/localized_but_wrong_label": 2,
+            "blue_balloon/no_geometric_proposal": 3,
+            "blue_balloon/suppressed_correct_detection": 2,
+            "red_balloon/correct_label_below_threshold": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 65,
+              "total": 65,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 64,
+              "total": 67,
+              "fraction": 0.9552238805970149
+            }
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "source_sha256": "81a616884cd5e883774245b9a24428342f496d10c63c98b9128a859d545d75be",
+      "results": {
+        "parent/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9090909090909091,
+              "recall": 0.8333333333333334
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 10,
+              "total": 12,
+              "fraction": 0.8333333333333334
+            }
+          }
+        },
+        "parent/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9166666666666666,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 12,
+              "total": 12,
+              "fraction": 1.0
+            }
+          }
+        },
+        "parent/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 5,
+              "fn": 1,
+              "precision": 0.6875,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 3,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 1,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 11,
+              "total": 12,
+              "fraction": 0.9166666666666666
+            }
+          }
+        },
+        "control47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.7692307692307693,
+              "recall": 0.8333333333333334
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 10,
+              "total": 12,
+              "fraction": 0.8333333333333334
+            }
+          }
+        },
+        "control47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 3,
+              "fn": 1,
+              "precision": 0.7857142857142857,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 12,
+              "total": 12,
+              "fraction": 1.0
+            }
+          }
+        },
+        "control47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 5,
+              "fn": 1,
+              "precision": 0.6875,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 1,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 1,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 11,
+              "total": 12,
+              "fraction": 0.9166666666666666
+            }
+          }
+        },
+        "control48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 3,
+              "fn": 2,
+              "precision": 0.7692307692307693,
+              "recall": 0.8333333333333334
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 10,
+              "total": 12,
+              "fraction": 0.8333333333333334
+            }
+          }
+        },
+        "control48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 3,
+              "fn": 1,
+              "precision": 0.7857142857142857,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 12,
+              "total": 12,
+              "fraction": 1.0
+            }
+          }
+        },
+        "control48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 5,
+              "fn": 1,
+              "precision": 0.6875,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/added_localizer/no_annotated_target_overlap": 1,
+            "blue_balloon/added_localizer/overlaps_target_below_matching_iou": 1,
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 3
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 11,
+              "total": 12,
+              "fraction": 0.9166666666666666
+            }
+          }
+        },
+        "admit47/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9090909090909091,
+              "recall": 0.8333333333333334
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 10,
+              "total": 12,
+              "fraction": 0.8333333333333334
+            }
+          }
+        },
+        "admit47/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9166666666666666,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 12,
+              "total": 12,
+              "fraction": 1.0
+            }
+          }
+        },
+        "admit47/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9166666666666666,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 11,
+              "total": 12,
+              "fraction": 0.9166666666666666
+            }
+          }
+        },
+        "admit48/baseline": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 1,
+              "fn": 2,
+              "precision": 0.9090909090909091,
+              "recall": 0.8333333333333334
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 2,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 10,
+              "total": 12,
+              "fraction": 0.8333333333333334
+            }
+          }
+        },
+        "admit48/coarse47": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9166666666666666,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/localized_but_wrong_label": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 12,
+              "total": 12,
+              "fraction": 1.0
+            }
+          }
+        },
+        "admit48/coarse48": {
+          "metrics": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": 1,
+              "precision": 1.0,
+              "recall": 0.9090909090909091
+            },
+            "blue_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 1,
+              "precision": 0.9166666666666666,
+              "recall": 0.9166666666666666
+            }
+          },
+          "false_positive_counts": {
+            "blue_balloon/baseline_search/no_annotated_target_overlap": 1
+          },
+          "false_negative_counts": {
+            "blue_balloon/no_geometric_proposal": 1,
+            "red_balloon/localized_but_wrong_label": 1
+          },
+          "geometric_target_coverage": {
+            "red_balloon": {
+              "covered": 11,
+              "total": 11,
+              "fraction": 1.0
+            },
+            "blue_balloon": {
+              "covered": 11,
+              "total": 12,
+              "fraction": 0.9166666666666666
+            }
+          }
+        }
+      }
+    }
+  },
+  "decision_sha256": "515dab8ec7875bef027ce4d402074279cc8763167ccd58ed2ecec12d68b39ad2",
+  "script_sha256": "ab6308e5353fcdfffd520f848c731dd39ae8c19b27cd162830e4a89184a75d2b",
+  "helpers_sha256": {
+    "scripts/audit_balloon_false_positives.py": "277b855a8fbb2d3f770782785a9d39dd293a1e30bcdc2d978333590119b7f77d",
+    "scripts/audit_blue_final_errors.py": "84393c229bc23ab7367570db23b936ddfbc31be880acd3212c651b712d2e2762",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8"
+  },
+  "scope": "Saved development geometry only. Zero annotated overlap does not prove background. Per-target proposal coverage is an optimistic bound, not attainable recall. No image mining, threshold selection, or qualification.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

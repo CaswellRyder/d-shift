@@ -1,0 +1,954 @@
+{
+  "training_trial_sha256": "ba19d9d73e4134dff6d2cfea9fdb6811ae228e142b179e0ffb2a31a6974f2207",
+  "exports": {
+    "control47": {
+      "path": "runs/real-blue-clutter-convergence-control-seed47-20261011/student.fp32.tflite",
+      "sha256": "9d7e3bda04ea35354038fc433817033656a3c32c8853cb52a785ae8669a29c9a",
+      "metadata_sha256": "4734ce33d76c0c2ab6ee988420ba4bdb93665718b6e57e83313889c4f1550c61",
+      "bytes": 34844,
+      "parity_rows": 1739,
+      "max_delta": 9.5367431640625e-06,
+      "parameters": 7763
+    },
+    "control48": {
+      "path": "runs/real-blue-clutter-convergence-control-seed48-20261011/student.fp32.tflite",
+      "sha256": "ad5770bb612c98c804bae9ddb8b700ace4f769062e1114075647d449fedabe46",
+      "metadata_sha256": "1c4361ad154ceb5d8af7ea84dec9494dbd95f80aa2fa7ebadd1b2f65e9c2fca4",
+      "bytes": 34844,
+      "parity_rows": 1739,
+      "max_delta": 9.5367431640625e-06,
+      "parameters": 7763
+    },
+    "admit47": {
+      "path": "runs/real-blue-clutter-convergence-admit-seed47-20261011/student.fp32.tflite",
+      "sha256": "911d90229a742e914d51690a4893a152790561b14c04704265005770e43e6329",
+      "metadata_sha256": "675d8c53ed9136f8f1bd20f17fad26358ea9d50d986150be3f20b3e1864ee68e",
+      "bytes": 34844,
+      "parity_rows": 1739,
+      "max_delta": 8.58306884765625e-06,
+      "parameters": 7763
+    },
+    "admit48": {
+      "path": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite",
+      "sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+      "metadata_sha256": "1a8a6f50f59863ec16061c324058e42a4ab0f9e4a8352d0d04c83af78b4d4c45",
+      "bytes": 34844,
+      "parity_rows": 1739,
+      "max_delta": 1.1444091796875e-05,
+      "parameters": 7763
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/real-blue-clutter-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "0db80bf53131e80a24fb7db99c52d517ee7e39bdf51fc3d2973dc7d7568e7b20",
+      "frames": 67,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.9577464788732394,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 8,
+            "fn": 16,
+            "precision": 0.873015873015873,
+            "recall": 0.7746478873239436
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.9577464788732394,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 18,
+            "fn": 8,
+            "precision": 0.7777777777777778,
+            "recall": 0.8873239436619719
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.9577464788732394,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 19,
+            "fn": 10,
+            "precision": 0.7625,
+            "recall": 0.8591549295774648
+          }
+        },
+        "control47/baseline": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 10,
+            "fn": 16,
+            "precision": 0.8461538461538461,
+            "recall": 0.7746478873239436
+          }
+        },
+        "control47/coarse47": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 20,
+            "fn": 9,
+            "precision": 0.7560975609756098,
+            "recall": 0.8732394366197183
+          }
+        },
+        "control47/coarse48": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 21,
+            "fn": 11,
+            "precision": 0.7407407407407407,
+            "recall": 0.8450704225352113
+          }
+        },
+        "control48/baseline": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 10,
+            "fn": 16,
+            "precision": 0.8461538461538461,
+            "recall": 0.7746478873239436
+          }
+        },
+        "control48/coarse47": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 20,
+            "fn": 9,
+            "precision": 0.7560975609756098,
+            "recall": 0.8732394366197183
+          }
+        },
+        "control48/coarse48": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 21,
+            "fn": 11,
+            "precision": 0.7407407407407407,
+            "recall": 0.8450704225352113
+          }
+        },
+        "admit47/baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9859154929577465,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 5,
+            "fn": 17,
+            "precision": 0.9152542372881356,
+            "recall": 0.7605633802816901
+          }
+        },
+        "admit47/coarse47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9859154929577465,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 14,
+            "fn": 11,
+            "precision": 0.8108108108108109,
+            "recall": 0.8450704225352113
+          }
+        },
+        "admit47/coarse48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9859154929577465,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 16,
+            "fn": 12,
+            "precision": 0.7866666666666666,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit48/baseline": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 6,
+            "fn": 16,
+            "precision": 0.9016393442622951,
+            "recall": 0.7746478873239436
+          }
+        },
+        "admit48/coarse47": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 15,
+            "fn": 7,
+            "precision": 0.810126582278481,
+            "recall": 0.9014084507042254
+          }
+        },
+        "admit48/coarse48": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 17,
+            "fn": 10,
+            "precision": 0.782051282051282,
+            "recall": 0.8591549295774648
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/real-blue-clutter-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "7985653e5051d44809c89b1f4ffeb4c73f4880eb59338f42c34b74abb3b3e280",
+      "frames": 62,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 21,
+            "fn": 17,
+            "precision": 0.704225352112676,
+            "recall": 0.746268656716418
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 32,
+            "fn": 9,
+            "precision": 0.6444444444444445,
+            "recall": 0.8656716417910447
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 34,
+            "fn": 10,
+            "precision": 0.6263736263736264,
+            "recall": 0.8507462686567164
+          }
+        },
+        "control47/baseline": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 23,
+            "fn": 17,
+            "precision": 0.684931506849315,
+            "recall": 0.746268656716418
+          }
+        },
+        "control47/coarse47": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 38,
+            "fn": 10,
+            "precision": 0.6,
+            "recall": 0.8507462686567164
+          }
+        },
+        "control47/coarse48": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 37,
+            "fn": 11,
+            "precision": 0.6021505376344086,
+            "recall": 0.835820895522388
+          }
+        },
+        "control48/baseline": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 22,
+            "fn": 17,
+            "precision": 0.6944444444444444,
+            "recall": 0.746268656716418
+          }
+        },
+        "control48/coarse47": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 36,
+            "fn": 10,
+            "precision": 0.6129032258064516,
+            "recall": 0.8507462686567164
+          }
+        },
+        "control48/coarse48": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 35,
+            "fn": 11,
+            "precision": 0.6153846153846154,
+            "recall": 0.835820895522388
+          }
+        },
+        "admit47/baseline": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 45,
+            "fp": 18,
+            "fn": 22,
+            "precision": 0.7142857142857143,
+            "recall": 0.6716417910447762
+          }
+        },
+        "admit47/coarse47": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 25,
+            "fn": 14,
+            "precision": 0.6794871794871795,
+            "recall": 0.7910447761194029
+          }
+        },
+        "admit47/coarse48": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 25,
+            "fn": 15,
+            "precision": 0.6753246753246753,
+            "recall": 0.7761194029850746
+          }
+        },
+        "admit48/baseline": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 19,
+            "fn": 17,
+            "precision": 0.7246376811594203,
+            "recall": 0.746268656716418
+          }
+        },
+        "admit48/coarse47": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 26,
+            "fn": 9,
+            "precision": 0.6904761904761905,
+            "recall": 0.8656716417910447
+          }
+        },
+        "admit48/coarse48": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 27,
+            "fn": 10,
+            "precision": 0.6785714285714286,
+            "recall": 0.8507462686567164
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/real-blue-clutter-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "81a616884cd5e883774245b9a24428342f496d10c63c98b9128a859d545d75be",
+      "frames": 12,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.6875,
+            "recall": 0.9166666666666666
+          }
+        },
+        "control47/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "control47/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 3,
+            "fn": 1,
+            "precision": 0.7857142857142857,
+            "recall": 0.9166666666666666
+          }
+        },
+        "control47/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.6875,
+            "recall": 0.9166666666666666
+          }
+        },
+        "control48/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "control48/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 3,
+            "fn": 1,
+            "precision": 0.7857142857142857,
+            "recall": 0.9166666666666666
+          }
+        },
+        "control48/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.6875,
+            "recall": 0.9166666666666666
+          }
+        },
+        "admit47/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "admit47/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "admit47/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "admit48/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "admit48/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "admit48/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        }
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_control": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": true,
+      "nonregression_vs_control": true,
+      "meets_target": false
+    }
+  ],
+  "per_variant_all_panels_target": {
+    "admit47/baseline": false,
+    "admit47/coarse47": false,
+    "admit47/coarse48": false,
+    "admit48/baseline": false,
+    "admit48/coarse47": false,
+    "admit48/coarse48": false,
+    "control47/baseline": false,
+    "control47/coarse47": false,
+    "control47/coarse48": false,
+    "control48/baseline": false,
+    "control48/coarse47": false,
+    "control48/coarse48": false,
+    "parent/baseline": false,
+    "parent/coarse47": false,
+    "parent/coarse48": false
+  },
+  "decision": "Do not promote: no fixed variant reaches94% precision and recall for both colors across the development panels.",
+  "scope": "Repeated related development frames; not independent final qualification. No accuracy pooling or live timing claims.",
+  "script_sha256": "21d71506644f4a504aa1905a086e78ec4ab87bfceef5ca041f67d18ef552f63c",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

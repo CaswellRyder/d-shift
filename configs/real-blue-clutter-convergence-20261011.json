@@ -1,0 +1,11 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "initial_epoch": 80,
+  "final_epoch": 240,
+  "rationale": "Both initial80 admitted seeds preserve all accepted TRAIN positives and23/23new blue probes but classify only35/39and30/39real backgrounds. Controls classify0/39. Test fixed additional160epochs for every arm and seed, with the same original warm-start targets, data, loss, learning rate, weights and restored Adam. No development results informed this continuation.",
+  "checkpoint_policy": "Final240 only; no early stopping, checkpoint selection or threshold adjustment. Shuffle restarts at80.",
+  "training_gate": "Unchanged configs/balloon-real-blue-clutter-20261011.json criteria, both admit seeds required before export or development.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
