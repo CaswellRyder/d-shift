@@ -1,0 +1,30 @@
+{
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "parameters": 7763,
+  "rows": 2134,
+  "optimizer_steps": 53600,
+  "recipe": "Matched batch4 inputs, order, labels, weights, seeds, fresh Adam and53600steps unchanged from full-model400epoch trial. Cache parent's128spatial features; optimize only the387-parameter3class dense head, then fold weights back into the unchanged7763-parameter graph. All feature extractor weights must remain bitwise identical. Both control andadmit arms. Fixed final checkpoint, no threshold tuning or checkpoint selection.",
+  "training_gate": "Both admission seeds retain every old correct decision, accept all15 new reviewed crops at0.8, and do not increase per-color old TRAIN false acceptances. Reproduce control separately. Then compare64TRAIN scenes, followed by repeated development for paired TRAIN survivors only.",
+  "scope": "Only sealed reviewed TRAIN crops. No IMG-family fitting or threshold tuning, no reserved test access. Prior parent probes on15new crops are not independent evaluation.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "trainable_parameters": 387,
+  "frozen_parameters": 7376
+}
