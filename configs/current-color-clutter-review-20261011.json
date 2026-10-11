@@ -1,0 +1,26 @@
+{
+  "queue": "data/current-color-clutter-review-20261011",
+  "queue_sha256": "5773c08b4d980fa24e68bd9f0ace9c2174c7af487d6912fe996dbbbea849fd1f",
+  "split": "train",
+  "training_approved": true,
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "labels_by_class": {
+    "background": [0,1,2,3,4,5,6,7,9,11,12,13,14,15,16],
+    "red_balloon": [],
+    "blue_balloon": []
+  },
+  "exclude": [8,10,17],
+  "exclusion_reasons": {
+    "8": "Small red costume decoration, uncertain material or balloon identity.",
+    "10": "Second crop of the same uncertain costume decoration.",
+    "17": "Blue sliver at the right image edge may be an unannotated partial balloon. Do not turn incomplete annotation into a negative label."
+  },
+  "reviewed_sheets": {
+    "crops-000.jpg": "0c8eff767f3b3a9b85beb5a9491edf2338d661e20cdc2eb2de04827469729c0e",
+    "frames-000.jpg": "0c7fa6bc4fac18ca158b1212d3545ace7a8c3220081de96aa71afb750a5ee10d"
+  },
+  "review": "Agent viewed all18 crop thumbnails and all12 source thumbnails, plus full-size source frames4,5,8,10,11. Fifteen approved backgrounds are clothing, ties, red car/bodywork, a red sign, a chair detail and red printed/plastic household detail. All are current-model red false alarms; the sole blue candidate was excluded as a possible partial balloon. Three ambiguous crops excluded. No labels inferred from classifier confidence alone.",
+  "annotation_caveat": "Complete-FIT source frame11 has a possible unlabeled blue edge fragment. Existing metrics remain metrics against the frozen reviewed annotations, not proof of perfect annotation completeness. No prior receipt modified.",
+  "scope": "New TRAIN backgrounds only; no development mining or new qualification evidence."
+}

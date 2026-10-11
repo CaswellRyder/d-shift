@@ -1,0 +1,18 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47,48],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "training_gate": "Both admitted seeds preserve every parent-accepted TRAIN positive, no per-color argmax-count regression,23/23blue probes accepted,22/22older clutter and39/39real blue clutter background,15/15new red mistakes background. Must improve new mistakes over matched control. Final240 only.",
+  "matched_recipe": "Same frozen research parent for all four runs, fresh Adam, same1655base rows and30extra rows. Add15visually reviewed backgrounds twice versus15existing ordinary backgrounds sampled without replacement using RNG47 twice.1685total rows,1533protected. Unchanged7763parameter architecture. No new synthetic images, inference cost or operating threshold.",
+  "scope": "Research TRAIN screen, followed by all paired exports and fixed development evaluation only if both admissions pass. Previous development informed parent choice, so not independent qualification.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

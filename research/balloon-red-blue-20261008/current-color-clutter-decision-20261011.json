@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "admit47/baseline": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit47/coarse47": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit48/baseline": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit48/coarse47": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    }
+  },
+  "paired_training_passed": true,
+  "training_receipt_sha256": "a0a07387c4e5c790293b9bdd38fbbd73d4eaf2b5ad611d1dad309862b168f019",
+  "development_receipt_sha256": "fd3cd1f35d618cae505116217e4b6d2b06c64d463a7d3a26c45e067407b97f02",
+  "script_sha256": "0e8774466366457c52dbfbaea1285a3038f8822eab431318d526414cb32de2f5",
+  "decision": "Reject both admitted checkpoints for deployment: training retention did not generalize. Preserve prior research and Pi incumbents.",
+  "annotation_caveat": "One TRAIN mining candidate may be an unannotated blue edge fragment; it was excluded, not labeled background. Prior receipts remain unchanged.",
+  "exports": {
+    "parameters": 7763,
+    "bytes": 34840,
+    "parity_rows": 1784,
+    "max_observed_delta": 1.1444091796875e-05
+  },
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
