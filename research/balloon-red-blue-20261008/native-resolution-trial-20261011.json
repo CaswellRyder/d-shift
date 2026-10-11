@@ -1,0 +1,51 @@
+{
+  "source_report": "runs/balloon-native-resolution-training-20261011.json",
+  "source_sha256": "2ab904cf1cd30c0098559fdaddc8423ce3829edfe36a567e62059ae98ddbb033",
+  "summary_script_sha256": "4811342f4b59a40f4d5f3934cc4c780c1db62bf394420df81a1991465bc00c8a",
+  "inputs": {
+    "data/balloon-red-blue-expansion2-admit-20261011/manifest.json": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+    "data/balloon-red-blue-bootstrap-20261008/manifest.json": "6c080dfe38a876b73c9f9e342e3158ec0ce1e830fd77b4a2056663b2641d9191",
+    "data/raw/matterport-balloon/balloon_dataset.zip": "053797b8a0f3c210b80d1494af99e2e65c7830c5dccca581285e61048cb0bf1c",
+    "data/raw/engdes2-red-blue-v1-20261008/dataset.zip": "da21324671a143c3783685443e913a6a611c5b3aaa5249231b34567bbdf84c5e"
+  },
+  "totals": {
+    "red_balloon": {
+      "targets": 149,
+      "baseline": 143,
+      "high": 142,
+      "union": 143,
+      "bounded": 143,
+      "required_for_94_percent": 141,
+      "baseline_proposal_recall_ceiling": 0.959731543624161,
+      "high_proposal_recall_ceiling": 0.9530201342281879
+    },
+    "blue_balloon": {
+      "targets": 132,
+      "baseline": 111,
+      "high": 112,
+      "union": 112,
+      "bounded": 112,
+      "required_for_94_percent": 125,
+      "baseline_proposal_recall_ceiling": 0.8409090909090909,
+      "high_proposal_recall_ceiling": 0.8484848484848485
+    }
+  },
+  "frames": 108,
+  "native_detail_frames": 108,
+  "host_mean_search_ms": {
+    "baseline": 9.110421340328347,
+    "high": 38.19156669568555
+  },
+  "decision": "Do not advance higher-resolution MSER to Pi or development testing: only one extra blue target, one fewer red target, and much more search work.",
+  "next_direction": "Classifier-only retraining cannot recover missing candidate boxes. Investigate a genuinely different localization mechanism using admitted training annotations.",
+  "caveats": [
+    "One-to-one TRAIN proposal coverage, not detector accuracy or independent qualification.",
+    "Union is an unlimited proposal oracle; bounded preserves baseline and adds at most two blue proposals within twelve total.",
+    "Host timings are single-pass diagnostics, not a controlled Pi speed estimate.",
+    "Ceilings assume boxes are unchanged by downstream classification/selection; learned localization can change them."
+  ],
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "qualification_achieved": false
+}
