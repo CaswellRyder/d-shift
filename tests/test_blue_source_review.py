@@ -112,3 +112,50 @@ def test_vectorized_duplicate_distance_matches_original_all_reflections(monkeypa
         assert indoor.holdout_distance(rgb,[actual_fingerprint(view)]) == 0
     with pytest.raises(ValueError):
         indoor.holdout_distance(rgb,[])
+
+
+def test_astek_dates_are_namespaced_not_engdes_reserved_family():
+    assert review.astek_family("IMG_20250714_181545_jpg.rf.abc.jpg") == "astek-date-20250714"
+    assert review.astek_family("IMG_20250716_180323_2_jpg.rf.abc.jpg") == "astek-date-20250716"
+    assert review.astek_family("IMG_123_jpg.rf.abc.jpg") is None
+    with pytest.raises(ValueError,match="Reserved"):
+        review.family("IMG_20250714_181545_jpg.rf.abc.jpg")
+
+
+def test_wrong_profile_cannot_admit_other_pinned_archive(dataset,tmp_path):
+    with pytest.raises(ValueError,match="archive changed"):
+        review.prepare(dataset,tmp_path/"out",source_profile="astek-balloons")
+    assert not (tmp_path/"out").exists()
+    with pytest.raises(ValueError,match="Unknown"):
+        review.prepare(dataset,tmp_path/"out",source_profile="arbitrary-source")
+
+
+def test_astek_train_only_source_stays_unreviewed_and_excludes_shape_labels(tmp_path,monkeypatch):
+    root = tmp_path/"raw"
+    root.mkdir()
+    archive = root/"dataset.zip"
+    name = "IMG_20250714_181545_jpg.rf.abc.jpg"
+    rng = np.random.default_rng(814)
+    raw = io.BytesIO()
+    Image.fromarray(rng.integers(0,256,(240,320,3),dtype=np.uint8)).save(raw,format="PNG")
+    with zipfile.ZipFile(archive,"w") as z:
+        z.writestr("train/"+name,raw.getvalue())
+        z.writestr("train/_annotations.coco.json",json.dumps(dict(
+            images=[dict(id=1,file_name=name,width=320,height=240)],
+            categories=[dict(id=1,name="blue balloon"),dict(id=2,name="triangle")],
+            annotations=[dict(id=1,image_id=1,category_id=1,bbox=[50,50,30,40]),
+                         dict(id=2,image_id=1,category_id=2,bbox=[150,150,30,40])])) )
+    digest = sha256(archive)
+    write_json(root/"download-receipt.json",dict(archive_sha256=digest,source="fixture"))
+    monkeypatch.setattr(review,"ASTEK_ARCHIVE_SHA",digest)
+    monkeypatch.setattr(review,"references",lambda:([rng.integers(0,2,63).astype(bool)],{}))
+    monkeypatch.setattr(review,"experimental",lambda *args:[])
+    out = tmp_path/"out"
+    result = review.prepare(root,out,source_profile="astek-balloons")
+    doc = read_json(out/"review.json")
+    assert result["frames"] == 1 and result["crops"] == 1
+    assert doc["samples"][0]["source_label"] == "blue balloon"
+    assert doc["samples"][0]["label"] == "unreviewed"
+    assert doc["frames"][0]["upstream_holdout_hamming"] is None
+    assert not doc["training_approved"] and not doc["deployment_approved"]
+    assert len(doc["frames"][0]["truth"]) == 2
