@@ -1,0 +1,12 @@
+{
+  "small_max_side": 32,
+  "quota_per_color_scale": 3,
+  "total_limit": 12,
+  "duplicate_iou": 0.65,
+  "classifier_threshold": 0.8,
+  "matching_iou": 0.5,
+  "rationale": "Five targets in the newly reviewed TRAIN scenes have qualifying MSER geometry but lose the size-biased12proposal ranking. Test a single small/large quota policy before observing its scores. Small means maximum box side32pixels at320x240scan, one tenth of scan width. Keep all original candidate scoring within buckets, total cap12, same classifier and learned blue supplement. No threshold sweep.",
+  "gate": "No previously detected target loss and no per-color false-positive increase on each of original64, window1six and window2twelve TRAIN panels; at least one recovered target overall. Passing permits only separate DEV and Pi investigation, not deployment.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

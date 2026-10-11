@@ -1,0 +1,262 @@
+{
+  "panels": {
+    "original": {
+      "metrics": {
+        "parent": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "balanced": {
+          "red_balloon": {
+            "tp": 92,
+            "fp": 12,
+            "fn": 6,
+            "precision": 0.8846153846153846,
+            "recall": 0.9387755102040817
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -2,
+            "fp": 2,
+            "fn": 2
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 21410,
+              "box": [
+                214.125,
+                126.65625,
+                250.875,
+                145.59375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 7179,
+              "box": [
+                64.375,
+                93.1875,
+                102.125,
+                114.9375
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "no_regression": false,
+      "neural_calls": {
+        "parent": 385,
+        "balanced": 384
+      },
+      "maximum_calls": {
+        "parent": 12,
+        "balanced": 12
+      }
+    },
+    "window1": {
+      "metrics": {
+        "parent": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666
+          },
+          "blue_balloon": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "precision": 0.8,
+            "recall": 0.5
+          }
+        },
+        "balanced": {
+          "red_balloon": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666
+          },
+          "blue_balloon": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 4,
+            "precision": 0.8,
+            "recall": 0.5
+          }
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "no_regression": true,
+      "neural_calls": {
+        "parent": 62,
+        "balanced": 62
+      },
+      "maximum_calls": {
+        "parent": 12,
+        "balanced": 12
+      }
+    },
+    "window2": {
+      "metrics": {
+        "parent": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 10,
+            "precision": 0.42857142857142855,
+            "recall": 0.23076923076923078
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 7,
+            "precision": 0.9,
+            "recall": 0.5625
+          }
+        },
+        "balanced": {
+          "red_balloon": {
+            "tp": 4,
+            "fp": 3,
+            "fn": 9,
+            "precision": 0.5714285714285714,
+            "recall": 0.3076923076923077
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 2,
+            "fn": 7,
+            "precision": 0.8181818181818182,
+            "recall": 0.5625
+          }
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 1,
+            "fp": -1,
+            "fn": -1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": [
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 54,
+              "label": "red_balloon",
+              "box": [
+                144.0625,
+                76.60322108345535,
+                157.8125,
+                98.38945827232797
+              ],
+              "origin": "manual_source_review"
+            }
+          }
+        ]
+      },
+      "no_regression": false,
+      "neural_calls": {
+        "parent": 133,
+        "balanced": 133
+      },
+      "maximum_calls": {
+        "parent": 12,
+        "balanced": 12
+      }
+    }
+  },
+  "eligible_for_separate_development": false,
+  "inputs_sha256": {
+    "configs/scale-balanced-search-20261011.json": "53545ce3bf716fdab52287b43842e06d47570d824c4f7371c575cac802a1ba76",
+    "configs/blue-balloon-window1-scenes-20261011.json": "50f8df7802887ff7a2fc8bda09e1a61065c196ddcf0cf69456a5457cdfb05ccb",
+    "configs/blue-balloon-window2-scenes-20261011.json": "0c4fed7b90dc91427c6e1d6115a304181d9cf39ce28902a3c3e703ad93ed890a",
+    "research/balloon-red-blue-20261008/blue-balloon-window1-scenes-20261011.json": "c6b47989b6ac3dfdb2bdf33afd67247d445b91048a1b1e8b4ac7c996afb56b1b",
+    "research/balloon-red-blue-20261008/window2-complete-scenes-20261011.json": "c57fba84ffff45af2a82fb2248c25e030b3b1274bad18f751ed1526349459649",
+    "runs/constrained-balloon-head-scenes-20261011.json": "8d485eb538810c24f202acb26090aad70646511c14ed54418bf4a40bffa82a95",
+    "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+    "runs/blue-head-only-background-20261011/proposal.fp32.tflite": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_scale_balanced_search.py": "18e3bf915e61f5117a62fa5ffb781c8da1590264521a39b1930126779f7a32cb",
+    "scripts/scale_balanced_balloon_search.py": "dcf2b10ae16f55b30161a18bb2fa4f151933dc7007ec436a6d4d51b78460dc98",
+    "scripts/research_balloon_search.py": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_blue_peak_blend.py": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+    "scripts/research_confident_containment.py": "7afa7104a86a928ade2295c92933b8fc759f5c810d5e8f1f59d77b7e6b2e3c0d",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "scripts/diagnose_clutter_stage_attribution.py": "165d53126839ee0031431a6a2cf1d1c765b7497d81a1bc2ca3647a9f0200d710",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/artifacts/balloon-regions-mac-20261008/regions.so": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c"
+  },
+  "raw": {
+    "path": "runs/scale-balanced-search-20261011.json",
+    "sha256": "b395af0cfb91c14ae159e1c3d2a84390c7925d3bf4457a348d6028f283c386bd"
+  },
+  "decision": "Reject scale quota policy: TRAIN retention/false-positive gate failed.",
+  "scope": "One fixed candidate allocation tested on82 already-admitted TRAIN photos. Parent search reproduced exactly, both arms use same weights, threshold and12maximumcalls. Actual calls may differ; no latency or held-out accuracy claim.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
