@@ -1,0 +1,13 @@
+{
+  "arms": ["control","admit"],
+  "seeds": [47,48],
+  "repetitions": 4,
+  "rows": 2607,
+  "optimizer_steps": 13040,
+  "recipe": "Original research parent, fresh Adam, fixed80epochs,batch16,lr1e-4cosine alpha0.1,7763parameters,64RGB stretched as current runtime. Preserve2547window1-hard rows. Insert15class-matched crops repeated4times before385scene constraints, weight4, preserveFalse. Admission uses frozen window2 labels from12photos; control selects15unique preserved original TRAIN crops with matching13blue/2red counts and max2crops per source identifier. Fixed final epoch and no DEV-dependent selection.",
+  "gate": "Both admission seeds must accept all15new labeled crops correctly at0.8, preserve every parent-detected target on64old and6window1TRAIN scenes without per-color false-positive increase, and not increase13negative-probe false accepts. Compare matched controls separately. Passing permits complete annotation and detector auditing of the12window2TRAIN scenes, NOT export, development admission,94percent qualification or deployment.",
+  "scope": "Real TRAIN data diversity trial. No synthetic hue views, aspect policy change, architecture, proposal or threshold change. Entire IMG_ family and reserved test excluded. New-crop recovery alone is not detector accuracy.",
+  "test_evaluated": false,
+  "development_evaluated": false,
+  "deployment_approved": false
+}
