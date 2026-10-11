@@ -92,7 +92,7 @@ def audit():
     if OUTPUT.exists() or RAW.exists():
         raise FileExistsError('Preserve paired audit')
     data = {a:tensors(a) for a in ('control', 'hue')}
-    changed = matched_inputs(data['control'], data['hard'])
+    changed = matched_inputs(data['control'], data['hue'])
     if sha256(TRAIN) != RAW_SHA:
         raise ValueError('Original TRAIN geometry changed')
     original_raw = read_json(TRAIN)
