@@ -1,0 +1,15 @@
+{
+  "training_rows": 2074,
+  "feature": "Canonical64x64 RGB crop, uint8, OpenCV RGB-to-gray; HOG window64x64, block32x32, stride16x16, cell16x16,9unsigned bins, gammaCorrection=false, L2Hys0.2.324features. No color threshold or learned image preprocessing.",
+  "ridge_penalty": 0.1,
+  "scale_floor": 0.001,
+  "folds": 5,
+  "grouping": "Union every equal canonical source basename (Roboflow suffix removed) and every identical crop SHA256, including augmented/repeated rows. Assign connected source groups by SHA256 of sorted aliases modulo5. This is source-grouped TRAIN cross-validation, not recording-session-independent qualification.",
+  "fit": "Each fold fits only other groups. Foreground combines red and blue. Inverse class-frequency weights give foreground/background equal total weight. Fit weighted feature mean/std, then weighted ridge with unpenalized intercept0.5 after centering. No penalty or feature-size sweep. Threshold is minimum fitted-positive score so fitting positives are not rejected. Keep equality.",
+  "gate": "Only veto already-accepted blue predictions when shape score<threshold. Red predictions and geometry unchanged. Compare with frozen parent probabilities. Fit and calibration never use withheld fold rows or IMG data. Report every lost previously accepted true crop.",
+  "progress_gate": "At least one out-of-fold blue false positive rejected; blue F1 must improve and neither color's minimum(precision,recall) may decrease. This gate allows full-scene research evaluation only, not deployment. The final objective remains at least94%precision AND recall per color on independent real scenes and separate live qualification.",
+  "scope": "TRAIN-only first-stage feasibility. Source-held-out error tradeoffs explicit. No Pi timing or deployment claim from desktop feature extraction or crop metrics.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
