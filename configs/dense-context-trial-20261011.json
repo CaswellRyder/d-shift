@@ -1,0 +1,30 @@
+{
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Both arms use identical1764-row admitted blue-photo data,1602protected rows, same frozen parent, loss,400epochs/44400steps, fresh Adam cosine1e-4 to1e-5. Control retains7763parameter separable context; admit composes separable kernels into15667parameter dense context. Initial class/acceptance decisions must match; logits within1e-4. Reset RNG after construction so architecture does not perturb minibatch order. Final checkpoint only.",
+  "training_gate": "Both admitted seeds retain base training gate and69/69 runtime blue views; new-photo probes must be7/7 accepted at0.8. Controls are measured, not required to learn unseen additions.",
+  "scope": "TRAIN architecture ablation. Classifier arithmetic rises1.564975x analytically, not a measured latency or speed claim. No Pi deployment, search change or held-out test use.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "learning_rate_schedule": {
+    "kind": "cosine",
+    "decay_steps": 44400,
+    "alpha": 0.1
+  },
+  "rationale": "Data-only changes learned new crops but failed full-scene nonregression. Test whether removing the rank-one spatial-filter restriction improves generalization, with exact-function initialization rather than a cold start."
+}
