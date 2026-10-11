@@ -1,0 +1,1119 @@
+{
+  "training": {
+    "control": {
+      "model_metadata": {
+        "kind": "balloon_quality_research",
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "size": 64,
+        "threshold": 0.8,
+        "output": "first 3: class logits; fourth: raw IoU regression, clip to [0,1]",
+        "tensor_dtype": "float32",
+        "sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+        "bytes": 35972,
+        "source_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "source_tflite_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "training_config_sha256": "6a5637921c3a6e8f5fea413a9547a456e1f34be145984334953622531e57d80d",
+        "source_reviews": [
+          {
+            "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+            "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+          },
+          {
+            "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+            "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+          }
+        ],
+        "script_sha256": "909f0f6cc7766f344a261f484e5444aa3406acf322b880773a5b74c944cb92c0",
+        "parameters": 7892,
+        "added_parameters": 129,
+        "training_samples": 144,
+        "ridge_penalty": 10,
+        "test_evaluated": false,
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false
+      },
+      "report": {
+        "train_mae": 0.08351363598944632,
+        "grouped_head_only_oof_mae": 0.1327648786065666,
+        "oof_caveat": "Only quality head held out; backbone already trained on related crops/environments",
+        "max_keras_tflite_delta": 0.00000476837158203125,
+        "frozen_keras_logits_identical": true,
+        "parameters": 7892,
+        "added_parameters": 129,
+        "bytes": 35972,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_timing_measured": false
+      },
+      "report_sha256": "520eacb0212bfe5290f7f7c7cc6bdec3766fc5a8ecf207381fdedc6afcf1f7b6",
+      "config_sha256": "6a5637921c3a6e8f5fea413a9547a456e1f34be145984334953622531e57d80d",
+      "gate": {
+        "threshold": 0.4406053423881531,
+        "comparison": "quality >= threshold",
+        "retention_target": 0.94,
+        "localized_examples": 104,
+        "localized_source_groups": 38,
+        "localized_retained": 98,
+        "empirical_localized_retention": 0.9423076923076923,
+        "low_quality_examples": 40,
+        "low_quality_rejected": 33,
+        "rule": "Lowest retained grouped out-of-fold score keeping ceil(0.94*N) targets with IoU >= 0.5",
+        "qualification_claim": false,
+        "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+        "training_config": "configs/balloon-context-quality-control-20261011.json",
+        "training_config_sha256": "6a5637921c3a6e8f5fea413a9547a456e1f34be145984334953622531e57d80d",
+        "quality_report": "runs/balloon-context-quality-control-20261011/report.json",
+        "quality_report_sha256": "520eacb0212bfe5290f7f7c7cc6bdec3766fc5a8ecf207381fdedc6afcf1f7b6",
+        "source_reviews": [
+          {
+            "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+            "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+          },
+          {
+            "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+            "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+          }
+        ],
+        "script_sha256": "9491bafe6b737739cadbd50c0e328d7b16db0d71347062de550316ea761a1825",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_timing_measured": false,
+        "caveat": "Only head folds held out; backbone saw related imagery. Empirical training retention is not detection recall or qualification."
+      },
+      "gate_sha256": "1cebb38874b74b740f3d0b3bda62e6ee432207b2213e34b9417309cba8bb246d",
+      "original144_oof_mae": 0.1327648786065666
+    },
+    "admit": {
+      "model_metadata": {
+        "kind": "balloon_quality_research",
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "size": 64,
+        "threshold": 0.8,
+        "output": "first 3: class logits; fourth: raw IoU regression, clip to [0,1]",
+        "tensor_dtype": "float32",
+        "sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+        "bytes": 35972,
+        "source_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "source_tflite_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+        "training_config_sha256": "539becc191dbab9fc5641c77b0f312392e523aa0e2c7bf26681c00dee4316a13",
+        "source_reviews": [
+          {
+            "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+            "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+          },
+          {
+            "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+            "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+          },
+          {
+            "queue_sha256": "0ba743242241de4051a23d96ba343b48c256f46d71f893f23365a052a649177c",
+            "review_sha256": "f616b6a1c9b3e18c26a2038eec9e0e7af986d79348a44db1bb72daf128ad79d0"
+          }
+        ],
+        "script_sha256": "909f0f6cc7766f344a261f484e5444aa3406acf322b880773a5b74c944cb92c0",
+        "parameters": 7892,
+        "added_parameters": 129,
+        "training_samples": 240,
+        "ridge_penalty": 10,
+        "test_evaluated": false,
+        "synthetic_training": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false
+      },
+      "report": {
+        "train_mae": 0.09190969315484569,
+        "grouped_head_only_oof_mae": 0.1354400999168545,
+        "oof_caveat": "Only quality head held out; backbone already trained on related crops/environments",
+        "max_keras_tflite_delta": 0.00000858306884765625,
+        "frozen_keras_logits_identical": true,
+        "parameters": 7892,
+        "added_parameters": 129,
+        "bytes": 35972,
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_timing_measured": false
+      },
+      "report_sha256": "93c9b4b242523517dc71d364135a2bc1b07bc138fa491de894a135ed833aa639",
+      "config_sha256": "539becc191dbab9fc5641c77b0f312392e523aa0e2c7bf26681c00dee4316a13",
+      "gate": {
+        "threshold": 0.469554603099823,
+        "comparison": "quality >= threshold",
+        "retention_target": 0.94,
+        "localized_examples": 136,
+        "localized_source_groups": 58,
+        "localized_retained": 128,
+        "empirical_localized_retention": 0.9411764705882353,
+        "low_quality_examples": 104,
+        "low_quality_rejected": 76,
+        "rule": "Lowest retained grouped out-of-fold score keeping ceil(0.94*N) targets with IoU >= 0.5",
+        "qualification_claim": false,
+        "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+        "training_config": "configs/balloon-context-quality-admit-20261011.json",
+        "training_config_sha256": "539becc191dbab9fc5641c77b0f312392e523aa0e2c7bf26681c00dee4316a13",
+        "quality_report": "runs/balloon-context-quality-admit-20261011/report.json",
+        "quality_report_sha256": "93c9b4b242523517dc71d364135a2bc1b07bc138fa491de894a135ed833aa639",
+        "source_reviews": [
+          {
+            "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+            "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+          },
+          {
+            "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+            "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+          },
+          {
+            "queue_sha256": "0ba743242241de4051a23d96ba343b48c256f46d71f893f23365a052a649177c",
+            "review_sha256": "f616b6a1c9b3e18c26a2038eec9e0e7af986d79348a44db1bb72daf128ad79d0"
+          }
+        ],
+        "script_sha256": "9491bafe6b737739cadbd50c0e328d7b16db0d71347062de550316ea761a1825",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_timing_measured": false,
+        "caveat": "Only head folds held out; backbone saw related imagery. Empirical training retention is not detection recall or qualification."
+      },
+      "gate_sha256": "3c596be234083fc2e370bc1fd7f33fbc66a55cd5b1ee1003ceea5541d509aaa9",
+      "original144_oof_mae": 0.1294988772086699
+    }
+  },
+  "evaluations": {
+    "context-quality-gated-control-mser_confirmed_parts-panel3-20261011.json": {
+      "sha256": "3d30a1e1409a13981619e9370590bf27ef85b5492e83ee1f3b82ebe643f232e5",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "4c69079fc5c7cc6c494ba4882f7b5d6f5d77afb00632447f9bc3f4d1d938686d",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 66,
+            "fp": 2,
+            "fn": 5,
+            "precision": 0.9705882352941176,
+            "recall": 0.9295774647887324
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 11,
+            "fn": 11,
+            "precision": 0.8450704225352113,
+            "recall": 0.8450704225352113
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-control-mser_blue_cores-panel3-20261011.json": {
+      "sha256": "19879c1ac1709f9dddb5067d287527b800c27dfb7b4cad9ff42cdc8ff42dc379",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "4c69079fc5c7cc6c494ba4882f7b5d6f5d77afb00632447f9bc3f4d1d938686d",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 66,
+            "fp": 2,
+            "fn": 5,
+            "precision": 0.9705882352941176,
+            "recall": 0.9295774647887324
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 21,
+            "fn": 7,
+            "precision": 0.7529411764705882,
+            "recall": 0.9014084507042254
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_confirmed_parts-panel3-20261011.json": {
+      "sha256": "c0d76f105f151482e2d10188a3b604ad6af4469efb7001fee9755fc8a3b0e2be",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "4c69079fc5c7cc6c494ba4882f7b5d6f5d77afb00632447f9bc3f4d1d938686d",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 11,
+            "fn": 11,
+            "precision": 0.8450704225352113,
+            "recall": 0.8450704225352113
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_blue_cores-panel3-20261011.json": {
+      "sha256": "d382888271418a634ede8100f3686840502e20cddb7185143f8fd2c3240e73bc",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "4c69079fc5c7cc6c494ba4882f7b5d6f5d77afb00632447f9bc3f4d1d938686d",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 23,
+            "fn": 7,
+            "precision": 0.735632183908046,
+            "recall": 0.9014084507042254
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 21,
+            "fn": 8,
+            "precision": 0.75,
+            "recall": 0.8873239436619719
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-control-mser_confirmed_parts-panel2-20261010.json": {
+      "sha256": "3b1f0bbf16ea28f4c46f536e2045b253a8a96a9a0b37aea8db6a7cbeeff5ddaf",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "cb971429e96ff48727a27d23683ea6deb6b022659a167208c3683eea0d1766db",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.9558823529411765,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-control-mser_blue_cores-panel2-20261010.json": {
+      "sha256": "a8e3425efe29aefef75545865169ff7a994ad60626fd2d981e0d22ee4fa6228d",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "cb971429e96ff48727a27d23683ea6deb6b022659a167208c3683eea0d1766db",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 53,
+            "fn": 16,
+            "precision": 0.49038461538461536,
+            "recall": 0.7611940298507462
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 53,
+            "fn": 15,
+            "precision": 0.49523809523809526,
+            "recall": 0.7761194029850746
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 53,
+            "fn": 15,
+            "precision": 0.49523809523809526,
+            "recall": 0.7761194029850746
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.9558823529411765,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 53,
+            "fn": 15,
+            "precision": 0.49523809523809526,
+            "recall": 0.7761194029850746
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_confirmed_parts-panel2-20261010.json": {
+      "sha256": "a98f7ddd52a99ed45516b6b4083aad63d3d753fb82ed7167b237a02e20130e3d",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "cb971429e96ff48727a27d23683ea6deb6b022659a167208c3683eea0d1766db",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 26,
+            "fn": 17,
+            "precision": 0.6578947368421053,
+            "recall": 0.746268656716418
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_blue_cores-panel2-20261010.json": {
+      "sha256": "661ea516e9c9cc81fd80ada32313672903f101b9d3679f8eeb8ed9f2f7b26ba4",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "cb971429e96ff48727a27d23683ea6deb6b022659a167208c3683eea0d1766db",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 53,
+            "fn": 16,
+            "precision": 0.49038461538461536,
+            "recall": 0.7611940298507462
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 53,
+            "fn": 15,
+            "precision": 0.49523809523809526,
+            "recall": 0.7761194029850746
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 53,
+            "fn": 15,
+            "precision": 0.49523809523809526,
+            "recall": 0.7761194029850746
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 52,
+            "fn": 16,
+            "precision": 0.49514563106796117,
+            "recall": 0.7611940298507462
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-control-mser_confirmed_parts-scenes-20261008.json": {
+      "sha256": "675916f17a39325d2f38d414a1b94bdddde4cdbbb1a710756aef66ecc5774267",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "6c8e02536ae57b2c7d7aacf97ced7bd3e4cc6d4aa42246be2f0f7419a01c10b4",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-control-mser_blue_cores-scenes-20261008.json": {
+      "sha256": "46c317aae25a83e81db9318179746527937b5eea613bb1651c3a55703c5fff48",
+      "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+      "source_report_sha256": "6c8e02536ae57b2c7d7aacf97ced7bd3e4cc6d4aa42246be2f0f7419a01c10b4",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 7,
+            "fn": 3,
+            "precision": 0.5625,
+            "recall": 0.75
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_confirmed_parts-scenes-20261008.json": {
+      "sha256": "68ca613256290cf8377814c45e534011fab833450af42574e8554dfe8ff82baa",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "6c8e02536ae57b2c7d7aacf97ced7bd3e4cc6d4aa42246be2f0f7419a01c10b4",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    },
+    "context-quality-gated-admit-mser_blue_cores-scenes-20261008.json": {
+      "sha256": "bfa644fcfb4756ef2f9fb272b1bc06a585428f2fb0a9307d137e8792060af9cb",
+      "model_sha256": "342137a306290628c0ca873ef6e5a39c2ecf8e47ffd2b71fdf7c1ac271371234",
+      "source_report_sha256": "6c8e02536ae57b2c7d7aacf97ced7bd3e4cc6d4aa42246be2f0f7419a01c10b4",
+      "metrics": {
+        "parent_first": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "confidence_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "quality_ordered": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "quality_gated_ordered": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 5,
+            "fn": 3,
+            "precision": 0.6428571428571429,
+            "recall": 0.75
+          }
+        }
+      },
+      "class_probabilities_identical": true
+    }
+  },
+  "source_sha256": {
+    "scripts/prepare_balloon_quality.py": "0ecbd4e5a2e92958fbef807ee3f931973be07bf695f620136a41e32a6118701e",
+    "scripts/train_balloon_quality.py": "909f0f6cc7766f344a261f484e5444aa3406acf322b880773a5b74c944cb92c0",
+    "scripts/evaluate_balloon_quality.py": "60a07c0bbc8a5ec0fbb6e9f7fef3df5ba096d61f8067cc185c1ad8fa03b4f067",
+    "scripts/calibrate_balloon_quality_gate.py": "9491bafe6b737739cadbd50c0e328d7b16db0d71347062de550316ea761a1825",
+    "tests/test_balloon_context_quality.py": "1e47397043832437df8483e3319a02345c23e534eb472017c9ea343c2b824dc6"
+  },
+  "review_sha256": "f616b6a1c9b3e18c26a2038eec9e0e7af986d79348a44db1bb72daf128ad79d0",
+  "queue_sha256": "0ba743242241de4051a23d96ba343b48c256f46d71f893f23365a052a649177c",
+  "scope": "Training-only context localization-head experiment, followed by repeatedly inspected development evaluation",
+  "decision": "Research only; do not promote quality-gated augmented model",
+  "reason": "Augmented quality head trades false positives for missed real red balloons and gives no consistent blue gain versus the matched original-proposal quality head. Neither meets both colors at 94 percent across development, which itself is not independent qualification.",
+  "data": {
+    "reviewed_new_crops": 96,
+    "used_existing_frames": 20,
+    "selected_anchors": 24,
+    "per_color_anchors": 12,
+    "scales": [
+      1,
+      1.5,
+      2,
+      3
+    ],
+    "generated_pixels": false,
+    "new_recording_sessions": 0,
+    "quality_targets": "Maximum IoU to one reviewed known balloon, not class labels or negative-region labels",
+    "reviewer": "AI visual review; not human certified"
+  },
+  "method": {
+    "backbone": "Frozen incumbent 64px separable-context student; not full MobileNetV4",
+    "head_added_parameters": 129,
+    "fp32_bytes": 35972,
+    "parent_fp32_bytes": 35204,
+    "ridge_penalty": 10,
+    "baseline_rows": 144,
+    "augmented_rows": 240,
+    "classification_threshold": 0.8,
+    "matching_iou": 0.5,
+    "gate_calibration": "Fixed ceil(0.94*N) empirical retention on quality-head grouped training-fold predictions; no development cutoff search",
+    "classifier_logits_preserved": true,
+    "paired_random_seeds": "Not applicable: deterministic ridge fit on identical frozen features"
+  },
+  "validation": {
+    "full_tests_passed": 917,
+    "full_tests_skipped": 2,
+    "existing_tensorflow_warnings": 6,
+    "scoped_ruff": "passed",
+    "all_saved_detection_counts_recomputed": true,
+    "all_14_development_reports_class_probabilities_exact": true,
+    "training_rows_revalidated": true,
+    "independent_recording_sessions_verified": false
+  },
+  "limitations": [
+    "Grouped head-only folds do not hold out the already trained backbone or verify independent recordings.",
+    "The original 144-row OOF MAE comparison uses identical target/group/fold rows; 240-row aggregate MAE has a different composition.",
+    "Training-fold 94 percent retention is not 94 percent detection recall or an uncertainty bound.",
+    "The three development panels overlap and have been reused; no aggregate independent accuracy claim.",
+    "Original reserved final test was not evaluated; IMG family remains evaluation only.",
+    "No Pi, camera, network, ESP32 or motor change. No Pi timing of the four-output model."
+  ],
+  "next_action": "Acquire genuinely different permitted training scenes with blue balloons and blue clutter, or strengthen shared localization features with explicit supervision; more hand geometry or repetitions of easy crops have not resolved blue errors.",
+  "deployment_approved": false,
+  "pi_timing_measured": false,
+  "test_evaluated": false,
+  "flight_ready": false
+}

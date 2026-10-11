@@ -1,0 +1,33 @@
+{
+  "threshold": 0.4406053423881531,
+  "comparison": "quality >= threshold",
+  "retention_target": 0.94,
+  "localized_examples": 104,
+  "localized_source_groups": 38,
+  "localized_retained": 98,
+  "empirical_localized_retention": 0.9423076923076923,
+  "low_quality_examples": 40,
+  "low_quality_rejected": 33,
+  "rule": "Lowest retained grouped out-of-fold score keeping ceil(0.94*N) targets with IoU >= 0.5",
+  "qualification_claim": false,
+  "model_sha256": "366a6c54617eaf2f2609cc88b98d889bbdcea718a0e841fb633eccfa6f7b305e",
+  "training_config": "configs/balloon-context-quality-control-20261011.json",
+  "training_config_sha256": "6a5637921c3a6e8f5fea413a9547a456e1f34be145984334953622531e57d80d",
+  "quality_report": "runs/balloon-context-quality-control-20261011/report.json",
+  "quality_report_sha256": "520eacb0212bfe5290f7f7c7cc6bdec3766fc5a8ecf207381fdedc6afcf1f7b6",
+  "source_reviews": [
+    {
+      "queue_sha256": "e5f964224d49ba610b88f99e6579c081b757a0b44d59136fbfce7f3ac65dd992",
+      "review_sha256": "fac266e8a5845713b641cfc48e421304a897e2a96839d3b43bf91e8e797ce7a5"
+    },
+    {
+      "queue_sha256": "b23b665efda36800116240e02a9f74010888b6ea513903ee426f475ee817334d",
+      "review_sha256": "d4349731425ffab3ed6895ae4c2990498b6feef618fcbc12dbe5440201966898"
+    }
+  ],
+  "script_sha256": "9491bafe6b737739cadbd50c0e328d7b16db0d71347062de550316ea761a1825",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_timing_measured": false,
+  "caveat": "Only head folds held out; backbone saw related imagery. Empirical training retention is not detection recall or qualification."
+}
