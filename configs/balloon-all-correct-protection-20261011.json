@@ -1,0 +1,15 @@
+{
+  "arms": ["accepted", "all_correct"],
+  "seeds": [47, 48],
+  "parent_arm": "admit",
+  "initial_epoch": 80,
+  "final_epoch": 104,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "difference": "Accepted control keeps the previous parent-correct-and-score0.8 protection mask. All-correct treatment also protects parent-correct ordinary red/blue rows below0.8. Same one-sided true-class log-odds penalty, weight8 and cap0.9; no changes to labels, pixel tensors, inference threshold or other loss terms.",
+  "pairing": "Within each seed, both arms start at the exact same admitted80 checkpoint and restored Adam slots. Original parent logits remain the preservation targets. Restart shuffle with the same seed in both arms. Train24 more epochs and use only final104; no development checkpoint selection.",
+  "training_gate": "Reuse unchanged balloon-protected-clutter-20261011.json gate: both treatment seeds must preserve original parent ordinary argmax correct counts per color, retain99% of individually parent-accepted ordinary positives per color, and classify11/22 reviewed backgrounds correctly. TRAIN feasibility is not qualification.",
+  "development_plan": "If both treatment seeds pass TRAIN feasibility, export all four paired checkpoints and evaluate all of them plus unchanged original parent on all three existing development panels with baseline MSER and coarse320 localizers47/48. Classifier0.8, IoU0.5, proposal0.1, max2 extra blue proposals and12 total crops, split_merged aspect2.42913421076193. No threshold sweep or best-seed promotion.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

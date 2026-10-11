@@ -1,0 +1,950 @@
+{
+  "training_trial_sha256": "50f51a4a445ef60283521d92b94a2d3fdcaa19bc4af38010096e8f5c3e3c427a",
+  "exports": {
+    "accepted47": {
+      "path": "runs/balloon-mask-convergence-accepted-seed47-20261011/student.fp32.tflite",
+      "sha256": "d31744368a38e9f27e2dc24285b121804b517c95ae38793fa37fc98f88522d79",
+      "metadata_sha256": "86336e29c61e1899f664fd56cefc2bcc226a1f39491831716debbed40040639a",
+      "bytes": 34844,
+      "parity_rows": 1531,
+      "max_delta": 8.58306884765625e-06
+    },
+    "accepted48": {
+      "path": "runs/balloon-mask-convergence-accepted-seed48-20261011/student.fp32.tflite",
+      "sha256": "b4e35a5ea98721443e8f525658cc29aebe49c0df48f2c4e635e747ed9f5c2f1a",
+      "metadata_sha256": "c0cd472cbb98c62ecec3533d4b52d6f7bcc328c673e069420b64307698d7dd43",
+      "bytes": 34844,
+      "parity_rows": 1531,
+      "max_delta": 7.62939453125e-06
+    },
+    "all_correct47": {
+      "path": "runs/balloon-mask-convergence-all_correct-seed47-20261011/student.fp32.tflite",
+      "sha256": "66ff19240444c2752ececac77c21b22643f16e85bb43f1e261bc2c7a9bafef38",
+      "metadata_sha256": "6c38b0b84dadfa7413071bdf589224d97261ef4ab08502cccb57908242d0fc15",
+      "bytes": 34844,
+      "parity_rows": 1531,
+      "max_delta": 9.5367431640625e-06
+    },
+    "all_correct48": {
+      "path": "runs/balloon-mask-convergence-all_correct-seed48-20261011/student.fp32.tflite",
+      "sha256": "5b1a22bc0646fa23013845074225c3389b88d190f3504ac4f649ba29f26e7c2b",
+      "metadata_sha256": "5a717a58a9db415e5b5320bc7a697c4c6184110bf6c12c386bc9c4d84e391c19",
+      "bytes": 34844,
+      "parity_rows": 1531,
+      "max_delta": 8.58306884765625e-06
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/balloon-mask-convergence-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "6870138e883d22f41e8581409201e2b4182c7824b54b36fac61d36c61b6d4f79",
+      "frames": 67,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 67,
+            "fp": 24,
+            "fn": 4,
+            "precision": 0.7362637362637363,
+            "recall": 0.9436619718309859
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 66,
+            "fp": 26,
+            "fn": 5,
+            "precision": 0.717391304347826,
+            "recall": 0.9295774647887324
+          }
+        },
+        "accepted47/baseline": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 8,
+            "fn": 16,
+            "precision": 0.873015873015873,
+            "recall": 0.7746478873239436
+          }
+        },
+        "accepted47/coarse47": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 16,
+            "fn": 10,
+            "precision": 0.7922077922077922,
+            "recall": 0.8591549295774648
+          }
+        },
+        "accepted47/coarse48": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9861111111111112,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 19,
+            "fn": 11,
+            "precision": 0.759493670886076,
+            "recall": 0.8450704225352113
+          }
+        },
+        "accepted48/baseline": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 8,
+            "fn": 16,
+            "precision": 0.873015873015873,
+            "recall": 0.7746478873239436
+          }
+        },
+        "accepted48/coarse47": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 16,
+            "fn": 10,
+            "precision": 0.7922077922077922,
+            "recall": 0.8591549295774648
+          }
+        },
+        "accepted48/coarse48": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 19,
+            "fn": 11,
+            "precision": 0.759493670886076,
+            "recall": 0.8450704225352113
+          }
+        },
+        "all_correct47/baseline": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 8,
+            "fn": 17,
+            "precision": 0.8709677419354839,
+            "recall": 0.7605633802816901
+          }
+        },
+        "all_correct47/coarse47": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 16,
+            "fn": 12,
+            "precision": 0.7866666666666666,
+            "recall": 0.8309859154929577
+          }
+        },
+        "all_correct47/coarse48": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 19,
+            "fn": 11,
+            "precision": 0.759493670886076,
+            "recall": 0.8450704225352113
+          }
+        },
+        "all_correct48/baseline": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 8,
+            "fn": 16,
+            "precision": 0.873015873015873,
+            "recall": 0.7746478873239436
+          }
+        },
+        "all_correct48/coarse47": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 16,
+            "fn": 11,
+            "precision": 0.7894736842105263,
+            "recall": 0.8450704225352113
+          }
+        },
+        "all_correct48/coarse48": {
+          "red_balloon": {
+            "tp": 71,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9726027397260274,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 19,
+            "fn": 11,
+            "precision": 0.759493670886076,
+            "recall": 0.8450704225352113
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/balloon-mask-convergence-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "97aa526ce9de47b1d7068ad3147d9e009f3d8fb44dee83d6476112d74e0bce7b",
+      "frames": 62,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 41,
+            "fn": 10,
+            "precision": 0.5816326530612245,
+            "recall": 0.8507462686567164
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 41,
+            "fn": 9,
+            "precision": 0.5858585858585859,
+            "recall": 0.8656716417910447
+          }
+        },
+        "accepted47/baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 18,
+            "fn": 20,
+            "precision": 0.7230769230769231,
+            "recall": 0.7014925373134329
+          }
+        },
+        "accepted47/coarse47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 26,
+            "fn": 11,
+            "precision": 0.6829268292682927,
+            "recall": 0.835820895522388
+          }
+        },
+        "accepted47/coarse48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 27,
+            "fn": 12,
+            "precision": 0.6707317073170732,
+            "recall": 0.8208955223880597
+          }
+        },
+        "accepted48/baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 18,
+            "fn": 19,
+            "precision": 0.7272727272727273,
+            "recall": 0.7164179104477612
+          }
+        },
+        "accepted48/coarse47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 27,
+            "fn": 10,
+            "precision": 0.6785714285714286,
+            "recall": 0.8507462686567164
+          }
+        },
+        "accepted48/coarse48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 27,
+            "fn": 11,
+            "precision": 0.6746987951807228,
+            "recall": 0.835820895522388
+          }
+        },
+        "all_correct47/baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 18,
+            "fn": 20,
+            "precision": 0.7230769230769231,
+            "recall": 0.7014925373134329
+          }
+        },
+        "all_correct47/coarse47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 26,
+            "fn": 11,
+            "precision": 0.6829268292682927,
+            "recall": 0.835820895522388
+          }
+        },
+        "all_correct47/coarse48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.9701492537313433,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 26,
+            "fn": 13,
+            "precision": 0.675,
+            "recall": 0.8059701492537313
+          }
+        },
+        "all_correct48/baseline": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.9696969696969697,
+            "recall": 0.9846153846153847
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 18,
+            "fn": 20,
+            "precision": 0.7230769230769231,
+            "recall": 0.7014925373134329
+          }
+        },
+        "all_correct48/coarse47": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.9696969696969697,
+            "recall": 0.9846153846153847
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 26,
+            "fn": 11,
+            "precision": 0.6829268292682927,
+            "recall": 0.835820895522388
+          }
+        },
+        "all_correct48/coarse48": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.9696969696969697,
+            "recall": 0.9846153846153847
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 26,
+            "fn": 13,
+            "precision": 0.675,
+            "recall": 0.8059701492537313
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/balloon-mask-convergence-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "8ac24756bfa8a5cd0c961d5d823c4deb74dcad9a6ee2a68f02160fb3f0ee6715",
+      "frames": 12,
+      "results": {
+        "parent/baseline": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "parent/coarse47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.5882352941176471,
+            "recall": 0.8333333333333334
+          }
+        },
+        "parent/coarse48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        },
+        "accepted47/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9,
+            "recall": 0.75
+          }
+        },
+        "accepted47/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "accepted47/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "accepted48/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9,
+            "recall": 0.75
+          }
+        },
+        "accepted48/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334
+          }
+        },
+        "accepted48/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "all_correct47/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9,
+            "recall": 0.75
+          }
+        },
+        "all_correct47/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "all_correct47/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "all_correct48/baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9,
+            "recall": 0.75
+          }
+        },
+        "all_correct48/coarse47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "all_correct48/coarse48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        }
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-lockbox-panel3-20261010",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-panel2-20261010",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": false,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 47,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "baseline",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "coarse47",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    },
+    {
+      "panel": "engdes2-development-scenes-20261008",
+      "seed": 48,
+      "search": "coarse48",
+      "nonregression_vs_parent": false,
+      "nonregression_vs_accepted_only": true,
+      "meets_target": false
+    }
+  ],
+  "per_variant_all_panels_target": {
+    "accepted47/baseline": false,
+    "accepted47/coarse47": false,
+    "accepted47/coarse48": false,
+    "accepted48/baseline": false,
+    "accepted48/coarse47": false,
+    "accepted48/coarse48": false,
+    "all_correct47/baseline": false,
+    "all_correct47/coarse47": false,
+    "all_correct47/coarse48": false,
+    "all_correct48/baseline": false,
+    "all_correct48/coarse47": false,
+    "all_correct48/coarse48": false,
+    "parent/baseline": false,
+    "parent/coarse47": false,
+    "parent/coarse48": false
+  },
+  "decision": "Do not promote: TRAIN fit improved but no fixed variant reaches94% per-color precision and recall across the development panels.",
+  "scope": "Repeated related development imagery, not independent qualification. Training convergence and export parity do not establish generalization or Pi readiness.",
+  "script_sha256": "cb3ecb3bc1fd4683f2b870ca13ec85c43c2f2b39d6bc4c44b2751858b5247a19",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

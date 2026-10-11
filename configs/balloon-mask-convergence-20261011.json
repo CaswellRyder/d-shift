@@ -1,0 +1,13 @@
+{
+  "arms": ["accepted", "all_correct"],
+  "seeds": [47, 48],
+  "initial_epoch": 104,
+  "final_epoch": 160,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "motivation": "All-correct protection at104 retains every parent-accepted positive and learns19/22 or20/22 backgrounds, but seed47 still misses the unchanged ordinary-argmax gate by one net red row. Both losses continue decreasing. Compare both loss masks through a common fixed160 endpoint, without changing gate, loss weight, labels or inference threshold.",
+  "continuation": "Restore each104 checkpoint and full Adam state, preserve original teacher targets and exact pixels; shuffle restarts with the same seed in both arms. Final160 only; no development selection.",
+  "development_plan": "Only if both all_correct seeds pass the unchanged TRAIN gate, export all four paired models and compare all four plus original parent on all three development panels and three fixed searches as specified in balloon-all-correct-protection-20261011.json.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
