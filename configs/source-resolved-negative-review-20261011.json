@@ -1,0 +1,22 @@
+{
+  "queue": "data/source-resolved-negatives-20261011",
+  "queue_sha256": "894066e2b80e1684d674fbb97f3736b32f81098df216cfcfaf44708fb5318f23",
+  "labels": {"0": "background", "1": "background", "2": "background"},
+  "review_notes": {
+    "0": "Blue upholstered chair seat and gold-colored metal frame. Full original photograph, inference crop and source-resolution detail inspected. No balloon body inside this crop.",
+    "1": "Wrinkled, deflated blue latex balloons on a tabletop; mouths and collapsed fabric-like surfaces visible at source resolution. Operational background means non-target, not non-balloon material. Existing complete-scene taxonomy already excludes deflated balloon group annotation13; inflated red/blue balloons remain positive.",
+    "2": "Blue-and-white baseball cap worn by a spectator behind the foreground person. Full original photograph plus aligned source detail resolve the previously ambiguous crowd fragment. No balloon inside this crop."
+  },
+  "guard_exceptions": {
+    "0": "Crop starts7.8592scan pixels below the annotated red balloon and intersects the old16pixel conservative margin but not its actual box. Source-resolution crop shows only chair upholstery/frame. Explicit visual exception for this exact crop only; generic16pixel mining guard unchanged."
+  },
+  "earlier_review": "New source-resolution adjudication supersedes exclusion for exact crop IDs9and11 in configs/direct-hybrid-negative-review-20261011.json without altering the historical review. Other tiny/ambiguous fragments remain unapproved.",
+  "assistant_visual_review": true,
+  "human_review_verified": false,
+  "training_approved": true,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

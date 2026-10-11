@@ -1,0 +1,31 @@
+{
+  "parent_audit": "research/balloon-red-blue-20261008/positive-proposal-correction-20261011.json",
+  "parent_audit_sha256": "428dcb4f78c2d84920c3e15670e76e6c7b0a5bf72139b880247707b4853d9f70",
+  "review": "configs/source-resolved-negative-review-20261011.json",
+  "parents": {
+    "47": {"path": "runs/positive-proposal-correction-corrected-seed47-20261011/student.keras", "sha256": "a0e64a707dcaa17673fb3918f83338bcc44847530635e365397c010868242df9"},
+    "48": {"path": "runs/positive-proposal-correction-corrected-seed48-20261011/student.keras", "sha256": "c71fb1deb114ebccad62249e378014d45f35ce8ffa38b1e5bc710725a1d04d64"}
+  },
+  "arms": ["control", "corrected"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "rows": 2680,
+  "optimizer_steps": 13440,
+  "parameters": 7763,
+  "new_negatives": 3,
+  "repetitions": 4,
+  "hard_weight": 4,
+  "scene_kl_weight": 8,
+  "scene_centered_logit_weight": 0.5,
+  "design": "Retain all2668rows of the corrected positive-proposal curriculum. Both arms append the same three source-resolution reviewed background crops repeated4times. Control retains parent teacher outputs on these12rows with weight1; corrected uses explicit background labels with weight4. Only these12supervision rows differ; graph, initialization perseed, pixels, optimizer, schedule and all prior labels match. Exact pixel duplicates with any prior curriculum row are forbidden to avoid conflicting retention targets. Hypothesis: native-photo evidence distinguishes deflated latex, chair upholstery and a cap from inflated blue balloons without additional inference cost.",
+  "gate": "Verify fixed final models, optimizer steps, matched tensors and reproduce stored predictions. Replay both seeds on82TRAIN scenes using unchanged current and direct-hybrid policies. Require no incumbent target loss, no per-color false-positive increase on any panel and strict recovery or false-positive reduction in both seeds before separate export/DEV investigation. Report matched-control effects and old-crop losses. No deployment from TRAIN and no threshold sweep.",
+  "training_approved": true,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
