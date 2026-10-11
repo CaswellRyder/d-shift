@@ -4,6 +4,7 @@ from collections import Counter
 from pathlib import Path
 
 from dtr.data import read_json, sha256, write_json
+from dtr.runtime import Predictor
 from scripts.openimages_balloon_training import data, QUEUE, REVIEW, ROOT, LICENSE, MANIFEST
 from scripts.evaluate_reviewed_balloon_scenes import evaluate
 from scripts.summarize_balloon_fragments import PANELS
@@ -49,7 +50,7 @@ def models():
         identity = [{k:r[k] for k in ('source_image','sha256','label','preserve')} for r in rows]
         for seed in (47,48):
             name = f'{mode}{seed}'
-            run = Path(f'runs/balloon-openimages-{mode}-seed{seed}-20261011')
+            run = Path(f"runs/{protocol['run_prefix']}-{mode}-seed{seed}-20261011")
             p,meta = read_json(run/'provenance.json'),read_json(run/'student.fp32.json')
             validate_run(p,meta,run,mode,seed,identity,protocol,len(extra))
             sources[name] = run/'student.fp32.tflite'
@@ -63,9 +64,22 @@ def run(output):
     if output.exists():
         raise FileExistsError(output)
     sources,evidence,extra = models()
+    training_crops = {}
+    for name,model in sources.items():
+        predictor = Predictor(model,allow_unvalidated=True)
+        predictions = []
+        for r in extra:
+            p = predictor.predict(Path(QUEUE)/r['path'])
+            predictions.append(dict(id=r['id'],truth=r['label'],prediction=p['label'],
+                                    score=p['score'],accepted=p['accepted']))
+        training_crops[name] = dict(scope='TRAIN fit only, not accuracy qualification',
+            predictions=predictions,by_class={c:dict(
+                count=sum(r['truth']==c for r in predictions),
+                correct=sum(r['truth']==c and r['prediction']==c for r in predictions))
+                for c in predictor.metadata['classes']})
     panels = {}
     for panel in PANELS:
-        path = Path(f'runs/balloon-openimages-scenes-{panel}-20261011.json')
+        path = Path(f'runs/balloon-openimages-clean-scenes-{panel}-20261011.json')
         if path.exists():
             raise FileExistsError(path)
         result = evaluate('data/'+panel,'configs/'+panel+'.json',sources,
@@ -89,7 +103,7 @@ def run(output):
     queue = read_json(Path(QUEUE)/'review.json')
     licenses = read_json(LICENSE)
     selected_frames = {r['frame_id'] for r in extra}
-    write_json(output,dict(models=evidence,panels=panels,protocol_sha256=sha256(PROTOCOL),
+    write_json(output,dict(models=evidence,training_crops=training_crops,panels=panels,protocol_sha256=sha256(PROTOCOL),
         queue_sha256=sha256(Path(QUEUE)/'review.json'),review_sha256=sha256(REVIEW),
         acquisition_sha256=sha256(ROOT/'acquisition.json'),license_verification_sha256=sha256(LICENSE),
         script_sha256=sha256(__file__),selected_crop_ids=[r['id'] for r in extra],

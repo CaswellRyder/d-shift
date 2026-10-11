@@ -6,7 +6,6 @@
     "background": [
       1,
       4,
-      5,
       10,
       11,
       12,
@@ -145,6 +144,7 @@
   },
   "exclude": [
     2,
+    5,
     7,
     8,
     9,
@@ -224,6 +224,7 @@
     210
   ],
   "notes": [
+    "Corrected post-fit TRAIN audit: crop5 contains small distant blue balloons and must not be background. Initial four runs were invalidated before development evaluation.",
     "Hot-air balloons, non-target-color balloons and clearly reviewed clutter are background, not competition red/blue balloons.",
     "Ambiguous purple/pink/orange-red crops, small unresolved targets, mixed-color partials and heavily clipped targets are excluded.",
     "Frame 35 native resolution confirms distant red and blue latex balloons; low resolution alone does not remove a reliable reviewed color label.",

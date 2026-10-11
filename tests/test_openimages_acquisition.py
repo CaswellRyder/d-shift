@@ -61,3 +61,13 @@ def test_public_trial_cannot_silently_change_old_training_defaults(tmp_path):
         with pytest.raises(ValueError):
             train('admit',47,tmp_path/'unused',**kwargs)
     assert not (tmp_path/'unused').exists()
+
+
+def test_large_background_crop_cannot_swallow_tiny_balloon_at_low_iou():
+    from scripts.openimages_balloon_training import safe_background
+    row = dict(label='background',kind='unmatched_proposal',crop_box=[0,0,320,240])
+    frame = dict(boxes=[[240,105,248,113]])
+    assert not safe_background(row,frame)
+    assert safe_background(dict(row,crop_box=[0,0,30,30]),frame)
+    # Explicitly reviewed non-target source objects are different from unmatched clutter.
+    assert safe_background(dict(row,kind='source_balloon_box'),frame)

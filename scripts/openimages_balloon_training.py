@@ -9,14 +9,20 @@ from PIL import Image
 from dtr.data import read_json, sha256
 from scripts.prepare_openimages_balloon_review import checked_path
 from scripts.train_balloon_fragments import checked_data, MANIFEST, QUEUE as FRAGMENT_QUEUE
+from scripts.mine_red_blue_negatives import safe_negative
 
 QUEUE = 'data/openimages-balloon-review-20261011'
 REVIEW = 'configs/openimages-balloon-review-20261011.json'
 ROOT = Path('data/raw/openimages-balloon-train-20261011')
 LICENSE = ROOT/'license-verification.json'
 QUEUE_SHA = '4bd029db3534597c2787ed8a559729a2912c213cf114eceb7a7ef62d3936a221'
-REVIEW_SHA = '81deda4669677dcb821c0f9c0934e72a73b73a3da426ac8318f3997df0f1fa15'
+REVIEW_SHA = '51255d208e861b0ce1af002a4bd0cd1376646132aae1224c5c49eff2092876dc'
 LICENSE_SHA = '9b77f2dfa36267ccc98d99b2996ab3f50437a1699697d3d2fc41426055ce4367'
+
+
+def safe_background(row, frame):
+    return (row['label'] != 'background' or row['kind'] != 'unmatched_proposal'
+            or safe_negative(row['crop_box'],frame['boxes']))
 
 
 def review_labels(review, count):
@@ -70,7 +76,9 @@ def checked_extra():
             crop = np.asarray(im.convert('RGB'))
         if not np.array_equal(crop,pixels[row['frame_id']][b:d,a:c]):
             raise ValueError('Crop differs from reviewed frame')
-        eligible.append(dict(row,label=label))
+        labeled = dict(row,label=label)
+        if safe_background(labeled,frame):
+            eligible.append(labeled)
     # All reviewed positives; at most two backgrounds per scene, 36 total.
     # Hash order is independent of current classifier scores or held-out results.
     positives = [r for r in eligible if r['label'] != 'background']
