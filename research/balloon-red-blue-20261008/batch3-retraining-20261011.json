@@ -1,0 +1,675 @@
+{
+  "protocol_sha256": "596252830e538318593ed9264c7bfa998283d3dd7e3e6345c7ba451aa1eaddf9",
+  "script_sha256": "2cec71cbe3b278757c59e5ec7a6fc91f94ae8568ed6f97fc8fca3a17bce8f263",
+  "results": {
+    "control47": {
+      "run": "runs/batch3-retraining-control-seed47-20261011",
+      "report_sha256": "8624f9341df7af37fb0d169807a2425aaad3139f58488208b1052435094a123f",
+      "old_correct_before": 1971,
+      "old_correct_after": 2008,
+      "lost_old_rows": [
+        562
+      ],
+      "gained_old_rows": [
+        766,
+        1659,
+        1660,
+        1662,
+        1664,
+        1666,
+        1667,
+        1672,
+        1673,
+        1675,
+        1677,
+        1679,
+        1680,
+        1764,
+        1767,
+        1768,
+        1775,
+        1778,
+        1779,
+        1815,
+        1820,
+        1824,
+        1825,
+        1883,
+        1888,
+        1892,
+        1893,
+        1923,
+        1924,
+        1925,
+        1928,
+        1931,
+        1935,
+        1936,
+        1937,
+        1940,
+        1943,
+        2011
+      ],
+      "probe_correct": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "false_acceptances": {
+        "red_balloon": {
+          "before": 5,
+          "after": 1
+        },
+        "blue_balloon": {
+          "before": 44,
+          "after": 6
+        }
+      },
+      "training_gate_pass": false,
+      "model_sha256": "96f4ff07257c4cb02ca2f24f3726181e15cea482a82a1c02dcac316a712a00ba",
+      "predictions_sha256": "23dc9c91e0d33608321d604d386574e95dcf9717ccb5b7af022556b807358b5d",
+      "provenance_sha256": "e737acd30ef6180ea5c6c3b59ab3992dcf3894ebdc75d36358c36bce7a256899",
+      "optimizer_steps": 10560,
+      "scope": "TRAIN feasibility only, no independent accuracy, scene recall or Pi readiness claim.",
+      "lost_old_identities": [
+        {
+          "source_image": "train/frame_000448_jpg.rf.10929f9913e8c4d426183fdd1e4fbc9a.jpg",
+          "sha256": "46f2bc6532a7246a58515673405307c0a16ece163fad23bec27ae6f7e7c1342b",
+          "label": "background",
+          "view": "original"
+        }
+      ],
+      "probes": [
+        {
+          "id": 2,
+          "label": "blue_balloon",
+          "scores": [
+            0.33617520332336426,
+            8.681319741299376e-06,
+            0.6638161540031433
+          ]
+        },
+        {
+          "id": 7,
+          "label": "blue_balloon",
+          "scores": [
+            0.00033893308136612177,
+            1.339307509340415e-08,
+            0.9996610879898071
+          ]
+        },
+        {
+          "id": 8,
+          "label": "red_balloon",
+          "scores": [
+            0.18251048028469086,
+            0.8015036582946777,
+            0.015985777601599693
+          ]
+        },
+        {
+          "id": 9,
+          "label": "blue_balloon",
+          "scores": [
+            0.0012194839073345065,
+            2.8460070211622224e-07,
+            0.9987801909446716
+          ]
+        },
+        {
+          "id": 19,
+          "label": "blue_balloon",
+          "scores": [
+            0.9691698551177979,
+            3.2629916546511595e-09,
+            0.030830128118395805
+          ]
+        },
+        {
+          "id": 21,
+          "label": "blue_balloon",
+          "scores": [
+            0.004268110729753971,
+            2.3865684539714493e-08,
+            0.9957318902015686
+          ]
+        },
+        {
+          "id": 24,
+          "label": "blue_balloon",
+          "scores": [
+            0.9971197843551636,
+            3.7211570713679976e-08,
+            0.002880293410271406
+          ]
+        }
+      ]
+    },
+    "control48": {
+      "run": "runs/batch3-retraining-control-seed48-20261011",
+      "report_sha256": "b8027224c2c4c091e46db7e2bdf8bdbc0a62715232c12b818e82023fb887d70e",
+      "old_correct_before": 1971,
+      "old_correct_after": 2006,
+      "lost_old_rows": [
+        562
+      ],
+      "gained_old_rows": [
+        766,
+        1659,
+        1660,
+        1662,
+        1664,
+        1666,
+        1667,
+        1672,
+        1673,
+        1675,
+        1677,
+        1679,
+        1680,
+        1764,
+        1767,
+        1768,
+        1775,
+        1778,
+        1779,
+        1815,
+        1824,
+        1825,
+        1883,
+        1892,
+        1893,
+        1923,
+        1924,
+        1925,
+        1928,
+        1931,
+        1935,
+        1936,
+        1937,
+        1940,
+        1943,
+        2011
+      ],
+      "probe_correct": [
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false
+      ],
+      "false_acceptances": {
+        "red_balloon": {
+          "before": 5,
+          "after": 1
+        },
+        "blue_balloon": {
+          "before": 44,
+          "after": 6
+        }
+      },
+      "training_gate_pass": false,
+      "model_sha256": "57d9e541638e9ce129be63855ba48260a67ab9d2802a7f4af81a25923dfa25b8",
+      "predictions_sha256": "c7eb4e6de3ad37b954087cfd76ed916ddff468aa9bc695231d894224ee9b7445",
+      "provenance_sha256": "3317989574d36da4ea70df58c93066bf7ad144153b9f7147ce8b0883dd638f96",
+      "optimizer_steps": 10560,
+      "scope": "TRAIN feasibility only, no independent accuracy, scene recall or Pi readiness claim.",
+      "lost_old_identities": [
+        {
+          "source_image": "train/frame_000448_jpg.rf.10929f9913e8c4d426183fdd1e4fbc9a.jpg",
+          "sha256": "46f2bc6532a7246a58515673405307c0a16ece163fad23bec27ae6f7e7c1342b",
+          "label": "background",
+          "view": "original"
+        }
+      ],
+      "probes": [
+        {
+          "id": 2,
+          "label": "blue_balloon",
+          "scores": [
+            0.3261411786079407,
+            8.538519978174008e-06,
+            0.6738502383232117
+          ]
+        },
+        {
+          "id": 7,
+          "label": "blue_balloon",
+          "scores": [
+            0.0003309014136902988,
+            1.3517317043465482e-08,
+            0.999669075012207
+          ]
+        },
+        {
+          "id": 8,
+          "label": "red_balloon",
+          "scores": [
+            0.18894055485725403,
+            0.7945048809051514,
+            0.0165545791387558
+          ]
+        },
+        {
+          "id": 9,
+          "label": "blue_balloon",
+          "scores": [
+            0.001139187952503562,
+            2.7927796963922447e-07,
+            0.9988605976104736
+          ]
+        },
+        {
+          "id": 19,
+          "label": "blue_balloon",
+          "scores": [
+            0.9641549587249756,
+            3.3320677328418924e-09,
+            0.0358450673520565
+          ]
+        },
+        {
+          "id": 21,
+          "label": "blue_balloon",
+          "scores": [
+            0.00419128593057394,
+            2.4778758600518813e-08,
+            0.9958087205886841
+          ]
+        },
+        {
+          "id": 24,
+          "label": "blue_balloon",
+          "scores": [
+            0.997109591960907,
+            3.673763515621431e-08,
+            0.0028904122300446033
+          ]
+        }
+      ]
+    },
+    "admit47": {
+      "run": "runs/batch3-retraining-admit-seed47-20261011",
+      "report_sha256": "e1e690b9e92913756c166f0be5c3ae71c893b665d6b085b6b9eb2c96ae9018f5",
+      "old_correct_before": 1971,
+      "old_correct_after": 1998,
+      "lost_old_rows": [
+        562,
+        585,
+        596,
+        607,
+        618,
+        1215,
+        1226
+      ],
+      "gained_old_rows": [
+        838,
+        1659,
+        1660,
+        1662,
+        1664,
+        1666,
+        1667,
+        1672,
+        1673,
+        1675,
+        1677,
+        1679,
+        1680,
+        1764,
+        1767,
+        1768,
+        1775,
+        1778,
+        1779,
+        1815,
+        1824,
+        1825,
+        1883,
+        1892,
+        1893,
+        1923,
+        1924,
+        1925,
+        1931,
+        1935,
+        1936,
+        1937,
+        1943,
+        2011
+      ],
+      "probe_correct": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "false_acceptances": {
+        "red_balloon": {
+          "before": 5,
+          "after": 1
+        },
+        "blue_balloon": {
+          "before": 44,
+          "after": 12
+        }
+      },
+      "training_gate_pass": false,
+      "model_sha256": "38da2b87306c095661fe5b8477096aa8331671867dd49b2dc0967d808e4b72fb",
+      "predictions_sha256": "c8f7a9a805f612361d383a19d85c54796bf715d5fc53beb7be71f6365a1b8aaa",
+      "provenance_sha256": "e8fe3e6209d3a4f670c0b1774180780ca36deffca5a454517f7c8a256d699bbb",
+      "optimizer_steps": 10560,
+      "scope": "TRAIN feasibility only, no independent accuracy, scene recall or Pi readiness claim.",
+      "lost_old_identities": [
+        {
+          "source_image": "train/frame_000448_jpg.rf.10929f9913e8c4d426183fdd1e4fbc9a.jpg",
+          "sha256": "46f2bc6532a7246a58515673405307c0a16ece163fad23bec27ae6f7e7c1342b",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/16435593892_2aa8118f4a_k.jpg",
+          "sha256": "b4fa7c7557499a32bbe1521bdaa64cc05d609cd75b6656eff7f1017021ebebad",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/16435593892_2aa8118f4a_k.jpg",
+          "sha256": "fdb29b40b5d52e300db22ab2a4aae2871dc56a96850e672e3891e746cd419cf9",
+          "label": "background",
+          "view": "original"
+        }
+      ],
+      "probes": [
+        {
+          "id": 2,
+          "label": "blue_balloon",
+          "scores": [
+            0.20720219612121582,
+            1.0411231414764188e-05,
+            0.7927873134613037
+          ]
+        },
+        {
+          "id": 7,
+          "label": "blue_balloon",
+          "scores": [
+            0.0002623538894113153,
+            1.4738795961477535e-08,
+            0.9997376799583435
+          ]
+        },
+        {
+          "id": 8,
+          "label": "red_balloon",
+          "scores": [
+            0.10780563950538635,
+            0.8826907277107239,
+            0.009503607638180256
+          ]
+        },
+        {
+          "id": 9,
+          "label": "blue_balloon",
+          "scores": [
+            0.0017752565909177065,
+            3.0703063202963676e-07,
+            0.9982244372367859
+          ]
+        },
+        {
+          "id": 19,
+          "label": "blue_balloon",
+          "scores": [
+            0.22463488578796387,
+            1.0413357287575309e-08,
+            0.7753651142120361
+          ]
+        },
+        {
+          "id": 21,
+          "label": "blue_balloon",
+          "scores": [
+            0.0019943045917898417,
+            2.249241504159727e-08,
+            0.9980056881904602
+          ]
+        },
+        {
+          "id": 24,
+          "label": "blue_balloon",
+          "scores": [
+            0.6560730934143066,
+            8.591113669353945e-07,
+            0.3439260721206665
+          ]
+        }
+      ]
+    },
+    "admit48": {
+      "run": "runs/batch3-retraining-admit-seed48-20261011",
+      "report_sha256": "c7433cd3ee7f009ff802101c614ad24a86bb0e28ade8a7058ecb0d103e0202f5",
+      "old_correct_before": 1971,
+      "old_correct_after": 1998,
+      "lost_old_rows": [
+        562,
+        585,
+        596,
+        607,
+        618,
+        1215,
+        1226
+      ],
+      "gained_old_rows": [
+        838,
+        1659,
+        1660,
+        1662,
+        1664,
+        1666,
+        1667,
+        1672,
+        1673,
+        1675,
+        1677,
+        1679,
+        1680,
+        1764,
+        1767,
+        1768,
+        1775,
+        1778,
+        1779,
+        1815,
+        1824,
+        1825,
+        1883,
+        1892,
+        1893,
+        1923,
+        1924,
+        1925,
+        1931,
+        1935,
+        1936,
+        1937,
+        1943,
+        2011
+      ],
+      "probe_correct": [
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "false_acceptances": {
+        "red_balloon": {
+          "before": 5,
+          "after": 1
+        },
+        "blue_balloon": {
+          "before": 44,
+          "after": 12
+        }
+      },
+      "training_gate_pass": false,
+      "model_sha256": "5f7a12b61df3d8edc7d1dba3212a36e9761bce9423e9c295d842c36cdfd85539",
+      "predictions_sha256": "c9cecd22af1ed21ad141079db2056837d762551e31164615994dc02ddd14768b",
+      "provenance_sha256": "1c30992c30e83bc2a8293340d6fe1b6a201939c31b40ca1eef69200ba960aebe",
+      "optimizer_steps": 10560,
+      "scope": "TRAIN feasibility only, no independent accuracy, scene recall or Pi readiness claim.",
+      "lost_old_identities": [
+        {
+          "source_image": "train/frame_000448_jpg.rf.10929f9913e8c4d426183fdd1e4fbc9a.jpg",
+          "sha256": "46f2bc6532a7246a58515673405307c0a16ece163fad23bec27ae6f7e7c1342b",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/15290896925_884ab33fd3_k.jpg",
+          "sha256": "74b09e6d675d463339ef9a2dc6e4441359f33bfcfaf747b24b79bf808dc00147",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/16435593892_2aa8118f4a_k.jpg",
+          "sha256": "b4fa7c7557499a32bbe1521bdaa64cc05d609cd75b6656eff7f1017021ebebad",
+          "label": "background",
+          "view": "original"
+        },
+        {
+          "source_image": "balloon/train/16435593892_2aa8118f4a_k.jpg",
+          "sha256": "fdb29b40b5d52e300db22ab2a4aae2871dc56a96850e672e3891e746cd419cf9",
+          "label": "background",
+          "view": "original"
+        }
+      ],
+      "probes": [
+        {
+          "id": 2,
+          "label": "blue_balloon",
+          "scores": [
+            0.20130249857902527,
+            1.04455566543038e-05,
+            0.7986871004104614
+          ]
+        },
+        {
+          "id": 7,
+          "label": "blue_balloon",
+          "scores": [
+            0.0002443841949570924,
+            1.3628853601233004e-08,
+            0.9997555613517761
+          ]
+        },
+        {
+          "id": 8,
+          "label": "red_balloon",
+          "scores": [
+            0.10535436123609543,
+            0.88512122631073,
+            0.009524419903755188
+          ]
+        },
+        {
+          "id": 9,
+          "label": "blue_balloon",
+          "scores": [
+            0.0017400023061782122,
+            2.991584153733129e-07,
+            0.9982597231864929
+          ]
+        },
+        {
+          "id": 19,
+          "label": "blue_balloon",
+          "scores": [
+            0.21348220109939575,
+            9.564394609640203e-09,
+            0.7865177989006042
+          ]
+        },
+        {
+          "id": 21,
+          "label": "blue_balloon",
+          "scores": [
+            0.0019163030665367842,
+            2.071774218848077e-08,
+            0.9980837106704712
+          ]
+        },
+        {
+          "id": 24,
+          "label": "blue_balloon",
+          "scores": [
+            0.626359224319458,
+            9.039842439051426e-07,
+            0.37363988161087036
+          ]
+        }
+      ]
+    }
+  },
+  "eligible_for_full_scene_comparison": false,
+  "scope": "Four fixed80epoch checkpoints, each10560steps; matched real-photo additions versus old-class controls. All TRAIN inputs and Keras outputs reproduced. Counts are correlated crop views, not full-scene or independent accuracy.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
