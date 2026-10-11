@@ -1,0 +1,27 @@
+{
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 7763,
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "decay_steps": 48400,
+  "alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Shared1786-row admitted blue-batch curriculum plus68 reviewed indoor crops repeated twice versus68 old same-class controls repeated twice.1922rows,1602protected. Both start original7763parameter parent, fresh Adam400epochs48400steps cosine1e-4 to1e-5, same final-checkpoint policy.",
+  "training_gate": "Both admitted seeds must retain all previous crop gates and correctly classify68/68indoor probes, with each red/blue positive at0.8 or above; backgrounds must have background argmax. Controls measured without requiring unseen probe learning.",
+  "scope": "TRAIN-only indoor-view intervention. No IMG-family or Pi image training. Full scenes and live Pi qualify separately; runtime unchanged.",
+  "deployment_approved": false,
+  "test_evaluated": false
+}
