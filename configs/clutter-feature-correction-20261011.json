@@ -1,0 +1,14 @@
+{
+  "feature_audit": "research/balloon-red-blue-20261008/clutter-round3-feature-20261011.json",
+  "names": ["control47", "control48", "admit47", "admit48"],
+  "reference": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "reference_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 7763,
+  "updated_parameters": 258,
+  "recipe": "Apply the same deterministic minimum-drift red/blue head correction to each of the four audited80epoch feature checkpoints. Freeze its backbone and background head. Retention decisions and rival allocations come from the original research reference, not from the failed checkpoint. Correct the bounds for every changed base logit, including background. Admission requires all13new backgrounds; control uses its13matched old backgrounds. Same sufficient bounds and0.8threshold as earlier head experiments.",
+  "objective": "Minimize mean squared correction to logits on2074old crops and385TRAIN proposals plus0.001standardized-parameter ridge; exclude13probe rows. HiGHS feasible L1 warm start60sec, SLSQP120sec with KKT certificate.",
+  "gate": "Both admission seeds must retain all originally correct crops, avoid new wrong-color acceptances, correctly classify13new backgrounds, and retain385reference TRAIN proposal decisions. Then parity export and TRAIN full-scene comparison, followed by related development only for TRAIN survivors. No development checkpoint selection.",
+  "scope": "TRAIN-only correction of newly learned features; no extra runtime layers/calls. Infeasibility concerns these sufficient bounds only. No IMG-family fitting or reserved test reads.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
