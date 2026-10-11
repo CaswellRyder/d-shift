@@ -1,0 +1,21 @@
+{
+  "queue": "data/blue-object-round3-review-20261011",
+  "queue_sha256": "06de303228ad7c1a3e885babec18a9be4b56436980037d38ffde609f52feeae7",
+  "split": "train",
+  "training_approved": true,
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "labels_by_class": {
+    "background": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "red_balloon": [],
+    "blue_balloon": []
+  },
+  "exclude": [],
+  "reviewed_sheets": {
+    "crops-000.jpg": "cac8cd1b76c2d4a01dbe81d3d629bc3fa4c391856fa9278f82c73612efb0f925",
+    "frames-000.jpg": "c90f28b361a994c644e3ab181617bc76e83ffe9e978513a889c12235a3a9c25b"
+  },
+  "manual_balloon_guards": [],
+  "review": "Main agent visually inspected all10frames and13crops on both sheets, plus original full-resolution frames1,3,4. No physical balloon is visible in these selected crop contexts. Background0=red shorts/cup edge;1=blue presentation screen;2=small blue cable connector on table;3=blue jacket;4=picture/frame corner behind speaker;5=printed red book-spine dot;6=blue book spine;7=blue raincoat;8,9=two crops of the same blue jacket;10=blue backpack/strap fragment;11=orange fabric/backpack strap;12=blue trousers. Printed circles are not physical target balloons. No identities or personal attributes assigned.",
+  "scope": "Exact assistant-reviewed TRAIN crop labels only, not complete-scene labels or independent evaluation.13crops from10new photos; related crops are not independent. Source-page CC BY links, acquisition metadata, duplicate exclusions and pixel reconstruction must verify. No EngDes2 IMG-family, Pi-image or test training."
+}
