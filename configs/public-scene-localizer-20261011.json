@@ -1,0 +1,24 @@
+{
+  "parent": "runs/blue-head-only-background-20261011/proposal.keras",
+  "parent_sha256": "9c7070d24213cd1cfb3a6477479ecb84986f70b7e2506e5a727e8fee07dd1bd0",
+  "reviews_sha256": {
+    "configs/blue-balloon-window1-scenes-20261011.json": "50f8df7802887ff7a2fc8bda09e1a61065c196ddcf0cf69456a5457cdfb05ccb",
+    "configs/blue-balloon-window2-scenes-20261011.json": "0c4fed7b90dc91427c6e1d6115a304181d9cf39ce28902a3c3e703ad93ed890a"
+  },
+  "arms": ["control", "scenes"],
+  "seeds": [47, 48],
+  "epochs": 200,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "optimizer_steps": 3600,
+  "parameters": 2342,
+  "training_approved": true,
+  "review_authorization": "Separate TRAIN-only localization admission of the completed scene labels in the two hash-bound reviews: 18publicphotos with40individually reviewed red/blue targets. Source labels and overlays inspected before this experiment. This is not blanket approval for crop background mining, independent evaluation or deployment.",
+  "design": "Identical139FITinputs:113originalFIT,8complete reviewed negatives,18reviewed public scenes. Original16grouped holdout excluded before normalization, fitting and predictions. Same parent, fresh Adam, shuffled order, final200epochs and3600updates. In control, the18public scene heat/box loss masks are zero; in scenes, use reviewed complete targets with16pixel background guard. Same2342parameter graph and classifier. No parameter or threshold sweep.",
+  "evaluation": "Reproduce saved weights, outputs and training provenance. Measure one-to-one geometry coverage and full classifier detections on the82already-admitted TRAIN scenes. Keep old blue-only supplement and separately test a fixed two-slot both-color reservation; cap12calls. Parent and matched controls use identical policies. Require no lost prior targets, no per-color FPincrease on each panel and strict target recovery for both seeds before considering separate DEV/export/Pi work.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
