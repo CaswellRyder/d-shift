@@ -54,19 +54,25 @@ def loss_function():
     return loss
 
 
-def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1, epochs=8):
+def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1, epochs=8, openimages=False):
     out = Path(output)
     if out.exists():
         raise FileExistsError(out)
     if seed not in (47, 48):
         raise ValueError('Require predeclared seed')
-    if expansion and expansion4:
+    if sum((expansion,expansion4,openimages)) > 1:
         raise ValueError('Choose one expansion experiment')
-    if hard_weight not in (1,16) or (hard_weight != 1 and not expansion4):
+    if openimages:
+        if hard_weight != 4 or epochs != 24:
+            raise ValueError('Open Images requires the predeclared weight4, 24-epoch trial')
+    elif hard_weight not in (1,16) or (hard_weight != 1 and not expansion4):
         raise ValueError('Hard weighting requires expansion4 and fixed weight 1 or 16')
-    if epochs not in (8,80) or (epochs != 8 and not (expansion4 and hard_weight==16)):
+    if not openimages and (epochs not in (8,80) or (epochs != 8 and not (expansion4 and hard_weight==16))):
         raise ValueError('Long convergence run requires expansion4, weight16 and fixed 80 epochs')
-    if expansion4:
+    if openimages:
+        from scripts.openimages_balloon_training import data as expansion_data,QUEUE as queue,REVIEW as review
+        rows, negatives = expansion_data(mode)
+    elif expansion4:
         from scripts.balloon_expansion4 import data as expansion_data,QUEUE as queue,REVIEW as review
         rows, negatives = expansion_data(mode)
     elif expansion:
@@ -113,6 +119,11 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1, 
     if epochs==80:
         provenance.update(convergence_protocol_sha256=sha256('configs/balloon-expansion4-convergence-20261011.json'),
                           trace_helper_sha256=sha256('scripts/balloon_convergence.py'))
+    if openimages:
+        provenance.update(experiment='openimages',
+            data_helper_sha256=sha256('scripts/openimages_balloon_training.py'),
+            trial_protocol_sha256=sha256('configs/balloon-openimages-trial-20261011.json'),
+            license_verification_sha256=sha256('data/raw/openimages-balloon-train-20261011/license-verification.json'))
     write_json(out/'provenance.json', provenance)
     write_json(out/'status.json', dict(state='running'))
     try:
@@ -212,8 +223,9 @@ if __name__ == '__main__':
     group = p.add_mutually_exclusive_group()
     group.add_argument('--expansion3',action='store_true',help='Use reviewed expansion3 views and matched class-count controls')
     group.add_argument('--expansion4',action='store_true',help='Use frozen-parent hard crops from reviewed expansion4 TRAIN views')
-    p.add_argument('--hard-weight',type=int,choices=(1,16),default=1,
+    group.add_argument('--openimages',action='store_true',help='Use reviewed licensed Open Images TRAIN crops')
+    p.add_argument('--hard-weight',type=int,choices=(1,4,16),default=1,
                    help='Training-only learnability diagnostic; same weighting in matched controls')
-    p.add_argument('--epochs',type=int,choices=(8,80),default=8)
+    p.add_argument('--epochs',type=int,choices=(8,24,80),default=8)
     args = p.parse_args()
-    train(args.mode, args.seed, args.output,args.expansion3,args.expansion4,args.hard_weight,args.epochs)
+    train(args.mode, args.seed, args.output,args.expansion3,args.expansion4,args.hard_weight,args.epochs,args.openimages)

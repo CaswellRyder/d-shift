@@ -1,0 +1,20 @@
+{
+  "parent_checkpoint": "runs/balloon-fragment-control-seed47-20261011/color.keras",
+  "parent_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+  "seeds": [47, 48],
+  "arms": ["control", "admit"],
+  "epochs": 24,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "hard_weight": 4,
+  "new_crop_repetitions": 2,
+  "background_cap": 36,
+  "background_per_frame_cap": 2,
+  "selection": "All explicit reviewed red/blue positives with current CC BY 2.0 photo-page verification. Background subset in crop SHA256 order with fixed caps. No classifier-driven mining or held-out selection.",
+  "controls": "Same ordinary rows, extra class counts, order, weights and epochs; extra examples sampled from existing same-class TRAIN crops with fixed RNG47.",
+  "loss": "Hard cross-entropy plus 0.5 parent KL at T=4 on ordinary rows only; hard extra rows have weight4 in both arms.",
+  "checkpoint_policy": "Final epoch24 only, no intermediate checkpoint selection",
+  "development_plan": "Compare both seeds and matched controls to unchanged parent on all three existing frozen development panels, threshold0.8 IoU0.5, mser_confirmed_parts, split_merged, aspect2.42913421076193. No threshold sweep or qualification claim.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
