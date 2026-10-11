@@ -1,0 +1,21 @@
+{
+  "source_protocol": "configs/public-scene-localizer-20261011.json",
+  "source_protocol_sha256": "58a7ed27eb416ec501979a3e3919d1cc95edac78736f62651820ed4425de022f",
+  "source_audit": "research/balloon-red-blue-20261008/public-scene-localizer-20261011.json",
+  "source_audit_sha256": "ff4b902496b3259ea4afa71cf9b9d9a0849645db1d50bf9bb56ae4a4cbce8d0b",
+  "seeds": [47, 48],
+  "relative_weight": 2.0,
+  "minimum_center_denominator_pixels": 4.0,
+  "minimum_size_log_pixels": 1.0,
+  "smooth_l1_transition": 1.0,
+  "matched_controls": {
+    "47": "runs/public-scene-localizer-scenes-seed47-20261011",
+    "48": "runs/public-scene-localizer-scenes-seed48-20261011"
+  },
+  "design": "Reuse fully verified previous scene-supervised runs as exact schedule/data controls. New runs start from the same blue-head parent, not from those final checkpoints. Same139FITinputs, full reviewed targets, seeds47/48, fresh Adam cosine1e-4 alpha0.1,200epochs,3600steps,2342parameters. Only loss changes: existing focal+5L1+2GIoU plus2times mean smoothL1 over center errors divided by target pixel width/height (floor4px) and log predicted/true width-height ratios (floor1px). No inference graph change, no hidden threshold sweep.",
+  "evaluation": "Verify checkpoint reload, saved predictions, exact original data/control identities and objective values. Reuse82TRAINpanels, classifier0.8, IoU0.5, current blue supplement and fixed two-slot red/blue reservation with12maximumcalls. Require paired no-loss/no-FPincrease and strict recovered target before export/DEV consideration. Also report matched-control changes. Reserved test and original16grouped holdout stay closed.",
+  "training_approved": true,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
