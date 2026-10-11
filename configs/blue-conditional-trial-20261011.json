@@ -1,0 +1,28 @@
+{
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 9844,
+  "trainable_parameters": 2081,
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "decay_steps": 44800,
+  "alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Same1786-row blue-batch trial curriculum and44800step cosine schedule. Both arms use the frozen7763parameter parent with an identity-initialized128-to16-to1 blue/background conditional correction. Only2081 added parameters train; all parent weights stay exact. Shared1764rows plus11new blue views repeated twice versus11old blue controls repeated twice. Same frozen teacher, losses, sample weights, final checkpoint policy.",
+  "training_gate": "Both admitted seeds retain every previous crop gate and11/11new blue probes. Parent layers must be bitwise unchanged; red probabilities within1e-6 and red acceptance at0.8 unchanged for all eight tensor groups.",
+  "scope": "Research alternative after full fine-tuning caused red scene regressions. Frozen red probability does not guarantee downstream localization/selection; must test full scenes. No Pi or reserved-test training.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
