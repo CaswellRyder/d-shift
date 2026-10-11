@@ -1,0 +1,13 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "parent_epochs": 24,
+  "final_epochs": 80,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "motivation": "At epoch24 both admit losses are still decreasing and correct-parent positive retention is much better, but reviewed clutter recognition remains3/22 and5/22. Continue the same loss/data/optimizer before drawing a capacity conclusion.",
+  "protocol": "Restore each paired epoch24 checkpoint and Adam state, continue56 epochs, same tensors, weights and original parent-logit targets. Restart dataset shuffle with the same seed; not claimed equivalent to an uninterrupted80-epoch run. Use final epoch80 only, no threshold or intermediate checkpoint selection.",
+  "training_gate": "Unchanged from balloon-protected-clutter-20261011.json. Both admit seeds must pass before any export or development evaluation.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

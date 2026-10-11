@@ -1,0 +1,20 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "epochs": 24,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "minimum_parent_acceptance_retained": 0.99,
+  "minimum_reviewed_background_correct": 11,
+  "loss": "Previous hard CE and ordinary-row KL(T4,weight0.5), plus weight8 squared hinge protecting parent-correct accepted ordinary red/blue true-class log odds. Target log odds is min(parent log odds, log(0.9/0.1)); no penalty for increased margin. No penalty on new hard negatives, background rows or parent-wrong positives.",
+  "matched_recipe": "Reuse reviewed grid-clutter rows and synthetic transformation unchanged, same parent, seeds, counts, weights and 24 final epochs. Both control and admit use the new protection loss. Earlier unprotected paired runs are the fixed ablation reference.",
+  "checkpoint_policy": "Final epoch only; no checkpoint or threshold selection using development",
+  "training_gate": "Both admit seeds must retain at least99% of each color's individually parent-correct accepted ordinary TRAIN rows, preserve parent ordinary argmax correct counts per positive color, and classify at least11/22 reviewed original-plus-synthetic backgrounds correctly. This is a feasibility gate only, not held-out accuracy.",
+  "development_plan": "Only if both seeds pass TRAIN feasibility, export all four arms and evaluate unchanged parent and four arms with baseline MSER and coarse320 seeds47/48 on all three existing development panels. Fixed classifier0.8, matchingIoU0.5, proposal0.1, max2 extra blue proposals and12 total crops, split_merged aspect2.42913421076193. No threshold sweep.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
