@@ -1,0 +1,18 @@
+{
+  "arms": ["control", "hard"],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 7763,
+  "updated_parameters": 258,
+  "features": "Frozen original parent spatial_features128. Background classifier column and entire feature extractor remain byte-identical. Change only existing red/blue Dense weights and biases; no extra inference operations.",
+  "selection": "Same reviewed batch5 control7easy versus hard7withruntime0replacingeasy56, five photos, at most2crops/photo. Deterministic matched solves, not seed-selected SGD. Both arms exclude the identified hard proposal from new-scene decision retention; only hard arm receives its positive correction label.",
+  "constraints": "Retain original correctly classified TRAIN crops and correct round3 negatives; forbid new wrong-color accepts. Retain original385TRAIN proposal decisions and all other new TRAIN scene proposal decisions. Selected7new blue crops must reach sufficient softmax0.81margin bounds. Rejected proposals remain unlabeled, not background annotations. Runtime threshold stays0.8.",
+  "objective": "Minimum squared red/blue logit drift on old crops,13TRAIN negatives,385oldscene proposals and non-target newscene proposals, plus0.001parameter ridge. Standardize features using original2074TRAIN crops only.",
+  "feasibility_seconds": 60,
+  "quadratic_seconds": 120,
+  "gate": "Hard candidate must recover all8newblue scene targets with0false positives, preserve every original detected TRAIN target with no per-color FP increase, preserve all original correct crops with no new per-color crop false accepts, and not increase13negative false accepts. Folded float32 inference must reproduce solved logits within1e-4 and every required decision. Only then eligible for independent reconstruction, export parity and full-search repeatedDEV; never direct deployment.",
+  "limitations": "Sufficient linear constraints are not necessary conditions: an infeasible solve does not prove model-capacity impossibility. New TRAIN scenes are correlated with fitted crops, not held-out accuracy. Matching scores may reorder even when individual decisions are preserved, so recount scenes independently.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
