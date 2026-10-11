@@ -1,0 +1,194 @@
+{
+  "variants": {
+    "admit47/baseline": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit47/coarse47": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit48/baseline": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    },
+    "admit48/coarse47": {
+      "nonregression_all_panels": false,
+      "meets_target_all_panels": false
+    }
+  },
+  "paired_training_passed": true,
+  "training_receipt_sha256": "4bd2cff496d390de3612381e46ee226ba5af777208a6db33437d010881afe04c",
+  "development_receipt_sha256": "9fef3a6c394f24c403b46dce0ddf23d7ee28c9e86f7b3dcbea3e7a4714462608",
+  "script_sha256": "af96cc0700a1b22e0388b76f4bbc82de79f8c4bc76c2545420a16f95c28142b7",
+  "decision": "Reject both admitted checkpoints for deployment: training retention did not generalize. Preserve prior research and Pi incumbents.",
+  "admission_receipt_sha256": "d04ec5bc16d57fbe83a2e62d623eff50b10348e822d661cc51fd9b5b1821ef75",
+  "loss_audit_sha256": "689fe824089e5292cc70db90e1f9fc0856d5b7cee281e69776c442f3147c715b",
+  "next_action": "Protect and expand real TRAIN balloon crop-view coverage while retaining learned clutter rejection; no IMG development mining or confidence-threshold tuning. Separate localization remains unresolved.",
+  "exports": {
+    "control47": {
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "4128efe090b661ce3e750d29525079f40f4d80f2748b0593f44c9404e1ebaa13",
+      "bytes": 34840,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Real TRAIN photographs plus inherited reviewed red-to-blue clutter augmentation",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "4945c75db919284a2c487eff33ab4f60b094792294f9ec15fdcc1c1470f6ca6b",
+      "provenance_sha256": "ab873d5e48fa60a190203833aadd96c6a2c090a1cbfbb213e48b6cd440f87dfe",
+      "training_trial_sha256": "4bd2cff496d390de3612381e46ee226ba5af777208a6db33437d010881afe04c",
+      "export_script_sha256": "0900dd418646601924a6be545fe6a8ab4d3aa83a42ed567c2aa17aaaf212b251",
+      "parity_rows": 1778,
+      "max_keras_tflite_delta": 1.239776611328125e-05,
+      "max_checkpoint_original_group_delta": 0.0,
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    },
+    "control48": {
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "d12fd5c651cd4e268348dbc5100517c84890f308391a7fe7edb5a03055ab4153",
+      "bytes": 34840,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Real TRAIN photographs plus inherited reviewed red-to-blue clutter augmentation",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "cb279c435950c92c5473ab9b508083ff89105ba8de20dd1460172cfb796ef0f6",
+      "provenance_sha256": "02ce827b0ba40923337a31f0e2819ab8c8a73e7c7769f780b001970c9341d774",
+      "training_trial_sha256": "4bd2cff496d390de3612381e46ee226ba5af777208a6db33437d010881afe04c",
+      "export_script_sha256": "0900dd418646601924a6be545fe6a8ab4d3aa83a42ed567c2aa17aaaf212b251",
+      "parity_rows": 1778,
+      "max_keras_tflite_delta": 9.5367431640625e-06,
+      "max_checkpoint_original_group_delta": 0.0,
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    },
+    "admit47": {
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "e65f0559066131eeb93dc668b2f9d3dab9f1d828e96e0f4e5b63512b4285f413",
+      "bytes": 34840,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Real TRAIN photographs plus inherited reviewed red-to-blue clutter augmentation",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "64d10e1d0dd905f3352195129ffe6e25f582bdcd4b74d19d0e4a47a339ab096e",
+      "provenance_sha256": "e9d06080aa3aee2fff2622e7182f30f279da476b097d3336e348afd0023e4c87",
+      "training_trial_sha256": "4bd2cff496d390de3612381e46ee226ba5af777208a6db33437d010881afe04c",
+      "export_script_sha256": "0900dd418646601924a6be545fe6a8ab4d3aa83a42ed567c2aa17aaaf212b251",
+      "parity_rows": 1778,
+      "max_keras_tflite_delta": 9.5367431640625e-06,
+      "max_checkpoint_original_group_delta": 0.0,
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    },
+    "admit48": {
+      "task": "balloon",
+      "classes": [
+        "background",
+        "red_balloon",
+        "blue_balloon"
+      ],
+      "size": 64,
+      "layout": "NHWC",
+      "color": "RGB",
+      "pixel_range": [
+        0,
+        255
+      ],
+      "resize": "Pillow bilinear stretch",
+      "normalization": "embedded 1/255",
+      "output": "float logits; softmax",
+      "threshold": 0.8,
+      "sha256": "29fea4c7d7ad25f3fa58397f049a57354e36e4ca63d90729b420511744535eaa",
+      "bytes": 34840,
+      "parameters": 7763,
+      "tensor_dtype": "float32",
+      "input_quantization": null,
+      "output_quantization": null,
+      "calibration_samples": 0,
+      "calibration_split": null,
+      "integer_only_verified": false,
+      "synthetic_training": true,
+      "training_scope": "Real TRAIN photographs plus inherited reviewed red-to-blue clutter augmentation",
+      "threshold_status": "Fixed research0.8, not deployment calibration",
+      "source_student_sha256": "a073e6f430389c92f11407333c8fa09ba4d640832868c082c5c333b4cc4bcb9c",
+      "provenance_sha256": "898d35a0d7942127534c9b0d698ac04a99904ca5f29a46633243892eae4f8b70",
+      "training_trial_sha256": "4bd2cff496d390de3612381e46ee226ba5af777208a6db33437d010881afe04c",
+      "export_script_sha256": "0900dd418646601924a6be545fe6a8ab4d3aa83a42ed567c2aa17aaaf212b251",
+      "parity_rows": 1778,
+      "max_keras_tflite_delta": 9.5367431640625e-06,
+      "max_checkpoint_original_group_delta": 0.0,
+      "deployment_approved": false,
+      "pi_zero_verified": false
+    }
+  },
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

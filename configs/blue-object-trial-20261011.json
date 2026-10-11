@@ -1,0 +1,24 @@
+{
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Original incumbent1655row TRAIN curriculum, plus13new reviewed blue-object crops repeated twice; controls substitute13distinct existing protected background crops repeated twice. Sameparent,seeds,optimizer,240epochs,batch16 and25440steps. Only added data differs. No rejected current-color/runtime-positive curriculum included.",
+  "training_gate": "Both admitted seeds retain all accepted original red/blue positives, no argmax accuracy loss,23/23blue positives and22/22old and39/39realblueclutter,13/13newbackgrounds correct. Must beat matched controls on newbackground probes. All thresholds remain fixed. Paired gate required before export.",
+  "scope": "TRAIN only. Same7763parameter architecture and runtime search. No Pi deployment, independent test use, or qualification claim.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
