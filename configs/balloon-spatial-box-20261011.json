@@ -1,0 +1,14 @@
+{
+  "quality_config": "configs/balloon-context-quality-admit-20261011.json",
+  "ridge_penalty": 10.0,
+  "holdout_fold": 0,
+  "minimum_target_iou": 0.25,
+  "minimum_match_margin": 0.10,
+  "minimum_decoded_side": 4.0,
+  "minimum_decoded_area_ratio": 0.25,
+  "maximum_decoded_area_ratio": 4.0,
+  "minimum_decoded_overlap": 0.10,
+  "training_approved": true,
+  "deployment_approved": false,
+  "scope": "Matched frozen current-student box heads, 2x2 versus 4x4 features, same reviewed context rows and fixed ridge penalty. No development tuning."
+}

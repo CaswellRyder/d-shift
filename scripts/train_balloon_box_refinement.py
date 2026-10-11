@@ -1,4 +1,4 @@
-"""Fit a frozen-feature 516-parameter visible-balloon box head; research only."""
+"""Fit a frozen-feature visible-balloon box head; research only, never deploy."""
 import argparse
 from collections import Counter
 from pathlib import Path
@@ -92,7 +92,21 @@ def box_metrics(rows, predictions, config):
         fallback=sum(not r['correction_applied'] for r in records))
 
 
-def train(config_path, student_run, output):
+def box_features(pupil, pool_grid):
+    """Use original 2x2 or a finer 4x4 pool; never retrain the shared backbone."""
+    if type(pool_grid) is not int or pool_grid not in (2, 4):
+        raise ValueError('Require a fixed 2x2 or 4x4 box feature grid')
+    if pool_grid == 2:
+        return pupil.get_layer('spatial_features').output
+    import keras
+    features = pupil.get_layer('separable_context').output
+    if tuple(features.shape[1:]) != (8, 8, 32):
+        raise ValueError('Finer box head requires 64px separable-context backbone')
+    pooled = keras.layers.AveragePooling2D(pool_size=2, name='box_pool4')(features)
+    return keras.layers.Flatten(name='box_spatial_features4')(pooled)
+
+
+def train(config_path, student_run, output, pool_grid=2):
     config, run, output = read_json(config_path), Path(student_run), Path(output)
     check_config(config)
     if output.exists():
@@ -114,13 +128,14 @@ def train(config_path, student_run, output):
     from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
     pupil = keras.models.load_model(checkpoint, compile=False)
     pupil.trainable = False
-    feature_model = keras.Model(pupil.input, pupil.get_layer('spatial_features').output)
+    spatial = box_features(pupil, pool_grid)
+    feature_model = keras.Model(pupil.input, spatial)
     x = np.stack([load_rgb(r['absolute_path'], 64) for r in fit_rows])
     features = feature_model(x, training=False).numpy()
     y = np.asarray([r['normalized_target'] for r in fit_rows])
     regressors = [fit_ridge(features, y[:, k], config['ridge_penalty']) for k in range(4)]
     head = keras.layers.Dense(4, name='visible_box_xyxy')
-    box = head(pupil.get_layer('spatial_features').output)
+    box = head(spatial)
     model = keras.Model(pupil.input, keras.layers.Concatenate(name='class_logits_and_box')([pupil.output, box]))
     head.set_weights([np.stack([r[0] for r in regressors], axis=1), np.asarray([r[1] for r in regressors])])
     hx = np.stack([load_rgb(r['absolute_path'], 64) for r in hold_rows])
@@ -157,6 +172,7 @@ def train(config_path, student_run, output):
         source_student_sha256=sha256(checkpoint), source_tflite_sha256=meta['sha256'],
         config=config, config_sha256=sha256(config_path), quality_config_sha256=sha256(config['quality_config']),
         source_reviews=receipts, script_sha256=sha256(__file__),
+        pool_grid=pool_grid, feature_dimensions=int(features.shape[1]),
         quality_guard_sha256=sha256('scripts/train_balloon_quality.py'),
         training_samples=len(fit_rows), quality_label_holdout_samples=len(hold_rows),
         excluded=excluded, frozen_classifier=True, test_evaluated=False, synthetic_training=False,
@@ -164,6 +180,10 @@ def train(config_path, student_run, output):
     write_json(path.with_suffix('.json'), metadata)
     report = dict(training=box_metrics(fit_rows, results[:len(x), 3:], config),
         label_holdout=box_metrics(hold_rows, results[len(x):, 3:], config),
+        pool_grid=pool_grid, feature_dimensions=int(features.shape[1]),
+        source_partition={name:[dict(source_image=r['source_image'],source_group=r['source_group'],
+            source_sha256=r['source_sha256'],crop_sha256=r['sha256']) for r in group]
+            for name,group in (('training',fit_rows),('label_holdout',hold_rows))},
         holdout_caveat='Box labels excluded from head fit; original backbone saw related classification imagery',
         max_keras_tflite_delta=delta, test_evaluated=False, deployment_approved=False, pi_timing_measured=False)
     write_json(output/'report.json', report)
@@ -174,5 +194,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('config', 'student-run', 'output'):
         parser.add_argument(f'--{name}', required=True)
+    parser.add_argument('--pool-grid', type=int, choices=(2,4), default=2)
     args = parser.parse_args()
-    train(args.config, args.student_run, args.output)
+    train(args.config, args.student_run, args.output, args.pool_grid)

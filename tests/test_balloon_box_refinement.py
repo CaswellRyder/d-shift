@@ -7,6 +7,7 @@ from scripts.train_balloon_quality import fold_ids
 from scripts.evaluate_balloon_box_refinement import BoxPredictor, observations
 from dtr.data import write_json
 from scripts.compare_box_selection import locked_selection
+from scripts.train_balloon_box_refinement import box_features
 
 
 @pytest.fixture
@@ -71,6 +72,31 @@ def test_source_groups_and_source_hashes_never_cross_holdout(config):
         partition(train+hold,config)
     with pytest.raises(ValueError,match='held-out'):
         partition(hold,config)
+
+
+@pytest.mark.parametrize('grid',[0,1,3,8,True,4.0])
+def test_box_feature_grid_rejects_unplanned_changes(grid):
+    with pytest.raises(ValueError,match='grid'):
+        box_features(None,grid)
+
+
+def test_finer_box_features_reuse_frozen_backbone_without_class_change():
+    import keras
+    from dtr.models import research_student
+    pupil=research_student(3,64,'separable_context')
+    pupil.trainable=False
+    original_weights=[v.numpy().copy() for v in pupil.weights]
+    x=np.ones((1,64,64,3),np.float32)
+    original=pupil(x,training=False).numpy()
+    for grid,dimensions in ((2,128),(4,512)):
+        features=box_features(pupil,grid)
+        assert features.shape[-1]==dimensions
+        head=keras.layers.Dense(4)(features)
+        combined=keras.Model(pupil.input,keras.layers.Concatenate()([pupil.output,head]))
+        assert combined.count_params()-pupil.count_params()==(dimensions+1)*4
+        np.testing.assert_array_equal(combined(x,training=False).numpy()[:,:3],original)
+    for before,after in zip(original_weights,pupil.weights):
+        np.testing.assert_array_equal(before,after.numpy())
 
 
 class FakeBoxPredictor:
