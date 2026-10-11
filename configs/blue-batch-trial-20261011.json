@@ -1,0 +1,21 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "parameters": 7763,
+  "epochs": 400,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "decay_steps": 44800,
+  "alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Shared1764-row admitted blue-photo curriculum, plus11 new reviewed blue views repeated twice versus11 old blue controls repeated twice.1786rows,1602protected. Same compact7763parameter parent, fresh Adam,400epochs and44800steps, cosine1e-4 to1e-5, same final-checkpoint policy.",
+  "training_gate": "Both admitted seeds must retain every previous base/probe gate and accept11/11 new-photo probes at0.8. Controls measured without requiring unseen probe learning. No selection on intermediate checkpoints.",
+  "scope": "New real TRAIN photograph ablation; no Pi capture used in training, no IMG-family training or test evaluation. Preserves existing runtime model.",
+  "deployment_approved": false,
+  "test_evaluated": false
+}
