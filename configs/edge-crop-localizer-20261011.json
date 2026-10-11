@@ -1,0 +1,18 @@
+{
+  "parent": "runs/blue-head-only-background-20261011/proposal.keras",
+  "parent_sha256": "9c7070d24213cd1cfb3a6477479ecb84986f70b7e2506e5a727e8fee07dd1bd0",
+  "arms": ["control", "edge_crop"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "windows": [[0, 0, 240, 180], [80, 0, 320, 180], [0, 60, 240, 240], [80, 60, 320, 240], [40, 30, 280, 210]],
+  "data": "Original129 TRAIN-source localizer frames plus8 already-reviewed complete-negative photographs. Only64 reviewed complete FIT scenes receive5 additional views each. For control, every added view repeats its original pixels and targets. For edge_crop, fixed75percent windows clip every annotated box to the visible crop then scale to320x240; use INTER_LINEAR for320x240 and INTER_AREA for160x120 network input. All visible clipped boxes remain annotated, including tiny slivers. Fully outside boxes disappear. Complete-background masks retain the original16pixel uncertainty guard; partial/unknown scenes are never promoted to complete negatives. Original16 grouped-holdout frames and all their source groups stay unchanged and excluded from fitting.",
+  "fit": "Both arms start from identical current head-background model weights with fresh Adam, identical row order, batch/shuffle seed, steps and fixed final epoch. Train all2342localizer parameters with existing sparse focal+5maskedL1+2GIoU. Classifier remains frozen. Same architecture, no added inference operation; not a measured speed guarantee.",
+  "evaluation": "Run both fixed seeds and both arms. Preserve all finite final checkpoints, report fitting and original grouped-holdout losses without selecting checkpoints by them. Then evaluate current classifier/blue-bright search/peak blend/confidence containment on64original completeTRAIN scenes. Full-scene DEVELOPMENT advancement requires TP nondecrease and FP nonincrease per color and retention of every parent target in both seeds, plus at least one gain. No tuning or IMG pixels in fitting; reserved test untouched.",
+  "motivation": "TRAIN geometry inspection found no mixed-color collision in the four blue miss scenes. Two misses are clipped edge objects with oversized true-cell boxes; one is a proposal-budget miss. This trial addresses cropping/geometry robustness, not the separate budget miss or all clutter errors.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
