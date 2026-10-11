@@ -1,0 +1,21 @@
+{
+  "direct_audit": "research/balloon-red-blue-20261008/direct-localizer-balloon-20261011.json",
+  "direct_audit_sha256": "ec373c2d925fadfc20180ec72dbdaab96da2e6bfc1ee617452e5950209966f22",
+  "joint_audit": "research/balloon-red-blue-20261008/joint-balanced-balloon-20261011.json",
+  "joint_audit_sha256": "2b2078796de8559ed8689322b7a872d9968aaf05a8a4ef4db057a756bd1bd3de",
+  "policies": ["pooled", "base_first"],
+  "maximum_crop_calls": 12,
+  "maximum_direct_candidates": 12,
+  "maximum_combined_candidates": 24,
+  "crop_threshold": 0.8,
+  "direct_threshold": 0.5,
+  "design": "Keep all up-to12 MSER candidates for crop classification and add up-to12 decoded direct detections without crop classification. Cross parent/control/balanced localizers and parent/control/admit classifiers at both seeds. Compare pooled-confidence geometry selection and independent-source selection with accepted MSER priority. Use fixed thresholds and unchanged checkpoints. One localizer plus at most12 crop inferences, never an ensemble of localizers or classifiers.",
+  "caution": "The candidate-list bound increases from12to24, not the crop-inference bound. Retaining all MSER candidates can still increase actual crop calls versus the previous reserved policy. Heat and crop confidences are not established interchangeable calibrated probabilities. This must be measured rather than claimed faster.",
+  "gate": "For each policy, both balanced+admit seeds must preserve every incumbent hybrid target and not increase either color's false positives on any of the82TRAIN scenes grouped into original64/window1six/window2twelve panels, plus recover at least one target overall. Compare component and matched controls. Passing permits separate export/DEV investigation only.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
