@@ -1,0 +1,11 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "initial_epoch": 80,
+  "final_epoch": 160,
+  "rationale": "At80 both admitted seeds classify23/23 new blue TRAIN crops correctly, but confidence is22/23 and21/23. Test convergence with exactly80 more epochs for all four paired arms, same pixels, weights, loss, original teacher, learning rate and restored optimizer. No new development results informed this choice.",
+  "checkpoint_policy": "Final160 only. No early stopping, checkpoint selection, data change or threshold change. Shuffle restarts at epoch80 boundary.",
+  "training_gate": "Unchanged blue-expansion2 trial gate; both admit seeds must pass before export and scene comparison.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
