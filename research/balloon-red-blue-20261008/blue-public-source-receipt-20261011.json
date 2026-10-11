@@ -1,0 +1,51 @@
+{
+  "source": "https://universe.roboflow.com/red-baloons/blue_balloons/dataset/1",
+  "attribution": "Blue_Balloons, red-baloons workspace, Roboflow Universe",
+  "archive_license_claim": "CC BY 4.0; original capture provenance not independently verified",
+  "archive_sha256": "183eea2ff198efe8833a4c110c1d4a890dd51562f10818175685e1c114e7e305",
+  "archive_bytes": 78987747,
+  "upstream_images": {"train": 660, "valid": 180},
+  "upstream_annotations": {"train": 663, "valid": 180},
+  "all_annotation_category_names": ["FRC 2022 - v1 ball"],
+  "training_groups_shared_with_upstream_validation_excluded": 8,
+  "quarantine": "data/blue-source-review-20261011/review.json",
+  "queue_sha256": "e4a7a9899931caa4f9f0d90cc2fd6196caaaedaad626e9e18e35c1ab7e8a15e8",
+  "review": "configs/blue-source-review-20261011.json",
+  "sampled_frames": 24,
+  "reviewed_crops": 42,
+  "admitted_crops": 0,
+  "decision": "Exclude sampled source from balloon training: clear objects are textured/seamed balls; degraded views are ambiguous. Source title is not ground truth. This is not an exhaustive claim about all upstream images.",
+  "duplicate_screen": {
+    "references": "Hash-bound Matterport sources, six EngDes2 review queues, all 1230 reserved IMG_ images, upstream validation images, and previously selected frames",
+    "maximum_rejected_hamming_distance": 8,
+    "transforms": ["identity", "vertical reflection", "horizontal reflection", "both reflections"],
+    "limitation": "Perceptual hashing does not establish recording-session independence or detect every rotated/cropped/nearby-frame duplicate.",
+    "heldout_pixels": "Automated duplicate screening only; no display, classification, calibration, negative mining or training"
+  },
+  "duplicate_screen_optimization": {
+    "change": "Compute each reflected query fingerprint once, then compare against vectorized references instead of recomputing per reference",
+    "parity_test": "tests/test_blue_source_review.py::test_vectorized_duplicate_distance_matches_original_all_reflections",
+    "single_host_microbenchmark": {
+      "query_dimensions": [640, 480],
+      "synthetic_reference_fingerprints": 1500,
+      "random_seed": 12,
+      "old_distance": 17,
+      "new_distance": 17,
+      "old_seconds": 3.182661208003992,
+      "new_seconds": 0.0025190839951392263
+    },
+    "scope": "Dataset preparation only, not Pi inference. The saved review queue was generated before this optimization. Timing is one illustrative host run, not a repeatability claim."
+  },
+  "verification": {
+    "scoped_tests_passed": 29,
+    "full_suite_passed": 953,
+    "full_suite_skipped": 2,
+    "full_suite_existing_tensorflow_warnings": 6,
+    "scoped_ruff": "passed"
+  },
+  "model_changed": false,
+  "pi_changed": false,
+  "training_approved": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

@@ -34,8 +34,13 @@ def fingerprint(rgb):
 
 
 def holdout_distance(rgb, fingerprints):
-    return min(int(np.count_nonzero(fingerprint(view) != h))
-               for view in (rgb, rgb[::-1], rgb[:, ::-1], rgb[::-1, ::-1]) for h in fingerprints)
+    if not len(fingerprints):
+        raise ValueError("Require reference fingerprints")
+    references = np.asarray(fingerprints)
+    # Each view has one invariant fingerprint. Do not recompute image conversion
+    # and DCT for every reference in large cross-source duplicate checks.
+    return min(int(np.count_nonzero(references != fingerprint(view), axis=1).min())
+               for view in (rgb, rgb[::-1], rgb[:, ::-1], rgb[::-1, ::-1]))
 
 
 def exclusion_context(exclude_queue, manifest):

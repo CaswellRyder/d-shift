@@ -15,6 +15,12 @@ from dtr.data import write_json
 from scripts.download_dtr import fetch_json
 
 
+def valid_project_slug(project):
+    """Public project identifiers may contain underscores, but never URL syntax."""
+    return isinstance(project, str) and re.fullmatch(
+        r"[a-z0-9][a-z0-9_-]*/[a-z0-9][a-z0-9_-]*", project) is not None
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--project", required=True, help="workspace/project")
@@ -22,7 +28,7 @@ def main():
     p.add_argument("--output", required=True, type=Path)
     p.add_argument("--max-bytes", type=int, default=1_000_000_000)
     args = p.parse_args()
-    if (not re.fullmatch(r"[a-z0-9-]+/[a-z0-9-]+", args.project)
+    if (not valid_project_slug(args.project)
             or args.version < 1 or not 1 <= args.max_bytes <= 1_000_000_000):
         p.error("Require public project slug, positive version and <=1 GB bound")
     if args.output.exists():

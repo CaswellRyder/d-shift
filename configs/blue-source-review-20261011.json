@@ -1,0 +1,15 @@
+{
+  "queue_sha256": "e4a7a9899931caa4f9f0d90cc2fd6196caaaedaad626e9e18e35c1ab7e8a15e8",
+  "source": "https://universe.roboflow.com/red-baloons/blue_balloons/dataset/1",
+  "decision": "exclude_source_from_balloon_training",
+  "admit": [],
+  "exclude": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41],
+  "reviewed_sheets": ["crops-000.jpg", "crops-024.jpg", "frames-000.jpg", "frames-012.jpg"],
+  "review_method": "Manual visual inspection by the assistant of all 42 crop thumbnails and all 24 full-frame thumbnails. No held-out pixels displayed or classified.",
+  "reason": "The clear upstream objects have textured surfaces and visible seams consistent with balls, not latex balloons. The upstream category is FRC 2022 - v1 ball. Other views are degraded or ambiguous. Do not infer balloon identity from the project title. Unmatched background proposals are also excluded from this source; none were automatically labeled negative.",
+  "scope": "Sampled training imagery only; this does not assert that all 840 upstream images contain balls.",
+  "training_approved": false,
+  "label_mapping_approved": false,
+  "deployment_approved": false,
+  "test_evaluated": false
+}
