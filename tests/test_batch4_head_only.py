@@ -23,7 +23,7 @@ def model():
         layer.get_weights = lambda layer=layer: [v.copy() for v in layer.values]
         layer.set_weights = lambda values, layer=layer: setattr(layer, 'values', [v.copy() for v in values])
         layers.append(layer)
-    return SimpleNamespace(layers=layers, get_layer=lambda n: next(l for l in layers if l.name == n))
+    return SimpleNamespace(layers=layers, get_layer=lambda n: next(layer for layer in layers if layer.name == n))
 
 
 def test_fold_updates_only_classifier_and_rejects_backbone_drift():
