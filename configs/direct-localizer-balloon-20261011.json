@@ -1,0 +1,15 @@
+{
+  "localizer_audit": "research/balloon-red-blue-20261008/balanced-localizer-20261011.json",
+  "localizer_audit_sha256": "e5f102c57904a2da0dd6770ed4942e2599c62d1c94142ff05642cc1992c4d335",
+  "threshold": 0.5,
+  "maximum_candidates": 12,
+  "design": "Use the existing peak decoder and learned red/blue heat probabilities as detection scores, accepting at fixed0.5 before incumbent geometry selection. One2342parameter full-frame model, no MSER search and no crop classifier. Compare parent plus both control/balanced seeds against the prior hybrid. No threshold sweep or model selection from heldout results.",
+  "hypothesis": "Direct heat predictions may avoid classification and localization disagreement while removing per-crop inference; their TRAIN false positives and recall determine whether this route merits dedicated detector retraining.",
+  "gate": "Both balanced seeds must preserve all incumbent targets, not add per-color false positives on any TRAIN panel, and recover at least one target overall before separate export/development investigation. Report structural inference reduction but no FPS estimate without on-device measurements.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
