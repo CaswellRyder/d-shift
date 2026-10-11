@@ -1,0 +1,45 @@
+{
+  "queue": "data/blue-object-round2-review-20261011",
+  "queue_sha256": "293ed04f48e1fa99ee526bf27000ca06a361b9202973927e2fa9f1ed7623327b",
+  "split": "train",
+  "training_approved": true,
+  "deployment_approved": false,
+  "test_evaluated": false,
+  "labels_by_class": {
+    "background": [
+      2,
+      4,
+      5,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      18,
+      19,
+      20
+    ],
+    "red_balloon": [],
+    "blue_balloon": []
+  },
+  "exclude": [
+    0,
+    1,
+    3,
+    6,
+    7,
+    8,
+    14,
+    15,
+    17
+  ],
+  "reviewed_sheets": {
+    "crops-000.jpg": "9cd06974096851aa0ca451c2806cf373d6730eeb36bd5faa91aff179e716cb15",
+    "frames-012.jpg": "0c276d4a2e7f63351a96b77e98cdf0e4d06afb71e4e4e5dec717ff6ad9e3c165",
+    "frames-000.jpg": "1be3ab721543c809206979aeafcbbd09545c4e9829691a80ab5b68bf9185b378"
+  },
+  "manual_balloon_guards": [],
+  "review": "Main agent inspected all14 full-frame images and21 crops on three sheets. Approved12 blue-background crops: blue fabric/shirt2,4,5; printed book imagery9; backpack10,11; trousers12; clothing13; printed shirt graphic16; shirts18,19; shorts20. No visible balloons in these admitted crop contexts. Nine red-predicted backgrounds are excluded from this blue-focused intervention, not automatically relabeled by the classifier.",
+  "scope": "Exact reviewed TRAIN crop labels only. License links verified per source, source and duplicate guards required. Related views are not independent images. No IMG-family, Pi-image or test training."
+}
