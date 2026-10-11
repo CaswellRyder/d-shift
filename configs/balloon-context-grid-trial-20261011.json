@@ -1,0 +1,26 @@
+{
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "input_hw": [120, 160],
+  "output_grid": [30, 40],
+  "final_spatial_dilation": 2,
+  "box_objective": "l1_giou",
+  "data": "data/balloon-dense-public-admit-20261011",
+  "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+  "fine_controls": {
+    "47": "runs/balloon-fine-grid-seed47-20261011",
+    "48": "runs/balloon-fine-grid-seed48-20261011"
+  },
+  "coarse_controls": {
+    "47": "runs/balloon-dense-public-admit-seed47-20261011",
+    "48": "runs/balloon-dense-public-admit-seed48-20261011"
+  },
+  "change": "Only final 5x5 separable convolution dilation changes from1 to2 relative to the fine-grid control. This restores a theoretical 47x47-input-pixel receptive field versus31x31 without adding weights. It does not recreate the coarse model or restore image detail lost during resizing.",
+  "supervision": "Identical fine-grid pixels, targets, folds, background exclusions, objective and final-epoch selection. Verify saved targets byte-exact against both fine-grid controls.",
+  "training_gate": "Relative to coarse controls, both seeds must improve decoded known blue target coverage on public FIT scenes, with no known red regression there or known red/blue regression on original FIT scenes. No development-based selection or threshold sweep.",
+  "runtime": "Do not infer latency from equal parameter count. Dilation kernel support, conversion parity and actual Pi latency require separate measurement if the accuracy gate passes.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

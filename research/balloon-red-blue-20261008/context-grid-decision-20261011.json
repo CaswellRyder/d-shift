@@ -1,0 +1,39 @@
+{
+  "decision": "Do not promote either80-epoch context-grid model; both fail preregistered training gate",
+  "raw_report": "runs/balloon-context-grid-training-20261011.json",
+  "raw_sha256": "b93074832a0ecefad4b8f2dd6a8912eabce8009c74e29403f57e1cee257b869b",
+  "architecture": {
+    "parameters_all_models": 2342,
+    "coarse_convolution_macs": 1831200,
+    "fine_and_context_convolution_macs": 3494400,
+    "fine_receptive_field_input_pixels": 31,
+    "context_and_coarse_receptive_field_input_pixels": 47,
+    "caveat": "Analytic convolution work only. Dilation implementation and other runtime overhead are not measured Pi speed."
+  },
+  "coverage": {
+    "common_fit_targets": {"red": 129, "blue": 119},
+    "public_fit_targets": {"red": 12, "blue": 18},
+    "47": {
+      "common_coarse": {"red": 97, "blue": 96},
+      "common_fine": {"red": 89, "blue": 74},
+      "common_context": {"red": 98, "blue": 100},
+      "public_coarse": {"red": 2, "blue": 5},
+      "public_context": {"red": 2, "blue": 4}
+    },
+    "48": {
+      "common_coarse": {"red": 101, "blue": 92},
+      "common_fine": {"red": 85, "blue": 83},
+      "common_context": {"red": 111, "blue": 99},
+      "public_coarse": {"red": 2, "blue": 2},
+      "public_context": {"red": 1, "blue": 3}
+    }
+  },
+  "interpretation": "Restoring theoretical spatial context recovers known original FIT targets, but does not consistently improve tiny public FIT targets. Neither training nor repeated grouped holdout establishes competition accuracy.",
+  "next_experiment": "Fixed320-epoch continuation for both coarse and context architectures, paired seeds, restored optimizer state, unchanged targets; select final checkpoint only. This tests remaining fit headroom before adding further runtime work.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "exported": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
