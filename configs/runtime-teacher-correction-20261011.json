@@ -1,0 +1,26 @@
+{
+  "arms": [
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Same1824rows,1672ordinary,139reviewed runtime views, parent, seeds47/48, fresh Adam,240epochs and27360steps as previous runtime-positive admit runs. Only loss change: remove teacher KL for the two newly reviewed runtime inputs where frozen teacher argmax disagrees with reviewed hard label. All correct-teacher and unreviewed rows retain identical loss. No architecture, threshold or inference change.",
+  "training_gate": "Both corrected seeds pass the original base1685 retention/clutter gates and accept139/139runtime positives. Compare to prior admitted controls with identical data and seeds,137/139each. Same fixed final240 checkpoint.",
+  "checkpoint_policy": "Final240 only; no early stopping or checkpoint selection.",
+  "scope": "Same TRAIN photos, newly protected crop views, not independent data. No inference/search changes. Fixed threshold and operating point. Repeated development cannot qualify flight.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "control_trial": "research/balloon-red-blue-20261008/runtime-positive-training-20261011.json",
+  "control_trial_sha256": "10d4328fe6240e318fc81a5f881f459d85117d098d0f2570b671ba87b93f8ffc"
+}
