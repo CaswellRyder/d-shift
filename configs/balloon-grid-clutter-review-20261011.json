@@ -1,0 +1,15 @@
+{
+  "queue": "data/balloon-grid-clutter-review-v2-20261011",
+  "queue_sha256": "e575c318843d21fe289de2da0b10fdf84eee6959657aa36f5352b851ec864277",
+  "background_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "exclude": {"11": "Ambiguous blurred red object on counter; do not assume background or balloon from this crop."},
+  "visual_review": "Inspected frames-000.jpg and crops-000.jpg in full. IDs0-5 are red car body/window surfaces; IDs6-9 are red surface/fabric with nearby furniture or a hand, without a visible balloon in the crop; ID10 is a red rectangular sign. Known balloons in source frames are outside the crop plus16px guard.",
+  "reviewed_sheets": {
+    "crops-000.jpg": "e629365b5878d360696f4b23b72c4591b86451f178aa2ef4aead2d15b45934bc",
+    "frames-000.jpg": "d10fdd256bb0c9e442b6d2bc50b6c2cd3480e4b11126e2c3df3a247b5e05b5c9"
+  },
+  "split": "train",
+  "training_approved": true,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
