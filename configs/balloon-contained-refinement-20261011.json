@@ -1,0 +1,15 @@
+{
+  "scope": "TRAIN-first research geometry refinement; never add or accept detections",
+  "source_models": "Both seeds of the public admit and sample-count control localizers",
+  "proposal_score_min": 0.5,
+  "area_ratio_min": 0.35,
+  "area_ratio_max": 0.8,
+  "new_box_containment_min": 0.9,
+  "center_displacement_axis_fraction_max": 0.25,
+  "other_accepted_box_iou_max": 0.65,
+  "max_replacements": 2,
+  "training_gate": "Probe only the shared original fit frames. Both admit seeds must increase known blue TP count without losing any previously detected known blue target. Red boxes, scores, accepted flags and detection count must be unchanged. No development evaluation if this gate fails.",
+  "caveat": "Crop classification confidence belongs to the original crop, not a rerun on the refined box. Unknown TRAIN scene objects prevent full-scene precision claims.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

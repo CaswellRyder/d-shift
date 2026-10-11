@@ -1,0 +1,22 @@
+{
+  "decision": "Reject contained refinement before development evaluation",
+  "scope": "92 original fit scenes; known-target matching only, not full-scene precision or qualification",
+  "raw_report": "runs/balloon-contained-refinement-training-20261011.json",
+  "raw_sha256": "e62e01dce79b812d838fb284a51f0a556b7e9b5a7069fe11e31420865876fab3",
+  "blue_targets": 119,
+  "baseline_blue_tp": 99,
+  "refined_blue_tp": {"control47": 100, "control48": 98, "admit47": 99, "admit48": 99},
+  "red_tp_unchanged_all_arms": 115,
+  "red_targets": 129,
+  "dense_calls_per_arm": 74,
+  "reason": "No consistent blue gain across seeds; admit47 gains one target but loses another. Extra inference is not justified.",
+  "geometry_diagnostic": "research/balloon-red-blue-20261008/dense-public-geometry-diagnostic-20261011.json",
+  "geometry_diagnostic_sha256": "60c825ebb506ce206a1773696fa3975979ecfda296b4d784373d624353c9d388",
+  "next_hypothesis": "Both seeds overestimate widths at oracle TRAIN centers. Test relative size supervision without adding inference operations. This does not establish a causal explanation or detector accuracy.",
+  "tests": {"passed": 1122, "skipped": 2, "warnings": 6},
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
