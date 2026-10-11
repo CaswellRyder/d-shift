@@ -1,0 +1,125 @@
+"""Export only paired arms that pass the frozen TRAIN gate; no deployment."""
+from pathlib import Path
+
+import numpy as np
+
+from dtr.data import read_json, sha256, write_json
+from dtr.runtime import softmax
+from scripts.audit_background_convergence import OUTPUT as TRIAL
+from scripts.blue_balloon_batch3_data import checked_extra
+from scripts.compare_current_blue_search import MODEL as PARENT, MODEL_SHA
+from scripts.fit_blue_prototype_rejection import checked_inputs
+from scripts.grid_clutter_data import load_crop
+from scripts.train_background_convergence import PROTOCOL
+
+
+def eligible_names(trial):
+    arms = ('positive_only', 'with_background')
+    expected = {f'{a}{s}' for a in arms for s in (47, 48)}
+    if set(trial['results']) != expected:
+        raise ValueError('Incomplete paired trial')
+    passed = [a for a in arms if all(trial['results'][f'{a}{s}']['training_gate_pass'] is True for s in (47, 48))]
+    if (not passed or passed != trial['eligible_arms']
+            or trial['eligible_for_full_scene_comparison'] is not True
+            or any(trial[k] is not False for k in ('development_evaluated', 'test_evaluated',
+                                                  'deployment_approved', 'qualification_achieved'))):
+        raise ValueError('Require a complete paired TRAIN gate, without qualification claims')
+    return [f'{a}{s}' for a in passed for s in (47, 48)]
+
+
+def checked_trial():
+    trial = read_json(TRIAL)
+    names = eligible_names(trial)
+    if (trial['protocol_sha256'] != sha256(PROTOCOL)
+            or trial['script_sha256'] != sha256('scripts/audit_background_convergence.py')
+            or sha256(PARENT) != MODEL_SHA):
+        raise ValueError('Trial or parent changed')
+    for row in trial['results'].values():
+        root = Path(row['run'])
+        prov, report = read_json(root/'provenance.json'), read_json(root/'report.json')
+        if (read_json(root/'status.json')['state'] != 'complete'
+                or sha256(root/'report.json') != row['report_sha256']
+                or any(report[k] != row[k] for k in report)
+                or prov['settings'] != read_json(PROTOCOL)
+                or any(sha256(p) != h for p, h in prov['sources_sha256'].items())):
+            raise ValueError('Training evidence changed')
+        for field, file in (('model_sha256', 'student.keras'), ('predictions_sha256', 'predictions.npz'),
+                            ('provenance_sha256', 'provenance.json')):
+            if sha256(root/file) != row[field]:
+                raise ValueError('Checkpoint identity changed')
+    return trial, names
+
+
+def export():
+    trial, names = checked_trial()
+    _, _, old, _, _, _ = checked_inputs()
+    probes = np.stack([load_crop(r)[0] for r in checked_extra()])
+    x = np.concatenate([old, probes])
+    if x.shape != (2081, 64, 64, 3):
+        raise ValueError('Parity inputs changed')
+    parent = read_json(PARENT.with_suffix('.json'))
+    import tensorflow as tf
+    tf.config.set_visible_devices([], 'GPU')
+    tf.config.threading.set_intra_op_parallelism_threads(4)
+    tf.config.threading.set_inter_op_parallelism_threads(1)
+    import keras
+    from tensorflow.python.framework.convert_to_constants import convert_variables_to_constants_v2
+    for name in names:
+        row = trial['results'][name]
+        root = Path(row['run'])
+        path = root/'student.fp32.tflite'
+        if path.exists() or path.with_suffix('.json').exists():
+            raise FileExistsError(path)
+        model = keras.models.load_model(root/'student.keras', compile=False)
+        if model.count_params() != 7763:
+            raise ValueError('Architecture changed')
+        with np.load(root/'predictions.npz', allow_pickle=False) as stored:
+            groups = [stored['after'], stored['probe_after']]
+        for pixels, expected in zip((old, probes), groups, strict=True):
+            if not np.allclose(model(pixels, training=False).numpy(), expected, atol=1e-5, rtol=0):
+                raise ValueError('Checkpoint predictions changed')
+
+        @tf.function(input_signature=[tf.TensorSpec([1, 64, 64, 3], tf.float32)])
+        def serve(image):
+            return model(image, training=False)
+
+        frozen = convert_variables_to_constants_v2(serve.get_concrete_function())
+        converter = tf.lite.TFLiteConverter.from_concrete_functions([frozen])
+        converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS]
+        binary = converter.convert()
+        interpreter = tf.lite.Interpreter(model_content=binary, num_threads=1)
+        interpreter.allocate_tensors()
+        inp, out = interpreter.get_input_details()[0], interpreter.get_output_details()[0]
+        maximum = 0.
+        for pixels, expected in zip(x, np.concatenate(groups), strict=True):
+            interpreter.set_tensor(inp['index'], pixels[None])
+            interpreter.invoke()
+            actual = interpreter.get_tensor(out['index'])[0]
+            if not np.isfinite(actual).all():
+                raise ValueError('Nonfinite export')
+            maximum = max(maximum, float(np.max(np.abs(actual-expected))))
+            ap, ep = softmax(actual), softmax(expected)
+            if (ap.argmax() != ep.argmax() or ((ap.argmax() > 0 and ap.max() >= .8)
+                                               != (ep.argmax() > 0 and ep.max() >= .8))):
+                raise ValueError('Export decision parity failed')
+        if maximum > .002:
+            raise ValueError('Export tensor parity failed')
+        path.write_bytes(binary)
+        contract = ('task', 'classes', 'size', 'layout', 'color', 'pixel_range', 'resize',
+                    'normalization', 'output', 'threshold')
+        meta = {k: parent[k] for k in contract}
+        meta.update(sha256=sha256(path), bytes=len(binary), parameters=7763, tensor_dtype='float32',
+            input_quantization=None, output_quantization=None, calibration_samples=0, calibration_split=None,
+            integer_only_verified=False, synthetic_training=True,
+            training_scope='Reviewed real TRAIN photos plus inherited synthetic color and reflection views',
+            threshold_status='Fixed research0.8, not deployment calibration',
+            source_student_sha256=row['model_sha256'], provenance_sha256=row['provenance_sha256'],
+            training_trial_sha256=sha256(TRIAL), export_script_sha256=sha256(__file__),
+            parity_rows=len(x), max_keras_tflite_delta=maximum, decision_parity=True,
+            deployment_approved=False, pi_zero_verified=False)
+        write_json(path.with_suffix('.json'), meta)
+        print(dict(name=name, bytes=len(binary), parity_rows=len(x), max_delta=maximum), flush=True)
+
+
+if __name__ == '__main__':
+    export()
