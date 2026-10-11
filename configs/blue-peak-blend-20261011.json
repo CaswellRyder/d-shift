@@ -1,0 +1,19 @@
+{
+  "localizers": ["parent", "background"],
+  "decoders": ["original", "blend"],
+  "classifier": "real-blue-clutter-convergence-admit-seed48",
+  "search": "blue_bright",
+  "selection": "confidence",
+  "threshold": 0.8,
+  "matching_iou": 0.5,
+  "peak_threshold": 0.1,
+  "blue_neighborhood_radius": 1,
+  "neighbor_min_peak_ratio": 0.95,
+  "neighbor_min_box_iou": 0.5,
+  "design": "Keep original local maxima and peak scores. For blue peaks only, heat-weighted mean of peak box plus valid3x3 neighboring-cell boxes with heat>=0.1 and>=95%of peak and box IoU>=0.5. Existing same-colorNMS0.65, crop padding12%, and supplement cap2/total12 unchanged. No extra grid or classifier calls beyond original cap. Red decoding unchanged before shared ranking/cap.",
+  "evaluation": "Fixed2x2 ablation of parent and previously trained head-only background localizers, original versus blended decoder. Exact original-decoder parity on every grid, reproduce saved full-scene decisions for both originals. Complete64TRAIN scenes first then all three repeated development panels regardless of outcome. No fitting, threshold sweep, or tuning after evaluation. Report losses and gains by target identity and actual call counts.",
+  "candidate_gate": "Require no per-color TP loss or FP increase and every previously matched target retained relative to current parent/original on every TRAIN/development panel before any isolated Pi comparison. More compute or a single repaired example is not success.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
