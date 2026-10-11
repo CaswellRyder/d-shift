@@ -3,7 +3,7 @@ import numpy as np
 import pytest
 
 from dtr.tracking import iou
-from scripts.research_balloon_search import blue_core_candidates, experimental
+from scripts.research_balloon_search import blue_core_candidates, blue_radial_candidates, experimental
 
 
 def scene():
@@ -55,3 +55,40 @@ def test_highlights_are_filled_and_border_boxes_stay_in_frame():
 def test_wrong_frame_shape_is_rejected():
     with pytest.raises(ValueError, match="320x240"):
         experimental(np.zeros((480,640,3), np.uint8), "mser_blue_cores")
+
+
+@pytest.mark.parametrize("angle", [0,30,60,90,135])
+def test_radial_bounds_follow_elongated_balloon_at_different_angles(angle):
+    rgb = scene()
+    cv2.ellipse(rgb, (120,110), (55,22), angle, 0, 360, (10,20,220), -1)
+    mask = (rgb[:,:,2] > 200).astype(np.uint8)
+    x,y,w,h = cv2.boundingRect(mask)
+    truth = [x,y,x+w,y+h]
+    radial = blue_radial_candidates(rgb)
+    assert radial and max(iou(r["box"],truth) for r in radial) > .8
+    assert all(r["proposal_source"] == "blue_radial_core" for r in radial)
+
+
+def test_radial_bounds_ignore_thin_bridge_and_keep_two_objects():
+    rgb = scene()
+    cv2.circle(rgb, (80,100), 30, (10,20,220), -1)
+    cv2.circle(rgb, (160,100), 30, (10,20,220), -1)
+    cv2.rectangle(rgb, (100,96), (140,104), (10,20,220), -1)
+    for target in ([50,70,111,131], [130,70,191,131]):
+        assert max(iou(r["box"],target) for r in blue_radial_candidates(rgb)) > .8
+
+
+def test_radial_supplement_keeps_baseline_and_clips_border_boxes():
+    rgb = scene()
+    cv2.ellipse(rgb, (10,5), (30,18), 35, 0, 360, (10,20,220), -1)
+    base, result = experimental(rgb, "mser"), experimental(rgb, "mser_blue_radial")
+    assert result[:len(base)] == base and len(result) <= min(12,len(base)+2)
+    for row in result:
+        for key in ("box", "crop_box"):
+            x,y,z,w = row[key]
+            assert 0 <= x < z <= 320 and 0 <= y < w <= 240
+
+
+def test_invalid_core_geometry_rejected():
+    with pytest.raises(ValueError, match="core geometry"):
+        blue_core_candidates(scene(), "unknown")

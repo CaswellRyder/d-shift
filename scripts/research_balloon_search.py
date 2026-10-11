@@ -272,7 +272,30 @@ def opening_split_candidates(rgb):
     return select(pool)
 
 
-def blue_core_candidates(rgb):
+def radial_core_box(mask, x, y, radius):
+    """Bounded, rotation-independent boundary estimate; no semantic decision.
+
+    Trace 32 rays from an inscribed center up to three radii. A circular
+    five-ray median removes narrow branches before taking axis-aligned bounds.
+    All constants are fixed research geometry, not development-set calibration.
+    The mask has a one-pixel border around 320x240 processing coordinates.
+    """
+    angles = np.arange(32)*2*np.pi/32
+    directions = np.column_stack((np.cos(angles), np.sin(angles)))
+    steps = np.arange(int(np.ceil(3*radius))+1)
+    points = np.rint(np.array([x,y])+directions[:,None,:]*steps[None,:,None]).astype(int)
+    xs, ys = points[:,:,0], points[:,:,1]
+    inside = (xs >= 0) & (xs < 320) & (ys >= 0) & (ys < 240)
+    occupied = inside & (mask[np.clip(ys,0,239)+1, np.clip(xs,0,319)+1] != 0)
+    stops = np.where((~occupied).any(axis=1), (~occupied).argmax(axis=1), len(steps))
+    lengths = np.maximum(stops-1,0)
+    lengths = np.median(np.stack([np.roll(lengths,k) for k in range(-2,3)]), axis=0)
+    boundary = np.array([x,y])+directions*lengths[:,None]
+    low, high = np.floor(boundary.min(axis=0)).astype(int), np.ceil(boundary.max(axis=0)).astype(int)+1
+    return max(0,int(low[0])), max(0,int(low[1])), min(320,int(high[0])), min(240,int(high[1]))
+
+
+def blue_core_candidates(rgb, geometry="square"):
     """Bounded inscribed-core hypotheses for blue balloons joined to blue clutter.
 
     A distance maximum estimates a locally thick object center even when a color
@@ -280,6 +303,8 @@ def blue_core_candidates(rgb):
     inscribed radius by a fixed 1.25 factor. It is not a balloon decision and must
     still pass the classifier. No development labels or model scores are used.
     """
+    if geometry not in ("square", "radial"):
+        raise ValueError("Unknown core geometry")
     plane = cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1]))
     contours, _ = cv2.findContours(cv2.compare(plane, 15, cv2.CMP_GE),
                                    cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -302,6 +327,8 @@ def blue_core_candidates(rgb):
             continue
         extent = int(np.ceil(1.25*radius))
         a, b, c, d = max(0,x-extent), max(0,y-extent), min(320,x+extent+1), min(240,y+extent+1)
+        if geometry == "radial":
+            a, b, c, d = radial_core_box(mask, x, y, radius)
         w, h = c-a, d-b
         if min(w,h) < 4 or max(w/h,h/w) > 3 or w*h > .75*320*240:
             continue
@@ -311,11 +338,16 @@ def blue_core_candidates(rgb):
         pad = int(max(w,h)*.12)
         pool.append(dict(box=[a,b,c,d], crop_box=[max(0,a-pad),max(0,b-pad),min(320,c+pad),min(240,d+pad)],
                          area=area, color_group=1, proposal_score=float(np.sqrt(area)*(area/(w*h))**2),
-                         proposal_source="blue_distance_core", core_radius=radius, core_center=[x,y]))
+                         proposal_source="blue_radial_core" if geometry == "radial" else "blue_distance_core",
+                         core_radius=radius, core_center=[x,y]))
         accepted.append((radius,x,y))
         if len(pool) >= 16:
             break
     return select(pool)
+
+
+def blue_radial_candidates(rgb):
+    return blue_core_candidates(rgb, "radial")
 
 
 def experimental(rgb, variant):
@@ -323,15 +355,16 @@ def experimental(rgb, variant):
         raise ValueError("Experimental search requires 320x240 RGB uint8")
     if variant == "baseline":
         return proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
-    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores"):
+    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial"):
         # Preserve every baseline slot; at most four additions, twelve total.
         base = experimental(rgb, "mser")
         additions = 0
         supplement = {"mser_blue_levels": blue_level_candidates,
                       "mser_instance_split": instance_split_candidates,
                       "mser_opening_split": opening_split_candidates,
-                      "mser_blue_cores": blue_core_candidates}[variant]
-        limit = 2 if variant == "mser_blue_cores" else 4
+                      "mser_blue_cores": blue_core_candidates,
+                      "mser_blue_radial": blue_radial_candidates}[variant]
+        limit = 2 if variant in ("mser_blue_cores", "mser_blue_radial") else 4
         for c in supplement(rgb):
             if len(base) >= 12 or additions >= limit:
                 break
