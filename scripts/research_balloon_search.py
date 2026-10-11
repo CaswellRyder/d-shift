@@ -237,16 +237,53 @@ def instance_split_candidates(rgb):
     return select(pool)
 
 
+def opening_split_candidates(rgb):
+    """Fixed-scale research supplement for thin bridges to same-color clutter.
+
+    Elliptical opening removes narrow connections before component extraction.
+    Work is bounded to sixteen components per color and three fixed radii.
+    Neither the mask nor shape is an acceptance decision: inference is required.
+    """
+    pool = []
+    planes = (cv2.subtract(rgb[:, :, 0], cv2.max(rgb[:, :, 1], rgb[:, :, 2])),
+              cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1])))
+    kernels = [cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2*r+1, 2*r+1))
+               for r in (3, 7, 15)]
+    for group, plane in enumerate(planes):
+        contours, _ = cv2.findContours(cv2.compare(plane, 15, cv2.CMP_GE),
+                                       cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        for contour in sorted(contours, key=cv2.contourArea, reverse=True)[:16]:
+            x, y, w, h = cv2.boundingRect(contour)
+            if cv2.contourArea(contour) < 40 or min(w, h) < 8:
+                continue
+            mask = np.zeros((h+32, w+32), np.uint8)
+            cv2.drawContours(mask, [contour - np.array([[[x-16, y-16]]])], -1, 255, -1)
+            for kernel in kernels:
+                opened = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+                children, _ = cv2.findContours(opened, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                for child in children:
+                    # Reject fragments too small to explain this parent region.
+                    if cv2.contourArea(child) < .12*cv2.contourArea(contour):
+                        continue
+                    points = child + np.array([[[x-16, y-16]]])
+                    c = candidate(points, group, rgb.shape)
+                    if c:
+                        pool.append(c)
+    return select(pool)
+
+
 def experimental(rgb, variant):
     if rgb.shape != (240, 320, 3) or rgb.dtype != np.uint8:
         raise ValueError("Experimental search requires 320x240 RGB uint8")
     if variant == "baseline":
         return proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
-    if variant in ("mser_blue_levels", "mser_instance_split"):
+    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split"):
         # Preserve every baseline slot; at most four additions, twelve total.
         base = experimental(rgb, "mser")
         additions = 0
-        supplement = blue_level_candidates if variant == "mser_blue_levels" else instance_split_candidates
+        supplement = {"mser_blue_levels": blue_level_candidates,
+                      "mser_instance_split": instance_split_candidates,
+                      "mser_opening_split": opening_split_candidates}[variant]
         for c in supplement(rgb):
             if len(base) >= 12 or additions >= 4:
                 break
