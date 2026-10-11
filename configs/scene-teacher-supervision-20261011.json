@@ -1,0 +1,15 @@
+{
+  "arms": ["control", "reviewed"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "optimizer_steps": 12560,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "review_weight": 4,
+  "recipe": "Original2511TRAIN pixels/teacher targets from clutter-round3-feature admit. Same original parent, fresh Adam, tf.data ordering and80epoch schedule. Control is exactly the previous admit run, reused only after tensor and recipe verification. Treatment replaces scene distillation on10visually reviewed proposals with4x hard-label cross entropy and NO teacher loss on those rows. Other2501rows unchanged. Two ambiguous red objects excluded from correction, retaining their previous unlabeled distillation status. No wider crops, extra layers or inference calls.",
+  "gate": "Both reviewed seeds must retain every parent-detected TRAIN target, not increase per-color TRAIN false positives, and not increase false accepts on13previously reviewed negative probes. Then separate export parity and repeatedDEV. No perfect-crop forcing. Final held-out94percent precision AND recall per color plus livePi qualification unchanged.",
+  "scope": "Existing TRAIN annotations and visual review only; no reserved test, IMG-family fitting, runtime change or deployment authorization.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

@@ -1,0 +1,542 @@
+{
+  "audit_sha256": "130d25d58ba87d10a858d97884d998518aa0d137cc070f980bf70fea2cdde167",
+  "script_sha256": "68dc7ea140147a31f0866748716632b42c49b054deb9b0ffedc108be00e70dbc",
+  "results": {
+    "control47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "lost_targets": [],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": true,
+      "reviewed_correct": 0,
+      "reviewed_probabilities": [
+        {
+          "proposal_index": 29,
+          "label": 2,
+          "before": 0.14164035022258759,
+          "after": 0.07771757245063782,
+          "correct": false
+        },
+        {
+          "proposal_index": 34,
+          "label": 2,
+          "before": 0.03942929953336716,
+          "after": 0.028554411605000496,
+          "correct": false
+        },
+        {
+          "proposal_index": 40,
+          "label": 1,
+          "before": 0.36243319511413574,
+          "after": 0.48739027976989746,
+          "correct": false
+        },
+        {
+          "proposal_index": 111,
+          "label": 1,
+          "before": 0.005703051574528217,
+          "after": 0.009721878916025162,
+          "correct": false
+        },
+        {
+          "proposal_index": 158,
+          "label": 0,
+          "before": 0.0564609132707119,
+          "after": 0.06266118586063385,
+          "correct": false
+        },
+        {
+          "proposal_index": 162,
+          "label": 0,
+          "before": 0.004190117586404085,
+          "after": 0.010806997306644917,
+          "correct": false
+        },
+        {
+          "proposal_index": 182,
+          "label": 0,
+          "before": 0.009542000479996204,
+          "after": 0.06910471618175507,
+          "correct": false
+        },
+        {
+          "proposal_index": 184,
+          "label": 0,
+          "before": 0.016185760498046875,
+          "after": 0.027482202276587486,
+          "correct": false
+        },
+        {
+          "proposal_index": 193,
+          "label": 0,
+          "before": 0.03699253126978874,
+          "after": 0.12453660368919373,
+          "correct": false
+        },
+        {
+          "proposal_index": 220,
+          "label": 2,
+          "before": 0.7180490493774414,
+          "after": 0.612847626209259,
+          "correct": false
+        }
+      ]
+    },
+    "control48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 11,
+          "fn": 4,
+          "precision": 0.8952380952380953,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "lost_targets": [],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "reviewed_correct": 0,
+      "reviewed_probabilities": [
+        {
+          "proposal_index": 29,
+          "label": 2,
+          "before": 0.14164035022258759,
+          "after": 0.07497165352106094,
+          "correct": false
+        },
+        {
+          "proposal_index": 34,
+          "label": 2,
+          "before": 0.03942929953336716,
+          "after": 0.028017647564411163,
+          "correct": false
+        },
+        {
+          "proposal_index": 40,
+          "label": 1,
+          "before": 0.36243319511413574,
+          "after": 0.5340872406959534,
+          "correct": false
+        },
+        {
+          "proposal_index": 111,
+          "label": 1,
+          "before": 0.005703051574528217,
+          "after": 0.012953787110745907,
+          "correct": false
+        },
+        {
+          "proposal_index": 158,
+          "label": 0,
+          "before": 0.0564609132707119,
+          "after": 0.04950391501188278,
+          "correct": false
+        },
+        {
+          "proposal_index": 162,
+          "label": 0,
+          "before": 0.004190117586404085,
+          "after": 0.009031683206558228,
+          "correct": false
+        },
+        {
+          "proposal_index": 182,
+          "label": 0,
+          "before": 0.009542000479996204,
+          "after": 0.05723249539732933,
+          "correct": false
+        },
+        {
+          "proposal_index": 184,
+          "label": 0,
+          "before": 0.016185760498046875,
+          "after": 0.027170656248927116,
+          "correct": false
+        },
+        {
+          "proposal_index": 193,
+          "label": 0,
+          "before": 0.03699253126978874,
+          "after": 0.10184532403945923,
+          "correct": false
+        },
+        {
+          "proposal_index": 220,
+          "label": 2,
+          "before": 0.7180490493774414,
+          "after": 0.5630738735198975,
+          "correct": false
+        }
+      ]
+    },
+    "reviewed47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 8,
+          "fn": 5,
+          "precision": 0.9207920792079208,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "lost_targets": [
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          }
+        }
+      ],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "reviewed_correct": 0,
+      "reviewed_probabilities": [
+        {
+          "proposal_index": 29,
+          "label": 2,
+          "before": 0.14164035022258759,
+          "after": 0.3582574427127838,
+          "correct": false
+        },
+        {
+          "proposal_index": 34,
+          "label": 2,
+          "before": 0.03942929953336716,
+          "after": 0.16422174870967865,
+          "correct": false
+        },
+        {
+          "proposal_index": 40,
+          "label": 1,
+          "before": 0.36243319511413574,
+          "after": 0.6744365692138672,
+          "correct": false
+        },
+        {
+          "proposal_index": 111,
+          "label": 1,
+          "before": 0.005703051574528217,
+          "after": 0.031870000064373016,
+          "correct": false
+        },
+        {
+          "proposal_index": 158,
+          "label": 0,
+          "before": 0.0564609132707119,
+          "after": 0.17059768736362457,
+          "correct": false
+        },
+        {
+          "proposal_index": 162,
+          "label": 0,
+          "before": 0.004190117586404085,
+          "after": 0.03854651004076004,
+          "correct": false
+        },
+        {
+          "proposal_index": 182,
+          "label": 0,
+          "before": 0.009542000479996204,
+          "after": 0.2575249671936035,
+          "correct": false
+        },
+        {
+          "proposal_index": 184,
+          "label": 0,
+          "before": 0.016185760498046875,
+          "after": 0.14208044111728668,
+          "correct": false
+        },
+        {
+          "proposal_index": 193,
+          "label": 0,
+          "before": 0.03699253126978874,
+          "after": 0.3341333270072937,
+          "correct": false
+        },
+        {
+          "proposal_index": 220,
+          "label": 2,
+          "before": 0.7180490493774414,
+          "after": 0.6269540190696716,
+          "correct": false
+        }
+      ],
+      "against_matched_control": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -1,
+            "fp": -2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      }
+    },
+    "reviewed48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 8,
+          "fn": 5,
+          "precision": 0.9207920792079208,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "lost_targets": [
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          }
+        }
+      ],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "reviewed_correct": 0,
+      "reviewed_probabilities": [
+        {
+          "proposal_index": 29,
+          "label": 2,
+          "before": 0.14164035022258759,
+          "after": 0.3774743378162384,
+          "correct": false
+        },
+        {
+          "proposal_index": 34,
+          "label": 2,
+          "before": 0.03942929953336716,
+          "after": 0.17621053755283356,
+          "correct": false
+        },
+        {
+          "proposal_index": 40,
+          "label": 1,
+          "before": 0.36243319511413574,
+          "after": 0.7016089558601379,
+          "correct": false
+        },
+        {
+          "proposal_index": 111,
+          "label": 1,
+          "before": 0.005703051574528217,
+          "after": 0.038053594529628754,
+          "correct": false
+        },
+        {
+          "proposal_index": 158,
+          "label": 0,
+          "before": 0.0564609132707119,
+          "after": 0.15617604553699493,
+          "correct": false
+        },
+        {
+          "proposal_index": 162,
+          "label": 0,
+          "before": 0.004190117586404085,
+          "after": 0.03735505789518356,
+          "correct": false
+        },
+        {
+          "proposal_index": 182,
+          "label": 0,
+          "before": 0.009542000479996204,
+          "after": 0.22312891483306885,
+          "correct": false
+        },
+        {
+          "proposal_index": 184,
+          "label": 0,
+          "before": 0.016185760498046875,
+          "after": 0.12527690827846527,
+          "correct": false
+        },
+        {
+          "proposal_index": 193,
+          "label": 0,
+          "before": 0.03699253126978874,
+          "after": 0.2997806966304779,
+          "correct": false
+        },
+        {
+          "proposal_index": 220,
+          "label": 2,
+          "before": 0.7180490493774414,
+          "after": 0.5954775810241699,
+          "correct": false
+        }
+      ],
+      "against_matched_control": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -1,
+            "fp": -3,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      }
+    }
+  },
+  "exact_pixel_conflict_check": [
+    {
+      "proposal_index": 29,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 34,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 40,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 111,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 158,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 162,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 182,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 184,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 193,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    },
+    {
+      "proposal_index": 220,
+      "prior_pixel_duplicates": [],
+      "conflicting_hard_labels": []
+    }
+  ],
+  "eligible_for_export_and_development": false,
+  "decision": "Reject both reviewed candidates; full TRAIN detection retention failed.",
+  "scope": "Ten reviewed crops from existing TRAIN scenes, correlated and not independent additions. Exact-pixel check does not rule out near-duplicate or other semantic label conflicts. Related development and reserved test untouched.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

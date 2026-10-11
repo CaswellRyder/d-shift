@@ -1,0 +1,20 @@
+{
+  "queue": "data/scene-teacher-review-20261011/review.json",
+  "queue_sha256": "b05b99092236e7b1c1601d705f7d4d3652d43b49380890cdf515225fe16fc859",
+  "reviewer": "Main assistant inspected all10source frames and all12original crop renderings. Labels are scene-supervision corrections, not independent new images.",
+  "labels": {"29": "blue_balloon", "34": "blue_balloon", "40": "red_balloon", "111": "red_balloon", "158": "background", "162": "background", "182": "background", "184": "background", "193": "background", "220": "blue_balloon"},
+  "notes": {
+    "29": "Blue inflated balloon on counter next to stove; recognizable oval object.",
+    "34": "Blue inflated balloon on counter, nearby frame of same scene.",
+    "40": "Red inflated balloon held against red sweatshirt; hand partly occludes it.",
+    "111": "Red inflated balloon partly truncated at left image edge; body and tied neck visible.",
+    "158": "Red car bodywork behind wrist/hand; no balloon in crop.",
+    "162": "Nested crop of same red car bodywork, not another independent negative scene.",
+    "182": "Red rectangular shop sign with white lettering.",
+    "184": "Burgundy sleeve/arm at frame edge, not the adjacent blue balloon.",
+    "193": "Red shop sign from adjacent frame; correlated with182.",
+    "220": "Large blue inflated balloon clipped at top of camera image."
+  },
+  "excluded": {"5": "Tiny blurred red item near hand; insufficient evidence to distinguish object/latex fragment. No label.", "23": "Small red crumpled object may be deflated latex; exclude under existing ambiguous-latex boundary."},
+  "scope": "TRAIN-only existing complete scenes. No IMG-family data, new independent scene claim, development fitting, or qualification. Partial/mixed geometry elsewhere remains unlabeled."
+}
