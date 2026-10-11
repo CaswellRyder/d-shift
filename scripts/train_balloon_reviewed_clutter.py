@@ -54,7 +54,7 @@ def loss_function():
     return loss
 
 
-def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
+def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1, epochs=8):
     out = Path(output)
     if out.exists():
         raise FileExistsError(out)
@@ -64,6 +64,8 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
         raise ValueError('Choose one expansion experiment')
     if hard_weight not in (1,16) or (hard_weight != 1 and not expansion4):
         raise ValueError('Hard weighting requires expansion4 and fixed weight 1 or 16')
+    if epochs not in (8,80) or (epochs != 8 and not (expansion4 and hard_weight==16)):
+        raise ValueError('Long convergence run requires expansion4, weight16 and fixed 80 epochs')
     if expansion4:
         from scripts.balloon_expansion4 import data as expansion_data,QUEUE as queue,REVIEW as review
         rows, negatives = expansion_data(mode)
@@ -94,7 +96,7 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
     old = model(x, training=False).numpy()
     targets = np.column_stack((np.eye(3)[labels], old, [r['preserve'] for r in rows])).astype(np.float32)
     out.mkdir(parents=True)
-    provenance = dict(mode=mode, seed=seed, epochs=8, learning_rate=.0001, batch_size=16,
+    provenance = dict(mode=mode, seed=seed, epochs=epochs, learning_rate=.0001, batch_size=16,
         manifest_sha256=sha256(MANIFEST), review_sha256=sha256(review),
         queue_sha256=sha256(Path(queue)/'review.json'), script_sha256=sha256(__file__),
         experiment='expansion4_hard' if expansion4 else ('expansion3' if expansion else 'reviewed_clutter'),
@@ -108,6 +110,9 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
         reviewed_unique_negatives=sum(r['label']=='background' for r in negatives),
         hard_weight=hard_weight,
         fixed_final_epoch=True, classes=CLASSES, test_evaluated=False, deployment_approved=False)
+    if epochs==80:
+        provenance.update(convergence_protocol_sha256=sha256('configs/balloon-expansion4-convergence-20261011.json'),
+                          trace_helper_sha256=sha256('scripts/balloon_convergence.py'))
     write_json(out/'provenance.json', provenance)
     write_json(out/'status.json', dict(state='running'))
     try:
@@ -120,14 +125,31 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
         options.threading.private_threadpool_size = 2
         ds = ds.with_options(options).prefetch(1)
         model.compile(optimizer=keras.optimizers.Adam(.0001), loss=loss_function())
+        trace = []
+        if epochs==80:
+            from scripts.balloon_convergence import snapshot
+            probe = np.stack([load_rgb(Path(queue)/r['path'],64) for r in negatives])
+            probe_labels = np.array([CLASSES.index(r['label']) for r in negatives])
+            preserve = np.array([r['preserve'] for r in rows],dtype=bool)
+
+        def record_probe(epoch):
+            trace.append(snapshot(epoch, model(x,training=False).numpy(), labels, preserve,
+                                  model(probe,training=False).numpy(), probe_labels))
+            write_json(out/'training_trace.json',dict(hard_ids=[r['id'] for r in negatives],records=trace))
 
         class Progress(keras.callbacks.Callback):
+            def on_train_begin(self, logs=None):
+                if epochs==80:
+                    record_probe(0)
+
             def on_epoch_end(self, epoch, logs=None):
                 if not logs or not all(np.isfinite(v) for v in logs.values()):
                     raise ValueError('Nonfinite training metrics')
                 write_json(out/'status.json', dict(state='running', epoch=epoch+1, metrics=logs))
+                if epochs==80 and (epoch==0 or (epoch+1)%10==0):
+                    record_probe(epoch+1)
 
-        model.fit(ds, epochs=8, verbose=2, callbacks=[Progress(), keras.callbacks.CSVLogger(str(out/'epochs.csv'))])
+        model.fit(ds, epochs=epochs, verbose=2, callbacks=[Progress(), keras.callbacks.CSVLogger(str(out/'epochs.csv'))])
         model.save(out/'student.keras')
         final = model(x, training=False).numpy()
 
@@ -172,6 +194,8 @@ def train(mode, seed, output, expansion=False, expansion4=False, hard_weight=1):
             reviewed_negative_background_correct=int((negative_logits.argmax(1)[background] == 0).sum()),
             reviewed_negative_count=int(background.sum()), max_keras_tflite_delta=delta,
             scope='Training fit only, not held-out validation', test_evaluated=False, deployment_approved=False)
+        if epochs==80:
+            report['training_trace_sha256'] = sha256(out/'training_trace.json')
         write_json(out/'report.json', report)
         write_json(out/'status.json', dict(state='complete'))
         print(report)
@@ -190,5 +214,6 @@ if __name__ == '__main__':
     group.add_argument('--expansion4',action='store_true',help='Use frozen-parent hard crops from reviewed expansion4 TRAIN views')
     p.add_argument('--hard-weight',type=int,choices=(1,16),default=1,
                    help='Training-only learnability diagnostic; same weighting in matched controls')
+    p.add_argument('--epochs',type=int,choices=(8,80),default=8)
     args = p.parse_args()
-    train(args.mode, args.seed, args.output,args.expansion3,args.expansion4,args.hard_weight)
+    train(args.mode, args.seed, args.output,args.expansion3,args.expansion4,args.hard_weight,args.epochs)

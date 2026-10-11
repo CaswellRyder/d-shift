@@ -14,10 +14,14 @@ PROTOCOL = 'configs/balloon-expansion4-hard-trial-20261011.json'
 WEIGHTED_PROTOCOL = 'configs/balloon-expansion4-weighted-diagnostic-20261011.json'
 
 
-def models(weighted=False):
+def models(weighted=False, convergence=False):
     protocol = read_json(PROTOCOL)
+    if convergence and not weighted:
+        raise ValueError('Convergence requires the matched weighted experiment')
     if weighted:
         protocol.update(read_json(WEIGHTED_PROTOCOL))
+    if convergence:
+        protocol.update(read_json('configs/balloon-expansion4-convergence-20261011.json'))
     approved = checked_extra()
     if protocol['parent_sha256'] != sha256(PARENT):
         raise ValueError('Frozen mining parent changed')
@@ -29,7 +33,8 @@ def models(weighted=False):
         identity = [{k:r[k] for k in ('source_image','sha256','label','preserve')} for r in rows]
         for seed in (47,48):
             name = f'{mode}{seed}'
-            prefix = 'balloon-expansion4-weight16' if weighted else 'balloon-expansion4'
+            prefix = ('balloon-expansion4-convergence' if convergence else
+                      ('balloon-expansion4-weight16' if weighted else 'balloon-expansion4'))
             run = Path(f'runs/{prefix}-{mode}-seed{seed}-20261011')
             model = run/'student.fp32.tflite'
             p, meta = read_json(run/'provenance.json'), read_json(model.with_suffix('.json'))

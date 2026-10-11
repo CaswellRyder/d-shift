@@ -1,0 +1,17 @@
+{
+  "parent_diagnostic": "configs/balloon-expansion4-weighted-diagnostic-20261011.json",
+  "parent_checkpoint": "runs/balloon-fragment-control-seed47-20261011/color.keras",
+  "arms": ["control","admit"],
+  "seeds": [47,48],
+  "epochs": 80,
+  "learning_rate": 0.0001,
+  "batch_size": 16,
+  "hard_weight": 16,
+  "selected_crop_ids": [48,52,56,89,93],
+  "trace_epochs": [0,1,10,20,30,40,50,60,70,80],
+  "checkpoint_policy": "Fresh start from the same parent for every arm. Fixed final epoch 80. Intermediate TRAIN probes are diagnostic only and cannot select a checkpoint.",
+  "training_feasibility": "Both admit seeds must correctly classify at least four of five hard crops and retain at least 95 percent ordinary training accuracy before any development evaluation.",
+  "development_plan": "Only after both seeds pass training feasibility, compare final checkpoints, matched controls and unchanged parent on all three frozen development panels. Retain threshold 0.8, IoU 0.5, split_merged and aspect 2.42913421076193. Do not promote on training fit or one favorable seed.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
