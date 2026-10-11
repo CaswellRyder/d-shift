@@ -1,0 +1,13 @@
+{
+  "arms": ["control","aspect"],
+  "seeds": [47,48],
+  "controls": {"47":"runs/window1-runtime-hard-seed47-20261011","48":"runs/window1-runtime-hard-seed48-20261011"},
+  "rows": 2547,
+  "optimizer_steps": 12800,
+  "recipe": "Exact window1-hard curriculum and fixed80epoch schedule. Same original parent, fresh Adam,7763parameters,64RGB,threshold0.8. Only student preprocessing changes: preserve source-crop aspect ratio with PIL bilinear long edge64, nearest-integer short edge minimum1, centered RGB127padding. All supervised crops, probes and scene crops use the same policy. Teacher inputs/targets remain original stretched crops. Reuse verified unchanged hard47/hard48 controls. Final epoch only; no DEV selection.",
+  "gate": "Both aspect seeds must preserve all parent-detected targets and not increase per-color false positives on64original and6new TRAIN scenes, not increase false accepts among13negative probes, and improve at least one TRAIN true-positive or false-positive count. Compare same-seed controls. Passing only permits export/parity and repeated-development full-search evaluation;94percent held-out and separate live-Pi requirements remain.",
+  "scope": "Shape-distortion hypothesis using existing labeled TRAIN sources, not new labels. No architecture, proposal boxes, call count or threshold changes. Padding overhead and actual Pi latency unmeasured. IMG_ family and reserved test excluded.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
