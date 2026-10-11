@@ -1,0 +1,19 @@
+{
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "feature_layer": "spatial_features",
+  "feature_width": 128,
+  "training_rows": 2074,
+  "prototype_count": 12,
+  "radius_fraction": 0.5,
+  "standard_deviation_floor": 0.001,
+  "center_log_odds_margin": 8.0,
+  "fit": "Freeze the parent. Use existing guarded runtime-balanced admitted TRAIN curriculum, including original/mirrored runtime positives. Standardize128features using all2074TRAIN rows. Each of12 explicitly reviewed blue-object background crops is a center. Radius is half its nearest red OR blue TRAIN-positive feature distance; omit zero-radius centers. Compact support max(0,1-distance_squared/radius_squared), correction=max over prototypes of support*max(0,center_blue_logit-center_background_logit+8). No gradient fitting, seed sweep or development calibration.",
+  "prediction": "Only decrease blue/background conditional odds, transferring removed blue probability to background. Preserve red probability exactly and return original scores bit-for-bit when correction is zero. This cannot create a new blue acceptance. No new acceptance threshold.",
+  "training_gate": "All supplied TRAIN-positive crops receive exactly zero correction; all12 reviewed prototype backgrounds become background argmax. Validate original model identity and complete guarded curriculum before development.",
+  "evaluation": "Replay all existing TRAIN and repeated development scene proposals from frozen background/blend pipeline. Recompute base classifier predictions, reproduce original selected decisions, then compare correction on/off. Keep geometry, proposals, threshold0.8 and selection unchanged. Report per-target losses even if totals improve. No use of IMG examples for fitting, calibration or mining.",
+  "promotion_gate": "No per-color TP loss or FP increase and no lost parent target on any panel, plus at least one development FP reduction. Only then consider single-pass export and Pi timing; offboard two-pass prototype feasibility is not a deployable runtime or measured speed.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
