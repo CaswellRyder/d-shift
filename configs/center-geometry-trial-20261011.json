@@ -1,0 +1,20 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "parent": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.keras",
+  "parent_sha256": "7188ee9d0f69d42bd1047e4e40598260faf027f85e0695a8eb5e12598727507c",
+  "epochs": 320,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "parameters": 3060,
+  "trainable_parameters": 718,
+  "architecture": "Same frozen backbone and parent heads as geometry-adapter. Add a zero-initialized two-channel center-logit residual using the16-channel spatial geometry-adapter hidden features (34 extra parameters). Initial output exactly reproduces parent. Residual geometry and center outputs train jointly; original parent weights remain frozen.",
+  "loss": "Unchanged sparse focal plus5*maskedL1 plus2*GIoU; unlike geometry-only trial, reviewed negative heat cells now contribute supervision. Unknown image regions stay masked.",
+  "data": "Unchanged matched156-row control/admit data,140 FIT and16 original grouped holdout. TRAIN-only23 blue boxes and approved clutter; no IMG-family pixels, new labels or threshold selection.",
+  "selection": "Fixed final epoch320; fresh Adam and both seeds/arms. No best epoch or holdout selection. Same zero geometry branch initialization as prior geometry-only trial for each seed.",
+  "training_gate": "Both admissions must improve new blue learned-box coverage over parent and matched control, preserve original FIT red/blue learned and bounded MSER-plus2 coverage versus parent, and preserve frozen original weights. Compare previous geometry-only admissions diagnostically. Threshold0.1, maximum12 proposals and2 added blue proposals unchanged.",
+  "reason": "TRAIN diagnosis: geometry-only admissions improved supervised-center IoU on16/23 and17/23 boxes, but only12/23 centers were heat peaks;4 and7 unmatched targets had adequate center geometry but not a local center peak. Center residual addresses this specific train/inference-location mismatch.",
+  "evaluation": "Export only after both TRAIN gates; verify tensor and decoded parity. Test all development panels with unchanged classifier48, confidence0.8, matchingIoU0.5 and bounded search. Independent qualification and Pi timing remain separate.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
