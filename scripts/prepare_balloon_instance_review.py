@@ -131,7 +131,9 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
     return dict(crops=len(rows), frames=len(frames), queue_sha256=sha256(output / "review.json"))
 
 
-def checked_rows(manifest, root, decision_path):
+def checked_rows(manifest, root, decision_path, *, allow_fragments=False):
+    if type(allow_fragments) is not bool:
+        raise ValueError("Require explicit boolean fragment research opt-in")
     root = Path(root).resolve()
     queue, decision = read_json(root / "review.json"), read_json(decision_path)
     base = read_json(manifest)
@@ -150,11 +152,12 @@ def checked_rows(manifest, root, decision_path):
     forbidden = {r["sha256"] for r in base["samples"] if r["split"] != "train"}
     holdout_sources = {r["source_sha256"] for r in base["samples"] if r["split"] != "train"}
     output = []
+    allowed_labels = base["classes"] + (["balloon_fragment"] if allow_fragments else [])
     for label in labels:
         r = queue["samples"][label["id"]]
         training_source(r["source_image"])
         path = (root / r["path"]).resolve()
-        if (r["id"] != label["id"] or r["split"] != "train" or label["label"] not in base["classes"]
+        if (r["id"] != label["id"] or r["split"] != "train" or label["label"] not in allowed_labels
                 or (r["source_image"], r["session"], r["source_sha256"]) not in allowed
                 or r["source_sha256"] in holdout_sources or r["sha256"] in forbidden
                 or not path.is_relative_to(root) or sha256(path) != r["sha256"]):

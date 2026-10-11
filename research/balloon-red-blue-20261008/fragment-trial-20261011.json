@@ -1,0 +1,773 @@
+{
+  "models": {
+    "incumbent": {
+      "path": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010/student.fp32.tflite",
+      "sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530"
+    },
+    "control47": {
+      "path": "runs/balloon-fragment-control-seed47-20261011/fragment.fp32.tflite",
+      "sha256": "a9bd77f79a708d3e292190f6cf064ac1e9aeb1cafb765fe7145a508839829b8d",
+      "bytes": 35916,
+      "provenance_sha256": "fa8dc92db1e06ef6cabec060831236eb4b43fd2cec207dc2687b8b83a592442e",
+      "fit_diagnostics": {
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "ordinary_training_correct": 1374,
+        "ordinary_training_rows": 1411,
+        "fragment_training_correct": 76,
+        "fragment_training_rows": 76,
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "color47": {
+      "path": "runs/balloon-fragment-control-seed47-20261011/color.fp32.tflite",
+      "sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+      "metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+      "bytes": 34844
+    },
+    "control48": {
+      "path": "runs/balloon-fragment-control-seed48-20261011/fragment.fp32.tflite",
+      "sha256": "8839d42d92ec8449cec0b611c4e144f21c52835ee3d1f0832cd6483b139c3279",
+      "bytes": 35916,
+      "provenance_sha256": "713ba671787093b2618d8fd7c6a26fd38388186fd4fa4bf0f1dad3e88ee8e92e",
+      "fit_diagnostics": {
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "ordinary_training_correct": 1373,
+        "ordinary_training_rows": 1411,
+        "fragment_training_correct": 76,
+        "fragment_training_rows": 76,
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "color48": {
+      "path": "runs/balloon-fragment-control-seed48-20261011/color.fp32.tflite",
+      "sha256": "9365dbd553f43e1af789a894d52e2020e9224428c53c39eae80fc03b27cc89b9",
+      "metadata_sha256": "2a68c59454d2c74abb203f56c1bf49540e253b9866af235c03d4cb3b94f19c6c",
+      "bytes": 34844
+    },
+    "fragment47": {
+      "path": "runs/balloon-fragment-fragment-seed47-20261011/fragment.fp32.tflite",
+      "sha256": "a21cd459349c8a8de9cbc860b7888904b18782a72e0c9d16672c3267b6f28705",
+      "bytes": 35916,
+      "provenance_sha256": "eb918bdf89184e7265286bb5cdf4faa3ca302f5696af2877d1bce71e45b78e89",
+      "fit_diagnostics": {
+        "max_keras_tflite_delta": 1.1444091796875e-05,
+        "ordinary_training_correct": 1373,
+        "ordinary_training_rows": 1411,
+        "fragment_training_correct": 12,
+        "fragment_training_rows": 76,
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    },
+    "fragment48": {
+      "path": "runs/balloon-fragment-fragment-seed48-20261011/fragment.fp32.tflite",
+      "sha256": "2da840d997435eb5c2b8016e4b75dc760fca55eb0c6ca95e63dd0877832a305b",
+      "bytes": 35916,
+      "provenance_sha256": "b8245c9a123279847d0edd4fa906e77181318aab77bdb8c8f0ce8791d86c3362",
+      "fit_diagnostics": {
+        "max_keras_tflite_delta": 6.67572021484375e-06,
+        "ordinary_training_correct": 1374,
+        "ordinary_training_rows": 1411,
+        "fragment_training_correct": 8,
+        "fragment_training_rows": 76,
+        "test_evaluated": false,
+        "deployment_approved": false
+      }
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "frames": 67,
+      "receipts": {
+        "balloon-fragments": {
+          "path": "runs/balloon-fragments-engdes2-lockbox-panel3-20261010-20261011.json",
+          "sha256": "e853f4e8ba94a033e4a0511ac21158416187664e77f1e13abb8e2b8f5088479c",
+          "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+          "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff"
+        },
+        "balloon-fragment-color": {
+          "path": "runs/balloon-fragment-color-engdes2-lockbox-panel3-20261010-20261011.json",
+          "sha256": "73ceb6efac96d916c5cc4dab19f726e3166877c513bef7f7320a3d75f099a34d",
+          "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+          "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff"
+        }
+      },
+      "results": {
+        "incumbent/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "incumbent/lab": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 49,
+            "fn": 8,
+            "precision": 0.5625,
+            "recall": 0.8873239436619719
+          }
+        },
+        "control47/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control47/lab": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 47,
+            "fn": 8,
+            "precision": 0.5727272727272728,
+            "recall": 0.8873239436619719
+          }
+        },
+        "control48/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control48/lab": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 50,
+            "fn": 8,
+            "precision": 0.5575221238938053,
+            "recall": 0.8873239436619719
+          }
+        },
+        "fragment47/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 13,
+            "fn": 13,
+            "precision": 0.8169014084507042,
+            "recall": 0.8169014084507042
+          }
+        },
+        "fragment47/lab": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 32,
+            "fn": 9,
+            "precision": 0.6595744680851063,
+            "recall": 0.8732394366197183
+          }
+        },
+        "fragment48/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 13,
+            "fn": 13,
+            "precision": 0.8169014084507042,
+            "recall": 0.8169014084507042
+          }
+        },
+        "fragment48/lab": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 62,
+            "fp": 32,
+            "fn": 9,
+            "precision": 0.6595744680851063,
+            "recall": 0.8732394366197183
+          }
+        },
+        "color47/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "color48/mser": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "frames": 62,
+      "receipts": {
+        "balloon-fragments": {
+          "path": "runs/balloon-fragments-engdes2-development-panel2-20261010-20261011.json",
+          "sha256": "95d2cbe4a0025cfaec7796c1f5491e6ce668158108828f9013e0650ff1020f5e",
+          "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+          "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f"
+        },
+        "balloon-fragment-color": {
+          "path": "runs/balloon-fragment-color-engdes2-development-panel2-20261010-20261011.json",
+          "sha256": "2b8d62de5956230f924f35c747fbf2fd1ca27f45316c83e68dd2157b07001205",
+          "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+          "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f"
+        }
+      },
+      "results": {
+        "incumbent/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "incumbent/lab": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 56,
+            "fn": 21,
+            "precision": 0.45098039215686275,
+            "recall": 0.6865671641791045
+          }
+        },
+        "control47/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control47/lab": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 55,
+            "fn": 20,
+            "precision": 0.46078431372549017,
+            "recall": 0.7014925373134329
+          }
+        },
+        "control48/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control48/lab": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 55,
+            "fn": 20,
+            "precision": 0.46078431372549017,
+            "recall": 0.7014925373134329
+          }
+        },
+        "fragment47/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 21,
+            "fn": 19,
+            "precision": 0.6956521739130435,
+            "recall": 0.7164179104477612
+          }
+        },
+        "fragment47/lab": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 40,
+            "fn": 20,
+            "precision": 0.5402298850574713,
+            "recall": 0.7014925373134329
+          }
+        },
+        "fragment48/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 22,
+            "fn": 18,
+            "precision": 0.6901408450704225,
+            "recall": 0.7313432835820896
+          }
+        },
+        "fragment48/lab": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 48,
+            "fp": 42,
+            "fn": 19,
+            "precision": 0.5333333333333333,
+            "recall": 0.7164179104477612
+          }
+        },
+        "color47/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "color48/mser": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "frames": 12,
+      "receipts": {
+        "balloon-fragments": {
+          "path": "runs/balloon-fragments-engdes2-development-scenes-20261008-20261011.json",
+          "sha256": "d22f3b1630f8693a273f2824cc4d816e573c37685b3c4955999d9bf03b959507",
+          "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+          "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+        },
+        "balloon-fragment-color": {
+          "path": "runs/balloon-fragment-color-engdes2-development-scenes-20261008-20261011.json",
+          "sha256": "bfd610e9a1fc4f0d4754dfe9e500fdcdc3411185a6419607752091260d67e02b",
+          "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+          "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+        }
+      },
+      "results": {
+        "incumbent/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "incumbent/lab": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 9,
+            "fn": 3,
+            "precision": 0.5,
+            "recall": 0.75
+          }
+        },
+        "control47/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control47/lab": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 9,
+            "fn": 3,
+            "precision": 0.5,
+            "recall": 0.75
+          }
+        },
+        "control48/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control48/lab": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 9,
+            "fn": 3,
+            "precision": 0.5,
+            "recall": 0.75
+          }
+        },
+        "fragment47/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "fragment47/lab": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 7,
+            "fn": 3,
+            "precision": 0.5625,
+            "recall": 0.75
+          }
+        },
+        "fragment48/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "fragment48/lab": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 7,
+            "fn": 3,
+            "precision": 0.5625,
+            "recall": 0.75
+          }
+        },
+        "color47/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "color48/mser": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "summary_script_sha256": "75bfcfb475a561e2659f7a1e920d3b0de66bfb543843ef8245ffa8795cafb65f",
+  "training_design": {
+    "epochs": 8,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+    "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+    "review_sha256": "de1eedc19b995587b41e602cd745a22c16cb73d7013d90ae4beab7fb015c39e8",
+    "source_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+    "source_tflite_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+    "script_sha256": "b151ec6b9d20e10a72ff25c221924ea5106d8b22d115f10cde103273ea474fee",
+    "source_guard_sha256": "cf94f43e68063a94997195862e592dcb27173999b9ca0decb06fce6388e4e12a",
+    "ordinary_training_rows": 1411,
+    "fragment_unique_crops": 19,
+    "fragment_repetitions": 4,
+    "fragment_training_rows": 76,
+    "classes": [
+      "background",
+      "red_balloon",
+      "blue_balloon",
+      "balloon_fragment"
+    ],
+    "fragment_ids": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13,
+      15,
+      16,
+      17,
+      18,
+      22,
+      24,
+      31
+    ],
+    "fixed_final_epoch": true,
+    "test_evaluated": false,
+    "deployment_approved": false
+  },
+  "decision": "Do not promote fragment class: recall loss. Stage color47 for research Pi replay; color48 reproduces development count changes.",
+  "caveats": [
+    "Panels are repeatedly inspected and overlapping, not independent qualification.",
+    "Fragment training fits only 2-3 of 19 unique fragment crops; fit diagnostics are not validation.",
+    "Three-class export changes normalization; separately evaluated on every panel.",
+    "No live Pi accuracy or speed inferred from host evaluation or model size."
+  ],
+  "qualification_achieved": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "test_evaluated": false
+}

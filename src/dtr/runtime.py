@@ -33,6 +33,8 @@ class Predictor:
         self.metadata = json.loads(path.with_suffix(".json").read_text())
         if hashlib.sha256(path.read_bytes()).hexdigest() != self.metadata["sha256"]:
             raise ValueError("Model checksum does not match metadata")
+        if self.metadata.get("kind") == "balloon_fragment_research":
+            raise ValueError("Fragment research requires its explicit non-target-rejecting adapter")
         if not allow_unvalidated and not self.metadata.get("deployment_approved", False):
             raise ValueError(
                 "Unvalidated research model: explicitly enable allow_unvalidated for testing"

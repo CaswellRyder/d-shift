@@ -1,0 +1,30 @@
+{
+  "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+  "training_approved": true,
+  "deployment_approved": false,
+  "labels": [
+    {"id": 0, "label": "balloon_fragment"},
+    {"id": 1, "label": "balloon_fragment"},
+    {"id": 2, "label": "balloon_fragment"},
+    {"id": 4, "label": "balloon_fragment"},
+    {"id": 5, "label": "balloon_fragment"},
+    {"id": 6, "label": "balloon_fragment"},
+    {"id": 7, "label": "balloon_fragment"},
+    {"id": 8, "label": "balloon_fragment"},
+    {"id": 9, "label": "balloon_fragment"},
+    {"id": 10, "label": "balloon_fragment"},
+    {"id": 11, "label": "balloon_fragment"},
+    {"id": 13, "label": "balloon_fragment"},
+    {"id": 15, "label": "balloon_fragment"},
+    {"id": 16, "label": "balloon_fragment"},
+    {"id": 17, "label": "balloon_fragment"},
+    {"id": 18, "label": "balloon_fragment"},
+    {"id": 22, "label": "balloon_fragment"},
+    {"id": 24, "label": "balloon_fragment"},
+    {"id": 31, "label": "balloon_fragment"}
+  ],
+  "exclude": [3,12,14,19,20,21,23,25,26,27,28,29,30,32,33,34,35,36,37,38,39,40],
+  "control_color_label": "blue_balloon",
+  "review": "AI visual review of the two crop contact sheets and three parent-frame contact sheets. These 19 crops depict small pieces of known larger blue balloons. They are not background. Each must also satisfy the training-only annotation coverage guard.",
+  "scope": "Explicit research label for incomplete proposal crops, not a change to deployed taxonomy. No held-out IMG-family pixels admitted; not independent photos or a flight-readiness claim."
+}

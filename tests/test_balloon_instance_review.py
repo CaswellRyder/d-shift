@@ -42,6 +42,18 @@ def test_admission_requires_source_crop_parity_and_keeps_review_labels(inputs):
     assert len(rows) == 1 and rows[0]["label"] == "background"
 
 
+def test_fragment_label_requires_explicit_separate_research_opt_in(inputs):
+    manifest,queue,decision=inputs
+    review=read_json(decision)
+    review['labels'][0]['label']='balloon_fragment'
+    write_json(decision,review)
+    with pytest.raises(ValueError):
+        checked_rows(manifest,queue,decision)
+    assert checked_rows(manifest,queue,decision,allow_fragments=True)[0]['label']=='balloon_fragment'
+    with pytest.raises(ValueError,match='boolean'):
+        checked_rows(manifest,queue,decision,allow_fragments='yes')
+
+
 def test_bad_candidate_scope_rejected_before_loading_data():
     with pytest.raises(ValueError, match="candidate scope"):
         prepare(*(["absent"] * 7), candidate_scope="unknown")
