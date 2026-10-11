@@ -1,0 +1,511 @@
+{
+  "results": {
+    "47": {
+      "run": "runs/window1-head-repair-seed47-20261011",
+      "report_sha256": "2b592d8da9cebd9efa5067883424ae0a212fa9ba58e0bda36e6c85f31370a90f",
+      "seed": 47,
+      "source_model": "runs/window1-priority-priority-seed47-20261011/student.keras",
+      "source_sha256": "5a7220bdba58da3e67d2dd75d2b9eaa977a137a0af0a22bf216602852ac8b183",
+      "feasibility": {
+        "success": true,
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "iterations": 622,
+        "maximum_violation": 2.220446049250313e-16,
+        "objective": 1.7725104020104154
+      },
+      "solver": {
+        "success": true,
+        "status": 0,
+        "message": "Optimization terminated successfully",
+        "iterations": 151,
+        "elapsed_s": 10.454608624975663,
+        "initial_objective": 0.21665826628671364,
+        "maximum_violation": 4.0245584642661925e-16,
+        "stationarity": 1.3577844917168208e-06,
+        "complementarity": 5.157635602968851e-18,
+        "objective": 0.01393186566967625,
+        "active_constraints": 14
+      },
+      "constraints": 7624,
+      "model_saved": true,
+      "training_gate_pass": true,
+      "model_sha256": "fd3bb2b76d225fa95d262298d68de84491da66b764e4450707cdd7a814de1f50",
+      "fold_max_delta": 1.1869598415259475e-05,
+      "frozen_weights_unchanged": true,
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "window1_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666
+        },
+        "blue_balloon": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571428571428571,
+          "recall": 0.75
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "new_effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 2,
+            "fp": 0,
+            "fn": -2
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": [
+          {
+            "source": "openimages/train/1c262374b679dc52",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                196.8,
+                87.12936,
+                267.2,
+                165.92880000000002
+              ],
+              "annotation_id": 23
+            }
+          },
+          {
+            "source": "openimages/train/211928414c7745aa",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                94.2,
+                133.00008,
+                126.0,
+                172.79999999999998
+              ],
+              "annotation_id": 50
+            }
+          }
+        ]
+      },
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 2006,
+        "lost_old_rows": [],
+        "gained_old_rows": [
+          766,
+          805,
+          1380,
+          1659,
+          1660,
+          1662,
+          1664,
+          1665,
+          1666,
+          1667,
+          1672,
+          1673,
+          1675,
+          1677,
+          1678,
+          1679,
+          1680,
+          1764,
+          1767,
+          1768,
+          1775,
+          1778,
+          1779,
+          1815,
+          1825,
+          1883,
+          1893,
+          1923,
+          1924,
+          1925,
+          1931,
+          1935,
+          1936,
+          1937,
+          1943
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 1
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 20
+          }
+        },
+        "training_gate_pass": false
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "runtime_blue_probabilities": [
+        0.9621466994285583,
+        0.9539686441421509
+      ],
+      "archive_sha256": "ff19cf0ecb4ba0c514d9ef6b3fabe0e826a244f302fce0ab7078a374792c2f7d"
+    },
+    "48": {
+      "run": "runs/window1-head-repair-seed48-20261011",
+      "report_sha256": "72b216195955b4f8c62cf37ad0d124b8dc0715bf8706d3a7dc434c6db5166961",
+      "seed": 48,
+      "source_model": "runs/window1-priority-priority-seed48-20261011/student.keras",
+      "source_sha256": "ed790ee80fbc6e71c27511e187dc9b490ce70cc5033bccef7041e24d03f60039",
+      "feasibility": {
+        "success": true,
+        "status": 0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "iterations": 543,
+        "maximum_violation": 6.661338147750939e-16,
+        "objective": 1.8160163437125392
+      },
+      "solver": {
+        "success": true,
+        "status": 0,
+        "message": "Optimization terminated successfully",
+        "iterations": 149,
+        "elapsed_s": 11.090615499997512,
+        "initial_objective": 0.20315649059718324,
+        "maximum_violation": 2.636779683484747e-16,
+        "stationarity": 1.341897316298711e-06,
+        "complementarity": 5.3607427561347246e-18,
+        "objective": 0.012818757530334339,
+        "active_constraints": 15
+      },
+      "constraints": 7624,
+      "model_saved": true,
+      "training_gate_pass": true,
+      "model_sha256": "45e2dbdc39b425f55613d2230bf841c7b49e7e38e76c0e3fa3bdb563294f2fef",
+      "fold_max_delta": 1.1281414796115996e-05,
+      "frozen_weights_unchanged": true,
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "window1_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666
+        },
+        "blue_balloon": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571428571428571,
+          "recall": 0.75
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "new_effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 2,
+            "fp": 0,
+            "fn": -2
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": [
+          {
+            "source": "openimages/train/1c262374b679dc52",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                196.8,
+                87.12936,
+                267.2,
+                165.92880000000002
+              ],
+              "annotation_id": 23
+            }
+          },
+          {
+            "source": "openimages/train/211928414c7745aa",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                94.2,
+                133.00008,
+                126.0,
+                172.79999999999998
+              ],
+              "annotation_id": 50
+            }
+          }
+        ]
+      },
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 2004,
+        "lost_old_rows": [],
+        "gained_old_rows": [
+          766,
+          805,
+          1380,
+          1659,
+          1660,
+          1664,
+          1665,
+          1666,
+          1667,
+          1672,
+          1673,
+          1677,
+          1678,
+          1679,
+          1680,
+          1764,
+          1767,
+          1768,
+          1775,
+          1778,
+          1779,
+          1815,
+          1825,
+          1883,
+          1893,
+          1923,
+          1924,
+          1925,
+          1931,
+          1935,
+          1936,
+          1937,
+          1943
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 1
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 20
+          }
+        },
+        "training_gate_pass": false
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "runtime_blue_probabilities": [
+        0.9652568101882935,
+        0.9589520692825317
+      ],
+      "archive_sha256": "1a24f73e6d45e02e6473a36b1eaf03c442b5716e6da9d85c1f5dbbe46db908b3"
+    }
+  },
+  "sources_sha256": {
+    "configs/clutter-round3-feature-20261011.json": "5b983095896ec46d356d960a84dc1712a7e3131661f7117a5622ff1ae96ee94c",
+    "configs/blue-object-round3-review-20261011.json": "9728b63419bb84a54f301b71cb3d8b8a07b1d13b30dd7aa04e99a2f977cdb00d",
+    "data/blue-object-round3-review-20261011/review.json": "06de303228ad7c1a3e885babec18a9be4b56436980037d38ffde609f52feeae7",
+    "data/raw/openimages-blue-objects-round3-20261011/acquisition.json": "b39d29989e2c8162567867a5d2a32dd815b0d630ad957da6b43fb9fc7bdc2961",
+    "data/raw/openimages-blue-objects-round3-20261011/license-verification.json": "ee39fce62e2f46daab87e85aaa6ca615765f777384458d5ec3367f9eebc81483",
+    "runs/runtime-balanced-trial-admit-seed47-20261011/provenance.json": "bd3f5c435b3ad1d41d0c6de0bbd48571949c5fb222a9c355b4ade5abfc419b43",
+    "runs/constrained-balloon-head-scenes-20261011.json": "8d485eb538810c24f202acb26090aad70646511c14ed54418bf4a40bffa82a95",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/clutter_round3_feature_data.py": "065b27f535852d60b3229c16d41b5d1e635bcab0133db32f6b806d7f44c2ecf6",
+    "scripts/blue_object_round3_data.py": "2243ee7572d0e2f83a37e75ac3a9fb9968d73cc4fc80093b131a647fb774e204",
+    "scripts/balloon_scene_constraints.py": "689d34e76e7e78f27d01915fdc589edf8dac1492743e6bcdb723f5d81073f354",
+    "scripts/fit_blue_prototype_rejection.py": "bd69fdb1de20c9314df71db28b3975f4e4f56c047f0962deef2ee8d60329f478",
+    "scripts/grid_clutter_data.py": "bcfff19e0d8ebe0b237c5becc9891cb6d9ce0696c2a9a5111bd422654d797b96",
+    "scripts/train_batch3_retraining.py": "ca5e37e2d1d48f57f9fd42933954bf966c339d47fa7503e579fd8a7a2ace730e",
+    "scripts/balloon_all_correct_protection.py": "a7fb4d6a9d5467e98fb9b5b5b3fdc1ac7828b04040af8f63fbf20f949380e6ea",
+    "scripts/balloon_positive_protection.py": "f62d344d63f53f6fea4640aef62c16efb5add2615ae5eb81d242f0ce4c34d198",
+    "scripts/train_balloon_reviewed_clutter.py": "29e4640d0ae4440e8cb395fa92e0a0daefb60f63b2997e6a34431b17457c20ae",
+    "research/balloon-red-blue-20261008/blue-object-round3-admission-20261011.json": "1cd125184384fe90fc5467a73ebbc9fa0fb97a799f95ea0f87a4c16bf354906d",
+    "configs/blue-balloon-window1-review-20261011.json": "275f75d5499a45a0fef28c5a90509cddf8915fa3a6119bb3314c4dc20cf66c15",
+    "data/raw/openimages-blue-window1-20261011/acquisition.json": "3d2be4a6e5a3d45d52742fcfa8b32b48a107ac6544198b4a9edbbdbecde523f5",
+    "data/raw/openimages-blue-window1-20261011/license-verification.json": "ec6294fd1e63ee77518aaee366488c67478c21db706a052489db22abae3d8e09",
+    "data/raw/openimages-blue-window1-20261011/selection.json": "9d09813305b976986bf990054cddec582da8843daf968022a2347a1cc64c64c8",
+    "data/blue-balloon-window1-review-20261011/review.json": "a28cd3e405b19ad3f95e0a0921f20cac1467cae0979cfb6cbd1eb171db57ad60",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_blue_balloon_window1.py": "3ccc6e8bba862de9a4ea1620fa0d7d4457d8bb026e6e0a1f6c47be1ef283bd8b",
+    "scripts/reviewed_balloon_window.py": "9b2c7ee6518730b87bcec83a333b1150dd2039ed591e9b8d2d19259d1ddaf4e0",
+    "configs/blue-balloon-window1-scenes-20261011.json": "50f8df7802887ff7a2fc8bda09e1a61065c196ddcf0cf69456a5457cdfb05ccb",
+    "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+    "runs/blue-head-only-background-20261011/proposal.fp32.tflite": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_window1_scene_search.py": "1d27b7daf3b42f7a774cb6fe93e7613c3b4e5884d51e457ff486a842e4252280",
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_blue_peak_blend.py": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+    "scripts/research_confident_containment.py": "7afa7104a86a928ade2295c92933b8fc759f5c810d5e8f1f59d77b7e6b2e3c0d",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/artifacts/balloon-regions-mac-20261008/regions.so": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-hard-review-20261011/000.png": "025ebd57d7aa55461dc056e3078e365a7ca775a9f5176599f11e69526b7d6d1a",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-hard-review-20261011/001.png": "fb40cf8a61d74858e534458e810b271ecbc0e0075513ed9e0d790b9ba862bb3a",
+    "configs/blue-balloon-window1-hard-review-20261011.json": "0f8c35de5ba78b1608d60ca654f3b764136db314ad0383312c2db4e4d72b4aad",
+    "research/balloon-red-blue-20261008/blue-balloon-window1-admission-20261011.json": "3d8717ce4dd966fb512aab667b4d4ed19ea3db8aca258c92451d05e91bf6ef98",
+    "research/balloon-red-blue-20261008/blue-balloon-window1-scenes-20261011.json": "c6b47989b6ac3dfdb2bdf33afd67247d445b91048a1b1e8b4ac7c996afb56b1b",
+    "data/blue-balloon-window1-hard-review-20261011/review.json": "b7f842867738b050bad571f338beb846c7877cdc185137462840047348e02dc3",
+    "runs/blue-balloon-window1-scenes-20261011.json": "64a7f3c649e4d0e1959b5b694856d37f318fc06962fdef66c6c0bec0cbebe5eb",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/window1_runtime_data.py": "f75d24cb986fd9cf971de638c891626e2e6e063c989874d9afcd35a1f665f833",
+    "scripts/audit_blue_balloon_window1.py": "3ccc6e8bba862de9a4ea1620fa0d7d4457d8bb026e6e0a1f6c47be1ef283bd8b",
+    "scripts/summarize_window1_scene_errors.py": "3efb78c078e73f79627ec9436e88e40eeba2dcfce4db7f26f3f9b6a09805d0cc",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/017.png": "b87e5d186fa10634cd67b09aa569902cc6e2272b1e81b58b7beaa80e45b7976a",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/018.png": "70712d855e7724a1775d2f2a69b3781d074896822c51fe5ef080541ec9f2f4e7",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/023.png": "7857441704a9272fe661c337e3aed22201fafd7c608f3f679cb8fa46a39be6ac",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/025.png": "cba9fad30445f440dcf7137cb15890ff2ac2bef196d8dd311029588dcaf5aaab",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/026.png": "788ce1bf74ee2162fc2189add7b064285fd006e1205b09fb1c1c0feb4b88bbde",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/034.png": "37c2964a5e66370a0b1fc6db5678eb96f368389e1ae532128075aee24d62a68d",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/050.png": "4c3f5649d8c0c1c5a5ce1c42c90c4d3b6602eac7ad06be0f1ce6350b20deb551",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/053.png": "bf26b2e171f8af0466556d928ca34f4b95e0672d5923a4377e768b30723cf8c9",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/blue-balloon-window1-review-20261011/crops/065.png": "ab3f6034439e89a7368de659fa61797cbeea08cf4f4b21c9988d7226fcc71d12",
+    "configs/window1-runtime-trial-20261011.json": "b8e2af4922b56c8404cf248aad896921b97920eba894eb7550df9d94dc1c74b0",
+    "research/balloon-red-blue-20261008/window1-runtime-admission-20261011.json": "3d83fe8cc15ebcd512cae16379ae91588537108a65c92690754c89e41023c20f",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/window1_trial_data.py": "3db6cd8906f7ea275add587ec9fffa1fd58dd3c4b4e03da262345af677f5ebb9",
+    "configs/window1-priority-trial-20261011.json": "0dbdf6cf0098c14faf03601268eed2b015c23c49701f9acc2de78100dfe71cb7",
+    "research/balloon-red-blue-20261008/window1-objective-20261011.json": "34cd3db1bbef73093423368442de2a01c7e92f627edd767cc8d1b8cd49ae55cc",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/window1_priority_data.py": "1f7d722fca48280ca2ab3b0c527f8db9e51454ddf28e6b178d845d654bed57e0",
+    "configs/window1-head-repair-20261011.json": "c08eb3404c6593993045b83d71dc03f38f46e3cfe038d5936e9e605b7ea12d19",
+    "research/balloon-red-blue-20261008/window1-priority-20261011.json": "6f0080c18197fcb396f0eb9087a60a4f2895687ba7867b750bfa813ff0cb2229",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/fit_window1_head_repair.py": "83da0b2848b98c4f9c52a426856f3d8eebb7085f4838ed748a822727e97abe1d",
+    "scripts/window1_repair_constraints.py": "4fa7cb880c6849808c11efd81ac38d900ef2da5a4558403a0eb1aa3698daa60a",
+    "scripts/audit_window1_runtime.py": "cea73c31541a6c93f36c83b2944f8c659b67cfaff5da0fc1acd113b59d202438",
+    "scripts/balloon_head_constraints.py": "efc2a5268c63fbb18a0651b92a597eaa839355f88b936a87d379f4cf35c7dd6b",
+    "scripts/balloon_false_acceptance_constraints.py": "6e8a5f9afd597decb287713e99a814d0e8e032e9fe5cdf05a5889a9955d28559",
+    "scripts/balloon_minimum_drift.py": "e3dc0898735a4c6998688cbe8687c717c1d5624c0789184963c1a84c3316632e",
+    "scripts/fit_clutter_feature_correction.py": "0442de2e92355db059c2450c47dae5b7c035423bbc46aa4851e9316dafc577de",
+    "scripts/train_batch4_head_only.py": "38777504a7d6007631d332902eb57c98f10fe07b350fb780aa3fd5761cb4a14b",
+    "scripts/diagnose_clutter_round3_feature.py": "922197a6179f751e9d73a0dedc7405691ffe1f32d28bee08d9df4e01357e6483",
+    "scripts/diagnose_clutter_stage_attribution.py": "165d53126839ee0031431a6a2cf1d1c765b7497d81a1bc2ca3647a9f0200d710",
+    "scripts/audit_balloon_context_distillation.py": "77cd6ad85a683aa154c6c7def1f721efc938af011c04b5926fe99584f3331c40",
+    "runs/window1-priority-priority-seed47-20261011/student.keras": "5a7220bdba58da3e67d2dd75d2b9eaa977a137a0af0a22bf216602852ac8b183",
+    "runs/window1-priority-priority-seed48-20261011/student.keras": "ed790ee80fbc6e71c27511e187dc9b490ce70cc5033bccef7041e24d03f60039"
+  },
+  "protocol": {
+    "seeds": [
+      47,
+      48
+    ],
+    "parameters": 7763,
+    "updated_parameters": 258,
+    "feasibility_seconds": 60,
+    "quadratic_seconds": 120,
+    "recipe": "Freeze each priority47/48 feature extractor and background head. Change only existing red/blue Dense weights and biases using standardized128features. Use original parent TRAIN predictions as the retention reference, not regressed priority predictions. Keep original correct crops and no new wrong-color accepts; keep original385scene decisions and newscene decisions except the two visually reviewed recovered blue targets. All nine selected TRAIN positives have sufficient0.81softmax bounds. Exempt target runtime crops are pixel-identical to selected positive samples. Minimize squared current red/blue logit drift on old crops,13negative probes and retained proposals with0.001ridge. Rejected proposals remain unlabeled, not background labels.",
+    "gate": "Both repaired seeds must recover the two reviewed blue targets, retain every original detected target on64old plus6new TRAIN scenes with no per-color false-positive increase, retain all originally correct crops and not increase labeled crop wrong-color accepts or13negative-probe false accepts. Folded float32 output must match solved logits within1e-4. Passing only permits independent reconstruction/export/full-search held-out development; no deployment claim.",
+    "scope": "TRAIN-only deterministic constrained repair of independently trained seeds. Same7763parameters and inference graph. Sufficient linear feasibility is not model-capacity proof. No IMG-family fitting or final-test access.",
+    "development_evaluated": false,
+    "test_evaluated": false,
+    "deployment_approved": false
+  },
+  "scipy_version": "1.16.3",
+  "raw": {
+    "path": "runs/window1-head-repair-scenes-20261011.json",
+    "sha256": "33c0278f8ee831bf251338d8a136d10fd8fb2e6db6eb3dc931efeef8d9803d90"
+  },
+  "eligible_for_independent_audit": true,
+  "scope": "TRAIN constrained head repair and replay only. Same inference graph; actual speed unmeasured. Independent solver/model reconstruction and export/full-search validation still required.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

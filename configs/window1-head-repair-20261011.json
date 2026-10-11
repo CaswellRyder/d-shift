@@ -1,0 +1,13 @@
+{
+  "seeds": [47, 48],
+  "parameters": 7763,
+  "updated_parameters": 258,
+  "feasibility_seconds": 60,
+  "quadratic_seconds": 120,
+  "recipe": "Freeze each priority47/48 feature extractor and background head. Change only existing red/blue Dense weights and biases using standardized128features. Use original parent TRAIN predictions as the retention reference, not regressed priority predictions. Keep original correct crops and no new wrong-color accepts; keep original385scene decisions and newscene decisions except the two visually reviewed recovered blue targets. All nine selected TRAIN positives have sufficient0.81softmax bounds. Exempt target runtime crops are pixel-identical to selected positive samples. Minimize squared current red/blue logit drift on old crops,13negative probes and retained proposals with0.001ridge. Rejected proposals remain unlabeled, not background labels.",
+  "gate": "Both repaired seeds must recover the two reviewed blue targets, retain every original detected target on64old plus6new TRAIN scenes with no per-color false-positive increase, retain all originally correct crops and not increase labeled crop wrong-color accepts or13negative-probe false accepts. Folded float32 output must match solved logits within1e-4. Passing only permits independent reconstruction/export/full-search held-out development; no deployment claim.",
+  "scope": "TRAIN-only deterministic constrained repair of independently trained seeds. Same7763parameters and inference graph. Sufficient linear feasibility is not model-capacity proof. No IMG-family fitting or final-test access.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

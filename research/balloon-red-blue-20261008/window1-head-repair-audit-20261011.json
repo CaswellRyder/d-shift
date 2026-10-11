@@ -1,0 +1,120 @@
+{
+  "results": {
+    "47": {
+      "run": "runs/window1-head-repair-seed47-20261011",
+      "model_sha256": "fd3bb2b76d225fa95d262298d68de84491da66b764e4450707cdd7a814de1f50",
+      "training_gate_pass": true,
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "window1_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666
+        },
+        "blue_balloon": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571428571428571,
+          "recall": 0.75
+        }
+      },
+      "runtime_blue_probabilities": [
+        0.9621466994285583,
+        0.9539686441421509
+      ],
+      "protected_scene_decisions_retained": true,
+      "old_crop_lost": 0,
+      "fold_max_delta": 1.1869598415259475e-05,
+      "certificate": {
+        "maximum_violation": 4.0245584642661925e-16,
+        "stationarity": 1.3577844917168208e-06,
+        "complementarity": 5.157635602968851e-18,
+        "objective": 0.01393186566967625,
+        "active_constraints": 14
+      }
+    },
+    "48": {
+      "run": "runs/window1-head-repair-seed48-20261011",
+      "model_sha256": "45e2dbdc39b425f55613d2230bf841c7b49e7e38e76c0e3fa3bdb563294f2fef",
+      "training_gate_pass": true,
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "window1_metrics": {
+        "red_balloon": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666
+        },
+        "blue_balloon": {
+          "tp": 6,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.8571428571428571,
+          "recall": 0.75
+        }
+      },
+      "runtime_blue_probabilities": [
+        0.9652568101882935,
+        0.9589520692825317
+      ],
+      "protected_scene_decisions_retained": true,
+      "old_crop_lost": 0,
+      "fold_max_delta": 1.1281414796115996e-05,
+      "certificate": {
+        "maximum_violation": 2.636779683484747e-16,
+        "stationarity": 1.341897316298711e-06,
+        "complementarity": 5.3607427561347246e-18,
+        "objective": 0.012818757530334339,
+        "active_constraints": 15
+      }
+    }
+  },
+  "fit_sha256": "4e7f3817320777f8a3284ff0238a40daa135f278de88ba94634c343f02988d04",
+  "script_sha256": "4f6614b09cc6547ca9a13998872ac979a7c8bc51c5e3096ebe8f94977d76ddb6",
+  "helpers_sha256": {
+    "scripts/window1_repair_constraints.py": "4fa7cb880c6849808c11efd81ac38d900ef2da5a4558403a0eb1aa3698daa60a",
+    "scripts/balloon_minimum_drift.py": "e3dc0898735a4c6998688cbe8687c717c1d5624c0789184963c1a84c3316632e",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8"
+  },
+  "eligible_for_export_and_development": true,
+  "scope": "Independent reconstruction of TRAIN constraints, KKT certificate, frozen weights, folded predictions and scene matching. Not held-out accuracy or Pi readiness.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
