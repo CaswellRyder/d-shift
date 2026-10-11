@@ -11,7 +11,7 @@ def result(miss=False):
     frames = []
     for i in range(64):
         truth = [dict(label=c, box=[j*30, 0, j*30+20, 20]) for j, c in enumerate(LABELS)]
-        detections = [dict(t, score=.99, accepted=True) for t in truth]
+        detections = [dict(t, score=.99, accepted=True, raw_accepted=True) for t in truth]
         if miss and i == 0:
             detections.pop()
         frames.append(dict(id=i, source=f'train/{i}', frame_sha256=str(i), truth=truth,

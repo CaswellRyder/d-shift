@@ -1,0 +1,15 @@
+{
+  "parent_receipt": "research/balloon-red-blue-20261008/edge-crop-localizer-training-20261011.json",
+  "parent_receipt_sha256": "a5d284124d18dadeff9b089aebdf6e5181dad27b1b8a755537cd9074d030dcca",
+  "localizer": "runs/blue-head-only-background-20261011/proposal.fp32.tflite",
+  "localizer_sha256": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+  "classifier": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite",
+  "classifier_sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+  "hypothesis": "Grid-coordinate peak suppression can hide distinct valid boxes when nearby cells predict different object geometry. Test non-peak blue hypotheses with box-space suppression, without extra network invocations or a larger crop cap.",
+  "policy": "Keep the parent's up-to12 blended peak boxes. Add valid non-peak blue cell boxes with unchanged heat threshold0.1, minimum side4 and12percent crop padding. Sort descending by heat, stable parent-first ties. Same-color IoU>0.65 suppression and global cap12. Existing blue-only supplement limit2 and total12 remain unchanged.",
+  "screen": "All64 complete reviewed TRAIN frames, frozen classifier0.8 and confidence containment. Parent outputs must reproduce. Candidate must retain all parent matched target identities, have no per-color TP decline or FP increase, and at least one recovered target before any development evaluation.",
+  "limitations": "Non-peak geometry has sparse supervision and may be inaccurate. Fixed single intervention, no threshold sweep. TRAIN results are not independent accuracy. Python decoder overhead and Pi camera-to-result latency require separate measurement if this passes.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
