@@ -1,0 +1,25 @@
+{
+  "queue": "data/balloon-dense-complete-review-20261011/review.json",
+  "queue_sha256": "4665611e1166823fa3b446b125d493e542ee81fc62c729f5df20619655139ecd",
+  "source_manifest_sha256": "db49fdf315eee82c8919f6a76dd414fc4b24ef3be85bf4d7fba6fafa02c55d55",
+  "review_method": "Assistant visual review of all nine prediction-free contact sheets and individual frames 50, 51, 96 and 98. Existing boxes preserved. Complete means all visible inflated red/blue balloons appear annotated; not segmentation truth or independent human review.",
+  "complete_indices": [23,25,27,28,31,32,33,34,37,38,40,41,42,44,45,47,48,49,50,52,54,55,56,57,58,59,60,61,62,63,64,65,66,69,70,71,73,74,75,76,78,79,80,82,83,84,85,86,87,88,90,92,93,94,96,98,99,100,101,103,104,105,106,107],
+  "excluded": {
+    "26": "Unboxed partial blue balloon at right edge.",
+    "29": "Stove reflections ambiguous; retain sparse supervision only.",
+    "35": "Stove reflections ambiguous; retain sparse supervision only.",
+    "36": "Stove reflections ambiguous; retain sparse supervision only.",
+    "51": "Small blue oval near weights ambiguous. Preserve original annotation; no whole-scene background claim.",
+    "67": "Unboxed partial blue balloon at right edge.",
+    "68": "Unboxed partial red balloon at top edge.",
+    "72": "Unboxed partial blue balloon at left edge.",
+    "77": "Unboxed partial red balloon at upper left.",
+    "89": "Unboxed red sliver at top edge.",
+    "91": "Unboxed red sliver at top edge beside blue balloon.",
+    "95": "Unboxed blue partial at upper right."
+  },
+  "guard_pixels": 16,
+  "training_approved": true,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

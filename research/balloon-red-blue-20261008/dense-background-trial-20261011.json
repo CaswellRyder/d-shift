@@ -1,0 +1,735 @@
+{
+  "trials": {
+    "sparse": {
+      "47": {
+        "run": "runs/balloon-dense-bg-sparse-seed47-20261011",
+        "training_loss": 1.2989978790283203,
+        "grouped_holdout_loss": 1.4764199256896973,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "f96b851ccf2f6369bd4451581a14a4da5aed32e7b06fd23ff031abca16b69955",
+        "predictions_sha256": "b9bd6ecb47f8cfebcca602be764f6b4caa7b0226e415dc48fe5d2cc6862859ff",
+        "provenance_sha256": "1dee896a36c1917434ffa7edc978d6c94f24e09be9c845966e97bc4224986891",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false,
+        "coverage": {
+          "fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 72,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 68,
+              "supplement": 102
+            }
+          },
+          "heldout_groups": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 11,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 9,
+              "supplement": 13
+            }
+          }
+        },
+        "coverage_sha256": "f2d2a5c7de704c9969f37b1d0a1ed694256fe648876321c7688a205cbd658f7b",
+        "complete_fit_proposals": {
+          "red_balloon": {
+            "tp": 57,
+            "fp": 298,
+            "fn": 41,
+            "precision": 0.16056338028169015,
+            "recall": 0.5816326530612245
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 342,
+            "fn": 38,
+            "precision": 0.1385390428211587,
+            "recall": 0.5913978494623656
+          }
+        },
+        "original_predictions_sha256": "b9bd6ecb47f8cfebcca602be764f6b4caa7b0226e415dc48fe5d2cc6862859ff",
+        "original_prediction_parity": true
+      },
+      "48": {
+        "run": "runs/balloon-dense-bg-sparse-seed48-20261011",
+        "training_loss": 1.129309058189392,
+        "grouped_holdout_loss": 1.2496261596679688,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "96b32877cbe91019d515eede5f4cafc5238379a4c2be7483f3750e253fd6acfa",
+        "predictions_sha256": "43743c6bc8ab4c8a2fba1c886215013cc1b26914b6a4da79b90a4fd12a8236ab",
+        "provenance_sha256": "89d6381fbd80b0503f70f3abb66b574c15f921f0e56b599571cd3e64408d4547",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false,
+        "coverage": {
+          "fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 96,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 77,
+              "supplement": 101
+            }
+          },
+          "heldout_groups": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 12,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 9,
+              "supplement": 12
+            }
+          }
+        },
+        "coverage_sha256": "a2181a1f80d5564d98d457c26b8fe6c491b5a090bb8c931b4a77095a2b698045",
+        "complete_fit_proposals": {
+          "red_balloon": {
+            "tp": 75,
+            "fp": 330,
+            "fn": 23,
+            "precision": 0.18518518518518517,
+            "recall": 0.7653061224489796
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 302,
+            "fn": 32,
+            "precision": 0.16804407713498623,
+            "recall": 0.6559139784946236
+          }
+        },
+        "original_predictions_sha256": "43743c6bc8ab4c8a2fba1c886215013cc1b26914b6a4da79b90a4fd12a8236ab",
+        "original_prediction_parity": true
+      }
+    },
+    "complete": {
+      "47": {
+        "run": "runs/balloon-dense-bg-complete-seed47-20261011",
+        "training_loss": 1.216871976852417,
+        "grouped_holdout_loss": 1.3433256149291992,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "a7292f2d3fd8d8860b2d312cb4204a1d40333bbc7430106c1e3f2800630e045f",
+        "predictions_sha256": "879ba39fa80b532174d725b236bb2daf8f5d6c55e0ad4627982361b4765bc489",
+        "provenance_sha256": "1fc6d12126c9fadaf870c84f5cc1df5c8c2cc429bc82c5ce3baf4abe7644f5c5",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false,
+        "coverage": {
+          "fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 78,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 90,
+              "supplement": 101
+            }
+          },
+          "heldout_groups": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 11,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 12,
+              "supplement": 13
+            }
+          }
+        },
+        "coverage_sha256": "2e71bc251205fce65b591e3f5fac3cee5580067b745e549154a36f233489619a",
+        "complete_fit_proposals": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 147,
+            "fn": 36,
+            "precision": 0.2966507177033493,
+            "recall": 0.6326530612244898
+          },
+          "blue_balloon": {
+            "tp": 74,
+            "fp": 65,
+            "fn": 19,
+            "precision": 0.5323741007194245,
+            "recall": 0.7956989247311828
+          }
+        },
+        "export": {
+          "path": "runs/balloon-dense-bg-complete-seed47-20261011/proposal.fp32.tflite",
+          "metadata_sha256": "3b10b0beebf8392be1b050bd2be3735bd830132d15d5a277651f965a9d106193",
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "18b61be468e415587f2035465874ff8944af787726dbb17b5e88264d847f3f15",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "a7292f2d3fd8d8860b2d312cb4204a1d40333bbc7430106c1e3f2800630e045f",
+          "provenance_sha256": "1fc6d12126c9fadaf870c84f5cc1df5c8c2cc429bc82c5ce3baf4abe7644f5c5",
+          "manifest_sha256": "3472020134f07c7e9e0f407f8b2aefe9af20974aae8913d57c14455bc0e84409",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 2.384185791015625e-06,
+          "decoded_parity_frames": 108,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        }
+      },
+      "48": {
+        "run": "runs/balloon-dense-bg-complete-seed48-20261011",
+        "training_loss": 1.0587410926818848,
+        "grouped_holdout_loss": 1.1851108074188232,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "5e112f07eae9805f0596dda5bc78a2025b9d9ca381b5989857f33a8b7eeb8cce",
+        "predictions_sha256": "0ce662dacb1a5ba1a2e1b497c2fcb950c5af6721656486600f8eaf10911807d8",
+        "provenance_sha256": "414d9126f6fcf90b3bc418095976cd37a66cb8d9e29aefca584af38ee83c392d",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false,
+        "coverage": {
+          "fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 103,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 96,
+              "supplement": 103
+            }
+          },
+          "heldout_groups": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 14,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 11,
+              "supplement": 13
+            }
+          }
+        },
+        "coverage_sha256": "9cdf2b526e4deb1a23239e43c9533e9293db0511fcac1f42afb5c3ce3846097e",
+        "complete_fit_proposals": {
+          "red_balloon": {
+            "tp": 80,
+            "fp": 91,
+            "fn": 18,
+            "precision": 0.4678362573099415,
+            "recall": 0.8163265306122449
+          },
+          "blue_balloon": {
+            "tp": 77,
+            "fp": 47,
+            "fn": 16,
+            "precision": 0.6209677419354839,
+            "recall": 0.8279569892473119
+          }
+        },
+        "export": {
+          "path": "runs/balloon-dense-bg-complete-seed48-20261011/proposal.fp32.tflite",
+          "metadata_sha256": "d362f314096273bc8380c3b2dd916becde4697d6890c6247f0574f6bc35db075",
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "9995c6923bf5ccc6f16903796c78a4650a69fee3d68f6445a4f3932954452c2b",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "5e112f07eae9805f0596dda5bc78a2025b9d9ca381b5989857f33a8b7eeb8cce",
+          "provenance_sha256": "414d9126f6fcf90b3bc418095976cd37a66cb8d9e29aefca584af38ee83c392d",
+          "manifest_sha256": "3472020134f07c7e9e0f407f8b2aefe9af20974aae8913d57c14455bc0e84409",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 2.6226043701171875e-06,
+          "decoded_parity_frames": 108,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        }
+      }
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/balloon-dense-bg-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "e2255792b014c150994d45cf3c3e51d5c24cf2b6b69fd1f7de94b840c4ede854",
+      "previous_path": "runs/balloon-dense-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+      "previous_sha256": "c2c10cc52919192c869fe2a9a4a4c332ce6fd833609d546964c3096a35f5bb3a",
+      "frames": 67,
+      "current": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 6,
+            "fn": 1,
+            "precision": 0.9210526315789473,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 32,
+            "fn": 7,
+            "precision": 0.6666666666666666,
+            "recall": 0.9014084507042254
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 28,
+            "fn": 8,
+            "precision": 0.6923076923076923,
+            "recall": 0.8873239436619719
+          }
+        }
+      },
+      "sparse": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 48,
+            "fn": 11,
+            "precision": 0.5555555555555556,
+            "recall": 0.8450704225352113
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 30,
+            "fn": 7,
+            "precision": 0.6808510638297872,
+            "recall": 0.9014084507042254
+          }
+        }
+      },
+      "added_overlap": {
+        "dense47": {
+          "iou_0.1_to_0.5": 16,
+          "iou_ge_0.5": 13,
+          "iou_lt_0.1": 6
+        },
+        "dense48": {
+          "iou_ge_0.5": 16,
+          "iou_0.1_to_0.5": 10,
+          "iou_lt_0.1": 5
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/balloon-dense-bg-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "6335954bbae9a7ffefe69b10475cebf82cbb8ffba77416076efb11156100acc0",
+      "previous_path": "runs/balloon-dense-scenes-engdes2-development-panel2-20261010-20261011.json",
+      "previous_sha256": "9d1b85c973a4fff5a2c93dc39dcd2da8acaf3d4140cd436caa8fa047159287bf",
+      "frames": 62,
+      "current": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 48,
+            "fn": 11,
+            "precision": 0.5384615384615384,
+            "recall": 0.835820895522388
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 53,
+            "fn": 14,
+            "precision": 0.5,
+            "recall": 0.7910447761194029
+          }
+        }
+      },
+      "sparse": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 57,
+            "fn": 13,
+            "precision": 0.4864864864864865,
+            "recall": 0.8059701492537313
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 49,
+            "fn": 10,
+            "precision": 0.5377358490566038,
+            "recall": 0.8507462686567164
+          }
+        }
+      },
+      "added_overlap": {
+        "dense47": {
+          "iou_ge_0.5": 17,
+          "iou_lt_0.1": 14,
+          "iou_0.1_to_0.5": 13
+        },
+        "dense48": {
+          "iou_ge_0.5": 9,
+          "iou_0.1_to_0.5": 16,
+          "iou_lt_0.1": 16
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/balloon-dense-bg-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "28fb232f95e06739365d19c53e8652bd05819d45b92d1a347d3ffd0f53085be1",
+      "previous_path": "runs/balloon-dense-scenes-engdes2-development-scenes-20261008-20261011.json",
+      "previous_sha256": "b6152ff7d4d272d5d46439bf544b098dec4ace3ef27be803a43a109f374376af",
+      "frames": 12,
+      "current": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.8461538461538461,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 9,
+            "fn": 3,
+            "precision": 0.5,
+            "recall": 0.75
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 7,
+            "fn": 2,
+            "precision": 0.5882352941176471,
+            "recall": 0.8333333333333334
+          }
+        }
+      },
+      "sparse": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "dense47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 9,
+            "fn": 2,
+            "precision": 0.5263157894736842,
+            "recall": 0.8333333333333334
+          }
+        },
+        "dense48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 11,
+            "fn": 4,
+            "precision": 0.42105263157894735,
+            "recall": 0.6666666666666666
+          }
+        }
+      },
+      "added_overlap": {
+        "dense47": {
+          "iou_0.1_to_0.5": 3,
+          "iou_ge_0.5": 1,
+          "iou_lt_0.1": 4
+        },
+        "dense48": {
+          "iou_ge_0.5": 4,
+          "iou_lt_0.1": 4
+        }
+      }
+    }
+  },
+  "complete_review": {
+    "source_root": "data/balloon-dense-proposal-training-20261011",
+    "source_manifest_sha256": "db49fdf315eee82c8919f6a76dd414fc4b24ef3be85bf4d7fba6fafa02c55d55",
+    "review": "configs/balloon-dense-complete-review-20261011.json",
+    "review_sha256": "12d463c7dbcbc467b0d042a275881e460776f0fa77421cd3978d7a0c06201c06",
+    "queue": "data/balloon-dense-complete-review-20261011/review.json",
+    "queue_sha256": "4665611e1166823fa3b446b125d493e542ee81fc62c729f5df20619655139ecd",
+    "guard_pixels": 16,
+    "encoding_sha256": "ad119aad5904df7bcdfb7f2b8af961c89999c38de054226f3fcf987ead2d37a0"
+  },
+  "complete_fit_frames": 64,
+  "unchanged_holdout_frames": 16,
+  "extra_heat_cells": 21916,
+  "source_manifest_sha256": "db49fdf315eee82c8919f6a76dd414fc4b24ef3be85bf4d7fba6fafa02c55d55",
+  "treatment_manifest_sha256": "3472020134f07c7e9e0f407f8b2aefe9af20974aae8913d57c14455bc0e84409",
+  "script_sha256": "9bebea1d60d59d0eccb1fb6b2747f425455c89276f15b5f14a7c62965d1e926b",
+  "decision": "Do not promote either dense-search model. Background labels improve localization and some FP counts versus sparse dense training, but full-scene precision remains worse than the no-dense baseline.",
+  "next_direction": "Test box-overlap-aware training loss on these fixed training labels; unchanged development thresholds. Do not select a new threshold from development failures.",
+  "caveats": [
+    "Assistant visual completeness review, not independent human annotation.",
+    "Complete-fit proposal metrics are training diagnostics, not validation.",
+    "Grouped holdout shares environments and related classifier sources.",
+    "Development panels overlap and have been repeatedly inspected; not independent qualification.",
+    "Host export parity does not establish Pi speed or camera-inclusive readiness."
+  ],
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "qualification_achieved": false
+}

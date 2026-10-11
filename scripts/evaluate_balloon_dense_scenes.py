@@ -16,7 +16,7 @@ from scripts.evaluate_red_blue_development import LABELS,detection_counts,metric
 CLASSIFIER='runs/balloon-fragment-control-seed47-20261011/color.fp32.tflite'
 
 
-def evaluate(queue,review_path):
+def evaluate(queue,review_path,model_paths=None):
     frames,review=reviewed_frames(queue,review_path)
     if review['threshold']!=.8 or review['matching_iou']!=.5:
         raise ValueError('Review operating point changed')
@@ -24,6 +24,10 @@ def evaluate(queue,review_path):
     if predictor.metadata['threshold']!=.8:
         raise ValueError('Classifier threshold changed')
     paths={str(seed):Path(f'runs/balloon-dense-proposals-seed{seed}-20261011/proposal.fp32.tflite') for seed in (47,48)}
+    if model_paths is not None:
+        if set(model_paths)!={'47','48'}:
+            raise ValueError('Require both fixed-seed proposal models')
+        paths={seed:Path(path) for seed,path in model_paths.items()}
     networks={seed:DenseProposals(path) for seed,path in paths.items()}
     output={name:[] for name in ('baseline','dense47','dense48')}
     for row,rgb in frames:
@@ -59,9 +63,14 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('queue','review','output'):
         p.add_argument('--'+name,required=True)
+    p.add_argument('--dense47')
+    p.add_argument('--dense48')
     a=p.parse_args()
+    if bool(a.dense47)!=bool(a.dense48):
+        p.error('Provide both --dense47 and --dense48, or neither')
     if Path(a.output).exists():
         raise FileExistsError(a.output)
-    report=evaluate(a.queue,a.review)
+    paths={'47':a.dense47,'48':a.dense48} if a.dense47 else None
+    report=evaluate(a.queue,a.review,paths)
     write_json(a.output,report)
     print({k:v['metrics'] for k,v in report['results'].items()})

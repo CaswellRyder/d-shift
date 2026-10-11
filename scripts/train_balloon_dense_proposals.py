@@ -56,15 +56,22 @@ def checked_data(root):
     saved = np.load(root/'targets.npy',allow_pickle=False)
     if saved.shape != (len(doc['frames']),15,20,9) or not np.isfinite(saved).all():
         raise ValueError('Invalid sparse targets')
+    complete = set()
+    if 'complete_background' in doc:
+        from scripts.balloon_dense_complete import encode_complete, validate_derivative
+        complete = validate_derivative(doc)
     images, folds, groups = [], [], []
-    for row, target in zip(doc['frames'],saved,strict=True):
+    for index, (row, target) in enumerate(zip(doc['frames'],saved,strict=True)):
         training_source(row['source'])
         path = (root/row['path']).resolve()
         if not path.is_relative_to(root.resolve()) or sha256(path) != row['sha256']:
             raise ValueError('Frame changed or escaped training root')
-        expected, _ = encode(row['truth'],row['negative_regions'])
+        encoder = encode_complete if index in complete else encode
+        expected, _ = encoder(row['truth'],row['negative_regions'])
         if not np.array_equal(expected,target):
             raise ValueError('Stored supervision differs from reviewed geometry')
+        if row['supervised_heat_cells']!=int((target[:,:,2:4]>0).sum()):
+            raise ValueError('Supervision count changed')
         with Image.open(path) as image:
             pixels = np.asarray(image.convert('RGB'))
         if pixels.shape != (240,320,3):
@@ -102,7 +109,8 @@ def train(root,seed,output):
     provenance = dict(manifest_sha256=sha256(Path(root)/'manifest.json'),script_sha256=sha256(__file__),
         preparation_script_sha256=doc['script_sha256'],seed=seed,epochs=80,batch_size=8,learning_rate=.001,
         parameters=model.count_params(),fixed_final_epoch=True,folds=folds.tolist(),groups=groups,
-        scope='Sparse-label new localizer; known-environment grouped holdout, no independent qualification',
+        scope=doc['scope'],
+        complete_background=doc.get('complete_background'),
         test_evaluated=False,deployment_approved=False,pi_tested=False)
     write_json(out/'provenance.json',provenance)
     write_json(out/'status.json',dict(state='running'))
