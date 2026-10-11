@@ -1,0 +1,20 @@
+{
+  "arms": ["control", "hard"],
+  "seeds": [47, 48],
+  "base_arm": "admit",
+  "base_protocol": "configs/clutter-round3-feature-20261011.json",
+  "easy_ids": [3, 4, 8, 52, 55, 56, 68],
+  "replace_easy_id": 56,
+  "hard_id": 0,
+  "repetitions": 4,
+  "rows": 2539,
+  "optimizer_steps": 12720,
+  "hard_review_sha256": "4339b89e1eb6c61b209ff09da3eb2f64740b793bfcff33ca21aaa296f3c776fd",
+  "scene_review_sha256": "21b6e700107e1a421a03514672dbaf8c727dbdfc14392d3feac544065113ab00",
+  "recipe": "Fresh original parent and Adam for each arm/seed. Keep all2074original crops,52round3negative rows and385scene constraints unchanged. Insert7new blue crops repeated4times before scene rows. Control uses7easy crops; hard replaces easy56 with reviewed runtime0 from the same photo. Five photos and at most2crops/photo in each arm. Same row positions,64RGB inputs,7763parameters,80epochs,batch16,1e-4cosine alpha0.1,hard weight4 and original losses. No threshold or search changes.",
+  "gate": "Both hard seeds must correctly accept runtime0 as blue at0.8, recover all8blue targets with0false positives on5new TRAIN scenes, retain every previously detected target on64original TRAIN scenes with no per-color false-positive increase, and not increase13round3negative false acceptances relative to parent. Old-crop perfection is diagnostic only. No development selection of checkpoints or seeds. Only a passing pair proceeds to export parity and full-search repeated development, never direct deployment.",
+  "scope": "TRAIN-only matched experiment. Five correlated public source photos, not independent qualification. IMG-family development and reserved final test excluded from training. No Pi or flight claim.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}

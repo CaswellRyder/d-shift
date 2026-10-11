@@ -1,0 +1,313 @@
+{
+  "audit_sha256": "6f1d1900c59631f6f395716bfc126b9c184866e40835149a14f1c010bbe5eb78",
+  "script_sha256": "54742bf9a8fc7d7e4c62882298599629dbf559117cb60af47122d0b29ef5ec13",
+  "helpers_sha256": {
+    "scripts/audit_current_blue_search.py": "a728169572355ade348c9ed7c2944efc91ae806fe96b93ecdb9c0788ce9bf58c",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8",
+    "scripts/diagnose_clutter_stage_attribution.py": "165d53126839ee0031431a6a2cf1d1c765b7497d81a1bc2ca3647a9f0200d710"
+  },
+  "results": {
+    "control47": {
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "batch5_metrics": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": null
+        },
+        "blue_balloon": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.875
+        }
+      },
+      "hard_recovered": false,
+      "hard_blue_probability": 0.061544161289930344,
+      "lost_targets": [
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          }
+        }
+      ],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false
+    },
+    "control48": {
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "batch5_metrics": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": null
+        },
+        "blue_balloon": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.875
+        }
+      },
+      "hard_recovered": false,
+      "hard_blue_probability": 0.05756169930100441,
+      "lost_targets": [],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false
+    },
+    "hard47": {
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "batch5_metrics": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null
+        },
+        "blue_balloon": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.875
+        }
+      },
+      "hard_recovered": false,
+      "hard_blue_probability": 0.5102450847625732,
+      "lost_targets": [
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          }
+        }
+      ],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "against_matched_control": {
+        "original": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        },
+        "batch5": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -1,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      }
+    },
+    "hard48": {
+      "original_metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "batch5_metrics": {
+        "red_balloon": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": null
+        },
+        "blue_balloon": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.875
+        }
+      },
+      "hard_recovered": false,
+      "hard_blue_probability": 0.49042370915412903,
+      "lost_targets": [
+        {
+          "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+          "target": {
+            "label": "red_balloon",
+            "annotation_id": 6573,
+            "box": [
+              178.25,
+              226.21875,
+              211.25,
+              239.90625
+            ]
+          }
+        }
+      ],
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "training_scene_gate_pass": false,
+      "against_matched_control": {
+        "original": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": -1,
+              "fp": 0,
+              "fn": 1
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        },
+        "batch5": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      }
+    }
+  },
+  "exact_old_pixel_duplicates": [],
+  "conflicting_hard_labels": [],
+  "eligible_for_export_and_development": false,
+  "decision": "Reject both hard-crop candidates. No model promotion or threshold relaxation.",
+  "scope": "TRAIN diagnostics; exact-pixel check does not exclude near duplicates or semantic conflicts. No independent accuracy or speed claim.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
