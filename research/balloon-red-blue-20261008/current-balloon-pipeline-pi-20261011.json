@@ -1,0 +1,140 @@
+{
+  "pi_report": {
+    "path": "runs/current-balloon-pipeline-pi-20261011/pi-replay.json",
+    "sha256": "10a5db6ee2038a9e2062310c2754003505e601b0664fd973cde9e2230242442d"
+  },
+  "bundle_sha256": "787465e976c4968e16ebb3d7936157609ae805ce3842bf7a9efc5ded7ec4e42d",
+  "models": {
+    "classifier_sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+    "localizer_sha256": "25f71a47c4e8c7682260268b6589284938c7a70bb62eb8392f848c048d28d7c0"
+  },
+  "frames": 141,
+  "panel_metrics": {
+    "engdes2-lockbox-panel3-20261010": {
+      "red_balloon": {
+        "tp": 69,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.9857142857142858,
+        "recall": 0.971830985915493
+      },
+      "blue_balloon": {
+        "tp": 64,
+        "fp": 14,
+        "fn": 7,
+        "precision": 0.8205128205128205,
+        "recall": 0.9014084507042254
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "red_balloon": {
+        "tp": 63,
+        "fp": 2,
+        "fn": 2,
+        "precision": 0.9692307692307692,
+        "recall": 0.9692307692307692
+      },
+      "blue_balloon": {
+        "tp": 59,
+        "fp": 26,
+        "fn": 8,
+        "precision": 0.6941176470588235,
+        "recall": 0.8805970149253731
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "red_balloon": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.9090909090909091
+      },
+      "blue_balloon": {
+        "tp": 11,
+        "fp": 1,
+        "fn": 1,
+        "precision": 0.9166666666666666,
+        "recall": 0.9166666666666666
+      }
+    }
+  },
+  "timing": {
+    "processing_ms": {
+      "mean_ms": 376.970848334864,
+      "p50_ms": 358.5264020075556,
+      "p95_ms": 552.0944579911884,
+      "max_ms": 624.783730978379
+    },
+    "search_ms": {
+      "mean_ms": 189.42761688009367,
+      "p50_ms": 183.1291630223859,
+      "p95_ms": 269.88029200583696,
+      "max_ms": 319.40779599244706
+    },
+    "localizer_ms": {
+      "mean_ms": 65.99732350305396,
+      "p50_ms": 63.37636400712654,
+      "p95_ms": 84.47015198180452,
+      "max_ms": 97.14102500583977
+    },
+    "classifier_ms": {
+      "mean_ms": 119.55319740499885,
+      "p50_ms": 111.79387901211157,
+      "p95_ms": 230.54768500151113,
+      "max_ms": 266.30032900720835
+    },
+    "selection_ms": {
+      "mean_ms": 1.9927105467175366,
+      "p50_ms": 1.5309849986806512,
+      "p95_ms": 4.878951993305236,
+      "max_ms": 7.11392899393104
+    }
+  },
+  "processing_only_fps": 2.6527250168471856,
+  "max_score_delta": 1.7285346984863281e-06,
+  "max_box_delta": 3.1948089599609375e-05,
+  "classifier_calls": 838,
+  "localizer_calls": 141,
+  "health_before": {
+    "temperature_millicelsius": "41160",
+    "load_average": "0.75 0.29 0.16 1/238 8224",
+    "throttled": "throttled=0x0"
+  },
+  "health_after": {
+    "temperature_millicelsius": "43312",
+    "load_average": "0.90 0.41 0.21 1/238 8226",
+    "throttled": "throttled=0x0"
+  },
+  "geometry_trial": {
+    "training": {
+      "receipt_sha256": "d97ad544d78eef726b3e2723201eb213796441c945876951e8658725210b45a0",
+      "changed_boxes": 0,
+      "fallback_reasons": {
+        "support_touches_roi_boundary": 23
+      }
+    },
+    "development": {
+      "receipt_sha256": "98f6987f2f4b15a43f8194ac5851fad99191535ec36a9dcb7f036c7bfe61c236",
+      "changed_boxes": 0,
+      "fallback_reasons": {
+        "support_touches_roi_boundary": 65
+      }
+    }
+  },
+  "decision": "Full research pipeline executes on original ARMv6 Pi and reproduces development decisions/metrics. Geometry correction was inactive on every tested frame; do not promote it. No live-camera qualification or94-percent claim; active deployment unchanged.",
+  "tests_log_sha256": "abc94a41ceef0efc72754163dcb684b72bec3c8aeaebca0b4a33c1c8d7b98f04",
+  "script_sha256": "d3b18511f5cca060130e7ef55f6880eec874ab4178c4d8a2fd2ad850cb3163e1",
+  "helpers_sha256": {
+    "scripts/pi_current_balloon_pipeline.py": "e938b40aced38cd023e26c72586d1356ad8777f10931de77660c848534f1fe03",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/pi_red_blue_bench.py": "b60d9736fc886701f9e5aaf237104be008d587a912702423a2f6e0a0ace5608b"
+  },
+  "scope": "Warmed single-pipeline replay, camera capture/display/serial excluded. Not a matched comparison against deployed pipeline.",
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "test_evaluated": false,
+  "live_candidate_tested": false,
+  "esp32_commands_sent": false,
+  "motor_commands_sent": false
+}

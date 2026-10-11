@@ -1,0 +1,385 @@
+{
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "current": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 14,
+            "fn": 7,
+            "precision": 0.8205128205128205,
+            "recall": 0.9014084507042254
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 4,
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 392
+      },
+      "component": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 14,
+            "fn": 7,
+            "precision": 0.8205128205128205,
+            "recall": 0.9014084507042254
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 4,
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 392
+      },
+      "false_positive_origins": {
+        "blue_balloon/learned/little_or_no_annotated_overlap": 2,
+        "blue_balloon/learned/localization_overlap": 7,
+        "blue_balloon/mser/duplicate": 1,
+        "blue_balloon/mser/little_or_no_annotated_overlap": 3,
+        "blue_balloon/mser/localization_overlap": 1,
+        "red_balloon/mser/little_or_no_annotated_overlap": 1
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "current": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 21,
+                "duplicate": 1,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2,
+                "no_localized_proposal": 4,
+                "different_predicted_class": 2
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 371
+      },
+      "component": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 21,
+                "duplicate": 1,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2,
+                "no_localized_proposal": 4,
+                "different_predicted_class": 2
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 371
+      },
+      "false_positive_origins": {
+        "blue_balloon/learned/duplicate": 1,
+        "blue_balloon/learned/little_or_no_annotated_overlap": 6,
+        "blue_balloon/learned/localization_overlap": 3,
+        "blue_balloon/mser/little_or_no_annotated_overlap": 15,
+        "blue_balloon/mser/localization_overlap": 1,
+        "red_balloon/mser/little_or_no_annotated_overlap": 2
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "current": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 75
+      },
+      "component": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "changed_boxes": 0,
+        "neural_calls": 75
+      },
+      "false_positive_origins": {
+        "blue_balloon/mser/little_or_no_annotated_overlap": 1
+      }
+    }
+  },
+  "inputs": {
+    "research/balloon-red-blue-20261008/balloon-confidence-selection-development-20261011.json": "c4ba8a27daa7576c2eb09553f1fe6737c83de1382ba708ba9f2518a794ce7a82",
+    "runs/balloon-confidence-selection-development-20261011.json": "faec07cddbe1c2c1c3102e07f861c65a9f2645108c390aa558ccba38c8cd4cf1",
+    "research/balloon-red-blue-20261008/blue-component-box-training-20261011.json": "d97ad544d78eef726b3e2723201eb213796441c945876951e8658725210b45a0",
+    "configs/engdes2-lockbox-panel3-20261010.json": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+    "configs/engdes2-development-panel2-20261010.json": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+    "configs/engdes2-development-scenes-20261008.json": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+  },
+  "raw": {
+    "path": "runs/blue-component-box-development-20261011.json",
+    "sha256": "14c5b0b2bedfaf3319e285b9fe279bc700a8007f3604e670fab730f2740bd84c"
+  },
+  "protocol_sha256": "370b70de8e744f596dfc9b640c262443818045523201ae096e6b3bcdf77dad0f",
+  "script_sha256": "0a23fa18ca3c72fe2df63748f12a4df3a91c44dda8b869f80bb1d1d5b1e57b3b",
+  "helpers_sha256": {
+    "scripts/research_blue_component_box.py": "96878d66f61e2faddd2c42d004d0a9e61f5461108eefb5f673c06b5503b284aa",
+    "scripts/research_balloon_confidence_selection.py": "97f86a7d124e08353c9e4d040f1815c1a24ae0d64e19c132c5262ecd1fddb1fd",
+    "scripts/research_balloon_search.py": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+    "scripts/prepare_blue_false_alarm_review.py": "b1177d5ef348caf152179116df0864f5e999e466b87cab62a95a643598053c67",
+    "scripts/replay_balloon_suppression.py": "775b36be11a43f1a0327c835bee4f35516013cf34591295dc8e05ef8d434f2a2",
+    "scripts/audit_indoor5_outcomes.py": "54b9c7f9056a1870999bf680bbaa98185074d4ed6784b3a5c37db291f0efbc4a",
+    "scripts/audit_balloon_pipeline_errors.py": "5e00e9888e400acbc8867e6e35e2fe1183689b6349901556fa5e613ba4e73deb",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9"
+  },
+  "scope": "Geometry-only replay with source RGB and unchanged crops/classifier scores/call counts. Development-motivated hypothesis, not independent validation. No inference latency measured.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "training_performed": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
