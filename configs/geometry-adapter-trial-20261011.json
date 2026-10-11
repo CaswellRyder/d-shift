@@ -1,0 +1,19 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "parent": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.keras",
+  "parent_sha256": "7188ee9d0f69d42bd1047e4e40598260faf027f85e0695a8eb5e12598727507c",
+  "epochs": 320,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "parameters": 3026,
+  "trainable_parameters": 684,
+  "architecture": "Frozen parent features, heat logits and original geometry logits. Add depthwise3x3 ->pointwise16ReLU ->zero-initialized pointwise4 residual logits before sigmoid. Initial full outputs reproduce parent. No custom inference operators.",
+  "loss": "Only reviewed positive geometry cells:5*maskedL1 plus2*GIoU. Frozen heat contributes no loss. Negative-only rows have zero direct geometry gradient; no claim of teaching background rejection with this experiment.",
+  "data": "Same156-row matched control/admit data as grid-blue-expansion;140 FIT rows and unchanged16 grouped holdout. Control repeats27 original FIT rows; admit uses27 reviewed scenes containing23 blue boxes and sparse clutter regions.",
+  "selection": "Fixed final epoch320, fresh Adam, both seeds and both arms. No intermediate-model, threshold or holdout selection.",
+  "training_gate": "Both admission seeds: heat logits unchanged within1e-5, frozen weights byte-identical; improve new blue learned-box coverage over parent and matched control; retain original FIT red/blue learned coverage and bounded MSER-plus2 coverage versus parent. Report related grouped holdout separately. Unchanged threshold0.1 and maximum12 decoded proposals; at most2 added blue proposals.",
+  "evaluation": "Only after paired TRAIN gate, export both controls and admissions, verify tensor and decoder parity, compare on all three existing development panels with fixed classifier48 and unchanged0.8 confidence/0.5IoU. Extra compute is not free; live Pi timing remains separate.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
