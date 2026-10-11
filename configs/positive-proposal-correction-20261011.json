@@ -1,0 +1,32 @@
+{
+  "parent_audit": "research/balloon-red-blue-20261008/reviewed-negative-correction-20261011.json",
+  "parent_audit_sha256": "833ca5278936f007b7d0573104cefa64d66b6c9e82cc94456e882192264af647",
+  "parents": {
+    "47": {"path": "runs/reviewed-negative-correction-corrected-seed47-20261011/student.keras", "sha256": "a071985c776133158a6d32579b1f67d86a228312fc67ecdbe3f7e14d49c09bd6"},
+    "48": {"path": "runs/reviewed-negative-correction-corrected-seed48-20261011/student.keras", "sha256": "9df71f723b534e810cb9cf67c7abc40798e6639809accabc3b79c9ba1ed38417"}
+  },
+  "arms": ["control", "corrected"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "rows": 2668,
+  "optimizer_steps": 13360,
+  "parameters": 7763,
+  "positive_proposals": 238,
+  "original_positive_rows": 209,
+  "new_positive_inputs": 29,
+  "duplicate_public_inputs_excluded": 2,
+  "hard_weight": 4,
+  "scene_kl_weight": 8,
+  "scene_centered_logit_weight": 0.5,
+  "design": "Start both arms of each seed from the corresponding reviewed-negative corrected checkpoint. Retain2639rows including both reviewed scene-background corrections and all8new backgrounds repeated4times. Add29novel public MSER positive crops once in both arms. Derive238positive labels solely from complete reviewed TRAIN annotations: same-color boxIoU>=0.5 and every opposite-color boxIoU<0.1. Candidate replaces teacher retention with hard labels/weight4 for209old proposals and29added proposals. Control retains teacher supervision/weight1 on those same pixels. All other targets, optimizer, architecture and schedules match. Exclude ambiguous/partial boxes instead of turning them into negatives. No synthetic labels or prediction pseudo-labels.",
+  "gate": "Verify fixed final checkpoints, exact paired tensor difference and optimizer iterations. Replay both seeds on82TRAIN scenes with fixed current and direct-hybrid policies. Require no incumbent target losses, no per-color FP increase on any panel and strict recovery or FP reduction in both seeds before separate export/DEV investigation. Record old-crop retention and reviewed-negative regression. No held-out selection or threshold sweep.",
+  "training_approved": true,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
