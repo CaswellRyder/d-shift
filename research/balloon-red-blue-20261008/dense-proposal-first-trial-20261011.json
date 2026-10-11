@@ -1,0 +1,134 @@
+{
+  "data": {
+    "manifest_sha256": "db49fdf315eee82c8919f6a76dd414fc4b24ef3be85bf4d7fba6fafa02c55d55",
+    "frames": 108,
+    "positive_boxes": 281,
+    "reviewed_background_regions": 9,
+    "training_frames": 92,
+    "heldout_source_groups_frames": 16
+  },
+  "seeds": {
+    "47": {
+      "model_sha256": "887574168283cc9bf430999e8900dd10cc20f875aec9938fcdc61602d8e63533",
+      "coverage_sha256": "a8758c0d191597fcd0cf611024f7bb2f7bf2d8be4b263ddcb0400bed1bff03c1",
+      "provenance_sha256": "566dabdf115862f3bc567b2fc270bd0807648887d7be83efd99260027878d85f",
+      "training_report": {
+        "training_loss": 1.2989978790283203,
+        "grouped_holdout_loss": 1.4764199256896973,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "887574168283cc9bf430999e8900dd10cc20f875aec9938fcdc61602d8e63533",
+        "predictions_sha256": "b9bd6ecb47f8cfebcca602be764f6b4caa7b0226e415dc48fe5d2cc6862859ff",
+        "provenance_sha256": "566dabdf115862f3bc567b2fc270bd0807648887d7be83efd99260027878d85f",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "totals": {
+        "fit": {
+          "red_balloon": {
+            "targets": 129,
+            "baseline": 124,
+            "learned": 72,
+            "supplement": 124
+          },
+          "blue_balloon": {
+            "targets": 119,
+            "baseline": 99,
+            "learned": 68,
+            "supplement": 102
+          }
+        },
+        "heldout_groups": {
+          "red_balloon": {
+            "targets": 20,
+            "baseline": 19,
+            "learned": 11,
+            "supplement": 19
+          },
+          "blue_balloon": {
+            "targets": 13,
+            "baseline": 12,
+            "learned": 9,
+            "supplement": 13
+          }
+        }
+      }
+    },
+    "48": {
+      "model_sha256": "ba6338adc8ab9305f0116f122410888c7fa11f7ee3251d650a91eacba288e8d8",
+      "coverage_sha256": "73083d735f7763f8f56f662d96f6399e77eec241f8d5661b5d757e730111471a",
+      "provenance_sha256": "ee35450c5992d51e8deea658617fab24338e0f7cc278dc05aaa7fdc116be7760",
+      "training_report": {
+        "training_loss": 1.129309058189392,
+        "grouped_holdout_loss": 1.2496261596679688,
+        "fit_frames": 92,
+        "holdout_frames": 16,
+        "parameters": 2342,
+        "model_sha256": "ba6338adc8ab9305f0116f122410888c7fa11f7ee3251d650a91eacba288e8d8",
+        "predictions_sha256": "43743c6bc8ab4c8a2fba1c886215013cc1b26914b6a4da79b90a4fd12a8236ab",
+        "provenance_sha256": "ee35450c5992d51e8deea658617fab24338e0f7cc278dc05aaa7fdc116be7760",
+        "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "totals": {
+        "fit": {
+          "red_balloon": {
+            "targets": 129,
+            "baseline": 124,
+            "learned": 96,
+            "supplement": 124
+          },
+          "blue_balloon": {
+            "targets": 119,
+            "baseline": 99,
+            "learned": 77,
+            "supplement": 101
+          }
+        },
+        "heldout_groups": {
+          "red_balloon": {
+            "targets": 20,
+            "baseline": 19,
+            "learned": 12,
+            "supplement": 19
+          },
+          "blue_balloon": {
+            "targets": 13,
+            "baseline": 12,
+            "learned": 9,
+            "supplement": 12
+          }
+        }
+      }
+    }
+  },
+  "parameters": 2342,
+  "epochs": 80,
+  "input_size": [
+    160,
+    120
+  ],
+  "output_grid": [
+    20,
+    15
+  ],
+  "decoder_threshold": 0.1,
+  "max_added_blue_proposals": 2,
+  "total_proposal_limit": 12,
+  "decision": "Continue to frozen full-scene evaluation; do not deploy or replace current classifier. No runtime export or Pi timing measured yet.",
+  "caveats": [
+    "Sparse unknown regions ignored, never automatically labeled background.",
+    "Coverage is one-to-one proposal localization, not detection precision/recall.",
+    "Grouped holdout was excluded from localizer fit only; related known environments remain, so not independent qualification.",
+    "Nine negative regions are small; not all contain complete supervised grid cells."
+  ],
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "qualification_achieved": false
+}
