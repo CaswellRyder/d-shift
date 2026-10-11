@@ -1,0 +1,38 @@
+{
+  "parent_audit": "research/balloon-red-blue-20261008/balanced-localizer-20261011.json",
+  "parent_audit_sha256": "e5f102c57904a2da0dd6770ed4942e2599c62d1c94142ff05642cc1992c4d335",
+  "diagnosis": "research/balloon-red-blue-20261008/balanced-localizer-cells-20261011.json",
+  "diagnosis_sha256": "6ecd8862d31037acb5fffdc09d1b8ec1b752221f5df6221a84ef7625ccb929c8",
+  "coverage_diagnosis": "research/balloon-red-blue-20261008/proposal-ceiling-diagnosis-20261011.json",
+  "coverage_diagnosis_sha256": "126f26d6bb3e8fdac4b6bab9faf481bfa5def9f271e97e54e504879cb4cb25dd",
+  "classifier_audit": "research/balloon-red-blue-20261008/source-resolved-negative-20261011.json",
+  "classifier_audit_sha256": "894867241f99d5cc80275ce3a14dbbca0c7a58662fd73bf256207a3682150af4",
+  "classifiers": {
+    "47": {"path": "runs/source-resolved-negative-corrected-seed47-20261011/student.keras", "sha256": "19ec2edfecd67471feacd2756def33ebb4166411c7686ac80492e0fec5497652"},
+    "48": {"path": "runs/source-resolved-negative-corrected-seed48-20261011/student.keras", "sha256": "24c73b607bef3ec1e92a373a7a518a2ffbf6d84e750d66c89c1f9f70cb61cb09"}
+  },
+  "parents": {
+    "47": {"path": "runs/balanced-localizer-balanced-seed47-20261011/proposal.keras", "sha256": "fd2534251dab5f668bf86347b8d48a71d011e7bf8c8d811db06839e4e7dacd4d"},
+    "48": {"path": "runs/balanced-localizer-balanced-seed48-20261011/proposal.keras", "sha256": "7c1848e3d9461e197fde363f58de197f46319675af1a2ba1f71f161aab2d87af"}
+  },
+  "arms": ["control", "ranked"],
+  "seeds": [47, 48],
+  "epochs": 200,
+  "batch_size": 8,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "optimizer_steps": 5000,
+  "fit_rows": 193,
+  "parameters": 2342,
+  "peak_margin_logits": 0.5,
+  "peak_weight": 1.0,
+  "design": "Both arms use identical193rows from balanced_localizer_data.tensors('balanced'), including the same18public TRAIN scenes repeated4times total. Start each seed from its corresponding verified balanced checkpoint; fresh identical Adam cosine schedule. Control relative_loss; ranked relative_loss plus mean squared hinge requiring each annotated center to outrank its strongest reviewed same-color non-center neighbor in3x3 by0.5logits. Unknown cells and all adjacent true same-color centers are excluded from negative competitors. No extra data, inference operators or thresholds. Hypothesis: supervised center ordering recovers correct boxes presently removed by local peak suppression. This cannot by itself fix absent accurate geometry.",
+  "evaluation": "Verify checkpoint graph,5000optimizersteps, tensor/source hashes, stored predictions and200finite epochs in both seeds. Audit all82TRAIN scenes with unchanged decoder. Compare matched controls and parent models at cell, direct-detection and full hybrid levels. Freeze source-resolved-negative corrected classifiers perseed and fixed0.8crop/0.5direct thresholds, at most12MSERcrop calls plus one localizer pass; test existing current, pooled and base_first policies only. Require no incumbent target losses or per-color false-positive increase on any panel and strict recovery or false-positive reduction in both seeds before separate export/DEV investigation. No threshold search, model swap or heldout fitting.",
+  "training_approved": true,
+  "original_holdout_evaluated": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
