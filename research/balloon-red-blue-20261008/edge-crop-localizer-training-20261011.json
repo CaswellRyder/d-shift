@@ -1,0 +1,607 @@
+{
+  "exports": {
+    "control47": {
+      "path": "runs/edge-crop-localizer-control-seed47-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "edge_crop_localizer",
+        "arm": "control",
+        "seed": 47,
+        "sha256": "1a84ecd969c47cf898af99abf625e4393c9d66b9a680ebb6b57f0a2b4be8faed",
+        "bytes": 14420,
+        "parameters": 2342,
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "blended_decoder_sha256": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+        "source_checkpoint_sha256": "cb8b5ce5422240ee84e14e932d30a73ac347f5d60247479d92c12eadb8357dea",
+        "provenance_sha256": "2845d6609b238e8c9cc9ec4980767db5695e8388be08c1cd8b40a47251e32ec8",
+        "max_tensor_delta": 5.7220458984375e-06,
+        "decoded_parity_frames": 137,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "preprocessing": "320x240RGB to160x120INTER_AREA float32 range0..255",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "training_report": {
+        "provenance_sha256": "2845d6609b238e8c9cc9ec4980767db5695e8388be08c1cd8b40a47251e32ec8",
+        "model_sha256": "cb8b5ce5422240ee84e14e932d30a73ac347f5d60247479d92c12eadb8357dea",
+        "predictions_sha256": "22098ac1ab8bdea19708ab2cfb673d73fa5299d86c71e0caea4201aa641c4426",
+        "optimizer_steps": 4480,
+        "original_fit_loss": 1.1924468278884888,
+        "original_heldout_loss": 1.6318296194076538,
+        "scope": "Training diagnostics on original views, not detection accuracy or independent qualification."
+      }
+    },
+    "control48": {
+      "path": "runs/edge-crop-localizer-control-seed48-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "edge_crop_localizer",
+        "arm": "control",
+        "seed": 48,
+        "sha256": "cda0d08e86320403d312301430dedcaa69fa2f1265fdd80a76776bba07f1c9b6",
+        "bytes": 14420,
+        "parameters": 2342,
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "blended_decoder_sha256": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+        "source_checkpoint_sha256": "7a2b6bc3c4a57f57bd96d3e30584113eee515e4c9b1cc17759be9acd5b0149aa",
+        "provenance_sha256": "b2c05bf574977c8227680dc2a36c7781a98e6f6ee0b9a5598ba8174909a418c4",
+        "max_tensor_delta": 5.7220458984375e-06,
+        "decoded_parity_frames": 137,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "preprocessing": "320x240RGB to160x120INTER_AREA float32 range0..255",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "training_report": {
+        "provenance_sha256": "b2c05bf574977c8227680dc2a36c7781a98e6f6ee0b9a5598ba8174909a418c4",
+        "model_sha256": "7a2b6bc3c4a57f57bd96d3e30584113eee515e4c9b1cc17759be9acd5b0149aa",
+        "predictions_sha256": "8b84d38add399472f7720d19a15531216d2c291d8c978b0477d99879024111fc",
+        "optimizer_steps": 4480,
+        "original_fit_loss": 1.1929329633712769,
+        "original_heldout_loss": 1.626878261566162,
+        "scope": "Training diagnostics on original views, not detection accuracy or independent qualification."
+      }
+    },
+    "edge_crop47": {
+      "path": "runs/edge-crop-localizer-edge_crop-seed47-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "edge_crop_localizer",
+        "arm": "edge_crop",
+        "seed": 47,
+        "sha256": "7c8e108f2b8bebfcf7596e174987c62cd47ed47294ad4e87c71d0c55e0b34bcc",
+        "bytes": 14420,
+        "parameters": 2342,
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "blended_decoder_sha256": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+        "source_checkpoint_sha256": "c6a3e597b82c8a9b0b398cd1004f85d382379a0c6cb2c8a0697754ae75562951",
+        "provenance_sha256": "95c42c07970f9102b7c0fab0f58a8e66a30db7fa7de13249d70a7b28209b3bdc",
+        "max_tensor_delta": 5.7220458984375e-06,
+        "decoded_parity_frames": 137,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "preprocessing": "320x240RGB to160x120INTER_AREA float32 range0..255",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "training_report": {
+        "provenance_sha256": "95c42c07970f9102b7c0fab0f58a8e66a30db7fa7de13249d70a7b28209b3bdc",
+        "model_sha256": "c6a3e597b82c8a9b0b398cd1004f85d382379a0c6cb2c8a0697754ae75562951",
+        "predictions_sha256": "470b87175a902205d504868e952f306300371aa97d9fe86aaaf1cbe92749359a",
+        "optimizer_steps": 4480,
+        "original_fit_loss": 1.3080272674560547,
+        "original_heldout_loss": 1.4877432584762573,
+        "scope": "Training diagnostics on original views, not detection accuracy or independent qualification."
+      }
+    },
+    "edge_crop48": {
+      "path": "runs/edge-crop-localizer-edge_crop-seed48-20261011/proposal.fp32.tflite",
+      "metadata": {
+        "kind": "balloon_dense_proposal_research",
+        "experiment": "edge_crop_localizer",
+        "arm": "edge_crop",
+        "seed": 48,
+        "sha256": "bdf7eb42a088c22ff452a099bb2d53f564c1209193f440f0fa17b85ceb8d83e3",
+        "bytes": 14420,
+        "parameters": 2342,
+        "proposal_threshold": 0.1,
+        "max_proposals": 12,
+        "max_added_blue_proposals": 2,
+        "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+        "blended_decoder_sha256": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+        "source_checkpoint_sha256": "0978e6351b87974e1adf42629a4f5e00cad5e83be5fb707da7b87d8575bd211f",
+        "provenance_sha256": "3590173659a73f24dc8113af9e09a30a7435df1e7310832a5f5e281db2c62722",
+        "max_tensor_delta": 4.76837158203125e-06,
+        "decoded_parity_frames": 137,
+        "input_shape": [
+          1,
+          120,
+          160,
+          3
+        ],
+        "output_shape": [
+          1,
+          15,
+          20,
+          6
+        ],
+        "tensor_dtype": "float32",
+        "preprocessing": "320x240RGB to160x120INTER_AREA float32 range0..255",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_tested": false
+      },
+      "training_report": {
+        "provenance_sha256": "3590173659a73f24dc8113af9e09a30a7435df1e7310832a5f5e281db2c62722",
+        "model_sha256": "0978e6351b87974e1adf42629a4f5e00cad5e83be5fb707da7b87d8575bd211f",
+        "predictions_sha256": "2b91dbcdd3ca5934d89ab48c40f296abe4da22700847d532a9c8e4683c6cef26",
+        "optimizer_steps": 4480,
+        "original_fit_loss": 1.3095834255218506,
+        "original_heldout_loss": 1.4877049922943115,
+        "scope": "Training diagnostics on original views, not detection accuracy or independent qualification."
+      }
+    }
+  },
+  "training_scenes": {
+    "parent": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 89,
+            "geometric_oracle_recall": 0.956989247311828,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": []
+      },
+      "nonregression": true,
+      "neural_calls": 385
+    },
+    "control47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 88,
+          "fp": 5,
+          "fn": 5,
+          "precision": 0.946236559139785,
+          "recall": 0.946236559139785
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16643,
+              "box": [
+                0.0,
+                40.59375,
+                36.0,
+                71.15625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "nonregression": false,
+      "neural_calls": 371
+    },
+    "control48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 10,
+          "fn": 5,
+          "precision": 0.9029126213592233,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 88,
+          "fp": 5,
+          "fn": 5,
+          "precision": 0.946236559139785,
+          "recall": 0.946236559139785
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16643,
+              "box": [
+                0.0,
+                40.59375,
+                36.0,
+                71.15625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "nonregression": false,
+      "neural_calls": 371
+    },
+    "edge_crop47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 86,
+          "fp": 7,
+          "fn": 7,
+          "precision": 0.9247311827956989,
+          "recall": 0.9247311827956989
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 87,
+            "geometric_oracle_recall": 0.9354838709677419,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 5,
+                "duplicate": 2
+              },
+              "false_negatives": {
+                "no_localized_proposal": 6,
+                "below_acceptance_threshold": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 8985,
+              "box": [
+                50.625,
+                1.875,
+                215.875,
+                225.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 14157,
+              "box": [
+                25.5,
+                69.75,
+                71.0,
+                161.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "nonregression": false,
+      "neural_calls": 386
+    },
+    "edge_crop48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 87,
+          "fp": 6,
+          "fn": 6,
+          "precision": 0.9354838709677419,
+          "recall": 0.9354838709677419
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4,
+                "duplicate": 2
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5,
+                "below_acceptance_threshold": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 14157,
+              "box": [
+                25.5,
+                69.75,
+                71.0,
+                161.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "nonregression": false,
+      "neural_calls": 386
+    }
+  },
+  "eligible_for_development": false,
+  "raw": {
+    "path": "runs/edge-crop-localizer-scenes-20261011.json",
+    "sha256": "4012bcc53e01e8d48d55b9ff3240d2edf31a09d7a3c40da5c60c17e52e5029f3"
+  },
+  "script_sha256": "445c84bcdd582e7ec4686e2bff7500f76288d7daa837872b7eb0a5982097957f",
+  "baseline_sha256": "e826e9b0d785d19d13df9359db2a909d34354d5887db1c8eba7e456509bc774b",
+  "protocol_sha256": "bc6c5f2c84cb82d6355d479b65745bccd889c4064218de19e4089f5cc2451ceb",
+  "scope": "Paired augmentation retraining, export parity and original64completeTRAIN scene screening. No new development evaluation or independent accuracy claim.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
