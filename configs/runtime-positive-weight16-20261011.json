@@ -1,0 +1,27 @@
+{
+  "arms": [
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Same1824rows, frozen parent, seeds47/48, fresh Adam,240epochs and27360steps as prior teacher-corrected admitted runs. Only change is weight16 instead of1 for the two explicitly reviewed positive runtime rows where frozen teacher argmax is wrong. Other protected rows weight1, hard negatives weight4. Same corrected loss, data and shuffle order. Fixed final240; no threshold or inference changes.",
+  "training_gate": "Both seeds retain all original base1685 accepted positives and prior clutter learning and accept139/139runtime-positive probes. Must improve over corresponding weight1control (137/139). No export/development before paired gate.",
+  "checkpoint_policy": "Final240 only; no early stopping or checkpoint selection.",
+  "scope": "Same TRAIN photos, newly protected crop views, not independent data. No inference/search changes. Fixed threshold and operating point. Repeated development cannot qualify flight.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "control_trial": "research/balloon-red-blue-20261008/runtime-teacher-correction-training-20261011.json",
+  "control_trial_sha256": "4f704d73ec6d5df30538c9d63b376915a4c96c943b9204dcb23bf5cab1010691",
+  "positive_weight": 16
+}
