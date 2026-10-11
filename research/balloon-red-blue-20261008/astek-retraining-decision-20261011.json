@@ -1,0 +1,51 @@
+{
+  "decision": "not_promoted",
+  "summary": "Four matched fine-tuning runs completed. Adding the reviewed outdoor crops did not consistently improve development scene detection over matched controls and regressed the 67-frame blue results versus the incumbent.",
+  "comparison_receipt": "research/balloon-red-blue-20261008/astek-matched-retraining-20261011.json",
+  "comparison_sha256": "a31a8c281551e6e5bb5f897e2554fbb3caedcbdee4266b6f9284df6a6020b10b",
+  "experiment": {
+    "seeds": [47, 48],
+    "arms": ["same-class existing-crop resampling control", "21 reviewed Astek crops, each repeated four times"],
+    "training_rows_each": 1340,
+    "added_rows_each": 84,
+    "epochs": 8,
+    "learning_rate": 0.0001,
+    "checkpoint_comparison": "fixed final latest.keras, not validation-selected best checkpoint",
+    "base_distillation_alpha": 0.5,
+    "hard_label_weight_on_added_rows": 1.0,
+    "architecture": "unchanged separable_context 64px, 7763 parameters",
+    "compared_fp32_model_bytes": 35204,
+    "threshold": 0.8,
+    "matching_iou": 0.5,
+    "selection": "split_merged, max aspect 2.42913421076193",
+    "new_test_or_camera_data_used": false
+  },
+  "key_results": {
+    "67_frame_development_blue": {
+      "incumbent_tp_fp_fn": [59, 13, 12],
+      "both_controls_and_both_admit_tp_fp_fn": [58, 15, 13],
+      "incumbent_precision_recall": [0.8194444444444444, 0.8309859154929577],
+      "both_retrained_precision_recall": [0.7945205479452054, 0.8169014084507042]
+    },
+    "62_frame_development_blue": {
+      "incumbent_tp_fp_fn": [49, 26, 18],
+      "seed47_control_and_admit_tp_fp_fn": [53, 30, 14],
+      "seed48_control_and_admit_tp_fp_fn": [52, 26, 15]
+    },
+    "12_frame_development_blue": {
+      "incumbent_tp_fp_fn": [9, 3, 3],
+      "seed47_control_and_admit_tp_fp_fn": [9, 4, 3],
+      "seed48_control_tp_fp_fn": [10, 3, 2],
+      "seed48_admit_tp_fp_fn": [9, 3, 3]
+    },
+    "training_target_diagnostic": "All models, including the incumbent, cover all 13 reviewed training targets at IoU >=0.5 through full search and selection. The red crop 14 error is fixed in both admit runs but also in control48. This is training diagnostic evidence, not generalization."
+  },
+  "interpretation": "Adding easy blue crops did not target the remaining scene-level failures. Gains on the 62-frame panel also occur in controls, so they cannot be attributed to the new data. Panels overlap and were previously inspected; do not pool them as independent qualification data.",
+  "next_work": "Keep the new source and labels available, but focus additional training/retooling on representative difficult blue scenes and detector-shaped regions rather than more repetitions of already-correct crops. Fresh held-out real scenes and isolated live Pi qualification remain required.",
+  "verification": {"tests_passed": 978, "tests_skipped": 2, "existing_tensorflow_warnings": 6, "scoped_ruff": "passed"},
+  "incumbent_preserved_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+  "pi_changed": false,
+  "esp32_or_motor_commands": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

@@ -1,0 +1,583 @@
+{
+  "manifests": {
+    "control": {
+      "path": "data/balloon-astek-control-20261011/manifest.json",
+      "sha256": "1be0df02c35925d12d7e3a8d38b3a8ecd1b2d7beec3804be11f5bf15a8d01189",
+      "counts": {
+        "train/background": 546,
+        "val/background": 3,
+        "test/background": 19,
+        "train/red_balloon": 422,
+        "val/red_balloon": 2,
+        "test/red_balloon": 3,
+        "train/blue_balloon": 372,
+        "val/blue_balloon": 3,
+        "test/blue_balloon": 2
+      }
+    },
+    "admit": {
+      "path": "data/balloon-astek-admit-20261011/manifest.json",
+      "sha256": "d65b9f7874267ed342015392e79b454e826c3c80d15a34e9a9ca893f427d6368",
+      "counts": {
+        "train/background": 546,
+        "val/background": 3,
+        "test/background": 19,
+        "train/red_balloon": 422,
+        "val/red_balloon": 2,
+        "test/red_balloon": 3,
+        "train/blue_balloon": 372,
+        "val/blue_balloon": 3,
+        "test/blue_balloon": 2
+      }
+    }
+  },
+  "models": {
+    "control47": {
+      "path": "runs/balloon-astek-control-seed47-20261011/latest.fp32.tflite",
+      "sha256": "71faf5145f7fe1cd481f2566a19ce5166cf73a35d9ebba2089f291ad8fa30cda",
+      "bytes": 35204,
+      "provenance_sha256": "06c49fa872edec66374d18ac7ed73d97f36d137528431ba8e9227f743e770111",
+      "provenance": {
+        "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-expanded-20261008/teacher.keras",
+        "teacher_sha256": "db57446ecfba29c29353924792908d9a762f5452f50664f66c43cfdcc0ff45fe",
+        "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-astek-control-20261011/manifest.json",
+        "manifest_sha256": "1be0df02c35925d12d7e3a8d38b3a8ecd1b2d7beec3804be11f5bf15a8d01189",
+        "config": {
+          "task": "balloon",
+          "classes": [
+            "background",
+            "red_balloon",
+            "blue_balloon"
+          ],
+          "aliases": {
+            "Red Balloon": "red_balloon",
+            "Blue Balloon": "blue_balloon",
+            "redball": "red_balloon",
+            "blueball": "blue_balloon"
+          },
+          "teacher_size": 96,
+          "student_size": 64,
+          "batch_size": 16,
+          "head_epochs": 5,
+          "finetune_epochs": 15,
+          "student_epochs": 25,
+          "temperature": 4.0,
+          "alpha": 0.5,
+          "seed": 47,
+          "threshold": 0.8,
+          "calibration_samples": 500,
+          "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+          "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+          "deployment_approved": false
+        },
+        "epochs": 8,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "augmentation": "none; cached logits for identical source crops",
+        "student_variant": "separable_context",
+        "training_script_sha256": "25d2e290f72184c0987350bf162707b241620459c4067e42995c332bc4ff8785",
+        "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+        "target_cache_run": null,
+        "initialize_context": null,
+        "initial_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "initialize_student": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010",
+        "learning_rate": 0.0001,
+        "teacher_targets_kind": "teacher_logits",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false,
+        "purpose": "integration_research",
+        "tensorflow": "2.18.1",
+        "keras": "3.8.0",
+        "hard_label_rows": {
+          "field": "instance_ablation_mode",
+          "count": 84
+        },
+        "initialization": {
+          "kind": "same-architecture checkpoint",
+          "parent_manifest_sha256": "7186d877f70731cd45b04e00acb2e3b1feb0a7e9e810319a633593cd03daa235",
+          "teacher_logits_reused": false
+        }
+      }
+    },
+    "control48": {
+      "path": "runs/balloon-astek-control-seed48-20261011/latest.fp32.tflite",
+      "sha256": "88a83d2c3d875deae91fe56f271b37c3e29aedde57f2867627468fe7d09afe08",
+      "bytes": 35204,
+      "provenance_sha256": "bd22372f8ef1db14e378db86ebdd97f1702595fa803ff065aa64b5d894cb9df4",
+      "provenance": {
+        "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-expanded-20261008/teacher.keras",
+        "teacher_sha256": "db57446ecfba29c29353924792908d9a762f5452f50664f66c43cfdcc0ff45fe",
+        "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-astek-control-20261011/manifest.json",
+        "manifest_sha256": "1be0df02c35925d12d7e3a8d38b3a8ecd1b2d7beec3804be11f5bf15a8d01189",
+        "config": {
+          "task": "balloon",
+          "classes": [
+            "background",
+            "red_balloon",
+            "blue_balloon"
+          ],
+          "aliases": {
+            "Red Balloon": "red_balloon",
+            "Blue Balloon": "blue_balloon",
+            "redball": "red_balloon",
+            "blueball": "blue_balloon"
+          },
+          "teacher_size": 96,
+          "student_size": 64,
+          "batch_size": 16,
+          "head_epochs": 5,
+          "finetune_epochs": 15,
+          "student_epochs": 25,
+          "temperature": 4.0,
+          "alpha": 0.5,
+          "seed": 48,
+          "threshold": 0.8,
+          "calibration_samples": 500,
+          "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+          "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+          "deployment_approved": false
+        },
+        "epochs": 8,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "augmentation": "none; cached logits for identical source crops",
+        "student_variant": "separable_context",
+        "training_script_sha256": "25d2e290f72184c0987350bf162707b241620459c4067e42995c332bc4ff8785",
+        "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+        "target_cache_run": "runs/balloon-astek-control-seed47-20261011",
+        "initialize_context": null,
+        "initial_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "initialize_student": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010",
+        "learning_rate": 0.0001,
+        "teacher_targets_kind": "teacher_logits",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false,
+        "purpose": "integration_research",
+        "tensorflow": "2.18.1",
+        "keras": "3.8.0",
+        "hard_label_rows": {
+          "field": "instance_ablation_mode",
+          "count": 84
+        },
+        "target_cache_sha256": "5a4c3bb05247c6195b9d0c3a5a9b22c25b77d7d65df794cdf9877e4867d7c96c",
+        "initialization": {
+          "kind": "same-architecture checkpoint",
+          "parent_manifest_sha256": "7186d877f70731cd45b04e00acb2e3b1feb0a7e9e810319a633593cd03daa235",
+          "teacher_logits_reused": true
+        }
+      }
+    },
+    "admit47": {
+      "path": "runs/balloon-astek-admit-seed47-20261011/latest.fp32.tflite",
+      "sha256": "cdbb1187af759ea6c5c3992969781375543f1306c823dc5d024313447f9ae059",
+      "bytes": 35204,
+      "provenance_sha256": "5a9f6ff4ae6f931e43ed05c24aea53d41175fe54f6730f85839906ad977497dd",
+      "provenance": {
+        "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-expanded-20261008/teacher.keras",
+        "teacher_sha256": "db57446ecfba29c29353924792908d9a762f5452f50664f66c43cfdcc0ff45fe",
+        "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-astek-admit-20261011/manifest.json",
+        "manifest_sha256": "d65b9f7874267ed342015392e79b454e826c3c80d15a34e9a9ca893f427d6368",
+        "config": {
+          "task": "balloon",
+          "classes": [
+            "background",
+            "red_balloon",
+            "blue_balloon"
+          ],
+          "aliases": {
+            "Red Balloon": "red_balloon",
+            "Blue Balloon": "blue_balloon",
+            "redball": "red_balloon",
+            "blueball": "blue_balloon"
+          },
+          "teacher_size": 96,
+          "student_size": 64,
+          "batch_size": 16,
+          "head_epochs": 5,
+          "finetune_epochs": 15,
+          "student_epochs": 25,
+          "temperature": 4.0,
+          "alpha": 0.5,
+          "seed": 47,
+          "threshold": 0.8,
+          "calibration_samples": 500,
+          "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+          "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+          "deployment_approved": false
+        },
+        "epochs": 8,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "augmentation": "none; cached logits for identical source crops",
+        "student_variant": "separable_context",
+        "training_script_sha256": "25d2e290f72184c0987350bf162707b241620459c4067e42995c332bc4ff8785",
+        "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+        "target_cache_run": null,
+        "initialize_context": null,
+        "initial_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "initialize_student": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010",
+        "learning_rate": 0.0001,
+        "teacher_targets_kind": "teacher_logits",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false,
+        "purpose": "integration_research",
+        "tensorflow": "2.18.1",
+        "keras": "3.8.0",
+        "hard_label_rows": {
+          "field": "instance_ablation_mode",
+          "count": 84
+        },
+        "initialization": {
+          "kind": "same-architecture checkpoint",
+          "parent_manifest_sha256": "7186d877f70731cd45b04e00acb2e3b1feb0a7e9e810319a633593cd03daa235",
+          "teacher_logits_reused": false
+        }
+      }
+    },
+    "admit48": {
+      "path": "runs/balloon-astek-admit-seed48-20261011/latest.fp32.tflite",
+      "sha256": "d3a89fd3bc055d2c9f90261ffb2a7da9aca6b70d654bf30f21da3117ceaacc91",
+      "bytes": 35204,
+      "provenance_sha256": "4afddc7864a8dcc34223d74eacd5198156b89a718226f99fd355caab32330aba",
+      "provenance": {
+        "teacher": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/runs/balloon-red-blue-teacher-expanded-20261008/teacher.keras",
+        "teacher_sha256": "db57446ecfba29c29353924792908d9a762f5452f50664f66c43cfdcc0ff45fe",
+        "manifest": "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/data/balloon-astek-admit-20261011/manifest.json",
+        "manifest_sha256": "d65b9f7874267ed342015392e79b454e826c3c80d15a34e9a9ca893f427d6368",
+        "config": {
+          "task": "balloon",
+          "classes": [
+            "background",
+            "red_balloon",
+            "blue_balloon"
+          ],
+          "aliases": {
+            "Red Balloon": "red_balloon",
+            "Blue Balloon": "blue_balloon",
+            "redball": "red_balloon",
+            "blueball": "blue_balloon"
+          },
+          "teacher_size": 96,
+          "student_size": 64,
+          "batch_size": 16,
+          "head_epochs": 5,
+          "finetune_epochs": 15,
+          "student_epochs": 25,
+          "temperature": 4.0,
+          "alpha": 0.5,
+          "seed": 48,
+          "threshold": 0.8,
+          "calibration_samples": 500,
+          "taxonomy_source": "User rule clarification, 2026-10-07; independent rule-document verification not performed in this change",
+          "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+          "deployment_approved": false
+        },
+        "epochs": 8,
+        "temperature": 4.0,
+        "alpha": 0.5,
+        "augmentation": "none; cached logits for identical source crops",
+        "student_variant": "separable_context",
+        "training_script_sha256": "25d2e290f72184c0987350bf162707b241620459c4067e42995c332bc4ff8785",
+        "models_source_sha256": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f",
+        "target_cache_run": "runs/balloon-astek-admit-seed47-20261011",
+        "initialize_context": null,
+        "initial_student_sha256": "48092310422fae00232fc2fb8c6bb89007785e7f3f7d3ce357bd40126e0a7798",
+        "initialize_student": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010",
+        "learning_rate": 0.0001,
+        "teacher_targets_kind": "teacher_logits",
+        "test_evaluated": false,
+        "deployment_approved": false,
+        "pi_zero_verified": false,
+        "purpose": "integration_research",
+        "tensorflow": "2.18.1",
+        "keras": "3.8.0",
+        "hard_label_rows": {
+          "field": "instance_ablation_mode",
+          "count": 84
+        },
+        "target_cache_sha256": "e4a6323340ab8aaafc11000f83bbef642505da62937e8e303c1d7531d22e9c7a",
+        "initialization": {
+          "kind": "same-architecture checkpoint",
+          "parent_manifest_sha256": "7186d877f70731cd45b04e00acb2e3b1feb0a7e9e810319a633593cd03daa235",
+          "teacher_logits_reused": true
+        }
+      }
+    }
+  },
+  "panels": {
+    "runs/balloon-astek-engdes2-lockbox-panel3-20261010-evaluation-20261011.json": {
+      "sha256": "94b30f9e9d299566199c2af97c11611ffc6930dd7ab2af9985bcfdcb39bcc7e1",
+      "frames": 67,
+      "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+      "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 15,
+            "fn": 13,
+            "precision": 0.7945205479452054,
+            "recall": 0.8169014084507042
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 15,
+            "fn": 13,
+            "precision": 0.7945205479452054,
+            "recall": 0.8169014084507042
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 15,
+            "fn": 13,
+            "precision": 0.7945205479452054,
+            "recall": 0.8169014084507042
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 58,
+            "fp": 15,
+            "fn": 13,
+            "precision": 0.7945205479452054,
+            "recall": 0.8169014084507042
+          }
+        }
+      }
+    },
+    "runs/balloon-astek-engdes2-development-panel2-20261010-evaluation-20261011.json": {
+      "sha256": "9ad22b2268b7fd04798d911ebc43a575fb221823892541a791c3767e6fb64e5b",
+      "frames": 62,
+      "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+      "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 30,
+            "fn": 14,
+            "precision": 0.6385542168674698,
+            "recall": 0.7910447761194029
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 30,
+            "fn": 14,
+            "precision": 0.6385542168674698,
+            "recall": 0.7910447761194029
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 26,
+            "fn": 15,
+            "precision": 0.6666666666666666,
+            "recall": 0.7761194029850746
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 26,
+            "fn": 15,
+            "precision": 0.6666666666666666,
+            "recall": 0.7761194029850746
+          }
+        }
+      }
+    },
+    "runs/balloon-astek-engdes2-development-scenes-20261008-evaluation-20261011.json": {
+      "sha256": "13f4a08d64b0c60ae0dc9e4799dc3a756fb16dbedf3bc546d3ff3451dea42a2a",
+      "frames": 12,
+      "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+      "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e",
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 3,
+            "precision": 0.6923076923076923,
+            "recall": 0.75
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.7692307692307693,
+            "recall": 0.8333333333333334
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "summary_script_sha256": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8",
+  "scope": "Fixed final epoch; training-only public addition; repeatedly inspected development panels, not independent qualification",
+  "independently_verified_sessions": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
