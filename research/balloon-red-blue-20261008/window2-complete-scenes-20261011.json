@@ -1,0 +1,2730 @@
+{
+  "results": {
+    "parent": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 3,
+          "fp": 4,
+          "fn": 10,
+          "precision": 0.42857142857142855,
+          "recall": 0.23076923076923078
+        },
+        "blue_balloon": {
+          "tp": 9,
+          "fp": 1,
+          "fn": 7,
+          "precision": 0.9,
+          "recall": 0.5625
+        }
+      },
+      "diagnosis": {
+        "counts": {
+          "false_negatives": {
+            "no_localized_proposal": 11,
+            "different_predicted_class": 5,
+            "below_acceptance_threshold": 1
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 5
+          }
+        },
+        "frames": [
+          {
+            "id": 5,
+            "detail": {
+              "id": 5,
+              "source": "openimages/train/39e6c1048263a084",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 6,
+            "detail": {
+              "id": 6,
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 2
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.009558311229000858
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.7659523120447285
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0
+                }
+              ]
+            }
+          },
+          {
+            "id": 7,
+            "detail": {
+              "id": 7,
+              "source": "openimages/train/3a0abf0b59e43d61",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 2,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                },
+                {
+                  "index": 10,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 12,
+            "detail": {
+              "id": 12,
+              "source": "openimages/train/3b51e7a26d345303",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 2,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 13,
+            "detail": {
+              "id": 13,
+              "source": "openimages/train/3b83a4682fec0bc5",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 1
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07054944230174942
+                }
+              ]
+            }
+          },
+          {
+            "id": 14,
+            "detail": {
+              "id": 14,
+              "source": "openimages/train/3b844b483fe44f48",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 3
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.10454073432221843
+                },
+                {
+                  "index": 1,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.17374401292596947
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.09706147573496825
+                }
+              ]
+            }
+          },
+          {
+            "id": 16,
+            "detail": {
+              "id": 16,
+              "source": "openimages/train/3bacda12a4b8f558",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 22,
+            "detail": {
+              "id": 22,
+              "source": "openimages/train/3db8d74c380385a8",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 24,
+            "detail": {
+              "id": 24,
+              "source": "openimages/train/3dcd2b5a1e7fd9be",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 25,
+            "detail": {
+              "id": 25,
+              "source": "openimages/train/3df794168e767151",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 4
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 3
+                }
+              },
+              "truth_count": 9,
+              "matched_upper_bounds": {
+                "geometry_oracle": 5,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.039509781549662615
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.8647859578526993
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07637201128790275
+                },
+                {
+                  "index": 4,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.8570812904972546
+                },
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "below_acceptance_threshold",
+                  "best_proposal_iou": 0.7205274725274722
+                },
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.18197624118195138
+                },
+                {
+                  "index": 7,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.2836749633967789
+                }
+              ]
+            }
+          },
+          {
+            "id": 29,
+            "detail": {
+              "id": 29,
+              "source": "openimages/train/3e98a30908f0b843",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 4,
+              "matched_upper_bounds": {
+                "geometry_oracle": 4,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 2,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.9335540265171851
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.5082412240471633
+                }
+              ]
+            }
+          },
+          {
+            "id": 36,
+            "detail": {
+              "id": 36,
+              "source": "openimages/train/40237df5e8f6a765",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 8,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.1928928865402268
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      }
+    },
+    "control47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 10,
+          "precision": 0.5,
+          "recall": 0.23076923076923078
+        },
+        "blue_balloon": {
+          "tp": 9,
+          "fp": 3,
+          "fn": 7,
+          "precision": 0.75,
+          "recall": 0.5625
+        }
+      },
+      "diagnosis": {
+        "counts": {
+          "false_negatives": {
+            "no_localized_proposal": 11,
+            "different_predicted_class": 4,
+            "below_acceptance_threshold": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 6
+          }
+        },
+        "frames": [
+          {
+            "id": 5,
+            "detail": {
+              "id": 5,
+              "source": "openimages/train/39e6c1048263a084",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 6,
+            "detail": {
+              "id": 6,
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 2
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.009558311229000858
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.7659523120447285
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0
+                }
+              ]
+            }
+          },
+          {
+            "id": 7,
+            "detail": {
+              "id": 7,
+              "source": "openimages/train/3a0abf0b59e43d61",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 12,
+            "detail": {
+              "id": 12,
+              "source": "openimages/train/3b51e7a26d345303",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 2,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 13,
+            "detail": {
+              "id": 13,
+              "source": "openimages/train/3b83a4682fec0bc5",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 1
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07054944230174942
+                }
+              ]
+            }
+          },
+          {
+            "id": 14,
+            "detail": {
+              "id": 14,
+              "source": "openimages/train/3b844b483fe44f48",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 3
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.10454073432221843
+                },
+                {
+                  "index": 1,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.17374401292596947
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.09706147573496825
+                }
+              ]
+            }
+          },
+          {
+            "id": 16,
+            "detail": {
+              "id": 16,
+              "source": "openimages/train/3bacda12a4b8f558",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 22,
+            "detail": {
+              "id": 22,
+              "source": "openimages/train/3db8d74c380385a8",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 24,
+            "detail": {
+              "id": 24,
+              "source": "openimages/train/3dcd2b5a1e7fd9be",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 11,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 25,
+            "detail": {
+              "id": 25,
+              "source": "openimages/train/3df794168e767151",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 4
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 3
+                }
+              },
+              "truth_count": 9,
+              "matched_upper_bounds": {
+                "geometry_oracle": 5,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.039509781549662615
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.8647859578526993
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07637201128790275
+                },
+                {
+                  "index": 4,
+                  "label": "blue_balloon",
+                  "reason": "below_acceptance_threshold",
+                  "best_proposal_iou": 0.8570812904972546
+                },
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "below_acceptance_threshold",
+                  "best_proposal_iou": 0.7205274725274722
+                },
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.18197624118195138
+                },
+                {
+                  "index": 7,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.2836749633967789
+                }
+              ]
+            }
+          },
+          {
+            "id": 29,
+            "detail": {
+              "id": 29,
+              "source": "openimages/train/3e98a30908f0b843",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 4,
+              "matched_upper_bounds": {
+                "geometry_oracle": 4,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 2,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.9335540265171851
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.5082412240471633
+                }
+              ]
+            }
+          },
+          {
+            "id": 36,
+            "detail": {
+              "id": 36,
+              "source": "openimages/train/40237df5e8f6a765",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 8,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.1928928865402268
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      }
+    },
+    "control48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 10,
+          "precision": 0.5,
+          "recall": 0.23076923076923078
+        },
+        "blue_balloon": {
+          "tp": 9,
+          "fp": 3,
+          "fn": 7,
+          "precision": 0.75,
+          "recall": 0.5625
+        }
+      },
+      "diagnosis": {
+        "counts": {
+          "false_negatives": {
+            "no_localized_proposal": 11,
+            "different_predicted_class": 4,
+            "below_acceptance_threshold": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 6
+          }
+        },
+        "frames": [
+          {
+            "id": 5,
+            "detail": {
+              "id": 5,
+              "source": "openimages/train/39e6c1048263a084",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 6,
+            "detail": {
+              "id": 6,
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 2
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.009558311229000858
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.7659523120447285
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0
+                }
+              ]
+            }
+          },
+          {
+            "id": 7,
+            "detail": {
+              "id": 7,
+              "source": "openimages/train/3a0abf0b59e43d61",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 12,
+            "detail": {
+              "id": 12,
+              "source": "openimages/train/3b51e7a26d345303",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 2,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 13,
+            "detail": {
+              "id": 13,
+              "source": "openimages/train/3b83a4682fec0bc5",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 1
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07054944230174942
+                }
+              ]
+            }
+          },
+          {
+            "id": 14,
+            "detail": {
+              "id": 14,
+              "source": "openimages/train/3b844b483fe44f48",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 3
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.10454073432221843
+                },
+                {
+                  "index": 1,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.17374401292596947
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.09706147573496825
+                }
+              ]
+            }
+          },
+          {
+            "id": 16,
+            "detail": {
+              "id": 16,
+              "source": "openimages/train/3bacda12a4b8f558",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 22,
+            "detail": {
+              "id": 22,
+              "source": "openimages/train/3db8d74c380385a8",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 24,
+            "detail": {
+              "id": 24,
+              "source": "openimages/train/3dcd2b5a1e7fd9be",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 11,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 25,
+            "detail": {
+              "id": 25,
+              "source": "openimages/train/3df794168e767151",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 4
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 3
+                }
+              },
+              "truth_count": 9,
+              "matched_upper_bounds": {
+                "geometry_oracle": 5,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.039509781549662615
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.8647859578526993
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07637201128790275
+                },
+                {
+                  "index": 4,
+                  "label": "blue_balloon",
+                  "reason": "below_acceptance_threshold",
+                  "best_proposal_iou": 0.8570812904972546
+                },
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "below_acceptance_threshold",
+                  "best_proposal_iou": 0.7205274725274722
+                },
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.18197624118195138
+                },
+                {
+                  "index": 7,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.2836749633967789
+                }
+              ]
+            }
+          },
+          {
+            "id": 29,
+            "detail": {
+              "id": 29,
+              "source": "openimages/train/3e98a30908f0b843",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 4,
+              "matched_upper_bounds": {
+                "geometry_oracle": 4,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 2,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.9335540265171851
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.5082412240471633
+                }
+              ]
+            }
+          },
+          {
+            "id": 36,
+            "detail": {
+              "id": 36,
+              "source": "openimages/train/40237df5e8f6a765",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 8,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.1928928865402268
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      }
+    },
+    "admit47": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 10,
+          "precision": 0.5,
+          "recall": 0.23076923076923078
+        },
+        "blue_balloon": {
+          "tp": 12,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.75,
+          "recall": 0.75
+        }
+      },
+      "diagnosis": {
+        "counts": {
+          "false_negatives": {
+            "no_localized_proposal": 11,
+            "different_predicted_class": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 7
+          }
+        },
+        "frames": [
+          {
+            "id": 5,
+            "detail": {
+              "id": 5,
+              "source": "openimages/train/39e6c1048263a084",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 6,
+            "detail": {
+              "id": 6,
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 2
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.009558311229000858
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.7659523120447285
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0
+                }
+              ]
+            }
+          },
+          {
+            "id": 7,
+            "detail": {
+              "id": 7,
+              "source": "openimages/train/3a0abf0b59e43d61",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 12,
+            "detail": {
+              "id": 12,
+              "source": "openimages/train/3b51e7a26d345303",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 2,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 13,
+            "detail": {
+              "id": 13,
+              "source": "openimages/train/3b83a4682fec0bc5",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 1
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07054944230174942
+                }
+              ]
+            }
+          },
+          {
+            "id": 14,
+            "detail": {
+              "id": 14,
+              "source": "openimages/train/3b844b483fe44f48",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 3
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.10454073432221843
+                },
+                {
+                  "index": 1,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.17374401292596947
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.09706147573496825
+                }
+              ]
+            }
+          },
+          {
+            "id": 16,
+            "detail": {
+              "id": 16,
+              "source": "openimages/train/3bacda12a4b8f558",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 7,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 22,
+            "detail": {
+              "id": 22,
+              "source": "openimages/train/3db8d74c380385a8",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 24,
+            "detail": {
+              "id": 24,
+              "source": "openimages/train/3dcd2b5a1e7fd9be",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 11,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 25,
+            "detail": {
+              "id": 25,
+              "source": "openimages/train/3df794168e767151",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 4
+                },
+                "blue_balloon": {
+                  "tp": 4,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 9,
+              "matched_upper_bounds": {
+                "geometry_oracle": 5,
+                "raw_classified": 5,
+                "selected_classified": 5
+              },
+              "false_positives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.039509781549662615
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07637201128790275
+                },
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.18197624118195138
+                },
+                {
+                  "index": 7,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.2836749633967789
+                }
+              ]
+            }
+          },
+          {
+            "id": 29,
+            "detail": {
+              "id": 29,
+              "source": "openimages/train/3e98a30908f0b843",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 4,
+              "matched_upper_bounds": {
+                "geometry_oracle": 4,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 2,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.9335540265171851
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.5082412240471633
+                }
+              ]
+            }
+          },
+          {
+            "id": 36,
+            "detail": {
+              "id": 36,
+              "source": "openimages/train/40237df5e8f6a765",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 8,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.1928928865402268
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 3,
+            "fn": -3
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": [
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 32,
+              "label": "blue_balloon",
+              "box": [
+                228.4,
+                101.4432,
+                237.8,
+                124.38623999999999
+              ],
+              "origin": "source_individual"
+            }
+          },
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 37,
+              "label": "blue_balloon",
+              "box": [
+                289.0,
+                97.61952,
+                298.4,
+                112.91472
+              ],
+              "origin": "source_individual"
+            }
+          },
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 52,
+              "label": "blue_balloon",
+              "box": [
+                146.5625,
+                63.95314787701318,
+                157.5,
+                77.65739385065886
+              ],
+              "origin": "manual_source_review"
+            }
+          }
+        ]
+      }
+    },
+    "admit48": {
+      "metrics": {
+        "red_balloon": {
+          "tp": 3,
+          "fp": 3,
+          "fn": 10,
+          "precision": 0.5,
+          "recall": 0.23076923076923078
+        },
+        "blue_balloon": {
+          "tp": 12,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.8,
+          "recall": 0.75
+        }
+      },
+      "diagnosis": {
+        "counts": {
+          "false_negatives": {
+            "no_localized_proposal": 11,
+            "different_predicted_class": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 6
+          }
+        },
+        "frames": [
+          {
+            "id": 5,
+            "detail": {
+              "id": 5,
+              "source": "openimages/train/39e6c1048263a084",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 6,
+            "detail": {
+              "id": 6,
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 2
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.009558311229000858
+                },
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.7659523120447285
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.0
+                }
+              ]
+            }
+          },
+          {
+            "id": 7,
+            "detail": {
+              "id": 7,
+              "source": "openimages/train/3a0abf0b59e43d61",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 12,
+            "detail": {
+              "id": 12,
+              "source": "openimages/train/3b51e7a26d345303",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 2,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [
+                {
+                  "index": 5,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 13,
+            "detail": {
+              "id": 13,
+              "source": "openimages/train/3b83a4682fec0bc5",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 1
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07054944230174942
+                }
+              ]
+            }
+          },
+          {
+            "id": 14,
+            "detail": {
+              "id": 14,
+              "source": "openimages/train/3b844b483fe44f48",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 3
+                },
+                "blue_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 3,
+              "matched_upper_bounds": {
+                "geometry_oracle": 0,
+                "raw_classified": 0,
+                "selected_classified": 0
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.10454073432221843
+                },
+                {
+                  "index": 1,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.17374401292596947
+                },
+                {
+                  "index": 2,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.09706147573496825
+                }
+              ]
+            }
+          },
+          {
+            "id": 16,
+            "detail": {
+              "id": 16,
+              "source": "openimages/train/3bacda12a4b8f558",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 22,
+            "detail": {
+              "id": 22,
+              "source": "openimages/train/3db8d74c380385a8",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 24,
+            "detail": {
+              "id": 24,
+              "source": "openimages/train/3dcd2b5a1e7fd9be",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 0,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 0
+                }
+              },
+              "truth_count": 1,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 11,
+                  "label": "blue_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": []
+            }
+          },
+          {
+            "id": 25,
+            "detail": {
+              "id": 25,
+              "source": "openimages/train/3df794168e767151",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 1,
+                  "fn": 4
+                },
+                "blue_balloon": {
+                  "tp": 4,
+                  "fp": 0,
+                  "fn": 0
+                }
+              },
+              "truth_count": 9,
+              "matched_upper_bounds": {
+                "geometry_oracle": 5,
+                "raw_classified": 5,
+                "selected_classified": 5
+              },
+              "false_positives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 0,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.039509781549662615
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.07637201128790275
+                },
+                {
+                  "index": 6,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.18197624118195138
+                },
+                {
+                  "index": 7,
+                  "label": "red_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.2836749633967789
+                }
+              ]
+            }
+          },
+          {
+            "id": 29,
+            "detail": {
+              "id": 29,
+              "source": "openimages/train/3e98a30908f0b843",
+              "counts": {
+                "red_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 4,
+              "matched_upper_bounds": {
+                "geometry_oracle": 4,
+                "raw_classified": 2,
+                "selected_classified": 2
+              },
+              "false_positives": [],
+              "false_negatives": [
+                {
+                  "index": 2,
+                  "label": "blue_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.9335540265171851
+                },
+                {
+                  "index": 3,
+                  "label": "red_balloon",
+                  "reason": "different_predicted_class",
+                  "best_proposal_iou": 0.5082412240471633
+                }
+              ]
+            }
+          },
+          {
+            "id": 36,
+            "detail": {
+              "id": 36,
+              "source": "openimages/train/40237df5e8f6a765",
+              "counts": {
+                "red_balloon": {
+                  "tp": 0,
+                  "fp": 1,
+                  "fn": 0
+                },
+                "blue_balloon": {
+                  "tp": 1,
+                  "fp": 0,
+                  "fn": 1
+                }
+              },
+              "truth_count": 2,
+              "matched_upper_bounds": {
+                "geometry_oracle": 1,
+                "raw_classified": 1,
+                "selected_classified": 1
+              },
+              "false_positives": [
+                {
+                  "index": 8,
+                  "label": "red_balloon",
+                  "reason": "little_or_no_annotated_overlap",
+                  "same_color_iou": 0.0,
+                  "other_color_iou": 0.0
+                }
+              ],
+              "false_negatives": [
+                {
+                  "index": 1,
+                  "label": "blue_balloon",
+                  "reason": "no_localized_proposal",
+                  "best_proposal_iou": 0.1928928865402268
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 3,
+            "fp": 2,
+            "fn": -3
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": [
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 32,
+              "label": "blue_balloon",
+              "box": [
+                228.4,
+                101.4432,
+                237.8,
+                124.38623999999999
+              ],
+              "origin": "source_individual"
+            }
+          },
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 37,
+              "label": "blue_balloon",
+              "box": [
+                289.0,
+                97.61952,
+                298.4,
+                112.91472
+              ],
+              "origin": "source_individual"
+            }
+          },
+          {
+            "source": "openimages/train/3df794168e767151",
+            "target": {
+              "annotation_id": 52,
+              "label": "blue_balloon",
+              "box": [
+                146.5625,
+                63.95314787701318,
+                157.5,
+                77.65739385065886
+              ],
+              "origin": "manual_source_review"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "frames": 12,
+  "targets": 29,
+  "proposal_count": 133,
+  "raw": {
+    "path": "runs/window2-complete-scenes-20261011.json",
+    "sha256": "79dbb412c047f9d2c06c7b2c951b90f5530c015c0b266f850aac15204bdab9c0"
+  },
+  "inputs_sha256": {
+    "configs/blue-balloon-window2-scenes-20261011.json": "0c4fed7b90dc91427c6e1d6115a304181d9cf39ce28902a3c3e703ad93ed890a",
+    "research/balloon-red-blue-20261008/window2-retraining-20261011.json": "046c467fcb0146eb38548b6324af89c0885e6750b7556e7ab7bcdff4119acb48",
+    "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+    "runs/blue-head-only-background-20261011/proposal.fp32.tflite": "1b8123826bae8e81cd933f8c5d7705bb540e0be1eb3135d67c695298450f79a3",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_window2_scene_search.py": "65657cb7ed9b9b442232adb19d9cb80b4b7f24f7f8c4b2059e5183959826697c",
+    "scripts/window2_scene_labels.py": "645d599dc30df826a64e355e93b4ddeff517a1c67ae9a924541bc1a3622d03b1",
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_blue_peak_blend.py": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+    "scripts/research_confident_containment.py": "7afa7104a86a928ade2295c92933b8fc759f5c810d5e8f1f59d77b7e6b2e3c0d",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "scripts/diagnose_clutter_round3_feature.py": "922197a6179f751e9d73a0dedc7405691ffe1f32d28bee08d9df4e01357e6483",
+    "scripts/audit_balloon_pipeline_errors.py": "5e00e9888e400acbc8867e6e35e2fe1183689b6349901556fa5e613ba4e73deb",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/artifacts/balloon-regions-mac-20261008/regions.so": "483f0bd54705de1c9a8e55bbac0d892a72efe631771fad96137b0752cf60f54c"
+  },
+  "models_sha256": {
+    "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+    "runs/window2-retraining-control-seed47-20261011/student.keras": "2a82d8c6677ca0cad922af7e455221616b370b75adb1189ef261780dc8fd3c04",
+    "runs/window2-retraining-control-seed48-20261011/student.keras": "0174993045183b1e18eae5306f60f0799a315fa6e47a694bebc21495a4b7ec71",
+    "runs/window2-retraining-admit-seed47-20261011/student.keras": "a309f87475328b3a32f94ab685c191cfc00e060cb9e24aab505b3e0cf0d44322",
+    "runs/window2-retraining-admit-seed48-20261011/student.keras": "ad8799b6f7b9801489375e73a6847cc3ba54013cab0d53cede4bea54997a3d97"
+  },
+  "scope": "12 previously admitted public TRAIN photos,29 manually reviewed red/blue targets. Parent full-frame search plus fixed-proposal classifier replay for four already-rejected retraining arms. Diagnostic only: does NOT override failed previous gates. No new export, DEV, reserved-test or hardware execution. Assistant labels require independent review for qualification.",
+  "decision": "Retain failed model status; use TRAIN error attribution to choose the next intervention.",
+  "training_performed": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
