@@ -1,0 +1,279 @@
+{
+  "results": {
+    "control47": {
+      "run": "runs/scene-teacher-supervision-reviewed-seed47-20261011",
+      "model_sha256": "b7372905dcf031911a54040a17af61c353f9e742e563c147fa4f4053b85f9e57",
+      "report_sha256": "3b842eeb51d71a988022bedb6587e82c69f11cbf292e4be42a5e74fb37388b12",
+      "provenance_sha256": "b49bfe7352d3645761d5eb7c100a1157502f2848d4857cf22cb3913b5cd2821d",
+      "predictions_sha256": "3db4e4d98b58eecfab50ce12d963677cf050701abea994e0c8b2442157ab2532",
+      "epochs_sha256": "21d6baf233f9a6a937b957f7a1bac6fbc4b8b6b5e0a02ff3ecd5484c566c790c",
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 8,
+          "fn": 5,
+          "precision": 0.9207920792079208,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -1,
+            "fp": -2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "review_correct": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "training_scene_gate_pass": false,
+      "lost_old_crops": 2
+    },
+    "control48": {
+      "run": "runs/scene-teacher-supervision-reviewed-seed48-20261011",
+      "model_sha256": "6deb8810a72861f621bdc8a5ae5acc8062bba8fc048c9074bfccebc06ce837a9",
+      "report_sha256": "b07a212acb7a3c841872e13fafb6bb584210ad16255920f49ebd45472f87aee0",
+      "provenance_sha256": "dfe520ec6b3eeabdd6dbfb61720ec25e9206bbb44b36b2c6e76d259f0e72485a",
+      "predictions_sha256": "b4b4b27f4c9e9ec250621148b24227199c551147c9a37c4c459a9b180cbd457c",
+      "epochs_sha256": "84d5def483b078271313ebc973f4736bceba514bfda36a8bbb51180dd927d821",
+      "metrics": {
+        "red_balloon": {
+          "tp": 93,
+          "fp": 8,
+          "fn": 5,
+          "precision": 0.9207920792079208,
+          "recall": 0.9489795918367347
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -1,
+            "fp": -2,
+            "fn": 1
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "review_correct": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "training_scene_gate_pass": false,
+      "lost_old_crops": 2
+    },
+    "decision47": {
+      "run": "runs/scene-decision-retention-decision-seed47-20261011",
+      "model_sha256": "ac418a01deeeb00887acdfcc89d75177b872e6b5a4653f5c275a64a02327ad80",
+      "report_sha256": "ae71b88ea15f0c65f999b123de143d1433b483e3853eb5e82c8347f80a2af1fc",
+      "provenance_sha256": "1b7b8a312732a08aecec0e3cf7bba7e9b2d6df56f7aacf28dc6b9a0dbfafe430",
+      "predictions_sha256": "fcaa109bd75fbc3b64cde5c07499fe664578e88616837934feebdfa83642fee9",
+      "epochs_sha256": "1234a5f17b5ac84e9092ce13ec95953d542e092c50a7d2da8ea7bca5f01d65fb",
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 7,
+          "fn": 4,
+          "precision": 0.9306930693069307,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "review_correct": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "training_scene_gate_pass": true,
+      "lost_old_crops": 3
+    },
+    "decision48": {
+      "run": "runs/scene-decision-retention-decision-seed48-20261011",
+      "model_sha256": "66ff4936e2b3acf4b6f53f4a46d19b1188ab2b9ec5084165b7479dfa286e9c38",
+      "report_sha256": "f92153248747d8da6870cd9380491359d0e18140bdefbb8646ca9481b09e3b4f",
+      "provenance_sha256": "fd87ceaef4d913c2cd862221d2c1e4524a31767365b3888cd0b4bc10ecc9d297",
+      "predictions_sha256": "80c7565e59029cad29c3c06a03623d9a3e9e1c270101ae04d6727f5ce1a22b66",
+      "epochs_sha256": "3af06a39b18ddd014b1da816b07eb87f71df6f15e198726c78e07eaff093db52",
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 7,
+          "fn": 4,
+          "precision": 0.9306930693069307,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": -3,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "review_correct": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "training_scene_gate_pass": true,
+      "lost_old_crops": 3
+    }
+  },
+  "protocol_sha256": "36cbfa1c279d07e922ed1d1d4130ca336a5b3cb07a216084e93d9f5d9dbc61bd",
+  "review_sha256": "09c6c82b494fc7adeee4783fd8bc4551eacbe7f6ada4f33160f9a538ed38fc10",
+  "script_sha256": "9b18d2e24bc659bf218cce4eb9c44f27ab34aa317cdf7779fe85c9bd3800877b",
+  "raw": {
+    "path": "runs/scene-decision-retention-scenes-20261011.json",
+    "sha256": "a85a4b6cf27011638513cf48312c84025960502090d0ea01190395f59eee91a6"
+  },
+  "eligible_for_export_and_development": true,
+  "decision": "Eligible for export parity and repeatedDEV, not deployment.",
+  "scope": "Original-crop matched experiment. Reused controls verified against exact recipe, tensors and source identities. TRAIN scene counts only, no independent qualification.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

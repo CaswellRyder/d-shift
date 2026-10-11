@@ -1,0 +1,18 @@
+{
+  "arms": ["control", "decision"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "optimizer_steps": 12560,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "weight": 8,
+  "threshold": 0.8,
+  "accepted_cap": 0.85,
+  "rejected_floor": 0.79,
+  "recipe": "Same original2511TRAIN crops and10explicit corrections, parent and fresh80epoch Adam schedule as scene-teacher-supervision. Replace only375unreviewed scene losses: original accepted class gets squared lower log-odds hinge at min(parent odds,odds0.85); original rejected proposals get squared upper hinges for both foreground classes at max(parent odds,odds0.79). Weight8. Zero at teacher, no exact-confidence imitation inside allowed decision region. Corrections keep4xCE and other2126rows unchanged. Reuse prior reviewed47/48 as controls only after verifying exact tensors/targets/schedule.",
+  "gate": "Both decision seeds must retain all parent-detected TRAIN targets, not increase per-color false positives or13negative-probe false accepts; then separate export and repeatedDEV. No threshold sweep, perfect-crop forcing, independent qualification or deployment claim. Final94percent per-color precision AND recall and livePi remain required.",
+  "scope": "TRAIN-only loss ablation, same inference graph. No IMG-family fitting or reserved test.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
