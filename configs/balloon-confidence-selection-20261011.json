@@ -1,0 +1,13 @@
+{
+  "policies": ["current", "confidence"],
+  "localizers": ["parent", "background47"],
+  "training_frames": 64,
+  "classifier_threshold": 0.8,
+  "matching_iou": 0.5,
+  "extra_blue_proposals": 2,
+  "max_proposals": 12,
+  "design": "One fixed hypothesis motivated by inspected development suppression errors: confidence-first duplicate selection for balloons. Same existing concentric containment thresholds and IoU0.5, unchanged split-merged and confirmed-part passes. No confidence/geometry threshold sweep. Screen64 complete TRAIN scenes, then report every declared variant on all three repeatedly used development panels, including regressions. No model training or goal-policy change.",
+  "independent_qualification": false,
+  "deployment_approved": false,
+  "pi_tested": false
+}
