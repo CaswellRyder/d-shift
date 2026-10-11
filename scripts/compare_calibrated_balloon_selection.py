@@ -8,11 +8,9 @@ import math
 from pathlib import Path
 
 from dtr.data import read_json, sha256, write_json
-from dtr.vision import suppress_duplicates
 from scripts.audit_balloon_pipeline_errors import audit
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_balloon_search_bench import select_detections
-from scripts.research_balloon_search import split_merged_balloon_parents, suppress_confirmed_balloon_parts
 
 
 SELECTION_KEYS = ("accepted", "raw_accepted", "suppressed", "suppressed_by",
@@ -33,9 +31,7 @@ def raw_candidates(rows):
 def calibrated_selection(rows, max_aspect):
     if not math.isfinite(max_aspect) or not 1.5 <= max_aspect <= 3.:
         raise ValueError("Calibrated aspect bound is outside candidate geometry")
-    selected = suppress_duplicates(rows)
-    selected = split_merged_balloon_parents(selected, max_aspect=max_aspect)
-    return suppress_confirmed_balloon_parts(selected)
+    return select_detections(rows, "split_merged", max_aspect)
 
 
 def compare(report_path, calibration_path, queue, review):

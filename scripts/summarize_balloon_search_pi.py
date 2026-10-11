@@ -8,22 +8,20 @@ from pathlib import Path
 from dtr.data import read_json, sha256, write_json
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_red_blue_bench import statistics
-from scripts.pi_balloon_search_bench import check_predictions
+from scripts.pi_balloon_search_bench import check_predictions, golden_key, validate_selection
 from scripts.audit_balloon_scene_errors import attribute
 
 
 def group_key(report):
     selection = report.get("selection", "parts")
-    if selection not in ("parts", "split_merged", "split_oversized"):
-        raise ValueError("Unknown trial selection policy")
-    return report["model"], report["search"], selection
+    aspect = report.get("split_max_aspect", 1.5)
+    validate_selection(selection, aspect)
+    return report["model"], report["search"], selection, aspect
 
 
 def verify_golden_policy(report, rows, golden):
-    model, search, selection = group_key(report)
-    key = "mser" if search in ("mser_fast", "mser_direct") else search
-    if selection != "parts":
-        key += "_" + selection
+    model, search, selection, aspect = group_key(report)
+    key = golden_key(search, selection, aspect)
     if report.get("golden_search") != key:
         raise ValueError("Trial golden does not match selection policy")
     expected = golden[model][key]
@@ -117,7 +115,7 @@ def summarize(base, results):
     if not runs:
         raise ValueError("No completed trials")
     pooled = {}
-    for (model, search, selection), trials in groups.items():
+    for (model, search, selection, aspect), trials in groups.items():
         names = [name for name, _ in trials]
         values = [r["processing_ms"] for _, rows in trials for r in rows]
         if any(
@@ -126,8 +124,11 @@ def summarize(base, results):
         ):
             raise ValueError("Repeated trials changed scene metrics")
         key = model + ":" + search + (":" + selection if selection != "parts" else "")
+        if aspect != 1.5:
+            key += ":aspect=" + str(float(aspect))
         pooled[key] = dict(
             selection=selection,
+            split_max_aspect=aspect,
             trials=names,
             timing_samples=len(values),
             timing=statistics(values),

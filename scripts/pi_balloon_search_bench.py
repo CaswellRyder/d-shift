@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -29,20 +30,36 @@ except ModuleNotFoundError:
 SELECTIONS = ("parts", "split_merged", "split_oversized")
 
 
-def select_detections(found, selection="parts"):
+def validate_selection(selection, split_max_aspect=1.5):
     if selection not in SELECTIONS:
         raise ValueError("Unsupported selection policy")
+    if (not math.isfinite(split_max_aspect) or not 1.5 <= split_max_aspect <= 3.
+            or (selection == "parts" and split_max_aspect != 1.5)):
+        raise ValueError("Unsupported split aspect bound for selection")
+
+
+def golden_key(search, selection, split_max_aspect=1.5):
+    validate_selection(selection, split_max_aspect)
+    key = "mser" if search in ("mser_fast", "mser_direct") else search
+    if selection != "parts":
+        key += "_" + selection
+    if split_max_aspect != 1.5:
+        key += "_aspect_" + str(float(split_max_aspect))
+    return key
+
+
+def select_detections(found, selection="parts", split_max_aspect=1.5):
+    validate_selection(selection, split_max_aspect)
     rows = suppress_duplicates(found)
     if selection != "parts":
-        rows = split_merged_balloon_parents(rows)
+        rows = split_merged_balloon_parents(rows, max_aspect=split_max_aspect)
     if selection == "split_oversized":
         rows = replace_oversized_balloon_parents(rows)
     return suppress_confirmed_balloon_parts(rows)
 
 
-def process_frame(rgb, predictor, search, native=None, selection="parts"):
-    if selection not in SELECTIONS:
-        raise ValueError("Unsupported selection policy")
+def process_frame(rgb, predictor, search, native=None, selection="parts", split_max_aspect=1.5):
+    validate_selection(selection, split_max_aspect)
     if search not in ("baseline", "mser", "mser_fast", "mser_direct", "mser_bright"):
         raise ValueError("Unsupported search")
     if search in ("mser_fast", "mser_direct", "mser_bright"):
@@ -67,7 +84,7 @@ def process_frame(rgb, predictor, search, native=None, selection="parts"):
             dict(proposal, **{k: pred[k] for k in ("label", "scores", "score", "accepted")})
         )
     inferred = time.perf_counter()
-    detections = select_detections(found, selection)
+    detections = select_detections(found, selection, split_max_aspect)
     done = time.perf_counter()
     return dict(
         detections=detections,
@@ -116,9 +133,12 @@ def main():
     parser.add_argument("--region-library")
     parser.add_argument("--selection", choices=SELECTIONS, default="parts",
                         help="Research selection policy; default preserves existing behavior")
+    parser.add_argument("--split-max-aspect", type=float, default=1.5,
+                        help="Explicit research override; requires policy-specific host goldens")
     parser.add_argument("--rounds", type=int, default=2)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
+    validate_selection(args.selection, args.split_max_aspect)
     if not 1 <= args.rounds <= 10:
         parser.error("Require 1..10 complete replay rounds")
     root, out = Path(args.base).resolve(), Path(args.output)
@@ -146,9 +166,7 @@ def main():
     inputs = read_json(root / "inputs.json")
     # Exact optimizations use old goldens. Bright-only is a CHANGED policy with
     # its own host golden; passing that check does not mean parity with old MSER.
-    golden_search = "mser" if args.search in ("mser_fast", "mser_direct") else args.search
-    if args.selection != "parts":
-        golden_search += "_" + args.selection
+    golden_search = golden_key(args.search, args.selection, args.split_max_aspect)
     golden = read_json(root / "search-golden.json")[args.model][golden_search]
     records = inputs["frames"]
     if not records or len(golden) != len(records):
@@ -159,7 +177,7 @@ def main():
     max_delta = 0.0
     before = health()
     for rgb, expected in zip(images, golden):
-        observed = process_frame(rgb, predictor, args.search, native, args.selection)
+        observed = process_frame(rgb, predictor, args.search, native, args.selection, args.split_max_aspect)
         max_delta = max(
             max_delta, check_predictions(observed["detections"], expected["detections"])
         )
@@ -169,7 +187,7 @@ def main():
     started = time.perf_counter()
     for repeat in range(args.rounds):
         for index, (rgb, frame) in enumerate(zip(images, records)):
-            observed = process_frame(rgb, predictor, args.search, native, args.selection)
+            observed = process_frame(rgb, predictor, args.search, native, args.selection, args.split_max_aspect)
             max_delta = max(
                 max_delta, check_predictions(observed["detections"], golden[index]["detections"])
             )
@@ -188,6 +206,7 @@ def main():
         model=args.model,
         search=args.search,
         selection=args.selection,
+        split_max_aspect=args.split_max_aspect,
         machine=platform.machine(),
         host=platform.node(),
         opencv=cv2.__version__,

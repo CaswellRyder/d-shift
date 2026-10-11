@@ -4,7 +4,8 @@ import pytest
 
 from scripts.calibrate_balloon_split_geometry import calibrate
 from scripts.compare_calibrated_balloon_selection import calibrated_selection, raw_candidates
-from scripts.pi_balloon_search_bench import select_detections
+from scripts.pi_balloon_search_bench import golden_key, select_detections
+from scripts.summarize_balloon_search_pi import group_key, verify_golden_policy
 
 
 def training(box, source="train/approved.jpg"):
@@ -63,3 +64,15 @@ def test_invalid_calibration_bound_fails_closed(value):
 def test_missing_raw_acceptance_is_not_guessed():
     with pytest.raises(ValueError, match="Raw acceptance"):
         raw_candidates([candidate([0,0,10,10])])
+
+
+def test_pi_goldens_and_trial_groups_bind_the_calibrated_aspect():
+    baseline = dict(model="student", search="mser_direct", selection="split_merged")
+    changed = dict(baseline, split_max_aspect=2.4)
+    assert group_key(baseline) != group_key(changed)
+    assert golden_key("mser_direct", "split_merged") == "mser_split_merged"
+    assert golden_key("mser_direct", "split_merged", 2.4) == "mser_split_merged_aspect_2.4"
+    with pytest.raises(ValueError, match="selection policy"):
+        verify_golden_policy(dict(changed, golden_search="mser_split_merged"), [], {})
+    with pytest.raises(ValueError, match="aspect bound"):
+        select_detections([], "parts", 2.4)
