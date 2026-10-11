@@ -3,7 +3,10 @@ import numpy as np
 import pytest
 
 from dtr.tracking import iou
-from scripts.research_balloon_search import blue_core_candidates, blue_radial_candidates, experimental
+from scripts.research_balloon_search import (
+    blue_core_candidates, blue_radial_candidates, blue_ellipse_candidates,
+    ellipse_core_box, experimental,
+)
 
 
 def scene():
@@ -92,3 +95,44 @@ def test_radial_supplement_keeps_baseline_and_clips_border_boxes():
 def test_invalid_core_geometry_rejected():
     with pytest.raises(ValueError, match="core geometry"):
         blue_core_candidates(scene(), "unknown")
+
+
+@pytest.mark.parametrize("angle", [0,30,60,90,135])
+def test_robust_ellipse_localizes_rotated_oval(angle):
+    rgb = scene()
+    cv2.ellipse(rgb, (120,110), (55,22), angle, 0, 360, (10,20,220), -1)
+    x,y,w,h = cv2.boundingRect((rgb[:,:,2] > 200).astype(np.uint8))
+    found = blue_ellipse_candidates(rgb)
+    assert found and max(iou(r["box"],[x,y,x+w,y+h]) for r in found) > .8
+    assert all(r["proposal_source"] == "blue_ellipse_core" for r in found)
+
+
+def test_robust_ellipse_handles_thin_bridge():
+    rgb = scene()
+    cv2.circle(rgb, (80,100), 30, (10,20,220), -1)
+    cv2.circle(rgb, (160,100), 30, (10,20,220), -1)
+    cv2.rectangle(rgb, (100,96), (140,104), (10,20,220), -1)
+    for target in ([50,70,111,131], [130,70,191,131]):
+        assert max(iou(r["box"],target) for r in blue_ellipse_candidates(rgb)) > .8
+
+
+def test_ellipse_clips_border_and_preserves_baseline_budget():
+    rgb = scene()
+    cv2.ellipse(rgb, (10,5), (30,18), 35, 0, 360, (10,20,220), -1)
+    base, result = experimental(rgb, "mser"), experimental(rgb, "mser_blue_ellipse")
+    assert result[:len(base)] == base and len(result) <= min(12,len(base)+2)
+    for row in result:
+        for key in ("box", "crop_box"):
+            x,y,z,w = row[key]
+            assert 0 <= x < z <= 320 and 0 <= y < w <= 240
+
+
+def test_ellipse_invalid_fit_falls_back_without_crashing():
+    mask = np.zeros((242,322),np.uint8)
+    assert ellipse_core_box(mask, 100,100,10) == (87,87,114,114)
+
+
+def test_ellipse_ignores_neutral_frame_and_rejects_wrong_shape():
+    assert blue_ellipse_candidates(scene()) == []
+    with pytest.raises(ValueError, match="320x240"):
+        experimental(np.zeros((480,640,3),np.uint8), "mser_blue_ellipse")

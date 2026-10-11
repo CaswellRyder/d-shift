@@ -39,7 +39,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("manifest", "original-archive", "queue", "review", "indoor-archive", "output"):
         p.add_argument(f"--{name}", required=True, type=Path)
-    p.add_argument("--variant", action="append", choices=("mser", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial"))
+    p.add_argument("--variant", action="append", choices=("mser", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial", "mser_blue_ellipse"))
     a = p.parse_args()
     if a.output.exists():
         raise FileExistsError(a.output)

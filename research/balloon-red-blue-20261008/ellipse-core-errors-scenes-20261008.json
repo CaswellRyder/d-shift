@@ -1,0 +1,1651 @@
+{
+  "scope": "Frozen development error attribution; oracle uses truth, not deployable inference",
+  "script_sha256": "5e00e9888e400acbc8867e6e35e2fe1183689b6349901556fa5e613ba4e73deb",
+  "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+  "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e",
+  "reports": [
+    {
+      "path": "research/balloon-red-blue-20261008/ellipse-core-scenes-20261008.json",
+      "sha256": "6c8e02536ae57b2c7d7aacf97ced7bd3e4cc6d4aa42246be2f0f7419a01c10b4",
+      "selection": "split_merged",
+      "results": {
+        "baseline": {
+          "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+          "variants": {
+            "mser_confirmed_parts": {
+              "metrics": {
+                "red_balloon": {
+                  "tp": 11,
+                  "fp": 1,
+                  "fn": 0,
+                  "precision": 0.9166666666666666,
+                  "recall": 1.0
+                },
+                "blue_balloon": {
+                  "tp": 9,
+                  "fp": 3,
+                  "fn": 3,
+                  "precision": 0.75,
+                  "recall": 0.75
+                }
+              },
+              "errors": {
+                "red_balloon": {
+                  "false_positives": {
+                    "little_or_no_annotated_overlap": 1
+                  },
+                  "false_negatives": {}
+                },
+                "blue_balloon": {
+                  "false_positives": {
+                    "localization_overlap": 1,
+                    "little_or_no_annotated_overlap": 2
+                  },
+                  "false_negatives": {
+                    "no_localized_proposal": 2,
+                    "different_predicted_class": 1
+                  }
+                }
+              },
+              "truth_count": 23,
+              "matched_upper_bounds": {
+                "geometry_oracle": 21,
+                "raw_classified": 20,
+                "selected_classified": 20
+              },
+              "frames": [
+                {
+                  "id": 0,
+                  "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 1,
+                  "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 2,
+                  "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 2,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 3,
+                    "selected_classified": 3
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 3,
+                  "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 1
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "localization_overlap",
+                      "same_color_iou": 0.3603894812630713,
+                      "other_color_iou": 0.013314318782228577
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "no_localized_proposal",
+                      "best_proposal_iou": 0.3603894812630713
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 5,
+                  "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 5,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 6,
+                  "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 2
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "red_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 0,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.9284012284335228
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "no_localized_proposal",
+                      "best_proposal_iou": 0.02083146269192781
+                    }
+                  ]
+                },
+                {
+                  "id": 8,
+                  "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 11,
+                  "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 4,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 3,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 7,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 7,
+                    "raw_classified": 7,
+                    "selected_classified": 7
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 12,
+                  "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 13,
+                  "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 14,
+                  "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                }
+              ]
+            },
+            "mser_blue_cores": {
+              "metrics": {
+                "red_balloon": {
+                  "tp": 11,
+                  "fp": 1,
+                  "fn": 0,
+                  "precision": 0.9166666666666666,
+                  "recall": 1.0
+                },
+                "blue_balloon": {
+                  "tp": 9,
+                  "fp": 8,
+                  "fn": 3,
+                  "precision": 0.5294117647058824,
+                  "recall": 0.75
+                }
+              },
+              "errors": {
+                "red_balloon": {
+                  "false_positives": {
+                    "little_or_no_annotated_overlap": 1
+                  },
+                  "false_negatives": {}
+                },
+                "blue_balloon": {
+                  "false_positives": {
+                    "localization_overlap": 1,
+                    "little_or_no_annotated_overlap": 7
+                  },
+                  "false_negatives": {
+                    "suppressed": 1,
+                    "different_predicted_class": 2
+                  }
+                }
+              },
+              "truth_count": 23,
+              "matched_upper_bounds": {
+                "geometry_oracle": 23,
+                "raw_classified": 21,
+                "selected_classified": 20
+              },
+              "frames": [
+                {
+                  "id": 0,
+                  "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 1,
+                  "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 2,
+                  "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 2,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 3,
+                    "selected_classified": 3
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 3,
+                  "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 4,
+                  "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 1
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 5,
+                      "label": "blue_balloon",
+                      "reason": "localization_overlap",
+                      "same_color_iou": 0.49926116056591524,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "suppressed",
+                      "best_proposal_iou": 0.9041737279785599
+                    }
+                  ]
+                },
+                {
+                  "id": 5,
+                  "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 5,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 6,
+                  "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 2
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "red_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 0,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.9284012284335228
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.7582921348314606
+                    }
+                  ]
+                },
+                {
+                  "id": 8,
+                  "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 11,
+                  "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 4,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 3,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 7,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 7,
+                    "raw_classified": 7,
+                    "selected_classified": 7
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 12,
+                  "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 13,
+                  "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 14,
+                  "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 3,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                }
+              ]
+            },
+            "mser_blue_radial": {
+              "metrics": {
+                "red_balloon": {
+                  "tp": 11,
+                  "fp": 1,
+                  "fn": 0,
+                  "precision": 0.9166666666666666,
+                  "recall": 1.0
+                },
+                "blue_balloon": {
+                  "tp": 9,
+                  "fp": 5,
+                  "fn": 3,
+                  "precision": 0.6428571428571429,
+                  "recall": 0.75
+                }
+              },
+              "errors": {
+                "red_balloon": {
+                  "false_positives": {
+                    "little_or_no_annotated_overlap": 1
+                  },
+                  "false_negatives": {}
+                },
+                "blue_balloon": {
+                  "false_positives": {
+                    "localization_overlap": 1,
+                    "little_or_no_annotated_overlap": 4
+                  },
+                  "false_negatives": {
+                    "no_localized_proposal": 1,
+                    "different_predicted_class": 2
+                  }
+                }
+              },
+              "truth_count": 23,
+              "matched_upper_bounds": {
+                "geometry_oracle": 22,
+                "raw_classified": 20,
+                "selected_classified": 20
+              },
+              "frames": [
+                {
+                  "id": 0,
+                  "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 1,
+                  "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 2,
+                  "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 2,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 3,
+                    "selected_classified": 3
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 3,
+                  "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 1
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "localization_overlap",
+                      "same_color_iou": 0.3603894812630713,
+                      "other_color_iou": 0.013314318782228577
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "no_localized_proposal",
+                      "best_proposal_iou": 0.3603894812630713
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 5,
+                  "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 5,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 6,
+                  "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 2
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "red_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 0,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.9284012284335228
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.8376
+                    }
+                  ]
+                },
+                {
+                  "id": 8,
+                  "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 11,
+                  "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 4,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 3,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 7,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 7,
+                    "raw_classified": 7,
+                    "selected_classified": 7
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 12,
+                  "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 13,
+                  "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 14,
+                  "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                }
+              ]
+            },
+            "mser_blue_ellipse": {
+              "metrics": {
+                "red_balloon": {
+                  "tp": 11,
+                  "fp": 1,
+                  "fn": 0,
+                  "precision": 0.9166666666666666,
+                  "recall": 1.0
+                },
+                "blue_balloon": {
+                  "tp": 9,
+                  "fp": 8,
+                  "fn": 3,
+                  "precision": 0.5294117647058824,
+                  "recall": 0.75
+                }
+              },
+              "errors": {
+                "red_balloon": {
+                  "false_positives": {
+                    "little_or_no_annotated_overlap": 1
+                  },
+                  "false_negatives": {}
+                },
+                "blue_balloon": {
+                  "false_positives": {
+                    "little_or_no_annotated_overlap": 7,
+                    "localization_overlap": 1
+                  },
+                  "false_negatives": {
+                    "no_localized_proposal": 1,
+                    "different_predicted_class": 2
+                  }
+                }
+              },
+              "truth_count": 23,
+              "matched_upper_bounds": {
+                "geometry_oracle": 22,
+                "raw_classified": 20,
+                "selected_classified": 20
+              },
+              "frames": [
+                {
+                  "id": 0,
+                  "source": "IMG_5110_JPG.rf.b1bad14677cff2c91e7ffac146601c44.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 1,
+                  "source": "IMG_5127_JPG.rf.447a2888908519b035415bd7ef23a64d.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 2,
+                  "source": "IMG_5148_JPG.rf.aa7da2ab0e045c53045e2f97899a2ee9.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 2,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 3,
+                    "selected_classified": 3
+                  },
+                  "false_positives": [
+                    {
+                      "index": 3,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.014284094773835167,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 3,
+                  "source": "IMG_5170_JPG.rf.c41af12346774f3dcc524b11c64eeb2c.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 1
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "localization_overlap",
+                      "same_color_iou": 0.3603894812630713,
+                      "other_color_iou": 0.013314318782228577
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "no_localized_proposal",
+                      "best_proposal_iou": 0.3603894812630713
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "source": "IMG_5180_JPG.rf.ea1ca44870c94625e73172b958601a85.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 5,
+                  "source": "IMG_5217_JPG.rf.ff5ad6c557f7a3aba5c8ca7c86a19bb6.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 1,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 1,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 5,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 6,
+                  "source": "IMG_5230_JPG.rf.ef306c3683be7a03d8426203c2a96994.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 1,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 2
+                    }
+                  },
+                  "truth_count": 3,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 3,
+                    "raw_classified": 1,
+                    "selected_classified": 1
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "red_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": [
+                    {
+                      "index": 0,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.9284012284335228
+                    },
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "different_predicted_class",
+                      "best_proposal_iou": 0.7931503560854605
+                    }
+                  ]
+                },
+                {
+                  "id": 8,
+                  "source": "IMG_5279_JPG.rf.c89e8e48485221f8a81ae127b4b6c1da.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 1,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 2,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 2,
+                    "raw_classified": 2,
+                    "selected_classified": 2
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 11,
+                  "source": "IMG_5432_jpg.rf.23d2fefdff500fc71f7af3c3ac9cdd8b.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 4,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 3,
+                      "fp": 0,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 7,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 7,
+                    "raw_classified": 7,
+                    "selected_classified": 7
+                  },
+                  "false_positives": [],
+                  "false_negatives": []
+                },
+                {
+                  "id": 12,
+                  "source": "IMG_6100_00113_jpg.rf.91ec1dfd69fcf95d756b44f1d9446109.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 13,
+                  "source": "IMG_6113_00161_jpg.rf.ae11bf85c04d6bbb0760edc16fdbf7d3.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 2,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 2,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    },
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                },
+                {
+                  "id": 14,
+                  "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+                  "counts": {
+                    "red_balloon": {
+                      "tp": 0,
+                      "fp": 0,
+                      "fn": 0
+                    },
+                    "blue_balloon": {
+                      "tp": 0,
+                      "fp": 1,
+                      "fn": 0
+                    }
+                  },
+                  "truth_count": 0,
+                  "matched_upper_bounds": {
+                    "geometry_oracle": 0,
+                    "raw_classified": 0,
+                    "selected_classified": 0
+                  },
+                  "false_positives": [
+                    {
+                      "index": 1,
+                      "label": "blue_balloon",
+                      "reason": "little_or_no_annotated_overlap",
+                      "same_color_iou": 0.0,
+                      "other_color_iou": 0.0
+                    }
+                  ],
+                  "false_negatives": []
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "independent_recording_sessions_verified": false,
+  "pi_timing_measured": false,
+  "training_performed": false
+}

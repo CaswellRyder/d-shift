@@ -65,7 +65,7 @@ def evaluate(root, review_path, models, search_variants=("baseline", "mser_confi
     if selection not in SELECTIONS:
         raise ValueError("Unknown selection policy")
     validate_selection(selection, split_max_aspect)
-    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial") for v in search_variants):
+    if not search_variants or any(v not in ("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial", "mser_blue_ellipse") for v in search_variants):
         raise ValueError("Unknown or empty search variants")
     frames, review = reviewed_frames(root, review_path)
     if review["threshold"] != .8 or review["matching_iou"] != .5:
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     parser.add_argument("--review", required=True)
     parser.add_argument("--model", action="append", required=True, help="name=path (.keras teacher or .tflite student)")
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial"))
+    parser.add_argument("--variant", action="append", choices=("baseline", "mser_confirmed_parts", "mser_chromatic", "mser_blue_red", "mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial", "mser_blue_ellipse"))
     parser.add_argument("--selection", choices=SELECTIONS, default="parts")
     parser.add_argument("--split-max-aspect", type=float, default=1.5)
     args = parser.parse_args()

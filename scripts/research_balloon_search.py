@@ -272,14 +272,8 @@ def opening_split_candidates(rgb):
     return select(pool)
 
 
-def radial_core_box(mask, x, y, radius):
-    """Bounded, rotation-independent boundary estimate; no semantic decision.
-
-    Trace 32 rays from an inscribed center up to three radii. A circular
-    five-ray median removes narrow branches before taking axis-aligned bounds.
-    All constants are fixed research geometry, not development-set calibration.
-    The mask has a one-pixel border around 320x240 processing coordinates.
-    """
+def core_rays(mask, x, y, radius):
+    """Trace the same bounded 32 rays for all research boundary hypotheses."""
     angles = np.arange(32)*2*np.pi/32
     directions = np.column_stack((np.cos(angles), np.sin(angles)))
     steps = np.arange(int(np.ceil(3*radius))+1)
@@ -288,10 +282,56 @@ def radial_core_box(mask, x, y, radius):
     inside = (xs >= 0) & (xs < 320) & (ys >= 0) & (ys < 240)
     occupied = inside & (mask[np.clip(ys,0,239)+1, np.clip(xs,0,319)+1] != 0)
     stops = np.where((~occupied).any(axis=1), (~occupied).argmax(axis=1), len(steps))
-    lengths = np.maximum(stops-1,0)
+    return directions, np.maximum(stops-1,0)
+
+
+def radial_core_box(mask, x, y, radius):
+    """Bounded, rotation-independent boundary estimate; no semantic decision.
+
+    Trace 32 rays from an inscribed center up to three radii. A circular
+    five-ray median removes narrow branches before taking axis-aligned bounds.
+    All constants are fixed research geometry, not development-set calibration.
+    The mask has a one-pixel border around 320x240 processing coordinates.
+    """
+    directions, lengths = core_rays(mask, x, y, radius)
     lengths = np.median(np.stack([np.roll(lengths,k) for k in range(-2,3)]), axis=0)
     boundary = np.array([x,y])+directions*lengths[:,None]
     low, high = np.floor(boundary.min(axis=0)).astype(int), np.ceil(boundary.max(axis=0)).astype(int)+1
+    return max(0,int(low[0])), max(0,int(low[1])), min(320,int(high[0])), min(240,int(high[1]))
+
+
+def ellipse_core_box(mask, x, y, radius):
+    """Robust centered ellipse fitted to radial boundaries, research only.
+
+    Inverse squared ray lengths are linear in the three ellipse coefficients.
+    Three fixed least-trimmed-square refits retain 24/32 rays to discount narrow
+    clutter branches. No labels or classifier scores choose the fit. Invalid,
+    very elongated or unbounded ellipses fall back to the square hypothesis.
+    """
+    extent = int(np.ceil(1.25*radius))
+    fallback = max(0,x-extent), max(0,y-extent), min(320,x+extent+1), min(240,y+extent+1)
+    directions, lengths = core_rays(mask, x, y, radius)
+    # Normalize by radius to keep the linear system well-scaled at all sizes.
+    u, v = directions.T
+    design = np.column_stack((u*u, 2*u*v, v*v))
+    target = (radius / np.maximum(lengths, 1))**2
+    keep = np.arange(32)
+    coefficients = None
+    for _ in range(4):
+        coefficients = np.linalg.lstsq(design[keep], target[keep], rcond=None)[0]
+        residual = np.abs(design @ coefficients - target)
+        keep = np.argsort(residual, kind="stable")[:24]
+    a, b, c = coefficients
+    matrix = np.array([[a,b],[b,c]])
+    eigenvalues = np.linalg.eigvalsh(matrix)
+    if (not np.isfinite(eigenvalues).all() or eigenvalues[0] <= 0
+            or eigenvalues[-1]/eigenvalues[0] > 9):
+        return fallback
+    extents = radius*np.sqrt(np.diag(np.linalg.inv(matrix)))
+    if not np.isfinite(extents).all() or min(extents) < .5*radius or max(extents) > 3*radius:
+        return fallback
+    low = np.floor(np.array([x,y])-extents).astype(int)
+    high = np.ceil(np.array([x,y])+extents).astype(int)+1
     return max(0,int(low[0])), max(0,int(low[1])), min(320,int(high[0])), min(240,int(high[1]))
 
 
@@ -303,7 +343,7 @@ def blue_core_candidates(rgb, geometry="square"):
     inscribed radius by a fixed 1.25 factor. It is not a balloon decision and must
     still pass the classifier. No development labels or model scores are used.
     """
-    if geometry not in ("square", "radial"):
+    if geometry not in ("square", "radial", "ellipse"):
         raise ValueError("Unknown core geometry")
     plane = cv2.subtract(rgb[:, :, 2], cv2.max(rgb[:, :, 0], rgb[:, :, 1]))
     contours, _ = cv2.findContours(cv2.compare(plane, 15, cv2.CMP_GE),
@@ -329,6 +369,8 @@ def blue_core_candidates(rgb, geometry="square"):
         a, b, c, d = max(0,x-extent), max(0,y-extent), min(320,x+extent+1), min(240,y+extent+1)
         if geometry == "radial":
             a, b, c, d = radial_core_box(mask, x, y, radius)
+        elif geometry == "ellipse":
+            a, b, c, d = ellipse_core_box(mask, x, y, radius)
         w, h = c-a, d-b
         if min(w,h) < 4 or max(w/h,h/w) > 3 or w*h > .75*320*240:
             continue
@@ -338,7 +380,8 @@ def blue_core_candidates(rgb, geometry="square"):
         pad = int(max(w,h)*.12)
         pool.append(dict(box=[a,b,c,d], crop_box=[max(0,a-pad),max(0,b-pad),min(320,c+pad),min(240,d+pad)],
                          area=area, color_group=1, proposal_score=float(np.sqrt(area)*(area/(w*h))**2),
-                         proposal_source="blue_radial_core" if geometry == "radial" else "blue_distance_core",
+                         proposal_source={"square": "blue_distance_core", "radial": "blue_radial_core",
+                                          "ellipse": "blue_ellipse_core"}[geometry],
                          core_radius=radius, core_center=[x,y]))
         accepted.append((radius,x,y))
         if len(pool) >= 16:
@@ -350,12 +393,16 @@ def blue_radial_candidates(rgb):
     return blue_core_candidates(rgb, "radial")
 
 
+def blue_ellipse_candidates(rgb):
+    return blue_core_candidates(rgb, "ellipse")
+
+
 def experimental(rgb, variant):
     if rgb.shape != (240, 320, 3) or rgb.dtype != np.uint8:
         raise ValueError("Experimental search requires 320x240 RGB uint8")
     if variant == "baseline":
         return proposals(rgb, "balloon", limit=12, profile=RED_BLUE_PROFILE)
-    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial"):
+    if variant in ("mser_blue_levels", "mser_instance_split", "mser_opening_split", "mser_blue_cores", "mser_blue_radial", "mser_blue_ellipse"):
         # Preserve every baseline slot; at most four additions, twelve total.
         base = experimental(rgb, "mser")
         additions = 0
@@ -363,8 +410,9 @@ def experimental(rgb, variant):
                       "mser_instance_split": instance_split_candidates,
                       "mser_opening_split": opening_split_candidates,
                       "mser_blue_cores": blue_core_candidates,
-                      "mser_blue_radial": blue_radial_candidates}[variant]
-        limit = 2 if variant in ("mser_blue_cores", "mser_blue_radial") else 4
+                      "mser_blue_radial": blue_radial_candidates,
+                      "mser_blue_ellipse": blue_ellipse_candidates}[variant]
+        limit = 2 if variant in ("mser_blue_cores", "mser_blue_radial", "mser_blue_ellipse") else 4
         for c in supplement(rgb):
             if len(base) >= 12 or additions >= limit:
                 break
