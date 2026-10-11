@@ -33,7 +33,37 @@ def bounded_read(archive, name, limit):
     return archive.read(name)
 
 
-def audit(root, output):
+def original_image_key(filename):
+    """Conservative basename alias for common Roboflow image re-exports.
+
+    A match is grounds to exclude, never evidence of pixel equality. Unmatched
+    images still need content and recording-session checks before admission.
+    """
+    name = PurePosixPath(source_group(filename)).stem
+    return re.sub(r"_(?:jpg|jpeg|png|webp)$", "", name)
+
+
+def excluded_image_keys(exclude_archives):
+    keys, receipts = set(), []
+    for path, expected in exclude_archives:
+        path = Path(path)
+        actual = sha256(path)
+        if not re.fullmatch(r"[0-9a-f]{64}", expected) or actual != expected:
+            raise ValueError("Exclusion archive hash mismatch")
+        with zipfile.ZipFile(path) as archive:
+            # Inspect filenames only. Never decode a reference image to decide
+            # whether a public preview is permitted.
+            members = [n for n in archive.namelist()
+                       if PurePosixPath(n).suffix.lower() in (".jpg", ".jpeg", ".png", ".webp")
+                       and not PurePosixPath(n).name.startswith("._")]
+            for member in members:
+                checked_member(member)
+                keys.add(original_image_key(member))
+        receipts.append(dict(path=str(path), sha256=actual, image_members=len(members)))
+    return keys, receipts
+
+
+def audit(root, output, exclude_archives=()):
     root, output = Path(root), Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -41,6 +71,8 @@ def audit(root, output):
     archive_path = root / "dataset.zip"
     if sha256(archive_path) != receipt["archive_sha256"]:
         raise ValueError("Archive changed")
+    excluded_keys, exclusion_receipts = excluded_image_keys(exclude_archives)
+    excluded_previews = []
     totals, groups, previews = {}, defaultdict(set), []
     rng = np.random.default_rng(20261008)
     with zipfile.ZipFile(archive_path) as archive:
@@ -69,6 +101,9 @@ def audit(root, output):
             for row in images.values():
                 checked_member(row["file_name"])
                 groups[source_group(row["file_name"])].add(split)
+                if original_image_key(row["file_name"]) in excluded_keys:
+                    excluded_previews.append(dict(split=split, file=row["file_name"],
+                                                  reason="known_source_basename_alias"))
             totals[split] = dict(images=len(images), annotations=sum(counts.values()),
                                  classes=categories, class_counts=dict(counts),
                                  without_annotations=sum(i not in by_image for i in images),
@@ -77,7 +112,9 @@ def audit(root, output):
                 continue  # Holdout metadata only; no validation/test pixels opened.
             chosen = set()
             for label in sorted(counts):
-                eligible = [i for i in images if any(a["label"] == label for a in by_image[i])]
+                eligible = [i for i in images
+                            if original_image_key(images[i]["file_name"]) not in excluded_keys
+                            and any(a["label"] == label for a in by_image[i])]
                 rng.shuffle(eligible)
                 chosen.update(eligible[:6])
             for ident in sorted(chosen):
@@ -113,6 +150,9 @@ def audit(root, output):
                   script_sha256=sha256(__file__), split_metadata=totals,
                   cross_split_basename_groups={k:sorted(v) for k,v in groups.items() if len(v)>1},
                   grouping_caveat="Filename heuristic only; no content dedup or verified recording sessions",
+                  exclusion_archives=exclusion_receipts,
+                  known_source_aliases=excluded_previews,
+                  exclusion_scope="Known-source filename aliases excluded before preview; no reference pixels opened. Alias matches do not prove pixel equality.",
                   previews=[dict(id=i, file=row["file_name"], annotations=anns)
                             for i,(row,_,anns) in enumerate(previews)],
                   preview_scope="Training pixels only; upstream valid/test metadata inspected, pixels not opened",
@@ -127,5 +167,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", required=True)
     p.add_argument("--output", required=True)
+    p.add_argument("--exclude-archive", nargs=2, action="append", default=[],
+                   metavar=("PATH", "SHA256"), help="Hash-bound known source; omit matching image names before preview")
     args = p.parse_args()
-    audit(args.root, args.output)
+    audit(args.root, args.output, args.exclude_archive)
