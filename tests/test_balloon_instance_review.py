@@ -87,7 +87,7 @@ def test_mining_skips_rejected_or_background_predictions(label, accepted):
 
 
 @pytest.mark.parametrize("scope,count", [("added", 1), ("all", 2)])
-@pytest.mark.parametrize("variant", ["mser_instance_split", "mser_blue_cores"])
+@pytest.mark.parametrize("variant", ["mser_instance_split", "mser_blue_cores", "lab_blue_split"])
 def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_path, monkeypatch, scope, count, variant):
     from scripts import prepare_balloon_instance_review as module
     manifest, queue, review = inputs
@@ -104,6 +104,9 @@ def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_pa
         return proposals[:1] if search_variant == "mser" else proposals
 
     monkeypatch.setattr(module, "experimental", search)
+    if variant == "lab_blue_split":
+        from scripts import research_balloon_color_split
+        monkeypatch.setattr(research_balloon_color_split, "proposals", lambda rgb: search(rgb,variant))
     out = tmp_path/"review-expansion"
     result = prepare(manifest, manifest, archive, queue, review, archive, out,
                      indoor_only=True, candidate_scope=scope, variant=variant)
@@ -111,6 +114,8 @@ def test_expansion_can_skip_old_sources_and_select_all_candidates(inputs, tmp_pa
     generated = read_json(out/"review.json")
     assert generated["candidate_scope"] == scope and generated["indoor_only"]
     assert generated["proposal_variant"] == variant and calls == ["mser", variant]
+    assert generated["color_split_sha256"] == (sha256("scripts/research_balloon_color_split.py")
+                                               if variant == "lab_blue_split" else None)
     assert all(r["label"] == "unreviewed" for r in generated["samples"])
 
 

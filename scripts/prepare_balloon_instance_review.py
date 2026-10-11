@@ -33,7 +33,7 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
             indoor_only=False, candidate_scope="added", variant="mser_instance_split", mining_model=None):
     if candidate_scope not in ("added", "all"):
         raise ValueError("Unknown candidate scope")
-    if variant not in ("mser_instance_split", "mser_blue_cores"):
+    if variant not in ("mser_instance_split", "mser_blue_cores", "lab_blue_split"):
         raise ValueError("Unknown training proposal variant")
     if mining_model and candidate_scope != "all":
         raise ValueError("Mining requires all candidate proposals")
@@ -69,7 +69,11 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                 raise ValueError("Source not in current training manifest")
             parent = allowed[source]
             baseline = experimental(rgb, "mser")
-            additions = experimental(rgb, variant)
+            if variant == "lab_blue_split":
+                from scripts.research_balloon_color_split import proposals as color_proposals
+                additions = color_proposals(rgb)
+            else:
+                additions = experimental(rgb, variant)
             if candidate_scope == "added":
                 additions = additions[len(baseline):]
             if predictor is not None:
@@ -102,6 +106,7 @@ def prepare(manifest, original_manifest, original_archive, queue, review, indoor
                        "queue": sha256(Path(queue)/"review.json"), "review": sha256(review),
                        "indoor_archive": sha256(indoor_archive)},
                script_sha256=sha256(__file__), search_sha256=sha256("scripts/research_balloon_search.py"),
+               color_split_sha256=sha256("scripts/research_balloon_color_split.py") if variant=="lab_blue_split" else None,
                training_approved=False, deployment_approved=False, review_required=True,
                scope="Candidate crops of already admitted training scenes; incomplete scene labels; not independent photos")
     write_json(output / "review.json", doc)
@@ -176,7 +181,7 @@ if __name__ == "__main__":
     p.add_argument("--indoor-only", action="store_true", help="Skip original sources when expanding an existing queue")
     p.add_argument("--candidate-scope", choices=("added", "all"), default="added",
                    help="Review only split additions or all candidates for proposal-domain training")
-    p.add_argument("--variant", choices=("mser_instance_split", "mser_blue_cores"),
+    p.add_argument("--variant", choices=("mser_instance_split", "mser_blue_cores", "lab_blue_split"),
                    default="mser_instance_split", help="Training-only proposal generator; no automatic labels")
     p.add_argument("--mining-model", help="Review only accepted proposals with <0.1 IoU to annotated TRAIN targets; requires --candidate-scope all")
     a = p.parse_args()

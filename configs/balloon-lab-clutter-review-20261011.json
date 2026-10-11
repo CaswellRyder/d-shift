@@ -1,0 +1,27 @@
+{
+  "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+  "training_approved": true,
+  "deployment_approved": false,
+  "reviewer": "AI visual review of both crop sheets and all three full-frame sheets",
+  "labels": [
+    {"id": 19, "label": "background"},
+    {"id": 21, "label": "background"},
+    {"id": 27, "label": "background"},
+    {"id": 28, "label": "background"},
+    {"id": 33, "label": "background"},
+    {"id": 34, "label": "background"},
+    {"id": 35, "label": "background"},
+    {"id": 39, "label": "background"},
+    {"id": 40, "label": "background"}
+  ],
+  "exclude": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,22,23,24,25,26,29,30,31,32,36,37,38],
+  "notes": [
+    "IDs 19 and 21 show a red key-fob/accessory on fabric, not an inflated balloon.",
+    "IDs 27 and 28 are blue dumbbells on the windowsill, verified in frame 20.",
+    "ID 33 is a printed red sweatshirt; 34,35,39 show red car bodywork; 40 a red sleeve.",
+    "Excluded crops are balloon interiors, boundaries, knots or mixed context containing balloon pixels. Low annotation IoU does not make these background.",
+    "ID 36 contains real balloons within a large scene crop. IDs 37 and 38 include a blue balloon edge beside red clothing; excluded to avoid contradictory supervision.",
+    "Only already admitted training sources. No reserved IMG-family development crops used. This review does not establish independent accuracy.",
+    "The nine clear negatives all originate in baseline proposals; this queue supplies no visually justified new Lab-only negative domain. Do not automatically launch another identical negative-mining retraining experiment."
+  ]
+}

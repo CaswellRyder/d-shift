@@ -1,0 +1,309 @@
+{
+  "model_path": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010/student.fp32.tflite",
+  "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+  "training_audit": {
+    "path": "research/balloon-red-blue-20261008/lab-fragment-guard-training-20261011.json",
+    "sha256": "ada8bceeaddc9126c815d58aff3345bd126302ebe219b0399722d4a2b5b30b3b",
+    "coverage": {
+      "original": {
+        "red_balloon": {
+          "targets": 22,
+          "baseline": 19,
+          "color_split": 19,
+          "fragment_guard": 19
+        },
+        "blue_balloon": {
+          "targets": 15,
+          "baseline": 7,
+          "color_split": 9,
+          "fragment_guard": 9
+        }
+      },
+      "data/engdes2-indoor-review-20261008": {
+        "red_balloon": {
+          "targets": 24,
+          "baseline": 24,
+          "color_split": 24,
+          "fragment_guard": 24
+        },
+        "blue_balloon": {
+          "targets": 24,
+          "baseline": 20,
+          "color_split": 23,
+          "fragment_guard": 23
+        }
+      },
+      "data/engdes2-indoor-expansion-review-20261008": {
+        "red_balloon": {
+          "targets": 31,
+          "baseline": 29,
+          "color_split": 29,
+          "fragment_guard": 29
+        },
+        "blue_balloon": {
+          "targets": 28,
+          "baseline": 27,
+          "color_split": 27,
+          "fragment_guard": 27
+        }
+      },
+      "data/engdes2-indoor-expansion2-review-20261011": {
+        "red_balloon": {
+          "targets": 72,
+          "baseline": 71,
+          "color_split": 71,
+          "fragment_guard": 71
+        },
+        "blue_balloon": {
+          "targets": 65,
+          "baseline": 57,
+          "color_split": 62,
+          "fragment_guard": 62
+        }
+      }
+    }
+  },
+  "crop_review": {
+    "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+    "review_sha256": "5ac18003b0be5c3fbf43d58fb2bd15fe6da5d893902a5fdcf3231bd4abee09f0",
+    "reviewed_background_ids": [
+      19,
+      21,
+      27,
+      28,
+      33,
+      34,
+      35,
+      39,
+      40
+    ],
+    "excluded_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      29,
+      30,
+      31,
+      32,
+      36,
+      37,
+      38
+    ],
+    "labels_automatically_inferred": false,
+    "training_dataset_built": false,
+    "retraining_performed": false
+  },
+  "panels": [
+    {
+      "path": "runs/lab-fragment-guard-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "708c8c5ec49f149a2de9c6b3509055c6968571070906872b60be2792842ea42d",
+      "frames": 67,
+      "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+      "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+      "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "search_sha256": "dd2c65611717d98196d23dfc500a8da9872ed0e6321706fc6e88bb396192603e",
+      "baseline_search_sha256": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "color_split": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 49,
+            "fn": 8,
+            "precision": 0.5625,
+            "recall": 0.8873239436619719
+          }
+        },
+        "fragment_guard": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.9333333333333333,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 63,
+            "fp": 48,
+            "fn": 8,
+            "precision": 0.5675675675675675,
+            "recall": 0.8873239436619719
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/lab-fragment-guard-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "c61cad40129154ea2daf3b23fcecb2b7b57fa522491bd3350e096e2397cf1516",
+      "frames": 62,
+      "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+      "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+      "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "search_sha256": "dd2c65611717d98196d23dfc500a8da9872ed0e6321706fc6e88bb396192603e",
+      "baseline_search_sha256": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "color_split": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 46,
+            "fp": 56,
+            "fn": 21,
+            "precision": 0.45098039215686275,
+            "recall": 0.6865671641791045
+          }
+        },
+        "fragment_guard": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 47,
+            "fp": 51,
+            "fn": 20,
+            "precision": 0.47959183673469385,
+            "recall": 0.7014925373134329
+          }
+        }
+      }
+    },
+    {
+      "path": "runs/lab-fragment-guard-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "fbc7b789668465d7402e2457a3034080dcb9357480000139e7ab4386007c6e04",
+      "frames": 12,
+      "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+      "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e",
+      "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "search_sha256": "dd2c65611717d98196d23dfc500a8da9872ed0e6321706fc6e88bb396192603e",
+      "baseline_search_sha256": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "color_split": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 9,
+            "fn": 3,
+            "precision": 0.5,
+            "recall": 0.75
+          }
+        },
+        "fragment_guard": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 8,
+            "fn": 3,
+            "precision": 0.5294117647058824,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  ],
+  "summary_script_sha256": "e0482f9b6efd46be01ca3bfa46d1a9da8a501153e296cd48a1a4502f302f44bb",
+  "decision": "Reject Lab search and fragment guard; keep incumbent model and runtime unchanged",
+  "reason": "Extra target coverage is outweighed by scene false positives on every inspected panel",
+  "followup": "Do not label balloon interiors as background. New proposal work must preserve full-instance geometry, not merely create additional colored regions.",
+  "scope": "Repeatedly inspected development panels; overlapping sources, not independent qualification",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
