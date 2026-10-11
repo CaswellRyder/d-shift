@@ -1,0 +1,17 @@
+{
+  "data": "data/balloon-dense-public-admit-20261011",
+  "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+  "arms": ["coarse", "context"],
+  "seeds": [47, 48],
+  "parent_epochs": 80,
+  "final_epochs": 320,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "parent_prefix": {"coarse": "balloon-dense-public-admit", "context": "balloon-context-grid"},
+  "continuation": "Restore saved Adam iteration and slot variables. Continue for240 additional epochs with deterministic restarted dataset shuffling. This is not claimed byte-equivalent to uninterrupted320-epoch training. No new examples, augmentation, loss, thresholds or inference operations.",
+  "selection": "Final epoch320 only for all four runs; no early stopping or intermediate-model selection. Grouped holdout is diagnostic, not a selector.",
+  "training_gate": "Within each arm, both seeds must improve known blue proposal coverage on public FIT scenes versus the original coarse80 controls, without reducing known red coverage there or known red/blue coverage on original FIT scenes.",
+  "evaluation": "Export and compare every qualifying arm and both its seeds using unchanged classifier and fixed full-scene development operating point. Do not infer independent94-percent qualification from TRAIN or repeatedly inspected development.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
