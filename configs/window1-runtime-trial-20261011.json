@@ -1,0 +1,14 @@
+{
+  "arms": ["control", "hard"],
+  "seeds": [47, 48],
+  "base_arm": "admit",
+  "repetitions": 4,
+  "rows": 2547,
+  "optimizer_steps": 12800,
+  "recipe": "Fresh original parent and Adam per arm/seed. Keep2074old crops,52negative rows and385unlabeled TRAIN scene constraints unchanged. Add nine visually labeled crops repeated four times: six blue and three red from six new photos. Hard replaces easy23and50 with reviewed same-target runtime0and1; control keeps original crops. Two crops maximum per source photograph. Keep64RGB,7763parameters,80epochs,batch16,learning rate1e-4cosine alpha0.1,weight4 and original losses. Fixed final epoch; no DEV-dependent selection.",
+  "gate": "Both hard seeds must correctly accept both reviewed runtime crops as blue at0.8, preserve all parent-detected targets on64old and6new TRAIN scenes without per-color false-positive increase, gain at least the two newly supervised blue target identities (frame9 annotation23 and frame20 annotation50), and not increase false acceptances on13round3 negatives. Compare each with its same-seed control. Passing only permits separate export/parity and full-search development evaluation; it does not fix the remaining localization misses or establish94percent qualification.",
+  "scope": "TRAIN-only matched crop replacement. No proposal, threshold, architecture or deployment changes. IMG-family and final reserved test excluded from fitting.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
