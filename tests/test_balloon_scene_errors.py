@@ -1,7 +1,8 @@
 import pytest
 
-from scripts.audit_balloon_scene_errors import analyze_frame, maximum_matching
-from scripts.evaluate_red_blue_development import detection_counts
+from dtr.data import read_json, sha256, write_json
+from scripts.audit_balloon_pipeline_errors import analyze_frame, audit, maximum_matching
+from scripts.evaluate_red_blue_development import detection_counts, metrics
 
 
 def target(box, label="blue_balloon"):
@@ -59,3 +60,52 @@ def test_tampered_counts_rejected():
     example["counts"]["blue_balloon"]["fn"] = 0
     with pytest.raises(ValueError, match="Stored counts"):
         analyze_frame(example)
+
+
+@pytest.fixture
+def reviewed_report(tmp_path, monkeypatch):
+    from scripts import audit_balloon_pipeline_errors as module
+    example = frame([target([0,0,10,10])], [detection([0,0,10,10])])
+    example.update(frame_sha256="pixels", vertical_flip=False)
+    review = tmp_path / "review.json"
+    write_json(review, dict(queue_sha256="queue"))
+    reference = dict(id=0, source="fixture", sha256="pixels", vertical_flip=False,
+                     provisional_truth=example["truth"])
+    monkeypatch.setattr(module, "reviewed_frames", lambda *a: ([(reference, None)], read_json(review)))
+    report = tmp_path / "report.json"
+    write_json(report, dict(queue_sha256="queue", review_sha256=sha256(review),
+        test_evaluated=False, deployment_approved=False, independent_recording_sessions_verified=False,
+        selection="parts", results={"fixture": dict(model_sha256="model", full_frame={
+            "mser": dict(frames=[example], metrics=metrics(example["counts"]))})}))
+    return report, review
+
+
+def test_report_audit_binds_evidence_and_keeps_qualification_closed(reviewed_report):
+    report, review = reviewed_report
+    result = audit([report], "unused-mocked-queue", review)
+    assert result["reports"][0]["sha256"] == sha256(report)
+    assert not result["test_evaluated"] and not result["deployment_approved"]
+    assert result["reports"][0]["results"]["fixture"]["variants"]["mser"]["matched_upper_bounds"] == {
+        "geometry_oracle": 1, "raw_classified": 1, "selected_classified": 1}
+
+
+@pytest.mark.parametrize("fault", ["queue", "review", "test", "frames", "truth", "orientation", "totals"])
+def test_report_audit_rejects_mismatched_evidence(reviewed_report, fault):
+    report, review = reviewed_report
+    doc = read_json(report)
+    result = doc["results"]["fixture"]["full_frame"]["mser"]
+    if fault in ("queue", "review"):
+        doc[fault+"_sha256"] = "wrong"
+    elif fault == "test":
+        doc["test_evaluated"] = True
+    elif fault == "frames":
+        result["frames"].append(result["frames"][0])
+    elif fault == "truth":
+        result["frames"][0]["truth"] = []
+    elif fault == "orientation":
+        result["frames"][0]["vertical_flip"] = True
+    else:
+        result["metrics"]["blue_balloon"]["precision"] = .1
+    write_json(report, doc)
+    with pytest.raises(ValueError):
+        audit([report], "unused-mocked-queue", review)
