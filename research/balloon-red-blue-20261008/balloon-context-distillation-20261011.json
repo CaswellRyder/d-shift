@@ -1,0 +1,1201 @@
+{
+  "results": {
+    "control47": {
+      "run": "runs/clutter-round3-feature-admit-seed47-20261011",
+      "model_sha256": "e12a919ff10a48efb2ede6255fec2d832c63a135b6cf7e677a80a4937c2d915e",
+      "report_sha256": "abb0891dfe55bfc5bb7fb3c616aff0e9ec97762978c9863109a5b29f8af6f50b",
+      "provenance_sha256": "fce83d76fd80c2fc0dd2a10cffd208e9b5ff75989975009da3978bb0788dffa5",
+      "predictions_sha256": "8a2499e3132bee7d525bc526387c79f7fd4ae08234f25449b5a5dfd777e95e18",
+      "epochs_sha256": "0526730e149c44f0367acb90fda262c863e5a5f8f484788c49fc1ba249f2d737",
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 2005,
+        "lost_old_rows": [],
+        "gained_old_rows": [
+          805,
+          1380,
+          1659,
+          1660,
+          1662,
+          1663,
+          1665,
+          1666,
+          1667,
+          1672,
+          1673,
+          1675,
+          1676,
+          1678,
+          1679,
+          1680,
+          1764,
+          1767,
+          1768,
+          1775,
+          1778,
+          1779,
+          1815,
+          1825,
+          1883,
+          1893,
+          1923,
+          1924,
+          1925,
+          1931,
+          1935,
+          1936,
+          1937,
+          1943
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 1
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 16
+          }
+        }
+      },
+      "legacy_perfect_crop_gate": false,
+      "training_scene_gate_pass": true,
+      "context": "original",
+      "reused_control": true
+    },
+    "control48": {
+      "run": "runs/clutter-round3-feature-admit-seed48-20261011",
+      "model_sha256": "70ee9c0f1005a462538fa0577b5e72e9ab7a46f3ddcb8728f11b3a87dd1cb0fd",
+      "report_sha256": "089caa7ec341a9d1bdda6c385bffc01d8b3c9fe9522caccfa85cdc91b50b2b78",
+      "provenance_sha256": "d451efadcbeb8b68ba849d1f7d8f39b5a90a342e5b1dad82b30f4ea4c2e79ee9",
+      "predictions_sha256": "45cdba5b3699c68ed5e5b027efca639213d9493222c1d60bb6ad94ff9290cd86",
+      "epochs_sha256": "274e9675c1146714bdf77140eb5d7ae67cd0533c607d154517ed45139dd7ae4f",
+      "metrics": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 11,
+          "fn": 4,
+          "precision": 0.8952380952380953,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 3,
+          "fn": 4,
+          "precision": 0.967391304347826,
+          "recall": 0.956989247311828
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0
+          },
+          "blue_balloon": {
+            "tp": 0,
+            "fp": -1,
+            "fn": 0
+          }
+        },
+        "lost_targets": [],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 2010,
+        "lost_old_rows": [
+          1164
+        ],
+        "gained_old_rows": [
+          177,
+          805,
+          1293,
+          1380,
+          1659,
+          1660,
+          1662,
+          1663,
+          1664,
+          1665,
+          1666,
+          1667,
+          1672,
+          1673,
+          1675,
+          1676,
+          1677,
+          1678,
+          1679,
+          1680,
+          1764,
+          1767,
+          1768,
+          1775,
+          1778,
+          1779,
+          1815,
+          1825,
+          1883,
+          1893,
+          1923,
+          1924,
+          1925,
+          1928,
+          1931,
+          1935,
+          1936,
+          1937,
+          1940,
+          1943
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 2
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 16
+          }
+        }
+      },
+      "legacy_perfect_crop_gate": false,
+      "training_scene_gate_pass": false,
+      "context": "original",
+      "reused_control": true
+    },
+    "admit47": {
+      "run": "runs/balloon-context-distillation-admit-seed47-20261011",
+      "model_sha256": "2afcef0a07477fecbeff4cdf75d40832698815ba63e4a5f1939fa00795fa0ddb",
+      "report_sha256": "3ecdf5a09c3a52d6be43044f14a9d4cfc03a952d014b55422932b0ad89004623",
+      "provenance_sha256": "bbf7966fe54fb96d3299fe3223e8fce099d05ffd6890214d167eed0a0132cf55",
+      "predictions_sha256": "c528268e23266ceef7dfe2b62bde393b10a37e2b1d9cb343b63722f3d763b92a",
+      "epochs_sha256": "05f777cde30b5dbe47e0fbfd5c2bf88bb0107eb4a0be52bf0e2a6c6791e71ff7",
+      "metrics": {
+        "red_balloon": {
+          "tp": 80,
+          "fp": 8,
+          "fn": 18,
+          "precision": 0.9090909090909091,
+          "recall": 0.8163265306122449
+        },
+        "blue_balloon": {
+          "tp": 78,
+          "fp": 4,
+          "fn": 15,
+          "precision": 0.9512195121951219,
+          "recall": 0.8387096774193549
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -14,
+            "fp": -2,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": -11,
+            "fp": 0,
+            "fn": 11
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 20918,
+              "box": [
+                115.0,
+                135.9375,
+                311.5,
+                222.9375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000404_jpg.rf.779bf7f29836232be5fcf2481739a054.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 5583,
+              "box": [
+                10.0,
+                51.09375,
+                147.5,
+                109.78125
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000467_jpg.rf.42ed6b6305d281d59f67b820e4439205.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 12208,
+              "box": [
+                15.25,
+                90.0,
+                121.25,
+                141.375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000546_jpg.rf.14d04f7932e702d6600c0e85e33b15b1.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 4315,
+              "box": [
+                0.0,
+                75.375,
+                47.0,
+                104.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000673_jpg.rf.65d65b06fdee2f1db23a9e3d6e9da3c7.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 21826,
+              "box": [
+                211.25,
+                90.28125,
+                301.75,
+                120.84375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16643,
+              "box": [
+                0.0,
+                40.59375,
+                36.0,
+                71.15625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000778_jpg.rf.260d153261b19dd1fc3c049215c2fb5b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 12511,
+              "box": [
+                34.0,
+                33.46875,
+                81.5,
+                52.40625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 7179,
+              "box": [
+                64.375,
+                93.1875,
+                102.125,
+                114.9375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000865_jpg.rf.6939eb75e78f81d740ebac96fcfe6b07.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 3373,
+              "box": [
+                150.0,
+                0.1875,
+                205.0,
+                27.1875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000865_jpg.rf.6939eb75e78f81d740ebac96fcfe6b07.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 3374,
+              "box": [
+                307.5,
+                167.625,
+                320.0,
+                190.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0065_jpg.rf.0286fa8c70f31904d67e66f60eb26ff5.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 11760,
+              "box": [
+                1.625,
+                68.71875,
+                94.375,
+                184.40625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 10692,
+              "box": [
+                136.875,
+                13.875,
+                233.125,
+                130.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10695,
+              "box": [
+                165.125,
+                147.375,
+                250.875,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 10696,
+              "box": [
+                99.375,
+                144.1875,
+                162.625,
+                228.1875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 19694,
+              "box": [
+                165.375,
+                0.0,
+                256.125,
+                21.75
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 9930,
+              "box": [
+                0.125,
+                107.625,
+                24.375,
+                192.375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0418_jpg.rf.66cab38fe52b747a505664570e4ea76d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 5557,
+              "box": [
+                293.625,
+                198.75,
+                319.875,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 16944,
+              "box": [
+                18.375,
+                169.3125,
+                104.125,
+                239.4375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16948,
+              "box": [
+                269.375,
+                0.0,
+                305.625,
+                19.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0484_jpg.rf.15796397c089c705d95cb262ba3c6196.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 2698,
+              "box": [
+                273.0,
+                153.375,
+                320.0,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0535_jpg.rf.003c77ece6ccd61739e9d067d69363ab.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 347,
+              "box": [
+                130.375,
+                1.03125,
+                192.625,
+                80.34375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0563_jpg.rf.3e4ad770b0614ca798a831ccca0411a3.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 18649,
+              "box": [
+                290.75,
+                141.46875,
+                319.25,
+                218.53125
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0620_jpg.rf.381f79948a16995d8dd88875b54e2f5c.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 3695,
+              "box": [
+                0.625,
+                60.75,
+                86.875,
+                197.625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 6572,
+              "box": [
+                128.0,
+                207.75,
+                168.0,
+                239.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 1973,
+        "lost_old_rows": [
+          11,
+          128,
+          554,
+          562,
+          579,
+          585,
+          593,
+          596,
+          604,
+          607,
+          615,
+          618,
+          626,
+          639,
+          1164,
+          1215,
+          1221,
+          1226,
+          1235,
+          1246,
+          1248,
+          1597,
+          1613,
+          1636,
+          1652,
+          2010
+        ],
+        "gained_old_rows": [
+          775,
+          805,
+          1176,
+          1293,
+          1299,
+          1380,
+          1386,
+          1660,
+          1666,
+          1667,
+          1673,
+          1679,
+          1680,
+          1754,
+          1761,
+          1767,
+          1768,
+          1778,
+          1779,
+          1815,
+          1883,
+          1923,
+          1924,
+          1925,
+          1935,
+          1936,
+          1937,
+          2011
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 1
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 26
+          }
+        }
+      },
+      "legacy_perfect_crop_gate": false,
+      "training_scene_gate_pass": false,
+      "context": "wider1.5_min16",
+      "reused_control": false
+    },
+    "admit48": {
+      "run": "runs/balloon-context-distillation-admit-seed48-20261011",
+      "model_sha256": "b36f1283cd7967e1f6f91aca759d330cc1a6a6864622f00b54f043140477943a",
+      "report_sha256": "041be0dfd9a6f422998ff35a9305226474c996dc750ec63298db6de72fddd97f",
+      "provenance_sha256": "5d13e8fee3a4148800c1490942e40676181c24c965c04bee016a00373d06567f",
+      "predictions_sha256": "f2e4c805edd8388938e49c200b334755b30ce6b2388a08f89142dc6196537156",
+      "epochs_sha256": "eaee5e53e134c80e63444beddf1b32c78524e469ded02e1cf80f8a97422a8236",
+      "metrics": {
+        "red_balloon": {
+          "tp": 80,
+          "fp": 7,
+          "fn": 18,
+          "precision": 0.9195402298850575,
+          "recall": 0.8163265306122449
+        },
+        "blue_balloon": {
+          "tp": 76,
+          "fp": 4,
+          "fn": 17,
+          "precision": 0.95,
+          "recall": 0.8172043010752689
+        }
+      },
+      "effect": {
+        "count_delta": {
+          "red_balloon": {
+            "tp": -14,
+            "fp": -3,
+            "fn": 14
+          },
+          "blue_balloon": {
+            "tp": -13,
+            "fp": 0,
+            "fn": 13
+          }
+        },
+        "lost_targets": [
+          {
+            "source": "train/frame_000145_jpg.rf.101451a12ec9741c206c1de2de49ccc4.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 20918,
+              "box": [
+                115.0,
+                135.9375,
+                311.5,
+                222.9375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000404_jpg.rf.779bf7f29836232be5fcf2481739a054.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 5583,
+              "box": [
+                10.0,
+                51.09375,
+                147.5,
+                109.78125
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000467_jpg.rf.42ed6b6305d281d59f67b820e4439205.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 12208,
+              "box": [
+                15.25,
+                90.0,
+                121.25,
+                141.375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000546_jpg.rf.14d04f7932e702d6600c0e85e33b15b1.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 4315,
+              "box": [
+                0.0,
+                75.375,
+                47.0,
+                104.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000673_jpg.rf.65d65b06fdee2f1db23a9e3d6e9da3c7.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 21826,
+              "box": [
+                211.25,
+                90.28125,
+                301.75,
+                120.84375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16643,
+              "box": [
+                0.0,
+                40.59375,
+                36.0,
+                71.15625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000778_jpg.rf.260d153261b19dd1fc3c049215c2fb5b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 12511,
+              "box": [
+                34.0,
+                33.46875,
+                81.5,
+                52.40625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000802_jpg.rf.534ae86f831b8cf2a1d5966ad49c72d1.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 7179,
+              "box": [
+                64.375,
+                93.1875,
+                102.125,
+                114.9375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000865_jpg.rf.6939eb75e78f81d740ebac96fcfe6b07.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 3373,
+              "box": [
+                150.0,
+                0.1875,
+                205.0,
+                27.1875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_000865_jpg.rf.6939eb75e78f81d740ebac96fcfe6b07.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 3374,
+              "box": [
+                307.5,
+                167.625,
+                320.0,
+                190.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0065_jpg.rf.0286fa8c70f31904d67e66f60eb26ff5.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 11760,
+              "box": [
+                1.625,
+                68.71875,
+                94.375,
+                184.40625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0256_jpg.rf.51e972aae1679cb4058e9a44a4d965d8.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 21227,
+              "box": [
+                125.125,
+                187.125,
+                237.875,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 10692,
+              "box": [
+                136.875,
+                13.875,
+                233.125,
+                130.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10695,
+              "box": [
+                165.125,
+                147.375,
+                250.875,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 10696,
+              "box": [
+                99.375,
+                144.1875,
+                162.625,
+                228.1875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0289_jpg.rf.09b8ee575c6bb4f259de567fbdcdd836.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 4469,
+              "box": [
+                72.875,
+                121.6875,
+                150.625,
+                235.3125
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 19694,
+              "box": [
+                165.375,
+                0.0,
+                256.125,
+                21.75
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 9930,
+              "box": [
+                0.125,
+                107.625,
+                24.375,
+                192.375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0418_jpg.rf.66cab38fe52b747a505664570e4ea76d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 5557,
+              "box": [
+                293.625,
+                198.75,
+                319.875,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 16944,
+              "box": [
+                18.375,
+                169.3125,
+                104.125,
+                239.4375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 16948,
+              "box": [
+                269.375,
+                0.0,
+                305.625,
+                19.5
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0484_jpg.rf.15796397c089c705d95cb262ba3c6196.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 2698,
+              "box": [
+                273.0,
+                153.375,
+                320.0,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0535_jpg.rf.003c77ece6ccd61739e9d067d69363ab.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 347,
+              "box": [
+                130.375,
+                1.03125,
+                192.625,
+                80.34375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0563_jpg.rf.3e4ad770b0614ca798a831ccca0411a3.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 18649,
+              "box": [
+                290.75,
+                141.46875,
+                319.25,
+                218.53125
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0620_jpg.rf.381f79948a16995d8dd88875b54e2f5c.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 3695,
+              "box": [
+                0.625,
+                60.75,
+                86.875,
+                197.625
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 6572,
+              "box": [
+                128.0,
+                207.75,
+                168.0,
+                239.25
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 6573,
+              "box": [
+                178.25,
+                226.21875,
+                211.25,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": []
+      },
+      "background_false_acceptances": [
+        7,
+        2
+      ],
+      "crop_diagnostics": {
+        "old_correct_before": 1971,
+        "old_correct_after": 1977,
+        "lost_old_rows": [
+          11,
+          128,
+          554,
+          562,
+          579,
+          585,
+          593,
+          596,
+          604,
+          607,
+          615,
+          618,
+          626,
+          639,
+          1164,
+          1215,
+          1221,
+          1226,
+          1235,
+          1248,
+          1613,
+          1652,
+          2010
+        ],
+        "gained_old_rows": [
+          775,
+          805,
+          1176,
+          1293,
+          1299,
+          1380,
+          1386,
+          1660,
+          1664,
+          1666,
+          1667,
+          1673,
+          1677,
+          1679,
+          1680,
+          1767,
+          1768,
+          1778,
+          1779,
+          1815,
+          1883,
+          1923,
+          1924,
+          1925,
+          1935,
+          1936,
+          1937,
+          1954,
+          2011
+        ],
+        "probe_correct": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true
+        ],
+        "false_acceptances": {
+          "red_balloon": {
+            "before": 5,
+            "after": 1
+          },
+          "blue_balloon": {
+            "before": 44,
+            "after": 25
+          }
+        }
+      },
+      "legacy_perfect_crop_gate": false,
+      "training_scene_gate_pass": false,
+      "context": "wider1.5_min16",
+      "reused_control": false
+    }
+  },
+  "protocol_sha256": "b1399feee1eb7e6bd602a9c89c8f162691569aec1c848a85027c5d54f57c61e4",
+  "script_sha256": "77cd6ad85a683aa154c6c7def1f721efc938af011c04b5926fe99584f3331c40",
+  "raw": {
+    "path": "runs/balloon-context-distillation-scenes-20261011.json",
+    "sha256": "ebe58ff8eb521592571cf1037da6c2368e1b6ea41c149eccddcd4ec7a15773fa"
+  },
+  "control_audit_sha256": "e0c08076f800f84e7130e81e4013980ee8de356d99fefe2793e7a28c611735f5",
+  "eligible_for_export_and_development": false,
+  "decision": "Do not promote: matched-context retraining failed TRAIN scene nonregression.",
+  "scope": "TRAIN-only input/checkpoint reconstruction and cached-proposal scene replay. Both context seeds required. Legacy perfect13crop gate is reported but deliberately not optimized or used as qualification.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
