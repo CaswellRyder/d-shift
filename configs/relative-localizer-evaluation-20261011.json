@@ -1,0 +1,13 @@
+{
+  "classifier_threshold": 0.8,
+  "matching_iou": 0.5,
+  "proposal_heat_threshold": 0.1,
+  "box_nms_iou": 0.65,
+  "total_limit": 12,
+  "variants": ["current_peaks", "reserved_peaks", "reserved_boxes"],
+  "design": "Evaluate fixed parent plus matched existing scene-supervised controls and new relative-loss models, both seeds. current_peaks is frozen blue-only supplement; reserved_peaks reserves2of12slots for either color with original3x3peak filtering; reserved_boxes changes only grid-peak filtering to box NMS while retaining0.1threshold,0.65duplicateIoU, blue near-tie blend and12maximumcalls. No threshold or budget search. More decoder work may be required; do not infer Pi speed from MAC or parameter equality.",
+  "gate": "For each variant require both relative seeds to retain every previously detected target and not increase per-color FP on any of82TRAINscenes split into64/6/12panels; each seed must recover a target. Report matched controls and decoder-only effects separately. A passing gate only permits independent export/DEV/Pi evaluation.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
