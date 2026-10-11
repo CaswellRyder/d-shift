@@ -30,11 +30,13 @@ def check_augmentation(mode, config, target_cache):
         raise ValueError("Augmentation requires balloon hard labels only, without cached teacher logits")
 
 
-def row_alphas(rows, alpha, hard_label_clutter):
+def row_alphas(rows, alpha, hard_label_clutter, field="clutter_ablation_mode"):
     """Per-row hard-label weight; reviewed clutter-ablation rows may drop the teacher term."""
     alphas = np.full(len(rows), alpha, dtype=np.float32)
+    if field not in ("clutter_ablation_mode", "instance_ablation_mode"):
+        raise ValueError("Unknown hard-label field")
     if hard_label_clutter:
-        flagged = [i for i, row in enumerate(rows) if "clutter_ablation_mode" in row]
+        flagged = [i for i, row in enumerate(rows) if field in row]
         if not flagged or alpha >= 1:
             raise ValueError("Clutter hard labels require clutter-ablation rows and alpha < 1")
         alphas[flagged] = 1
@@ -96,8 +98,10 @@ def main():
     parser.add_argument("--initialize-student", help="Existing same-architecture student; approved new training manifest allowed")
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--augmentation", choices=("none", "balloon-geometric"), default="none")
-    parser.add_argument("--hard-label-clutter", action="store_true",
-                        help="Drop the teacher term on clutter-ablation rows (both admit and control arms)")
+    parser.add_argument("--hard-label-clutter", "--hard-label-reviewed", action="store_true",
+                        help="Drop the teacher term on flagged reviewed rows (both admit and control arms)")
+    parser.add_argument("--hard-label-field", choices=("clutter_ablation_mode", "instance_ablation_mode"),
+                        default="clutter_ablation_mode")
     args = parser.parse_args()
     output = Path(args.output)
     if output.exists():
@@ -174,9 +178,9 @@ def main():
         k = len(config["classes"])
         root = Path(args.manifest).resolve().parent
         rows = [r for r in doc["samples"] if r["split"] == "train"]
-        alphas = row_alphas(rows, config["alpha"], args.hard_label_clutter)
+        alphas = row_alphas(rows, config["alpha"], args.hard_label_clutter, args.hard_label_field)
         if args.hard_label_clutter:
-            provenance["hard_label_rows"] = dict(field="clutter_ablation_mode", count=int((alphas == 1).sum()))
+            provenance["hard_label_rows"] = dict(field=args.hard_label_field, count=int((alphas == 1).sum()))
             write_json(output / "provenance.json", provenance)
         targets = np.empty((len(rows), 2*k), dtype=np.float32)
         batch_size = config["batch_size"]

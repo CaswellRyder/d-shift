@@ -16,3 +16,11 @@ def test_clutter_hard_labels_require_flagged_rows_and_distillation():
         row_alphas([dict(label="background")], .5, True)
     with pytest.raises(ValueError):
         row_alphas([dict(label="background", clutter_ablation_mode="admit")], 1, True)
+
+
+def test_instance_flag_does_not_change_old_clutter_loss():
+    rows = [dict(clutter_ablation_mode="admit"), dict(instance_ablation_mode="control"),
+            dict(instance_ablation_mode="admit"), {}]
+    np.testing.assert_array_equal(row_alphas(rows, .5, True, "instance_ablation_mode"), [.5, 1, 1, .5])
+    with pytest.raises(ValueError, match="field"):
+        row_alphas(rows, .5, True, "anything")

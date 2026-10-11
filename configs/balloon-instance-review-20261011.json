@@ -1,0 +1,23 @@
+{
+  "queue_sha256": "b17738de302261bd7c84ab28a7eb11be81e44d2da4f56566c34b35aae0f7c11b",
+  "training_approved": true,
+  "deployment_approved": false,
+  "reviewer": "AI visual review of all 13 crop thumbnails and all 8 full source frames on 2026-10-11; not human-certified",
+  "scope": "Additional views of already admitted training sources only; no development or final-test mining",
+  "labels": [
+    {"id": 1, "label": "background", "reason": "Blue jacket fabric, not balloon"},
+    {"id": 2, "label": "background", "reason": "Person wearing blue clothing"},
+    {"id": 3, "label": "background", "reason": "Textured wall or ceiling"},
+    {"id": 4, "label": "background", "reason": "Textured wall or ceiling"},
+    {"id": 5, "label": "blue_balloon", "reason": "Blue balloon truncated by image edge; matches admitted lower blue target"},
+    {"id": 6, "label": "blue_balloon", "reason": "Visible blue balloon partially occluded by red neighbor"},
+    {"id": 7, "label": "background", "reason": "Dark room furniture or shadow"},
+    {"id": 8, "label": "background", "reason": "Red chair back, table, person and brick wall; no balloon in crop"},
+    {"id": 9, "label": "background", "reason": "Ceiling with texture and image noise"},
+    {"id": 10, "label": "background", "reason": "Wall or ceiling texture and shadow"},
+    {"id": 11, "label": "background", "reason": "Ceiling texture and image noise"},
+    {"id": 12, "label": "background", "reason": "Floor texture"}
+  ],
+  "exclude": [0],
+  "exclusions": {"0": "Mixed yellow balloon and substantial blue fragment; do not force a background label"}
+}
