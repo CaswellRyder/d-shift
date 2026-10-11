@@ -1,0 +1,16 @@
+{
+  "models": ["parent", "control47", "control48", "background47", "background48"],
+  "classifier": "real-blue-clutter-convergence-admit-seed48",
+  "search": "full red MSER plus bright-only blue MSER and at most two learned blue proposals",
+  "selection": "confidence",
+  "threshold": 0.8,
+  "matching_iou": 0.5,
+  "max_total_proposals": 12,
+  "training_frames": 64,
+  "design": "Integrate all four previously trained/exported paired localizers with the frozen lower-cost search and original classifier. Reproduce parent decisions. Screen complete TRAIN scenes then all three repeated related development panels, regardless of outcome. No retraining, parameter/threshold tuning, or new labels.",
+  "candidate_gate": "Background candidate is eligible only for isolated Pi comparison if all TRAIN/development per-color TP are no lower, FP no higher and every previously matched target identity retained relative to the current lower-cost parent. Report matched controls and both seeds; any candidate selection remains development-driven, not independent qualification.",
+  "pi_comparison": "Only eligible candidates: single active pipeline, sequential counterbalanced paired replay with unchanged classifier/search/selection. Camera, display and serial excluded. No active model replacement.",
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "test_evaluated": false
+}
