@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from scripts import pi_balloon_search_bench as bench
-from scripts.summarize_balloon_search_pi import group_key, validate_trial
+from scripts.summarize_balloon_search_pi import group_key, validate_trial, verify_golden_policy
 
 
 def observation():
@@ -78,6 +78,19 @@ def test_trial_pooling_separates_selection_policies_but_supports_legacy_reports(
     assert len({group_key(dict(row, selection=s)) for s in bench.SELECTIONS}) == 3
     with pytest.raises(ValueError, match="selection"):
         group_key(dict(row, selection="unknown"))
+
+
+def test_report_cannot_claim_another_policys_goldens():
+    report = dict(model="student", search="mser_direct", selection="split_merged",
+                  golden_search="mser", unique_frames=1)
+    row = dict(index=0, source="scene", detections=[observation()])
+    golden = {"student": {"mser_split_merged": [row]}}
+    with pytest.raises(ValueError, match="selection policy"):
+        verify_golden_policy(report, [row], golden)
+    report["golden_search"] = "mser_split_merged"
+    assert verify_golden_policy(report, [row], golden) == 0
+    with pytest.raises(ValueError, match="selection mismatch"):
+        verify_golden_policy(report, [dict(row, detections=[dict(observation(), accepted=False)])], golden)
 
 
 def test_processing_uses_exact_crop_and_single_model(monkeypatch):

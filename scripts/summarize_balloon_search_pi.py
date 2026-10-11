@@ -8,6 +8,7 @@ from pathlib import Path
 from dtr.data import read_json, sha256, write_json
 from scripts.evaluate_red_blue_development import LABELS, detection_counts, metrics
 from scripts.pi_red_blue_bench import statistics
+from scripts.pi_balloon_search_bench import check_predictions
 
 
 def group_key(report):
@@ -15,6 +16,25 @@ def group_key(report):
     if selection not in ("parts", "split_merged", "split_oversized"):
         raise ValueError("Unknown trial selection policy")
     return report["model"], report["search"], selection
+
+
+def verify_golden_policy(report, rows, golden):
+    model, search, selection = group_key(report)
+    key = "mser" if search in ("mser_fast", "mser_direct") else search
+    if selection != "parts":
+        key += "_" + selection
+    if report.get("golden_search") != key:
+        raise ValueError("Trial golden does not match selection policy")
+    expected = golden[model][key]
+    if len(expected) != report["unique_frames"]:
+        raise ValueError("Golden frame coverage changed")
+    maximum = 0.
+    for row in rows:
+        target = expected[row["index"]]
+        if target["source"] != row["source"]:
+            raise ValueError("Golden source changed")
+        maximum = max(maximum, check_predictions(row["detections"], target["detections"]))
+    return maximum
 
 
 def validate_trial(report, rows, inputs):
@@ -56,6 +76,7 @@ def validate_trial(report, rows, inputs):
 def summarize(base, results):
     base, results = Path(base), Path(results)
     inputs = read_json(base / "inputs.json")
+    golden = read_json(base / "search-golden.json")
     groups = defaultdict(list)
     runs = {}
     for path in sorted(results.glob("*.json")):
@@ -71,6 +92,7 @@ def summarize(base, results):
             raise ValueError("Trial artifact identity mismatch")
         rows = [json.loads(line) for line in raw.read_text().splitlines()]
         unique = validate_trial(report, rows, inputs)
+        checked_delta = verify_golden_policy(report, rows, golden)
         counts = {}
         for panel in {r["panel"] for r in unique}:
             total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
@@ -81,7 +103,8 @@ def summarize(base, results):
                         total[label][key] += found[label][key]
             counts[panel] = metrics(total)
         runs[path.stem] = dict(
-            report=report, report_sha256=sha256(path), unique_scene_metrics=counts
+            report=report, report_sha256=sha256(path), unique_scene_metrics=counts,
+            verified_logged_score_delta=checked_delta,
         )
         groups[group_key(report)].append((path.stem, rows))
     if not runs:
