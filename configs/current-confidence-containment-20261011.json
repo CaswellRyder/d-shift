@@ -1,0 +1,13 @@
+{
+  "parent": "background/blend from blue-peak-blend-scenes-20261011",
+  "policy": "Apply existing compare_balloon_containment.confidence_ordered after current confidence_selection. Reverse only confirmed_balloon_part suppression. Rank accepted same-color nested boxes by classifier score; ties prefer larger parent then original order. Existing nested criterion: smaller area<=0.35larger, intersection>=0.95smaller. Keep other NMS/merged-parent decisions, classifier scores, thresholds, proposals and geometry unchanged.",
+  "motivation": "TRAIN scenes frame_000800, frame_0260, frame_0465 lose a correct higher-confidence child to a lower-confidence parent during final confirmed-part suppression. Reuse existing fixed rule; no new threshold selected.",
+  "prior_evidence": "Historical confidence-ordered containment was evaluated with older pipelines. This is a compatibility/quality test against the newer classifier, asymmetric search, background localizer, peak-blended geometry and confidence-first NMS; not a novel algorithm or independent confirmation.",
+  "train_screen": "Saved64TRAIN scene replay recovered3red targets and removed3red false positives; blue unchanged, no previously matched target lost. This observation selected this fixed policy before development evaluation.",
+  "evaluation": "Verify exact original-decision reproduction and input receipt hashes. Recount all64TRAIN frames first. Advance to all three repeated development panels only if each color TP nondecreases, FP nonincreases, and every parent-matched target remains. Freeze protocol before any new development replay. Record every changed box and all target identity losses/gains.",
+  "candidate_gate": "Same TP/FP and target-identity nonregression on each panel separately. Final94percent precision AND recall on independent real scenes remains required; repeated development replay does not qualify flight readiness.",
+  "performance": "No new neural calls or image processing. Do not claim speed until isolated Pi measurement. No runtime-default change or Pi deployment in this replay.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
