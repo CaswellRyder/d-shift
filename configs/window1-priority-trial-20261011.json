@@ -1,0 +1,14 @@
+{
+  "arms": ["control", "priority"],
+  "seeds": [47, 48],
+  "diagnostic_sha256": "34cd3db1bbef73093423368442de2a01c7e92f627edd767cc8d1b8cd49ae55cc",
+  "multiplier": 16,
+  "positive_weight": 64,
+  "selection_rule": "Using only parent and completed hard47/hard48 TRAIN objective gradients, choose the smallest power-of-two multiplier strictly larger than max(1-total_derivative/new_positive_derivative) over both visually verified runtime targets and all three checkpoints. The computed choice is16. This local SGD directional diagnostic does not prove an Adam trajectory or generalization benefit.",
+  "recipe": "Reuse completed window1-runtime-hard47/hard48 as exact weight4 controls. Start both priority seeds from the same original parent with fresh Adam. Same2547pixels, labels, row order, sample repetitions, 385scene constraints,64RGB,7763parameters,80epochs,batch16,12800steps,1e-4cosine alpha0.1 and losses. Only36new positive sample weights change4to64, retaining nine crops from six photos. Fixed final epoch; no threshold or proposal change and no development selection.",
+  "gate": "Same window1 target recovery and nonregression requirements: both seeds accept both reviewed runtime crops at0.8, recover frame9 annotation23 and frame20 annotation50, retain every parent-detected target on64old and6new TRAIN scenes without per-color false-positive increases, and not increase13negative false acceptances. Passing permits separate parity/full-search development testing only; no deployment or qualification claim.",
+  "scope": "TRAIN-derived reweighting, not a larger network or inference change. IMG-family and final-test examples remain excluded. Existing localization misses are not resolved by this experiment.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false
+}
