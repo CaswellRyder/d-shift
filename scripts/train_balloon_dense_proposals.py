@@ -49,6 +49,9 @@ def sparse_loss(target, prediction):
 def checked_data(root):
     root = Path(root)
     doc = read_json(root/'manifest.json')
+    if 'public_expansion' in doc:
+        from scripts.balloon_dense_public_data import checked_public_data
+        return checked_public_data(root)
     if (doc.get('training_approved') is not True or doc.get('test_evaluated') is not False
             or doc.get('deployment_approved') is not False or doc['grid'] != [15,20]
             or sha256(root/'targets.npy') != doc['targets_sha256']):

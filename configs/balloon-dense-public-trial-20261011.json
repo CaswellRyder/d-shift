@@ -1,0 +1,18 @@
+{
+  "base_data": "data/balloon-dense-complete-training-20261011",
+  "base_manifest_sha256": "3472020134f07c7e9e0f407f8b2aefe9af20974aae8913d57c14455bc0e84409",
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "box_objective": "l1_giou",
+  "architecture": "Unchanged 2342-parameter 160x120 localizer with 15x20 output grid",
+  "public_supervision": "Use all selected licensed and visually reviewed Open Images red/blue source boxes. Background regions use tight boxes for explicitly reviewed non-target source objects and safe padded crops for unmatched background proposals. Skip conflicting background regions. Mask every unknown image region.",
+  "control": "Append the same number of existing fit frames, sampled without replacement with RNG47, to match sample count and optimizer steps. This matches frame count, not per-color box counts or supervised pixel counts; report those differences.",
+  "holdout": "Keep every original grouped-holdout image and target unchanged. All public additions are TRAIN-only. Repeated grouped holdout is not independent competition qualification.",
+  "checkpoint_policy": "Fresh random initialization per seed, final epoch80 only, no intermediate selection",
+  "evaluation": "Export both seeds and both arms, audit proposal coverage, then evaluate unchanged blue-supplement decoder and unchanged parent crop classifier on all three development panels. Thresholds and crop budget unchanged; no promotion from training fit.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

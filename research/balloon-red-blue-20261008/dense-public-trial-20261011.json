@@ -1,0 +1,810 @@
+{
+  "trials": {
+    "control": {
+      "47": {
+        "path": "runs/balloon-dense-public-control-seed47-20261011",
+        "provenance_sha256": "f962410288bca5afbff1a195485f9e70805f1123b977483bf4e15e40b4a96a34",
+        "model_sha256": "feeef05bae54fd062546e11e62f2d7dc7550a9edb97a2b6b5cb5aae74ddbed1f",
+        "metadata_sha256": "74f6f421f3fb889e236b65245da27409bfd09ed28d6d977e607f0e026669c073",
+        "fit": {
+          "training_loss": 1.6394588947296143,
+          "grouped_holdout_loss": 1.895147681236267,
+          "reference_sparse_training_loss": 1.064995527267456,
+          "reference_sparse_holdout_loss": 1.2198395729064941,
+          "fit_frames": 113,
+          "holdout_frames": 16,
+          "parameters": 2342,
+          "model_sha256": "41baff14f5421ee1a3b56c1ad17d88c106a9ec45d034ee29d96e02b651181adf",
+          "predictions_sha256": "96929dee6dff01cf1371d0215f9d39ef031f36292f867642478cfcceeb0b51c9",
+          "provenance_sha256": "f962410288bca5afbff1a195485f9e70805f1123b977483bf4e15e40b4a96a34",
+          "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "export": {
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "feeef05bae54fd062546e11e62f2d7dc7550a9edb97a2b6b5cb5aae74ddbed1f",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "41baff14f5421ee1a3b56c1ad17d88c106a9ec45d034ee29d96e02b651181adf",
+          "provenance_sha256": "f962410288bca5afbff1a195485f9e70805f1123b977483bf4e15e40b4a96a34",
+          "manifest_sha256": "659e49b942def920bc66c55909ebe8cf443f288fb92ceb7fa4c32f0c21bb6b4a",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 2.384185791015625e-06,
+          "decoded_parity_frames": 129,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "coverage": {
+          "common_fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 106,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 97,
+              "supplement": 102
+            }
+          },
+          "common_grouped_holdout": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 16,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 10,
+              "supplement": 13
+            }
+          },
+          "extra_fit": {
+            "red_balloon": {
+              "targets": 30,
+              "baseline": 30,
+              "learned": 29,
+              "supplement": 30
+            },
+            "blue_balloon": {
+              "targets": 24,
+              "baseline": 24,
+              "learned": 23,
+              "supplement": 24
+            }
+          }
+        }
+      },
+      "48": {
+        "path": "runs/balloon-dense-public-control-seed48-20261011",
+        "provenance_sha256": "47a510f6d550743a4d1da96dfd8ddd4005cd9b5e7326e5ce3712b1756212d920",
+        "model_sha256": "1e4b2285dcdf5e4040eb9cf952f6848c1e5540d302321fd174c93adb6b75a4f5",
+        "metadata_sha256": "4db9bbff97cf152b8986b02296e70f7da542343aa5df4bc7453c7ea74f3bc442",
+        "fit": {
+          "training_loss": 1.6440074443817139,
+          "grouped_holdout_loss": 2.0735723972320557,
+          "reference_sparse_training_loss": 1.0799593925476074,
+          "reference_sparse_holdout_loss": 1.3829820156097412,
+          "fit_frames": 113,
+          "holdout_frames": 16,
+          "parameters": 2342,
+          "model_sha256": "83d7e6afe92103c667da671680d88a7c95feddbeb3de1660656d79e30c3cc169",
+          "predictions_sha256": "ed1884835e7fac10706f18f448f4e666e8bfa6c621100f080dba8e33918fd2cd",
+          "provenance_sha256": "47a510f6d550743a4d1da96dfd8ddd4005cd9b5e7326e5ce3712b1756212d920",
+          "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "export": {
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "1e4b2285dcdf5e4040eb9cf952f6848c1e5540d302321fd174c93adb6b75a4f5",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "83d7e6afe92103c667da671680d88a7c95feddbeb3de1660656d79e30c3cc169",
+          "provenance_sha256": "47a510f6d550743a4d1da96dfd8ddd4005cd9b5e7326e5ce3712b1756212d920",
+          "manifest_sha256": "659e49b942def920bc66c55909ebe8cf443f288fb92ceb7fa4c32f0c21bb6b4a",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 1.9073486328125e-06,
+          "decoded_parity_frames": 129,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "coverage": {
+          "common_fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 110,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 89,
+              "supplement": 102
+            }
+          },
+          "common_grouped_holdout": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 18,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 11,
+              "supplement": 13
+            }
+          },
+          "extra_fit": {
+            "red_balloon": {
+              "targets": 30,
+              "baseline": 30,
+              "learned": 29,
+              "supplement": 30
+            },
+            "blue_balloon": {
+              "targets": 24,
+              "baseline": 24,
+              "learned": 22,
+              "supplement": 24
+            }
+          }
+        }
+      }
+    },
+    "admit": {
+      "47": {
+        "path": "runs/balloon-dense-public-admit-seed47-20261011",
+        "provenance_sha256": "8bdcfa9fc10592ae68b51ac5b7fdcb29d291947c6194e2e963f189d50eefbfde",
+        "model_sha256": "4116c0d4d4e876754d69e827efd2e2537fbcd2f7be415a2fda1e69da88c663f8",
+        "metadata_sha256": "549a5ccbc6dc73311915b49187c7521c2c37031f8162ecd9be6b4e9631c8342a",
+        "fit": {
+          "training_loss": 2.018317937850952,
+          "grouped_holdout_loss": 1.983061671257019,
+          "reference_sparse_training_loss": 1.3043055534362793,
+          "reference_sparse_holdout_loss": 1.289628505706787,
+          "fit_frames": 113,
+          "holdout_frames": 16,
+          "parameters": 2342,
+          "model_sha256": "6255568a5b4642fd238e5e8855854b768dd3d220c99498fd4beaef0bb64fc2e1",
+          "predictions_sha256": "9d1b033eb546be60985ff3eaca7763fb05cbff1fada3545bb55e0225c5fb72b2",
+          "provenance_sha256": "8bdcfa9fc10592ae68b51ac5b7fdcb29d291947c6194e2e963f189d50eefbfde",
+          "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "export": {
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "4116c0d4d4e876754d69e827efd2e2537fbcd2f7be415a2fda1e69da88c663f8",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "6255568a5b4642fd238e5e8855854b768dd3d220c99498fd4beaef0bb64fc2e1",
+          "provenance_sha256": "8bdcfa9fc10592ae68b51ac5b7fdcb29d291947c6194e2e963f189d50eefbfde",
+          "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 1.9073486328125e-06,
+          "decoded_parity_frames": 129,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "coverage": {
+          "common_fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 97,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 96,
+              "supplement": 102
+            }
+          },
+          "common_grouped_holdout": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 12,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 11,
+              "supplement": 13
+            }
+          },
+          "extra_fit": {
+            "red_balloon": {
+              "targets": 12,
+              "baseline": 5,
+              "learned": 2,
+              "supplement": 5
+            },
+            "blue_balloon": {
+              "targets": 18,
+              "baseline": 9,
+              "learned": 5,
+              "supplement": 10
+            }
+          }
+        }
+      },
+      "48": {
+        "path": "runs/balloon-dense-public-admit-seed48-20261011",
+        "provenance_sha256": "2f283d68b09a36010963e48b1fc21f23d47afc23d80645905b4803a44d35bfb7",
+        "model_sha256": "09d638548378bbda30d7ee9e0cdb07649ed88460f864fc7860fa596631ae1c4d",
+        "metadata_sha256": "c2da411d00fded76b3eb547bceec0f2d5c040037ffc42d342a3dee2c16eaf955",
+        "fit": {
+          "training_loss": 2.140608787536621,
+          "grouped_holdout_loss": 2.1162405014038086,
+          "reference_sparse_training_loss": 1.417325735092163,
+          "reference_sparse_holdout_loss": 1.4176006317138672,
+          "fit_frames": 113,
+          "holdout_frames": 16,
+          "parameters": 2342,
+          "model_sha256": "01290f0403b9b3e4e1823a25d44a3ee8f2ce0e1db2b62f5c0c47c77c985a9a4b",
+          "predictions_sha256": "aca1618abc5df3a0c5ff3585f744196477acd52c2acd14602e2b616848670e33",
+          "provenance_sha256": "2f283d68b09a36010963e48b1fc21f23d47afc23d80645905b4803a44d35bfb7",
+          "scope": "Loss diagnostics only; detection quality and runtime export not yet evaluated",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "export": {
+          "kind": "balloon_dense_proposal_research",
+          "sha256": "09d638548378bbda30d7ee9e0cdb07649ed88460f864fc7860fa596631ae1c4d",
+          "bytes": 14420,
+          "source_checkpoint_sha256": "01290f0403b9b3e4e1823a25d44a3ee8f2ce0e1db2b62f5c0c47c77c985a9a4b",
+          "provenance_sha256": "2f283d68b09a36010963e48b1fc21f23d47afc23d80645905b4803a44d35bfb7",
+          "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+          "parameters": 2342,
+          "input_shape": [
+            1,
+            120,
+            160,
+            3
+          ],
+          "output_shape": [
+            1,
+            15,
+            20,
+            6
+          ],
+          "tensor_dtype": "float32",
+          "channels": [
+            "red_logit",
+            "blue_logit",
+            "offset_x",
+            "offset_y",
+            "width",
+            "height"
+          ],
+          "preprocessing": "OpenCV INTER_AREA from 320x240 RGB uint8 to 160x120 float32, range 0..255",
+          "proposal_threshold": 0.1,
+          "max_proposals": 12,
+          "max_added_blue_proposals": 2,
+          "decoder_sha256": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+          "export_script_sha256": "6421db7481da7436849d4baf4c059cb0ddee12f72ac3f1b96ec4b9aa32bdc67e",
+          "max_tensor_delta": 1.7285346984863281e-06,
+          "decoded_parity_frames": 129,
+          "scope": "TRAIN-frame export parity only; no Pi verification or independent qualification",
+          "test_evaluated": false,
+          "deployment_approved": false,
+          "pi_tested": false
+        },
+        "coverage": {
+          "common_fit": {
+            "red_balloon": {
+              "targets": 129,
+              "baseline": 124,
+              "learned": 101,
+              "supplement": 124
+            },
+            "blue_balloon": {
+              "targets": 119,
+              "baseline": 99,
+              "learned": 92,
+              "supplement": 102
+            }
+          },
+          "common_grouped_holdout": {
+            "red_balloon": {
+              "targets": 20,
+              "baseline": 19,
+              "learned": 14,
+              "supplement": 19
+            },
+            "blue_balloon": {
+              "targets": 13,
+              "baseline": 12,
+              "learned": 11,
+              "supplement": 13
+            }
+          },
+          "extra_fit": {
+            "red_balloon": {
+              "targets": 12,
+              "baseline": 5,
+              "learned": 2,
+              "supplement": 5
+            },
+            "blue_balloon": {
+              "targets": 18,
+              "baseline": 9,
+              "learned": 2,
+              "supplement": 9
+            }
+          }
+        }
+      }
+    }
+  },
+  "datasets": {
+    "control": {
+      "path": "data/balloon-dense-public-control-20261011",
+      "sha256": "659e49b942def920bc66c55909ebe8cf443f288fb92ceb7fa4c32f0c21bb6b4a",
+      "original_frames": 108,
+      "extra_frames": 21,
+      "original_holdout_unchanged": true,
+      "extra_box_counts": {
+        "red_balloon": 30,
+        "blue_balloon": 24
+      },
+      "extra_heat_cells": 7178
+    },
+    "admit": {
+      "path": "data/balloon-dense-public-admit-20261011",
+      "sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+      "original_frames": 108,
+      "extra_frames": 21,
+      "original_holdout_unchanged": true,
+      "extra_box_counts": {
+        "blue_balloon": 18,
+        "red_balloon": 12
+      },
+      "extra_heat_cells": 1018
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "control": {
+        "path": "runs/balloon-dense-public-control-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+        "sha256": "f597b53ef492899f96f549a35a6406d7c69faa84756d7a1558f044390d69f760",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 4,
+              "fn": 1,
+              "precision": 0.9459459459459459,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 59,
+              "fp": 13,
+              "fn": 12,
+              "precision": 0.8194444444444444,
+              "recall": 0.8309859154929577
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 9,
+              "fn": 1,
+              "precision": 0.8860759493670886,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 67,
+              "fp": 30,
+              "fn": 4,
+              "precision": 0.6907216494845361,
+              "recall": 0.9436619718309859
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 4,
+              "fn": 1,
+              "precision": 0.9459459459459459,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 65,
+              "fp": 34,
+              "fn": 6,
+              "precision": 0.6565656565656566,
+              "recall": 0.9154929577464789
+            }
+          }
+        }
+      },
+      "admit": {
+        "path": "runs/balloon-dense-public-admit-scenes-engdes2-lockbox-panel3-20261010-20261011.json",
+        "sha256": "af9306e3bbc1b65c79df7b3401b6e6544ad997b416ac9f5113b7e22d93657090",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 4,
+              "fn": 1,
+              "precision": 0.9459459459459459,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 59,
+              "fp": 13,
+              "fn": 12,
+              "precision": 0.8194444444444444,
+              "recall": 0.8309859154929577
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 4,
+              "fn": 1,
+              "precision": 0.9459459459459459,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 65,
+              "fp": 30,
+              "fn": 6,
+              "precision": 0.6842105263157895,
+              "recall": 0.9154929577464789
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 70,
+              "fp": 4,
+              "fn": 1,
+              "precision": 0.9459459459459459,
+              "recall": 0.9859154929577465
+            },
+            "blue_balloon": {
+              "tp": 65,
+              "fp": 37,
+              "fn": 6,
+              "precision": 0.6372549019607843,
+              "recall": 0.9154929577464789
+            }
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "control": {
+        "path": "runs/balloon-dense-public-control-scenes-engdes2-development-panel2-20261010-20261011.json",
+        "sha256": "a1dba6a7144b28018b6a2412d6156642eb2b15b032baa977f035d8ab7eb04fd3",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 65,
+              "fp": 4,
+              "fn": 0,
+              "precision": 0.9420289855072463,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 51,
+              "fp": 25,
+              "fn": 16,
+              "precision": 0.6710526315789473,
+              "recall": 0.7611940298507462
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 64,
+              "fp": 6,
+              "fn": 1,
+              "precision": 0.9142857142857143,
+              "recall": 0.9846153846153847
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 46,
+              "fn": 10,
+              "precision": 0.5533980582524272,
+              "recall": 0.8507462686567164
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 65,
+              "fp": 4,
+              "fn": 0,
+              "precision": 0.9420289855072463,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 47,
+              "fn": 10,
+              "precision": 0.5480769230769231,
+              "recall": 0.8507462686567164
+            }
+          }
+        }
+      },
+      "admit": {
+        "path": "runs/balloon-dense-public-admit-scenes-engdes2-development-panel2-20261010-20261011.json",
+        "sha256": "a9743045f0f89a26dfc081df668fd36051945798bbdc4c7f939f8e68e7dd7341",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 65,
+              "fp": 4,
+              "fn": 0,
+              "precision": 0.9420289855072463,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 51,
+              "fp": 25,
+              "fn": 16,
+              "precision": 0.6710526315789473,
+              "recall": 0.7611940298507462
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 65,
+              "fp": 6,
+              "fn": 0,
+              "precision": 0.9154929577464789,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 57,
+              "fp": 46,
+              "fn": 10,
+              "precision": 0.5533980582524272,
+              "recall": 0.8507462686567164
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 65,
+              "fp": 4,
+              "fn": 0,
+              "precision": 0.9420289855072463,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 60,
+              "fp": 48,
+              "fn": 7,
+              "precision": 0.5555555555555556,
+              "recall": 0.8955223880597015
+            }
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "control": {
+        "path": "runs/balloon-dense-public-control-scenes-engdes2-development-scenes-20261008-20261011.json",
+        "sha256": "acea7a03ebbe387d12b19a371e60043cb3351425a187949d87f70b5239e40748",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.9166666666666666,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 9,
+              "fp": 3,
+              "fn": 3,
+              "precision": 0.75,
+              "recall": 0.75
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.8461538461538461,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 9,
+              "fp": 10,
+              "fn": 3,
+              "precision": 0.47368421052631576,
+              "recall": 0.75
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.9166666666666666,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 9,
+              "fp": 8,
+              "fn": 3,
+              "precision": 0.5294117647058824,
+              "recall": 0.75
+            }
+          }
+        }
+      },
+      "admit": {
+        "path": "runs/balloon-dense-public-admit-scenes-engdes2-development-scenes-20261008-20261011.json",
+        "sha256": "7c5611be9f37ed7576bcac5b8fb2e95b93545e644c591b167fdd63dbe4f06636",
+        "results": {
+          "baseline": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.9166666666666666,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 9,
+              "fp": 3,
+              "fn": 3,
+              "precision": 0.75,
+              "recall": 0.75
+            }
+          },
+          "dense47": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 2,
+              "fn": 0,
+              "precision": 0.8461538461538461,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 7,
+              "fn": 2,
+              "precision": 0.5882352941176471,
+              "recall": 0.8333333333333334
+            }
+          },
+          "dense48": {
+            "red_balloon": {
+              "tp": 11,
+              "fp": 1,
+              "fn": 0,
+              "precision": 0.9166666666666666,
+              "recall": 1.0
+            },
+            "blue_balloon": {
+              "tp": 10,
+              "fp": 11,
+              "fn": 2,
+              "precision": 0.47619047619047616,
+              "recall": 0.8333333333333334
+            }
+          }
+        }
+      }
+    }
+  },
+  "protocol_sha256": "9aa342b799effdd1545956ac28bd615af42ec61e2aefc5ff1b472f114735c9c5",
+  "script_sha256": "f26856d0af14e43de8001104031fba638bbaca209865a5e8bdecdd377b9b8e7c",
+  "scope": "Sample-count matched TRAIN expansion; shared known-environment grouped holdout and repeated development, not independent qualification",
+  "caveats": [
+    "Controls match frame count and optimizer steps, not annotation counts or background-mask density.",
+    "Unknown regions in public scenes are ignored, not negative labels.",
+    "No classifier changes, threshold sweep, Pi timing or camera-inclusive verification."
+  ],
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
