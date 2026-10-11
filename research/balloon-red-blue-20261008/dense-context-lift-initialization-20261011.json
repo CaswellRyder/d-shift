@@ -1,0 +1,100 @@
+{
+  "parent": {
+    "path": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+    "sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8"
+  },
+  "checks": [
+    {
+      "group": "train",
+      "rows": 1764,
+      "max_logit_delta": 9.5367431640625e-06,
+      "max_probability_delta": 9.5367431640625e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "bab1a2f3b6e6e8d53c78011f0f5286da3466eb9e7bf1b1943c65a66505ea303d"
+    },
+    {
+      "group": "old_blue",
+      "rows": 23,
+      "max_logit_delta": 3.814697265625e-06,
+      "max_probability_delta": 1.1920928955078125e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "ef970d698acdcfe821f5a284b814864af26fd61553733e2dae12ad63ebb5880c"
+    },
+    {
+      "group": "old_clutter",
+      "rows": 22,
+      "max_logit_delta": 5.7220458984375e-06,
+      "max_probability_delta": 1.1920928955078125e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "310ef6e805e7ca10d43c96848bb223c173191c909b2a9417fcdfb617f5c36a3b"
+    },
+    {
+      "group": "real_clutter",
+      "rows": 39,
+      "max_logit_delta": 7.62939453125e-06,
+      "max_probability_delta": 3.5762786865234375e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "06a8ea45d1d32f2bdc7b06f3bcf2f963ac6bd7b5db9e786ac87a602c66aecfeb"
+    },
+    {
+      "group": "new_clutter",
+      "rows": 13,
+      "max_logit_delta": 2.86102294921875e-06,
+      "max_probability_delta": 9.5367431640625e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "258be3d0d697c28066eaae10c3f173565dcc12b5970de17d9a1e7a2d1eecdfcc"
+    },
+    {
+      "group": "blue_views",
+      "rows": 69,
+      "max_logit_delta": 4.76837158203125e-06,
+      "max_probability_delta": 2.5331974029541016e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "5e9bbf7b75c742442217b0f81e3fc8381800065761ce4bc48df874c0b8c66582"
+    },
+    {
+      "group": "new_photos",
+      "rows": 7,
+      "max_logit_delta": 3.4570693969726562e-06,
+      "max_probability_delta": 1.1920928955078125e-07,
+      "same_class": true,
+      "same_acceptance": true,
+      "tensor_sha256": "90201cdce00120a39529d79849240813d3b69e9bb99a2c6d9a74c1b81804a610"
+    }
+  ],
+  "total_rows": 1937,
+  "cost": {
+    "parent_parameters": 7763,
+    "parameters": 15667,
+    "added_parameters": 7904,
+    "parent_macs": 895360,
+    "macs": 1401216,
+    "added_macs": 505856,
+    "mac_ratio": 1.564974982130093,
+    "prepool_receptive_field": 31,
+    "scope": "Analytic convolution/dense MACs only. No measured Pi latency, frame-rate or accuracy improvement."
+  },
+  "source_sha256": {
+    "scripts/balloon_dense_context_lift.py": "2aa7800ab742fce2cd28c46329e28056356a2df6cfa7926ba496338bd2f2b136",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_dense_context_lift.py": "773948fe87ecbbf7940711a61a0ca91b96a61506e997802ed8f6507eb2be2edc",
+    "scripts/blue_photo_expansion_data.py": "88353f3adc635f2da0e9c8076bbc20e78ad4c78bbf7de42ae0a0a2378a71c3c0",
+    "scripts/blue_balloon_candidate_data.py": "ed7d91b168fa96feed2657bee98c0bdea653bb0498debe8e331a35366781b9fa",
+    "src/dtr/models.py": "83b80a88073e91c20ad5789ef8f503be054240f944064864d68eef195aa6870f"
+  },
+  "protocol_sha256": "55ebce410c5c8b7ad7a52ce780649163f01faed66d31d9f6c5d2fc2e7d7410d0",
+  "threshold": 0.8,
+  "allowed_max_logit_delta": 0.0001,
+  "next_action": "Matched compact-versus-dense training on the same reviewed curriculum with fixed schedules, followed by scene accuracy and separate Pi latency checks.",
+  "scope": "Numerical initial-function equivalence only. Extra capacity is a hypothesis, not demonstrated accuracy or speed improvement.",
+  "trained": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
