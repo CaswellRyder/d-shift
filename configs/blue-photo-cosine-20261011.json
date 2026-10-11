@@ -1,0 +1,30 @@
+{
+  "arms": [
+    "control",
+    "admit"
+  ],
+  "seeds": [
+    47,
+    48
+  ],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "Shared1750row curriculum: original1681 including13 new background crops plus69 reviewed blue views. Append seven new-photo blue positives twice versus seven existing blue positives twice. Both added groups use hard labels without teacher KL, weight4. Same1764rows,1602protected,seed47/48,parent,optimizer,240epochs,26640steps. Final checkpoint only. Fixed cosine learning rate from1e-4 to1e-5 over26640steps in BOTH arms. Same frozen parent; no continuation or cherry-picked checkpoint.",
+  "training_gate": "Both admitted seeds retain base training gate and69/69 runtime blue views; new-photo probes must be7/7 accepted at0.8. Controls are measured, not required to learn unseen additions.",
+  "scope": "TRAIN experiment only, seven crops from five previously unused public TRAIN photos. Same7763parameter64px architecture, no Pi/search/threshold changes. No independent qualification.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "learning_rate_schedule": {
+    "kind": "cosine",
+    "decay_steps": 26640,
+    "alpha": 0.1
+  },
+  "rationale": "Prior constant-rate trial admitted seed48 final loss rose from0.03704 to0.24437 and lost clutter checks. A fixed decay tests numerical/optimization stability; cause is a hypothesis, not proven. No development evaluation of the failed pair."
+}
