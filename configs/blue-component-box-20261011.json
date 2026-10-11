@@ -1,0 +1,16 @@
+{
+  "variants": ["current", "component"],
+  "localizer": "coarse47",
+  "selection": "confidence",
+  "opponent_threshold": 15,
+  "minimum_pixels": 6,
+  "minimum_side": 4,
+  "dominant_fraction": 0.5,
+  "reject_roi_boundary_contact": true,
+  "classifier_frozen": true,
+  "crop_frozen": true,
+  "neural_call_count_frozen": true,
+  "design": "One fixed geometry-only hypothesis motivated by development error attribution. For accepted blue predictions from appended learned proposals, use the bounding box of the dominant complete blue component inside the original proposal. Never reject a prediction for missing color support; fall back unchanged. No threshold sweep. Screen64 complete TRAIN scenes first, then report all three related development panels regardless of training outcome. No reserved qualification data.",
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
