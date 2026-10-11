@@ -1,0 +1,497 @@
+{
+  "models": {
+    "control47": {
+      "provenance_sha256": "adb51053d6ff1fed85dcefbf7f368580ef17e87f76a427986c4e2f70db8edba0",
+      "design": {
+        "mode": "control",
+        "seed": 47,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "5ac18003b0be5c3fbf43d58fb2bd15fe6da5d893902a5fdcf3231bd4abee09f0",
+        "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+        "script_sha256": "fd76da18fb343c0b2abccb5453c715901c13b4a5045d2b3ac4faa48fb2626257",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 36,
+        "reviewed_unique_negatives": 9,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1495,
+        "training_rows": 1523,
+        "reviewed_negative_background_correct": 0,
+        "reviewed_negative_count": 9,
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "path": "runs/balloon-reviewed-clutter-control-seed47-20261011/student.fp32.tflite",
+      "sha256": "abf6392800462eb35cd74d6c6f2f71747b320c9b4d2151197c8d525016b222c3",
+      "bytes": 34844
+    },
+    "control48": {
+      "provenance_sha256": "aa91e9d902835c2d42386241ae75203fb0205ea4b6ed23405418481da4be6666",
+      "design": {
+        "mode": "control",
+        "seed": 48,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "5ac18003b0be5c3fbf43d58fb2bd15fe6da5d893902a5fdcf3231bd4abee09f0",
+        "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+        "script_sha256": "fd76da18fb343c0b2abccb5453c715901c13b4a5045d2b3ac4faa48fb2626257",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 36,
+        "reviewed_unique_negatives": 9,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1493,
+        "training_rows": 1523,
+        "reviewed_negative_background_correct": 0,
+        "reviewed_negative_count": 9,
+        "max_keras_tflite_delta": 7.62939453125e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "path": "runs/balloon-reviewed-clutter-control-seed48-20261011/student.fp32.tflite",
+      "sha256": "044197a7af74692a28faf34b5f7a02303b00521f5733e87a29b5db3b1371fad2",
+      "bytes": 34844
+    },
+    "admit47": {
+      "provenance_sha256": "0852a7c4dc1e5cb4fa3eea5f20086936f49b5414ed597a74469d34ef64bd1c18",
+      "design": {
+        "mode": "admit",
+        "seed": 47,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "5ac18003b0be5c3fbf43d58fb2bd15fe6da5d893902a5fdcf3231bd4abee09f0",
+        "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+        "script_sha256": "fd76da18fb343c0b2abccb5453c715901c13b4a5045d2b3ac4faa48fb2626257",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 36,
+        "reviewed_unique_negatives": 9,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1470,
+        "training_rows": 1523,
+        "reviewed_negative_background_correct": 3,
+        "reviewed_negative_count": 9,
+        "max_keras_tflite_delta": 9.5367431640625e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "path": "runs/balloon-reviewed-clutter-admit-seed47-20261011/student.fp32.tflite",
+      "sha256": "724dd6a6274630ed16d529c35a38bded406bd61f7b1a08f20910669d10c35520",
+      "bytes": 34844
+    },
+    "admit48": {
+      "provenance_sha256": "8c18879858e4a77a608291a2a0728f7d6ece61f032346d80d580786c73ee6cf2",
+      "design": {
+        "mode": "admit",
+        "seed": 48,
+        "epochs": 8,
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "manifest_sha256": "9322f3bd98d8350e9e0c39fbc270ea375ff853e313edb56ab319ad511a5b5766",
+        "review_sha256": "5ac18003b0be5c3fbf43d58fb2bd15fe6da5d893902a5fdcf3231bd4abee09f0",
+        "queue_sha256": "2f066967cbbe5093cdfa70036b9afd7bfebecbf651e56ebd52a24bc459917e5d",
+        "script_sha256": "fd76da18fb343c0b2abccb5453c715901c13b4a5045d2b3ac4faa48fb2626257",
+        "parent_model_sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+        "parent_checkpoint_sha256": "b518de64c79bf23632da4878605c192aab4c2cdec970fbd46e56d2c6122c3515",
+        "parent_metadata_sha256": "8b7504b19c8c01a1cf1802048ce7c4f7049fad143f5169c8717f6bf74c8098d4",
+        "ordinary_rows": 1487,
+        "hard_label_rows": 36,
+        "reviewed_unique_negatives": 9,
+        "fixed_final_epoch": true,
+        "classes": [
+          "background",
+          "red_balloon",
+          "blue_balloon"
+        ],
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "fit_diagnostics": {
+        "training_correct": 1465,
+        "training_rows": 1523,
+        "reviewed_negative_background_correct": 2,
+        "reviewed_negative_count": 9,
+        "max_keras_tflite_delta": 9.5367431640625e-06,
+        "scope": "Training fit only, not held-out validation",
+        "test_evaluated": false,
+        "deployment_approved": false
+      },
+      "path": "runs/balloon-reviewed-clutter-admit-seed48-20261011/student.fp32.tflite",
+      "sha256": "83471b0710c4c240003c22d9705b8ba4a09928c7934eeeec8ff8becb40c0a50a",
+      "bytes": 34844
+    },
+    "incumbent": {
+      "path": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010/student.fp32.tflite",
+      "sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "bytes": 35204
+    },
+    "parent": {
+      "path": "runs/balloon-fragment-control-seed47-20261011/color.fp32.tflite",
+      "sha256": "da4b83a03f1188b268de2a8d0dcbb4ee8197a855d4d5f570b7fdd59da4ef9888",
+      "bytes": 34844
+    }
+  },
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "path": "runs/balloon-reviewed-clutter-engdes2-lockbox-panel3-20261010-20261011.json",
+      "sha256": "9be4170980b006b472d9c5e62d0349ac6e51b1cbcc99134114f00a89994595d7",
+      "frames": 67,
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "parent": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 13,
+            "fn": 12,
+            "precision": 0.8194444444444444,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9583333333333334,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 12,
+            "fn": 12,
+            "precision": 0.8309859154929577,
+            "recall": 0.8309859154929577
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9459459459459459,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 11,
+            "fn": 11,
+            "precision": 0.8450704225352113,
+            "recall": 0.8450704225352113
+          }
+        }
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "path": "runs/balloon-reviewed-clutter-engdes2-development-panel2-20261010-20261011.json",
+      "sha256": "ed517c61ef57c78b7776911cdd1413964d3ce0e57b5b7eb5830f75e7606e705e",
+      "frames": 62,
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 26,
+            "fn": 18,
+            "precision": 0.6533333333333333,
+            "recall": 0.7313432835820896
+          }
+        },
+        "parent": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 65,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9420289855072463,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 25,
+            "fn": 16,
+            "precision": 0.6710526315789473,
+            "recall": 0.7611940298507462
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.9545454545454546,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 52,
+            "fp": 25,
+            "fn": 15,
+            "precision": 0.6753246753246753,
+            "recall": 0.7761194029850746
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 64,
+            "fp": 4,
+            "fn": 1,
+            "precision": 0.9411764705882353,
+            "recall": 0.9846153846153847
+          },
+          "blue_balloon": {
+            "tp": 51,
+            "fp": 23,
+            "fn": 16,
+            "precision": 0.6891891891891891,
+            "recall": 0.7611940298507462
+          }
+        }
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "path": "runs/balloon-reviewed-clutter-engdes2-development-scenes-20261008-20261011.json",
+      "sha256": "d7cbd6d16b3807a7b2fb797fd2451c740c6a11e1d2c2f5353e7cab65cf68c709",
+      "frames": 12,
+      "results": {
+        "incumbent": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "parent": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "control48": {
+          "red_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.9166666666666666,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "admit47": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        },
+        "admit48": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9090909090909091,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 3,
+            "precision": 0.75,
+            "recall": 0.75
+          }
+        }
+      }
+    }
+  },
+  "summary_script_sha256": "d60be210657eb95508d11c9c9214cb3aa4342b7908b9f7a544442c9a00c569e4",
+  "decision": "Retain earlier color-control candidate; do not promote clutter retraining. Both admit seeds lose red targets.",
+  "scope": "Repeatedly inspected development panels; no independent sessions or final qualification",
+  "training_note": "Nine reviewed negatives repeated four times; one is an existing background crop. This is an emphasis trial, not nine new independent images.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "pi_tested": false,
+  "qualification_achieved": false
+}
