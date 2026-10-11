@@ -1,0 +1,23 @@
+{
+  "data": "data/balloon-dense-public-admit-20261011",
+  "manifest_sha256": "029b91b1849c3cc9bda1b5e7b21d5d809e61e2142c476ee030c9ae6de1fc773b",
+  "base_data": "data/balloon-dense-complete-training-20261011",
+  "base_manifest_sha256": "3472020134f07c7e9e0f407f8b2aefe9af20974aae8913d57c14455bc0e84409",
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 8,
+  "learning_rate": 0.001,
+  "input_hw": [120, 160],
+  "output_grid": [30, 40],
+  "box_objective": "l1_giou",
+  "change": "Third spatial layer uses stride1 instead of stride2. Re-encode reviewed boxes on 30x40 grid with 8px scene cells; fixed 16px complete-background uncertainty guard. Peak neighborhood remains 3x3 grid cells. This tests a grid pipeline change, not architecture alone.",
+  "controls": {
+    "47": "runs/balloon-dense-public-admit-seed47-20261011",
+    "48": "runs/balloon-dense-public-admit-seed48-20261011"
+  },
+  "training_gate": "Both seeds improve decoded known blue target coverage on extra public FIT scenes without reducing known red coverage there or known red/blue coverage on original FIT scenes. No threshold or epoch sweep.",
+  "evaluation": "Final epoch only. If training gate passes, export and compare both seeds on all three repeated development panels with the same classifier, thresholds and crop budget. Measure extra compute separately; do not infer Pi speed from parameter count.",
+  "unknown_regions": "Remain unsupervised. Only existing reviewed negatives and approved complete-scene background may supervise heat cells. Drop an entire explicit negative region if it conflicts with positive supervision on the finer grid; record every dropped region. Never erase a positive to fit a negative.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

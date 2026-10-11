@@ -1,0 +1,42 @@
+{
+  "decision": "Reject both fine-grid models before development evaluation",
+  "raw_report": "runs/balloon-fine-grid-training-20261011.json",
+  "raw_sha256": "3755828c7e40135099285490a53765da6c7ab30b02fe6cb15fc12c283a9d19cc",
+  "change": "Same 2342 parameters and 160x120 input; stride1 at third spatial layer, 30x40 output instead of 15x20. Re-encoded reviewed supervision, same source images and folds. Higher spatial compute, not a speed improvement.",
+  "preflight": "Initial runs stopped before creating models because one reviewed background region conflicted with finer positive cells. The entire conflicting background region was excluded and recorded before successful training. No positive labels were removed.",
+  "omitted_negative": {
+    "frame_index": 127,
+    "source": "openimages/train/0099eeb0f8cda0d1",
+    "region": [37, 157, 98, 240]
+  },
+  "diagnostic_fit_only": {
+    "public_targets": 30,
+    "public_colliding_targets_at_coarse_grid": 5,
+    "public_colliding_targets_at_fine_grid": 0,
+    "public_input_short_side_below_four_pixels": {"red_balloon": 6, "blue_balloon": 7},
+    "caveat": "Resolving encoded center collisions does not restore lost image detail or guarantee accurate predicted boxes. Adjacent same-color peaks can still compete during decoding. The finer stride also reduces receptive field; this trial does not isolate that effect."
+  },
+  "known_target_coverage": {
+    "common_fit_targets": {"red_balloon": 129, "blue_balloon": 119},
+    "public_fit_targets": {"red_balloon": 12, "blue_balloon": 18},
+    "47": {
+      "common_control": {"red_balloon": 97, "blue_balloon": 96},
+      "common_fine": {"red_balloon": 89, "blue_balloon": 74},
+      "public_control": {"red_balloon": 2, "blue_balloon": 5},
+      "public_fine": {"red_balloon": 2, "blue_balloon": 4}
+    },
+    "48": {
+      "common_control": {"red_balloon": 101, "blue_balloon": 92},
+      "common_fine": {"red_balloon": 85, "blue_balloon": 83},
+      "public_control": {"red_balloon": 2, "blue_balloon": 2},
+      "public_fine": {"red_balloon": 2, "blue_balloon": 4}
+    }
+  },
+  "next_direction": "Do not deploy or tune thresholds on development. Before another grid trial, separate small-input detail loss from the reduced receptive field and weak fit. Preserve the current runtime until a candidate clears paired accuracy and hardware checks.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "exported": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
