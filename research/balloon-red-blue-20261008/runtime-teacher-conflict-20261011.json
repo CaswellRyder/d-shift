@@ -1,0 +1,96 @@
+{
+  "results": [
+    {
+      "queue_id": 10,
+      "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+      "label": "red_balloon",
+      "teacher_probability": [
+        0.6375508308410645,
+        0.36243319511413574,
+        1.594561035744846e-05
+      ],
+      "network_probabilities": {
+        "control47": [
+          0.910954475402832,
+          0.08904217928647995,
+          3.373253321115044e-06
+        ],
+        "control48": [
+          0.8682628870010376,
+          0.13173194229602814,
+          5.173246790945996e-06
+        ],
+        "admit47": [
+          0.8216392993927002,
+          0.17835389077663422,
+          6.724740160279907e-06
+        ],
+        "admit48": [
+          0.7273946404457092,
+          0.27259740233421326,
+          7.978697794897016e-06
+        ]
+      },
+      "independent_logit_optimum": [
+        0.2194555550813675,
+        0.7805302143096924,
+        1.4278815797297284e-05
+      ],
+      "max_abs_gradient": 1.0321273293811828e-06,
+      "optimum_passes_threshold": false
+    },
+    {
+      "queue_id": 39,
+      "source": "train/frame_000693_jpg.rf.227c5a5580364fd7c226c079bf23e982.jpg",
+      "label": "red_balloon",
+      "teacher_probability": [
+        0.9942254424095154,
+        0.005703051574528217,
+        7.150722376536578e-05
+      ],
+      "network_probabilities": {
+        "control47": [
+          0.9860756993293762,
+          0.013854495249688625,
+          6.985117943258956e-05
+        ],
+        "control48": [
+          0.9873428344726562,
+          0.012566890567541122,
+          9.028572821989655e-05
+        ],
+        "admit47": [
+          0.9776170253753662,
+          0.022275639697909355,
+          0.00010729139467002824
+        ],
+        "admit48": [
+          0.9719252586364746,
+          0.027907561510801315,
+          0.00016722067084629089
+        ]
+      },
+      "independent_logit_optimum": [
+        0.5204100608825684,
+        0.4793740212917328,
+        0.00021595896396320313
+      ],
+      "max_abs_gradient": 6.687056156806648e-06,
+      "optimum_passes_threshold": false
+    }
+  ],
+  "trial_sha256": "10d4328fe6240e318fc81a5f881f459d85117d098d0f2570b671ba87b93f8ffc",
+  "queue_sha256": "211ec9e19fd8dbce5344b0b0ed2800bc3338c0a0d5bef044bee4c54db876dd8f",
+  "script_sha256": "83ae67f5fbf470988f2c88b798984888d1fa73843e6572c601813238f76b27aa",
+  "loss_helpers_sha256": {
+    "scripts/balloon_all_correct_protection.py": "a7fb4d6a9d5467e98fb9b5b5b3fdc1ac7828b04040af8f63fbf20f949380e6ea",
+    "scripts/balloon_positive_protection.py": "f62d344d63f53f6fea4640aef62c16efb5add2615ae5eb81d242f0ce4c34d198",
+    "scripts/train_balloon_reviewed_clutter.py": "29e4640d0ae4440e8cb395fa92e0a0daefb60f63b2997e6a34431b17457c20ae"
+  },
+  "steps": 2000,
+  "optimizer": "Adam0.03",
+  "scope": "Independent-logit TRAIN loss diagnostic. No network retraining, deployment or accuracy claim.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

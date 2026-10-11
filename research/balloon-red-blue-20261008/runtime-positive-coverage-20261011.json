@@ -1,0 +1,106 @@
+{
+  "results": {
+    "parent": {
+      "red_balloon": {
+        "total": 84,
+        "accepted": 82,
+        "parent_accepted": 82,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 70
+      },
+      "blue_balloon": {
+        "total": 83,
+        "accepted": 83,
+        "parent_accepted": 83,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 69
+      }
+    },
+    "control47": {
+      "red_balloon": {
+        "total": 84,
+        "accepted": 82,
+        "parent_accepted": 82,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 70
+      },
+      "blue_balloon": {
+        "total": 83,
+        "accepted": 83,
+        "parent_accepted": 83,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 69
+      }
+    },
+    "control48": {
+      "red_balloon": {
+        "total": 84,
+        "accepted": 82,
+        "parent_accepted": 82,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 70
+      },
+      "blue_balloon": {
+        "total": 83,
+        "accepted": 83,
+        "parent_accepted": 83,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 69
+      }
+    },
+    "admit47": {
+      "red_balloon": {
+        "total": 84,
+        "accepted": 81,
+        "parent_accepted": 82,
+        "lost_parent_ids": [
+          61
+        ],
+        "missing_protected_tensor": 70
+      },
+      "blue_balloon": {
+        "total": 83,
+        "accepted": 82,
+        "parent_accepted": 83,
+        "lost_parent_ids": [
+          48
+        ],
+        "missing_protected_tensor": 69
+      }
+    },
+    "admit48": {
+      "red_balloon": {
+        "total": 84,
+        "accepted": 82,
+        "parent_accepted": 82,
+        "lost_parent_ids": [],
+        "missing_protected_tensor": 70
+      },
+      "blue_balloon": {
+        "total": 83,
+        "accepted": 82,
+        "parent_accepted": 83,
+        "lost_parent_ids": [
+          48
+        ],
+        "missing_protected_tensor": 69
+      }
+    }
+  },
+  "queue": {
+    "path": "data/runtime-positive-coverage-20261011",
+    "sha256": "211ec9e19fd8dbce5344b0b0ed2800bc3338c0a0d5bef044bee4c54db876dd8f"
+  },
+  "frames": 64,
+  "unique_crops": 167,
+  "counts": {
+    "red_balloon": 84,
+    "blue_balloon": 83
+  },
+  "script_sha256": "d54bec265e136d6ed26749826e9bf374f07095e8d1a8a7c579a54b2ba4549b72",
+  "scope": "Exact resized-tensor coverage, not semantic data novelty or independent accuracy. Labels inherited through strict geometry, pending visual review. No retraining yet.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

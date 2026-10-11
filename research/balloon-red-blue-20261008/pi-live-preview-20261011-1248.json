@@ -1,0 +1,162 @@
+{
+  "captured_at_utc": "2026-10-11T12:46:10.751089+00:00",
+  "source_receipt": "runs/pi-live-preview-20261011-1248/preview.json",
+  "source_receipt_sha256": "bd29d5b3b514082300b3a395471a89616a3290336f80b5abcc5f5fd6e63388d1",
+  "config": {
+    "source": "camera",
+    "model": "soft-admit-47",
+    "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+    "bundle_sha256": "cd185749b0042f8f8a2735aac72ddfa21923c8bca45f583e977c31a504ec30f5",
+    "region_library_sha256": "d7620537d7e9850f0f794a26facc188063f289c6ad9f5d793693ad5715e43303",
+    "viewer_sha256": "cc233b71ac469cec1fdc6ced4903905257ffe1c39214c8986a75eb13be333ba0",
+    "page_sha256": "63a353cdcdb4fc759c9f1b105b4dd71f19481a94b71f61ccaa3ae17b6ee7183e",
+    "threshold": 0.8,
+    "classes": [
+      "background",
+      "red_balloon",
+      "blue_balloon"
+    ],
+    "max_golden_score_delta": 3.5762786865234375e-7,
+    "golden_frames": 16
+  },
+  "frames": [
+    {
+      "path": "000.jpg",
+      "sha256": "09497b146559941514bae90276e41c3d7a574493d3678e7a3dfb62e09fce6bb5",
+      "sequence": 74119,
+      "age_ms": 30.355073,
+      "row": {
+        "detections": [],
+        "mode": "mser_direct",
+        "policy": "full",
+        "processing_ms": 251.70060398522764,
+        "search_ms": 251.31460299598984,
+        "inference_ms": 0.024999986635521054,
+        "neural_calls": 0,
+        "sensor_timestamp_ns": 213108252553000,
+        "capture_started_boottime_ns": 213108271861842,
+        "capture_completed_boottime_ns": 213108372985086,
+        "result_boottime_ns": 213108625135691,
+        "timestamp_valid": true,
+        "sensor_timestamp_increasing": true,
+        "sensor_to_acquire_ms": 120.432086,
+        "sensor_to_result_ms": 372.582691,
+        "exposure_us": 66663,
+        "analogue_gain": 8,
+        "frame_duration_us": 99978
+      },
+      "health": {
+        "temperature_millicelsius": "55148",
+        "load_average": "1.72 1.65 1.60 2/249 7496",
+        "throttled": "throttled=0x0"
+      },
+      "stats": {
+        "fps": 3.6811408592990387,
+        "processing_ms": 196.75715390088348,
+        "search_ms": 196.3412529003108,
+        "inference_ms": 0.03326673371096452,
+        "neural_calls": 0,
+        "sensor_to_result_ms": 321.8228864666667,
+        "frames": 30
+      },
+      "recording": {
+        "active": false,
+        "last": null
+      }
+    },
+    {
+      "path": "001.jpg",
+      "sha256": "ed6741335f4065762c8ab00f8bc45680e5ddeb89f4d52a0988320e7d2469df18",
+      "sequence": 74120,
+      "age_ms": 29.562071,
+      "row": {
+        "detections": [],
+        "mode": "mser_direct",
+        "policy": "full",
+        "processing_ms": 206.5504950005561,
+        "search_ms": 206.1794940091204,
+        "inference_ms": 0.024999986635521054,
+        "neural_calls": 0,
+        "sensor_timestamp_ns": 213108552498000,
+        "capture_started_boottime_ns": 213108646975744,
+        "capture_completed_boottime_ns": 213108698305867,
+        "result_boottime_ns": 213108905293362,
+        "timestamp_valid": true,
+        "sensor_timestamp_increasing": true,
+        "sensor_to_acquire_ms": 145.807867,
+        "sensor_to_result_ms": 352.795362,
+        "exposure_us": 66663,
+        "analogue_gain": 8,
+        "frame_duration_us": 99978
+      },
+      "health": {
+        "temperature_millicelsius": "55148",
+        "load_average": "1.72 1.65 1.60 2/249 7496",
+        "throttled": "throttled=0x0"
+      },
+      "stats": {
+        "fps": 3.650717202150505,
+        "processing_ms": 197.21678740073307,
+        "search_ms": 196.80071973319477,
+        "inference_ms": 0.0333000672981143,
+        "neural_calls": 0,
+        "sensor_to_result_ms": 323.10565640000004,
+        "frames": 30
+      },
+      "recording": {
+        "active": false,
+        "last": null
+      }
+    },
+    {
+      "path": "002.jpg",
+      "sha256": "1930d067ed77e3c4a3b1aa4bd4f197399eb75ffc7d474aaf87500eb9b1f565a4",
+      "sequence": 74121,
+      "age_ms": 26.018063,
+      "row": {
+        "detections": [],
+        "mode": "mser_direct",
+        "policy": "full",
+        "processing_ms": 195.2794679964427,
+        "search_ms": 194.9064670188818,
+        "inference_ms": 0.025999994250014424,
+        "neural_calls": 0,
+        "sensor_timestamp_ns": 213108852442000,
+        "capture_started_boottime_ns": 213108929792421,
+        "capture_completed_boottime_ns": 213108979583540,
+        "result_boottime_ns": 213109175299008,
+        "timestamp_valid": true,
+        "sensor_timestamp_increasing": true,
+        "sensor_to_acquire_ms": 127.14154,
+        "sensor_to_result_ms": 322.857008,
+        "exposure_us": 66663,
+        "analogue_gain": 8,
+        "frame_duration_us": 99978
+      },
+      "health": {
+        "temperature_millicelsius": "55148",
+        "load_average": "1.72 1.65 1.60 2/249 7496",
+        "throttled": "throttled=0x0"
+      },
+      "stats": {
+        "fps": 3.652997693047698,
+        "processing_ms": 197.1266528669124,
+        "search_ms": 196.71065186751852,
+        "inference_ms": 0.03330006632798662,
+        "neural_calls": 0,
+        "sensor_to_result_ms": 322.8188961333334,
+        "frames": 30
+      },
+      "recording": {
+        "active": false,
+        "last": null
+      }
+    }
+  ],
+  "visual_review": "Agent viewed all3 fresh preview frames: dim indoor ceiling/wall scene with no visible balloons. No detection accuracy can be inferred.",
+  "control_requests_sent": false,
+  "ssh_forward_closed": true,
+  "scope": "Existing live preview only; JPEG frames are not raw training recordings. No ground truth, independent accuracy or isolated speed measurement.",
+  "test_evaluated": false,
+  "qualification_achieved": false
+}

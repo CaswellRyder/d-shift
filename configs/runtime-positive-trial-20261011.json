@@ -1,0 +1,19 @@
+{
+  "arms": ["control", "admit"],
+  "seeds": [47,48],
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "epochs": 240,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "matched_recipe": "All arms start from the same good research parent. Same1685base rows including15new red-background crops twice. Add139protected runtime-proposal positives once or139same-color ordinary TRAIN positives sampled without replacement per color using RNG47.1824rows total,1672protected,70red69blue extra rows. Fresh Adam, same fixed240epochs,27360steps. Original7763parameter architecture.",
+  "training_gate": "Both admitted seeds pass all previous current-color-clutter gates on base1685 and correctly accept all139runtime positives at0.8. Both must improve runtime-positive acceptance over matched control. No development evaluation before paired gate.",
+  "checkpoint_policy": "Final240 only; no early stopping or checkpoint selection.",
+  "scope": "Same TRAIN photos, newly protected crop views, not independent data. No inference/search changes. Fixed threshold and operating point. Repeated development cannot qualify flight.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
