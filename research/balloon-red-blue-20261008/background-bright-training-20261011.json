@@ -1,0 +1,414 @@
+{
+  "panels": {
+    "training": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 91,
+            "fp": 13,
+            "fn": 7,
+            "precision": 0.875,
+            "recall": 0.9285714285714286
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 4,
+            "fn": 4,
+            "precision": 0.956989247311828,
+            "recall": 0.956989247311828
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 9,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "suppressed": 3,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 89,
+            "geometric_oracle_recall": 0.956989247311828,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression": true,
+        "meets_94": false,
+        "frames": 64,
+        "neural_calls": 388
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 91,
+            "fp": 13,
+            "fn": 7,
+            "precision": 0.875,
+            "recall": 0.9285714285714286
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 4,
+            "fn": 5,
+            "precision": 0.9565217391304348,
+            "recall": 0.946236559139785
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 9,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "suppressed": 3,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": [],
+        "nonregression": false,
+        "meets_94": false,
+        "frames": 64,
+        "neural_calls": 392
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 91,
+            "fp": 13,
+            "fn": 7,
+            "precision": 0.875,
+            "recall": 0.9285714285714286
+          },
+          "blue_balloon": {
+            "tp": 87,
+            "fp": 4,
+            "fn": 6,
+            "precision": 0.9560439560439561,
+            "recall": 0.9354838709677419
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 9,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "suppressed": 3,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5,
+                "below_acceptance_threshold": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 10694,
+              "box": [
+                59.375,
+                117.0,
+                98.625,
+                190.875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 19694,
+              "box": [
+                165.375,
+                0.0,
+                256.125,
+                21.75
+              ]
+            }
+          }
+        ],
+        "gained_targets": [],
+        "nonregression": false,
+        "meets_94": false,
+        "frames": 64,
+        "neural_calls": 393
+      },
+      "background47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 91,
+            "fp": 13,
+            "fn": 7,
+            "precision": 0.875,
+            "recall": 0.9285714285714286
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 4,
+            "fn": 5,
+            "precision": 0.9565217391304348,
+            "recall": 0.946236559139785
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 9,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "suppressed": 3,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 14156,
+              "box": [
+                25.375,
+                164.34375,
+                112.125,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": [],
+        "nonregression": false,
+        "meets_94": false,
+        "frames": 64,
+        "neural_calls": 386,
+        "nonregression_vs_control": true
+      },
+      "background48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 91,
+            "fp": 13,
+            "fn": 7,
+            "precision": 0.875,
+            "recall": 0.9285714285714286
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 4,
+            "fn": 5,
+            "precision": 0.9565217391304348,
+            "recall": 0.946236559139785
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 9,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "suppressed": 3,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 88,
+            "geometric_oracle_recall": 0.946236559139785,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 5
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "annotation_id": 14156,
+              "box": [
+                25.375,
+                164.34375,
+                112.125,
+                239.90625
+              ]
+            }
+          }
+        ],
+        "gained_targets": [],
+        "nonregression": false,
+        "meets_94": false,
+        "frames": 64,
+        "neural_calls": 385,
+        "nonregression_vs_control": true
+      }
+    }
+  },
+  "models": {
+    "parent": {
+      "path": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.fp32.tflite",
+      "sha256": "25f71a47c4e8c7682260268b6589284938c7a70bb62eb8392f848c048d28d7c0",
+      "metadata_sha256": "c0dfe5cd9c627ba38adcf78a625d4bb7259f1b326b7c145ba98239987875d0a6"
+    },
+    "control47": {
+      "path": "runs/blue-scene-localizer-control-seed47-20261011/proposal.fp32.tflite",
+      "sha256": "f9a806af9bc61c7be4056e184e06819b9c59e41b91a703b8cf031e2de1b1825c",
+      "metadata_sha256": "4136d01f98608890f3e18ce3d8ee479493f4c8cf372d02316a7c6e0f7761d514"
+    },
+    "control48": {
+      "path": "runs/blue-scene-localizer-control-seed48-20261011/proposal.fp32.tflite",
+      "sha256": "f9d2bfc5ff06d741dcf16840f572b65a9164e55885bb923154eb9c1108a9456c",
+      "metadata_sha256": "3c3593c8fcf6e2dcd25047b339ee0c3d16883ef2c6ec203cdc0711df73a49f8a"
+    },
+    "background47": {
+      "path": "runs/blue-scene-localizer-background-seed47-20261011/proposal.fp32.tflite",
+      "sha256": "648d1405ad622d32dd42e4e117825825c850334b3609ac41208b4044d7d8111d",
+      "metadata_sha256": "c69371eac5edd09e529254090600e9741481eb3ff50459636e062913db616f73"
+    },
+    "background48": {
+      "path": "runs/blue-scene-localizer-background-seed48-20261011/proposal.fp32.tflite",
+      "sha256": "62917f2ffaa0edb73768f529541ccd4e5d9f39a79f5e6d98a38c1fbfcd9e54d7",
+      "metadata_sha256": "62f2471eaafe2ff79c9e45d0b3124bc9f45b9f398da0a2c02281fcf80414febf"
+    }
+  },
+  "inputs": {
+    "research/balloon-red-blue-20261008/blue-bright-hybrid-training-20261011.json": "30a5899badc804c2b42bed9fcf01522afef2d9373e282253b1619b1cba9d9874",
+    "runs/blue-bright-hybrid-training-20261011.json": "ea6a4dc264f405940d699f63f9129724097385fa9e67eafde77f247a63a87d2c",
+    "research/balloon-red-blue-20261008/blue-scene-localizer-training-20261011.json": "ebdfd87a55eb5c944b5b18e8e69645736020ccf125a97d4619913d34549f8992"
+  },
+  "raw": {
+    "path": "runs/background-bright-training-20261011.json",
+    "sha256": "83f69c8d14b358f8d67dee68d561611ae7cae4e8a042676309619e25c8bcde3d"
+  },
+  "protocol_sha256": "ba502d2f96e931357f5c54f6512315e61852b64c7e4943f6803c96faf8c816c4",
+  "script_sha256": "f77e66c32fe69f94d9efd93320167072242e29a7ed57982b3f9e5c06ad6a8584",
+  "helpers_sha256": {
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_balloon_search_fast.py": "d54f380103745d94cd08dea6b0a452103fbc93c0b7dc50bbce75fbdca8e0c88a",
+    "scripts/research_balloon_search.py": "645b3c59d17c68d01202a5187749a29aea786f388a95493cabd0d2bac06849bf",
+    "scripts/research_balloon_confidence_selection.py": "97f86a7d124e08353c9e4d040f1815c1a24ae0d64e19c132c5262ecd1fddb1fd",
+    "scripts/balloon_dense_runtime.py": "7f8d4444e974a74c7ce2da51d5b8e23d1bd8781700cea49a338204b131361a64",
+    "scripts/balloon_grid_runtime.py": "9341ff9a70c8ecd8578a85b6c855048925fc5408efcffd041ea75f897a72d80f",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/prepare_blue_false_alarm_review.py": "b1177d5ef348caf152179116df0864f5e999e466b87cab62a95a643598053c67",
+    "scripts/evaluate_reviewed_balloon_scenes.py": "55af5d95121c41d78ea96440830c3fe652129eea8b9fc162286d67ce83b9fa23",
+    "scripts/audit_indoor5_outcomes.py": "54b9c7f9056a1870999bf680bbaa98185074d4ed6784b3a5c37db291f0efbc4a",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8"
+  },
+  "classifier_sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+  "classifier_metadata_sha256": "1a8a6f50f59863ec16061c324058e42a4ab0f9e4a8352d0d04c83af78b4d4c45",
+  "scope": "Integration of previously evaluated localizers with lower-cost search. Complete TRAIN screen and repeated related development only. Candidate selection is development-driven, not independent qualification.",
+  "training_performed": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "pi_tested": false
+}

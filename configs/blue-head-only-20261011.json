@@ -1,0 +1,20 @@
+{
+  "arms": ["control", "background"],
+  "parent": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.keras",
+  "parent_sha256": "7188ee9d0f69d42bd1047e4e40598260faf027f85e0695a8eb5e12598727507c",
+  "head": "center_logits",
+  "blue_channel": 1,
+  "parameters_updated": 25,
+  "total_parameters": 2342,
+  "preservation_weight_above_proposal_threshold": 10.0,
+  "negative_weight": 1.0,
+  "ridge": 0.0001,
+  "max_newton_iterations": 100,
+  "gradient_tolerance": 0.00000001,
+  "design": "Same already-reviewed113 original FIT scenes and8 complete-negative TRAIN scenes; original16 grouped holdout excluded from optimization and normalization. Extract frozen24-channel features. Optimize only25 blue1x1 scoring weights/bias. Quadratic original-FIT logit preservation, tenfold for parent blue heat>=0.1, plus mean negative blue softplus loss and ridge on normalized parameter change. Control sets negative term to zero; background weight1. Deterministic convex Newton solve with backtracking; no seed or threshold sweep.",
+  "frozen": "All backbone weights, all geometry weights and red scoring weights/bias must remain bitwise unchanged. Model graph and runtime operations unchanged. Normalization is offboard optimizer-only and folded into blue head weights.",
+  "evaluation": "Verify convergence and saved checkpoint identity, unchanged red/geometry outputs, then TFLite tensor/decoded-proposal parity on137frames. Evaluate both fixed arms on complete64 TRAIN scenes and all three repeated development panels with current classifier, blue-bright search and confidence selection. No selection on holdout/development. No runtime swap.",
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
