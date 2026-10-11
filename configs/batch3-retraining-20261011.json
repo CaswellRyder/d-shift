@@ -1,0 +1,22 @@
+{
+  "parent": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.keras",
+  "parent_sha256": "6187512f17e069ae4665134d404ea863062d2561b32e7f5dcfbbb69bceb1c5d8",
+  "arms": ["control", "admit"],
+  "seeds": [47, 48],
+  "epochs": 80,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "cosine_alpha": 0.1,
+  "hard_weight": 4,
+  "protection_weight": 8,
+  "protection_probability_cap": 0.9,
+  "parent_acceptance_threshold": 0.8,
+  "parameters": 7763,
+  "rows": 2102,
+  "optimizer_steps": 10560,
+  "recipe": "Start from the same current7763-parameter parent, fresh Adam. Shared guarded2074-row real/runtime curriculum plus7 crops repeated4times. Admission uses newly reviewed6blue and1red. Control uses7 hash-distinct old preserved original-view crops with matched classes, fixed seed47 selection. No new image augmentations or architecture changes. Fixed80epoch checkpoint, no best-epoch selection.",
+  "training_gate": "For both admission seeds, every previously correct accepted positive and correctly background-classified old view must remain correct, all7 new crops must be correctly accepted at0.8, and per-color false acceptances on old TRAIN views cannot increase. Compare matched control independently. TRAIN crop gate is necessary but never sufficient for deployment; full-scene and live Pi qualification remain separate.",
+  "scope": "TRAIN-only fitting, no IMG-family fitting or threshold tuning, no reserved test access. New photos already probed with frozen parent are not an independent holdout.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}
