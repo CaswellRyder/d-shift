@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from scripts import pi_balloon_search_bench as bench
-from scripts.summarize_balloon_search_pi import validate_trial
+from scripts.summarize_balloon_search_pi import group_key, validate_trial
 
 
 def observation():
@@ -49,6 +49,35 @@ def test_scene_parity_fails_on_geometry_selection_or_class_drift(field, value):
 def test_extra_or_missing_proposals_fail():
     with pytest.raises(ValueError, match="count"):
         bench.check_predictions([], [observation()])
+
+
+def test_research_selection_is_opt_in_and_does_not_mutate_input():
+    rows = [dict(observation(), box=b, score=.99) for b in
+            ([0, 0, 100, 50], [0, 0, 40, 40], [60, 0, 100, 40])]
+    original = copy.deepcopy(rows)
+    legacy = bench.suppress_confirmed_balloon_parts(bench.suppress_duplicates(rows))
+    assert bench.select_detections(rows) == legacy
+    split = bench.select_detections(rows, "split_merged")
+    assert [r["accepted"] for r in split] == [False, True, True]
+    assert split[0]["suppression_reason"] == "merged_balloon_parent"
+    assert rows == original
+
+
+def test_oversized_replacement_is_separate_from_merged_rule():
+    rows = [dict(observation(), box=b, score=.99) for b in
+            ([0, 0, 100, 100], [20, 20, 70, 70])]
+    assert [r["accepted"] for r in bench.select_detections(rows, "split_merged")] == [True, False]
+    assert [r["accepted"] for r in bench.select_detections(rows, "split_oversized")] == [False, True]
+    with pytest.raises(ValueError, match="selection"):
+        bench.process_frame(None, None, "mser", selection="guess")
+
+
+def test_trial_pooling_separates_selection_policies_but_supports_legacy_reports():
+    row = dict(model="student", search="mser_direct")
+    assert group_key(row) == group_key(dict(row, selection="parts"))
+    assert len({group_key(dict(row, selection=s)) for s in bench.SELECTIONS}) == 3
+    with pytest.raises(ValueError, match="selection"):
+        group_key(dict(row, selection="unknown"))
 
 
 def test_processing_uses_exact_crop_and_single_model(monkeypatch):

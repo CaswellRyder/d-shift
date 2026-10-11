@@ -17,14 +17,32 @@ from dtr.runtime import Predictor
 from dtr.vision import suppress_duplicates
 
 try:
-    from research_balloon_search import experimental, suppress_confirmed_balloon_parts
+    from research_balloon_search import (experimental, suppress_confirmed_balloon_parts,
+                                        split_merged_balloon_parents, replace_oversized_balloon_parents)
     from pi_red_blue_bench import health, statistics, verify_bundle
 except ModuleNotFoundError:
-    from scripts.research_balloon_search import experimental, suppress_confirmed_balloon_parts
+    from scripts.research_balloon_search import (experimental, suppress_confirmed_balloon_parts,
+                                                split_merged_balloon_parents, replace_oversized_balloon_parents)
     from scripts.pi_red_blue_bench import health, statistics, verify_bundle
 
 
-def process_frame(rgb, predictor, search, native=None):
+SELECTIONS = ("parts", "split_merged", "split_oversized")
+
+
+def select_detections(found, selection="parts"):
+    if selection not in SELECTIONS:
+        raise ValueError("Unsupported selection policy")
+    rows = suppress_duplicates(found)
+    if selection != "parts":
+        rows = split_merged_balloon_parents(rows)
+    if selection == "split_oversized":
+        rows = replace_oversized_balloon_parents(rows)
+    return suppress_confirmed_balloon_parts(rows)
+
+
+def process_frame(rgb, predictor, search, native=None, selection="parts"):
+    if selection not in SELECTIONS:
+        raise ValueError("Unsupported selection policy")
     if search not in ("baseline", "mser", "mser_fast", "mser_direct", "mser_bright"):
         raise ValueError("Unsupported search")
     if search in ("mser_fast", "mser_direct", "mser_bright"):
@@ -49,7 +67,7 @@ def process_frame(rgb, predictor, search, native=None):
             dict(proposal, **{k: pred[k] for k in ("label", "scores", "score", "accepted")})
         )
     inferred = time.perf_counter()
-    detections = suppress_confirmed_balloon_parts(suppress_duplicates(found))
+    detections = select_detections(found, selection)
     done = time.perf_counter()
     return dict(
         detections=detections,
@@ -96,6 +114,8 @@ def main():
         required=True,
     )
     parser.add_argument("--region-library")
+    parser.add_argument("--selection", choices=SELECTIONS, default="parts",
+                        help="Research selection policy; default preserves existing behavior")
     parser.add_argument("--rounds", type=int, default=2)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
@@ -127,6 +147,8 @@ def main():
     # Exact optimizations use old goldens. Bright-only is a CHANGED policy with
     # its own host golden; passing that check does not mean parity with old MSER.
     golden_search = "mser" if args.search in ("mser_fast", "mser_direct") else args.search
+    if args.selection != "parts":
+        golden_search += "_" + args.selection
     golden = read_json(root / "search-golden.json")[args.model][golden_search]
     records = inputs["frames"]
     if not records or len(golden) != len(records):
@@ -137,7 +159,7 @@ def main():
     max_delta = 0.0
     before = health()
     for rgb, expected in zip(images, golden):
-        observed = process_frame(rgb, predictor, args.search, native)
+        observed = process_frame(rgb, predictor, args.search, native, args.selection)
         max_delta = max(
             max_delta, check_predictions(observed["detections"], expected["detections"])
         )
@@ -147,7 +169,7 @@ def main():
     started = time.perf_counter()
     for repeat in range(args.rounds):
         for index, (rgb, frame) in enumerate(zip(images, records)):
-            observed = process_frame(rgb, predictor, args.search, native)
+            observed = process_frame(rgb, predictor, args.search, native, args.selection)
             max_delta = max(
                 max_delta, check_predictions(observed["detections"], golden[index]["detections"])
             )
@@ -165,6 +187,7 @@ def main():
     report = dict(
         model=args.model,
         search=args.search,
+        selection=args.selection,
         machine=platform.machine(),
         host=platform.node(),
         opencv=cv2.__version__,
@@ -200,7 +223,7 @@ def main():
         flight_commands=None,
         test_evaluated=False,
         deployment_approved=False,
-        scope="Warmed 16-development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
+        scope="Warmed development-scene replay, camera excluded; repetitions are timing samples, not independent accuracy",
     )
     with log.open("x") as stream:
         for row in rows:

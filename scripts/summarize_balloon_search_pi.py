@@ -10,6 +10,13 @@ from scripts.evaluate_red_blue_development import LABELS, detection_counts, metr
 from scripts.pi_red_blue_bench import statistics
 
 
+def group_key(report):
+    selection = report.get("selection", "parts")
+    if selection not in ("parts", "split_merged", "split_oversized"):
+        raise ValueError("Unknown trial selection policy")
+    return report["model"], report["search"], selection
+
+
 def validate_trial(report, rows, inputs):
     n = len(inputs["frames"])
     if (
@@ -76,11 +83,11 @@ def summarize(base, results):
         runs[path.stem] = dict(
             report=report, report_sha256=sha256(path), unique_scene_metrics=counts
         )
-        groups[(report["model"], report["search"])].append((path.stem, rows))
+        groups[group_key(report)].append((path.stem, rows))
     if not runs:
         raise ValueError("No completed trials")
     pooled = {}
-    for (model, search), trials in groups.items():
+    for (model, search, selection), trials in groups.items():
         names = [name for name, _ in trials]
         values = [r["processing_ms"] for _, rows in trials for r in rows]
         if any(
@@ -88,11 +95,15 @@ def summarize(base, results):
             for name in names
         ):
             raise ValueError("Repeated trials changed scene metrics")
-        pooled[model + ":" + search] = dict(
+        key = model + ":" + search + (":" + selection if selection != "parts" else "")
+        pooled[key] = dict(
+            selection=selection,
             trials=names,
             timing_samples=len(values),
             timing=statistics(values),
             processing_fps=1000 / statistics(values)["mean_ms"],
+            stage_timing={stage: statistics([r[stage] for _, rows in trials for r in rows])
+                          for stage in ("search_ms", "inference_ms", "selection_ms")},
             unique_scene_metrics=runs[names[0]]["unique_scene_metrics"],
         )
     return dict(
@@ -100,7 +111,7 @@ def summarize(base, results):
         pooled=pooled,
         script_sha256=sha256(__file__),
         matcher_sha256=sha256("scripts/evaluate_red_blue_development.py"),
-        scope="Processing-only replay; unique scenes counted once per model/search, not across repeats",
+        scope="Processing-only replay; unique scenes counted once per model/search/selection, not across repeats",
         test_evaluated=False,
         deployment_approved=False,
         camera_used=False,
