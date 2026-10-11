@@ -1,0 +1,31 @@
+{
+  "queue": "data/direct-hybrid-negative-review-20261011",
+  "queue_sha256": "47e4fe3385d42aef340a9c6b7b1631030e50c07c0735ebe3d619419f0febe883",
+  "labels": {"2": "background", "3": "background", "6": "background", "7": "background", "8": "background", "10": "background", "12": "background", "13": "background"},
+  "review_notes": {
+    "2": "Red painted car/body panel behind the people, not a balloon.",
+    "3": "Red rectangular storefront sign with white lettering.",
+    "6": "Rectangular illuminated EXIT sign over the classroom door.",
+    "7": "Red patterned garment worn by a person in the station crowd.",
+    "8": "Blue necktie on the foreground man's white shirt.",
+    "10": "Blue rectangular sign/printed number panel at the top of the scene.",
+    "12": "Red-orange clothing on the person in the lower-left foreground.",
+    "13": "Red/pink clothing on the child in the lower-right foreground."
+  },
+  "excluded": {
+    "0": "Tiny12x6pixel red fragment; insufficient visual certainty for a hard negative.",
+    "1": "Crumpled red material may be deflated balloon/latex; do not assume background semantics.",
+    "4": "Adjacent-frame repetition of candidate3's same storefront sign; avoid duplicated evidence.",
+    "5": "Tiny13x7pixel blue table-edge fragment; insufficient visual certainty.",
+    "9": "Crumpled blue material on the table could be balloon/latex; exclude conservatively.",
+    "11": "Blurred blue-white crowd fragment; not confidently identifiable at this resolution."
+  },
+  "reviewer": "assistant visual review of all14context panels and native ambiguous crops",
+  "human_review_verified": false,
+  "training_approved": true,
+  "scope": "Eight explicit TRAIN-only background crops. Geometric exclusion plus visual review, not model-prediction pseudo-labels. Unknown cases remain excluded. For original scene crops, remove contradictory teacher-retention targets in the next prospective matched trial; do not merely duplicate new negatives beside frozen old false-positive targets.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
