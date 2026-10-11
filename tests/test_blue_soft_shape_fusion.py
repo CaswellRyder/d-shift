@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from scripts.blue_soft_shape_fusion import adjust, fit, odds
+from scripts.blue_soft_shape_fusion import adjust, expit, fit, logistic_objective, odds, optimize
 
 
 def test_no_correction_preserves_parent_exactly():
@@ -31,3 +31,22 @@ def test_fit_does_not_use_red_features():
 def test_invalid_probabilities_fail():
     with pytest.raises(ValueError, match='probabilities'):
         odds([[.9, .9, .9]])
+
+
+def test_sigmoid_stable_at_extreme_logits():
+    assert np.array_equal(expit([-1e4, 0, 1e4]), [0, .5, 1])
+
+
+def test_objective_gradient_and_hessian_match_finite_differences():
+    z = np.array([[1., 2.], [3., -1.], [-1., .5]])
+    base, y, weights = np.array([2., -1., .5]), np.array([0, 1, 0]), np.array([.25, .5, .25])
+    c = np.array([.2, -.1])
+    _, gradient, hessian = logistic_objective(c, z, base, y, weights)
+    for i in range(2):
+        step = np.eye(2)[i]*1e-5
+        a, b = logistic_objective(c+step, z, base, y, weights), logistic_objective(c-step, z, base, y, weights)
+        assert gradient[i] == pytest.approx((a[0]-b[0])/2e-5, abs=1e-8)
+        assert np.allclose(hessian[:, i], (a[1]-b[1])/2e-5, atol=1e-8)
+    fitted, _, loss = optimize(z, base, y, weights)
+    assert loss < logistic_objective(np.zeros(2), z, base, y, weights)[0]
+    assert np.max(np.abs(logistic_objective(fitted, z, base, y, weights)[1])) < 1e-8

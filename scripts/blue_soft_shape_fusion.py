@@ -1,7 +1,40 @@
 """TRAIN-only regularized shape correction to frozen blue/background odds."""
 import numpy as np
-from scipy.optimize import minimize
-from scipy.special import expit
+
+
+def expit(x):
+    x = np.asarray(x, np.float64)
+    exponential = np.exp(-np.abs(x))
+    return np.where(x >= 0, 1/(1+exponential), exponential/(1+exponential))
+
+
+def logistic_objective(coefficients, z, base, y, weights):
+    logit = base+z@coefficients
+    probability = expit(logit)
+    loss = np.sum(weights*(np.logaddexp(0, logit)-y*logit))+.05*np.sum(coefficients**2)
+    gradient = z.T@(weights*(probability-y))+.1*coefficients
+    hessian = z.T@((weights*probability*(1-probability))[:, None]*z)+.1*np.eye(z.shape[1])
+    return loss, gradient, hessian
+
+
+def optimize(z, base, y, weights):
+    coefficients = np.zeros(z.shape[1])
+    for iteration in range(500):
+        loss, gradient, hessian = logistic_objective(coefficients, z, base, y, weights)
+        if np.max(np.abs(gradient)) < 1e-8:
+            return coefficients, iteration, loss
+        direction = np.linalg.solve(hessian, gradient)
+        step = 1.
+        for _ in range(40):
+            candidate = coefficients-step*direction
+            candidate_loss = logistic_objective(candidate, z, base, y, weights)[0]
+            if candidate_loss <= loss-1e-4*step*(gradient@direction):
+                coefficients = candidate
+                break
+            step *= .5
+        else:
+            raise ValueError('Shape fusion line search failed')
+    raise ValueError('Shape fusion optimizer did not converge')
 
 
 def odds(probabilities):
@@ -28,18 +61,9 @@ def fit(x, labels, probabilities):
     scale = np.maximum(np.sqrt(np.sum(weights[:, None]*(x-mean)**2, axis=0)), .001)
     z = np.column_stack(((x-mean)/scale, np.ones(len(x))))
 
-    def objective(coefficients):
-        logit = base+z@coefficients
-        loss = np.sum(weights*(np.logaddexp(0, logit)-y*logit))+.05*np.sum(coefficients**2)
-        gradient = z.T@(weights*(expit(logit)-y))+.1*coefficients
-        return loss, gradient
-
-    result = minimize(objective, np.zeros(z.shape[1]), jac=True, method='L-BFGS-B',
-                      options=dict(maxiter=500, ftol=1e-12, gtol=1e-8))
-    if not result.success or not np.isfinite(result.x).all():
-        raise ValueError(f'Shape fusion fit failed: {result.message}')
-    return dict(mean=mean, scale=scale, coefficients=result.x[:-1], bias=np.array(result.x[-1]),
-                iterations=np.array(result.nit), objective=np.array(result.fun))
+    coefficients, iterations, objective = optimize(z, base, y, weights)
+    return dict(mean=mean, scale=scale, coefficients=coefficients[:-1], bias=np.array(coefficients[-1]),
+                iterations=np.array(iterations), objective=np.array(objective))
 
 
 def adjust(probabilities, features, model):
