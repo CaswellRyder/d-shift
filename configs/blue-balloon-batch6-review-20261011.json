@@ -1,0 +1,22 @@
+{
+  "root": "data/raw/openimages-blue-batch6-20261011",
+  "queue": "data/blue-balloon-batch6-review-20261011",
+  "queue_sha256": "f8eec378e5bb2bca2963194322bb06333a374c51a44ee8384b0b425725b9a2c6",
+  "reviewed_sheets": {
+    "frames-000.jpg": "a82ddada0c4cf24a4a3e7fc907eafea9a6278d0da86268d66752ab539d2b5641",
+    "crops-000.jpg": "41906de18260d0bd83e671d1809ff1ff1a7ac96736c85cecbe8cec3f65db0f34"
+  },
+  "labels_by_class": {"background": [], "red_balloon": [], "blue_balloon": []},
+  "exclude": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  "review": "Main assistant visually inspected both complete sheets. Crops0..8 are large striped hot-air balloons, not competition latex targets. Crops9..11 are red/orange-looking latex balloons beside a blue canopy; blue screening selected background pixels, not blue balloons. No blue positives admitted; no automatic background or uncertain red labels.",
+  "admitted_crops": 0,
+  "admitted_photographs": 0,
+  "candidate_photographs_attempted": 17,
+  "candidate_photographs_retained": 4,
+  "licensed_photographs_reviewed": 2,
+  "split": "train",
+  "training_approved": false,
+  "scope": "Completed candidate review with zero admission, not a failed download or qualification result. Existing bounded prefix exhausted; no prior attempted ID retried.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

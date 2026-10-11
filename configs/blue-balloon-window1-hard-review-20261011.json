@@ -1,0 +1,18 @@
+{
+  "queue": "data/blue-balloon-window1-hard-review-20261011",
+  "queue_sha256": "b7f842867738b050bad571f338beb846c7877cdc185137462840047348e02dc3",
+  "split": "train",
+  "training_approved": true,
+  "labels": {"0": "blue_balloon", "1": "blue_balloon"},
+  "exclude": [2],
+  "crop_sha256": {
+    "0": "025ebd57d7aa55461dc056e3078e365a7ca775a9f5176599f11e69526b7d6d1a",
+    "1": "fb40cf8a61d74858e534458e810b271ecbc0e0075513ed9e0d790b9ba862bb3a"
+  },
+  "replace_easy_ids": {"0": 23, "1": 50},
+  "review": "Main assistant directly inspected all three actual runtime crops. Crop0 contains a single muted blue inflated balloon beside an indoor window. Crop1 contains a blue balloon partly occluded by a white balloon on the previously reviewed parade float. Admit these two blue positives. Crop2 mixes two blue balloons and has marginal target localization; exclude it from this single-target crop experiment rather than label it background. Original photo and complete scene reviews are preserved in the upstream window1 reviews. The classifier predictions do not supply these visual labels.",
+  "relationship": "Runtime crops0and1 replace easy crops23and50 from the exact same respective photographs and target annotations. Keep nine crops from six photos, at most two crops per photo, and six blue/three red labels in both control and hard arms. These are not new independent sources.",
+  "scope": "TRAIN-only visual crop admission. No IMG-family fitting or final-test use. Full-scene localization failures remain separately unresolved; correct supplied crops do not establish detector accuracy.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

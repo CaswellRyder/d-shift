@@ -1,0 +1,10 @@
+{
+  "queue": "data/blue-balloon-window1-review-20261011",
+  "queue_sha256": "a28cd3e405b19ad3f95e0a0921f20cac1467cae0979cfb6cbd1eb171db57ad60",
+  "complete_red_blue_frames": {"5": [17, 18], "9": [23], "10": [24, 25, 26], "13": [34], "20": [50, 53, 54], "25": [65]},
+  "labels": {"17": "blue_balloon", "18": "red_balloon", "23": "blue_balloon", "24": "blue_balloon", "25": "blue_balloon", "26": "blue_balloon", "34": "red_balloon", "50": "blue_balloon", "53": "blue_balloon", "54": "blue_balloon", "65": "red_balloon"},
+  "review": "Main assistant inspected all six original photos and frame sheets. Frame5one blue and one red birthday balloon;9one muted blue balloon;10three blue balloons including partial bottom-left24;13one printed red balloon;20three blue balloons including50 partly behind a white balloon and two at right53/54;25one red balloon partly occluded by a chair. White balloons are not red/blue targets. Crops24and54 excluded from crop fitting solely by per-photo cap, not background labeled. No omitted red/blue latex target visible in these frames. Labels precede predictor inference.",
+  "scope": "Six newly reviewed public TRAIN photos and11correlated targets. Same sources as fitting candidates; not held-out evaluation or flight qualification. No automatic background labels. Classifier0.8andmatchingIoU0.5 unchanged.",
+  "test_evaluated": false,
+  "deployment_approved": false
+}

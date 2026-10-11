@@ -1,0 +1,19 @@
+{
+  "root": "runs/balloon-live-recheck-20261011-1707",
+  "report_sha256": "2b6e5e8963dc467210e45868cc6b856e84c991f7aa155b4be53823bcf369d358",
+  "reviewed_samples": {
+    "0000-raw.png": "6abf9d51e057a1a3f42cabe634d153b30e02d2c7e9f3a8042ee11f6a8ed8e46e",
+    "0011-raw.png": "789bcd09c8fb25108fca91c62f004d69f3a35fab50eabc6113bdebe33e668ad6"
+  },
+  "review": "Main assistant inspected first and last raw frames. Tilted view of indoor ceiling, fan, beam, curtain/window and wall art; no visible balloons in these two saved samples. Remaining10frames have detection/timing logs but no saved pixels or visual labels.",
+  "observed_frames": 12,
+  "mean_neural_calls": 0.0,
+  "qualification": "Camera/runtime smoke check only. Measured4.586FPS has zero neural-classifier calls and is not a representative balloon workload or speed improvement. The configured180degree transform is verified in metadata; physical camera orientation is not qualified from this tilted room view.",
+  "model_replaced": false,
+  "esp32_commands_sent": false,
+  "motor_commands_sent": false,
+  "accuracy_measured": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
