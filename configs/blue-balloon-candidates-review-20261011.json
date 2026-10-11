@@ -1,0 +1,24 @@
+{
+  "queue": "data/blue-balloon-candidates-review-20261011",
+  "queue_sha256": "82ce3503999433de8c3f3e553451c4b7381dd0108382e8cd195cc043e8f86062",
+  "split": "train",
+  "training_approved": true,
+  "deployment_approved": false,
+  "labels_by_class": {
+    "background": [],
+    "red_balloon": [],
+    "blue_balloon": [5, 10, 11, 12, 32, 45, 46]
+  },
+  "exclude": [0, 1, 2, 3, 4, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 47, 48],
+  "reviewed_sheets": {
+    "crops-048.jpg": "7cb428e40c42f9b92f37025dcae27aa37069a4919b1fb115b3875265ee13efab",
+    "frames-024.jpg": "ab11114d4904f393c85a44e9ce753833ee41fa0050c6b53f67abf9b0ad650912",
+    "crops-000.jpg": "bf44960927f2f32a54bc4084a2b2097befda460a12d4ffb9e6322bdb2618f1d6",
+    "crops-024.jpg": "8c981674e0e7b50a640a07fca031203d37959529dbb7b2aee7efc39dec41332c",
+    "frames-012.jpg": "f9547802d2069a57ba981089f868a52fa7bf1f818ca98dc38198b0951d45de05",
+    "frames-000.jpg": "c7cebee2cff9c1f31fcbb4835798fa15c431f84125b325bf6de956b56554f46d"
+  },
+  "review": "Main agent viewed all29 frame and49 crop thumbnails, then standalone frames4,7,8,20,27. Approved7 visible blue latex balloon crops from5 previously unused TRAIN photographs: edge-truncated printed blue balloon5; bright blue balloons10/11; edge-truncated blue12; small pale blue32; blue latex pair45/46 under night illumination. Other crops excluded, including hot-air balloons, other colors, metallic foil balloons, twisted balloon art, ambiguous purple/teal and heavily mixed crops. Excluded does not mean background.",
+  "scope": "Exact blue-positive crops only, not exhaustive scene labels. New source IDs and heuristic duplicate screens do not establish independent qualification. No IMG-family training or reserved-test use.",
+  "test_evaluated": false
+}
