@@ -1,0 +1,65 @@
+{
+  "training_sha256": "ebd378f33f63038be08f2d221ba3dcba82eb57003e2981c10f789eaae4565cda",
+  "script_sha256": "6f8922ae6f9cd65fa11c1f72e830b764f3cb253b6e1762d1986a72aa9492f554",
+  "rows": 2074,
+  "unique_crop_views": 1640,
+  "source_groups": 217,
+  "refit_max_errors": [
+    5.570630762230522e-16,
+    1.4988010832439613e-15,
+    2.942091015256665e-15,
+    8.638922910364499e-16,
+    7.216449660063518e-16
+  ],
+  "final_refit_max_error": 1.887379141862766e-15,
+  "classifier_max_error": 0.0,
+  "threshold_max_error": 2.942091015256665e-15,
+  "fitted_positive_retention": true,
+  "duplicate_aware": {
+    "before": {
+      "red_balloon": {
+        "tp": 497,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.9920159680638723,
+        "recall": 0.9650485436893204,
+        "f1": 0.9783464566929134
+      },
+      "blue_balloon": {
+        "tp": 542,
+        "fp": 22,
+        "fn": 13,
+        "precision": 0.9609929078014184,
+        "recall": 0.9765765765765766,
+        "f1": 0.968722073279714
+      }
+    },
+    "after": {
+      "red_balloon": {
+        "tp": 497,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.9920159680638723,
+        "recall": 0.9650485436893204,
+        "f1": 0.9783464566929134
+      },
+      "blue_balloon": {
+        "tp": 533,
+        "fp": 16,
+        "fn": 22,
+        "precision": 0.970856102003643,
+        "recall": 0.9603603603603603,
+        "f1": 0.9655797101449276
+      }
+    },
+    "lost_true_views": 9,
+    "removed_false_views": 6
+  },
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false,
+  "decision": "Reject hard shape gate: source-held-out TRAIN recall/F1 regress; no development or deployment advancement.",
+  "scope": "Audit of TRAIN source-grouped shape-head feasibility. Parent neural classifier was trained on TRAIN; not end-to-end held-out accuracy."
+}

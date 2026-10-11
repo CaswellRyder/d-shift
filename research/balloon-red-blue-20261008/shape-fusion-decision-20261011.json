@@ -1,0 +1,49 @@
+{
+  "decision": "Reject both fixed shape additions; retain existing perception candidate and Pi deployment.",
+  "evidence": {
+    "hard_gate_audit": "research/balloon-red-blue-20261008/balloon-hog-gate-audit-20261011.json",
+    "soft_fusion": "research/balloon-red-blue-20261008/blue-soft-shape-fusion-20261011.json",
+    "soft_fusion_sha256": "535c9771b09e5f96ee942c040a3b983f0e26baa65db9387bb31cd2a5b2a1c80f",
+    "soft_fusion_protocol_sha256": "f364d242a8aba47df72cb10b1dbc16f725d5d20fcdda09059ccd03c8db314f6b"
+  },
+  "deduplicated_train_crop_views": {
+    "total": 1640,
+    "parent_blue": {"tp": 542, "fp": 22, "fn": 13},
+    "hard_gate_blue": {"tp": 533, "fp": 16, "fn": 22},
+    "soft_fusion_blue": {"tp": 528, "fp": 16, "fn": 27},
+    "hard_gate_lost_true_views": 9,
+    "soft_fusion_lost_true_views": 15,
+    "soft_fusion_gained_true_views": 1,
+    "red_metrics_unchanged": true
+  },
+  "soft_fusion_reproduction": {
+    "method": "Revalidated TRAIN provenance and source folds, refitted all five fold models and final model, verified stored model/output hashes, reconstructed predictions and both repeated/deduplicated metrics. Read-only local command after training.",
+    "fold_refit_max_errors": [0.0, 0.0, 0.0, 0.0, 0.0],
+    "final_refit_max_error": 0.0,
+    "output_max_error": 0.0,
+    "fold_optimizer_iterations": [6, 6, 5, 8, 6],
+    "counts_reproduced": true
+  },
+  "manual_hard_gate_loss_review": {
+    "scope": "Viewed nine unique original crop files. The last rejected view is horizontally flipped; inspected its original file, not the exact flipped runtime tensor. No labels changed.",
+    "rows": [191, 819, 1412, 1416, 1427, 1543, 1544, 1771, 2054],
+    "observations": "Losses include partial balloons, tiny low-detail crops, balloons with adjacent objects, and clear balloon outlines. Grayscale shape evidence is not a reliable mandatory veto in this fixed experiment. This does not establish that all shape-based methods must fail.",
+    "labels_changed": false
+  },
+  "verification": {
+    "pytest_passed": 1404,
+    "pytest_skipped": 2,
+    "pytest_warnings": 6,
+    "focused_tests_passed": 12,
+    "ruff_changed_python_passed": true,
+    "development_evaluated": false,
+    "reserved_test_evaluated": false,
+    "pi_accessed": false,
+    "esp32_or_motor_commands": false,
+    "deployment_changed": false
+  },
+  "scope": "TRAIN source-grouped head fitting only. Parent neural model was already trained on TRAIN; recordings may be correlated and duplicates are explicitly reported. These crop results are not full-scene accuracy, independent qualification or Pi timing.",
+  "next_action": "Do not tune another shape threshold against the reused development panels. Return to joint localization/classification failure analysis using TRAIN-only scene examples; require improved source-held-out screening before new development evaluation. Positive representative Pi footage and independent real-scene qualification remain required.",
+  "eligible_for_development": false,
+  "qualification_achieved": false
+}

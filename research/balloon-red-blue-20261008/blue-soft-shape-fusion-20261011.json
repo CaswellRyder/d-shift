@@ -1,0 +1,640 @@
+{
+  "before": {
+    "red_balloon": {
+      "tp": 593,
+      "fp": 5,
+      "fn": 19,
+      "precision": 0.9916387959866221,
+      "recall": 0.9689542483660131,
+      "f1": 0.9801652892561983
+    },
+    "blue_balloon": {
+      "tp": 709,
+      "fp": 44,
+      "fn": 23,
+      "precision": 0.9415670650730412,
+      "recall": 0.9685792349726776,
+      "f1": 0.9548821548821549
+    }
+  },
+  "after": {
+    "red_balloon": {
+      "tp": 593,
+      "fp": 5,
+      "fn": 19,
+      "precision": 0.9916387959866221,
+      "recall": 0.9689542483660131,
+      "f1": 0.9801652892561983
+    },
+    "blue_balloon": {
+      "tp": 684,
+      "fp": 32,
+      "fn": 48,
+      "precision": 0.9553072625698324,
+      "recall": 0.9344262295081968,
+      "f1": 0.9447513812154698
+    }
+  },
+  "duplicate_aware": {
+    "before": {
+      "red_balloon": {
+        "tp": 497,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.9920159680638723,
+        "recall": 0.9650485436893204,
+        "f1": 0.9783464566929134
+      },
+      "blue_balloon": {
+        "tp": 542,
+        "fp": 22,
+        "fn": 13,
+        "precision": 0.9609929078014184,
+        "recall": 0.9765765765765766,
+        "f1": 0.968722073279714
+      }
+    },
+    "after": {
+      "red_balloon": {
+        "tp": 497,
+        "fp": 4,
+        "fn": 18,
+        "precision": 0.9920159680638723,
+        "recall": 0.9650485436893204,
+        "f1": 0.9783464566929134
+      },
+      "blue_balloon": {
+        "tp": 528,
+        "fp": 16,
+        "fn": 27,
+        "precision": 0.9705882352941176,
+        "recall": 0.9513513513513514,
+        "f1": 0.9608735213830755
+      }
+    }
+  },
+  "lost_true_views": [
+    {
+      "index": 191,
+      "source": "balloon/train/4887227769_acd2e6127d_b.jpg",
+      "sha256": "b9d6f67230daf5345c7352003e88173e0983d2c2e15a5d0d790b477480fd95b4",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.01968342997133732,
+        1.7919325046023005e-07,
+        0.9803164601325989
+      ],
+      "after": [
+        0.24078623338617644,
+        1.7919325046023005e-07,
+        0.7592136567177598
+      ]
+    },
+    {
+      "index": 821,
+      "source": "balloon/train/4887227769_acd2e6127d_b.jpg",
+      "sha256": "19afd38e06408bfb9bdbda97373ae5ba896200cab86b6636eb7e0574ac375eed",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.1821584403514862,
+        1.3913560223954846e-06,
+        0.8178401589393616
+      ],
+      "after": [
+        0.3947947322611087,
+        1.3913560223954846e-06,
+        0.605203867029739
+      ]
+    },
+    {
+      "index": 833,
+      "source": "balloon/train/120853323_d4788431b9_b.jpg",
+      "sha256": "3f5e8f802e4ad5ba31806bbbb7b39d2ad4715360d45d900d1922ce96afe139a8",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.05791999027132988,
+        1.2816898333767313e-06,
+        0.942078709602356
+      ],
+      "after": [
+        0.2398988057810154,
+        1.2816898333767313e-06,
+        0.7600998940926704
+      ]
+    },
+    {
+      "index": 844,
+      "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+      "sha256": "de6eb1dd0aad9857de4d6f6d73a8b2e671fc1bd89798d67b02401431db26766c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.07555963844060898,
+        0.00035298956208862364,
+        0.9240873456001282
+      ],
+      "after": [
+        0.522173099708112,
+        0.00035298956208862364,
+        0.4774738843326251
+      ]
+    },
+    {
+      "index": 922,
+      "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+      "sha256": "83e91e0fb8d13b886196b85ae47cbcfbe04c30edc11de42174081a89fc987d69",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.04670917987823486,
+        0.0002086351450998336,
+        0.9530821442604065
+      ],
+      "after": [
+        0.3295762041036291,
+        0.0002086351450998336,
+        0.6702151200350123
+      ]
+    },
+    {
+      "index": 1094,
+      "source": "train/frame_0563_jpg.rf.3e4ad770b0614ca798a831ccca0411a3.jpg",
+      "sha256": "153b12f256c307c33c672a51cc26c54bcbbf7b4fd8fbabea71191d7a6279ef05",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.017131634056568146,
+        1.1929677157240803e-06,
+        0.9828671813011169
+      ],
+      "after": [
+        0.23212827072203657,
+        1.1929677157240803e-06,
+        0.7678705446356485
+      ]
+    },
+    {
+      "index": 1167,
+      "source": "train/frame_0570_jpg.rf.7bbb253f63f540e10d91b3b6069c08fa.jpg",
+      "sha256": "9539b1f84d77d81d6dc83d23c162ba8b01b41c0caea0ecdeb7eee417ed153020",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.08478837460279465,
+        3.839606506517157e-05,
+        0.9151732325553894
+      ],
+      "after": [
+        0.5833534221240619,
+        3.839606506517157e-05,
+        0.41660818503412206
+      ]
+    },
+    {
+      "index": 1275,
+      "source": "train/frame_0349_jpg.rf.4a0d424db1d80e8bd9ab29a907e251c4.jpg",
+      "sha256": "c7bcde7a57e1c5799a12d119bf59c22eda606cb8f4543ddd4a4d12e2f67433a2",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.03407147899270058,
+        3.4846007679334434e-07,
+        0.9659281969070435
+      ],
+      "after": [
+        0.2879725231391258,
+        3.4846007679334434e-07,
+        0.7120271527606182
+      ]
+    },
+    {
+      "index": 1283,
+      "source": "train/frame_0392_jpg.rf.24e199086f1ffc3d225cd117ab8af8ad.jpg",
+      "sha256": "2b82ab2ba1bcf8979a25ea96bc5e632b71a1e3a0291e087dc3b89154daf418ac",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.12092717736959457,
+        8.41722430777736e-05,
+        0.8789886832237244
+      ],
+      "after": [
+        0.9352278853157984,
+        8.41722430777736e-05,
+        0.0646879752775206
+      ]
+    },
+    {
+      "index": 1412,
+      "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+      "sha256": "2737b531b11a508a351ea809e94a49ab58d6d41c8b51fdc368ad7be435becd2a",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.00842740386724472,
+        1.8602444470161572e-05,
+        0.9915539622306824
+      ],
+      "after": [
+        0.747354576721462,
+        1.8602444470161572e-05,
+        0.2526267893764651
+      ]
+    },
+    {
+      "index": 1417,
+      "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+      "sha256": "fe9e1a5aaa8ddbf5159b7e7d8b5c375693c11bc76cae903bfc6c1cf35c4a1274",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.04078073054552078,
+        1.39269641294959e-05,
+        0.9592053890228271
+      ],
+      "after": [
+        0.4227771753623608,
+        1.39269641294959e-05,
+        0.5772089442059871
+      ]
+    },
+    {
+      "index": 1424,
+      "source": "train/frame_0669_jpg.rf.0c2008d78fa6711da50bdeeb0635cd40.jpg",
+      "sha256": "e57f576e14729f9e521e5d2990c0c1146434fb1eaae2acf824819f6bec8f8667",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.03119683638215065,
+        0.00017727621889207512,
+        0.9686258435249329
+      ],
+      "after": [
+        0.46820734019903665,
+        0.00017727621889207512,
+        0.5316153397080469
+      ]
+    },
+    {
+      "index": 1431,
+      "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+      "sha256": "2737b531b11a508a351ea809e94a49ab58d6d41c8b51fdc368ad7be435becd2a",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.00842740386724472,
+        1.8602444470161572e-05,
+        0.9915539622306824
+      ],
+      "after": [
+        0.747354576721462,
+        1.8602444470161572e-05,
+        0.2526267893764651
+      ]
+    },
+    {
+      "index": 1436,
+      "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+      "sha256": "fe9e1a5aaa8ddbf5159b7e7d8b5c375693c11bc76cae903bfc6c1cf35c4a1274",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.04078073054552078,
+        1.39269641294959e-05,
+        0.9592053890228271
+      ],
+      "after": [
+        0.4227771753623608,
+        1.39269641294959e-05,
+        0.5772089442059871
+      ]
+    },
+    {
+      "index": 1443,
+      "source": "train/frame_0669_jpg.rf.0c2008d78fa6711da50bdeeb0635cd40.jpg",
+      "sha256": "e57f576e14729f9e521e5d2990c0c1146434fb1eaae2acf824819f6bec8f8667",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.03119683638215065,
+        0.00017727621889207512,
+        0.9686258435249329
+      ],
+      "after": [
+        0.46820734019903665,
+        0.00017727621889207512,
+        0.5316153397080469
+      ]
+    },
+    {
+      "index": 1450,
+      "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+      "sha256": "2737b531b11a508a351ea809e94a49ab58d6d41c8b51fdc368ad7be435becd2a",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.00842740386724472,
+        1.8602444470161572e-05,
+        0.9915539622306824
+      ],
+      "after": [
+        0.747354576721462,
+        1.8602444470161572e-05,
+        0.2526267893764651
+      ]
+    },
+    {
+      "index": 1455,
+      "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+      "sha256": "fe9e1a5aaa8ddbf5159b7e7d8b5c375693c11bc76cae903bfc6c1cf35c4a1274",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.04078073054552078,
+        1.39269641294959e-05,
+        0.9592053890228271
+      ],
+      "after": [
+        0.4227771753623608,
+        1.39269641294959e-05,
+        0.5772089442059871
+      ]
+    },
+    {
+      "index": 1462,
+      "source": "train/frame_0669_jpg.rf.0c2008d78fa6711da50bdeeb0635cd40.jpg",
+      "sha256": "e57f576e14729f9e521e5d2990c0c1146434fb1eaae2acf824819f6bec8f8667",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.03119683638215065,
+        0.00017727621889207512,
+        0.9686258435249329
+      ],
+      "after": [
+        0.46820734019903665,
+        0.00017727621889207512,
+        0.5316153397080469
+      ]
+    },
+    {
+      "index": 1469,
+      "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+      "sha256": "2737b531b11a508a351ea809e94a49ab58d6d41c8b51fdc368ad7be435becd2a",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.00842740386724472,
+        1.8602444470161572e-05,
+        0.9915539622306824
+      ],
+      "after": [
+        0.747354576721462,
+        1.8602444470161572e-05,
+        0.2526267893764651
+      ]
+    },
+    {
+      "index": 1474,
+      "source": "train/frame_0441_jpg.rf.2de102031f71c13dbcb0ba0dc4e7ca75.jpg",
+      "sha256": "fe9e1a5aaa8ddbf5159b7e7d8b5c375693c11bc76cae903bfc6c1cf35c4a1274",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.04078073054552078,
+        1.39269641294959e-05,
+        0.9592053890228271
+      ],
+      "after": [
+        0.4227771753623608,
+        1.39269641294959e-05,
+        0.5772089442059871
+      ]
+    },
+    {
+      "index": 1481,
+      "source": "train/frame_0669_jpg.rf.0c2008d78fa6711da50bdeeb0635cd40.jpg",
+      "sha256": "e57f576e14729f9e521e5d2990c0c1146434fb1eaae2acf824819f6bec8f8667",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.03119683638215065,
+        0.00017727621889207512,
+        0.9686258435249329
+      ],
+      "after": [
+        0.46820734019903665,
+        0.00017727621889207512,
+        0.5316153397080469
+      ]
+    },
+    {
+      "index": 1546,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "c1ee8dbd732b5264b2da3164ec7e9b0c5d6cf471a0aa87bfca7bd676c4e2e58c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.09276212006807327,
+        2.597021193651017e-07,
+        0.9072375893592834
+      ],
+      "after": [
+        0.21044713600954423,
+        2.597021193651017e-07,
+        0.7895525734178125
+      ]
+    },
+    {
+      "index": 1547,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "63ff58ae34ed26d6877d233b01e6c6a4b7d8c8fe19868415a4777dcdf6957ead",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.10417608171701431,
+        3.7544970837188885e-05,
+        0.8957864046096802
+      ],
+      "after": [
+        0.38784375552735406,
+        3.7544970837188885e-05,
+        0.6121187307993404
+      ]
+    },
+    {
+      "index": 1548,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "f5023ecd0966670cbe6ed8fcd1c55cc95e8d04b84520d8acd2ae6a676ff8c09c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.06196127459406853,
+        2.497569994375226e-06,
+        0.9380362033843994
+      ],
+      "after": [
+        0.2916370939144157,
+        2.497569994375226e-06,
+        0.7083603840640522
+      ]
+    },
+    {
+      "index": 1569,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "c1ee8dbd732b5264b2da3164ec7e9b0c5d6cf471a0aa87bfca7bd676c4e2e58c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.09276212006807327,
+        2.597021193651017e-07,
+        0.9072375893592834
+      ],
+      "after": [
+        0.21044713600954423,
+        2.597021193651017e-07,
+        0.7895525734178125
+      ]
+    },
+    {
+      "index": 1570,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "63ff58ae34ed26d6877d233b01e6c6a4b7d8c8fe19868415a4777dcdf6957ead",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.10417608171701431,
+        3.7544970837188885e-05,
+        0.8957864046096802
+      ],
+      "after": [
+        0.38784375552735406,
+        3.7544970837188885e-05,
+        0.6121187307993404
+      ]
+    },
+    {
+      "index": 1571,
+      "source": "openimages/train/028412f8265aa6dc",
+      "sha256": "f5023ecd0966670cbe6ed8fcd1c55cc95e8d04b84520d8acd2ae6a676ff8c09c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.06196127459406853,
+        2.497569994375226e-06,
+        0.9380362033843994
+      ],
+      "after": [
+        0.2916370939144157,
+        2.497569994375226e-06,
+        0.7083603840640522
+      ]
+    }
+  ],
+  "gained_true_views": [
+    {
+      "index": 1767,
+      "source": "openimages/train/062f38b15ded6d7a",
+      "sha256": "9da31a1cba282637739e7dca38084f4e00efeadef675357f4007b90537523c7c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.6433039903640747,
+        4.024454938189592e-06,
+        0.35669204592704773
+      ],
+      "after": [
+        0.14469051431691315,
+        4.024454938189592e-06,
+        0.8553055219742093
+      ]
+    },
+    {
+      "index": 1778,
+      "source": "openimages/train/062f38b15ded6d7a",
+      "sha256": "9da31a1cba282637739e7dca38084f4e00efeadef675357f4007b90537523c7c",
+      "view": "original",
+      "label": "blue_balloon",
+      "before": [
+        0.6433039903640747,
+        4.024454938189592e-06,
+        0.35669204592704773
+      ],
+      "after": [
+        0.14469051431691315,
+        4.024454938189592e-06,
+        0.8553055219742093
+      ]
+    }
+  ],
+  "unique_lost_true_views": 15,
+  "unique_gained_true_views": 1,
+  "rows": 2074,
+  "unique_crop_views": 1640,
+  "source_groups": 217,
+  "folds": [
+    {
+      "fold": 0,
+      "fitting_rows": 1556,
+      "withheld_rows": 518,
+      "model_sha256": "1d042760e1d2f0f3d44b13b9c10af03e76897930cc43df2a1c3c9469177824fd",
+      "iterations": 6,
+      "objective": 0.11911559854700927
+    },
+    {
+      "fold": 1,
+      "fitting_rows": 1777,
+      "withheld_rows": 297,
+      "model_sha256": "28cadb619bf8b72ee055bd90a6dc64d08477fd623d30213d7a319c8b135c34ec",
+      "iterations": 6,
+      "objective": 0.10855631139468302
+    },
+    {
+      "fold": 2,
+      "fitting_rows": 1662,
+      "withheld_rows": 412,
+      "model_sha256": "5d91b26f1ee3de0f18d32876e6ad22bfe75c495c768ac511d93af97c16012c7f",
+      "iterations": 5,
+      "objective": 0.10085953327086705
+    },
+    {
+      "fold": 3,
+      "fitting_rows": 1650,
+      "withheld_rows": 424,
+      "model_sha256": "5cba8e5675c5be4209bd4c712aa2d17ac830775e7fbb1b75e2300efaf05ffe21",
+      "iterations": 8,
+      "objective": 0.0909099778618018
+    },
+    {
+      "fold": 4,
+      "fitting_rows": 1651,
+      "withheld_rows": 423,
+      "model_sha256": "b0fc24fa8ae75431d0e41c2e718e57e3b0245efa521ce0b970444b3774010cfb",
+      "iterations": 6,
+      "objective": 0.1143819400243713
+    }
+  ],
+  "eligible_for_development": false,
+  "protocol_sha256": "f364d242a8aba47df72cb10b1dbc16f725d5d20fcdda09059ccd03c8db314f6b",
+  "training_sha256": "ebd378f33f63038be08f2d221ba3dcba82eb57003e2981c10f789eaae4565cda",
+  "script_sha256": "190549eafbecb9022bfc57581d2f4764bb27742dc21c81879d3fb244ef7ef4d7",
+  "helper_sha256": "2fa6bf5def6e1ea9bb8c12d98b2732b903aa76af6d5a2b42e456f75f02d6a8cc",
+  "input_verifier_sha256": "6f8922ae6f9cd65fa11c1f72e830b764f3cb253b6e1762d1986a72aa9492f554",
+  "predictions": {
+    "path": "runs/blue-soft-shape-fusion-20261011/predictions.npz",
+    "sha256": "91085ed1e84647a11aa8f17bbe44be73b000f8143a19b82647beddddd3ef2497"
+  },
+  "final_model": {
+    "path": "runs/blue-soft-shape-fusion-20261011/final.npz",
+    "sha256": "a00eb0b4085b63362c3696cc6959bbe869d8e14daba027ca2a50924356b639e2"
+  },
+  "scope": "TRAIN-only screening, not independently held-out end-to-end accuracy. The parent classifier was already fitted on this TRAIN curriculum. Recording sessions may span multiple groups. IMG family and reserved test untouched.",
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
