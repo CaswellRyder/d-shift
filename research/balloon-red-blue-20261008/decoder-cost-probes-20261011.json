@@ -1,0 +1,402 @@
+{
+  "inputs_sha256": {
+    "artifacts/decoder-cost-probe-20261011/manifest.json": "d0013170758dd174bf206d3a3bbe8c9fcbef9d2d69cf2d03c008239121ba8455",
+    "scripts/pi_decoder_cost_probe.py": "c2f19e9eb769d1634cd1d5ea34308e80bd763c9fb066cd6a18f67a5c7ca49bbc",
+    "scripts/research_blue_peak_blend.py": "991ac1faff284b0d483a2e311c3994fcee1c407c570929e446d59016c7ee335f",
+    "scripts/independent_neighbor_decoder.py": "46b708704add266d8c5912562a06955a1fe655b090c371f088033ef1f6c2ba56",
+    "src/dtr/tracking.py": "c3beb8bb9aad12c2e7f2dfd32518726c05ee7ab697be84ed32d1a9ab20f312b4",
+    "runs/decoder-cost-probe-host-20261011.json": "27464283fef6c913918ef09cb0ea6810ae856e8711c3f819c9a23836ef11e234",
+    "runs/decoder-cost-probe-pi-20261011.json": "43051449af909b89612b631c27b9eae5bbbce7a28163bca2b9a35c4578037859",
+    "artifacts/cached-decoder-probe-20261011/manifest.json": "41bce4bb99012ed4978804cec2341b66516719bcba1a6cdab61669f352c577ab",
+    "scripts/pi_cached_decoder_probe.py": "403cea73edac4049a17ad11d12cb6f0a2bf3edb38565783a9165240407427247",
+    "scripts/cached_balloon_decoder.py": "530e799607ca46043a8b3a496d4a18748175d42ead87eb2d1aa2e42efaca97ee",
+    "runs/cached-decoder-probe-host-20261011.json": "094d313e43c85f5655130ff952a0c42e2a3da78ec2b497214f7733cc2e8dffae",
+    "runs/cached-decoder-probe-pi-20261011.json": "eb8a63fe4d1ab046b0e401ef3ddbd0d0fc1ee8295c28892f4737855d9d819523",
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/audit_decoder_cost_probes.py": "3100e266c630653e7cfa9a15560e9b94ace4925f0dc3fc3cf0d6bfae6e8b6900"
+  },
+  "results": {
+    "decoder-cost_host": {
+      "raw": "runs/decoder-cost-probe-host-20261011.json",
+      "raw_sha256": "27464283fef6c913918ef09cb0ea6810ae856e8711c3f819c9a23836ef11e234",
+      "machine": "arm64",
+      "numpy": "1.26.4",
+      "summary": {
+        "frozen": {
+          "calls": 84,
+          "mean_ms": 0.18908929761904764,
+          "p50_ms": 0.183875,
+          "p95_ms": 0.3194249499999999,
+          "max_ms": 0.360458
+        },
+        "independent_neighbor": {
+          "calls": 84,
+          "mean_ms": 0.24026486904761904,
+          "p50_ms": 0.2357915,
+          "p95_ms": 0.36389194999999985,
+          "max_ms": 0.399916
+        }
+      },
+      "parity_max_box_delta": {
+        "frozen": 0.0,
+        "independent_neighbor": 0.0
+      },
+      "health_before": {
+        "temperature_millicelsius": null,
+        "load_average": null,
+        "throttled": null
+      },
+      "health_after": {
+        "temperature_millicelsius": null,
+        "load_average": null,
+        "throttled": null
+      }
+    },
+    "decoder-cost_pi": {
+      "raw": "runs/decoder-cost-probe-pi-20261011.json",
+      "raw_sha256": "43051449af909b89612b631c27b9eae5bbbce7a28163bca2b9a35c4578037859",
+      "machine": "armv6l",
+      "numpy": "2.2.4",
+      "summary": {
+        "frozen": {
+          "calls": 84,
+          "mean_ms": 30.969772702380947,
+          "p50_ms": 31.0276535,
+          "p95_ms": 52.08636715,
+          "max_ms": 59.03534
+        },
+        "independent_neighbor": {
+          "calls": 84,
+          "mean_ms": 40.03337367857142,
+          "p50_ms": 38.9505645,
+          "p95_ms": 57.68140474999999,
+          "max_ms": 62.948296
+        }
+      },
+      "parity_max_box_delta": {
+        "frozen": 3.814697265625e-06,
+        "independent_neighbor": 3.814697265625e-06
+      },
+      "health_before": {
+        "temperature_millicelsius": "40622",
+        "load_average": "0.47 0.16 0.04 1/236 9127",
+        "throttled": "throttled=0x0"
+      },
+      "health_after": {
+        "temperature_millicelsius": "40622",
+        "load_average": "0.68 0.24 0.08 1/236 9129",
+        "throttled": "throttled=0x0"
+      }
+    },
+    "cached-decoder_host": {
+      "raw": "runs/cached-decoder-probe-host-20261011.json",
+      "raw_sha256": "094d313e43c85f5655130ff952a0c42e2a3da78ec2b497214f7733cc2e8dffae",
+      "machine": "arm64",
+      "numpy": "1.26.4",
+      "summary": {
+        "frozen": {
+          "calls": 84,
+          "mean_ms": 0.1744722142857143,
+          "p50_ms": 0.173,
+          "p95_ms": 0.2982356499999999,
+          "max_ms": 0.341167
+        },
+        "cached_frozen": {
+          "calls": 84,
+          "mean_ms": 0.1737936071428571,
+          "p50_ms": 0.169938,
+          "p95_ms": 0.2892876,
+          "max_ms": 0.354667
+        },
+        "neighbor": {
+          "calls": 84,
+          "mean_ms": 0.22564967857142862,
+          "p50_ms": 0.21660400000000002,
+          "p95_ms": 0.34545619999999994,
+          "max_ms": 0.395541
+        },
+        "cached_neighbor": {
+          "calls": 84,
+          "mean_ms": 0.19998553571428573,
+          "p50_ms": 0.195646,
+          "p95_ms": 0.29677505,
+          "max_ms": 0.318166
+        }
+      },
+      "parity_max_box_delta": {
+        "frozen": 0.0,
+        "neighbor": 0.0
+      },
+      "health_before": {
+        "temperature_millicelsius": null,
+        "load_average": null,
+        "throttled": null
+      },
+      "health_after": {
+        "temperature_millicelsius": null,
+        "load_average": null,
+        "throttled": null
+      },
+      "native_outputs_exact": true,
+      "effects": {
+        "frozen": {
+          "mean_saved_ms": 0.000678607142857196,
+          "percent_time_reduction": 0.38894854727178185,
+          "speed_ratio": 1.0039046726402276,
+          "grids_with_lower_mean": 22,
+          "per_grid_saved_ms": [
+            0.023686999999999986,
+            0.033353999999999995,
+            0.00410400000000001,
+            0.0007079999999999864,
+            -0.06337449999999997,
+            -0.024541000000000007,
+            -0.0060624999999999984,
+            0.013021000000000005,
+            -0.00016650000000001386,
+            -0.0010000000000000009,
+            0.005916999999999978,
+            0.003583000000000003,
+            0.006312000000000012,
+            0.009103999999999973,
+            0.0020000000000000018,
+            -0.031479499999999994,
+            -0.006687999999999972,
+            -0.0009370000000000211,
+            -0.001687500000000064,
+            0.0034165000000000167,
+            -0.0008119999999999794,
+            -0.002436500000000008,
+            0.010374999999999995,
+            0.0049999999999999906,
+            -0.007062499999999999,
+            0.0013959999999999806,
+            -0.007708499999999993,
+            -0.030916,
+            -0.0026040000000000507,
+            -0.006521500000000013,
+            -0.008499999999999994,
+            -0.0011665000000000147,
+            -0.007291500000000006,
+            0.0018749999999999878,
+            0.0423955,
+            0.007500499999999993,
+            0.0063750000000000195,
+            0.007500000000000007,
+            0.027874999999999983,
+            0.015250000000000014,
+            0.012312500000000004,
+            -0.003603999999999996
+          ]
+        },
+        "neighbor": {
+          "mean_saved_ms": 0.025664142857142885,
+          "percent_time_reduction": 11.373445342187354,
+          "speed_ratio": 1.1283299952943027,
+          "grids_with_lower_mean": 41,
+          "per_grid_saved_ms": [
+            0.05243700000000001,
+            0.05600050000000001,
+            0.015458,
+            0.017978499999999994,
+            0.022749500000000006,
+            8.400000000000074e-05,
+            0.0036460000000000103,
+            0.03258300000000003,
+            0.01912449999999999,
+            0.013291999999999998,
+            0.04218749999999999,
+            0.03564600000000001,
+            0.03852050000000001,
+            0.05714549999999996,
+            0.027104000000000017,
+            0.011479499999999976,
+            0.022938000000000014,
+            0.04375000000000001,
+            0.05689600000000006,
+            0.03722900000000007,
+            0.025624500000000022,
+            0.019749499999999975,
+            0.030374999999999985,
+            0.0307915,
+            0.022999999999999993,
+            0.010937500000000017,
+            0.004813000000000012,
+            0.015333999999999987,
+            0.05933299999999997,
+            0.0234375,
+            0.016062499999999993,
+            0.03691650000000002,
+            -0.0145835,
+            0.0031674999999999898,
+            0.010791500000000065,
+            0.01710399999999998,
+            0.019166000000000016,
+            0.015333000000000013,
+            0.062917,
+            0.014979499999999979,
+            0.029666500000000012,
+            0.016728999999999994
+          ]
+        }
+      }
+    },
+    "cached-decoder_pi": {
+      "raw": "runs/cached-decoder-probe-pi-20261011.json",
+      "raw_sha256": "eb8a63fe4d1ab046b0e401ef3ddbd0d0fc1ee8295c28892f4737855d9d819523",
+      "machine": "armv6l",
+      "numpy": "2.2.4",
+      "summary": {
+        "frozen": {
+          "calls": 84,
+          "mean_ms": 30.049951738095242,
+          "p50_ms": 30.132663,
+          "p95_ms": 51.38587749999999,
+          "max_ms": 56.533242
+        },
+        "cached_frozen": {
+          "calls": 84,
+          "mean_ms": 28.302789607142856,
+          "p50_ms": 28.391146999999997,
+          "p95_ms": 46.380093450000004,
+          "max_ms": 51.963303
+        },
+        "neighbor": {
+          "calls": 84,
+          "mean_ms": 39.02452504761906,
+          "p50_ms": 38.262487,
+          "p95_ms": 59.42250344999998,
+          "max_ms": 60.360192
+        },
+        "cached_neighbor": {
+          "calls": 84,
+          "mean_ms": 34.49847846428571,
+          "p50_ms": 34.37104,
+          "p95_ms": 50.822919599999985,
+          "max_ms": 53.502283
+        }
+      },
+      "parity_max_box_delta": {
+        "frozen": 3.814697265625e-06,
+        "neighbor": 3.814697265625e-06
+      },
+      "health_before": {
+        "temperature_millicelsius": "40622",
+        "load_average": "0.74 0.32 0.13 1/237 9174",
+        "throttled": "throttled=0x0"
+      },
+      "health_after": {
+        "temperature_millicelsius": "41698",
+        "load_average": "0.83 0.37 0.15 1/237 9176",
+        "throttled": "throttled=0x0"
+      },
+      "native_outputs_exact": true,
+      "effects": {
+        "frozen": {
+          "mean_saved_ms": 1.7471621309523861,
+          "percent_time_reduction": 5.814192801971976,
+          "speed_ratio": 1.0617310927722634,
+          "grids_with_lower_mean": 40,
+          "per_grid_saved_ms": [
+            2.5914675000000003,
+            5.879927500000001,
+            0.2859960000000008,
+            0.5519929999999995,
+            0.5599930000000022,
+            0.06999899999999926,
+            0.5159939999999992,
+            5.238935999999995,
+            -0.2739984999999976,
+            0.6119919999999972,
+            1.5354810000000008,
+            1.0769904999999973,
+            3.7974570000000014,
+            2.939968499999999,
+            2.7334704999999957,
+            0.8664954999999992,
+            2.8139705000000035,
+            2.2169780000000046,
+            1.1509909999999905,
+            2.8454750000000004,
+            0.38552250000000043,
+            0.3600319999999968,
+            4.508469000000002,
+            1.6790005000000008,
+            0.44301300000000055,
+            1.623512999999999,
+            0.642515999999997,
+            0.493508499999999,
+            4.8174980000000005,
+            1.582014000000001,
+            -0.08848100000000159,
+            1.650007500000001,
+            0.18852449999999976,
+            1.5035084999999953,
+            1.3760205000000099,
+            0.6150110000000026,
+            1.4815110000000011,
+            1.7160109999999982,
+            4.821490500000003,
+            1.1755289999999974,
+            2.7520060000000086,
+            1.645007500000002
+          ]
+        },
+        "neighbor": {
+          "mean_saved_ms": 4.526046583333347,
+          "percent_time_reduction": 11.597954306453468,
+          "speed_ratio": 1.1311955420880055,
+          "grids_with_lower_mean": 42,
+          "per_grid_saved_ms": [
+            4.330942,
+            6.997906499999996,
+            2.283968999999999,
+            2.259970499999998,
+            3.1749584999999954,
+            5.07493199999999,
+            2.243970500000003,
+            5.674424500000008,
+            2.8054619999999986,
+            2.4834665000000005,
+            5.177430999999999,
+            13.026825499999994,
+            5.093931500000004,
+            6.501912500000003,
+            4.806935500000002,
+            1.0419860000000085,
+            4.508439499999994,
+            6.6354114999999965,
+            3.090458499999997,
+            4.394441499999999,
+            2.770962000000001,
+            1.6064779999999956,
+            6.7869095,
+            6.439913999999998,
+            3.8459484999999987,
+            2.551465499999992,
+            3.5219529999999963,
+            2.4319679999999977,
+            6.787408999999997,
+            3.422954499999996,
+            3.7639495000000025,
+            8.082891999999994,
+            4.007446499999993,
+            3.4854535000000055,
+            4.966933999999995,
+            4.319442499999994,
+            3.211957499999997,
+            5.526926000000003,
+            8.7973815,
+            2.5944649999999996,
+            5.9244204999999965,
+            3.6389510000000023
+          ]
+        }
+      }
+    }
+  },
+  "scope": "Decoder-only sequential paired timing. TRAIN tensors from rejected accuracy candidates; caching changes implementation, not predictions. No model promotion or held-out accuracy evidence. Temperature and process snapshots do not prove full-system isolation.",
+  "inference_tested": false,
+  "camera_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
