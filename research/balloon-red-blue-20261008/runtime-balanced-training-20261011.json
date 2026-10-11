@@ -1,0 +1,405 @@
+{
+  "trials": {
+    "control47": {
+      "path": "runs/runtime-balanced-trial-control-seed47-20261011",
+      "retention": {
+        "red_balloon": {
+          "total": 482,
+          "parent_argmax_correct": 475,
+          "current_argmax_correct": 479,
+          "parent_accepted": 468,
+          "retained": 468,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        },
+        "blue_balloon": {
+          "total": 519,
+          "parent_argmax_correct": 518,
+          "current_argmax_correct": 519,
+          "parent_accepted": 516,
+          "retained": 516,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        }
+      },
+      "blue_accepted": 23,
+      "old_clutter_correct": 22,
+      "real_blue_correct": 39,
+      "new_background_correct": 13,
+      "training_gate_pass": false,
+      "runtime_blue_accepted": 69,
+      "photo_blue_accepted": 7,
+      "batch_blue_accepted": 11,
+      "indoor_correct": 68,
+      "indoor_passed": 68,
+      "indoor_per_class_passed": {
+        "0": 11,
+        "1": 32,
+        "2": 25
+      },
+      "object_background_correct": 12,
+      "runtime_crop_original_passed": 60,
+      "runtime_crop_original_per_class_passed": {
+        "0": 0,
+        "1": 31,
+        "2": 29
+      },
+      "runtime_crop_mirror_passed": 61,
+      "runtime_crop_mirror_per_class_passed": {
+        "0": 1,
+        "1": 31,
+        "2": 29
+      },
+      "parameters": 7763,
+      "model_sha256": "3a52eb468f998421fd5e4adaf14883d3e4fedf3023a8a31e421100555afba5aa",
+      "predictions_sha256": "b7dd590f2a4972d0f43f6f29f44b14ab4401ff00da28de53508c598f6ee2a364",
+      "provenance_sha256": "785b5c683b143b0823868f0dbb6930dc8537300ab0345bad2e80aa718abbd64f",
+      "optimizer_steps": 52000,
+      "scope": "TRAIN crop feasibility only; not scene accuracy or Pi qualification",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "saved_optimizer": {
+        "module": "keras.optimizers",
+        "class_name": "Adam",
+        "config": {
+          "name": "adam",
+          "learning_rate": {
+            "module": "keras.optimizers.schedules",
+            "class_name": "CosineDecay",
+            "config": {
+              "initial_learning_rate": 0.0001,
+              "decay_steps": 52000,
+              "alpha": 0.1,
+              "name": "CosineDecay",
+              "warmup_target": null,
+              "warmup_steps": 0
+            },
+            "registered_name": null
+          },
+          "weight_decay": null,
+          "clipnorm": null,
+          "global_clipnorm": null,
+          "clipvalue": null,
+          "use_ema": false,
+          "ema_momentum": 0.99,
+          "ema_overwrite_frequency": null,
+          "loss_scale_factor": null,
+          "gradient_accumulation_steps": null,
+          "beta_1": 0.9,
+          "beta_2": 0.999,
+          "epsilon": 1e-07,
+          "amsgrad": false
+        },
+        "registered_name": null
+      },
+      "history_sha256": "cb007b4508c731dabfd88eef1688d13e9b0d9c09a7f8934b174d9290b707c158",
+      "final_loss": 0.048607293516397476,
+      "last40_max_loss": 0.05003422871232033,
+      "last40_median_loss": 0.04927582107484341,
+      "max_checkpoint_delta": 0.0
+    },
+    "control48": {
+      "path": "runs/runtime-balanced-trial-control-seed48-20261011",
+      "retention": {
+        "red_balloon": {
+          "total": 482,
+          "parent_argmax_correct": 475,
+          "current_argmax_correct": 480,
+          "parent_accepted": 468,
+          "retained": 468,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        },
+        "blue_balloon": {
+          "total": 519,
+          "parent_argmax_correct": 518,
+          "current_argmax_correct": 519,
+          "parent_accepted": 516,
+          "retained": 516,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        }
+      },
+      "blue_accepted": 23,
+      "old_clutter_correct": 22,
+      "real_blue_correct": 39,
+      "new_background_correct": 13,
+      "training_gate_pass": false,
+      "runtime_blue_accepted": 69,
+      "photo_blue_accepted": 7,
+      "batch_blue_accepted": 11,
+      "indoor_correct": 68,
+      "indoor_passed": 68,
+      "indoor_per_class_passed": {
+        "0": 11,
+        "1": 32,
+        "2": 25
+      },
+      "object_background_correct": 12,
+      "runtime_crop_original_passed": 60,
+      "runtime_crop_original_per_class_passed": {
+        "0": 0,
+        "1": 31,
+        "2": 29
+      },
+      "runtime_crop_mirror_passed": 61,
+      "runtime_crop_mirror_per_class_passed": {
+        "0": 1,
+        "1": 31,
+        "2": 29
+      },
+      "parameters": 7763,
+      "model_sha256": "e5d9fc0c85647f7d3759f6afb7fc3a1c09e7656130dc0e58586271b39e31ec1b",
+      "predictions_sha256": "863be44397779705c12469c3cab542f74867bac16217e2fd3a5bedf7cfc109cb",
+      "provenance_sha256": "dc0bcd25363e1ac540aa84d256336e559faeee1acf9a4a755e310135e1fa1c09",
+      "optimizer_steps": 52000,
+      "scope": "TRAIN crop feasibility only; not scene accuracy or Pi qualification",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "saved_optimizer": {
+        "module": "keras.optimizers",
+        "class_name": "Adam",
+        "config": {
+          "name": "adam",
+          "learning_rate": {
+            "module": "keras.optimizers.schedules",
+            "class_name": "CosineDecay",
+            "config": {
+              "initial_learning_rate": 0.0001,
+              "decay_steps": 52000,
+              "alpha": 0.1,
+              "name": "CosineDecay",
+              "warmup_target": null,
+              "warmup_steps": 0
+            },
+            "registered_name": null
+          },
+          "weight_decay": null,
+          "clipnorm": null,
+          "global_clipnorm": null,
+          "clipvalue": null,
+          "use_ema": false,
+          "ema_momentum": 0.99,
+          "ema_overwrite_frequency": null,
+          "loss_scale_factor": null,
+          "gradient_accumulation_steps": null,
+          "beta_1": 0.9,
+          "beta_2": 0.999,
+          "epsilon": 1e-07,
+          "amsgrad": false
+        },
+        "registered_name": null
+      },
+      "history_sha256": "3d30ba6b6329d68f5576951940f1fbf14ecd914409023bf4614a930ba52229ec",
+      "final_loss": 0.04926269128918648,
+      "last40_max_loss": 0.050709448754787445,
+      "last40_median_loss": 0.049897460266947746,
+      "max_checkpoint_delta": 0.0
+    },
+    "admit47": {
+      "path": "runs/runtime-balanced-trial-admit-seed47-20261011",
+      "retention": {
+        "red_balloon": {
+          "total": 482,
+          "parent_argmax_correct": 475,
+          "current_argmax_correct": 480,
+          "parent_accepted": 468,
+          "retained": 468,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        },
+        "blue_balloon": {
+          "total": 519,
+          "parent_argmax_correct": 518,
+          "current_argmax_correct": 519,
+          "parent_accepted": 516,
+          "retained": 516,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        }
+      },
+      "blue_accepted": 23,
+      "old_clutter_correct": 22,
+      "real_blue_correct": 39,
+      "new_background_correct": 13,
+      "training_gate_pass": true,
+      "runtime_blue_accepted": 69,
+      "photo_blue_accepted": 7,
+      "batch_blue_accepted": 11,
+      "indoor_correct": 68,
+      "indoor_passed": 68,
+      "indoor_per_class_passed": {
+        "0": 11,
+        "1": 32,
+        "2": 25
+      },
+      "object_background_correct": 12,
+      "runtime_crop_original_passed": 64,
+      "runtime_crop_original_per_class_passed": {
+        "0": 2,
+        "1": 33,
+        "2": 29
+      },
+      "runtime_crop_mirror_passed": 64,
+      "runtime_crop_mirror_per_class_passed": {
+        "0": 2,
+        "1": 33,
+        "2": 29
+      },
+      "parameters": 7763,
+      "model_sha256": "1d10ee1276ccea57257f72127d904c1d9e5937cf82f5ad3f6b1a0cc417c2eb44",
+      "predictions_sha256": "e9f58da7be009595d5f963917559c17feae04eda73d5366cecde5f95ee952949",
+      "provenance_sha256": "bd3f5c435b3ad1d41d0c6de0bbd48571949c5fb222a9c355b4ade5abfc419b43",
+      "optimizer_steps": 52000,
+      "scope": "TRAIN crop feasibility only; not scene accuracy or Pi qualification",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "saved_optimizer": {
+        "module": "keras.optimizers",
+        "class_name": "Adam",
+        "config": {
+          "name": "adam",
+          "learning_rate": {
+            "module": "keras.optimizers.schedules",
+            "class_name": "CosineDecay",
+            "config": {
+              "initial_learning_rate": 0.0001,
+              "decay_steps": 52000,
+              "alpha": 0.1,
+              "name": "CosineDecay",
+              "warmup_target": null,
+              "warmup_steps": 0
+            },
+            "registered_name": null
+          },
+          "weight_decay": null,
+          "clipnorm": null,
+          "global_clipnorm": null,
+          "clipvalue": null,
+          "use_ema": false,
+          "ema_momentum": 0.99,
+          "ema_overwrite_frequency": null,
+          "loss_scale_factor": null,
+          "gradient_accumulation_steps": null,
+          "beta_1": 0.9,
+          "beta_2": 0.999,
+          "epsilon": 1e-07,
+          "amsgrad": false
+        },
+        "registered_name": null
+      },
+      "history_sha256": "6fa28abfe9d81b91f2929c028c8bd705ba2138a080214c110e4ed9fef7a969bc",
+      "final_loss": 0.04798116162419319,
+      "last40_max_loss": 0.049081262201070786,
+      "last40_median_loss": 0.04839787632226944,
+      "max_checkpoint_delta": 0.0
+    },
+    "admit48": {
+      "path": "runs/runtime-balanced-trial-admit-seed48-20261011",
+      "retention": {
+        "red_balloon": {
+          "total": 482,
+          "parent_argmax_correct": 475,
+          "current_argmax_correct": 481,
+          "parent_accepted": 468,
+          "retained": 468,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        },
+        "blue_balloon": {
+          "total": 519,
+          "parent_argmax_correct": 518,
+          "current_argmax_correct": 519,
+          "parent_accepted": 516,
+          "retained": 516,
+          "lost_indices": [],
+          "retained_fraction": 1.0
+        }
+      },
+      "blue_accepted": 23,
+      "old_clutter_correct": 22,
+      "real_blue_correct": 39,
+      "new_background_correct": 13,
+      "training_gate_pass": true,
+      "runtime_blue_accepted": 69,
+      "photo_blue_accepted": 7,
+      "batch_blue_accepted": 11,
+      "indoor_correct": 68,
+      "indoor_passed": 68,
+      "indoor_per_class_passed": {
+        "0": 11,
+        "1": 32,
+        "2": 25
+      },
+      "object_background_correct": 12,
+      "runtime_crop_original_passed": 64,
+      "runtime_crop_original_per_class_passed": {
+        "0": 2,
+        "1": 33,
+        "2": 29
+      },
+      "runtime_crop_mirror_passed": 64,
+      "runtime_crop_mirror_per_class_passed": {
+        "0": 2,
+        "1": 33,
+        "2": 29
+      },
+      "parameters": 7763,
+      "model_sha256": "a61a2cc8fa8a4744c18fb8d8f42407a6c4caf72f5f09599bbde90893dd890d7e",
+      "predictions_sha256": "88cae962eb627b28c3e4e43ab017ca06ee07ba8733a6aca11a5d68b8fcae52bf",
+      "provenance_sha256": "5def2c371eedf822aad75f405d679beb7e617e838abfe7041fca627cb149fcc5",
+      "optimizer_steps": 52000,
+      "scope": "TRAIN crop feasibility only; not scene accuracy or Pi qualification",
+      "test_evaluated": false,
+      "deployment_approved": false,
+      "saved_optimizer": {
+        "module": "keras.optimizers",
+        "class_name": "Adam",
+        "config": {
+          "name": "adam",
+          "learning_rate": {
+            "module": "keras.optimizers.schedules",
+            "class_name": "CosineDecay",
+            "config": {
+              "initial_learning_rate": 0.0001,
+              "decay_steps": 52000,
+              "alpha": 0.1,
+              "name": "CosineDecay",
+              "warmup_target": null,
+              "warmup_steps": 0
+            },
+            "registered_name": null
+          },
+          "weight_decay": null,
+          "clipnorm": null,
+          "global_clipnorm": null,
+          "clipvalue": null,
+          "use_ema": false,
+          "ema_momentum": 0.99,
+          "ema_overwrite_frequency": null,
+          "loss_scale_factor": null,
+          "gradient_accumulation_steps": null,
+          "beta_1": 0.9,
+          "beta_2": 0.999,
+          "epsilon": 1e-07,
+          "amsgrad": false
+        },
+        "registered_name": null
+      },
+      "history_sha256": "f08d0bf293b7e3505d0026e61309fb7dc32554cd26588c03b7e0be13749d27a7",
+      "final_loss": 0.04780740290880203,
+      "last40_max_loss": 0.049109309911727905,
+      "last40_median_loss": 0.04843970760703087,
+      "max_checkpoint_delta": 0.0
+    }
+  },
+  "eligible_for_development": true,
+  "protocol_sha256": "97a12af17738831699e2da823c198e275060e6ee3bd7274213fb2e40cb73df7a",
+  "script_sha256": "04c375fbc71ef02a26adae2a54680e602d6e70feaa1ef20835124f11b531cf72",
+  "decision": "Export for frozen scene evaluation",
+  "scope": "TRAIN reproduction only; matched classes/dose, not independent accuracy.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}

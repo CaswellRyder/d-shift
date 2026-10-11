@@ -1,0 +1,1800 @@
+{
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 64,
+            "fp": 14,
+            "fn": 7,
+            "precision": 0.8205128205128205,
+            "recall": 0.9014084507042254
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 4,
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9859154929577465,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 61,
+            "fp": 14,
+            "fn": 10,
+            "precision": 0.8133333333333334,
+            "recall": 0.8591549295774648
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 9,
+                "little_or_no_annotated_overlap": 4,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "suppressed": 2,
+                "no_localized_proposal": 2,
+                "different_predicted_class": 4,
+                "below_acceptance_threshold": 2
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5166_JPG.rf.47e8960d1bc91b9228d8695f0fbbc5c5.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                107.0,
+                83.625,
+                197.5,
+                139.875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5186_JPG.rf.17156fb53ee9b11cb78922bc957cca68.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                30.75,
+                63.84375,
+                121.75,
+                112.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5203_JPG.rf.125af2f7c9d9f52b32697581109df812.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                178.75,
+                99.5625,
+                275.75,
+                156.5625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                142.75,
+                59.25,
+                229.25,
+                132.75
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                228.25,
+                121.59375,
+                318.75,
+                235.78125
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5150_JPG.rf.2607ef789cecd6cddbf3e674cc0ca3b4.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                191.0,
+                63.46875,
+                280.0,
+                114.65625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5395_jpg.rf.0293f97dab38673d239b80bfbb318841.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                159.5,
+                77.25,
+                286.0,
+                150.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5428_jpg.rf.36a0399621f6f3e7242edf0f940ebebd.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                91.125,
+                85.875,
+                159.875,
+                142.875
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 70,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9859154929577465,
+            "recall": 0.9859154929577465
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 13,
+            "fn": 11,
+            "precision": 0.821917808219178,
+            "recall": 0.8450704225352113
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 4,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "suppressed": 2,
+                "no_localized_proposal": 2,
+                "different_predicted_class": 4,
+                "below_acceptance_threshold": 3
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5166_JPG.rf.47e8960d1bc91b9228d8695f0fbbc5c5.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                107.0,
+                83.625,
+                197.5,
+                139.875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5186_JPG.rf.17156fb53ee9b11cb78922bc957cca68.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                30.75,
+                63.84375,
+                121.75,
+                112.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5203_JPG.rf.125af2f7c9d9f52b32697581109df812.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                178.75,
+                99.5625,
+                275.75,
+                156.5625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                142.75,
+                59.25,
+                229.25,
+                132.75
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                228.25,
+                121.59375,
+                318.75,
+                235.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5408_jpg.rf.0b1f2664f4c8bd644482d58ac067fd05.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                13.0,
+                0.0,
+                176.5,
+                124.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5150_JPG.rf.2607ef789cecd6cddbf3e674cc0ca3b4.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                191.0,
+                63.46875,
+                280.0,
+                114.65625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5395_jpg.rf.0293f97dab38673d239b80bfbb318841.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                159.5,
+                77.25,
+                286.0,
+                150.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5428_jpg.rf.36a0399621f6f3e7242edf0f940ebebd.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                91.125,
+                85.875,
+                159.875,
+                142.875
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 68,
+            "fp": 1,
+            "fn": 3,
+            "precision": 0.9855072463768116,
+            "recall": 0.9577464788732394
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 15,
+            "fn": 11,
+            "precision": 0.8,
+            "recall": 0.8450704225352113
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 9,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "suppressed": 2,
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 3,
+                "different_predicted_class": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5166_JPG.rf.47e8960d1bc91b9228d8695f0fbbc5c5.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                107.0,
+                83.625,
+                197.5,
+                139.875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5186_JPG.rf.17156fb53ee9b11cb78922bc957cca68.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                30.75,
+                63.84375,
+                121.75,
+                112.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5203_JPG.rf.125af2f7c9d9f52b32697581109df812.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                178.75,
+                99.5625,
+                275.75,
+                156.5625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5383_jpg.rf.587c6d1055b45295b96869d099102992.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                41.375,
+                167.4375,
+                153.125,
+                239.0625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                142.75,
+                59.25,
+                229.25,
+                132.75
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                228.25,
+                121.59375,
+                318.75,
+                235.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5408_jpg.rf.0b1f2664f4c8bd644482d58ac067fd05.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                13.0,
+                0.0,
+                176.5,
+                124.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5395_jpg.rf.0293f97dab38673d239b80bfbb318841.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                159.5,
+                77.25,
+                286.0,
+                150.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5428_jpg.rf.36a0399621f6f3e7242edf0f940ebebd.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                91.125,
+                85.875,
+                159.875,
+                142.875
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345,
+        "nonregression_vs_control": false
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 60,
+            "fp": 14,
+            "fn": 11,
+            "precision": 0.8108108108108109,
+            "recall": 0.8450704225352113
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "suppressed": 2,
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 3,
+                "different_predicted_class": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5166_JPG.rf.47e8960d1bc91b9228d8695f0fbbc5c5.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                107.0,
+                83.625,
+                197.5,
+                139.875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5186_JPG.rf.17156fb53ee9b11cb78922bc957cca68.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                30.75,
+                63.84375,
+                121.75,
+                112.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5203_JPG.rf.125af2f7c9d9f52b32697581109df812.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                178.75,
+                99.5625,
+                275.75,
+                156.5625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5383_jpg.rf.587c6d1055b45295b96869d099102992.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                41.375,
+                167.4375,
+                153.125,
+                239.0625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                142.75,
+                59.25,
+                229.25,
+                132.75
+              ]
+            }
+          },
+          {
+            "source": "IMG_5399_jpg.rf.24e2043a14af53aa4dcc5a73c6b57326.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                228.25,
+                121.59375,
+                318.75,
+                235.78125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5408_jpg.rf.0b1f2664f4c8bd644482d58ac067fd05.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                13.0,
+                0.0,
+                176.5,
+                124.875
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5150_JPG.rf.2607ef789cecd6cddbf3e674cc0ca3b4.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                191.0,
+                63.46875,
+                280.0,
+                114.65625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5395_jpg.rf.0293f97dab38673d239b80bfbb318841.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                159.5,
+                77.25,
+                286.0,
+                150.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5428_jpg.rf.36a0399621f6f3e7242edf0f940ebebd.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                91.125,
+                85.875,
+                159.875,
+                142.875
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345,
+        "nonregression_vs_control": false
+      }
+    },
+    "engdes2-development-panel2-20261010": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 59,
+            "fp": 26,
+            "fn": 8,
+            "precision": 0.6941176470588235,
+            "recall": 0.8805970149253731
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 21,
+                "duplicate": 1,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2,
+                "no_localized_proposal": 4,
+                "different_predicted_class": 2
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 57,
+            "fp": 18,
+            "fn": 10,
+            "precision": 0.76,
+            "recall": 0.8507462686567164
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 16,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 3,
+                "different_predicted_class": 3,
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                98.125,
+                61.40625,
+                228.375,
+                119.34375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5177_JPG.rf.c867bd63c17007964c7ad269848d23cf.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                53.875,
+                71.625,
+                135.125,
+                120.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                21.625,
+                67.78125,
+                98.875,
+                112.21875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                100.625,
+                12.5625,
+                289.375,
+                103.6875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5405_jpg.rf.8e72807dbd791c44142b0d3b17b9a224.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                0.0,
+                182.625,
+                139.5,
+                240.0
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                158.75,
+                64.96875,
+                259.75,
+                128.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5396_jpg.rf.37531fb1af19736d0350bd6d931bfbf1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                170.5,
+                86.4375,
+                294.5,
+                159.9375
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 17,
+            "fn": 13,
+            "precision": 0.7605633802816901,
+            "recall": 0.8059701492537313
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 16,
+                "localization_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 5,
+                "different_predicted_class": 4,
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                98.125,
+                61.40625,
+                228.375,
+                119.34375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5168_JPG.rf.e6dc1d7b8467430e406e82bd38e8a61c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                22.25,
+                84.09375,
+                129.25,
+                144.65625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5177_JPG.rf.c867bd63c17007964c7ad269848d23cf.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                53.875,
+                71.625,
+                135.125,
+                120.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5194_JPG.rf.f69544045ac7441d2850efa9e8401ae9.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                50.875,
+                73.96875,
+                131.125,
+                119.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                21.625,
+                67.78125,
+                98.875,
+                112.21875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                100.625,
+                12.5625,
+                289.375,
+                103.6875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                265.5,
+                73.96875,
+                320.0,
+                151.40625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5405_jpg.rf.8e72807dbd791c44142b0d3b17b9a224.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                0.0,
+                182.625,
+                139.5,
+                240.0
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                158.75,
+                64.96875,
+                259.75,
+                128.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5307_JPG.rf.6cfbe3f15b0e0a579b50868ebd6c5451.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                97.25,
+                93.5625,
+                201.25,
+                154.6875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5396_jpg.rf.37531fb1af19736d0350bd6d931bfbf1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                170.5,
+                86.4375,
+                294.5,
+                159.9375
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 61,
+            "fp": 2,
+            "fn": 4,
+            "precision": 0.9682539682539683,
+            "recall": 0.9384615384615385
+          },
+          "blue_balloon": {
+            "tp": 54,
+            "fp": 17,
+            "fn": 13,
+            "precision": 0.7605633802816901,
+            "recall": 0.8059701492537313
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 3,
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 15,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 7,
+                "different_predicted_class": 2,
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5102_JPG.rf.ee7d22878c413fb943cfbbc0c5f33fc6.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                177.875,
+                173.25,
+                285.125,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                98.125,
+                61.40625,
+                228.375,
+                119.34375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5177_JPG.rf.c867bd63c17007964c7ad269848d23cf.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                53.875,
+                71.625,
+                135.125,
+                120.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5182_JPG.rf.537c75be1abb9dff5f743b0fdce9c245.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                11.875,
+                53.71875,
+                149.625,
+                116.53125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5194_JPG.rf.f69544045ac7441d2850efa9e8401ae9.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                50.875,
+                73.96875,
+                131.125,
+                119.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                21.625,
+                67.78125,
+                98.875,
+                112.21875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                100.625,
+                12.5625,
+                289.375,
+                103.6875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                265.5,
+                73.96875,
+                320.0,
+                151.40625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5405_jpg.rf.8e72807dbd791c44142b0d3b17b9a224.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                0.0,
+                182.625,
+                139.5,
+                240.0
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                158.75,
+                64.96875,
+                259.75,
+                128.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5396_jpg.rf.37531fb1af19736d0350bd6d931bfbf1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                170.5,
+                86.4375,
+                294.5,
+                159.9375
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345,
+        "nonregression_vs_control": false
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 62,
+            "fp": 2,
+            "fn": 3,
+            "precision": 0.96875,
+            "recall": 0.9538461538461539
+          },
+          "blue_balloon": {
+            "tp": 53,
+            "fp": 15,
+            "fn": 14,
+            "precision": 0.7794117647058824,
+            "recall": 0.7910447761194029
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2,
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 14,
+                "localization_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 7,
+                "different_predicted_class": 3,
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [
+          {
+            "source": "IMG_5102_JPG.rf.ee7d22878c413fb943cfbbc0c5f33fc6.jpg",
+            "target": {
+              "label": "red_balloon",
+              "box": [
+                177.875,
+                173.25,
+                285.125,
+                240.0
+              ]
+            }
+          },
+          {
+            "source": "IMG_5164_JPG.rf.7fc401adf70817c94359bbb7cea4b2b1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                98.125,
+                61.40625,
+                228.375,
+                119.34375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5168_JPG.rf.e6dc1d7b8467430e406e82bd38e8a61c.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                22.25,
+                84.09375,
+                129.25,
+                144.65625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5177_JPG.rf.c867bd63c17007964c7ad269848d23cf.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                53.875,
+                71.625,
+                135.125,
+                120.375
+              ]
+            }
+          },
+          {
+            "source": "IMG_5182_JPG.rf.537c75be1abb9dff5f743b0fdce9c245.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                11.875,
+                53.71875,
+                149.625,
+                116.53125
+              ]
+            }
+          },
+          {
+            "source": "IMG_5194_JPG.rf.f69544045ac7441d2850efa9e8401ae9.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                50.875,
+                73.96875,
+                131.125,
+                119.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                100.625,
+                12.5625,
+                289.375,
+                103.6875
+              ]
+            }
+          },
+          {
+            "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                265.5,
+                73.96875,
+                320.0,
+                151.40625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5405_jpg.rf.8e72807dbd791c44142b0d3b17b9a224.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                0.0,
+                182.625,
+                139.5,
+                240.0
+              ]
+            }
+          }
+        ],
+        "gained_targets": [
+          {
+            "source": "IMG_5257_JPG.rf.e688df8882ea9c48498fd29de18e8c76.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                158.75,
+                64.96875,
+                259.75,
+                128.90625
+              ]
+            }
+          },
+          {
+            "source": "IMG_5396_jpg.rf.37531fb1af19736d0350bd6d931bfbf1.jpg",
+            "target": {
+              "label": "blue_balloon",
+              "box": [
+                170.5,
+                86.4375,
+                294.5,
+                159.9375
+              ]
+            }
+          }
+        ],
+        "nonregression_vs_parent": false,
+        "meets_94": false,
+        "neural_calls": 345,
+        "nonregression_vs_control": false
+      }
+    },
+    "engdes2-development-scenes-20261008": {
+      "parent": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 71
+      },
+      "control47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 71
+      },
+      "control48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 71
+      },
+      "admit47": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.9166666666666666,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 1
+              },
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 71,
+        "nonregression_vs_control": false
+      },
+      "admit48": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9166666666666666
+          }
+        },
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [],
+        "nonregression_vs_parent": true,
+        "meets_94": false,
+        "neural_calls": 71,
+        "nonregression_vs_control": true
+      }
+    }
+  },
+  "classifiers": {
+    "parent": {
+      "path": "runs/real-blue-clutter-convergence-admit-seed48-20261011/student.fp32.tflite",
+      "sha256": "62ecb93da3d3e6f94ca0e1213520fa04191d0ad5666810e489ba0ed26d4ff3c1",
+      "metadata_sha256": "1a8a6f50f59863ec16061c324058e42a4ab0f9e4a8352d0d04c83af78b4d4c45"
+    },
+    "control47": {
+      "path": "runs/runtime-balanced-trial-control-seed47-20261011/student.fp32.tflite",
+      "sha256": "e6111712f77e3b5f3e97754903ec56f311a107a285b4d02c19179f680354d15c",
+      "metadata_sha256": "de33637638a698036da3ae8ed6b45625e75ee5f7263549cf6c5e29694912ac46"
+    },
+    "control48": {
+      "path": "runs/runtime-balanced-trial-control-seed48-20261011/student.fp32.tflite",
+      "sha256": "a46cdbf34253eec204c436e470553ca1c4759ade9b4483e983606b838d26516f",
+      "metadata_sha256": "05865bb8f65fc21614364492cbe34722ca803f44aec93d46e5a6fa71f92d034d"
+    },
+    "admit47": {
+      "path": "runs/runtime-balanced-trial-admit-seed47-20261011/student.fp32.tflite",
+      "sha256": "9c6b4b3719e588e974813d3ab6d4a711f18acd1f11ca4e975cb103655cc466da",
+      "metadata_sha256": "28573c18b59830f08774637c9863e2025a04d541c375fdaf2e3b5f51ea10192f"
+    },
+    "admit48": {
+      "path": "runs/runtime-balanced-trial-admit-seed48-20261011/student.fp32.tflite",
+      "sha256": "bc372273a51af16db2a5b99b5b490af8e96ab3e5d9038ebe79011cddb072a53e",
+      "metadata_sha256": "3ec66110c62575bbecf437ccdfd40f5d90b8121d3c919de6a71e3fa03c585b92"
+    }
+  },
+  "training_trial_sha256": "1e5a4c44d9da93e4606be852beb0681a8ec23820a1a20dff9f6e9c750c4319c3",
+  "reference_sha256": "7821a4e2806904446f1391b5b742948539725d79d3721a5d5bffb6a01dda110b",
+  "reference_raw_sha256": "1a808e5c606b22f9022958eb50e931723ef683d14e40b8e7b30789b31735aaf5",
+  "raw": {
+    "path": "runs/runtime-balanced-development-20261011.json",
+    "sha256": "02fe664e534a3c0300ff666e51ec3ea06e88bb9b78b442734389555780041867"
+  },
+  "script_sha256": "26377d2bb31aa31168688455013aaaf467a579c0c2a1e0d6b54a8941dadcd7f8",
+  "helpers_sha256": {
+    "scripts/export_runtime_balanced_trial.py": "4716d75e6ce2e21320217fb91df703c0c4be5cf01748f43dc355caab7ae95d2d",
+    "scripts/research_blue_bright_search.py": "5bf68102c4d610097f427a7a2ade8bfb9c17397f080d15faf2138ad72c6666f1",
+    "scripts/research_predictor.py": "f37eb43b3318cf75d006ea778bf4c03183e7c9db994cf8156bb9d5f30b208ec3",
+    "scripts/research_balloon_confidence_selection.py": "97f86a7d124e08353c9e4d040f1815c1a24ae0d64e19c132c5262ecd1fddb1fd",
+    "scripts/balloon_grid_runtime.py": "9341ff9a70c8ecd8578a85b6c855048925fc5408efcffd041ea75f897a72d80f",
+    "scripts/audit_balloon_dense_proposals.py": "4898ef5993708bf196396fec0980751e4ec56cb66252b62e67e15be1758ca083",
+    "scripts/audit_indoor5_outcomes.py": "54b9c7f9056a1870999bf680bbaa98185074d4ed6784b3a5c37db291f0efbc4a",
+    "scripts/evaluate_reviewed_balloon_scenes.py": "55af5d95121c41d78ea96440830c3fe652129eea8b9fc162286d67ce83b9fa23",
+    "scripts/evaluate_red_blue_development.py": "aeead7cb97b1a966a34b4ed1996d6ad24c9c233a0f3156ec7340c197f7e323f9",
+    "scripts/summarize_public_balloon_trial.py": "0ecc2d4b3f34e3bd76971a384c8d6ab225873e4e356e7a814705dff7c29dbed8"
+  },
+  "reviews_sha256": {
+    "configs/engdes2-lockbox-panel3-20261010.json": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff",
+    "configs/engdes2-development-panel2-20261010.json": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f",
+    "configs/engdes2-development-scenes-20261008.json": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+  },
+  "localizer": {
+    "path": "runs/balloon-grid-convergence-coarse-seed47-20261011/proposal.fp32.tflite",
+    "sha256": "25f71a47c4e8c7682260268b6589284938c7a70bb62eb8392f848c048d28d7c0",
+    "metadata_sha256": "c0dfe5cd9c627ba38adcf78a625d4bb7259f1b326b7c145ba98239987875d0a6"
+  },
+  "scope": "All final paired checkpoints, identical frozen proposals and operating point. Repeated related development, not independent qualification. No Pi timing or deployment claim.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
