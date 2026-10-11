@@ -1,0 +1,197 @@
+{
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": {
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9857142857142858,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 55,
+            "fp": 6,
+            "fn": 16,
+            "precision": 0.9016393442622951,
+            "recall": 0.7746478873239436
+          }
+        },
+        "candidate": {
+          "red_balloon": {
+            "tp": 69,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.971830985915493,
+            "recall": 0.971830985915493
+          },
+          "blue_balloon": {
+            "tp": 56,
+            "fp": 8,
+            "fn": 15,
+            "precision": 0.875,
+            "recall": 0.7887323943661971
+          }
+        }
+      },
+      "frames": 67,
+      "non_regression": false,
+      "gained_targets": [
+        {
+          "source": "IMG_5392_jpg.rf.0af9f2daaf842ebeae74b21738e9d568.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "box": [
+              28.125,
+              120.46875,
+              165.375,
+              188.90625
+            ]
+          }
+        }
+      ],
+      "lost_targets": [],
+      "extra_calls": 54,
+      "queue_sha256": "fc0bd88c840e86903405c42d9389e304b3242b34e4b910c892c5d4c381bcb1d8",
+      "review_sha256": "762a156cfb0d55745eb60779509071b11de2a19290a7f970b91cf1458981dbff"
+    },
+    "engdes2-development-panel2-20261010": {
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 50,
+            "fp": 19,
+            "fn": 17,
+            "precision": 0.7246376811594203,
+            "recall": 0.746268656716418
+          }
+        },
+        "candidate": {
+          "red_balloon": {
+            "tp": 63,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.9692307692307692,
+            "recall": 0.9692307692307692
+          },
+          "blue_balloon": {
+            "tp": 49,
+            "fp": 24,
+            "fn": 18,
+            "precision": 0.6712328767123288,
+            "recall": 0.7313432835820896
+          }
+        }
+      },
+      "frames": 62,
+      "non_regression": false,
+      "gained_targets": [
+        {
+          "source": "IMG_5393_jpg.rf.ebd1ac92a23b5bf49a4f643ed0507cf8.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "box": [
+              171.0,
+              128.90625,
+              304.5,
+              198.09375
+            ]
+          }
+        }
+      ],
+      "lost_targets": [
+        {
+          "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "box": [
+              100.625,
+              12.5625,
+              289.375,
+              103.6875
+            ]
+          }
+        },
+        {
+          "source": "IMG_5403_jpg.rf.ba6128097ea8441294f492920f69673b.jpg",
+          "target": {
+            "label": "blue_balloon",
+            "box": [
+              265.5,
+              73.96875,
+              320.0,
+              151.40625
+            ]
+          }
+        }
+      ],
+      "extra_calls": 52,
+      "queue_sha256": "034e9b522f938bb98c1a4c459ef1ef203b5472e383040e33cd1b8b03327c7908",
+      "review_sha256": "b0d040c339d01733438985a00cf8be0a0976902a6e7440cd00796cdc2c9fc22f"
+    },
+    "engdes2-development-scenes-20261008": {
+      "results": {
+        "baseline": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        },
+        "candidate": {
+          "red_balloon": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1,
+            "precision": 1.0,
+            "recall": 0.9090909090909091
+          },
+          "blue_balloon": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2,
+            "precision": 0.9090909090909091,
+            "recall": 0.8333333333333334
+          }
+        }
+      },
+      "frames": 12,
+      "non_regression": true,
+      "gained_targets": [],
+      "lost_targets": [],
+      "extra_calls": 13,
+      "queue_sha256": "c0a4dea273827aaa135d056df6089b847c5a4f36bc457e9b488c4bba8e1cf466",
+      "review_sha256": "87d7e0c03360ca59a434fe4d4f25217e1efe58287cf38ac87346fc5bb2015a7e"
+    }
+  },
+  "development_gate": false,
+  "training_receipt_sha256": "43ddb56bc6ded0711051e7b93e3596db03f9b9110cfcbcb65d69d398357d2a8b",
+  "raw": {
+    "path": "runs/censored-ellipse-development-20261011.json",
+    "sha256": "f4d2965da3f74f6359102d68bae51aad30d418ac63a2de82da8bf3ca495f04e8"
+  },
+  "script_sha256": "4e50952f36f35a61eac41650570b5fa91f13edcc83a839edb0cf0863381f3b61",
+  "decision": "Rejected on development; no deployment",
+  "scope": "Repeated overlapping development panels, not independent held-out qualification. No thresholds selected.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
