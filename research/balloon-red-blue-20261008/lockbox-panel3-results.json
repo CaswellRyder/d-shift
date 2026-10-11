@@ -1,0 +1,2028 @@
+{
+  "contrasts": {
+    "mser|identity|b_fp": {
+      "groups": {
+        "soft-admit": [
+          15,
+          17,
+          23,
+          19,
+          20,
+          13
+        ],
+        "soft-control": [
+          15,
+          15,
+          16,
+          20,
+          15,
+          17
+        ],
+        "hard-admit": [
+          20,
+          15,
+          20,
+          14,
+          20,
+          9
+        ],
+        "hard-control": [
+          12,
+          16,
+          19,
+          22,
+          15,
+          11
+        ]
+      },
+      "predicted": "lower",
+      "pooled_clutter_mean": 17.083333333333332,
+      "pooled_control_mean": 16.083333333333332,
+      "p_pooled_clutter_vs_control": 0.52825,
+      "replicated": false,
+      "p_soft_admit_vs_control": 0.44805194805194803,
+      "p_hard_vs_soft_admit": 0.577922077922078
+    },
+    "mser|sweep|b_fp": {
+      "groups": {
+        "soft-admit": [
+          149,
+          136,
+          198,
+          161,
+          169,
+          102
+        ],
+        "soft-control": [
+          149,
+          152,
+          140,
+          163,
+          152,
+          155
+        ],
+        "hard-admit": [
+          154,
+          119,
+          160,
+          125,
+          142,
+          77
+        ],
+        "hard-control": [
+          116,
+          157,
+          165,
+          181,
+          154,
+          101
+        ]
+      },
+      "predicted": "lower",
+      "pooled_clutter_mean": 141,
+      "pooled_control_mean": 148.75,
+      "p_pooled_clutter_vs_control": 0.502,
+      "replicated": false,
+      "p_soft_admit_vs_control": 0.9696969696969697,
+      "p_hard_vs_soft_admit": 0.23809523809523808
+    },
+    "mser|sweep|b_tp": {
+      "groups": {
+        "soft-admit": [
+          466,
+          467,
+          470,
+          471,
+          470,
+          459
+        ],
+        "soft-control": [
+          472,
+          466,
+          456,
+          466,
+          465,
+          447
+        ],
+        "hard-admit": [
+          466,
+          466,
+          469,
+          465,
+          471,
+          443
+        ],
+        "hard-control": [
+          467,
+          469,
+          463,
+          471,
+          464,
+          451
+        ]
+      },
+      "predicted": "higher",
+      "pooled_clutter_mean": 465.25,
+      "pooled_control_mean": 463.0833333333333,
+      "p_pooled_clutter_vs_control": 0.5258,
+      "replicated": false,
+      "p_soft_admit_vs_control": 0.2597402597402597,
+      "p_hard_vs_soft_admit": 0.5454545454545454
+    }
+  },
+  "rules": {
+    "split": {
+      "delta": {
+        "r_tp": 182,
+        "r_fp": -162,
+        "b_tp": 68,
+        "b_fp": -107
+      },
+      "better": 280,
+      "worse": 0,
+      "worse_frames": [],
+      "models_worse": [],
+      "replicated": true
+    },
+    "oversized": {
+      "delta": {
+        "r_tp": 247,
+        "r_fp": -247,
+        "b_tp": 194,
+        "b_fp": -247
+      },
+      "better": 525,
+      "worse": 31,
+      "worse_frames": [
+        55
+      ],
+      "models_worse": [],
+      "replicated": true
+    }
+  },
+  "red_tp_by_shift": {
+    "soft-admit-42": {
+      "identity": 68,
+      "darker_0.6": 62,
+      "gamma_0.7": 68,
+      "cool_cast": 68
+    },
+    "soft-admit-43": {
+      "identity": 68,
+      "darker_0.6": 53,
+      "gamma_0.7": 63,
+      "cool_cast": 64
+    },
+    "soft-admit-44": {
+      "identity": 68,
+      "darker_0.6": 64,
+      "gamma_0.7": 63,
+      "cool_cast": 65
+    },
+    "soft-admit-45": {
+      "identity": 68,
+      "darker_0.6": 66,
+      "gamma_0.7": 63,
+      "cool_cast": 67
+    },
+    "soft-admit-46": {
+      "identity": 67,
+      "darker_0.6": 68,
+      "gamma_0.7": 65,
+      "cool_cast": 68
+    },
+    "soft-admit-47": {
+      "identity": 68,
+      "darker_0.6": 53,
+      "gamma_0.7": 62,
+      "cool_cast": 65
+    },
+    "soft-control-42": {
+      "identity": 66,
+      "darker_0.6": 52,
+      "gamma_0.7": 55,
+      "cool_cast": 58
+    },
+    "soft-control-43": {
+      "identity": 68,
+      "darker_0.6": 68,
+      "gamma_0.7": 61,
+      "cool_cast": 65
+    },
+    "soft-control-44": {
+      "identity": 67,
+      "darker_0.6": 61,
+      "gamma_0.7": 65,
+      "cool_cast": 66
+    },
+    "soft-control-45": {
+      "identity": 63,
+      "darker_0.6": 39,
+      "gamma_0.7": 46,
+      "cool_cast": 56
+    },
+    "soft-control-46": {
+      "identity": 67,
+      "darker_0.6": 65,
+      "gamma_0.7": 61,
+      "cool_cast": 65
+    },
+    "soft-control-47": {
+      "identity": 67,
+      "darker_0.6": 49,
+      "gamma_0.7": 58,
+      "cool_cast": 63
+    },
+    "hard-admit-42": {
+      "identity": 67,
+      "darker_0.6": 67,
+      "gamma_0.7": 67,
+      "cool_cast": 68
+    },
+    "hard-admit-43": {
+      "identity": 68,
+      "darker_0.6": 68,
+      "gamma_0.7": 67,
+      "cool_cast": 67
+    },
+    "hard-admit-44": {
+      "identity": 68,
+      "darker_0.6": 62,
+      "gamma_0.7": 65,
+      "cool_cast": 66
+    },
+    "hard-admit-45": {
+      "identity": 68,
+      "darker_0.6": 65,
+      "gamma_0.7": 63,
+      "cool_cast": 68
+    },
+    "hard-admit-46": {
+      "identity": 68,
+      "darker_0.6": 65,
+      "gamma_0.7": 64,
+      "cool_cast": 66
+    },
+    "hard-admit-47": {
+      "identity": 66,
+      "darker_0.6": 45,
+      "gamma_0.7": 56,
+      "cool_cast": 61
+    },
+    "hard-control-42": {
+      "identity": 67,
+      "darker_0.6": 63,
+      "gamma_0.7": 63,
+      "cool_cast": 64
+    },
+    "hard-control-43": {
+      "identity": 68,
+      "darker_0.6": 68,
+      "gamma_0.7": 62,
+      "cool_cast": 65
+    },
+    "hard-control-44": {
+      "identity": 67,
+      "darker_0.6": 67,
+      "gamma_0.7": 67,
+      "cool_cast": 67
+    },
+    "hard-control-45": {
+      "identity": 66,
+      "darker_0.6": 58,
+      "gamma_0.7": 53,
+      "cool_cast": 57
+    },
+    "hard-control-46": {
+      "identity": 67,
+      "darker_0.6": 67,
+      "gamma_0.7": 60,
+      "cool_cast": 66
+    },
+    "hard-control-47": {
+      "identity": 69,
+      "darker_0.6": 48,
+      "gamma_0.7": 61,
+      "cool_cast": 65
+    },
+    "photo-42": {
+      "identity": 67,
+      "darker_0.6": 66,
+      "gamma_0.7": 60,
+      "cool_cast": 61
+    },
+    "photo-43": {
+      "identity": 66,
+      "darker_0.6": 68,
+      "gamma_0.7": 61,
+      "cool_cast": 65
+    },
+    "nophoto-42": {
+      "identity": 66,
+      "darker_0.6": 27,
+      "gamma_0.7": 57,
+      "cool_cast": 58
+    },
+    "nophoto-43": {
+      "identity": 66,
+      "darker_0.6": 1,
+      "gamma_0.7": 54,
+      "cool_cast": 57
+    },
+    "new-views-42": {
+      "identity": 60,
+      "darker_0.6": 1,
+      "gamma_0.7": 34,
+      "cool_cast": 38
+    },
+    "new-views-43": {
+      "identity": 62,
+      "darker_0.6": 6,
+      "gamma_0.7": 56,
+      "cool_cast": 57
+    }
+  },
+  "runs": {
+    "soft-admit-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-20261010/student.fp32.tflite",
+      "model_sha256": "cb8d5dc9dcf05f653721ec032cb557417695b6f0d5005cd3f56abc6508e087c6",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 535,
+          "r_fp": 67,
+          "r_fn": 33,
+          "b_tp": 466,
+          "b_fp": 149,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 11,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 542,
+          "r_fp": 61,
+          "r_fn": 26,
+          "b_tp": 468,
+          "b_fp": 146,
+          "b_fn": 100
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 10,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 550,
+          "r_fp": 53,
+          "r_fn": 18,
+          "b_tp": 477,
+          "b_fp": 136,
+          "b_fn": 91
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 14,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-admit-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "44d2d46374d3eca348899de731734190397538e18fe4e8f30a435334e13548f2",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 517,
+          "r_fp": 59,
+          "r_fn": 51,
+          "b_tp": 467,
+          "b_fp": 136,
+          "b_fn": 101
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 8,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 17,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 523,
+          "r_fp": 53,
+          "r_fn": 45,
+          "b_tp": 469,
+          "b_fp": 132,
+          "b_fn": 99
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 7,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 17,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 531,
+          "r_fp": 45,
+          "r_fn": 37,
+          "b_tp": 475,
+          "b_fp": 125,
+          "b_fn": 93
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 6,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 16,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-admit-44": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "95b00034f5235a146873f2bbd15f7d24ee87c2133e86e15bc83795e0abb283dc",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 532,
+          "r_fp": 82,
+          "r_fn": 36,
+          "b_tp": 470,
+          "b_fp": 198,
+          "b_fn": 98
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 10,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 23,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 538,
+          "r_fp": 76,
+          "r_fn": 30,
+          "b_tp": 472,
+          "b_fp": 194,
+          "b_fn": 96
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 9,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 23,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 547,
+          "r_fp": 67,
+          "r_fn": 21,
+          "b_tp": 480,
+          "b_fp": 184,
+          "b_fn": 88
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 22,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-admit-45": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "fd194d1e53ae66e491782f3292da6a66966539881c9405bd23efe7e42a746137",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 534,
+          "r_fp": 115,
+          "r_fn": 34,
+          "b_tp": 471,
+          "b_fp": 161,
+          "b_fn": 97
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 18,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 19,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 538,
+          "r_fp": 111,
+          "r_fn": 30,
+          "b_tp": 473,
+          "b_fp": 157,
+          "b_fn": 95
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 17,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 19,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 549,
+          "r_fp": 100,
+          "r_fn": 19,
+          "b_tp": 481,
+          "b_fp": 148,
+          "b_fn": 87
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 16,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 18,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-admit-46": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "49aae3d0c6ead19a0cf184e0483d955a8491edafa82f7255922999a641c0eb7c",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 535,
+          "r_fp": 76,
+          "r_fn": 33,
+          "b_tp": 470,
+          "b_fp": 169,
+          "b_fn": 98
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 11,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 544,
+          "r_fp": 68,
+          "r_fn": 24,
+          "b_tp": 472,
+          "b_fp": 165,
+          "b_fn": 96
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 10,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 552,
+          "r_fp": 60,
+          "r_fn": 16,
+          "b_tp": 480,
+          "b_fp": 156,
+          "b_fn": 88
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 9,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 19,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-admit-47": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-admit-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "b80460a7526173218b761b265176d19b576d0fa24be14250bf2423e0ad607530",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 516,
+          "r_fp": 50,
+          "r_fn": 52,
+          "b_tp": 459,
+          "b_fp": 102,
+          "b_fn": 109
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 7,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 13,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 519,
+          "r_fp": 47,
+          "r_fn": 49,
+          "b_tp": 461,
+          "b_fp": 98,
+          "b_fn": 107
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 6,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 13,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 526,
+          "r_fp": 40,
+          "r_fn": 42,
+          "b_tp": 468,
+          "b_fp": 91,
+          "b_fn": 100
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 5,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 12,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-42": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-20261010/student.fp32.tflite",
+      "model_sha256": "94f86771804e54b2ec96bdfe04039e9ae1eb76dbd484545fe36b6800899535f9",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 491,
+          "r_fp": 61,
+          "r_fn": 77,
+          "b_tp": 472,
+          "b_fp": 149,
+          "b_fn": 96
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 8,
+          "r_fn": 5,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 496,
+          "r_fp": 57,
+          "r_fn": 72,
+          "b_tp": 474,
+          "b_fp": 146,
+          "b_fn": 94
+        },
+        "mser_split|identity": {
+          "r_tp": 67,
+          "r_fp": 7,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 504,
+          "r_fp": 49,
+          "r_fn": 64,
+          "b_tp": 479,
+          "b_fp": 138,
+          "b_fn": 89
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 68,
+          "r_fp": 6,
+          "r_fn": 3,
+          "b_tp": 60,
+          "b_fp": 14,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-43": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "b00143ca2284f865a2c05ec29dbd20f78c6541d397d664105e7d0363829efcaa",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 531,
+          "r_fp": 80,
+          "r_fn": 37,
+          "b_tp": 466,
+          "b_fp": 152,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 10,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 540,
+          "r_fp": 72,
+          "r_fn": 28,
+          "b_tp": 468,
+          "b_fp": 149,
+          "b_fn": 100
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 9,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 550,
+          "r_fp": 62,
+          "r_fn": 18,
+          "b_tp": 474,
+          "b_fp": 140,
+          "b_fn": 94
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 8,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 14,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-44": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "afa81aea3943cb034b6b2068fd7e85596d26a6b91b488459debe5382e1002a6c",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 525,
+          "r_fp": 93,
+          "r_fn": 43,
+          "b_tp": 456,
+          "b_fp": 140,
+          "b_fn": 112
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 13,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 16,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 533,
+          "r_fp": 86,
+          "r_fn": 35,
+          "b_tp": 458,
+          "b_fp": 136,
+          "b_fn": 110
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 12,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 16,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 543,
+          "r_fp": 76,
+          "r_fn": 25,
+          "b_tp": 465,
+          "b_fp": 127,
+          "b_fn": 103
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 11,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-45": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "e973062b657fd2819d92affb770bfdc384f86df8da769c6750689ed71a73580e",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 458,
+          "r_fp": 52,
+          "r_fn": 110,
+          "b_tp": 466,
+          "b_fp": 163,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 63,
+          "r_fp": 6,
+          "r_fn": 8,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 459,
+          "r_fp": 51,
+          "r_fn": 109,
+          "b_tp": 468,
+          "b_fp": 160,
+          "b_fn": 100
+        },
+        "mser_split|identity": {
+          "r_tp": 63,
+          "r_fp": 6,
+          "r_fn": 8,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 468,
+          "r_fp": 42,
+          "r_fn": 100,
+          "b_tp": 476,
+          "b_fp": 149,
+          "b_fn": 92
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 64,
+          "r_fp": 5,
+          "r_fn": 7,
+          "b_tp": 60,
+          "b_fp": 19,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-46": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "5fd58ec1dddff6c9bbf50a7e2dcb957afb03179c894d65ab79be4450064ef43a",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 525,
+          "r_fp": 66,
+          "r_fn": 43,
+          "b_tp": 465,
+          "b_fp": 152,
+          "b_fn": 103
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 10,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 531,
+          "r_fp": 61,
+          "r_fn": 37,
+          "b_tp": 467,
+          "b_fp": 149,
+          "b_fn": 101
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 9,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 536,
+          "r_fp": 56,
+          "r_fn": 32,
+          "b_tp": 473,
+          "b_fp": 140,
+          "b_fn": 95
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 8,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 14,
+          "b_fn": 11
+        }
+      }
+    },
+    "soft-control-47": {
+      "model": "runs/balloon-red-blue-photometric-clutter4-control-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "1b09adf75d9fe8e5a0e7454c43d5acecf118a4a84fde98722dae1225bf49d1b3",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 501,
+          "r_fp": 41,
+          "r_fn": 67,
+          "b_tp": 447,
+          "b_fp": 155,
+          "b_fn": 121
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 6,
+          "r_fn": 4,
+          "b_tp": 58,
+          "b_fp": 17,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 504,
+          "r_fp": 38,
+          "r_fn": 64,
+          "b_tp": 453,
+          "b_fp": 149,
+          "b_fn": 115
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 5,
+          "r_fn": 3,
+          "b_tp": 58,
+          "b_fp": 17,
+          "b_fn": 13
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 510,
+          "r_fp": 32,
+          "r_fn": 58,
+          "b_tp": 465,
+          "b_fp": 135,
+          "b_fn": 103
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 4,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-admit-42": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-20261010/student.fp32.tflite",
+      "model_sha256": "569a62e33a4ab74793fbfc7817231050fdad03896326b0537cb512d7763d757d",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 536,
+          "r_fp": 81,
+          "r_fn": 32,
+          "b_tp": 466,
+          "b_fp": 154,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 11,
+          "r_fn": 4,
+          "b_tp": 58,
+          "b_fp": 20,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 543,
+          "r_fp": 75,
+          "r_fn": 25,
+          "b_tp": 470,
+          "b_fp": 150,
+          "b_fn": 98
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 10,
+          "r_fn": 3,
+          "b_tp": 58,
+          "b_fp": 20,
+          "b_fn": 13
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 552,
+          "r_fp": 66,
+          "r_fn": 16,
+          "b_tp": 481,
+          "b_fp": 138,
+          "b_fn": 87
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 9,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 18,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-admit-43": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "bc7b7dcdfbc43b8fda7d973b79a0f0207ba8579d017cd4056864e13a663c162c",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 539,
+          "r_fp": 95,
+          "r_fn": 29,
+          "b_tp": 466,
+          "b_fp": 119,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 11,
+          "r_fn": 3,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        },
+        "mser_split|sweep": {
+          "r_tp": 548,
+          "r_fp": 87,
+          "r_fn": 20,
+          "b_tp": 468,
+          "b_fp": 116,
+          "b_fn": 100
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 10,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 558,
+          "r_fp": 77,
+          "r_fn": 10,
+          "b_tp": 472,
+          "b_fp": 112,
+          "b_fn": 96
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 9,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-admit-44": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "8976ca390dc05d2610207d0b4133d0ddc201c194d8294fe343706c8969e8264f",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 530,
+          "r_fp": 99,
+          "r_fn": 38,
+          "b_tp": 469,
+          "b_fp": 160,
+          "b_fn": 99
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 14,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 538,
+          "r_fp": 92,
+          "r_fn": 30,
+          "b_tp": 471,
+          "b_fp": 156,
+          "b_fn": 97
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 13,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 548,
+          "r_fp": 82,
+          "r_fn": 20,
+          "b_tp": 478,
+          "b_fp": 146,
+          "b_fn": 90
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 12,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 19,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-admit-45": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "18b87b95b0facbae08c1dafacb1ccd599b02c2ed3f22bdd7c8d69ad0bbb27b7a",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 533,
+          "r_fp": 105,
+          "r_fn": 35,
+          "b_tp": 465,
+          "b_fp": 125,
+          "b_fn": 103
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 17,
+          "r_fn": 3,
+          "b_tp": 58,
+          "b_fp": 14,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 534,
+          "r_fp": 104,
+          "r_fn": 34,
+          "b_tp": 467,
+          "b_fp": 121,
+          "b_fn": 101
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 17,
+          "r_fn": 3,
+          "b_tp": 58,
+          "b_fp": 14,
+          "b_fn": 13
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 544,
+          "r_fp": 94,
+          "r_fn": 24,
+          "b_tp": 476,
+          "b_fp": 111,
+          "b_fn": 92
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 16,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 13,
+          "b_fn": 12
+        }
+      }
+    },
+    "hard-admit-46": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "17066e12b2302adf773e6b85c26aea824dccf7e1bc6c51bfbcc0281d448a57c8",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 532,
+          "r_fp": 58,
+          "r_fn": 36,
+          "b_tp": 471,
+          "b_fp": 142,
+          "b_fn": 97
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 7,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 541,
+          "r_fp": 50,
+          "r_fn": 27,
+          "b_tp": 473,
+          "b_fp": 138,
+          "b_fn": 95
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 6,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 20,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 545,
+          "r_fp": 46,
+          "r_fn": 23,
+          "b_tp": 480,
+          "b_fp": 130,
+          "b_fn": 88
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 6,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 19,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-admit-47": {
+      "model": "runs/balloon-red-blue-clutter-hard-admit-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "82846a5d01b51535285dc2d82010f5463aa21cd352ea64304e529ca4b2db9593",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 491,
+          "r_fp": 26,
+          "r_fn": 77,
+          "b_tp": 443,
+          "b_fp": 77,
+          "b_fn": 125
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 3,
+          "r_fn": 5,
+          "b_tp": 58,
+          "b_fp": 9,
+          "b_fn": 13
+        },
+        "mser_split|sweep": {
+          "r_tp": 496,
+          "r_fp": 21,
+          "r_fn": 72,
+          "b_tp": 445,
+          "b_fp": 73,
+          "b_fn": 123
+        },
+        "mser_split|identity": {
+          "r_tp": 67,
+          "r_fp": 2,
+          "r_fn": 4,
+          "b_tp": 58,
+          "b_fp": 9,
+          "b_fn": 13
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 496,
+          "r_fp": 21,
+          "r_fn": 72,
+          "b_tp": 446,
+          "b_fp": 72,
+          "b_fn": 122
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 67,
+          "r_fp": 2,
+          "r_fn": 4,
+          "b_tp": 58,
+          "b_fp": 9,
+          "b_fn": 13
+        }
+      }
+    },
+    "hard-control-42": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-20261010/student.fp32.tflite",
+      "model_sha256": "a6c405e77e39a9881a079c8b8b915d52595ca22f807f8074228b62a6d43036f4",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 523,
+          "r_fp": 84,
+          "r_fn": 45,
+          "b_tp": 467,
+          "b_fp": 116,
+          "b_fn": 101
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 10,
+          "r_fn": 4,
+          "b_tp": 60,
+          "b_fp": 12,
+          "b_fn": 11
+        },
+        "mser_split|sweep": {
+          "r_tp": 531,
+          "r_fp": 77,
+          "r_fn": 37,
+          "b_tp": 469,
+          "b_fp": 112,
+          "b_fn": 99
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 9,
+          "r_fn": 3,
+          "b_tp": 60,
+          "b_fp": 12,
+          "b_fn": 11
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 541,
+          "r_fp": 67,
+          "r_fn": 27,
+          "b_tp": 475,
+          "b_fp": 106,
+          "b_fn": 93
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 8,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 12,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-control-43": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed43-20261010/student.fp32.tflite",
+      "model_sha256": "094e492670b0873052afcdc1f1c3b332e920de3de7c829a778d039c565492a8b",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 531,
+          "r_fp": 101,
+          "r_fn": 37,
+          "b_tp": 469,
+          "b_fp": 157,
+          "b_fn": 99
+        },
+        "mser|identity": {
+          "r_tp": 68,
+          "r_fp": 14,
+          "r_fn": 3,
+          "b_tp": 60,
+          "b_fp": 16,
+          "b_fn": 11
+        },
+        "mser_split|sweep": {
+          "r_tp": 540,
+          "r_fp": 93,
+          "r_fn": 28,
+          "b_tp": 471,
+          "b_fp": 155,
+          "b_fn": 97
+        },
+        "mser_split|identity": {
+          "r_tp": 69,
+          "r_fp": 13,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 16,
+          "b_fn": 11
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 551,
+          "r_fp": 82,
+          "r_fn": 17,
+          "b_tp": 476,
+          "b_fp": 149,
+          "b_fn": 92
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 70,
+          "r_fp": 12,
+          "r_fn": 1,
+          "b_tp": 60,
+          "b_fp": 16,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-control-44": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed44-20261010/student.fp32.tflite",
+      "model_sha256": "fa052d9ce4a8f64eff6a7e75f79ff581fd0bca4b9fb2f0bb38c6c8cd56129a6b",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 532,
+          "r_fp": 105,
+          "r_fn": 36,
+          "b_tp": 463,
+          "b_fp": 165,
+          "b_fn": 105
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 14,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 19,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 540,
+          "r_fp": 98,
+          "r_fn": 28,
+          "b_tp": 465,
+          "b_fp": 162,
+          "b_fn": 103
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 13,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 19,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 552,
+          "r_fp": 86,
+          "r_fn": 16,
+          "b_tp": 473,
+          "b_fp": 151,
+          "b_fn": 95
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 12,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 18,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-control-45": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed45-20261010/student.fp32.tflite",
+      "model_sha256": "ae2670f8c893bc966ef8311072bc1887e70ae26ea3fd5a9ef08f78d193d8508e",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 489,
+          "r_fp": 66,
+          "r_fn": 79,
+          "b_tp": 471,
+          "b_fp": 181,
+          "b_fn": 97
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 7,
+          "r_fn": 5,
+          "b_tp": 59,
+          "b_fp": 22,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 491,
+          "r_fp": 64,
+          "r_fn": 77,
+          "b_tp": 473,
+          "b_fp": 177,
+          "b_fn": 95
+        },
+        "mser_split|identity": {
+          "r_tp": 66,
+          "r_fp": 7,
+          "r_fn": 5,
+          "b_tp": 59,
+          "b_fp": 22,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 501,
+          "r_fp": 54,
+          "r_fn": 67,
+          "b_tp": 481,
+          "b_fp": 166,
+          "b_fn": 87
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 67,
+          "r_fp": 6,
+          "r_fn": 4,
+          "b_tp": 60,
+          "b_fp": 21,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-control-46": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed46-20261010/student.fp32.tflite",
+      "model_sha256": "5f4fafbb563abcbc91f0bb6773446d57cace06a2aa9eca1baae1d422ffefdd72",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 524,
+          "r_fp": 76,
+          "r_fn": 44,
+          "b_tp": 464,
+          "b_fp": 154,
+          "b_fn": 104
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 10,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 531,
+          "r_fp": 70,
+          "r_fn": 37,
+          "b_tp": 466,
+          "b_fp": 150,
+          "b_fn": 102
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 9,
+          "r_fn": 3,
+          "b_tp": 59,
+          "b_fp": 15,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 540,
+          "r_fp": 61,
+          "r_fn": 28,
+          "b_tp": 472,
+          "b_fp": 141,
+          "b_fn": 96
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 8,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 14,
+          "b_fn": 11
+        }
+      }
+    },
+    "hard-control-47": {
+      "model": "runs/balloon-red-blue-clutter-hard-control-seed47-20261010/student.fp32.tflite",
+      "model_sha256": "8967379f7f8f818f987c0191b38fa946aee65bd73f4468e6995a9f20ad2a7d5b",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 512,
+          "r_fp": 44,
+          "r_fn": 56,
+          "b_tp": 451,
+          "b_fp": 101,
+          "b_fn": 117
+        },
+        "mser|identity": {
+          "r_tp": 69,
+          "r_fp": 5,
+          "r_fn": 2,
+          "b_tp": 59,
+          "b_fp": 11,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 519,
+          "r_fp": 38,
+          "r_fn": 49,
+          "b_tp": 455,
+          "b_fp": 96,
+          "b_fn": 113
+        },
+        "mser_split|identity": {
+          "r_tp": 70,
+          "r_fp": 4,
+          "r_fn": 1,
+          "b_tp": 59,
+          "b_fp": 11,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 525,
+          "r_fp": 32,
+          "r_fn": 43,
+          "b_tp": 458,
+          "b_fp": 91,
+          "b_fn": 110
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 71,
+          "r_fp": 3,
+          "r_fn": 0,
+          "b_tp": 59,
+          "b_fp": 11,
+          "b_fn": 12
+        }
+      }
+    },
+    "photo-42": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-20261009/student.fp32.tflite",
+      "model_sha256": "1a4781753b7fcf31c8ff30c9fec7eb14ebe6a9b6fc1343436a01df375c5b5ae2",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 521,
+          "r_fp": 87,
+          "r_fn": 47,
+          "b_tp": 467,
+          "b_fp": 164,
+          "b_fn": 101
+        },
+        "mser|identity": {
+          "r_tp": 67,
+          "r_fp": 12,
+          "r_fn": 4,
+          "b_tp": 60,
+          "b_fp": 17,
+          "b_fn": 11
+        },
+        "mser_split|sweep": {
+          "r_tp": 529,
+          "r_fp": 80,
+          "r_fn": 39,
+          "b_tp": 469,
+          "b_fp": 161,
+          "b_fn": 99
+        },
+        "mser_split|identity": {
+          "r_tp": 68,
+          "r_fp": 11,
+          "r_fn": 3,
+          "b_tp": 60,
+          "b_fp": 17,
+          "b_fn": 11
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 538,
+          "r_fp": 71,
+          "r_fn": 30,
+          "b_tp": 473,
+          "b_fp": 154,
+          "b_fn": 95
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 10,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 17,
+          "b_fn": 11
+        }
+      }
+    },
+    "photo-43": {
+      "model": "runs/balloon-red-blue-photometric-augmentation-seed43-20261009/student.fp32.tflite",
+      "model_sha256": "f6b95f82800c53578dd08b0e9a037d9508d552e0b6becd266e0fcada9555e0db",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 523,
+          "r_fp": 98,
+          "r_fn": 45,
+          "b_tp": 466,
+          "b_fp": 163,
+          "b_fn": 102
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 14,
+          "r_fn": 5,
+          "b_tp": 59,
+          "b_fp": 18,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 532,
+          "r_fp": 90,
+          "r_fn": 36,
+          "b_tp": 468,
+          "b_fp": 161,
+          "b_fn": 100
+        },
+        "mser_split|identity": {
+          "r_tp": 67,
+          "r_fp": 13,
+          "r_fn": 4,
+          "b_tp": 59,
+          "b_fp": 18,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 546,
+          "r_fp": 76,
+          "r_fn": 22,
+          "b_tp": 474,
+          "b_fp": 152,
+          "b_fn": 94
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 69,
+          "r_fp": 11,
+          "r_fn": 2,
+          "b_tp": 60,
+          "b_fp": 17,
+          "b_fn": 11
+        }
+      }
+    },
+    "nophoto-42": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-20261008/student.fp32.tflite",
+      "model_sha256": "b80555a5cfd54d8852259d00b40af3757a58f3c6e66ebfc541bad3faf3af5073",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 470,
+          "r_fp": 69,
+          "r_fn": 98,
+          "b_tp": 462,
+          "b_fp": 109,
+          "b_fn": 106
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 9,
+          "r_fn": 5,
+          "b_tp": 61,
+          "b_fp": 11,
+          "b_fn": 10
+        },
+        "mser_split|sweep": {
+          "r_tp": 476,
+          "r_fp": 64,
+          "r_fn": 92,
+          "b_tp": 464,
+          "b_fp": 107,
+          "b_fn": 104
+        },
+        "mser_split|identity": {
+          "r_tp": 67,
+          "r_fp": 8,
+          "r_fn": 4,
+          "b_tp": 61,
+          "b_fp": 11,
+          "b_fn": 10
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 484,
+          "r_fp": 56,
+          "r_fn": 84,
+          "b_tp": 466,
+          "b_fp": 105,
+          "b_fn": 102
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 68,
+          "r_fp": 7,
+          "r_fn": 3,
+          "b_tp": 61,
+          "b_fp": 11,
+          "b_fn": 10
+        }
+      }
+    },
+    "nophoto-43": {
+      "model": "runs/balloon-red-blue-paired-augmentation-control-seed43-20261008/student.fp32.tflite",
+      "model_sha256": "fc9c883a9c12b159d12fabf429da9fd4ec4de66bbb2e50d2ebaa8baaf2c91d6a",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 432,
+          "r_fp": 45,
+          "r_fn": 136,
+          "b_tp": 448,
+          "b_fp": 133,
+          "b_fn": 120
+        },
+        "mser|identity": {
+          "r_tp": 66,
+          "r_fp": 7,
+          "r_fn": 5,
+          "b_tp": 57,
+          "b_fp": 15,
+          "b_fn": 14
+        },
+        "mser_split|sweep": {
+          "r_tp": 437,
+          "r_fp": 41,
+          "r_fn": 131,
+          "b_tp": 450,
+          "b_fp": 129,
+          "b_fn": 118
+        },
+        "mser_split|identity": {
+          "r_tp": 67,
+          "r_fp": 6,
+          "r_fn": 4,
+          "b_tp": 57,
+          "b_fp": 15,
+          "b_fn": 14
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 443,
+          "r_fp": 35,
+          "r_fn": 125,
+          "b_tp": 457,
+          "b_fp": 120,
+          "b_fn": 111
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 68,
+          "r_fp": 5,
+          "r_fn": 3,
+          "b_tp": 58,
+          "b_fp": 14,
+          "b_fn": 13
+        }
+      }
+    },
+    "new-views-42": {
+      "model": "artifacts/balloon-pi-scheduled-search-20261008/models/new-views-42.tflite",
+      "model_sha256": "a8267a9337adfe69a6e30f4e74a3a4a63fa12eb4710ec38a08ff3dd4f06f33a7",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 374,
+          "r_fp": 20,
+          "r_fn": 194,
+          "b_tp": 452,
+          "b_fp": 122,
+          "b_fn": 116
+        },
+        "mser|identity": {
+          "r_tp": 60,
+          "r_fp": 2,
+          "r_fn": 11,
+          "b_tp": 61,
+          "b_fp": 13,
+          "b_fn": 10
+        },
+        "mser_split|sweep": {
+          "r_tp": 376,
+          "r_fp": 18,
+          "r_fn": 192,
+          "b_tp": 454,
+          "b_fp": 120,
+          "b_fn": 114
+        },
+        "mser_split|identity": {
+          "r_tp": 60,
+          "r_fp": 2,
+          "r_fn": 11,
+          "b_tp": 61,
+          "b_fp": 13,
+          "b_fn": 10
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 381,
+          "r_fp": 13,
+          "r_fn": 187,
+          "b_tp": 456,
+          "b_fp": 115,
+          "b_fn": 112
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 61,
+          "r_fp": 1,
+          "r_fn": 10,
+          "b_tp": 61,
+          "b_fp": 13,
+          "b_fn": 10
+        }
+      }
+    },
+    "new-views-43": {
+      "model": "artifacts/balloon-pi-scheduled-search-20261008/models/new-views-43.tflite",
+      "model_sha256": "d65120b7dca7e9e1669c086e07b0e0b3eeccd55cacc5618951d8ef22d399cc4e",
+      "inputs_sha256": "e39c002e9ac57d474eea147858107ef7aabeea0b2a9dc1cabefcbbd045496942",
+      "script_sha256": "3a66f6879daa15f70147e9ccaa7fb94815da9c736c2b3ff445dc5d1a6fd9cc80",
+      "totals": {
+        "mser|sweep": {
+          "r_tp": 436,
+          "r_fp": 44,
+          "r_fn": 132,
+          "b_tp": 457,
+          "b_fp": 149,
+          "b_fn": 111
+        },
+        "mser|identity": {
+          "r_tp": 62,
+          "r_fp": 8,
+          "r_fn": 9,
+          "b_tp": 59,
+          "b_fp": 16,
+          "b_fn": 12
+        },
+        "mser_split|sweep": {
+          "r_tp": 441,
+          "r_fp": 40,
+          "r_fn": 127,
+          "b_tp": 459,
+          "b_fp": 145,
+          "b_fn": 109
+        },
+        "mser_split|identity": {
+          "r_tp": 63,
+          "r_fp": 7,
+          "r_fn": 8,
+          "b_tp": 59,
+          "b_fp": 16,
+          "b_fn": 12
+        },
+        "mser_split_oversized|sweep": {
+          "r_tp": 446,
+          "r_fp": 35,
+          "r_fn": 122,
+          "b_tp": 467,
+          "b_fp": 135,
+          "b_fn": 101
+        },
+        "mser_split_oversized|identity": {
+          "r_tp": 64,
+          "r_fp": 6,
+          "r_fn": 7,
+          "b_tp": 60,
+          "b_fp": 15,
+          "b_fn": 11
+        }
+      }
+    }
+  },
+  "scorer_sha256": "be3290015451317835147fafb8d0dab55f4ad9b08ce31a061dbe8637b9e5983e"
+}
