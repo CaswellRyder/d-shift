@@ -1,0 +1,555 @@
+{
+  "reference_sha256": "109ee88610d93b9695cba0b9800c7742f59145cebdb5b28eb3a384c77725187f",
+  "protocol_sha256": "8a5edb7c6fbb785dbd14a9c66be99a96e8ba785fab594205e587aeeb6eb4c0e1",
+  "script_sha256": "12de1b00618fba81e9f58fff6a3513f786d36ad99ae2f2ad1a7af48164ca98c2",
+  "helpers_sha256": {
+    "scripts/research_confident_containment.py": "7afa7104a86a928ade2295c92933b8fc759f5c810d5e8f1f59d77b7e6b2e3c0d",
+    "scripts/compare_balloon_containment.py": "ca5eefe73d30ab4e7730b5aaa9780a38bccd6df4eb69b81d79e40d0cde111b10",
+    "scripts/research_balloon_confidence_selection.py": "97f86a7d124e08353c9e4d040f1815c1a24ae0d64e19c132c5262ecd1fddb1fd",
+    "scripts/replay_balloon_suppression.py": "775b36be11a43f1a0327c835bee4f35516013cf34591295dc8e05ef8d434f2a2"
+  },
+  "raw": {
+    "path": "runs/current-confidence-containment-20261011.json",
+    "sha256": "2e823d35d6c1cd0624dd034ab5a845031ad26747c334928081685c94c788bc65"
+  },
+  "panels": {
+    "training": {
+      "before": {
+        "red_balloon": {
+          "tp": 91,
+          "fp": 13,
+          "fn": 7,
+          "precision": 0.875,
+          "recall": 0.9285714285714286
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "after": {
+        "red_balloon": {
+          "tp": 94,
+          "fp": 10,
+          "fn": 4,
+          "precision": 0.9038461538461539,
+          "recall": 0.9591836734693877
+        },
+        "blue_balloon": {
+          "tp": 89,
+          "fp": 4,
+          "fn": 4,
+          "precision": 0.956989247311828,
+          "recall": 0.956989247311828
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 98,
+            "geometric_oracle_covered": 95,
+            "geometric_oracle_recall": 0.9693877551020408,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 8,
+                "localization_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "no_localized_proposal": 3
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 93,
+            "geometric_oracle_covered": 89,
+            "geometric_oracle_recall": 0.956989247311828,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "no_localized_proposal": 4
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": [
+          {
+            "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 21410,
+              "box": [
+                214.125,
+                126.65625,
+                250.875,
+                145.59375
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 14158,
+              "box": [
+                81.25,
+                38.53125,
+                173.25,
+                154.21875
+              ]
+            }
+          },
+          {
+            "source": "train/frame_0465_jpg.rf.1848a30e51e87df4aa04a6953e2f8612.jpg",
+            "target": {
+              "label": "red_balloon",
+              "annotation_id": 10718,
+              "box": [
+                139.5,
+                136.875,
+                207.0,
+                229.125
+              ]
+            }
+          }
+        ]
+      },
+      "nonregression": true,
+      "changes": [
+        {
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "index": 5,
+          "label": "red_balloon",
+          "box": [
+            160,
+            69,
+            252,
+            146
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.9340580105781555
+        },
+        {
+          "source": "train/frame_000800_jpg.rf.b92318784bf48ebca069074aa9c1a908.jpg",
+          "index": 11,
+          "label": "red_balloon",
+          "box": [
+            213,
+            127,
+            252,
+            146
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9966287016868591
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "index": 0,
+          "label": "red_balloon",
+          "box": [
+            73,
+            1,
+            212,
+            239
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.8128319978713989
+        },
+        {
+          "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+          "index": 3,
+          "label": "red_balloon",
+          "box": [
+            75,
+            40,
+            168,
+            163
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9999940395355225
+        },
+        {
+          "source": "train/frame_0465_jpg.rf.1848a30e51e87df4aa04a6953e2f8612.jpg",
+          "index": 0,
+          "label": "red_balloon",
+          "box": [
+            60,
+            133,
+            319,
+            239
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.8166305422782898
+        },
+        {
+          "source": "train/frame_0465_jpg.rf.1848a30e51e87df4aa04a6953e2f8612.jpg",
+          "index": 2,
+          "label": "red_balloon",
+          "box": [
+            142,
+            140,
+            203,
+            225
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9999511241912842
+        }
+      ],
+      "frames": 64,
+      "neural_calls_before": 385,
+      "neural_calls_after": 385
+    },
+    "engdes2-lockbox-panel3-20261010": {
+      "before": {
+        "red_balloon": {
+          "tp": 69,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.9857142857142858,
+          "recall": 0.971830985915493
+        },
+        "blue_balloon": {
+          "tp": 65,
+          "fp": 14,
+          "fn": 6,
+          "precision": 0.8227848101265823,
+          "recall": 0.9154929577464789
+        }
+      },
+      "after": {
+        "red_balloon": {
+          "tp": 69,
+          "fp": 1,
+          "fn": 2,
+          "precision": 0.9857142857142858,
+          "recall": 0.971830985915493
+        },
+        "blue_balloon": {
+          "tp": 65,
+          "fp": 14,
+          "fn": 6,
+          "precision": 0.8227848101265823,
+          "recall": 0.9154929577464789
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 71,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 71,
+            "geometric_oracle_covered": 69,
+            "geometric_oracle_recall": 0.971830985915493,
+            "errors": {
+              "false_positives": {
+                "localization_overlap": 8,
+                "little_or_no_annotated_overlap": 5,
+                "duplicate": 1
+              },
+              "false_negatives": {
+                "no_localized_proposal": 2,
+                "below_acceptance_threshold": 3,
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": []
+      },
+      "nonregression": true,
+      "changes": [],
+      "frames": 67,
+      "neural_calls_before": 343,
+      "neural_calls_after": 343
+    },
+    "engdes2-development-panel2-20261010": {
+      "before": {
+        "red_balloon": {
+          "tp": 63,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.9692307692307692,
+          "recall": 0.9692307692307692
+        },
+        "blue_balloon": {
+          "tp": 59,
+          "fp": 26,
+          "fn": 8,
+          "precision": 0.6941176470588235,
+          "recall": 0.8805970149253731
+        }
+      },
+      "after": {
+        "red_balloon": {
+          "tp": 63,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.9692307692307692,
+          "recall": 0.9692307692307692
+        },
+        "blue_balloon": {
+          "tp": 59,
+          "fp": 26,
+          "fn": 8,
+          "precision": 0.6941176470588235,
+          "recall": 0.8805970149253731
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 65,
+            "geometric_oracle_covered": 65,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 2
+              },
+              "false_negatives": {
+                "different_predicted_class": 1,
+                "below_acceptance_threshold": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 67,
+            "geometric_oracle_covered": 63,
+            "geometric_oracle_recall": 0.9402985074626866,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 22,
+                "localization_overlap": 4
+              },
+              "false_negatives": {
+                "below_acceptance_threshold": 2,
+                "no_localized_proposal": 4,
+                "different_predicted_class": 2
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": []
+      },
+      "nonregression": true,
+      "changes": [
+        {
+          "source": "IMG_6115_00166_jpg.rf.2eeadf20abb57aea39b71e602932a99f.jpg",
+          "index": 3,
+          "label": "blue_balloon",
+          "box": [
+            190,
+            179,
+            230,
+            194
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.9996315240859985
+        },
+        {
+          "source": "IMG_6115_00166_jpg.rf.2eeadf20abb57aea39b71e602932a99f.jpg",
+          "index": 7,
+          "label": "blue_balloon",
+          "box": [
+            190,
+            181,
+            206,
+            191
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9996458292007446
+        },
+        {
+          "source": "IMG_7047_00232_jpg.rf.395e09370f80510625c6d7ace58bd88e.jpg",
+          "index": 1,
+          "label": "blue_balloon",
+          "box": [
+            1,
+            104,
+            170,
+            206
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.8342554569244385
+        },
+        {
+          "source": "IMG_7047_00232_jpg.rf.395e09370f80510625c6d7ace58bd88e.jpg",
+          "index": 5,
+          "label": "blue_balloon",
+          "box": [
+            0.0,
+            147.19143402576447,
+            98.9651689529419,
+            207.6786161661148
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.8460032939910889
+        },
+        {
+          "source": "IMG_7058_00280_jpg.rf.53a2574d14c585934a9f3176b828f9e9.jpg",
+          "index": 4,
+          "label": "blue_balloon",
+          "box": [
+            74,
+            52,
+            145,
+            81
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9999898672103882
+        },
+        {
+          "source": "IMG_7058_00280_jpg.rf.53a2574d14c585934a9f3176b828f9e9.jpg",
+          "index": 8,
+          "label": "blue_balloon",
+          "box": [
+            26.151960372924805,
+            45.16570234298706,
+            154.5857219696045,
+            220.44734621047974
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.9956871867179871
+        }
+      ],
+      "frames": 62,
+      "neural_calls_before": 345,
+      "neural_calls_after": 345
+    },
+    "engdes2-development-scenes-20261008": {
+      "before": {
+        "red_balloon": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9090909090909091
+        },
+        "blue_balloon": {
+          "tp": 11,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.9166666666666666,
+          "recall": 0.9166666666666666
+        }
+      },
+      "after": {
+        "red_balloon": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9090909090909091
+        },
+        "blue_balloon": {
+          "tp": 11,
+          "fp": 1,
+          "fn": 1,
+          "precision": 0.9166666666666666,
+          "recall": 0.9166666666666666
+        }
+      },
+      "comparison": {
+        "colors": {
+          "red_balloon": {
+            "targets": 11,
+            "geometric_oracle_covered": 11,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {},
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          },
+          "blue_balloon": {
+            "targets": 12,
+            "geometric_oracle_covered": 12,
+            "geometric_oracle_recall": 1.0,
+            "errors": {
+              "false_positives": {
+                "little_or_no_annotated_overlap": 1
+              },
+              "false_negatives": {
+                "different_predicted_class": 1
+              }
+            }
+          }
+        },
+        "lost_parent_targets": [],
+        "gained_targets": []
+      },
+      "nonregression": true,
+      "changes": [
+        {
+          "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+          "index": 1,
+          "label": "blue_balloon",
+          "box": [
+            61,
+            60,
+            248,
+            156
+          ],
+          "before": true,
+          "after": false,
+          "score": 0.9147789478302002
+        },
+        {
+          "source": "IMG_7046_00217_jpg.rf.944dc7af9da501f0e4f4d6e51a522464.jpg",
+          "index": 2,
+          "label": "blue_balloon",
+          "box": [
+            104.32228755950928,
+            108.0819650888443,
+            204.5870180130005,
+            150.19525730609894
+          ],
+          "before": false,
+          "after": true,
+          "score": 0.9846322536468506
+        }
+      ],
+      "frames": 12,
+      "neural_calls_before": 71,
+      "neural_calls_after": 71
+    }
+  },
+  "eligible_for_pi_comparison": true,
+  "meets_94_each_evaluated_panel": false,
+  "scope": "Existing fixed containment rule composed with newer pipeline. Saved TRAIN/development prediction replay, not new camera inference, independent accuracy or measured Pi speed.",
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
