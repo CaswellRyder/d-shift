@@ -6,6 +6,7 @@ is required after inspecting crops and the frames' incomplete annotations.
 """
 import argparse
 from collections import Counter
+import hashlib
 import json
 from pathlib import Path
 import zipfile
@@ -33,7 +34,56 @@ def quality_target(candidate, positives, negatives):
     return None
 
 
-def prepare(manifest, queue_root, review, archive_path, output):
+def context_anchor_ids(anchors, per_color=12):
+    """Deterministic source-group stratification, never using model predictions."""
+    if type(per_color) is not int or not 1 <= per_color <= 24:
+        raise ValueError("Require 1..24 context anchors per color")
+    chosen = set()
+    for label in ("red_balloon", "blue_balloon"):
+        rows = [r for r in anchors if r["label"] == label]
+        rows.sort(key=lambda r: hashlib.sha256(
+            f"{r['source_group']}/{r['annotation_id']}".encode()).hexdigest())
+        groups = set()
+        for row in rows:
+            if row["source_group"] in groups:
+                continue
+            groups.add(row["source_group"])
+            chosen.add(row["id"])
+            if len(groups) >= per_color:
+                break
+    return chosen
+
+
+def context_candidates(positives, selected):
+    """Controlled oversized boxes of REAL training pixels, not background labels.
+
+    Four fixed centered scales create localization targets for an otherwise
+    recognizable balloon. Existing annotated boxes determine quality only after
+    explicit visual admission. Unknown surroundings never become negatives.
+    """
+    candidates, seen = [], set()
+    for p in positives:
+        if p["id"] not in selected:
+            continue
+        x,y,z,w = p["target_box"]
+        for scale in (1., 1.5, 2., 3.):
+            cx, cy = (x+z)/2, (y+w)/2
+            rx, ry = (z-x)*scale/2, (w-y)*scale/2
+            a,b,c,d = max(0,int(np.floor(cx-rx))), max(0,int(np.floor(cy-ry))), min(320,int(np.ceil(cx+rx))), min(240,int(np.ceil(cy+ry)))
+            if min(c-a,d-b) < 4 or (a,b,c,d) in seen:
+                continue
+            seen.add((a,b,c,d))
+            pad = int(max(c-a,d-b)*.12)
+            candidates.append(dict(box=[a,b,c,d],
+                crop_box=[max(0,a-pad),max(0,b-pad),min(320,c+pad),min(240,d+pad)],
+                context_anchor_id=p["id"], context_scale=scale,
+                proposal_source="reviewed_anchor_context_expansion"))
+    return candidates
+
+
+def prepare(manifest, queue_root, review, archive_path, output, mode="proposals", per_color=12):
+    if mode not in ("proposals", "expanded_context"):
+        raise ValueError("Unknown quality preparation mode")
     root, output = Path(queue_root).resolve(), Path(output)
     if output.exists():
         raise FileExistsError(output)
@@ -42,6 +92,7 @@ def prepare(manifest, queue_root, review, archive_path, output):
     if decision.get("training_approved") is False or decision.get("deployment_approved") is not False:
         raise ValueError("Require training-only reviewed anchors")
     anchors = admitted(root, review, manifest)
+    selected = context_anchor_ids(anchors, per_color) if mode == "expanded_context" else set()
     if queue.get("archive_sha256") != ARCHIVE_SHA or sha256(archive_path) != ARCHIVE_SHA:
         raise ValueError("Training archive changed")
     with zipfile.ZipFile(archive_path) as archive:
@@ -75,7 +126,9 @@ def prepare(manifest, queue_root, review, archive_path, output):
                    (x+w)*320/source["width"], (y+h)*240/source["height"]]
             positives.append(dict(row, target_box=box))
         ids = []
-        for candidate in experimental(rgb, "mser"):
+        candidates = (context_candidates(positives, selected) if mode == "expanded_context"
+                      else experimental(rgb, "mser"))
+        for candidate in candidates:
             target = quality_target(candidate, positives, negatives)
             if target is None:
                 continue
@@ -98,6 +151,9 @@ def prepare(manifest, queue_root, review, archive_path, output):
         frames.append(dict(frame, path=relative, sha256=sha256(dest), crop_ids=ids,
                            quality_targets=[dict(label=p["label"], box=p["target_box"]) for p in positives]))
     report = dict(samples=rows, frames=frames, base_manifest_sha256=sha256(manifest),
+        preparation_mode=mode, context_anchor_ids=sorted(selected),
+        context_scales=[1.,1.5,2.,3.] if selected else [], context_per_color=per_color if selected else None,
+        generated_pixels=False,
         parent_queue_sha256=sha256(root / "review.json"), parent_review_sha256=sha256(review),
         archive_sha256=ARCHIVE_SHA, script_sha256=sha256(__file__),
         search_sha256=sha256("scripts/research_balloon_search.py"),
@@ -134,5 +190,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("manifest", "queue", "review", "archive", "output"):
         parser.add_argument(f"--{name}", required=True)
+    parser.add_argument("--mode", choices=("proposals", "expanded_context"), default="proposals")
+    parser.add_argument("--per-color", type=int, default=12)
     args = parser.parse_args()
-    print(prepare(args.manifest, args.queue, args.review, args.archive, args.output))
+    print(prepare(args.manifest, args.queue, args.review, args.archive, args.output, args.mode, args.per_color))

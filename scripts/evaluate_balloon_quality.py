@@ -65,7 +65,29 @@ def quality_ordered(observations):
     return rows
 
 
-def panel_frames(panel, report):
+def quality_gated_ordered(observations, threshold):
+    if not np.isfinite(threshold) or not 0 <= threshold <= 1:
+        raise ValueError("Invalid fixed quality threshold")
+    rows = before_parts(observations)
+    for row in rows:
+        if not np.isfinite(row["box_quality"]) or not 0 <= row["box_quality"] <= 1:
+            raise ValueError("Invalid box-quality score")
+        if row["accepted"] and row["label"] in LABELS and row["box_quality"] < threshold:
+            row.update(accepted=False, suppressed=True, suppression_reason="training_calibrated_quality_gate")
+    return quality_ordered(rows)
+
+
+def panel_frames(panel, report, queue=None, review_path=None):
+    if panel == "reviewed":
+        if not queue or not review_path:
+            raise ValueError("Reviewed panels require explicit queue and review")
+        if (report["queue_sha256"] != sha256(Path(queue) / "review.json")
+                or report["review_sha256"] != sha256(review_path)):
+            raise ValueError("Reviewed development panel changed")
+        frames, _ = reviewed_frames(queue, review_path)
+        return {row["source"]: (rgb, row["provisional_truth"]) for row, rgb in frames}
+    if queue is not None or review_path is not None:
+        raise ValueError("Explicit queue/review requires reviewed panel mode")
     if panel == "indoor":
         root = Path("data/engdes2-development-scenes-20261008")
         review = "configs/engdes2-development-scenes-20261008.json"
@@ -101,16 +123,29 @@ def panel_frames(panel, report):
     return frames
 
 
-def evaluate(model_path, source_path, name, panel):
+def evaluate(model_path, source_path, name, panel, queue=None, review_path=None,
+             variant="mser_confirmed_parts", gate_config=None):
     source = read_json(source_path)
     if source.get("test_evaluated") is not False or source.get("deployment_approved") is not False:
         raise ValueError("Require development-only source report")
+    if variant not in ("mser_confirmed_parts", "mser_blue_cores"):
+        raise ValueError("Unsupported frozen proposal variant")
+    if panel == "reviewed":
+        if not queue or not review_path:
+            raise ValueError("Reviewed panels require explicit queue and review")
+        # Validate every saved frame, orientation, truth and count before replay.
+        from scripts.audit_balloon_pipeline_errors import audit
+        audit([source_path], queue, review_path)
     predictor = QualityPredictor(model_path)
+    threshold = None
+    if gate_config:
+        from scripts.calibrate_balloon_quality_gate import load_gate
+        threshold = load_gate(gate_config, model_path)
     baseline = source["results"][name]
     if baseline["model_sha256"] != predictor.metadata["source_tflite_sha256"] or baseline["threshold"] != .8:
         raise ValueError("Classifier does not match original scene report")
-    pixels = panel_frames(panel, source)
-    old = baseline["full_frame"]["mser_confirmed_parts"]
+    pixels = panel_frames(panel, source, queue, review_path)
+    old = baseline["full_frame"][variant]
     if {f["source"] for f in old["frames"]} != set(pixels):
         raise ValueError("Scene report coverage mismatch")
     enriched, max_delta = [], 0.
@@ -133,8 +168,11 @@ def evaluate(model_path, source_path, name, panel):
             rows.append(dict(row, box_quality=q))
         enriched.append(dict(frame, detections=rows))
     results = {}
-    for kind, select in (("parent_first", lambda rows: suppress_confirmed_balloon_parts(before_parts(rows))),
-                         ("confidence_ordered", confidence_ordered), ("quality_ordered", quality_ordered)):
+    policies = [("parent_first", lambda rows: suppress_confirmed_balloon_parts(before_parts(rows))),
+                ("confidence_ordered", confidence_ordered), ("quality_ordered", quality_ordered)]
+    if threshold is not None:
+        policies.append(("quality_gated_ordered", lambda rows: quality_gated_ordered(rows, threshold)))
+    for kind, select in policies:
         total = {label: dict(tp=0, fp=0, fn=0) for label in LABELS}
         frames = []
         for frame in enriched:
@@ -149,6 +187,10 @@ def evaluate(model_path, source_path, name, panel):
         raise ValueError("Original full-scene metrics did not reproduce")
     return dict(results=results, model_sha256=sha256(model_path), metadata_sha256=sha256(Path(model_path).with_suffix(".json")),
         source_report_sha256=sha256(source_path), source_model=name, panel=panel,
+        source_variant=variant, source_selection=source.get("selection"),
+        source_split_max_aspect=source.get("split_max_aspect"),
+        queue_sha256=source.get("queue_sha256"), review_sha256=source.get("review_sha256"),
+        quality_gate_sha256=sha256(gate_config) if gate_config else None, quality_gate_threshold=threshold,
         max_class_probability_delta=max_delta, script_sha256=sha256(__file__),
         scope="Development quality-head ranking; old proposals and class acceptance preserved",
         test_evaluated=False, deployment_approved=False, pi_timing_measured=False)
@@ -158,10 +200,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("model", "source-report", "source-model", "output"):
         parser.add_argument(f"--{name}", required=True)
-    parser.add_argument("--panel", choices=("indoor", "original"), required=True)
+    parser.add_argument("--panel", choices=("indoor", "original", "reviewed"), required=True)
+    parser.add_argument("--queue")
+    parser.add_argument("--review")
+    parser.add_argument("--variant", choices=("mser_confirmed_parts", "mser_blue_cores"), default="mser_confirmed_parts")
+    parser.add_argument("--quality-gate")
     args = parser.parse_args()
     if Path(args.output).exists():
         raise FileExistsError(args.output)
-    result = evaluate(args.model, args.source_report, args.source_model, args.panel)
+    result = evaluate(args.model, args.source_report, args.source_model, args.panel,
+                      args.queue, args.review, args.variant, args.quality_gate)
     write_json(args.output, result)
     print({k: v["metrics"] for k, v in result["results"].items()})
