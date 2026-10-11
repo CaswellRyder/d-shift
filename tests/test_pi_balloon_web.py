@@ -73,3 +73,10 @@ def test_viewer_publishes_frames_and_stops_cleanly(tmp_path):
     assert later["sequence"] > state["sequence"] and later["frame"]
     assert later["row"]["detections"][0]["label"] == "blue_balloon"
     assert later["error"] is None and source.closed
+
+
+def test_host_check_accepts_only_loopback_names():
+    for host in ("localhost:8765", "127.0.0.1:9000"):
+        assert web.LOOPBACK_HOST.fullmatch(host)
+    for host in ("vision.local:8765", "evil.example:8765", "localhost", "localhost.evil:80"):
+        assert not web.LOOPBACK_HOST.fullmatch(host)

@@ -42,6 +42,7 @@ except ModuleNotFoundError:
     from scripts.pi_red_blue_bench import health, verify_bundle
 
 PAGE = Path(__file__).with_name("pi_balloon_web.html")
+LOOPBACK_HOST = re.compile(r"(localhost|127\.0\.0\.1):\d{1,5}")
 SCENE = re.compile(r"[a-z0-9][a-z0-9_-]{0,47}")
 MIN_FREE_BYTES = 300 * 1024 * 1024
 KEEP = ("box", "crop_box", "label", "score", "scores", "accepted", "raw_accepted", "suppressed",
@@ -148,6 +149,7 @@ class Recorder:
         cv2.imwrite(str(state["folder"] / name), cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR),
                     [cv2.IMWRITE_PNG_COMPRESSION, 1])
         state["rows"].write(json.dumps(dict(row, path=name), allow_nan=False) + "\n")
+        state["rows"].flush()  # Keep rows written so far if the Pi loses power mid-scene.
         state["frames"] += 1
         for d in row["detections"]:
             if d["accepted"] and d["label"] in state["accepted"]:
@@ -332,14 +334,15 @@ def make_server(viewer, port):
                 pass
 
         def trusted(self):
-            # Through an SSH tunnel the browser still sends localhost:<port>.
-            hosts = {f"127.0.0.1:{port}", f"localhost:{port}"}
+            # Through an SSH tunnel the browser sends localhost:<Mac port>, which may
+            # differ from the Pi port. Loopback names only, which blocks DNS rebinding.
+            host = self.headers.get("Host", "")
             origin = self.headers.get("Origin")
-            valid = (self.headers.get("Host") in hosts
-                     and (origin is None or origin in {f"http://{h}" for h in hosts})
+            valid = (LOOPBACK_HOST.fullmatch(host) is not None
+                     and (origin is None or origin == f"http://{host}")
                      and self.headers.get("Sec-Fetch-Site") != "cross-site")
             if not valid:
-                self.send(403, {"error": "Open the viewer at http://localhost:%d" % port})
+                self.send(403, {"error": "Open the viewer at http://localhost:<port>"})
             return valid
 
         def do_GET(self):
