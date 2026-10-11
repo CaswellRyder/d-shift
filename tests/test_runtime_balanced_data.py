@@ -47,3 +47,18 @@ def test_reflection_preserves_canonical_values_and_input(monkeypatch):
     np.testing.assert_array_equal(data.crop(dict(view='original')),values)
     with pytest.raises(ValueError,match='Undeclared'):
         data.crop(dict(view='pixels_seed47'))
+
+
+@pytest.mark.parametrize('old_gate,weak_mirror,expected',[(True,False,True),(False,False,False),(True,True,False)])
+def test_new_gate_keeps_old_protection_and_requires_both_views(monkeypatch,old_gate,weak_mirror,expected):
+    from scripts import train_runtime_balanced_trial as train
+    monkeypatch.setattr(train,'prior_calculate',lambda a:dict(training_gate_pass=old_gate))
+    labels = np.repeat([0,1,2],[2,33,29])
+    logits = np.eye(3,dtype=np.float32)[labels]*10
+    mirror = logits.copy()
+    if weak_mirror:
+        mirror[-1] = [0,0,1]  # Still blue argmax, but below .8.
+    result = train.calculate(dict(runtime_labels=labels,crop_original_after=logits,crop_mirror_after=mirror))
+    assert result['training_gate_pass'] is expected
+    assert result['runtime_crop_original_passed'] == 64
+    assert result['runtime_crop_mirror_passed'] == 64-int(weak_mirror)
