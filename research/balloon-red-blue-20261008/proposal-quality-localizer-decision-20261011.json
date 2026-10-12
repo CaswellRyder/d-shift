@@ -1,0 +1,4208 @@
+{
+  "audit_sha256": "66cb181a885c5ecf92452174f8b63a9c41f833c16ccca41b16a7b40fe5cf0142",
+  "raw": {
+    "path": "runs/proposal-quality-localizer-scenes-20261011.json",
+    "sha256": "879597f39ab45b1d99c9fcab06d41d47a13cc94eeef285407c14214b35dd8982"
+  },
+  "inputs_sha256": {
+    "/Users/rydercaswell/Documents/GitHub/engr-e399/mobilenetv4-small/scripts/summarize_proposal_quality_localizer.py": "0101f8fc5f69fa13aa60c63fbbc72a919b18b71438024413e59aaea6ca8392cb",
+    "scripts/proposal_quality_features.py": "07293f833eb21547eab3fa832e61b0094dd64a0aa9b97f4aa042d80dda420dc9",
+    "scripts/audit_balloon_pipeline_errors.py": "5e00e9888e400acbc8867e6e35e2fe1183689b6349901556fa5e613ba4e73deb",
+    "scripts/audit_balanced_localizer.py": "28a73be9ba592f18007b67d3c1578bea2d2706fb551e36c0fe0d35a7719a8e26",
+    "scripts/diagnose_clutter_stage_attribution.py": "165d53126839ee0031431a6a2cf1d1c765b7497d81a1bc2ca3647a9f0200d710"
+  },
+  "panels": {
+    "original": {
+      "parent47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 17,
+            "fn": 4,
+            "precision": 0.8468468468468469,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 5,
+            "fn": 4,
+            "precision": 0.9468085106382979,
+            "recall": 0.956989247311828
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 7,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 1,
+              "fn": 0
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 2,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 8,
+            "localization_overlap": 11,
+            "duplicate": 3
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12
+      },
+      "parent47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 18,
+            "fn": 4,
+            "precision": 0.8392857142857143,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 9,
+            "fn": 4,
+            "precision": 0.9081632653061225,
+            "recall": 0.956989247311828
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 8,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 5,
+              "fn": 0
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 2,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 8,
+            "localization_overlap": 16,
+            "duplicate": 3
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12
+      },
+      "parent48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 14,
+            "fn": 4,
+            "precision": 0.8703703703703703,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 8,
+            "fn": 4,
+            "precision": 0.9175257731958762,
+            "recall": 0.956989247311828
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 4,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 4,
+              "fn": 0
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 2,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 7,
+            "localization_overlap": 10,
+            "duplicate": 5
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12
+      },
+      "parent48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 16,
+            "fn": 4,
+            "precision": 0.8545454545454545,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 89,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.898989898989899,
+            "recall": 0.956989247311828
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 6,
+              "fn": 0
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 2,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 7,
+            "localization_overlap": 13,
+            "duplicate": 6
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12
+      },
+      "quality47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 12,
+            "fn": 4,
+            "precision": 0.8867924528301887,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 2,
+            "fn": 5,
+            "precision": 0.9777777777777777,
+            "recall": 0.946236559139785
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": -2,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 3,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 6,
+            "localization_overlap": 6,
+            "duplicate": 2
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -5,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": -3,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        }
+      },
+      "quality47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 13,
+            "fn": 4,
+            "precision": 0.8785046728971962,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 5,
+            "fn": 5,
+            "precision": 0.946236559139785,
+            "recall": 0.946236559139785
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 3,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 3,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 6,
+            "localization_overlap": 10,
+            "duplicate": 2
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -5,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": -4,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        }
+      },
+      "quality48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 10,
+            "fn": 4,
+            "precision": 0.9038461538461539,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 5,
+            "fn": 5,
+            "precision": 0.946236559139785,
+            "recall": 0.946236559139785
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": 1,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 3,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 7,
+            "duplicate": 4
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -4,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": -3,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        }
+      },
+      "quality48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 94,
+            "fp": 12,
+            "fn": 4,
+            "precision": 0.8867924528301887,
+            "recall": 0.9591836734693877
+          },
+          "blue_balloon": {
+            "tp": 88,
+            "fp": 7,
+            "fn": 5,
+            "precision": 0.9263157894736842,
+            "recall": 0.946236559139785
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 2,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": 3,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0282_jpg.rf.33ed0fa3dcbdd0fb7b16aa8c2d8fb722.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 10694,
+                "box": [
+                  59.375,
+                  117.0,
+                  98.625,
+                  190.875
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0667_jpg.rf.3089a0fcffd25fbff421653d25d9270d.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 6573,
+                "box": [
+                  178.25,
+                  226.21875,
+                  211.25,
+                  239.90625
+                ]
+              }
+            }
+          ],
+          "gained_targets": [
+            {
+              "source": "train/frame_000318_jpg.rf.5e4a38f12d4366ede848b08262d4859c.jpg",
+              "target": {
+                "label": "red_balloon",
+                "annotation_id": 15298,
+                "box": [
+                  118.625,
+                  62.90625,
+                  295.875,
+                  139.59375
+                ]
+              }
+            },
+            {
+              "source": "train/frame_0260_jpg.rf.2d0e0986dc2e8c11d2a3c8b97996e32c.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 14155,
+                "box": [
+                  176.75,
+                  0.09375,
+                  318.25,
+                  239.90625
+                ]
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 189,
+        "errors": {
+          "false_negatives": {
+            "suppressed": 3,
+            "below_acceptance_threshold": 4,
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 10,
+            "duplicate": 5
+          }
+        },
+        "neural_calls": 320,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -4,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": -1,
+              "fp": -3,
+              "fn": 1
+            }
+          },
+          "lost_targets": [
+            {
+              "source": "train/frame_0189_jpg.rf.17285396f8c1682b1000f6500cd5d3ff.jpg",
+              "target": {
+                "label": "blue_balloon",
+                "annotation_id": 8985,
+                "box": [
+                  50.625,
+                  1.875,
+                  215.875,
+                  225.0
+                ]
+              }
+            }
+          ],
+          "gained_targets": []
+        }
+      }
+    },
+    "window1": {
+      "parent47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": -3
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 10,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 1
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12
+      },
+      "parent47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8888888888888888,
+            "recall": 1.0
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": -4
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  250.79999999999998,
+                  113.20008,
+                  298.8,
+                  155.39999999999998
+                ],
+                "annotation_id": 53
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 11,
+        "errors": {
+          "false_negatives": {},
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12
+      },
+      "parent48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": -3
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 10,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 1
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12
+      },
+      "parent48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8888888888888888,
+            "recall": 1.0
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": -4
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  250.79999999999998,
+                  113.20008,
+                  298.8,
+                  155.39999999999998
+                ],
+                "annotation_id": 53
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 11,
+        "errors": {
+          "false_negatives": {},
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12
+      },
+      "quality47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": -3
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 10,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 1
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8888888888888888,
+            "recall": 1.0
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": -4
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  250.79999999999998,
+                  113.20008,
+                  298.8,
+                  155.39999999999998
+                ],
+                "annotation_id": 53
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 11,
+        "errors": {
+          "false_negatives": {},
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 3,
+              "fp": 0,
+              "fn": -3
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 10,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 1
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.8888888888888888,
+            "recall": 1.0
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 1,
+              "fp": -1,
+              "fn": -1
+            },
+            "blue_balloon": {
+              "tp": 4,
+              "fp": 0,
+              "fn": -4
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/1b94e2055c76d99e",
+              "target": {
+                "label": "red_balloon",
+                "box": [
+                  114.0,
+                  129.29976000000002,
+                  150.0,
+                  181.73664
+                ],
+                "annotation_id": 18
+              }
+            },
+            {
+              "source": "openimages/train/1c262374b679dc52",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  196.8,
+                  87.12936,
+                  267.2,
+                  165.92880000000002
+                ],
+                "annotation_id": 23
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  94.2,
+                  133.00008,
+                  126.0,
+                  172.79999999999998
+                ],
+                "annotation_id": 50
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  250.79999999999998,
+                  113.20008,
+                  298.8,
+                  155.39999999999998
+                ],
+                "annotation_id": 53
+              }
+            },
+            {
+              "source": "openimages/train/211928414c7745aa",
+              "target": {
+                "label": "blue_balloon",
+                "box": [
+                  284.6,
+                  91.00008,
+                  319.8,
+                  138.79992
+                ],
+                "annotation_id": 54
+              }
+            }
+          ]
+        },
+        "no_regression": true,
+        "geometry_oracle": 11,
+        "errors": {
+          "false_negatives": {},
+          "false_positives": {
+            "little_or_no_annotated_overlap": 1
+          }
+        },
+        "neural_calls": 57,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": 0,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      }
+    },
+    "window2": {
+      "parent47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 12,
+            "fp": 5,
+            "fn": 1,
+            "precision": 0.7058823529411765,
+            "recall": 0.9230769230769231
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 4,
+            "fn": 2,
+            "precision": 0.7777777777777778,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": 1,
+              "fn": -9
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 3,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 26,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 7,
+            "localization_overlap": 1,
+            "wrong_color": 1
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12
+      },
+      "parent47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 13,
+            "fp": 7,
+            "fn": 0,
+            "precision": 0.65,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.7,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 3,
+              "fn": -10
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 5,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 27,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 7,
+            "localization_overlap": 5,
+            "wrong_color": 1
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12
+      },
+      "parent48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 1,
+            "precision": 0.8,
+            "recall": 0.9230769230769231
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 6,
+            "fn": 2,
+            "precision": 0.7,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": -1,
+              "fn": -9
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 5,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 26,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 8,
+            "wrong_color": 1
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12
+      },
+      "parent48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 13,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.7647058823529411,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 8,
+            "fn": 2,
+            "precision": 0.6363636363636364,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": 0,
+              "fn": -10
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 7,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 27,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 8,
+            "localization_overlap": 3,
+            "wrong_color": 1
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12
+      },
+      "quality47_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 12,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8571428571428571,
+            "recall": 0.9230769230769231
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": -2,
+              "fn": -9
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 1,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 26,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 4
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -3,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": -2,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality47_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 13,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.8666666666666667,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 2,
+            "fn": 2,
+            "precision": 0.875,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": -2,
+              "fn": -10
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 1,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 27,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 4
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -5,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": -4,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality48_frozen": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 12,
+            "fp": 2,
+            "fn": 1,
+            "precision": 0.8571428571428571,
+            "recall": 0.9230769230769231
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.8235294117647058,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 9,
+              "fp": -2,
+              "fn": -9
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 2,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 26,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 3
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 5
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -1,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": -3,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      },
+      "quality48_independent_neighbor": {
+        "metrics": {
+          "red_balloon": {
+            "tp": 13,
+            "fp": 3,
+            "fn": 0,
+            "precision": 0.8125,
+            "recall": 1.0
+          },
+          "blue_balloon": {
+            "tp": 14,
+            "fp": 3,
+            "fn": 2,
+            "precision": 0.8235294117647058,
+            "recall": 0.875
+          }
+        },
+        "effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 10,
+              "fp": -1,
+              "fn": -10
+            },
+            "blue_balloon": {
+              "tp": 5,
+              "fp": 2,
+              "fn": -5
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": [
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 1,
+                "label": "red_balloon",
+                "box": [
+                  164.0,
+                  103.11456000000001,
+                  177.39999999999998,
+                  122.47655999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 3,
+                "label": "blue_balloon",
+                "box": [
+                  241.8,
+                  108.74304,
+                  252.39999999999998,
+                  134.63424
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3a086ef02c30e8f2",
+              "target": {
+                "annotation_id": 51,
+                "label": "red_balloon",
+                "box": [
+                  48.4375,
+                  66.41288433382138,
+                  60.0,
+                  86.09077598828698
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 16,
+                "label": "red_balloon",
+                "box": [
+                  19.5856,
+                  0.0,
+                  164.51968,
+                  29.7
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 18,
+                "label": "red_balloon",
+                "box": [
+                  121.73248,
+                  10.649999999999999,
+                  253.71008,
+                  82.35000000000001
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3b844b483fe44f48",
+              "target": {
+                "annotation_id": 20,
+                "label": "red_balloon",
+                "box": [
+                  228.09792000000002,
+                  0.0,
+                  319.69856,
+                  32.85
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 31,
+                "label": "red_balloon",
+                "box": [
+                  225.79999999999998,
+                  80.9748,
+                  239.4,
+                  105.04224
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 32,
+                "label": "blue_balloon",
+                "box": [
+                  228.4,
+                  101.4432,
+                  237.8,
+                  124.38623999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 36,
+                "label": "red_balloon",
+                "box": [
+                  285.79999999999995,
+                  87.94752,
+                  294.8,
+                  101.4432
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 37,
+                "label": "blue_balloon",
+                "box": [
+                  289.0,
+                  97.61952,
+                  298.4,
+                  112.91472
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 52,
+                "label": "blue_balloon",
+                "box": [
+                  146.5625,
+                  63.95314787701318,
+                  157.5,
+                  77.65739385065886
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 53,
+                "label": "red_balloon",
+                "box": [
+                  135.0,
+                  79.06295754026354,
+                  145.9375,
+                  96.63250366032212
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3df794168e767151",
+              "target": {
+                "annotation_id": 54,
+                "label": "red_balloon",
+                "box": [
+                  144.0625,
+                  76.60322108345535,
+                  157.8125,
+                  98.38945827232797
+                ],
+                "origin": "manual_source_review"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 44,
+                "label": "blue_balloon",
+                "box": [
+                  237.2,
+                  66.86688000000001,
+                  267.2,
+                  109.41839999999999
+                ],
+                "origin": "source_individual"
+              }
+            },
+            {
+              "source": "openimages/train/3e98a30908f0b843",
+              "target": {
+                "annotation_id": 46,
+                "label": "red_balloon",
+                "box": [
+                  262.2,
+                  79.24943999999999,
+                  290.2,
+                  120.45024
+                ],
+                "origin": "source_individual"
+              }
+            }
+          ]
+        },
+        "no_regression": false,
+        "geometry_oracle": 27,
+        "errors": {
+          "false_negatives": {
+            "no_localized_proposal": 2
+          },
+          "false_positives": {
+            "little_or_no_annotated_overlap": 5,
+            "localization_overlap": 1
+          }
+        },
+        "neural_calls": 129,
+        "maximum_calls": 12,
+        "quality_effect": {
+          "count_delta": {
+            "red_balloon": {
+              "tp": 0,
+              "fp": -1,
+              "fn": 0
+            },
+            "blue_balloon": {
+              "tp": 0,
+              "fp": -5,
+              "fn": 0
+            }
+          },
+          "lost_targets": [],
+          "gained_targets": []
+        }
+      }
+    }
+  },
+  "residual_false_positives_by_origin": {
+    "original": {
+      "quality47_frozen": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 2
+          },
+          "learned": {
+            "localization_overlap": 3,
+            "little_or_no_annotated_overlap": 2,
+            "duplicate": 1
+          }
+        },
+        "blue_balloon": {
+          "mser": {
+            "localization_overlap": 1
+          },
+          "learned": {
+            "duplicate": 1
+          }
+        }
+      },
+      "quality47_independent_neighbor": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 2
+          },
+          "learned": {
+            "localization_overlap": 4,
+            "little_or_no_annotated_overlap": 2,
+            "duplicate": 1
+          }
+        },
+        "blue_balloon": {
+          "mser": {
+            "localization_overlap": 1
+          },
+          "learned": {
+            "localization_overlap": 3,
+            "duplicate": 1
+          }
+        }
+      },
+      "quality48_frozen": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 2
+          },
+          "learned": {
+            "localization_overlap": 2,
+            "duplicate": 2
+          }
+        },
+        "blue_balloon": {
+          "mser": {
+            "localization_overlap": 1
+          },
+          "learned": {
+            "localization_overlap": 2,
+            "duplicate": 2
+          }
+        }
+      },
+      "quality48_independent_neighbor": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 4,
+            "localization_overlap": 2
+          },
+          "learned": {
+            "localization_overlap": 4,
+            "duplicate": 2
+          }
+        },
+        "blue_balloon": {
+          "mser": {
+            "localization_overlap": 1
+          },
+          "learned": {
+            "localization_overlap": 3,
+            "duplicate": 3
+          }
+        }
+      }
+    },
+    "window1": {
+      "quality47_frozen": {
+        "red_balloon": {
+          "mser": {},
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 1
+          },
+          "learned": {}
+        }
+      },
+      "quality47_independent_neighbor": {
+        "red_balloon": {
+          "mser": {},
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 1
+          },
+          "learned": {}
+        }
+      },
+      "quality48_frozen": {
+        "red_balloon": {
+          "mser": {},
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 1
+          },
+          "learned": {}
+        }
+      },
+      "quality48_independent_neighbor": {
+        "red_balloon": {
+          "mser": {},
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 1
+          },
+          "learned": {}
+        }
+      }
+    },
+    "window2": {
+      "quality47_frozen": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {}
+        }
+      },
+      "quality47_independent_neighbor": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {}
+        }
+      },
+      "quality48_frozen": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {}
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 3
+          },
+          "learned": {}
+        }
+      },
+      "quality48_independent_neighbor": {
+        "red_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 2
+          },
+          "learned": {
+            "localization_overlap": 1
+          }
+        },
+        "blue_balloon": {
+          "mser": {
+            "little_or_no_annotated_overlap": 3
+          },
+          "learned": {}
+        }
+      }
+    }
+  },
+  "matched_head_gates": {
+    "frozen": false,
+    "independent_neighbor": false
+  },
+  "decision": "Reject promotion if either seed loses a parent target or increases FP; no threshold adjustment.",
+  "original_holdout_evaluated": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
