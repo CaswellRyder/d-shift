@@ -17,6 +17,13 @@ DEFAULT_PROFILE = "v2"
 DEFAULT_DUPLICATE_POLICY = "nested"
 RED_BLUE_PROFILE = "balloon_red_blue"
 RED_BLUE_CLASSES = frozenset(("background", "red_balloon", "blue_balloon"))
+# Capture targets are green/purple balloons; red/blue are the drones (user, 2026-10-12).
+GREEN_PURPLE_PROFILE = "balloon_green_purple"
+GREEN_PURPLE_CLASSES = frozenset(("background", "green_balloon", "purple_balloon"))
+# Measured on DTR v10 train boxes vs non-IMG_ EngDes2 red/blue boxes: purple balloons
+# sit at OpenCV hue 114-123, blue at 101-110. Starting purple at 112 keeps every
+# purple box and ~2% of blue boxes; the legacy 95-175 band admits all blue.
+GREEN_PURPLE_HSV = (((30, 35, 30), (85, 255, 255)), ((112, 40, 25), (165, 255, 255)))
 PROPOSAL_PROFILES = (
     "v2",
     "orange_v3",
@@ -27,6 +34,7 @@ PROPOSAL_PROFILES = (
     "balloon_external",
     "balloon_components",
     RED_BLUE_PROFILE,
+    GREEN_PURPLE_PROFILE,
     "goal_gap9",
     "orange_regions",
     "orange_regions_compact",
@@ -46,6 +54,10 @@ def validate_model_profile(metadata, profile):
             raise ValueError("balloon_red_blue requires a red/blue balloon model, not legacy weights")
     elif red_blue_model:
         raise ValueError("Red/blue balloon models require the balloon_red_blue proposal profile")
+    if profile == GREEN_PURPLE_PROFILE and (
+            metadata.get("task") != "balloon" or len(classes) != 3
+            or set(classes) != GREEN_PURPLE_CLASSES):
+        raise ValueError("balloon_green_purple requires a green/purple balloon model")
 
 
 def color_masks(rgb, task, profile=DEFAULT_PROFILE):
@@ -53,8 +65,8 @@ def color_masks(rgb, task, profile=DEFAULT_PROFILE):
         raise ValueError("Unknown proposal profile")
     if task not in HSV_RANGES:
         raise ValueError("Task must be balloon or goal")
-    if profile == RED_BLUE_PROFILE and task != "balloon":
-        raise ValueError("balloon_red_blue is only valid for the balloon task")
+    if profile in (RED_BLUE_PROFILE, GREEN_PURPLE_PROFILE) and task != "balloon":
+        raise ValueError(f"{profile} is only valid for the balloon task")
     if profile == RED_BLUE_PROFILE and os.environ.get("DTR_RED_BLUE_COLOR_LOOKUP"):
         from .color_lookup import red_blue_lookup_masks
         return red_blue_lookup_masks(rgb, os.environ["DTR_RED_BLUE_COLOR_LOOKUP"])
@@ -62,6 +74,10 @@ def color_masks(rgb, task, profile=DEFAULT_PROFILE):
         from .color_lookup import goal_lookup_masks
         return goal_lookup_masks(rgb)
     hsv = cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
+    if profile == GREEN_PURPLE_PROFILE:
+        # Narrow enough to keep red/blue drones out of the search; the crop model
+        # still rejects green/purple clutter.
+        return [cv2.inRange(hsv, lo, hi) for lo, hi in GREEN_PURPLE_HSV]
     if profile == RED_BLUE_PROFILE:
         # Broad proposal bands, not color decisions. The crop model must reject
         # orange goals, purple clutter, and non-balloon red/blue objects.
@@ -232,7 +248,7 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
             )
             if task == "balloon" and profile in (
                 "balloon_components", "goal_gap9", "orange_regions", "orange_regions_compact",
-                RED_BLUE_PROFILE,
+                RED_BLUE_PROFILE, GREEN_PURPLE_PROFILE,
             ):
                 retrieval = cv2.RETR_CCOMP
             contours, hierarchy = cv2.findContours(mask, retrieval, cv2.CHAIN_APPROX_SIMPLE)

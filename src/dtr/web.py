@@ -23,7 +23,8 @@ from PIL import Image, UnidentifiedImageError
 from .runtime import Predictor
 from .tracking import BoxTracker
 from .vision import (
-    DEFAULT_DUPLICATE_POLICY, DEFAULT_LIMIT, RED_BLUE_PROFILE,
+    DEFAULT_DUPLICATE_POLICY, DEFAULT_LIMIT, GREEN_PURPLE_CLASSES, GREEN_PURPLE_PROFILE,
+    RED_BLUE_PROFILE,
     color_mask, observe, validate_model_profile,
 )
 
@@ -58,8 +59,12 @@ class VisionService:
             if predictor.metadata["task"] != task:
                 raise ValueError(f"Wrong task in {task} model metadata")
             classes = predictor.metadata.get("classes", ())
-            profile = (RED_BLUE_PROFILE if {"red_balloon", "blue_balloon"}.intersection(classes)
-                       else self.profile)
+            profile = self.profile
+            if {"red_balloon", "blue_balloon"}.intersection(classes):
+                profile = RED_BLUE_PROFILE
+            elif task == "balloon" and len(classes) == 3 and set(classes) == GREEN_PURPLE_CLASSES:
+                # Keep red/blue drones out of the purple search band.
+                profile = GREEN_PURPLE_PROFILE
             validate_model_profile(predictor.metadata, profile)
             self.profiles[task] = profile
         self.sessions = {}

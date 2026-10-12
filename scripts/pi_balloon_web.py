@@ -29,6 +29,7 @@ from dtr.data import read_json, sha256, write_json
 from dtr.native_balloon_regions import NativeBalloonRegions
 from dtr.research_search_schedule import SearchSchedule
 from dtr.runtime import Predictor
+from dtr.vision import GREEN_PURPLE_CLASSES, GREEN_PURPLE_PROFILE, observe
 
 try:
     from pi_balloon_live_bench import capture_rgb, frame_timing, validate_camera_config
@@ -52,6 +53,9 @@ POLICIES = ("full", "periodic", "recovery")
 # offered when the bundle holds a pixel golden made on the host with these settings.
 PIXEL_GOLDEN = "pixel-golden.json"
 PIXEL = dict(colors=[[178, 28, 48], [26, 86, 179]], threshold=75, min_area=53, stride=2)
+# Green/purple bundles (capture targets; red/blue are the drones) use the OpenCV
+# balloon_green_purple search instead of the red/blue MSER search and native library.
+GREEN_PURPLE_GOLDEN = "green-purple-golden.json"
 KEEP = ("box", "crop_box", "label", "score", "scores", "accepted", "raw_accepted", "suppressed",
         "suppression_reason", "proposal_score", "area", "color_group")
 
@@ -118,17 +122,19 @@ class ReplaySource:
 class Recorder:
     """Writes one scene: raw PNG frames, one JSON row per frame and scene.json."""
 
-    def __init__(self, root):
+    def __init__(self, root, labels=("red_balloon", "blue_balloon")):
         self.root, self.active, self.last = Path(root).expanduser(), None, None
+        self.labels = tuple(labels)
 
-    def start(self, scene, seconds, red, blue, notes, context):
+    def start(self, scene, seconds, first, second, notes, context):
+        """``first``/``second`` are typed counts of the two target classes in view."""
         if self.active:
             raise ValueError("Already recording")
         if not SCENE.fullmatch(scene):
             raise ValueError("Scene name: lowercase letters, digits, - or _, up to 48 characters")
         if not 0 <= seconds <= 120:
             raise ValueError("Seconds must be 0..120 (0 saves one frame)")
-        if not (0 <= red <= 20 and 0 <= blue <= 20):
+        if not (0 <= first <= 20 and 0 <= second <= 20):
             raise ValueError("Balloon counts must be 0..20")
         if len(notes) > 300:
             raise ValueError("Notes are limited to 300 characters")
@@ -139,13 +145,14 @@ class Recorder:
         take = 1 + sum(1 for p in day.glob(f"{scene}-*") if p.is_dir())
         folder = day / f"{scene}-{take:02d}"
         folder.mkdir()
-        meta = dict(scene=scene, take=take, seconds=seconds, red_in_view=red, blue_in_view=blue,
-                    notes=notes, started=datetime.now().isoformat(timespec="seconds"),
+        in_view = {f"{label.removesuffix('_balloon')}_in_view": count
+                   for label, count in zip(self.labels, (first, second), strict=True)}
+        meta = dict(scene=scene, take=take, seconds=seconds, **in_view, notes=notes, started=datetime.now().isoformat(timespec="seconds"),
                     labels="Counts typed in the viewer before recording; not reviewed",
                     training_use=False, **context)
         (folder / "scene.json").write_text(json.dumps(meta, indent=2))
         self.active = dict(folder=folder, meta=meta, rows=(folder / "frames.jsonl").open("x"),
-                           frames=0, accepted={"red_balloon": 0, "blue_balloon": 0},
+                           frames=0, accepted=dict.fromkeys(self.labels, 0),
                            deadline=time.monotonic() + seconds, single=seconds == 0)
 
     def write(self, rgb, row):
@@ -288,21 +295,67 @@ def recovery_frame(rgb, full, fast, scheduler, clock_ns):
                 scheduled_processing_ms=(end - start) / 1e6)
 
 
-def prepare(base, region_library, model_alias=None, write_pixel_golden=None):
+def green_purple_frame(rgb, predictor, limit):
+    """OpenCV green/purple proposals + crop student, in the viewer's row format."""
+    result = observe(rgb, predictor, limit=limit, profile=GREEN_PURPLE_PROFILE)
+    return dict(detections=result["observations"], processing_ms=result["processing_ms"],
+                search_ms=result["stage_ms"]["search"],
+                inference_ms=result["stage_ms"]["crop_and_classify"],
+                neural_calls=len(result["observations"]), mode=GREEN_PURPLE_PROFILE)
+
+
+def green_purple_golden(root, alias, model, predictor, limit, frames):
+    """Host-made detections the Pi must reproduce before opening the camera."""
+    return dict(model=alias, model_sha256=sha256(model), profile=GREEN_PURPLE_PROFILE, limit=limit,
+                frames=[f["path"] for f in frames],
+                predictions=[green_purple_frame(np.asarray(Image.open(root / f["path"]).convert("RGB")),
+                                                predictor, limit)["detections"] for f in frames])
+
+
+def prepare_green_purple(root, alias, predictor, inputs):
+    model = root / inputs["models"][alias]["path"]
+    golden = read_json(root / GREEN_PURPLE_GOLDEN)
+    limit = golden["limit"]
+    found = green_purple_golden(root, alias, model, predictor, limit, inputs["frames"])
+    if any(golden.get(k) != found[k] for k in ("model", "model_sha256", "profile", "limit", "frames")):
+        raise ValueError(f"{GREEN_PURPLE_GOLDEN} was made for another model, frame set or search")
+    deltas = [check_predictions(actual, truth)
+              for actual, truth in zip(found["predictions"], golden["predictions"], strict=True)]
+
+    def infer(rgb, policy):
+        return green_purple_frame(rgb, predictor, limit)
+
+    info = dict(model=alias, model_sha256=sha256(model), bundle_sha256=sha256(root / "bundle.json"),
+                region_library_sha256=None, viewer_sha256=sha256(__file__), page_sha256=sha256(PAGE),
+                threshold=predictor.metadata["threshold"], classes=predictor.metadata["classes"],
+                max_golden_score_delta=max(deltas, default=0.0), golden_frames=len(inputs["frames"]),
+                policies=POLICIES[:1], pixel_search=None, search=GREEN_PURPLE_PROFILE,
+                proposal_limit=limit)
+    return infer, info, [root / f["path"] for f in inputs["frames"]]
+
+
+def prepare(base, region_library=None, model_alias=None, write_pixel_golden=None):
     """Bundle hashes and golden replay must pass before any camera opens."""
     root = Path(base).resolve()
     verify_bundle(root)
+    cv2.setNumThreads(1)
+    inputs = read_json(root / "inputs.json")
+    alias = model_alias or inputs.get("default_model", "new-views-42")
+    predictor = Predictor(root / inputs["models"][alias]["path"], allow_unvalidated=True)
+    classes = predictor.metadata["classes"]
+    if len(classes) == 3 and set(classes) == GREEN_PURPLE_CLASSES:
+        if write_pixel_golden:
+            raise ValueError("The pixel search is red/blue only")
+        return prepare_green_purple(root, alias, predictor, inputs)
+    if region_library is None:
+        raise ValueError("Red/blue bundles need --region-library")
     native = NativeBalloonRegions(region_library, direct=True)
     receipt = read_json(native.path.with_suffix(".json"))
     if receipt["source_sha256"] != sha256(root / "dtr/native_balloon_regions.c"):
         raise ValueError("Native region library was built from different source")
     for key in ("DTR_RED_BLUE_COLOR_LOOKUP", "DTR_RED_BLUE_LOOKUP_LIBRARY"):
         os.environ.pop(key, None)
-    cv2.setNumThreads(1)
-    inputs = read_json(root / "inputs.json")
-    alias = model_alias or inputs.get("default_model", "new-views-42")
     model = root / inputs["models"][alias]["path"]
-    predictor = Predictor(model, allow_unvalidated=True)
     golden = read_json(root / "search-golden.json")[alias]
     deltas = []
     for mode in ("mser_direct", "mser_bright"):
@@ -427,7 +480,7 @@ def make_server(viewer, port):
                     if path == "/api/record":
                         viewer.recorder.start(
                             str(body.get("scene", "")).strip().lower(), float(body.get("seconds", 10)),
-                            int(body.get("red", 0)), int(body.get("blue", 0)), str(body.get("notes", "")),
+                            int(body.get("first", 0)), int(body.get("second", 0)), str(body.get("notes", "")),
                             dict(policy=viewer.policy, **viewer.info))
                     elif path == "/api/stop":
                         viewer.recorder.stop()
@@ -449,7 +502,7 @@ def make_server(viewer, port):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True, help="Pi bundle directory")
-    parser.add_argument("--region-library", required=True)
+    parser.add_argument("--region-library", help="native region library; red/blue bundles only")
     parser.add_argument("--model", help="bundle model alias; default is the bundle's default_model")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--fps", type=float, default=10, help="requested camera rate")
@@ -474,7 +527,7 @@ def main():
     else:
         source = ReplaySource(args.replay or golden_frames, min(args.fps, 5))
         info["source"] = "replay"
-    viewer = Viewer(source, infer, Recorder(args.sessions), info)
+    viewer = Viewer(source, infer, Recorder(args.sessions, info["classes"][1:3]), info)
     server = make_server(viewer, args.port)
     camera = threading.Thread(target=viewer.loop, daemon=True)
     camera.start()

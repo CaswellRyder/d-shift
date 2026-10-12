@@ -9,7 +9,9 @@ import cv2
 import numpy as np
 
 from .tracking import iou
-from .vision import RED_BLUE_PROFILE, proposals, suppress_duplicates, validate_model_profile
+from .vision import (
+    GREEN_PURPLE_PROFILE, RED_BLUE_PROFILE, proposals, suppress_duplicates, validate_model_profile,
+)
 
 
 class TemporalVision:
@@ -19,7 +21,8 @@ class TemporalVision:
         if difference_backend not in ("numpy", "native"):
             raise ValueError("Unsupported difference backend")
         self.difference_backend = difference_backend
-        if proposal_profile not in ("balloon_components", "goal_lut", RED_BLUE_PROFILE):
+        if proposal_profile not in ("balloon_components", "goal_lut", RED_BLUE_PROFILE,
+                                    GREEN_PURPLE_PROFILE):
             raise ValueError("Unsupported temporal proposal profile")
         validate_model_profile(getattr(predictor, "metadata", None), proposal_profile)
         self.proposal_profile = proposal_profile

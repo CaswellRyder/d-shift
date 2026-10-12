@@ -74,8 +74,8 @@
     <section>
       <h2>Now</h2>
       <dl>
-        <dt>Red accepted</dt><dd id="nRed">–</dd>
-        <dt>Blue accepted</dt><dd id="nBlue">–</dd>
+        <dt id="nFirstName">First accepted</dt><dd id="nFirst">–</dd>
+        <dt id="nSecondName">Second accepted</dt><dd id="nSecond">–</dd>
         <dt>Candidates</dt><dd id="nCand">–</dd>
         <dt>Search mode</dt><dd id="mode">–</dd>
         <dt>Frame age</dt><dd id="age">–</dd>
@@ -107,9 +107,9 @@
     <section>
       <h2>Record a scene</h2>
       <form id="recForm">
-        <label for="scene">Scene</label><input id="scene" placeholder="red-2m-lit" maxlength="48" required>
-        <label for="red">Red in view</label><input id="red" type="number" min="0" max="20" value="1">
-        <label for="blue">Blue in view</label><input id="blue" type="number" min="0" max="20" value="0">
+        <label for="scene">Scene</label><input id="scene" placeholder="arena-2m" maxlength="48" required>
+        <label for="first" id="firstName">First in view</label><input id="first" type="number" min="0" max="20" value="1">
+        <label for="second" id="secondName">Second in view</label><input id="second" type="number" min="0" max="20" value="0">
         <label for="seconds">Seconds</label><input id="seconds" type="number" min="0" max="120" value="10">
         <label for="notes">Notes</label><input id="notes" maxlength="300" placeholder="distance, lighting, clutter">
         <div class="wide controls" style="margin:4px 0 0">
@@ -127,7 +127,12 @@
 const $ = (id) => document.getElementById(id);
 const canvas = $("view"), ctx = canvas.getContext("2d");
 const SCALE = 3;
-const COLORS = { red_balloon: "#ff3b30", blue_balloon: "#1e90ff", background: "#9aa4ae" };
+const COLORS = { red_balloon: "#ff3b30", blue_balloon: "#1e90ff", green_balloon: "#34c759",
+                 purple_balloon: "#af52de", background: "#9aa4ae" };
+// The two target classes come from the model: classes[1] and classes[2].
+let TARGETS = ["red_balloon", "blue_balloon"];
+const short = (label) => label.replace("_balloon", "");
+const title = (label) => short(label).charAt(0).toUpperCase() + short(label).slice(1);
 let token = null, config = null, sequence = 0, paused = false, last = null, image = null;
 
 const fmt = (v, digits = 1, unit = "") => v == null || Number.isNaN(v) ? "–" : `${Number(v).toFixed(digits)}${unit}`;
@@ -212,8 +217,8 @@ function update(state) {
   if (paused) return;
   last = state;
   const row = state.row;
-  setText("nRed", row.detections.filter((d) => d.accepted && d.label === "red_balloon").length);
-  setText("nBlue", row.detections.filter((d) => d.accepted && d.label === "blue_balloon").length);
+  setText("nFirst", row.detections.filter((d) => d.accepted && d.label === TARGETS[0]).length);
+  setText("nSecond", row.detections.filter((d) => d.accepted && d.label === TARGETS[1]).length);
   setText("nCand", row.detections.length);
   setText("mode", row.mode.replace("mser_", ""));
   setText("age", fmt(state.age_ms, 0, " ms"));
@@ -233,7 +238,7 @@ function recording(r) {
   $("record").disabled = $("snapshot").disabled = r.active;
   $("stop").disabled = !r.active;
   if (r.active) setText("recStatus", `Recording ${r.folder}: ${r.frames} frames, ${r.remaining_s.toFixed(0)} s left`);
-  else if (r.last) setText("recStatus", `Saved ${r.last.frames} frames to ${r.last.folder} (accepted red ${r.last.accepted.red_balloon}, blue ${r.last.accepted.blue_balloon})`);
+  else if (r.last) setText("recStatus", `Saved ${r.last.frames} frames to ${r.last.folder} (accepted ${TARGETS.map((t) => `${short(t)} ${r.last.accepted[t]}`).join(", ")})`);
 }
 
 async function post(path, body = {}) {
@@ -247,7 +252,7 @@ async function post(path, body = {}) {
 }
 
 function sceneBody(seconds) {
-  return { scene: $("scene").value, red: Number($("red").value), blue: Number($("blue").value),
+  return { scene: $("scene").value, first: Number($("first").value), second: Number($("second").value),
            seconds, notes: $("notes").value };
 }
 
@@ -269,6 +274,11 @@ async function start() {
   config = await response.json();
   if (!response.ok) { setText("meta", config.error || "Not allowed"); return; }
   token = config.token;
+  TARGETS = config.classes.slice(1, 3);
+  setText("nFirstName", `${title(TARGETS[0])} accepted`);
+  setText("nSecondName", `${title(TARGETS[1])} accepted`);
+  setText("firstName", `${title(TARGETS[0])} in view`);
+  setText("secondName", `${title(TARGETS[1])} in view`);
   setText("meta", `${config.model} · ${config.source} · threshold ${config.threshold}`);
   setText("model", config.model);
   setText("modelThreshold", config.threshold);

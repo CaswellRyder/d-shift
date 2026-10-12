@@ -2,6 +2,7 @@ import json
 import threading
 import time
 
+import cv2
 import numpy as np
 import pytest
 
@@ -141,3 +142,33 @@ def test_policy_endpoint_offers_recovery_only_with_pixel_golden(tmp_path):
             server.shutdown()
             server.server_close()
             thread.join()
+
+
+def test_recorder_counts_green_purple_targets(tmp_path):
+    recorder = web.Recorder(tmp_path, ("green_balloon", "purple_balloon"))
+    recorder.start("arena-2m", 0, 2, 1, "", context={})
+    folder = recorder.active["folder"]
+    recorder.write(np.zeros((240, 320, 3), np.uint8),
+                   row(("green_balloon", True), ("purple_balloon", True), ("background", False)))
+    meta = json.loads((folder / "scene.json").read_text())
+    assert meta["green_in_view"] == 2 and meta["purple_in_view"] == 1
+    assert meta["accepted_detections"] == {"green_balloon": 1, "purple_balloon": 1}
+
+
+def test_green_purple_frame_skips_red_blue_and_uses_viewer_row_format():
+    class Predictor:
+        metadata = dict(task="balloon", classes=["background", "green_balloon", "purple_balloon"],
+                        threshold=.8)
+
+        def predict(self, rgb):
+            label = "green_balloon" if rgb[:, :, 1].mean() > rgb[:, :, 2].mean() else "purple_balloon"
+            return dict(label=label, score=.95, scores=[.025, .95, .025], accepted=True)
+
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    for x, hue in ((30, 40), (80, 120), (130, 105), (180, 176)):  # green, purple, blue, red
+        rgb[30:50, x:x + 20] = cv2.cvtColor(np.full((20, 20, 3), (hue, 200, 160), np.uint8),
+                                            cv2.COLOR_HSV2RGB)
+    observed = web.green_purple_frame(rgb, Predictor(), limit=8)
+    assert observed["mode"] == "balloon_green_purple" and observed["neural_calls"] == 2
+    assert sorted(d["label"] for d in observed["detections"]) == ["green_balloon", "purple_balloon"]
+    assert all(k in observed for k in ("processing_ms", "search_ms", "inference_ms"))

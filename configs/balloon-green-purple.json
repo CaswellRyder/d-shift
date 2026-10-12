@@ -1,0 +1,14 @@
+{
+  "task": "balloon",
+  "classes": ["background", "green_balloon", "purple_balloon"],
+  "aliases": {"Green Balloon": "green_balloon", "Purple Balloon": "purple_balloon", "greenball": "green_balloon", "purpleball": "purple_balloon"},
+  "teacher_size": 96, "student_size": 64, "batch_size": 32,
+  "head_epochs": 2, "finetune_epochs": 4, "head_lr": 0.0001, "finetune_lr": 5e-06, "patience": 3,
+  "student_epochs": 25, "temperature": 4.0, "alpha": 0.5, "seed": 42,
+  "threshold": 0.8, "calibration_samples": 500,
+  "proposal_profile": "balloon_green_purple",
+  "taxonomy_source": "User correction, 2026-10-12: capture targets are green/purple balloons; red/blue are the drones. Supersedes the 2026-10-07 red/blue clarification.",
+  "hard_negatives": "EngDes2 red/blue balloon crops labeled background (scripts/build_green_purple_manifest.py)",
+  "status": "training configuration; generated artifacts require separate validation and are not deployment-approved",
+  "deployment_approved": false
+}
