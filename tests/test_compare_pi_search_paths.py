@@ -72,3 +72,42 @@ def test_review_rejects_tampered_raw_rows(replay_fixture):
     write_json(replay_fixture[2] / "0-mser.json", dict(rows=[]))
     with pytest.raises(ValueError, match="Changed raw rows"):
         review(*replay_fixture, [])
+
+
+def test_recovery_runs_pixels_between_full_searches():
+    from scripts.compare_pi_search_paths import recovery_search
+    clock = iter(range(0, 10_000_000_000, 10_000_000))
+    run = recovery_search(lambda rgb, method: dict(detections=[], method=method), lambda: next(clock))
+    rows = [run(None) for _ in range(7)]
+    assert [r["search_method"] for r in rows] == ["mser", "pixel2", "pixel2", "mser",
+                                                  "pixel2", "pixel2", "mser"]
+    assert rows[0]["search_reason"] == "startup_or_failure"
+    assert rows[3]["search_reason"] == "frame_cap"
+
+
+def test_recovery_failure_forces_next_full_search():
+    from scripts.compare_pi_search_paths import recovery_search
+    calls = []
+
+    def infer(rgb, method):
+        calls.append(method)
+        if len(calls) == 2:
+            raise RuntimeError("camera glitch")
+        return dict(detections=[])
+
+    clock = iter(range(0, 10**10, 10**8))
+    run = recovery_search(infer, lambda: next(clock))
+    run(None)
+    with pytest.raises(RuntimeError):
+        run(None)
+    assert run(None)["search_method"] == "mser"
+
+
+def test_summary_reports_full_search_share_and_gap():
+    rows = [dict(processing_ms=10, neural_calls=0, search_method=m, timestamp_valid=True,
+                 sensor_timestamp_increasing=True, sensor_timestamp_ns=i * 100_000_000,
+                 sensor_to_result_ms=50)
+            for i, m in enumerate(("mser", "pixel2", "pixel2", "mser"))]
+    result = summarize(rows, elapsed=1)
+    assert result["full_search_fraction"] == .5
+    assert result["max_full_search_gap_ms"] == 300

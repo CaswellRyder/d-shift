@@ -17,6 +17,9 @@ import time
 import numpy as np
 
 METHODS = ("mser", "pixel1", "pixel2")
+# Live only: stride-2 pixel search between full searches, dispatched by the
+# bundle's frozen SearchSchedule (500 ms or two fast frames).
+LIVE_METHODS = METHODS + ("recovery",)
 
 
 def summarize(rows, elapsed=None):
@@ -36,6 +39,12 @@ def summarize(rows, elapsed=None):
         raise ValueError("Non-positive processing duration")
     result["processing_fps"] = 1000 / mean
     result["neural_calls"] = float(np.mean([r["neural_calls"] for r in rows]))
+    methods = [r["search_method"] for r in rows if "search_method" in r]
+    if methods:
+        result["full_search_fraction"] = methods.count("mser") / len(methods)
+        done = [r["sensor_timestamp_ns"] / 1e6 + r["sensor_to_result_ms"] for r in rows
+                if r.get("search_method") == "mser" and r.get("timestamp_valid")]
+        result["max_full_search_gap_ms"] = float(max(np.diff(done))) if len(done) > 1 else None
     if elapsed is not None:
         if not np.isfinite(elapsed) or elapsed <= 0:
             raise ValueError("Invalid wall duration")
@@ -44,6 +53,26 @@ def summarize(rows, elapsed=None):
         result["all_sensor_timestamps_increasing"] = all(
             r["sensor_timestamp_increasing"] for r in rows)
     return result
+
+
+def recovery_search(infer, clock_ns=time.monotonic_ns):
+    """Run pixel2 between full searches; reason and method are logged per row."""
+    from dtr.research_search_schedule import SearchSchedule
+
+    schedule = SearchSchedule()
+
+    def run(rgb):
+        decision = schedule.begin(clock_ns())
+        method = "pixel2" if decision["mode"] == "mser_bright" else "mser"
+        try:
+            observed = infer(rgb, method)
+        except Exception:
+            schedule.finish(clock_ns(), success=False)
+            raise
+        schedule.finish(clock_ns())
+        return dict(observed, search_method=method, search_reason=decision["reason"])
+
+    return run
 
 
 def validate_identity(actual, expected):
@@ -58,12 +87,14 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--mode", choices=("golden", "replay", "live"), required=True)
     parser.add_argument("--golden")
-    parser.add_argument("--method", choices=METHODS, default="mser")
+    parser.add_argument("--method", choices=LIVE_METHODS, default="mser")
     parser.add_argument("--count", type=int, default=40)
     parser.add_argument("--seconds", type=float, default=30)
     args = parser.parse_args()
     if args.mode != "golden" and not args.golden:
         parser.error("--golden required for hardware experiments")
+    if args.method == "recovery" and args.mode != "live":
+        parser.error("recovery is a live-camera method")
     if not 2 <= args.count <= 120 or not 3 <= args.seconds <= 60:
         parser.error("Bound camera work to 2..120 frames and 3..60 seconds")
     root, out = Path(args.base).resolve(), Path(args.output).resolve()
@@ -97,7 +128,7 @@ def main():
     sources = {name: sha256(importlib.import_module(name).__file__) for name in (
         "research_pixel_proposals", "research_balloon_search", "research_balloon_search_fast",
         "pi_balloon_search_bench", "pi_balloon_live_bench", "dtr.runtime",
-        "dtr.native_balloon_regions", "dtr.vision")}
+        "dtr.native_balloon_regions", "dtr.vision", "dtr.research_search_schedule")}
     identity = dict(model=alias, model_sha256=sha256(model), inputs_sha256=sha256(root / "inputs.json"),
                     bundle_sha256=sha256(root / "bundle.json"), sources=sources,
                     script_sha256=sha256(__file__), threshold=75, min_area=53,
@@ -129,15 +160,17 @@ def main():
     sequence = ("mser", "pixel1", "pixel2", "pixel2", "pixel1", "mser") if args.mode == "replay" else (args.method,)
     results = []
     for trial, method in enumerate(sequence):
-        reference = expected["predictions"][method]
+        components = ("mser", "pixel2") if method == "recovery" else (method,)
         max_delta = 0.0
         before = health()
-        for rgb, prediction in zip(images, reference, strict=True):
-            max_delta = max(max_delta, check_predictions(infer(rgb, method)["detections"], prediction))
+        for component in components:
+            for rgb, prediction in zip(images, expected["predictions"][component], strict=True):
+                max_delta = max(max_delta, check_predictions(
+                    infer(rgb, component)["detections"], prediction))
         elapsed = None
         if args.mode == "replay":
             rows = [dict(index=i, **infer(rgb, method)) for i, rgb in enumerate(images)]
-            for row, prediction in zip(rows, reference, strict=True):
+            for row, prediction in zip(rows, expected["predictions"][method], strict=True):
                 max_delta = max(max_delta, check_predictions(row["detections"], prediction))
         else:
             from picamera2 import Picamera2
@@ -152,8 +185,9 @@ def main():
                 validate_camera_config(camera.camera_configuration())
                 camera.start()
                 time.sleep(1)
-                rows, samples, elapsed = run_camera(
-                    camera, lambda rgb: infer(rgb, method), args.count, args.seconds)
+                run = (recovery_search(infer) if method == "recovery"
+                       else lambda rgb: infer(rgb, method))
+                rows, samples, elapsed = run_camera(camera, run, args.count, args.seconds)
             finally:
                 camera.close()
             for index, rgb, _ in samples:
