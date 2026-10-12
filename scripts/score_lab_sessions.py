@@ -4,7 +4,8 @@ Labels are the balloon counts typed before each scene, so scoring is per-frame
 count agreement, not box accuracy: a frame is exact when its accepted red and
 blue counts equal the counts in view. With --base, every saved frame is also
 replayed on this machine, first with the Pi's own selection (a parity check
-against the recorded detections) and then with the research selection rules.
+against the recorded detections), then with the research selection rules and
+with stride-2 pixel search (the fast path used between full searches).
 Lab frames are evaluation data only; nothing here trains or tunes a model.
 """
 
@@ -19,10 +20,16 @@ from dtr.data import read_json, sha256, write_json
 
 try:
     from pi_balloon_search_bench import SELECTIONS, check_predictions, process_frame
+    from research_pixel_proposals import CvPixelMasks, process_frame as pixel_frame
 except ModuleNotFoundError:
     from scripts.pi_balloon_search_bench import SELECTIONS, check_predictions, process_frame
+    from scripts.research_pixel_proposals import CvPixelMasks, process_frame as pixel_frame
 
 LABELS = ("red_balloon", "blue_balloon")
+# Same fixed pixel settings as scripts/compare_pi_search_paths.py.
+PIXEL = "pixel2"
+PIXEL_COLORS, PIXEL_THRESHOLD, PIXEL_MIN_AREA = ((178, 28, 48), (26, 86, 179)), 75, 53
+SEARCHES = SELECTIONS + (PIXEL,)
 
 
 def load_scene(folder):
@@ -86,6 +93,7 @@ class Replay:
         self.inputs = read_json(self.root / "inputs.json")
         self.native = NativeBalloonRegions(region_library, direct=True)
         self.predictor_type, self.predictors = Predictor, {}
+        self.masks = CvPixelMasks(PIXEL_COLORS, PIXEL_THRESHOLD)
 
     def predictor(self, alias, digest):
         if alias not in self.predictors:
@@ -102,7 +110,10 @@ class Replay:
         for row in rows:
             rgb = np.asarray(Image.open(Path(folder) / row["path"]).convert("RGB"))
             for selection in selections:
-                detections = process_frame(rgb, predictor, row["mode"], self.native, selection)["detections"]
+                if selection == PIXEL:
+                    detections = pixel_frame(rgb, predictor, self.masks, PIXEL_MIN_AREA, stride=2)["detections"]
+                else:
+                    detections = process_frame(rgb, predictor, row["mode"], self.native, selection)["detections"]
                 replayed[selection].append(detections)
                 if selection == "parts":
                     parity["frames"] += 1
@@ -114,7 +125,7 @@ class Replay:
         return replayed, parity
 
 
-def score(folders, replay=None, selections=SELECTIONS):
+def score(folders, replay=None, selections=SEARCHES):
     scenes = []
     for folder in folders:
         meta, rows = load_scene(folder)
@@ -173,7 +184,7 @@ def main():
     parser.add_argument("--output", help="write the full results as JSON")
     parser.add_argument("--base", help="Pi bundle directory; enables desktop replay")
     parser.add_argument("--region-library", help="native region library for this machine")
-    parser.add_argument("--selections", nargs="+", choices=SELECTIONS, default=list(SELECTIONS))
+    parser.add_argument("--selections", nargs="+", choices=SEARCHES, default=list(SEARCHES))
     args = parser.parse_args()
     if bool(args.base) != bool(args.region_library):
         parser.error("--base and --region-library go together")
