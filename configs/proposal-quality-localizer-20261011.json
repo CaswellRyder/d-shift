@@ -1,0 +1,23 @@
+{
+  "parent_audit": "research/balloon-red-blue-20261008/center-presence-localizer-20261011.json",
+  "parent_audit_sha256": "6f74716d8060306921acc960f199d1515ce51fd9e0f97eb056f51f7df73dbbdd",
+  "seeds": [47, 48],
+  "epochs": 200,
+  "batch_size": 32,
+  "learning_rate": 0.003,
+  "cosine_alpha": 0.1,
+  "hidden_units": 8,
+  "input_features": 31,
+  "trainable_parameters": 265,
+  "quality_threshold": 0.5,
+  "positive_weight": 4.0,
+  "complete_review": "configs/balloon-dense-complete-review-20261011.json",
+  "design": "Freeze both audited presence localizers and classifiers. Train only an8-unitMLP sigmoid quality regressor on mean-pooled24localizer features plus normalized box center/size, unchanged heat confidence, and2color indicators. Labels are maximum same-color IoU against complete reviewed annotations. Use only complete reviewed original FIT frames,8complete empty TRAIN frames and18complete public TRAIN frames, preserving the approved public replay multiplicity. Exclude every incomplete frame and all original grouped holdout/IMG/final-test sources. Fit MSE weighted4forIoU>=0.5,1otherwise, fixed200epochs; no threshold sweep. Parent, proposals and predictions are frozen; this is a head-only vs unchanged-parent intervention, not a retraining of the backbone. Two seed-specific parents/heads are reported separately.",
+  "evaluation": "Reproduce frozen parent base_first outputs for both decoders on82TRAIN scenes before applying a fixed quality>=0.5 gate only to accepted learned detections after merging. Keep MSER decisions unchanged. Report lost/gained target identities and FP per panel/color, not only pooled accuracy. Advance the head only if both seeds lose no parent targets and add no FP on any panel and reduce at least one FP each. This stage cannot recover missing boxes and is not the94percent qualification. No deployment, export or hardware speed claim from parameter count.",
+  "training_approved": true,
+  "original_holdout_evaluated": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
