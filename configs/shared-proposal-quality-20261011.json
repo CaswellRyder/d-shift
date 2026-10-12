@@ -1,0 +1,23 @@
+{
+  "previous_audit": "research/balloon-red-blue-20261008/proposal-quality-localizer-20261011.json",
+  "previous_audit_sha256": "66cb181a885c5ecf92452174f8b63a9c41f833c16ccca41b16a7b40fe5cf0142",
+  "diagnosis": "research/balloon-red-blue-20261008/proposal-quality-localizer-decision-20261011.json",
+  "diagnosis_sha256": "0002c5257fffae2d903551623934ee843e2b6f3a3b17bcabddc9795865a5474d",
+  "arms": ["iou", "valid"],
+  "seeds": [47, 48],
+  "epochs": 200,
+  "batch_size": 32,
+  "learning_rate": 0.003,
+  "cosine_alpha": 0.1,
+  "positive_weight": 4.0,
+  "threshold": 0.5,
+  "parameters": 281,
+  "design": "Frozen localizer/classifiers, identical examples, initialization and schedule per seed. Reuse all prior complete-FIT learned proposals, append raw-accepted MSER crop detections only where a hash-verified TRAIN scene overlaps those complete FIT sources. Verify frame truth and downscaled pixels; preserve existing public replay multiplicity. Extend31features with2proposal-source indicators. MSER feature confidence is its predicted-class probability, not its nonprobabilistic region score; color feature is predicted label. MSE arm estimates maximum same-color boxIoU; BCE arm estimates IoU>=0.5. Both use weight4for valid boxes and1otherwise. No other labels, data or threshold changes.8hidden units,281parameters. Mean/std fitted on these training examples only.",
+  "evaluation": "Reproduce frozen parent decisions from the previous hash-bound audit. Apply the fixed0.5 quality gate after merge to accepted detections from both sources. Never reactivate rejected candidates or change scores, labels, geometry or matching. Compare both objectives and seeds on the same82TRAIN scenes, both decoders. Require no matched-parent target loss or per-colorFPincrease on any panel and strictFP reduction in each seed for advancement; independently report94percent metrics without equating TRAIN results with heldout qualification. No export, deployment or hardware speed claim.",
+  "training_approved": true,
+  "original_holdout_evaluated": false,
+  "development_evaluated": false,
+  "test_evaluated": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
