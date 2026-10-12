@@ -25,7 +25,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from dtr.data import read_json, sha256
+from dtr.data import read_json, sha256, write_json
 from dtr.native_balloon_regions import NativeBalloonRegions
 from dtr.research_search_schedule import SearchSchedule
 from dtr.runtime import Predictor
@@ -35,16 +35,23 @@ try:
     from pi_balloon_schedule_bench import scheduled_frame
     from pi_balloon_search_bench import check_predictions, process_frame
     from pi_red_blue_bench import health, verify_bundle
+    from research_pixel_proposals import CvPixelMasks, process_frame as pixel_frame
 except ModuleNotFoundError:
     from scripts.pi_balloon_live_bench import capture_rgb, frame_timing, validate_camera_config
     from scripts.pi_balloon_schedule_bench import scheduled_frame
     from scripts.pi_balloon_search_bench import check_predictions, process_frame
     from scripts.pi_red_blue_bench import health, verify_bundle
+    from scripts.research_pixel_proposals import CvPixelMasks, process_frame as pixel_frame
 
 PAGE = Path(__file__).with_name("pi_balloon_web.html")
 LOOPBACK_HOST = re.compile(r"(localhost|127\.0\.0\.1):\d{1,5}")
 SCENE = re.compile(r"[a-z0-9][a-z0-9_-]{0,47}")
 MIN_FREE_BYTES = 300 * 1024 * 1024
+POLICIES = ("full", "periodic", "recovery")
+# Same fixed pixel settings as scripts/compare_pi_search_paths.py. Recovery is only
+# offered when the bundle holds a pixel golden made on the host with these settings.
+PIXEL_GOLDEN = "pixel-golden.json"
+PIXEL = dict(colors=[[178, 28, 48], [26, 86, 179]], threshold=75, min_area=53, stride=2)
 KEEP = ("box", "crop_box", "label", "score", "scores", "accepted", "raw_accepted", "suppressed",
         "suppression_reason", "proposal_score", "area", "color_group")
 
@@ -265,7 +272,23 @@ class Viewer:
         return result
 
 
-def prepare(base, region_library, model_alias=None):
+def recovery_frame(rgb, full, fast, scheduler, clock_ns):
+    """Full search when the schedule asks for one, stride-2 pixel search in between."""
+    start = clock_ns()
+    decision = scheduler.begin(start)
+    try:
+        observed = full(rgb) if decision["mode"] == "mser_direct" else fast(rgb)
+    except BaseException:
+        scheduler.finish(clock_ns(), success=False)
+        raise
+    end = clock_ns()
+    scheduler.finish(end)
+    mode = "mser_direct" if decision["mode"] == "mser_direct" else "pixel2"
+    return dict(observed, **dict(decision, mode=mode), start_ns=start, end_ns=end,
+                scheduled_processing_ms=(end - start) / 1e6)
+
+
+def prepare(base, region_library, model_alias=None, write_pixel_golden=None):
     """Bundle hashes and golden replay must pass before any camera opens."""
     root = Path(base).resolve()
     verify_bundle(root)
@@ -290,16 +313,42 @@ def prepare(base, region_library, model_alias=None):
             rgb = np.asarray(Image.open(root / frame["path"]).convert("RGB"))
             deltas.append(check_predictions(process_frame(rgb, predictor, mode, native)["detections"],
                                             truth["detections"]))
+    masks = CvPixelMasks(PIXEL["colors"], PIXEL["threshold"])
+
+    def pixel(rgb):
+        return pixel_frame(rgb, predictor, masks, PIXEL["min_area"], stride=PIXEL["stride"])
+
+    def full(rgb):
+        return process_frame(rgb, predictor, "mser_direct", native)
+
+    pixel_golden = root / PIXEL_GOLDEN
+    if write_pixel_golden or pixel_golden.exists():
+        found = dict(model=alias, model_sha256=sha256(model), settings=PIXEL,
+                     frames=[f["path"] for f in inputs["frames"]],
+                     predictions=[pixel(np.asarray(Image.open(root / f["path"]).convert("RGB")))["detections"]
+                                  for f in inputs["frames"]])
+        if write_pixel_golden:
+            write_json(write_pixel_golden, found)
+            pixel_golden = Path(write_pixel_golden)
+        expected = read_json(pixel_golden)
+        if any(expected.get(k) != found[k] for k in ("model", "model_sha256", "settings", "frames")):
+            raise ValueError(f"{PIXEL_GOLDEN} was made for another model, frame set or pixel settings")
+        for actual, truth in zip(found["predictions"], expected["predictions"], strict=True):
+            deltas.append(check_predictions(actual, truth))
+    recovery = write_pixel_golden or pixel_golden.exists()
     scheduler = SearchSchedule()
 
     def infer(rgb, policy):
+        if policy == "recovery":
+            return recovery_frame(rgb, full, pixel, scheduler, boottime_ns)
         return scheduled_frame(rgb, predictor, native, scheduler, policy, boottime_ns)
 
     info = dict(model=alias, model_sha256=sha256(model), bundle_sha256=sha256(root / "bundle.json"),
                 region_library_sha256=sha256(native.path), viewer_sha256=sha256(__file__),
                 page_sha256=sha256(PAGE), threshold=predictor.metadata["threshold"],
                 classes=predictor.metadata["classes"], max_golden_score_delta=max(deltas),
-                golden_frames=len(inputs["frames"]))
+                golden_frames=len(inputs["frames"]), policies=POLICIES if recovery else POLICIES[:2],
+                pixel_search=dict(PIXEL, golden_sha256=sha256(pixel_golden)) if recovery else None)
     return infer, info, [root / f["path"] for f in inputs["frames"]]
 
 
@@ -383,8 +432,8 @@ def make_server(viewer, port):
                     elif path == "/api/stop":
                         viewer.recorder.stop()
                     elif path == "/api/policy":
-                        if body.get("policy") not in ("full", "periodic"):
-                            raise ValueError("Policy must be full or periodic")
+                        if body.get("policy") not in viewer.info["policies"]:
+                            raise ValueError("Policy must be one of " + ", ".join(viewer.info["policies"]))
                         viewer.policy = body["policy"]
                     else:
                         self.send(404, {"error": "Not found"})
@@ -407,12 +456,18 @@ def main():
     parser.add_argument("--sessions", default="~/lab-sessions", help="where recorded scenes go")
     parser.add_argument("--replay", nargs="*", help="loop these images instead of the camera "
                         "(no paths: the bundle's golden frames)")
+    parser.add_argument("--write-pixel-golden", metavar="PATH",
+                        help=f"on the host: write the pixel search golden and exit; copy it to the "
+                             f"Pi bundle as {PIXEL_GOLDEN} to offer the recovery policy")
     args = parser.parse_args()
     if not 1 <= args.fps <= 15:
         parser.error("fps must be 1..15")
-    infer, info, golden_frames = prepare(args.base, args.region_library, args.model)
-    print(f"Bundle and goldens OK: {info['model']} (max score delta {info['max_golden_score_delta']:.2e})",
-          flush=True)
+    infer, info, golden_frames = prepare(args.base, args.region_library, args.model, args.write_pixel_golden)
+    if args.write_pixel_golden:
+        print(f"Wrote {args.write_pixel_golden} for {info['model']}", flush=True)
+        return
+    print(f"Bundle and goldens OK: {info['model']} (max score delta {info['max_golden_score_delta']:.2e}); "
+          f"search policies: {', '.join(info['policies'])}", flush=True)
     if args.replay is None:
         source = CameraSource(args.fps)
         info["source"] = "camera"

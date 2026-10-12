@@ -80,3 +80,64 @@ def test_host_check_accepts_only_loopback_names():
         assert web.LOOPBACK_HOST.fullmatch(host)
     for host in ("vision.local:8765", "evil.example:8765", "localhost", "localhost.evil:80"):
         assert not web.LOOPBACK_HOST.fullmatch(host)
+
+
+def test_recovery_runs_pixel_search_between_full_searches():
+    from dtr.research_search_schedule import SearchSchedule
+    clock = iter(range(0, 10**10, 10**7))
+    scheduler, calls = SearchSchedule(), []
+
+    def search(name, fail=False):
+        def run(rgb):
+            calls.append(name)
+            if fail and len(calls) == 2:
+                raise RuntimeError("camera glitch")
+            return dict(detections=[])
+        return run
+
+    rows = [web.recovery_frame(None, search("full"), search("pixel"), scheduler, lambda: next(clock))
+            for _ in range(7)]
+    assert [r["mode"] for r in rows] == ["mser_direct", "pixel2", "pixel2", "mser_direct",
+                                         "pixel2", "pixel2", "mser_direct"]
+    assert calls == ["full", "pixel", "pixel", "full", "pixel", "pixel", "full"]
+    assert rows[3]["reason"] == "frame_cap"
+
+    scheduler, calls = SearchSchedule(), []
+    fast = search("pixel", fail=True)
+    web.recovery_frame(None, search("full"), fast, scheduler, lambda: next(clock))
+    with pytest.raises(RuntimeError):
+        web.recovery_frame(None, search("full"), fast, scheduler, lambda: next(clock))
+    assert web.recovery_frame(None, search("full"), fast, scheduler, lambda: next(clock))["mode"] == "mser_direct"
+
+
+def test_policy_endpoint_offers_recovery_only_with_pixel_golden(tmp_path):
+    import http.client
+
+    def post(port, token, policy):
+        conn = http.client.HTTPConnection("127.0.0.1", port, timeout=5)
+        conn.request("POST", "/api/policy", json.dumps(dict(policy=policy)),
+                     {"X-Token": token, "Content-Type": "application/json"})
+        response = conn.getresponse()
+        response.read()
+        conn.close()
+        return response.status
+
+    for policies in (web.POLICIES[:2], web.POLICIES):
+        viewer = web.Viewer(None, None, web.Recorder(tmp_path), dict(policies=policies))
+        server = web.make_server(viewer, 0)
+        thread = threading.Thread(target=server.serve_forever)
+        thread.start()
+        try:
+            port = server.server_address[1]
+            conn = http.client.HTTPConnection("127.0.0.1", port, timeout=5)
+            conn.request("GET", "/api/config")
+            token = json.loads(conn.getresponse().read())["token"]
+            conn.close()
+            assert post(port, token, "periodic") == 200 and viewer.policy == "periodic"
+            assert post(port, token, "recovery") == (200 if "recovery" in policies else 400)
+            assert viewer.policy == ("recovery" if "recovery" in policies else "periodic")
+            assert post(port, token, "fast") == 400
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join()

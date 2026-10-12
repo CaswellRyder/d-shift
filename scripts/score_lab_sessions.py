@@ -3,9 +3,10 @@
 Labels are the balloon counts typed before each scene, so scoring is per-frame
 count agreement, not box accuracy: a frame is exact when its accepted red and
 blue counts equal the counts in view. With --base, every saved frame is also
-replayed on this machine, first with the Pi's own selection (a parity check
-against the recorded detections), then with the research selection rules and
-with stride-2 pixel search (the fast path used between full searches).
+replayed on this machine, first with the Pi's own search and selection (a parity
+check against the recorded detections), then with the research selection rules
+and with stride-2 pixel search (the fast path the recovery policy uses between
+full searches; those frames get full search in the selection rows).
 Lab frames are evaluation data only; nothing here trains or tunes a model.
 """
 
@@ -109,19 +110,23 @@ class Replay:
         parity = dict(frames=0, mismatched_frames=0, max_score_delta=0.0)
         for row in rows:
             rgb = np.asarray(Image.open(Path(folder) / row["path"]).convert("RGB"))
+            # Recovery frames that ran pixel search are replayed with full search for the
+            # selection rows, and checked for parity against the pixel replay.
+            on_pixel = row["mode"] == PIXEL
+            mode = "mser_direct" if on_pixel else row["mode"]
+            pixel = None
+            if on_pixel or PIXEL in selections:
+                pixel = pixel_frame(rgb, predictor, self.masks, PIXEL_MIN_AREA, stride=2)["detections"]
             for selection in selections:
-                if selection == PIXEL:
-                    detections = pixel_frame(rgb, predictor, self.masks, PIXEL_MIN_AREA, stride=2)["detections"]
-                else:
-                    detections = process_frame(rgb, predictor, row["mode"], self.native, selection)["detections"]
-                replayed[selection].append(detections)
-                if selection == "parts":
-                    parity["frames"] += 1
-                    try:
-                        delta = check_predictions(detections, row["detections"])
-                        parity["max_score_delta"] = max(parity["max_score_delta"], delta)
-                    except ValueError:
-                        parity["mismatched_frames"] += 1
+                replayed[selection].append(
+                    pixel if selection == PIXEL
+                    else process_frame(rgb, predictor, mode, self.native, selection)["detections"])
+            parity["frames"] += 1
+            try:
+                delta = check_predictions(pixel if on_pixel else replayed["parts"][-1], row["detections"])
+                parity["max_score_delta"] = max(parity["max_score_delta"], delta)
+            except ValueError:
+                parity["mismatched_frames"] += 1
         return replayed, parity
 
 

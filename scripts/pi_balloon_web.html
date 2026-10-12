@@ -273,6 +273,7 @@ async function start() {
   setText("model", config.model);
   setText("modelThreshold", config.threshold);
   setText("golden", `${config.golden_frames} frames, Δ ${config.max_golden_score_delta.toExponential(1)}`);
+  if (config.policies.includes("recovery")) $("policy").add(new Option("recovery (pixel between full)", "recovery"));
   $("threshold").value = config.threshold;
   setText("thresholdValue", Number(config.threshold).toFixed(2));
   poll();

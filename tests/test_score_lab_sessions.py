@@ -47,3 +47,32 @@ def test_score_refuses_scenes_not_marked_evaluation_only(tmp_path):
     write_scene(tmp_path / "x-01", [], training_use=None)
     with pytest.raises(ValueError):
         lab.score([tmp_path / "x-01"])
+
+
+def test_replay_checks_recovery_pixel_frames_against_pixel_search(tmp_path, monkeypatch):
+    from PIL import Image
+
+    def found(label):
+        return [dict(box=[0, 0, 4, 4], crop_box=[0, 0, 4, 4], label=label, accepted=True,
+                     raw_accepted=True, suppressed=False, scores=[0.0, 1.0, 0.0])]
+
+    rows = [dict(path=f"{i:04d}.png", mode=mode, detections=found("red_balloon"))
+            for i, mode in enumerate(["mser_direct", "pixel2", "pixel2"])]
+    rows[2]["detections"] = found("blue_balloon")
+    for row in rows:
+        Image.new("RGB", (8, 8)).save(tmp_path / row["path"])
+    modes = []
+
+    def full(rgb, predictor, mode, native, selection):
+        modes.append(mode)
+        return dict(detections=found("red_balloon"))
+
+    monkeypatch.setattr(lab, "process_frame", full)
+    monkeypatch.setattr(lab, "pixel_frame", lambda *a, **k: dict(detections=found("red_balloon")))
+    replay = object.__new__(lab.Replay)
+    replay.masks = replay.native = None
+    replay.predictor = lambda alias, digest: None
+    replayed, parity = replay.scene(tmp_path, dict(model="m", model_sha256="x"), rows, ("parts", "pixel2"))
+    assert modes == ["mser_direct"] * 3
+    assert parity["frames"] == 3 and parity["mismatched_frames"] == 1
+    assert len(replayed["pixel2"]) == 3
