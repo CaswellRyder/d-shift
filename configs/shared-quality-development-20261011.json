@@ -1,0 +1,22 @@
+{
+  "training_audit": "research/balloon-red-blue-20261008/shared-proposal-quality-20261011.json",
+  "training_audit_sha256": "9953aedf064deb05eb495c0c2d1b25d3be79c7b534e1cced18b6819fe413dd22",
+  "selection": "research/balloon-red-blue-20261008/shared-proposal-quality-decision-20261011.json",
+  "selection_sha256": "f3b13f31efbfa972f4c25348ccb0061c0d9a9705344718ed865b0862e410e348",
+  "baseline": "research/balloon-red-blue-20261008/current-confidence-containment-20261011.json",
+  "baseline_sha256": "e826e9b0d785d19d13df9359db2a909d34354d5887db1c8eba7e456509bc774b",
+  "candidates": ["iou47_frozen", "iou48_frozen"],
+  "panels": {
+    "engdes2-lockbox-panel3-20261010": 67,
+    "engdes2-development-panel2-20261010": 62,
+    "engdes2-development-scenes-20261008": 12
+  },
+  "design": "Before evaluating, hash-bind both selected sharedIoU heads, their seed-specific frozen presence localizers and source-resolved-negative classifiers. Reproduce both candidates on all82TRAIN scenes with fresh native MSER search, not saved proposals. Then evaluate141reviewed IMG development scenes with fresh search and image inference: unchanged incumbent plus both ungated parents and both fixed quality-gated candidates. Preserve review orientations, threshold0.8crop/0.5direct/0.5quality, base_first merge, frozen blue-blended peaks, IoU0.5one-to-one matching. No training, adaptation, threshold sweep or variant selection from development results.",
+  "scope": "All three panels have already been used for related development diagnostics. The filename lockbox does not make panel3 a fresh independent test anymore. Report each panel and pooled results, exact target identities, quality-only effects and incumbent comparison. No final reserved test is opened. No independent recording-session verification, Pi timing or flight readiness follows from this evaluation.",
+  "training_performed": false,
+  "development_evaluated": true,
+  "test_evaluated": false,
+  "pi_tested": false,
+  "deployment_approved": false,
+  "qualification_achieved": false
+}
