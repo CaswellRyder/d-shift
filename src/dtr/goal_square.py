@@ -3,6 +3,7 @@
 Team strategy aims only at the square hoop (largest opening). The shape filter
 replaces the 12-crop goal search, so the model sees well under one crop per frame
 on DTR frames. Our goal color changes every round, so callers pass it per launch.
+Color must be independently confident and agree with the candidate's HSV mask.
 Settings were chosen on DTR v10 train (2026-10-13); val was checked once.
 """
 
@@ -22,6 +23,7 @@ MIN_FILL = 0.65  # Hull area / min-area rectangle; triangles sit near 0.5.
 HOLLOW = 0.02  # A visible opening; hollow quads are classified first.
 DEFAULT_MAX_CROPS = 4
 DEFAULT_THRESHOLD = 0.8
+DEFAULT_COLOR_THRESHOLD = 0.8
 
 
 def order_corners(points):
@@ -90,7 +92,7 @@ def validate_goal_model(metadata):
 
 
 def find_squares(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD,
-                 max_crops=DEFAULT_MAX_CROPS):
+                 max_crops=DEFAULT_MAX_CROPS, color_threshold=DEFAULT_COLOR_THRESHOLD):
     """Confirmed squares of the requested colors, largest first. Observational only."""
     validate_goal_model(predictor.metadata)
     classes = predictor.metadata["classes"]
@@ -107,15 +109,18 @@ def find_squares(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD
     for candidate, result in zip(candidates, results):
         scores = {color: result["scores"][classes.index(label)]
                   for color, label in SQUARE_LABELS.items()}
-        # Shape evidence is the summed square mass; the model picks the color.
+        # Shape is summed square mass; color must be confident given that shape.
+        shape_score = sum(scores.values())
         color = max(scores, key=scores.get)
-        if sum(scores.values()) < threshold or color not in colors:
+        color_score = scores[color] / shape_score if shape_score > 0 else 0.0
+        if (shape_score < threshold or color_score < color_threshold
+                or color not in colors or color != candidate["color"]):
             continue
         x1, y1, x2, y2 = candidate["box"]
         cx, cy = np.mean(candidate["corners"], axis=0)
         detections.append(dict(
             candidate, label=SQUARE_LABELS[color], color=color,
-            score=float(sum(scores.values())),
+            score=float(shape_score), color_score=float(color_score),
             center_normalized=[float(2 * cx / width - 1), float(2 * cy / height - 1)],
             size_px=float(max(x2 - x1, y2 - y1)),
         ))

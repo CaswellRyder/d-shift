@@ -41,6 +41,14 @@ def center(box):
     return (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
 
 
+def side(box):
+    return max(box[2] - box[0], box[3] - box[1])
+
+
+def dims(box):
+    return box[2] - box[0], box[3] - box[1]
+
+
 @dataclass
 class Track:
     id: int
@@ -52,6 +60,7 @@ class Track:
     velocity: tuple = (0.0, 0.0)  # Pixels per second.
     misses: int = 0
     history: deque = field(default_factory=lambda: deque(maxlen=40))
+    confirmed_wh: tuple = (0.0, 0.0)  # Width and height the full search measured, in pixels.
 
     def box_at(self, when):
         """Where the track was at `when`; the oldest kept box if `when` predates it."""
@@ -65,7 +74,8 @@ class Track:
 
 class ColorTracker:
     def __init__(self, width=320, height=240, min_pixels=4, max_misses=4, confirm_timeout=1.5,
-                 window_scale=2.5, min_window=24, max_tracks=6, alpha=0.5, max_growth=1.6):
+                 window_scale=2.5, min_window=24, max_tracks=6, alpha=0.5, max_growth=1.6,
+                 min_match_iou=0.3, max_size_ratio=1.5):
         self.width, self.height = width, height
         self.min_pixels, self.max_misses = min_pixels, max_misses
         self.confirm_timeout = confirm_timeout
@@ -74,6 +84,7 @@ class ColorTracker:
         # Per-hit size change limit: real approach grows a target slowly at 20 fps, so a
         # sudden jump means the window latched onto other same-colored clutter.
         self.max_growth = max_growth
+        self.min_match_iou, self.max_size_ratio = min_match_iou, max_size_ratio
         self.tracks, self.next_id, self.last_update = [], 1, None
 
     def clear(self):
@@ -89,7 +100,7 @@ class ColorTracker:
         x2, y2 = int(min(self.width, cx + half)), int(min(self.height, cy + half))
         return (x1, y1, x2, y2), (cx, cy)
 
-    def _hit(self, hsv, label, window, predicted, size):
+    def _hit(self, hsv, label, window, predicted, size, growth):
         """Box of the label-colored blob nearest the predicted center, or None."""
         x1, y1, x2, y2 = window
         if x2 - x1 < 2 or y2 - y1 < 2:
@@ -104,7 +115,7 @@ class ColorTracker:
             if stats[index, cv2.CC_STAT_AREA] < self.min_pixels:
                 continue
             side = max(stats[index, cv2.CC_STAT_WIDTH], stats[index, cv2.CC_STAT_HEIGHT])
-            if not size / self.max_growth <= side <= size * self.max_growth + 2:
+            if not size / growth <= side <= size * growth + 2:
                 continue
             distance = np.hypot(centroids[index][0] + x1 - predicted[0],
                                 centroids[index][1] + y1 - predicted[1])
@@ -126,7 +137,10 @@ class ColorTracker:
         for track in self.tracks:
             window, predicted = self._window(track, dt)
             size = max(track.box[2] - track.box[0], track.box[3] - track.box[1])
-            box = self._hit(hsv, track.label, window, predicted, size)
+            # Allow more scale change after misses (e.g. a snap to a late, smaller box);
+            # Mission still refuses to act on growth the full search has not confirmed.
+            growth = self.max_growth * (1 + 0.25 * track.misses)
+            box = self._hit(hsv, track.label, window, predicted, size, growth)
             if box is None:
                 track.misses += 1
                 dx, dy = track.velocity[0] * dt, track.velocity[1] * dt
@@ -149,24 +163,42 @@ class ColorTracker:
         unmatched = []
         claimed = set()
         for det in sorted(detections, key=lambda d: -d.get("score", 0.0)):
-            best, best_iou = None, 0.0
+            det_size = side(det["box"])
+            dx, dy = center(det["box"])
+            best, best_iou, best_distance = None, -1.0, float("inf")
             for track in self.tracks:
                 if track.label != det["label"] or track.id in claimed:
                     continue
                 then = track.box_at(frame_time)
                 overlap = iou(then, det["box"])
-                if overlap <= 0:
-                    # Small or fast targets may not overlap; accept a near center.
-                    (tx, ty), (dx, dy) = center(then), center(det["box"])
-                    size = max(det["box"][2] - det["box"][0], det["box"][3] - det["box"][1], 4)
-                    overlap = 0.01 if np.hypot(tx - dx, ty - dy) <= size else 0.0
-                if overlap > best_iou:
-                    best, best_iou = track, overlap
+                tx, ty = center(then)
+                distance = np.hypot(tx - dx, ty - dy)
+                if overlap < 0.1 and distance > det_size:
+                    continue
+                if (overlap, -distance) > (best_iou, -best_distance):
+                    best, best_iou, best_distance = track, overlap, distance
             if best is None:
                 unmatched.append(det)
                 continue
             claimed.add(best.id)
-            best.confirmed = max(best.confirmed, frame_time)
+            if frame_time < best.confirmed:
+                continue  # A newer search result already confirmed or corrected this track.
+            # Compare width and height separately: a box can swell along one axis only.
+            ratio = max(max(a, b) / max(min(a, b), 1)
+                        for a, b in zip(dims(best.box_at(frame_time)), dims(det["box"])))
+            consistent = (ratio <= self.max_size_ratio
+                          and (best_iou >= self.min_match_iou
+                               or (det_size < 12 and best_distance <= 0.5 * det_size)))
+            if consistent:
+                # Keep the fresher color box only when historical geometry agrees.
+                best.confirmed = frame_time
+            else:
+                # The classifier wins; motion from the drifting color track is unsafe.
+                best.box = [float(v) for v in det["box"]]
+                best.velocity, best.misses = (0.0, 0.0), 1
+                best.confirmed = frame_time
+                best.history.append((now, list(best.box)))
+            best.confirmed_wh = dims(det["box"])
             best.score = float(det.get("score", best.score))
         for det in unmatched:
             if len(self.tracks) >= self.max_tracks:
@@ -174,7 +206,7 @@ class ColorTracker:
             box = [float(v) for v in det["box"]]
             # Start where the object was; widened windows re-find it in the next frames.
             track = Track(self.next_id, det["label"], box, confirmed=frame_time, seen=frame_time,
-                          score=float(det.get("score", 0.0)), misses=1)
+                          score=float(det.get("score", 0.0)), misses=1, confirmed_wh=dims(box))
             track.history.append((frame_time, list(box)))
             self.tracks.append(track)
             self.next_id += 1
@@ -183,7 +215,8 @@ class ColorTracker:
 
     def _drop_duplicates(self):
         kept = []
-        for track in sorted(self.tracks, key=lambda t: (t.misses, -t.confirmed)):
+        # Newest confirmation wins so a classifier correction is never discarded.
+        for track in sorted(self.tracks, key=lambda t: (-t.confirmed, t.misses)):
             if all(t.label != track.label or iou(t.box, track.box) < 0.5 for t in kept):
                 kept.append(track)
         self.tracks = sorted(kept, key=lambda t: t.id)
@@ -196,6 +229,7 @@ class MissionConfig:
     fan_size: float = 0.30  # Balloon width / frame width to trigger FAN_ON (provisional).
     enter_size: float = 0.45  # Goal width / frame width to allow ENTER (provisional).
     centered: float = 0.25  # |x| and |y| limit for FAN_ON / ENTER.
+    max_growth: float = 1.5  # Current side / full-search side limit for FAN_ON / ENTER.
     capture_timeout_s: float = 4.0  # No `captured` event in time: back to balloon.
 
 
@@ -244,9 +278,11 @@ class Mission:
                     age_ms=int(max(0.0, now - track.confirmed) * 1000),
                     seen_ms=int(max(0.0, now - track.seen) * 1000))
 
-    def _ready(self, target, size_limit):
+    def _ready(self, target, track, size_limit):
         c = self.config
-        return (target["age_ms"] <= c.fresh_s * 1000 and target["size"] >= size_limit
+        # A color box swollen past what the full search measured may be clutter.
+        grown = all(now <= c.max_growth * then for now, then in zip(dims(track.box), track.confirmed_wh))
+        return (grown and target["age_ms"] <= c.fresh_s * 1000 and target["size"] >= size_limit
                 and abs(target["x"]) <= c.centered and abs(target["y"]) <= c.centered)
 
     def _best(self, tracks, labels, now):
@@ -263,18 +299,19 @@ class Mission:
             track = self._best(tracks, BALLOON_LABELS, now)
             target = self.describe(track, now) if track else None
             if self.phase == "capture":
-                cmd = "FAN_ON"
+                # `fan` stays on as state; the command still needs a ready target.
                 if now - self.capture_started > c.capture_timeout_s:
                     self.capture_failed()
-                    cmd = None
-            elif target and self._ready(target, c.fan_size):
+                elif target and self._ready(target, track, c.fan_size):
+                    cmd = "FAN_ON"
+            elif target and self._ready(target, track, c.fan_size):
                 self.fan, self.capture_started, cmd = True, now, "FAN_ON"
                 self._enter("capture")
         else:
             ours = self._best(tracks, (SQUARE_LABELS[self.goal_color],), now)
             if ours:
                 target = self.describe(ours, now)
-                cmd = "ENTER" if self._ready(target, c.enter_size) else "TRACK"
+                cmd = "ENTER" if self._ready(target, ours, c.enter_size) else "TRACK"
             else:
                 other = [t for t in tracks if t.label in SQUARE_LABELS.values()
                          and t.label != SQUARE_LABELS[self.goal_color] and t.misses == 0]
