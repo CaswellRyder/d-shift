@@ -1,7 +1,8 @@
 # Script guide
 
-Run from the repository root. Many research commands require ignored local data
-or artifacts; a script's presence does not mean its historical inputs ship in Git.
+Run scripts from the repository root. Many research commands need local data or
+artifacts that Git ignores, so a script being here does not mean its historical
+inputs are in the repo.
 
 | Task | Entry points |
 | --- | --- |
@@ -15,6 +16,7 @@ or artifacts; a script's presence does not mean its historical inputs ship in Gi
 | Two-method comparison | `competition_compare.py`, `competition_camera.py` (external pixel source required) |
 | Runtime build | `tflite_rebuild/build.sh` |
 
-Use `--help` and the relevant [documentation](../docs/README.md). Camera and Pi
-commands require explicit hardware setup; none should be run merely to install
-or inspect the repository. Never overwrite original research outputs.
+Check `--help` and the relevant [documentation](../docs/README.md) before running
+anything. Camera and Pi commands need explicit hardware setup, and you never need
+to run them just to install or look around the repository. Never overwrite
+original research outputs.

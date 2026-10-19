@@ -2,26 +2,27 @@
 
 ## v1.0.0 — research/integration snapshot
 
-Selected goal candidate: **D-SHIFT Context-16K**, FP32, 16,183 parameters.
-Companion balloon baseline: **Tiny-6K**, INT8, 6,131 parameters.
-This version freezes existing weights; it does not retrain or grant flight approval.
+The selected goal candidate is D-SHIFT Context-16K (FP32, 16,183 parameters). The
+companion balloon baseline is Tiny-6K (INT8, 6,131 parameters). This version
+freezes existing weights. Nothing was retrained, and the version number is not a
+flight approval.
 
-Small selected students, original export metadata, training provenance, epoch
-histories, and benchmark summaries are committed under `v1.0.0/`.
-The [model card and complete lineage](../docs/MODEL_V1.md) explain how to use them.
+The small selected students, original export metadata, training provenance, epoch
+histories and benchmark summaries are committed under `v1.0.0/`. The
+[model card and complete lineage](../docs/MODEL_V1.md) explain how to use them.
 The [private release](https://github.com/CaswellRyder/d-shift/releases/tag/v1.0.0)
-contains the pretrained backbone, both initial and proposal-adapted teachers,
-the selected students, and a separate ARMv6 runtime with dependency notices.
+holds the pretrained backbone, both the initial and proposal-adapted teachers, the
+selected students, and a separate ARMv6 runtime with its dependency notices.
 
-Datasets, crops, cached teacher targets, recordings, and the other team's pixel
-implementation are not distributed. Never treat a release version as flight approval.
-Do not overwrite a version's weights or edit historical metadata: create a new
-version and retain its parent hashes instead.
+We do not distribute datasets, crops, cached teacher targets, recordings or the
+other team's pixel implementation. Do not overwrite a version's weights or edit
+its historical metadata. Create a new version and record its parent hashes instead.
 
 ```bash
 python3 scripts/verify_release.py
 ```
 
-`manifest.json` binds file sizes/hashes and source-file hashes. A release tag pins
-the complete code/documentation commit. `lineage.json` connects training-stage
-checkpoints to their exact parents and records data-manifest hashes without data.
+`manifest.json` binds file sizes and hashes plus source-file hashes. A release tag
+pins the full code and documentation commit. `lineage.json` links each
+training-stage checkpoint to its exact parents and records data-manifest hashes
+without including the data.
