@@ -242,6 +242,7 @@ class Mission:
         self.set_goal_color(goal_color)
         self.phase, self.fan, self.seq = "balloon", False, 0
         self.last_target_at, self.capture_started = None, None
+        self.selected_track_id = None
 
     def set_goal_color(self, color):
         if color not in GOAL_COLORS:
@@ -295,9 +296,11 @@ class Mission:
     def step(self, tracks, now):
         c = self.config
         cmd, target = None, None
+        self.selected_track_id = None
         if self.phase in ("balloon", "capture"):
             track = self._best(tracks, BALLOON_LABELS, now)
             target = self.describe(track, now) if track else None
+            self.selected_track_id = track.id if track else None
             if self.phase == "capture":
                 # `fan` stays on as state; the command still needs a ready target.
                 if now - self.capture_started > c.capture_timeout_s:
@@ -310,13 +313,16 @@ class Mission:
         else:
             ours = self._best(tracks, (SQUARE_LABELS[self.goal_color],), now)
             if ours:
+                self.selected_track_id = ours.id
                 target = self.describe(ours, now)
                 cmd = "ENTER" if self._ready(target, ours, c.enter_size) else "TRACK"
             else:
                 other = [t for t in tracks if t.label in SQUARE_LABELS.values()
                          and t.label != SQUARE_LABELS[self.goal_color] and t.misses == 0]
                 if other:
-                    target, cmd = self.describe(max(other, key=lambda t: t.box[2] - t.box[0]), now), "AVOID"
+                    selected = max(other, key=lambda t: t.box[2] - t.box[0])
+                    self.selected_track_id = selected.id
+                    target, cmd = self.describe(selected, now), "AVOID"
         if cmd is None:
             if target:
                 cmd = "TRACK"

@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Flight lab</title>
+  <style>
+    :root{--ink:#1f3448;--sub:#526779;--blue:#12689d;--blue-soft:#e8f3fa;--line:#ccdbe5;--paper:#fff;--page:#eef4f8;--green:#167254;--red:#ad3443;--amber:#8d5e10;--radius:15px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--page);font-size:15px}
+    *{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #55a6dc;outline-offset:3px}a{color:var(--blue);text-underline-offset:3px}button{border:1px solid var(--line);border-radius:9px;background:var(--paper);color:var(--ink);padding:10px 14px;font-weight:650}button:hover:not(:disabled){background:var(--blue-soft);border-color:#9abbd0}button:disabled{opacity:.46}input,select,textarea{width:100%;border:1px solid #aebfcd;border-radius:8px;background:#fff;color:var(--ink);padding:11px 12px}input:disabled,select:disabled,textarea:disabled{background:#f1f4f7}textarea{resize:vertical;min-height:67px}input[type=number]{font-variant-numeric:tabular-nums}label{display:block;font-size:.86rem;font-weight:650;margin-bottom:7px}fieldset{border:0;margin:0;padding:0;min-width:0}h1,h2,p{margin:0}h1{font-size:1.45rem;letter-spacing:-.035em}h2{font-size:1.08rem;letter-spacing:-.015em}small,.help{font-size:.79rem;color:var(--sub);line-height:1.5}.shell{max-width:1380px;margin:auto;padding:25px 30px 45px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:23px}.brand{display:flex;gap:13px;align-items:center}.mark{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#d7eaf6;color:var(--blue)}.brand small{display:block;margin-top:3px}.connection{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--sub)}.dot{width:8px;height:8px;border-radius:50%;background:#8297a8}.dot.live{background:var(--green)}.dot.bad{background:var(--red)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:23px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.panel-heading{padding:19px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-heading .help{margin-top:4px}.view-switch{display:flex;padding:3px;background:#edf3f7;border:1px solid #d8e3eb;border-radius:10px;flex-shrink:0}.view-switch button{padding:6px 10px;font-size:.76rem;border:0;background:transparent;font-weight:600}.view-switch button[aria-pressed=true]{background:#fff;box-shadow:0 1px 3px #20384b15;color:var(--blue)}.viewfinder{position:relative;background:#172a3a;aspect-ratio:4/3;margin:0 14px;overflow:hidden;border-radius:9px;display:grid;place-items:center}.viewfinder canvas{display:block;width:100%;height:100%;object-fit:contain}.empty-view{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:#d6e2ec;gap:9px;padding:25px;pointer-events:none}.empty-view strong{font-size:1.05rem}.empty-view span{font-size:.85rem;color:#a9bece;max-width:330px;line-height:1.6}.view-note{position:absolute;left:15px;top:15px;border:1px solid #c8dfef42;background:#142b3de8;color:#e2edf5;border-radius:6px;padding:7px 10px;font-size:.76rem;backdrop-filter:blur(4px);max-width:calc(100% - 30px)}.view-note.hidden,.hidden{display:none!important}.frame-footer{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 22px;font-size:.78rem;color:var(--sub)}.frame-footer strong{font-weight:600;color:var(--ink)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);background:#f8fbfd}.metric{padding:17px 21px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric dt{font-size:.74rem;color:var(--sub);margin-bottom:6px}.metric dd{margin:0;font-size:1.21rem;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.025em}.metric dd span{font-size:.76rem;font-weight:400;color:var(--sub);letter-spacing:0}.metric-alert{color:var(--red)}.controls{padding:22px}.controls>p{margin-top:6px;margin-bottom:24px}.field{margin-bottom:19px}.row{display:grid;grid-template-columns:1fr 1fr;gap:13px}.distance-stepper{display:grid;grid-template-columns:43px 1fr 43px;gap:6px;align-items:stretch}.distance-stepper input{text-align:center;font-size:1.45rem;font-weight:650;min-width:0;appearance:textfield}.distance-stepper input::-webkit-inner-spin-button,.distance-stepper input::-webkit-outer-spin-button{appearance:none}.distance-stepper button{padding:0;font-size:1.35rem;font-weight:450}.distance-stepper+p{margin-top:8px}.capture-area{border-top:1px solid var(--line);padding-top:20px;margin-top:6px}.capture-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;background:var(--blue);border-color:var(--blue);color:#fff;border-radius:10px;font-size:1rem}.capture-button:hover:not(:disabled){background:#105780;border-color:#105780}.capture-glyph{height:11px;width:11px;display:block;border-radius:50%;background:currentColor}.capture-area .help{margin-top:10px}.progress-track{height:5px;border-radius:4px;background:#e1ebf2;margin-top:16px;overflow:hidden}.progress-fill{width:0;height:100%;background:#277dac;transition:width .3s}.capture-status{font-size:.86rem;line-height:1.5;margin-top:11px;font-weight:550}.capture-status.complete{color:var(--green)}.capture-status.failed{color:var(--red)}.capture-detail{margin-top:3px;min-height:1.2em}.inline-error{padding:11px 13px;border:1px solid #ebc7cd;background:#fff4f5;border-radius:8px;color:var(--red);font-size:.84rem;line-height:1.5;margin-bottom:15px}.method-note{padding:15px 18px;margin-top:14px;border:1px solid #ccdeea;border-radius:12px;background:#e8f1f7;color:#476276;font-size:.79rem;line-height:1.6}.method-note strong{font-weight:650;color:#2b516b}.sessions{margin-top:25px}.sessions-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;gap:15px}.sessions-head small{font-variant-numeric:tabular-nums}.sessions-empty{padding:25px;border:1px dashed #b7cbd9;border-radius:12px;background:#f7fafc;color:var(--sub);line-height:1.7;font-size:.87rem}.session-list{display:grid;gap:10px}.session{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 20px;border:1px solid var(--line);border-radius:12px;background:#fff}.session-title{font-weight:650;font-size:.93rem;margin-bottom:5px;overflow-wrap:anywhere}.session-meta{font-size:.77rem;color:var(--sub);line-height:1.6}.session-actions{display:flex;gap:14px;align-items:center;flex-shrink:0;font-size:.8rem}.footer-note{margin-top:23px;color:var(--sub);font-size:.76rem;line-height:1.6}.key{display:inline-flex;align-items:center;gap:6px}.key i{display:inline-block;width:13px;height:3px;background:#74d4fb}.key.secondary i{background:#b4c4d4}.feed-stale canvas{opacity:.4}.feed-stale .view-note{background:#472831ed;border-color:#e2a6b345;color:#ffe9ed}
+    @media(max-width:1050px){.shell{padding:20px}.workspace{grid-template-columns:minmax(0,1fr) 310px;gap:17px}.controls{padding:19px}.panel-heading{padding:17px}.metric{padding:16px}.view-switch button{padding:6px 8px}}
+    @media(max-width:790px){.workspace{grid-template-columns:1fr}.topbar{align-items:flex-start;padding-bottom:18px}.shell{padding:18px 14px 30px}.controls{padding:22px}.controls>p{margin-bottom:20px}.control-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.control-fields .wide{grid-column:1/-1}.capture-area{margin-top:0}.session{align-items:flex-start}.session-actions{flex-direction:column;align-items:flex-start;gap:8px}.connection{max-width:145px;text-align:right;font-size:.76rem}.connection .dot{flex-shrink:0}.brand small{font-size:.74rem}.panel-heading{padding:16px}.viewfinder{margin:0 10px}.frame-footer{padding:13px 16px}.sessions{margin-top:22px}}
+    @media(max-width:430px){.control-fields{grid-template-columns:1fr}.control-fields .wide{grid-column:auto}.panel-heading{align-items:flex-start}.panel-heading h2{font-size:1rem}.panel-heading .help{font-size:.72rem}.view-switch button{padding:6px;font-size:.71rem}.metric{padding:14px 12px}.metric dt{font-size:.68rem}.metric dd{font-size:1.06rem}.frame-footer{font-size:.7rem;gap:8px}.session{padding:15px;gap:10px}.session-actions{font-size:.75rem}.sessions-head{align-items:flex-start}.sessions-head small{font-size:.7rem}.connection{max-width:110px}.brand{gap:9px}.mark{width:35px;height:35px}h1{font-size:1.3rem}}
+    .telemetry-section{margin-top:25px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:13px}.status-chip{font-size:.74rem;font-weight:600;color:#77541a;background:#fff6df;border:1px solid #e9d6ac;border-radius:6px;padding:6px 9px;white-space:nowrap}.coordinate-heading{padding:20px 22px 0}.coordinate-heading .help{margin-top:5px}.coordinate-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:19px 22px;gap:24px}.coordinate-group h3{font-size:.86rem;margin:0 0 6px}.coordinate-group>.help{margin-bottom:10px;font-size:.73rem}.coordinate-values{margin:0}.coordinate-values>div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #e7eef3;font-size:.81rem}.coordinate-values dt{color:var(--sub)}.coordinate-values dd{margin:0;font-variant-numeric:tabular-nums;font-weight:600;text-align:right}.coordinate-values dd small{font-weight:400;font-size:.72rem}.coordinate-caution{font-size:.77rem;color:#77541a;background:#fffaf0;border-top:1px solid #ecdfbf;padding:12px 22px;line-height:1.6}.geometry-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:20px;margin-top:20px;align-items:start}.mapping-head{padding:19px 20px 12px}.mapping-head>p{margin-top:5px}.mapping-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}.mapping-controls label{display:flex;align-items:center;gap:7px;font-size:.75rem;font-weight:500;margin:0}.mapping-controls input{width:auto;accent-color:var(--blue)}.mapping-controls button{font-size:.74rem;padding:6px 10px}.mapping-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 13px}.map-figure{margin:0;min-width:0}.map-figure figcaption{padding:6px 8px;font-size:.75rem;font-weight:600}.map-figure canvas{display:block;width:100%;height:auto;background:#f4f8fb;border:1px solid #dce7ef;border-radius:7px;touch-action:pan-y}.mapping-inspection{margin:12px 20px 0;font-size:.75rem;color:var(--ink);font-variant-numeric:tabular-nums;min-height:2.8em;line-height:1.6}.mapping-foot{padding:11px 20px 17px;font-size:.72rem;color:var(--sub);line-height:1.6}.mapping-foot strong{font-weight:600;color:var(--ink)}.packet-body{padding:0 20px 20px}.packet-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:.74rem;color:var(--sub)}.packet-meta span{background:#eff4f8;border-radius:5px;padding:5px 8px}.packet-blockers{margin:0 0 14px;padding-left:19px;font-size:.76rem;color:#77541a;line-height:1.7}.packet-body details{border:1px solid var(--line);border-radius:8px;overflow:hidden}.packet-body summary{padding:11px 12px;cursor:pointer;font-size:.82rem;font-weight:600;background:#f8fbfd}.packet-switch{display:flex;gap:6px;flex-wrap:wrap;padding:10px 10px 0}.packet-switch button{font-size:.73rem;padding:6px 9px}.packet-switch button[aria-pressed=true]{color:var(--blue);background:var(--blue-soft);border-color:#a6c9e0}.packet-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.7rem;line-height:1.65;margin:0;padding:13px;max-height:340px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;color:#2d4d65;background:#fff}.packet-caption{font-size:.72rem;color:var(--sub);line-height:1.6;margin-top:11px}.packet-status{font-weight:600;color:var(--ink)}
+    @media(max-width:1050px){.geometry-layout{grid-template-columns:1fr}.mapping-pair{gap:18px}.coordinate-columns{gap:18px}.session-actions{flex-wrap:wrap;justify-content:flex-end}}
+    @media(max-width:650px){.coordinate-columns{grid-template-columns:1fr;gap:19px}.coordinate-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0 17px}.coordinate-group h3{grid-column:1}.coordinate-group>.help{grid-column:1}.coordinate-values{grid-column:2;grid-row:1/3}.coordinate-values>div:first-child{padding-top:0}.section-title{align-items:flex-start}.status-chip{font-size:.68rem;white-space:normal;text-align:right;max-width:145px}.mapping-pair{gap:7px;padding:0 8px}.mapping-head,.packet-body{padding-left:17px;padding-right:17px}.mapping-inspection{margin-left:17px;margin-right:17px}.mapping-foot{padding-left:17px;padding-right:17px}}
+    @media(max-width:430px){.mapping-pair{grid-template-columns:1fr}.map-figure canvas{max-height:300px;object-fit:contain}.coordinate-heading{padding-left:17px;padding-right:17px}.coordinate-columns{padding-left:17px;padding-right:17px}.coordinate-caution{padding-left:17px;padding-right:17px}.coordinate-group{grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr)}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M3 9V4h5M17 4h5v5M22 17v5h-5M8 22H3v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12.5" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 6.5V9M12.5 17v2.5M6 13h2.5M16.5 13H19" stroke="currentColor" stroke-width="1.3"/></svg></div>
+      <div><h1>Flight lab</h1><small>Balloon and goal perception</small></div>
+    </div>
+    <div class="connection" role="status"><span id="connectionDot" class="dot"></span><span id="connectionText">Connecting to Pi…</span></div>
+  </header>
+
+  <div class="workspace">
+    <section aria-label="Camera and flight observations">
+      <div class="panel">
+        <div class="panel-heading">
+          <div><h2>Camera view</h2><p class="help" id="viewDescription">Waiting for the Pi camera</p></div>
+          <div class="view-switch" role="group" aria-label="Camera display">
+            <button type="button" id="boxesView" aria-pressed="true">Boxes</button>
+            <button type="button" id="maskView" aria-pressed="false">Mask</button>
+          </div>
+        </div>
+        <div class="viewfinder" id="viewfinder">
+          <canvas id="cameraCanvas" width="640" height="480" aria-label="Live Pi camera with tracked target boxes"></canvas>
+          <div class="empty-view" id="emptyView"><strong>Waiting for a camera frame</strong><span>The view will appear here when the Pi is connected and ready.</span></div>
+          <div class="view-note hidden" id="viewNote" role="status"></div>
+        </div>
+        <div class="frame-footer"><span id="targetStatus">No observation yet</span><span class="key"><i></i>Selected target</span></div>
+        <dl class="metrics" aria-label="Live processing metrics">
+          <div class="metric"><dt>Processing rate</dt><dd id="fpsValue">— <span>fps</span></dd></div>
+          <div class="metric"><dt>Search interval</dt><dd id="searchValue">— <span>ms</span></dd></div>
+          <div class="metric"><dt>Worker errors / restarts</dt><dd id="workerValue">—</dd></div>
+        </dl>
+      </div>
+      <p class="method-note"><strong>Five seconds on the flight pipeline.</strong> The preview pauses during capture. Frames and flight results are buffered first; masks, selection boxes and downloadable files are generated afterward.</p>
+    </section>
+
+    <section class="panel controls" aria-labelledby="setupTitle">
+      <h2 id="setupTitle">Set up a capture</h2>
+      <p class="help">Choose the target and enter your measured distance before each take.</p>
+      <div id="requestError" class="inline-error hidden" role="alert"></div>
+      <form id="captureForm">
+        <fieldset id="captureFields" disabled>
+          <div class="control-fields">
+            <div class="field"><label for="phase">Search for</label><select id="phase" name="phase"><option value="balloon">Balloons</option><option value="goal">Goal</option></select></div>
+            <div class="field"><label for="targetLabel">Target in this take</label><select id="targetLabel" name="target_label"><option value="green_balloon">Green balloon</option><option value="purple_balloon">Purple balloon</option></select></div>
+            <div class="field wide"><label for="distance">Tape-measured distance (m)</label><div class="distance-stepper"><button type="button" id="distanceDown" aria-label="Decrease distance by 0.1 metres">−</button><input id="distance" name="distance_m" type="number" inputmode="decimal" min="0.01" max="100" step="any" placeholder="Enter distance" required autocomplete="off"><button type="button" id="distanceUp" aria-label="Increase distance by 0.1 metres">+</button></div><p class="help">Measure from the camera lens to the target centre. This is your reference distance, not a camera estimate.</p></div>
+            <div class="field"><label for="expectedCount">Targets of this color in view</label><input id="expectedCount" name="expected_count" type="number" min="0" max="20" step="1" value="1" required></div>
+            <div class="field"><label for="scene">Take name <span class="help">(optional)</span></label><input id="scene" name="scene" type="text" maxlength="48" placeholder="e.g. centre-lit" pattern="[a-zA-Z0-9_-]*" autocomplete="off"></div>
+            <div class="field wide"><label for="notes">Notes <span class="help">(optional)</span></label><textarea id="notes" name="notes" rows="2" maxlength="500" placeholder="Lighting, motion, occlusion…"></textarea></div>
+          </div>
+        </fieldset>
+        <div class="capture-area">
+          <button class="capture-button" id="captureButton" type="submit" disabled><span class="capture-glyph" aria-hidden="true"></span><span id="captureButtonLabel">Capture 5 seconds</span></button>
+          <p class="help" id="captureHelp">Enter a measured distance to enable capture.</p>
+          <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Capture progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div>
+          <p class="capture-status" id="captureStatus" role="status" aria-live="polite">Waiting for the Pi</p>
+          <p class="help capture-detail" id="captureDetail">No capture started.</p>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <section class="telemetry-section" aria-labelledby="telemetryTitle">
+    <div class="section-title"><h2 id="telemetryTitle">Coordinates and controller handoff</h2><span class="status-chip">Draft dry run · nothing transmitted</span></div>
+    <div class="panel">
+      <div class="coordinate-heading"><h2>Estimated target coordinates</h2><p class="help" id="coordinateFreshness">Waiting for flight telemetry</p></div>
+      <div class="coordinate-columns">
+        <div class="coordinate-group"><h3>Camera target offset</h3><p class="help">X right · Y up · Z forward</p><dl class="coordinate-values"><div><dt>X</dt><dd id="camX">— <small>m</small></dd></div><div><dt>Y</dt><dd id="camY">— <small>m</small></dd></div><div><dt>Z</dt><dd id="camZ">— <small>m</small></dd></div><div><dt>Bearing / elevation</dt><dd id="camAngles">—</dd></div></dl></div>
+        <div class="coordinate-group"><h3>Vehicle target offset</h3><p class="help">X right · Y up · Z forward · mount correction</p><dl class="coordinate-values"><div><dt>X</dt><dd id="bodyX">— <small>m</small></dd></div><div><dt>Y</dt><dd id="bodyY">— <small>m</small></dd></div><div><dt>Z</dt><dd id="bodyZ">— <small>m</small></dd></div><div><dt>Range from body origin</dt><dd id="bodyRange">— <small>m</small></dd></div></dl></div>
+        <div class="coordinate-group"><h3>Relative guidance</h3><p class="help">Angles only · control not ready</p><dl class="coordinate-values"><div><dt>Yaw error</dt><dd id="guidanceYaw">— <small>°</small></dd></div><div><dt>Climb error</dt><dd id="guidanceClimb">— <small>°</small></dd></div><div><dt>IMU yaw</dt><dd id="imuYaw">Unavailable</dd></div><div><dt>Altitude / thrust</dt><dd id="altitudeThrust">Unavailable</dd></div></dl></div>
+      </div>
+      <p class="coordinate-caution" id="calibrationStatus">Estimates are unvalidated. The lens, balloon diameter and camera mounting offset need measured calibration. Your tape distance is a reference label and is never used to compute these coordinates.</p>
+    </div>
+    <div class="geometry-layout">
+      <section class="panel" aria-labelledby="mappingTitle">
+        <div class="mapping-head"><h2 id="mappingTitle">Pixel-to-angle mapping</h2><p class="help" id="mappingStatus">Waiting for the camera model</p><div class="mapping-controls"><label for="mappingGrid"><input type="checkbox" id="mappingGrid" checked> Show sampled grid</label><button type="button" id="mappingRetry" class="hidden">Retry mapping</button></div></div>
+        <div class="mapping-pair">
+          <figure class="map-figure"><figcaption>Camera pixels · centre (160, 120)</figcaption><canvas id="pixelMap" width="480" height="360" tabindex="0" aria-label="Pixel coordinate grid. Hover or touch a point to inspect its mapped angles."></canvas></figure>
+          <figure class="map-figure"><figcaption>Camera angles · bearing, elevation</figcaption><canvas id="angularMap" width="480" height="360" tabindex="0" aria-label="Angular coordinate grid showing fisheye stretching. Hover or touch a point to inspect its source pixel."></canvas></figure>
+        </div>
+        <p class="mapping-inspection" id="mappingInspection">Hover or touch either grid to compare the same pixel and ray. The blue marker shows the selected target.</p>
+        <p class="mapping-foot"><strong>The same points, two coordinate systems.</strong> Straight pixel-grid lines bend and spread in angular space. Pale amber segments are outside the trusted view. With an aligned camera, a centred target 3 m ahead is (0, 0, 3). Normalised image errors use the image centre; metric XYZ follows the calibrated optical axis and measured mount. Pixel indices stay u-right/v-down; outgoing XYZ uses x-right/y-up/z-forward. This is a model visualization, not a measured calibration.</p>
+      </section>
+      <section class="panel" aria-labelledby="packetTitle">
+        <div class="panel-heading"><div><h2 id="packetTitle">Outgoing packet preview</h2><p class="help" id="packetFreshness">Waiting for a flight observation</p></div></div>
+        <div class="packet-body">
+          <div class="packet-meta"><span id="packetIntent">Intent unavailable</span><span id="packetSequence">Sequence —</span><span id="controllerStatus">IMU unavailable</span></div>
+          <p class="help packet-status" id="packetReadiness">Controller handoff is not ready.</p>
+          <ul class="packet-blockers" id="packetBlockers"><li>No live telemetry received.</li></ul>
+          <details id="packetDetails"><summary>Inspect exact packet text</summary><div class="packet-switch" role="group" aria-label="Packet format"><button type="button" id="legacyPacket" aria-pressed="true">Current wire v1</button><button type="button" id="draftPacket" aria-pressed="false">Guidance draft</button></div><pre class="packet-code" id="packetText">No packet available.</pre></details>
+          <p class="packet-caption">The current wire line is the flight loop’s existing JSON output. The guidance draft adds estimated coordinates and explicit missing controller inputs. Neither preview transmits to an ESP32 or commands an actuator.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="sessions" aria-labelledby="sessionsTitle">
+    <div class="sessions-head"><h2 id="sessionsTitle">Saved takes</h2><small id="sessionCount">Waiting for saved takes</small></div>
+    <div id="sessionsEmpty" class="sessions-empty">Completed captures will appear here with their measured distance, saved frames, masks, selection boxes and recorded results.</div>
+    <div id="sessionList" class="session-list"></div>
+  </section>
+  <p class="footer-note">Distances are operator measurements. Detection coverage and timing are recorded observations; they are not an accuracy score or flight qualification. Balloon color describes this take; the flight search still looks for both green and purple balloons.</p>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const controls = {phase:$('phase'),target:$('targetLabel'),distance:$('distance'),count:$('expectedCount'),scene:$('scene'),notes:$('notes')};
+  const canvas=$('cameraCanvas'), ctx=canvas.getContext('2d');
+  const labels={green_balloon:'Green balloon',purple_balloon:'Purple balloon',orange_square:'Orange goal',yellow_square:'Yellow goal'};
+  let state=null, connected=false, requestPending=false, view='boxes', image=null, imageKey='', drawVersion=0, lastSessions='';
+  let packetMode='legacy',mapping=null,mappingLoad='idle',mappingHover=null;
+  const busy = () => ['capturing','exporting'].includes(state?.capture?.state);
+  const validDistance = () => controls.distance.value.trim()!=='' && Number.isFinite(controls.distance.valueAsNumber) && controls.distance.valueAsNumber>0 && controls.distance.valueAsNumber<=100;
+  const validCount = () => Number.isInteger(controls.count.valueAsNumber) && controls.count.valueAsNumber>=0 && controls.count.valueAsNumber<=20;
+  const numberText = (value,digits=1) => typeof value==='number' && Number.isFinite(value) ? value.toFixed(digits) : '—';
+
+  function currentTelemetry() {
+    if(!connected||!state?.ready||state?.error)return null;
+    // During capture the image is deliberately old; compact telemetry is separate.
+    if(state?.capture?.state==='capturing')return state.flight_telemetry || null;
+    return state?.flight_telemetry || state?.frame?.flight_telemetry || null;
+  }
+
+  function telemetryDescription(telemetry) {
+    if(!connected)return 'Connection lost · current values unavailable';
+    if(state?.error)return 'Pi error · current values unavailable';
+    if(!telemetry)return state?.capture?.state==='capturing'?'Capture telemetry unavailable · image preview is paused':'Waiting for flight telemetry';
+    if(state?.capture?.state==='capturing')return 'Capture telemetry · image preview paused';
+    if(state?.capture?.state==='exporting')return 'Last captured observation · saving files';
+    return 'Latest flight observation';
+  }
+
+  function updateTelemetry() {
+    const telemetry=currentTelemetry(),target=telemetry?.coordinates?.selected || null;
+    const packet=telemetry?.outgoing?.draft_packet,relative=packet?.relative_guidance;
+    const rawCamera=Array.isArray(target?.cam_xyz_m)?target.cam_xyz_m:[],rawBody=Array.isArray(target?.body_xyz_m)?target.body_xyz_m:[];
+    const camera=[rawCamera[0],Number.isFinite(rawCamera[1])?-rawCamera[1]:null,rawCamera[2]],body=[rawBody[1],rawBody[2],rawBody[0]];
+    const value=(id,number,unit,digits=3)=>{$(id).textContent=`${numberText(number,digits)}${unit?' '+unit:''}`;};
+    for(const [index,axis] of ['X','Y','Z'].entries()) {
+      value('cam'+axis,camera[index],'m');value('body'+axis,body[index],'m');
+    }
+    value('bodyRange',target?.range_m,'m');
+    $('camAngles').textContent=`${numberText(target?.bearing_deg)}° / ${numberText(target?.elevation_deg)}°`;
+    value('guidanceYaw',relative?.yaw_error_deg,'°',1);value('guidanceClimb',relative?.climb_error_deg,'°',1);
+    const imu=telemetry?.controller_input;
+    $('imuYaw').textContent=Number.isFinite(imu?.imu_yaw_deg)?numberText(imu.imu_yaw_deg)+'°':'Unavailable';
+    const altitude=Number.isFinite(imu?.altitude_m)?numberText(imu.altitude_m,2)+' m':'unavailable';
+    const thrust=Number.isFinite(relative?.forward_thrust)?numberText(relative.forward_thrust,2):'unavailable';
+    $('altitudeThrust').textContent=altitude==='unavailable'&&thrust==='unavailable'?'Unavailable':`${altitude} / ${thrust}`;
+    let description=telemetryDescription(telemetry);
+    if(target)description+=` · ${labels[target.label]||target.label} · estimated${Number.isFinite(target.age_ms)?' · confirmed '+Math.round(target.age_ms)+' ms ago':''}`;
+    else if(telemetry)description+=' · no coordinate target';
+    $('coordinateFreshness').textContent=description;
+    const calibration=telemetry?.mapping_status;
+    const lens=calibration?.lens_calibrated===true||(!calibration&&target?.lens_calibrated===true);
+    const mount=calibration?.mount_calibrated===true;
+    const size=target?.size_calibrated===true;
+    const missing=[];
+    if(!lens)missing.push('lens');if(!mount)missing.push('camera mounting offset');
+    if(target?.label?.endsWith('_balloon')&&!size)missing.push('balloon diameter');
+    const calibrationText=missing.length?`Estimated, unvalidated coordinates. Measured calibration still needed: ${missing.join(', ')}.`:'Estimated coordinates; measured configuration does not establish flight qualification.';
+    $('calibrationStatus').textContent=calibrationText+(!target?.label?.endsWith('_balloon')?' Balloon range also requires a measured balloon diameter.':'')+(target?.clipped?' Target box is clipped; the reported range is an upper bound under the configured size and pose assumptions.':'')+' Tape distance is a reference label and is never used to compute these coordinates.';
+    $('packetFreshness').textContent=telemetryDescription(telemetry);
+    $('packetIntent').textContent=packet?.intent?`Intent ${packet.intent}`:'Intent unavailable';
+    $('packetSequence').textContent=`Sequence ${Number.isFinite(packet?.seq)?packet.seq:'—'}`;
+    $('controllerStatus').textContent=imu?.status==='unavailable'||!Number.isFinite(imu?.imu_yaw_deg)?'IMU unavailable':'IMU input present';
+    $('packetReadiness').textContent='Draft dry run · no packet transmitted · control not ready.';
+    const blockers=Array.isArray(packet?.blockers)&&packet.blockers.length?packet.blockers:[telemetry?'Controller and actuator handoff have not been validated.':'No current flight telemetry available.'];
+    $('packetBlockers').replaceChildren(...blockers.map(text=>{const item=document.createElement('li');item.textContent=String(text);return item;}));
+    const outgoing=telemetry?.outgoing;
+    $('packetText').textContent=packetMode==='legacy'?(outgoing?.legacy_jsonl || 'No current wire packet available.'):(outgoing?.draft_jsonl || (packet?JSON.stringify(packet):'No current guidance draft available.'));
+    drawMapping();
+  }
+
+  const mapBox={x:54,y:20,w:396,h:297};
+
+  function mappingBounds() {
+    const samples=mapping?.samples||[];
+    const bearings=samples.map(s=>s.bearing_deg),elevations=samples.map(s=>s.elevation_deg);
+    return {minX:Math.min(...bearings),maxX:Math.max(...bearings),minY:Math.min(...elevations),maxY:Math.max(...elevations)};
+  }
+
+  function mapPosition(sample,angular,bounds) {
+    if(angular)return [mapBox.x+(sample.bearing_deg-bounds.minX)/(bounds.maxX-bounds.minX||1)*mapBox.w,mapBox.y+(bounds.maxY-sample.elevation_deg)/(bounds.maxY-bounds.minY||1)*mapBox.h];
+    return [mapBox.x+sample.u/mapping.width*mapBox.w,mapBox.y+sample.v/mapping.height*mapBox.h];
+  }
+
+  function drawMapping() {
+    const samples=mapping?.samples||[],bounds=samples.length?mappingBounds():null;
+    const selected=currentTelemetry()?.coordinates?.selected;
+    let marker=null;
+    if(Array.isArray(selected?.box_px)&&selected.box_px.length===4&&selected.box_px.every(Number.isFinite)&&Number.isFinite(selected.bearing_deg)&&Number.isFinite(selected.elevation_deg)) {
+      marker={u:(selected.box_px[0]+selected.box_px[2])/2,v:(selected.box_px[1]+selected.box_px[3])/2,bearing_deg:selected.bearing_deg,elevation_deg:selected.elevation_deg};
+    }
+    for(const [id,angular] of [['pixelMap',false],['angularMap',true]]) {
+      const element=$(id),context=element.getContext('2d');context.clearRect(0,0,element.width,element.height);
+      context.fillStyle='#f7fafc';context.fillRect(mapBox.x,mapBox.y,mapBox.w,mapBox.h);
+      context.strokeStyle='#9cb5c8';context.lineWidth=1.4;context.strokeRect(mapBox.x,mapBox.y,mapBox.w,mapBox.h);
+      context.font='15px -apple-system, sans-serif';context.fillStyle='#526779';context.textAlign='center';
+      if(!samples.length){context.fillText('Mapping unavailable',element.width/2,element.height/2);continue;}
+      if($('mappingGrid').checked) {
+        context.save();context.beginPath();context.rect(mapBox.x,mapBox.y,mapBox.w,mapBox.h);context.clip();
+        for(const groupKey of ['u','v']) {
+          const groups=new Map();for(const sample of samples){const key=sample[groupKey];if(!groups.has(key))groups.set(key,[]);groups.get(key).push(sample);}
+          for(const group of groups.values()) {
+            group.sort((a,b)=>groupKey==='u'?a.v-b.v:a.u-b.u);
+            for(let i=1;i<group.length;i++) {
+              const a=group[i-1],b=group[i],p=mapPosition(a,angular,bounds),q=mapPosition(b,angular,bounds);
+              const trusted=a.trusted!==false&&b.trusted!==false;
+              context.strokeStyle=trusted?'#9bb8ce':'#d9c49c';context.lineWidth=trusted?1.1:1;context.setLineDash(trusted?[]:[4,4]);
+              context.beginPath();context.moveTo(...p);context.lineTo(...q);context.stroke();
+            }
+          }
+        }
+        context.restore();context.setLineDash([]);
+      }
+      const xTicks=angular?[bounds.minX,(bounds.minX+bounds.maxX)/2,bounds.maxX]:[0,mapping.width/2,mapping.width];
+      const yTicks=angular?[bounds.maxY,(bounds.minY+bounds.maxY)/2,bounds.minY]:[0,mapping.height/2,mapping.height];
+      context.font='14px -apple-system, sans-serif';context.fillStyle='#526779';context.textAlign='center';
+      xTicks.forEach((value,i)=>context.fillText(numberText(value,0)+(angular?'°':''),mapBox.x+mapBox.w*i/2,mapBox.y+mapBox.h+24));
+      context.textAlign='right';yTicks.forEach((value,i)=>context.fillText(numberText(value,0)+(angular?'°':''),mapBox.x-9,mapBox.y+mapBox.h*i/2+5));
+      const point=(sample,color,radius,fill)=>{
+        const [x,y]=mapPosition(sample,angular,bounds);
+        if(x<mapBox.x-1||x>mapBox.x+mapBox.w+1||y<mapBox.y-1||y>mapBox.y+mapBox.h+1)return;
+        context.beginPath();context.arc(x,y,radius,0,Math.PI*2);context.lineWidth=2.5;context.strokeStyle=color;context.fillStyle=fill;
+        context.fill();context.stroke();
+      };
+      if(marker)point(marker,'#12689d',6,'#79caee');
+      if(mappingHover)point(mappingHover,'#c16a25',5,'#fff0de');
+    }
+    if(mappingHover)$('mappingInspection').textContent=`Pixel u ${numberText(mappingHover.u,0)}, v ${numberText(mappingHover.v,0)} → bearing ${numberText(mappingHover.bearing_deg,2)}°, elevation ${numberText(mappingHover.elevation_deg,2)}° · ${mappingHover.trusted===false?'outside trusted view':'inside trusted view'}`;
+    else $('mappingInspection').textContent=marker?`Selected target at pixel ${numberText(marker.u,1)}, ${numberText(marker.v,1)} → ${numberText(marker.bearing_deg,2)}° bearing, ${numberText(marker.elevation_deg,2)}° elevation. Hover or touch a grid to inspect another ray.`:'Hover or touch either grid to compare the same pixel and ray. The blue marker appears when a target is selected.';
+  }
+
+  async function loadMapping() {
+    if(mappingLoad==='loading')return;
+    mappingLoad='loading';$('mappingRetry').classList.add('hidden');$('mappingStatus').textContent='Loading the camera model…';
+    try {
+      const response=await fetch('/api/mapping',{cache:'no-store',signal:AbortSignal.timeout(12000)});
+      if(!response.ok)throw new Error(`Mapping unavailable (${response.status})`);
+      const data=await response.json();
+      if(!Number.isFinite(data.width)||data.width<=0||!Number.isFinite(data.height)||data.height<=0||!Array.isArray(data.samples))throw new Error('Invalid camera mapping response');
+      data.samples=data.samples.filter(s=>['u','v','bearing_deg','elevation_deg'].every(key=>Number.isFinite(s[key])));
+      if(!data.samples.length||data.samples.length>20000)throw new Error('Camera mapping has no usable sample grid');
+      mapping=data;mappingLoad='complete';
+      $('mappingStatus').textContent=`${data.model||'Fisheye camera model'} · ${data.width} × ${data.height} pixels · ${data.lens_calibrated?'measured lens calibration':'uncalibrated lens model'}`;
+    } catch(error) {
+      mappingLoad='failed';mapping=null;$('mappingStatus').textContent=error.message;$('mappingRetry').classList.remove('hidden');
+    }
+    drawMapping();
+  }
+
+  for(const mode of ['legacy','draft'])$(mode+'Packet').addEventListener('click',()=>{packetMode=mode;$('legacyPacket').setAttribute('aria-pressed',String(mode==='legacy'));$('draftPacket').setAttribute('aria-pressed',String(mode==='draft'));updateTelemetry();});
+  $('mappingGrid').addEventListener('change',drawMapping);
+  $('mappingRetry').addEventListener('click',loadMapping);
+  for(const [id,angular] of [['pixelMap',false],['angularMap',true]]) {
+    const element=$(id);
+    element.addEventListener('pointermove',event=>{
+      if(!mapping?.samples?.length)return;
+      const rect=element.getBoundingClientRect(),x=(event.clientX-rect.left)/rect.width*element.width,y=(event.clientY-rect.top)/rect.height*element.height,bounds=mappingBounds();
+      let closest=null,best=Infinity;
+      for(const sample of mapping.samples){const [sx,sy]=mapPosition(sample,angular,bounds),distance=(sx-x)**2+(sy-y)**2;if(distance<best){closest=sample;best=distance;}}
+      mappingHover=closest;drawMapping();
+    });
+    element.addEventListener('pointerleave',()=>{mappingHover=null;drawMapping();});
+    element.addEventListener('keydown',event=>{
+      if(!mapping?.samples?.length||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Escape'].includes(event.key))return;
+      event.preventDefault();
+      if(event.key==='Escape')mappingHover=null;
+      else {const index=Math.max(0,mapping.samples.indexOf(mappingHover)),delta=['ArrowLeft','ArrowUp'].includes(event.key)?-1:1;mappingHover=mapping.samples[(index+delta+mapping.samples.length)%mapping.samples.length];}
+      drawMapping();
+    });
+  }
+
+  function showError(message) {
+    $('requestError').textContent=message || '';
+    $('requestError').classList.toggle('hidden',!message);
+  }
+
+  function targetOptions(phase, preferred) {
+    const options=phase==='goal' ? ['orange_square','yellow_square'] : ['green_balloon','purple_balloon'];
+    const previous=preferred || controls.target.value;
+    controls.target.replaceChildren(...options.map(value=>{
+      const option=document.createElement('option'); option.value=value; option.textContent=labels[value]; return option;
+    }));
+    controls.target.value=options.includes(previous) ? previous : options[0];
+  }
+
+  function updateControls() {
+    const blocked=!connected || !state?.ready || Boolean(state?.error) || busy() || requestPending;
+    $('captureFields').disabled=blocked;
+    $('captureButton').disabled=blocked || !validDistance() || !validCount();
+    $('boxesView').disabled=!connected;
+    $('maskView').disabled=!connected;
+    let help='Enter a measured distance to enable capture.';
+    if(!connected) help='Connect to the Pi to enable capture.';
+    else if(state?.error) help='Resolve the Pi error before capturing.';
+    else if(!state?.ready) help='The Pi is preparing the camera and models.';
+    else if(busy()) help='Keep the camera and scene in place until this take finishes.';
+    else if(requestPending) help='Applying your settings…';
+    else if(!validCount()) help='Enter a whole target count from 0 to 20.';
+    else if(validDistance()) help='A five-second take runs once, then saves automatically.';
+    $('captureHelp').textContent=help;
+  }
+
+  function updateCapture() {
+    const capture=state?.capture || {state:'idle'}, status=capture.state;
+    const remaining=typeof capture.remaining_s==='number' ? Math.max(0,Math.min(5,capture.remaining_s)) : 5;
+    let title='Ready for a capture', detail='No capture started.', button='Capture 5 seconds', progress=0;
+    if(!state?.ready) title='Preparing the Pi';
+    if(status==='capturing') {
+      title=`Capturing · ${remaining.toFixed(1)} seconds remaining`;
+      detail=`${capture.frames ?? 0} frames buffered. Preview paused.`;
+      button='Capturing…'; progress=5-remaining;
+    } else if(status==='exporting') {
+      title='Saving this take'; detail=`${capture.frames ?? 0} frames · generating masks, boxes and files.`;
+      button='Saving…'; progress=5;
+    } else if(status==='complete') {
+      title='Capture saved'; detail=`${capture.frames ?? capture.result?.frames ?? 0} frames saved. Open the take below to review results.`; progress=5;
+    } else if(status==='failed') {
+      title='Capture failed'; detail=capture.error || 'The take could not be completed. Check the Pi before retrying.';
+    }
+    if(state?.error) { title='Pi needs attention'; detail=state.error; }
+    $('captureStatus').textContent=title;
+    $('captureStatus').className='capture-status'+(status==='complete'?' complete':status==='failed'||state?.error?' failed':'');
+    $('captureDetail').textContent=detail;
+    $('captureButtonLabel').textContent=button;
+    $('progressFill').style.width=`${progress/5*100}%`;
+    $('progressTrack').setAttribute('aria-valuenow',progress.toFixed(1));
+  }
+
+  function draw() {
+    if(!image) return;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(image,0,0,canvas.width,canvas.height);
+    if(view==='mask') return;
+    const target=state?.frame?.message?.target;
+    const tracks=(state?.frame?.tracks || []).filter(t=>Array.isArray(t.box)&&t.box.length===4&&t.box.every(Number.isFinite));
+    // Match the published target, rather than highlighting every track of its color.
+    const selectedTrack=target ? tracks.filter(t=>t.label===target.label&&(t.misses??0)===0).reduce((best,track)=>{
+      const error=t=>{const [x1,y1,x2,y2]=t.box;return Math.abs((x1+x2)/320-1-target.x)+Math.abs((y1+y2)/240-1-target.y)+Math.abs((x2-x1)/320-target.size);};
+      return !best||error(track)<error(best)?track:best;
+    },null) : null;
+    const sx=canvas.width/320,sy=canvas.height/240;
+    for(const track of tracks) {
+      const [x1,y1,x2,y2]=track.box;
+      const selected=track===selectedTrack;
+      const color=selected?'#74d4fb':'#c1ccd6';
+      ctx.strokeStyle=color; ctx.lineWidth=selected?3:2; ctx.setLineDash((track.misses??0)>0?[7,5]:[]);
+      ctx.strokeRect(x1*sx,y1*sy,(x2-x1)*sx,(y2-y1)*sy); ctx.setLineDash([]);
+      const text=`${labels[track.label]||track.label}${typeof track.score==='number'?' '+Math.round(track.score*100)+'%':''}`;
+      ctx.font='500 16px -apple-system, sans-serif';
+      const w=ctx.measureText(text).width+14,x=Math.max(0,Math.min(canvas.width-w,x1*sx)),y=Math.max(23,y1*sy);
+      ctx.fillStyle='#152c3eeb';ctx.fillRect(x,y-23,w,23);ctx.fillStyle=color;ctx.fillText(text,x+7,y-6);
+    }
+  }
+
+  function updateFrame() {
+    const frame=state?.frame;
+    const jpeg=view==='mask' ? frame?.mask_jpeg : frame?.jpeg;
+    const key=`${view}:${frame?.sequence ?? ''}:${jpeg?.length ?? 0}`;
+    const note=$('viewNote');
+    $('viewfinder').classList.toggle('feed-stale',!connected || Boolean(state?.error));
+    note.classList.remove('hidden');
+    if(!connected) note.textContent='Connection lost · last frame retained';
+    else if(state?.error) note.textContent='Feed unavailable · check Pi status';
+    else if(busy()) note.textContent=state.capture.state==='capturing'?'Preview paused during capture':'Preview paused while saving';
+    else if(view==='mask'&&!jpeg) note.textContent='Waiting for a mask preview';
+    else note.classList.add('hidden');
+    if(jpeg && key!==imageKey) {
+      imageKey=key;
+      const version=++drawVersion,nextImage=new Image();
+      nextImage.onload=()=>{if(version!==drawVersion)return;image=nextImage;$('emptyView').classList.add('hidden');draw();};
+      nextImage.onerror=()=>{if(version===drawVersion){imageKey='';note.textContent='Camera frame could not be displayed';note.classList.remove('hidden');}};
+      nextImage.src='data:image/jpeg;base64,'+jpeg;
+    } else if(view==='boxes') draw();
+    const target=frame?.message?.target;
+    $('targetStatus').textContent=target ? `${labels[target.label]||target.label} · ${frame.message.cmd||'tracking'}${typeof target.age_ms==='number'?' · confirmed '+Math.round(target.age_ms)+' ms ago':''}` : (frame ? 'No selected target' : 'No observation yet');
+    $('viewDescription').textContent=connected ? `${state?.phase==='goal'?'Goal':'Balloon'} search · ${view==='mask'?'color mask':'tracked boxes'}${busy()?' · preview paused':''}` : 'Camera feed unavailable';
+  }
+
+  function sessionLink(text,url) {
+    const a=document.createElement('a');a.textContent=text;
+    // Only use same-origin relative session links returned by the Pi.
+    if(typeof url==='string'&&url.startsWith('/sessions/')&&!url.startsWith('//')) a.href=url;
+    else a.removeAttribute('href');
+    return a;
+  }
+
+  function updateSessions() {
+    const sessions=Array.isArray(state?.sessions)?state.sessions:[], serialized=JSON.stringify(sessions);
+    if(serialized===lastSessions)return;
+    lastSessions=serialized;
+    $('sessionCount').textContent=`${sessions.length} saved ${sessions.length===1?'take':'takes'}`;
+    $('sessionsEmpty').classList.toggle('hidden',sessions.length>0);
+    $('sessionList').replaceChildren(...sessions.map(session=>{
+      const row=document.createElement('article');row.className='session';
+      const info=document.createElement('div'),title=document.createElement('div'),meta=document.createElement('div'),actions=document.createElement('div');
+      title.className='session-title';title.textContent=(session.scene||session.id)+(session.complete===false?' — interrupted':'');
+      if(session.complete===false){title.style.color='var(--red)';title.title=session.capture_error||'Interrupted recording';}
+      meta.className='session-meta';
+      meta.textContent=[labels[session.target_label]||session.phase,`${numberText(session.distance_m,2)} m measured`,`${session.frames??'—'} frames`,session.created_at||''].filter(Boolean).join(' · ');
+      info.append(title,meta);actions.className='session-actions';
+      actions.append(sessionLink('Review take',session.view_url),sessionLink('Results JSON',session.summary_url),sessionLink('Download',session.download_url));
+      row.append(info,actions);return row;
+    }));
+  }
+
+  function render() {
+    $('connectionDot').className='dot '+(!connected||state?.error?'bad':state?.ready?'live':'');
+    $('connectionText').textContent=!connected?'Pi connection lost':state?.error?'Pi error':state?.ready?'Pi camera connected':'Pi is preparing…';
+    $('fpsValue').innerHTML=`${numberText(state?.metrics?.fps)} <span>fps</span>`;
+    $('searchValue').innerHTML=`${numberText(state?.metrics?.search_refresh_ms,0)} <span>ms</span>`;
+    const errors=state?.metrics?.worker_errors,restarts=state?.metrics?.worker_restarts;
+    $('workerValue').textContent=`${Number.isFinite(errors)?errors:'—'} / ${Number.isFinite(restarts)?restarts:'—'}`;
+    $('workerValue').classList.toggle('metric-alert',(errors||0)>0||(restarts||0)>0);
+    updateControls();updateCapture();updateFrame();updateTelemetry();updateSessions();
+  }
+
+  async function api(path,body) {
+    const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Lab-Request':'1'},body:JSON.stringify(body),cache:'no-store',signal:AbortSignal.timeout(12000)});
+    let data;try{data=await response.json();}catch{throw new Error(`Pi returned an unreadable response (${response.status}).`);}
+    if(!response.ok)throw new Error(data.error||`Pi request failed (${response.status}).`);
+    return data;
+  }
+
+  async function applyConfig() {
+    const phase=controls.phase.value,goal_color=phase==='goal'?(controls.target.value==='yellow_square'?'yellow':'orange'):(state?.goal_color||'orange');
+    if(state?.phase===phase&&state?.goal_color===goal_color)return;
+    const data=await api('/api/config',{phase,goal_color});
+    if(data&&typeof data.ready==='boolean')state=data;
+    else if(state)state={...state,phase,goal_color};
+  }
+
+  async function configChanged() {
+    if(requestPending||busy()||!connected)return;
+    requestPending=true;showError('');updateControls();
+    try{await applyConfig();}
+    catch(error){showError(error.message);if(state){controls.phase.value=state.phase;targetOptions(state.phase,state.goal_color==='yellow'?'yellow_square':'orange_square');}}
+    finally{requestPending=false;render();}
+  }
+
+  controls.phase.addEventListener('change',()=>{targetOptions(controls.phase.value);configChanged();});
+  controls.target.addEventListener('change',()=>{if(controls.phase.value==='goal')configChanged();else updateControls();});
+  for(const input of [controls.distance,controls.count])input.addEventListener('input',updateControls);
+  for(const [id,delta] of [['distanceDown',-.1],['distanceUp',.1]])$(id).addEventListener('click',()=>{
+    const current=validDistance()?controls.distance.valueAsNumber:0;
+    controls.distance.value=Math.max(.01,Math.min(100,Math.round((current+delta)*100)/100)).toFixed(2);updateControls();
+  });
+  for(const mode of ['boxes','mask'])$(mode+'View').addEventListener('click',()=>{
+    view=mode;imageKey='';image=null;drawVersion++;ctx.clearRect(0,0,canvas.width,canvas.height);
+    $('emptyView').classList.remove('hidden');$('emptyView').querySelector('strong').textContent=mode==='mask'?'Waiting for a mask preview':'Waiting for a camera frame';
+    $('boxesView').setAttribute('aria-pressed',String(mode==='boxes'));$('maskView').setAttribute('aria-pressed',String(mode==='mask'));updateFrame();
+  });
+
+  $('captureForm').addEventListener('submit',async event=>{
+    event.preventDefault();
+    if($('captureButton').disabled||!$('captureForm').reportValidity())return;
+    requestPending=true;showError('');updateControls();
+    try{
+      await applyConfig();
+      const result=await api('/api/capture',{distance_m:controls.distance.valueAsNumber,scene:controls.scene.value.trim(),notes:controls.notes.value.trim(),target_label:controls.target.value,expected_count:controls.count.valueAsNumber});
+      state={...state,capture:{state:result.state||'capturing',id:result.id,frames:0,remaining_s:5}};
+    }catch(error){showError(error.message);}
+    finally{requestPending=false;render();}
+  });
+
+  async function poll() {
+    try{
+      const response=await fetch('/api/state',{cache:'no-store',signal:AbortSignal.timeout(7000)});
+      if(!response.ok)throw new Error(`Pi status unavailable (${response.status})`);
+      const incoming=await response.json();
+      if(typeof incoming.ready!=='boolean')throw new Error('Pi returned an invalid status');
+      // A settings response owns the local controls until its request finishes.
+      if(!requestPending){
+        if(state?.phase!==incoming.phase){controls.phase.value=incoming.phase;targetOptions(incoming.phase,incoming.goal_color==='yellow'?'yellow_square':'orange_square');}
+        else if(incoming.phase==='goal')controls.target.value=incoming.goal_color==='yellow'?'yellow_square':'orange_square';
+      }
+      state=incoming;connected=true;render();
+      if(mappingLoad==='idle')loadMapping();
+    }catch(error){
+      connected=false;render();$('captureStatus').textContent='Pi connection unavailable';$('captureDetail').textContent=error.message;
+    }finally{window.setTimeout(poll,1000);}
+  }
+  poll();
+})();
+</script>
+</body>
+</html>
