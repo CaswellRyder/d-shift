@@ -16,6 +16,8 @@ import numpy as np
 from PIL import Image
 
 from dtr.flight import ColorTracker, Mission, encode
+from dtr.flight_pipeline import FlightPipeline
+from dtr.flight_telemetry import add_mapping_arguments, mapping_from_args
 from dtr.goal_square import GOAL_COLORS
 from dtr.search_worker import ModelSearch, SearchWorker
 
@@ -46,6 +48,7 @@ class Camera:
     def read(self):
         request = self.camera.capture_request()
         try:
+            self.last_metadata = request.get_metadata()
             rgb = cv2.cvtColor(request.make_array("main"), cv2.COLOR_BGR2RGB)  # RGB888 is BGR in memory.
         finally:
             request.release()
@@ -82,25 +85,22 @@ def summary(values):
                 p90=round(float(np.percentile(values, 90)), 1), max=round(float(values.max()), 1))
 
 
-def run(source, worker, tracker, mission, seconds):
+def run(source, worker, tracker, mission, seconds, telemetry=None):
     lines, loop_times, refresh_times, search_ms, lag_ms = [], [], [], [], []
+    pipeline = FlightPipeline(worker, tracker, mission, telemetry=telemetry)
+    draft_lines = []
     end = time.monotonic() + seconds
     while time.monotonic() < end:
         rgb, now = source.read()
-        tracker.update(rgb, now)
-        result = worker.poll()
+        frame = pipeline.step(rgb, now)
+        result = frame["search_result"]
         if result is not None:
-            if result["phase"] == mission.search_phase:  # Ignore results from a finished phase.
-                tracker.merge(result["detections"], result["frame_time"], now)
             refresh_times.append(now)
             search_ms.append(result["search_ms"])
             lag_ms.append((now - result["frame_time"]) * 1000)
-        phase = mission.phase
-        message = mission.step(tracker.tracks, now)
-        if mission.phase != phase:
-            tracker.clear()  # Each phase follows different objects.
-        worker.submit(rgb, now, mission.search_phase)
-        lines.append(encode(message))
+        lines.append(encode(frame["message"]))
+        if 'flight_telemetry' in frame:
+            draft_lines.append(frame['flight_telemetry']['outgoing']['draft_jsonl'])
         loop_times.append(time.monotonic())
     return lines, dict(
         frames=len(loop_times),
@@ -112,6 +112,7 @@ def run(source, worker, tracker, mission, seconds):
         result_lag_ms=summary(lag_ms),
         worker_restarts=worker.restarts, worker_errors=worker.errors,
         commands=dict(Counter(json.loads(line)["cmd"] for line in lines)),
+        esp32_draft_lines=draft_lines,
     )
 
 
@@ -127,12 +128,15 @@ def main():
     parser.add_argument("--fps", type=float, default=20)
     parser.add_argument("--replay", help="glob of stored frames instead of the camera")
     parser.add_argument("--niceness", type=int, default=19)
+    add_mapping_arguments(parser)
     args = parser.parse_args()
     if not 2 <= args.seconds <= 600 or not 1 <= args.fps <= 40:
         parser.error("Require seconds 2..600 and fps 1..40")
     log = Path(args.log)
-    if log.exists():
-        raise FileExistsError(log)
+    draft_log = log.with_name(log.stem + '.esp32-draft.jsonl')
+    if log.exists() or draft_log.exists():
+        raise FileExistsError('A requested log already exists')
+    telemetry = mapping_from_args(args)
 
     mission = Mission(args.goal_color)
     if args.phase == "goal":
@@ -145,14 +149,17 @@ def main():
         ready_s = time.monotonic() - started
         source = Replay(args.replay, args.fps) if args.replay else Camera(args.fps)
         try:
-            lines, report = run(source, worker, ColorTracker(), mission, args.seconds)
+            lines, report = run(source, worker, ColorTracker(), mission, args.seconds,
+                                telemetry=telemetry)
         finally:
             source.close()
     finally:
         worker.close()
     log.write_text("".join(lines))  # Written after the loop: no disk I/O while timing.
+    draft_log.write_text(''.join(report.pop('esp32_draft_lines')))
     report.update(worker_ready_s=round(ready_s, 2), source="replay" if args.replay else "camera",
-                  fps=args.fps, goal_color=args.goal_color, start_phase=args.phase, log=str(log))
+                  fps=args.fps, goal_color=args.goal_color, start_phase=args.phase, log=str(log),
+                  esp32_draft_log=str(draft_log))
     print(json.dumps(report, indent=1))
 
 
