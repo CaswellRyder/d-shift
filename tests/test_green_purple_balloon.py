@@ -62,6 +62,76 @@ def test_search_proposes_targets_but_not_red_or_blue():
     assert not proposals(scene(105), "balloon", profile=GREEN_PURPLE_PROFILE)
 
 
+def test_compact_colour_signal_beats_large_dim_clutter_at_four_crops():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    # Saturated colour on a filled small balloon carries more evidence than a
+    # large, almost black patch whose hue is dominated by sensor noise.
+    for x in (5, 65, 125, 185):
+        cv2.rectangle(rgb, (x, 5), (x + 45, 50), (32, 40, 32), -1)
+    cv2.circle(rgb, (100, 120), 7, (40, 180, 40), -1)
+    cv2.ellipse(rgb, (200, 120), (7, 9), 0, 0, 360,
+                cv2.cvtColor(np.uint8([[[120, 180, 160]]]), cv2.COLOR_HSV2RGB)[0, 0].tolist(), -1)
+    found = proposals(rgb, 'balloon', limit=4, profile=GREEN_PURPLE_PROFILE)
+    assert any(c['box'] == [93, 113, 108, 128] for c in found)
+    assert any(c['box'] == [193, 111, 208, 130] for c in found)
+    assert len(found) <= 4
+
+
+def test_near_dull_balloon_keeps_a_slot_beside_tiny_saturated_specks():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    cv2.ellipse(rgb, (160, 130), (48, 60), 0, 0, 360, (40, 100, 40), -1)
+    for x in (10, 30, 50, 70):
+        cv2.circle(rgb, (x, 10), 4, (0, 255, 0), -1)
+    found = proposals(rgb, 'balloon', limit=4, profile=GREEN_PURPLE_PROFILE)
+    # The best-scoring speck still leads; the near balloon takes the reserved slot.
+    assert found[0]['box'] != [112, 70, 209, 191]
+    assert found[1]['box'] == [112, 70, 209, 191]
+
+
+@pytest.mark.parametrize('center', [(10, 130), (310, 130), (160, 8), (160, 232)])
+@pytest.mark.parametrize('bgr_hsv', [(60, 150, 100), (130, 150, 120)])
+def test_frame_clipped_balloon_is_not_rejected_for_aspect(center, bgr_hsv):
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    color = cv2.cvtColor(np.uint8([[bgr_hsv]]), cv2.COLOR_HSV2RGB)[0, 0].tolist()
+    axes = (48, 60) if center[1] == 130 else (60, 48)
+    cv2.ellipse(rgb, center, axes, 0, 0, 360, color, -1)
+    found = proposals(rgb, 'balloon', limit=4, profile=GREEN_PURPLE_PROFILE)
+    assert len(found) == 1
+    x1, y1, x2, y2 = found[0]['box']
+    assert max((x2 - x1) / (y2 - y1), (y2 - y1) / (x2 - x1)) > 2  # Visible box exceeds 2:1.
+
+
+def test_unclipped_elongated_component_still_fails_the_aspect_test():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    cv2.ellipse(rgb, (160, 120), (20, 50), 0, 0, 360, (40, 180, 40), -1)
+    assert not proposals(rgb, 'balloon', profile=GREEN_PURPLE_PROFILE)
+
+
+def test_balloon_filter_rejects_unresolved_thin_and_ragged_components():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    rgb[10:14, 10:15] = hsv_patch(60)[0, 0]  # Four-pixel side, unresolved.
+    rgb[30:36, 30:50] = hsv_patch(120)[0, 0]  # Elongated purple fragment.
+    # A branched component has a square bounding box but excessive perimeter.
+    cv2.rectangle(rgb, (80, 62), (82, 100), (40, 180, 40), -1)
+    cv2.rectangle(rgb, (62, 80), (100, 82), (40, 180, 40), -1)
+    assert not proposals(rgb, 'balloon', profile=GREEN_PURPLE_PROFILE)
+    assert proposals(rgb, 'balloon', profile='balloon_components')  # Other profiles unchanged.
+
+
+def test_balloon_inside_bright_hollow_rim_keeps_its_crop_slot():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    cv2.circle(rgb, (120, 110), 50, (70, 220, 70), 2)
+    cv2.circle(rgb, (120, 110), 7, (40, 140, 40), -1)
+    found = proposals(rgb, 'balloon', limit=1, profile=GREEN_PURPLE_PROFILE)
+    assert len(found) == 1 and found[0]['box'] == [113, 103, 128, 118]
+
+
+def test_balloon_colour_signal_has_no_new_hard_brightness_cutoff():
+    rgb = np.zeros((240, 320, 3), np.uint8)
+    cv2.circle(rgb, (120, 110), 7, (10, 30, 10), -1)
+    assert proposals(rgb, 'balloon', limit=1, profile=GREEN_PURPLE_PROFILE)
+
+
 @pytest.mark.parametrize("metadata", [
     {}, dict(task="goal", classes=GreenPurplePredictor.metadata["classes"]),
     dict(task="balloon", classes=["background", "green_balloon"]),

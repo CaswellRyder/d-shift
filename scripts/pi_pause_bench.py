@@ -16,7 +16,7 @@ import time
 import numpy as np
 from PIL import Image
 
-from dtr.goal_square import GOAL_COLORS, square_candidates
+from dtr.goal_square import GOAL_COLORS, goal_candidates
 from dtr.runtime import Predictor
 from dtr.vision import GREEN_PURPLE_PROFILE, proposals, suppress_duplicates
 
@@ -40,7 +40,7 @@ def full_job(rgb, predictor, balloons=True, goals=True):
         found = suppress_duplicates(found)
     if goals:
         for color in GOAL_COLORS:
-            square_candidates(rgb, (color,))
+            goal_candidates(rgb, (color,))
             yield "goal_" + color
     return found
 

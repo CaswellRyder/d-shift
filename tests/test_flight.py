@@ -72,7 +72,7 @@ def test_track_dropped_after_misses_and_after_confirm_timeout():
     assert tracker.tracks == []
 
     tracker = seeded()
-    for i in range(1, 40):  # Color keeps matching, but no search re-confirms it.
+    for i in range(1, 60):  # Color keeps matching, but no search re-confirms it.
         tracker.update(frame(("disk", GREEN, 60, 120, 10)), i / FPS)
     assert tracker.tracks == []
 
@@ -120,7 +120,7 @@ def test_mission_search_track_lost_then_search():
     assert message["cmd"] == "TRACK" and message["target"]["label"] == "green_balloon"
     assert message["target"]["x"] == pytest.approx(0.25) and message["target"]["size"] == pytest.approx(20 / 320, abs=1e-3)
     assert mission.step([], 1.5)["cmd"] == "LOST"
-    assert mission.step([], 2.1)["cmd"] == "SEARCH"
+    assert mission.step([], 3.0)["cmd"] == "SEARCH"
 
 
 def test_fan_on_needs_close_centered_and_fresh_balloon():
@@ -173,7 +173,7 @@ def test_mission_rejects_unknown_goal_color_and_encodes_one_line():
     assert line.endswith("\n") and line.count("\n") == 1
     decoded = json.loads(line)
     assert decoded["v"] == 1 and decoded["goal_color"] == "yellow" and decoded["seq"] == 1
-    assert set(decoded["target"]) == {"label", "x", "y", "size", "age_ms", "seen_ms"}
+    assert set(decoded["target"]) == {"label", "x", "y", "size", "age_ms", "seen_ms", "yaw_deg", "elev_m", "travel_m"}
 
 
 def test_goal_rim_is_tracked_by_color():
@@ -381,3 +381,118 @@ def test_late_result_narrower_than_swollen_history_snaps_the_track():
     tracker.merge([dict(label=track.label, box=[115, 45, 205, 195], score=0.9)], 0.5, 1.0)
     assert track.box == [115, 45, 205, 195] and track.misses == 1
     assert track.confirmed_wh == (90, 150)
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle'])
+def test_goal_enter_gate_scales_physical_width(color, shape):
+    mission = Mission(color, config=MissionConfig(enter_commit_s=0))  # Gate alone, no pass-through hold.
+    mission.captured()
+    label = f'{color}_{shape}'
+    size = mission.target_sizes[label]
+    gate_width = mission.config.enter_size * mission.width * size['width_m'] / 1.168
+    for factor, command in [(.99, 'TRACK'), (1.01, 'ENTER')]:
+        w = gate_width * factor
+        h = w * size['height_m'] / size['width_m']
+        track = Track(1, label, [160-w/2, 120-h/2, 160+w/2, 120+h/2],
+                      confirmed=1., seen=1., confirmed_wh=(w, h))
+        assert mission.step([track], 1.)['cmd'] == command
+        track.confirmed = 0.
+        assert mission.step([track], 1.)['cmd'] == 'TRACK'
+        track.confirmed, track.misses = 1., 1
+        assert mission.step([track], 1.)['cmd'] != 'ENTER'
+
+
+def goal_track(identifier, color, shape, range_proxy, *, yaw_scale=1):
+    # Physical-size-normalized boxes: triangle is wider at the SAME range.
+    sizes = Mission(color).target_sizes[f'{color}_{shape}']
+    w, h = sizes['width_m'] / range_proxy * yaw_scale, sizes['height_m'] / range_proxy
+    return Track(identifier, f'{color}_{shape}', [160-w/2, 120-h/2, 160+w/2, 120+h/2],
+                 confirmed=1., seen=1., confirmed_wh=(w, h))
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle'])
+def test_nearest_goal_across_shapes_and_colours(color, shape):
+    mission = Mission(color)
+    mission.captured()
+    other = 'yellow' if color == 'orange' else 'orange'
+    tracks = [goal_track(i+1, color, s, .04) for i, s in enumerate(('circle', 'square', 'triangle'))]
+    # Closer even though its pixel width may be less than a farther triangle's.
+    nearest = goal_track(10, color, shape, .03, yaw_scale=.65)
+    tracks.extend([nearest, goal_track(11, other, 'triangle', .01)])
+    message = mission.step(tracks, 1.)
+    assert mission.selected_track_id == nearest.id
+    assert message['target']['label'] == nearest.label
+    nearest.misses = 1
+    mission.step(tracks, 1.)
+    assert mission.selected_track_id != nearest.id
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+def test_avoid_uses_nearest_other_colour_across_shapes(color):
+    mission = Mission(color)
+    mission.captured()
+    other = 'yellow' if color == 'orange' else 'orange'
+    tracks = [goal_track(1, other, 'triangle', .04), goal_track(2, other, 'circle', .03)]
+    message = mission.step(tracks, 1.)
+    assert message['cmd'] == 'AVOID'
+    assert mission.selected_track_id == 2
+    assert message['target']['label'] == f'{other}_circle'
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle'])
+def test_all_goal_labels_have_tracking_hsv(color, shape):
+    tracker = seeded(label=f'{color}_{shape}', cx=160, cy=80, r=20)
+    tracker.update(frame(('rim', ORANGE if color == 'orange' else YELLOW, 160, 80, 20)), .05)
+    assert tracker.tracks[0].misses == 0
+
+
+def test_slow_search_cadence_survives_but_does_not_extend_mission_freshness():
+    tracker = seeded(cx=160, r=55)
+    image = frame(('disk', GREEN, 160, 120, 55))
+    for now in [1., 1.5, 2., 2.5]:
+        tracker.update(image, now)
+        assert len(tracker.tracks) == 1 and tracker.tracks[0].misses == 0
+    assert tracker.confirm_timeout == 2.5
+    assert MissionConfig().fresh_s == .8
+    assert Mission('orange').step(tracker.tracks, 2.)['cmd'] == 'TRACK'
+    tracker.update(image, 2.51)
+    assert tracker.tracks == []
+
+
+@pytest.mark.parametrize('shape', ['circle', 'triangle'])
+def test_goal_enter_gate_does_not_use_rounded_telemetry_size(shape):
+    mission = Mission('yellow')
+    mission.captured()
+    label = f'yellow_{shape}'
+    gate = mission.config.enter_size * mission.target_sizes[label]['width_m'] / 1.168
+    for delta, cmd in [(-1e-5, 'TRACK'), (1e-5, 'ENTER')]:
+        width = (gate + delta) * 320
+        track = Track(1, label, [160-width/2, 100, 160+width/2, 140],
+                      1., 1., confirmed_wh=(width, 40))
+        assert mission.step([track], 1.)['cmd'] == cmd
+
+
+def test_revised_goal_shape_replaces_the_track_instead_of_adding_one():
+    tracker = ColorTracker()
+    hoop = [72, 44, 249, 198]
+    tracker.merge([dict(label='orange_circle', box=hoop, score=.9)], .1, .1)
+    tracker.merge([dict(label='orange_triangle', box=hoop, score=.9)], .2, .2)
+    assert [t.label for t in tracker.tracks] == ['orange_triangle']
+    # An older result arriving late never reverts the newer shape.
+    tracker.merge([dict(label='orange_circle', box=hoop, score=.9)], .15, .3)
+    assert [t.label for t in tracker.tracks] == ['orange_triangle']
+
+
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle'])
+def test_enter_gate_uses_the_yaw_tolerant_range_proxy(shape):
+    mission = Mission('orange', config=MissionConfig(enter_commit_s=0))  # Gate alone, no pass-through hold.
+    mission.captured()
+    gate = mission.target_sizes['orange_square']['width_m'] / (mission.config.enter_size * mission.width)
+    for yaw_scale in (1, .65):  # Yaw shortens width only; the range proxy must not change.
+        assert mission.step([goal_track(1, 'orange', shape, gate * .99, yaw_scale=yaw_scale)],
+                            1.)['cmd'] == 'ENTER'
+        assert mission.step([goal_track(1, 'orange', shape, gate * 1.01, yaw_scale=yaw_scale)],
+                            1.)['cmd'] == 'TRACK'

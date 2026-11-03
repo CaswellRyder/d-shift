@@ -13,7 +13,7 @@ import time
 import cv2
 import numpy as np
 
-from dtr.goal_square import square_candidates
+from dtr.goal_square import goal_candidates
 from dtr.runtime import Predictor
 from dtr.vision import GREEN_PURPLE_HSV, GREEN_PURPLE_PROFILE, observe
 
@@ -104,14 +104,14 @@ def track_check(rgb, center):
 
 def stage_costs(camera, predictor, seconds):
     rows = dict(balloon_full=[], balloon_search=[], balloon_classify=[], crops=[],
-                goal_squares=[], hsv_full_frame=[], track_window=[])
+                goal_shapes=[], hsv_full_frame=[], track_window=[])
     end = time.perf_counter() + seconds
     while time.perf_counter() < end:
         rgb, _ = grab(camera)
         t0 = time.perf_counter()
         result = observe(rgb, predictor, profile=GREEN_PURPLE_PROFILE)
         t1 = time.perf_counter()
-        square_candidates(rgb)
+        goal_candidates(rgb)
         t2 = time.perf_counter()
         cv2.cvtColor(rgb, cv2.COLOR_RGB2HSV)
         t3 = time.perf_counter()
@@ -121,7 +121,7 @@ def stage_costs(camera, predictor, seconds):
         rows["balloon_search"].append(result["stage_ms"]["search"])
         rows["balloon_classify"].append(result["stage_ms"]["crop_and_classify"])
         rows["crops"].append(len(result["observations"]))
-        rows["goal_squares"].append((t2 - t1) * 1000)
+        rows["goal_shapes"].append((t2 - t1) * 1000)
         rows["hsv_full_frame"].append((t3 - t2) * 1000)
         rows["track_window"].append((t4 - t3) * 1000)
     return {k: summary(v) for k, v in rows.items()}
@@ -130,7 +130,7 @@ def stage_costs(camera, predictor, seconds):
 def schedules(camera, predictor, seconds):
     def full(rgb, index):
         observe(rgb, predictor, profile=GREEN_PURPLE_PROFILE)
-        square_candidates(rgb)
+        goal_candidates(rgb)
 
     def every(n):
         def work(rgb, index):

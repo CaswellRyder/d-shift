@@ -10,7 +10,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .flight import encode
+from .flight import PHASE_LABELS, encode, encode_v2
 from .lens import LensModel
 from .target_geometry import CONFIGS, CameraMount, TargetGeometry
 
@@ -75,7 +75,7 @@ class FlightTelemetry:
                                       max(0., now - track['seen']) * 1000)
         result = target.to_dict()
         result['mount_calibrated'] = self.mapping_status['mount_calibrated']
-        result['square_pose_ambiguous'] = track['label'].endswith('_square')
+        result['goal_pose_ambiguous'] = track['label'] in PHASE_LABELS['goal']
         result['range_qualified'] = False  # No measured pose/size uncertainty model yet.
         result['age_ms'] = round(result['age_ms'], 6)
         result['seen_ms'] = round(result['seen_ms'], 6)
@@ -94,7 +94,7 @@ class FlightTelemetry:
                 tracks = [t for t in tracks if t['id'] == selected_id]
             else:
                 # Replay support for older rows: bind to the published point, not a
-                # second independent target choice (AVOID uses a different tie break).
+                # second independent target choice.
                 def matches(t):
                     x1, y1, x2, y2 = t['box']
                     return (round((x1 + x2) / self.lens.width - 1, 3) == published.get('x')
@@ -122,7 +122,7 @@ class FlightTelemetry:
                 blockers.append('target_size_unmeasured')
             if selected['clipped']:
                 blockers.append('target_clipped')
-            if selected['square_pose_ambiguous']:
+            if selected['goal_pose_ambiguous']:
                 blockers.append('goal_pose_range_ambiguous')
             if selected['age_ms'] > 800 or selected['seen_ms'] > 100:
                 blockers.append('target_stale')
@@ -140,7 +140,8 @@ class FlightTelemetry:
             forward, right, up = target['body_xyz_m']
             navigation_delta = dict(x_right_m=right, y_up_m=up, z_forward_m=forward)
             image_error = dict(x_right=published['x'], y_up=-published['y'])
-        packet = dict(schema='pi-esp32-guidance-draft-v1', seq=message['seq'],
+        published_vector = message.get('target') or {}
+        packet = dict(target_vector=dict(**{k: published_vector.get(k) for k in ('yaw_deg', 'elev_m', 'travel_m')}, source='connor_vector_creation'), schema='pi-esp32-guidance-draft-v1', seq=message['seq'],
                       frame_time_s=float(now), timestamp_kind='post_acquisition_monotonic',
                       sensor_timestamp='recorded separately in the frame row; no IMU clock alignment yet',
                       target_goal_color=message['goal_color'],
@@ -162,7 +163,7 @@ class FlightTelemetry:
                                           altitude_m=None, sonar_held=None, battery_v=None,
                                           manual=None, heartbeat_age_ms=None),
                     mapping_status=self.mapping_status,
-                    outgoing=dict(legacy_jsonl=encode(message), draft_packet=packet,
+                    outgoing=dict(wire_v2_jsonl=encode_v2(message), legacy_jsonl=encode(message), draft_packet=packet,
                                   draft_jsonl=json.dumps(packet, separators=(',', ':'), allow_nan=False) + '\n'))
 
 

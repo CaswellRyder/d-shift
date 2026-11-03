@@ -729,3 +729,48 @@ def test_clean_camera_loop_shutdown_marks_active_take_interrupted(tmp_path):
     assert lab.capture.state == "failed"
     assert "stopped before the take finished" in lab.capture.error
     assert lab.source.closed and lab.pipeline.worker.closed
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle', 'goal'])
+def test_capture_accepts_each_shape_and_colour_requests(color, shape):
+    data = dict(payload(), target_label=f'{color}_{shape}')
+    metadata = validate_capture(data, 'goal', color)
+    assert metadata['target_label'] == f'{color}_{shape}'
+    with pytest.raises(ValueError, match='colour'):
+        validate_capture(data, 'goal', 'orange' if color == 'yellow' else 'yellow')
+
+
+@pytest.mark.parametrize('requested', ['yellow_goal', 'yellow_square'])
+def test_capture_requested_coverage_counts_any_shape_of_colour(tmp_path, requested):
+    buffer = finished_buffer()
+    buffer.metadata.update(target_label=requested, phase='goal', goal_color='yellow')
+    for i, (_, row) in enumerate(buffer.frames):
+        row['phase_before'] = 'goal'
+        row['tracks'][0]['label'] = ['yellow_circle', 'yellow_triangle', 'orange_square'][i]
+    summary = export_capture(buffer, tmp_path, {})
+    assert summary['frames_with_requested_target'] == 2
+    assert summary['requested_target_coverage'] == pytest.approx(2/3)
+
+
+def test_goal_mask_colours_follow_hsv_order():
+    from dtr.flight_lab import diagnostic_images
+    image = np.zeros((240, 320, 3), np.uint8)
+    image[40:80, 40:80] = (240, 110, 20)
+    image[40:80, 160:200] = (230, 220, 30)
+    mask, _, _ = diagnostic_images(image, {
+        'phase_before': 'goal', 'tracks': [], 'message': {'cmd': 'SEARCH'}})
+    assert tuple(mask[60, 60]) == (245, 145, 55)
+    assert tuple(mask[60, 180]) == (235, 215, 65)
+
+
+def test_reconfiguring_keeps_custom_target_sizes_and_config():
+    from dtr.flight import MissionConfig
+    from dtr.flight_pipeline import FlightPipeline
+    sizes = deepcopy(Mission("orange").target_sizes)
+    sizes["orange_circle"]["width_m"] = sizes["orange_circle"]["height_m"] = 2.0
+    config = MissionConfig(enter_size=.3)
+    pipeline = FlightPipeline(None, ColorTracker(), Mission("orange", config=config, target_sizes=sizes))
+    pipeline.configure("goal", "yellow", 0.)
+    assert pipeline.mission.target_sizes["orange_circle"]["width_m"] == 2.0
+    assert pipeline.mission.config.enter_size == .3 and pipeline.mission.goal_color == "yellow"

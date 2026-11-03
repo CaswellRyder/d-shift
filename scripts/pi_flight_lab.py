@@ -24,8 +24,10 @@ import numpy as np
 from dtr.flight import ColorTracker, Mission
 from dtr.flight_lab import CaptureBuffer, diagnostic_images, export_capture, validate_capture
 from dtr.flight_pipeline import FlightPipeline
+from dtr.target_geometry import load_target_sizes
+from dtr.target_vector import VectorCreator
 from dtr.flight_telemetry import add_mapping_arguments, mapping_from_args, mapping_identity_paths
-from dtr.search_worker import ModelSearch, SearchWorker
+from dtr.search_worker import DEFAULT_BALLOON_LIMIT, ModelSearch, SearchWorker
 
 try:
     from scripts.pi_flight_loop import Camera, Replay
@@ -342,11 +344,14 @@ def main():
     parser.add_argument('--goal-model', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--port', type=int, default=8770)
+    parser.add_argument('--balloon-limit', type=int, default=DEFAULT_BALLOON_LIMIT)
     parser.add_argument('--wall-clock-offset-s', type=float, default=0.,
                         help='Mac-derived offset for labels only; frame timing stays monotonic')
     parser.add_argument('--replay', help='Synthetic/stored frame glob for interface testing only')
     add_mapping_arguments(parser)
     args = parser.parse_args()
+    if not 1 <= args.balloon_limit <= 64:
+        parser.error('Balloon limit must be between 1 and 64')
     if not 1024 <= args.port <= 65535:
         parser.error('Choose a port from 1024 to 65535')
     root = Path(__file__).resolve().parents[1]
@@ -362,16 +367,20 @@ def main():
     identities = dict(source='replay' if args.replay else 'camera', bundle=str(root), fps=20,
                       wall_clock_offset_s=args.wall_clock_offset_s,
                       sensor=[1296, 972], output=[320, 240], rotation_deg=180,
-                      search_niceness=19, balloon_limit=8,
+                      search_niceness=19, balloon_limit=args.balloon_limit,
                       mapping=telemetry.mapping(),
                       hashes={str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in files})
-    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model), niceness=19)
+    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model, args.balloon_limit), niceness=19)
     lab, thread, server, source = None, None, None, None
     try:
         worker.start()
         worker.wait_ready()
         source = Replay(args.replay, 20) if args.replay else Camera(20)
-        lab = Lab(source, FlightPipeline(worker, ColorTracker(), Mission('orange'), telemetry=telemetry),
+        sizes = load_target_sizes(args.target_sizes)
+        # Connor's vector uses the same lens (and any checkerboard calibration) as telemetry.
+        mission = Mission('orange', target_sizes=sizes,
+                          vector=VectorCreator(telemetry.lens, sizes))
+        lab = Lab(source, FlightPipeline(worker, ColorTracker(), mission, telemetry=telemetry),
                   args.output, identities)
         server = LabHTTPServer(('127.0.0.1', args.port), make_handler(lab, args.port))
         server.lab = lab
