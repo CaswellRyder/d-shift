@@ -5,14 +5,17 @@ import numpy as np
 
 from .contracts import Target, TargetReport
 from .flight import BALLOON_LABELS, ColorTracker
-from .goal_square import SQUARE_LABELS
+from .goal_square import GOAL_COLORS, GOAL_LABELS, LABELS_BY_COLOR
 from .lens import LensModel
 from .search_worker import SearchWorker
-from .target_geometry import TargetGeometry, steering
+from .target_geometry import TargetGeometry, load_target_sizes, relative_range, steering
 
 
-def best_track(tracks, labels):
-    """Biggest box width, then newest confirmation, requiring a current color hit."""
+def best_track(tracks, labels, sizes=None):
+    """Nearest goal (or widest balloon), then newest confirmation, with a colour hit."""
+    if sizes is not None:
+        return min((t for t in tracks if t.label in labels and t.misses == 0),
+                   key=lambda t: (relative_range(t.label, t.box, sizes), -t.confirmed), default=None)
     return max((t for t in tracks if t.label in labels and t.misses == 0),
                key=lambda t: (t.box[2] - t.box[0], t.confirmed), default=None)
 
@@ -33,6 +36,9 @@ class FindTarget:
         if (self.lens.width, self.lens.height) != (width, height):
             raise ValueError("Geometry dimensions must match runtime frames")
         self.geometry = geometry or TargetGeometry(self.lens)
+        self.target_sizes = getattr(self.geometry, "sizes", None)
+        if self.target_sizes is None:
+            self.target_sizes = load_target_sizes()
         self.worker = worker if worker is not None else SearchWorker(
             factory, shape=(height, width, 3))
         self.phase, self.phase_since = None, None
@@ -60,9 +66,9 @@ class FindTarget:
         return self._frame(rgb, frame_time, "balloon", BALLOON_LABELS)
 
     def goal(self, rgb, frame_time, target_color):
-        if target_color not in SQUARE_LABELS:
+        if target_color not in GOAL_COLORS:
             raise ValueError(f"Unknown goal color: {target_color}")
-        return self._frame(rgb, frame_time, "goal", (SQUARE_LABELS[target_color],))
+        return self._frame(rgb, frame_time, "goal", LABELS_BY_COLOR[target_color])
 
     def _frame(self, rgb, frame_time, phase, labels):
         if phase != self.phase:
@@ -78,9 +84,10 @@ class FindTarget:
         tracks = [t for t in self.tracker.tracks
                   if self.lens.in_view([((t.box[0] + t.box[2]) / 2, (t.box[1] + t.box[3]) / 2)],
                                        self.view_exponent, self.view_scale)[0]]
-        target = best_track(tracks, labels)
+        sizes = self.target_sizes if phase == "goal" else None
+        target = best_track(tracks, labels, sizes)
         avoid = (best_track(tracks,
-                            tuple(v for v in SQUARE_LABELS.values() if v not in labels))
+                            tuple(v for v in GOAL_LABELS if v not in labels), sizes)
                  if phase == "goal" else None)
         ready = self.worker.ready or getattr(self.worker, "state", None) == "busy"
         self.worker.submit(rgb, frame_time, phase)
@@ -164,9 +171,10 @@ class FakeFindTarget:
                             None, self.ready)
 
     def goal(self, rgb, frame_time, target_color):
-        if target_color not in SQUARE_LABELS:
+        if target_color not in GOAL_COLORS:
             raise ValueError(f"Unknown goal color: {target_color}")
-        target = self._sample(self.keyframes, frame_time, SQUARE_LABELS[target_color])
-        other = next(v for k, v in SQUARE_LABELS.items() if k != target_color)
+        # Scripted XYZ has no observed silhouette; retain a square fixture label.
+        target = self._sample(self.keyframes, frame_time, f"{target_color}_square")
+        other = next(f"{color}_square" for color in GOAL_COLORS if color != target_color)
         avoid = self._sample(self.avoid_keyframes, frame_time, other)
         return TargetReport(float(frame_time), "goal", target, avoid, self.ready)

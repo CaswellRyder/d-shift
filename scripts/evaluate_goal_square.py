@@ -1,4 +1,4 @@
-"""Score the square-goal search on DTR v10 frames, one round color at a time.
+"""Score the all-shape goal search on DTR v10 frames, one round color at a time.
 
 Train reads the grouped COCO export (EngDes2 is never involved); val reads the
 595-frame 320x240 set in runs/pi-comparison-20261005. The test split is never read.
@@ -11,14 +11,15 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from dtr.goal_square import GOAL_COLORS, SQUARE_LABELS, find_squares
+from dtr.goal_square import GOAL_COLORS, LABELS_BY_COLOR, find_goals
 from dtr.runtime import Predictor
 from dtr.tracking import iou
 
 SIZES = ((16, "<16"), (32, "16-32"), (64, "32-64"), (1e9, ">64"))
 TRAIN = Path("data/roboflow-dtr-v10-grouped/coco/train")
 VAL = Path("runs/pi-comparison-20261005")
-COCO_SQUARES = {"Orange Square Goal": "orange_square", "Yellow Square Goal": "yellow_square"}
+COCO_GOALS = {f"{color.title()} {shape.title()} Goal": f"{color}_{shape}"
+              for color in GOAL_COLORS for shape in ("circle", "square", "triangle")}
 
 
 def bucket(box):
@@ -29,6 +30,8 @@ def bucket(box):
 def frames(split, stride):
     if split == "val":
         for row in json.loads((VAL / "frames.json").read_text())["frames"][::stride]:
+            if Path(row["path"]).name.startswith("IMG_"):
+                continue
             bgr = cv2.imread(str(VAL / row["path"]))
             yield cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB), row["truth"]
         return
@@ -38,12 +41,14 @@ def frames(split, stride):
     for ann in doc["annotations"]:
         by_image[ann["image_id"]].append(ann)
     for image in doc["images"][::stride]:
+        if Path(image["file_name"]).name.startswith("IMG_"):
+            continue
         sx, sy = 320 / image["width"], 240 / image["height"]
         bgr = cv2.resize(cv2.imread(str(TRAIN / image["file_name"])), (320, 240),
                          interpolation=cv2.INTER_AREA)
         truth = []
         for ann in by_image[image["id"]]:
-            label = COCO_SQUARES.get(names[ann["category_id"]])
+            label = COCO_GOALS.get(names[ann["category_id"]])
             if label:
                 x, y, w, h = ann["bbox"]
                 truth.append(dict(label=label, box=[x * sx, y * sy, (x + w) * sx, (y + h) * sy]))
@@ -54,15 +59,16 @@ def evaluate(split, stride, predictor, color, max_crops, threshold):
     hits, total, false = Counter(), Counter(), Counter()
     calls, ms, count = 0, [], 0
     for rgb, truth in frames(split, stride):
-        result = find_squares(rgb, predictor, (color,), threshold, max_crops)
+        result = find_goals(rgb, predictor, (color,), threshold, max_crops)
         calls += result["neural_calls"]
         ms.append(result["search_ms"])
         count += 1
         used = set()
-        for target in (t for t in truth if t["label"] == SQUARE_LABELS[color]):
+        for target in (t for t in truth if t["label"] in LABELS_BY_COLOR[color]):
             total[bucket(target["box"])] += 1
             match = next((i for i, d in enumerate(result["detections"])
-                          if i not in used and iou(d["box"], target["box"]) >= 0.5), None)
+                          if i not in used and d["label"] == target["label"]
+                          and iou(d["box"], target["box"]) >= 0.5), None)
             if match is not None:
                 used.add(match)
                 hits[bucket(target["box"])] += 1

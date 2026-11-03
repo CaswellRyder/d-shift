@@ -149,3 +149,27 @@ def test_corner_track_is_not_reported():
         finder.balloon(rgb, .01)
         report = finder.balloon(rgb, .02)
         assert finder.tracker.tracks and report.target is None
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape', ['circle', 'square', 'triangle'])
+def test_find_target_accepts_each_goal_shape_and_nearest_ranking(color, shape):
+    from dtr.target_geometry import load_target_sizes
+    sizes = load_target_sizes()
+    label = f'{color}_{shape}'
+    w, h = sizes[label]['width_m']/.03, sizes[label]['height_m']/.03
+    nearest = Track(1, label, [160-w/2, 120-h/2, 160+w/2, 120+h/2], 1., 1.)
+    farther = Track(2, f'{color}_triangle', [140, 100, 180, 135], 1., 1.)
+    assert best_track([farther, nearest], [f'{color}_{s}' for s in ('circle','square','triangle')], sizes) is nearest
+    worker = StubWorker()
+    with FindTarget(worker=worker) as finder:
+        rgb = frame()
+        finder.goal(rgb, 0, color)
+        # Seed current colour tracks directly to isolate routing from async search latency.
+        finder.tracker.tracks = [nearest]
+        nearest.box = [100., 80., 140., 120.] if color == 'orange' else [200., 80., 250., 130.]
+        nearest.confirmed_wh = (40., 40.) if color == 'orange' else (50., 50.)
+        report = finder.goal(rgb, 1., color)
+        assert report.target.label == label and report.avoid is None
+        report = finder.goal(rgb, 1.01, 'yellow' if color == 'orange' else 'orange')
+        assert report.target is None and report.avoid.label == label

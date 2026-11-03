@@ -125,7 +125,9 @@ class PackageTests(KitCase):
     def test_config_rejects_shell_and_ssh_option_injection(self):
         for key, value in [('host', '-oProxyCommand=bad'), ('host', 'vision.local; touch marker'),
                            ('user', 'pacman@other'), ('remote_root', '/home/pacman/../../etc'),
-                           ('remote_root', '/home/pacman/a;bad'), ('port', True)]:
+                           ('remote_root', '/home/pacman/a;bad'), ('port', True),
+                           ('balloon_limit', True), ('balloon_limit', 0),
+                           ('balloon_limit', 65), ('balloon_limit', '4')]:
             config = dict(self.config, **{key: value})
             (self.root / 'connection.json').write_text(json.dumps(config))
             with self.subTest(key=key, value=value), self.assertRaises(launcher.LabError):
@@ -321,6 +323,36 @@ class PiHelperTests(KitCase):
             with self.assertRaisesRegex(pi.SetupError, 'port 8770.*requests 8771'):
                 pi.probe(dict(config=config, manifest=self.manifest))
 
+    def test_reused_viewer_must_match_the_requested_balloon_limit(self):
+        root, _ = self.fake_running_process()
+        command = self.root / 'proc/4321/cmdline'
+        base = command.read_bytes()
+        with mock.patch.object(pi, 'PROC_ROOT', self.root / 'proc'):
+            # Absent argument means the current script's default budget.
+            self.assertEqual(pi.validate_process(root, self.manifest, expected_balloon_limit=4), 4321)
+            with self.assertRaisesRegex(pi.SetupError, 'balloon_limit 4.*requests 2'):
+                pi.validate_process(root, self.manifest, expected_balloon_limit=2)
+            command.write_bytes(base + b'--balloon-limit\x008\x00')
+            with self.assertRaisesRegex(pi.SetupError, 'balloon_limit 8.*requests 4'):
+                pi.validate_process(root, self.manifest, expected_balloon_limit=4)
+            self.assertEqual(pi.validate_process(root, self.manifest, expected_balloon_limit=8), 4321)
+            command.write_bytes(base + b'--balloon-limit\x00many\x00')
+            with self.assertRaisesRegex(pi.SetupError, 'invalid balloon limit'):
+                pi.validate_process(root, self.manifest, expected_balloon_limit=4)
+
+    def test_probe_refuses_to_reuse_a_viewer_with_another_budget(self):
+        root, _ = self.fake_running_process()
+        command = self.root / 'proc/4321/cmdline'
+        command.write_bytes(command.read_bytes() + b'--balloon-limit\x008\x00')
+        config = dict(self.config, remote_root=str(self.root / 'new pi bundle'),
+                      legacy_root=str(root), balloon_limit=4)
+        state = dict(source='camera', bundle=str(root), capture=dict(state='idle'))
+        with mock.patch.object(pi, 'PROC_ROOT', self.root / 'proc'), \
+                mock.patch.object(pi, 'read_viewer_state', return_value=state), \
+                mock.patch.object(pi.subprocess, 'Popen', side_effect=AssertionError('must not launch')):
+            with self.assertRaisesRegex(pi.SetupError, 'balloon_limit 8.*requests 4'):
+                pi.probe(dict(config=config, manifest=self.manifest))
+
     def test_unrelated_pid_is_never_reused(self):
         root, _ = self.fake_running_process()
         (self.root / 'proc/4321/cmdline').write_bytes(b'python3\0unrelated.py\0')
@@ -340,6 +372,7 @@ class PiHelperTests(KitCase):
         env = spawn.call_args.kwargs['env']
         self.assertEqual(argv[argv.index('--balloon-model') + 1], str(root / 'models/balloon.tflite'))
         self.assertEqual(argv[argv.index('--goal-model') + 1], str(root / 'models/goal.tflite'))
+        self.assertEqual(argv[argv.index('--balloon-limit') + 1], '4')
         self.assertEqual(env['DTR_TFLITE_LIBRARY'], str(root / 'runtime/libtensorflowlite_c.so'))
         self.assertFalse(any('/Users/' in arg for arg in argv))
         self.assertEqual(result['pid'], 1234)

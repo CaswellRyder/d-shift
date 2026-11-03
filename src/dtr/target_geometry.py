@@ -1,11 +1,11 @@
-"""Angular box sizing, assuming a target facing the camera (square pose is unknown).
+"""Angular box sizing, assuming a target facing the camera (goal pose is unknown).
 
 Body coordinates: x forward, y right, z up. Positive mount yaw turns right,
 positive pitch raises the optical axis, positive roll lowers the right side.
 Rotation order is yaw @ pitch @ roll on converted camera axes; translation is
 camera position in body meters. A clipped range is an upper bound only under
-these size/pose assumptions. Spheres use the exact tangent-cone range. Squares
-assume an upright face: a square rolled in the image widens its box and reads
+these size/pose assumptions. Spheres use the exact tangent-cone range. Flat goals
+use the smaller width/height range to tolerate yaw. Image roll widens boxes and reads
 closer (about 8% at 5 degrees of roll).
 """
 
@@ -17,6 +17,27 @@ import numpy as np
 from .contracts import Target
 
 CONFIGS = Path(__file__).resolve().parents[2] / "configs"
+
+
+def load_target_sizes(path=None):
+    sizes = json.loads(Path(path or CONFIGS / "target_sizes.json").read_text())
+    for size in sizes.values():
+        if (not np.isfinite(size["width_m"]) or size["width_m"] <= 0
+                or size["shape"] not in ("round", "square", "circle", "triangle")):
+            raise ValueError("Invalid target size")
+        if size["shape"] != "round":
+            if (not np.isfinite(size.get("height_m", 0)) or size.get("height_m", 0) <= 0):
+                raise ValueError("Flat targets require a positive height_m")
+    return sizes
+
+
+def relative_range(label, box, sizes):
+    """Physical extent / pixels; smaller is nearer, using the unforeshortened axis."""
+    size = sizes[label]
+    w, h = box[2] - box[0], box[3] - box[1]
+    if w <= 0 or h <= 0:
+        return float("inf")
+    return min(size["width_m"] / w, size["height_m"] / h)
 
 
 def steering(body):
@@ -50,15 +71,11 @@ class CameraMount:
 class TargetGeometry:
     def __init__(self, lens, sizes_path=None, mount=None, pixel_sigma=1.0):
         self.lens = lens
-        self.sizes = json.loads(Path(sizes_path or CONFIGS / "target_sizes.json").read_text())
+        self.sizes = load_target_sizes(sizes_path)
         self.mount = mount or CameraMount.from_config(CONFIGS / "camera_mount.json")
         self.pixel_sigma = float(pixel_sigma)
         if not np.isfinite(self.pixel_sigma) or self.pixel_sigma < 0:
             raise ValueError("pixel_sigma must be finite and nonnegative")
-        for size in self.sizes.values():
-            if (not np.isfinite(size["width_m"]) or size["width_m"] <= 0
-                    or size["shape"] not in ("round", "square")):
-                raise ValueError("Invalid target size")
 
     def target(self, label, score, box_px, age_ms=0.0, seen_ms=0.0):
         box = np.asarray(box_px, float)
@@ -84,11 +101,12 @@ class TargetGeometry:
             # atan2 is well conditioned even for very small extents.
             angles = np.arctan2(np.linalg.norm(np.cross(pairs[:, 0], pairs[:, 1]), axis=1),
                                 np.sum(pairs[:, 0] * pairs[:, 1], axis=1))
-            angle = max(angles) if size["shape"] == "round" else angles[0]
-            half = size["width_m"] / 2
             # Sphere: tangent rays meet the center at radius / sin. Flat face: half-width / tan.
-            ranges.append(half / (np.sin(angle / 2) if size["shape"] == "round"
-                                  else np.tan(angle / 2)))
+            if size["shape"] == "round":
+                ranges.append(size["width_m"] / 2 / np.sin(max(angles) / 2))
+            else:
+                ranges.append(min(np.array([size["width_m"], size["height_m"]])
+                                  / 2 / np.tan(angles / 2)))
         distance = float(ranges[0])
         error = float(max(abs(ranges[1] - distance), abs(ranges[2] - distance)))
         cam = rays[0] * distance

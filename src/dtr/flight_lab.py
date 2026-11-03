@@ -15,13 +15,23 @@ import cv2
 import numpy as np
 
 from .flight import TRACK_HSV
-from .flight import encode
+from .flight import encode, encode_v2
+from .goal_square import GOAL_LABELS, LABELS_BY_COLOR
 from .vision import GREEN_PURPLE_PROFILE, color_masks
 
 LABELS = {'balloon': ('green_balloon', 'purple_balloon'),
-          'goal': ('orange_square', 'yellow_square')}
+          'goal': GOAL_LABELS}
 COLORS = {'green_balloon': (65, 195, 105), 'purple_balloon': (178, 100, 215),
-          'orange_square': (245, 145, 55), 'yellow_square': (235, 215, 65)}
+          **{label: (245, 145, 55) for label in LABELS_BY_COLOR['orange']},
+          **{label: (235, 215, 65) for label in LABELS_BY_COLOR['yellow']}}
+GOAL_REQUESTS = ('orange_goal', 'yellow_goal')
+
+
+def requested_target_matches(label, requested):
+    """Goal capture requests cover any shape of that colour, including older takes."""
+    if requested in GOAL_REQUESTS or requested in GOAL_LABELS:
+        return label in LABELS_BY_COLOR[requested.split('_')[0]]
+    return label == requested
 
 
 def validate_capture(payload, phase, goal_color):
@@ -33,9 +43,9 @@ def validate_capture(payload, phase, goal_color):
     if not math.isfinite(distance) or not 0 < distance <= 100:
         raise ValueError('Measured distance must be greater than zero and at most 100 m')
     label = payload.get('target_label')
-    if label not in LABELS.get(phase, ()):
+    if label not in (LABELS.get(phase, ()) + (GOAL_REQUESTS if phase == 'goal' else ())):
         raise ValueError('Target label does not match the search phase')
-    if phase == 'goal' and label != goal_color + '_square':
+    if phase == 'goal' and label not in (*LABELS_BY_COLOR[goal_color], goal_color + '_goal'):
         raise ValueError('Goal label must match the selected goal colour')
     count = payload.get('expected_count', 1)
     if isinstance(count, bool) or not isinstance(count, int) or not 0 <= count <= 20:
@@ -117,7 +127,8 @@ def diagnostic_images(rgb, row):
     phase = 'goal' if row['phase_before'] == 'goal' else 'balloon'
     masks = color_masks(rgb, phase, GREEN_PURPLE_PROFILE if phase == 'balloon' else 'v2')
     mask_rgb = np.zeros_like(rgb)
-    for label, mask in zip(LABELS[phase], masks):
+    mask_labels = ('orange_circle', 'yellow_circle') if phase == 'goal' else LABELS[phase]
+    for label, mask in zip(mask_labels, masks):
         mask_rgb[mask != 0] = COLORS[label]
     overlay = rgb.copy()
     message = row['message']
@@ -180,13 +191,16 @@ def export_capture(capture, root, identities):
                 (pending / 'clip.avi').unlink(missing_ok=True)
         commands = Counter()
         matching = 0
-        wire_bytes, draft_bytes = [], []
+        wire_bytes, draft_bytes, v2_bytes = [], [], []
         # Serialize only observations already computed in the live frame step.
         # Old takes without coordinate telemetry remain explicitly legacy-only.
-        with (pending / 'wire-v1.jsonl').open('x') as wire, (pending / 'esp32-draft.jsonl').open('x') as draft:
+        with (pending / 'wire-v1.jsonl').open('x') as wire, (pending / 'wire-v2.jsonl').open('x') as wire2, (pending / 'esp32-draft.jsonl').open('x') as draft:
             for row in rows:
                 outgoing = row.get('flight_telemetry', {}).get('outgoing', {})
                 legacy_line = outgoing.get('legacy_jsonl', encode(row['message']))
+                v2_line = outgoing.get('wire_v2_jsonl', encode_v2(row['message']))
+                wire2.write(v2_line)
+                v2_bytes.append(len(v2_line.encode('utf-8')))
                 wire.write(legacy_line)
                 wire_bytes.append(len(legacy_line.encode('utf-8')))
                 if outgoing.get('draft_jsonl') is not None:
@@ -207,7 +221,8 @@ def export_capture(capture, root, identities):
                                             overlay=f'overlay/{filename}',
                                             tracker_mask=f'tracker-masks/{filename}'), allow_nan=False) + '\n')
                 commands[row['message']['cmd']] += 1
-                matching += any(t['label'] == capture.metadata['target_label'] and t['misses'] == 0
+                matching += any(requested_target_matches(t['label'], capture.metadata['target_label'])
+                                and t['misses'] == 0
                                 for t in row['tracks'])
         if writer is not None:
             writer.release()
@@ -242,7 +257,7 @@ def export_capture(capture, root, identities):
                        preview_during_capture=False, encoding_during_capture=False,
                        video_available=(pending / 'clip.avi').exists(),
                        video_note='AVI uses measured average fps; frames.jsonl preserves exact timestamps',
-                       outgoing_logs=dict(legacy='wire-v1.jsonl', esp32_draft='esp32-draft.jsonl',
+                       outgoing_logs=dict(wire_v2='wire-v2.jsonl', wire_v2_max_bytes=max(v2_bytes, default=0), legacy='wire-v1.jsonl', esp32_draft='esp32-draft.jsonl',
                                           draft_frames=sum('flight_telemetry' in row for row in rows),
                                           transmitted=False, controller_input='unavailable',
                                           max_legacy_line_bytes=max(wire_bytes, default=0),

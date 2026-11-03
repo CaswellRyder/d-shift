@@ -126,7 +126,9 @@
   const $ = id => document.getElementById(id);
   const controls = {phase:$('phase'),target:$('targetLabel'),distance:$('distance'),count:$('expectedCount'),scene:$('scene'),notes:$('notes')};
   const canvas=$('cameraCanvas'), ctx=canvas.getContext('2d');
-  const labels={green_balloon:'Green balloon',purple_balloon:'Purple balloon',orange_square:'Orange goal',yellow_square:'Yellow goal'};
+  const labels={green_balloon:'Green balloon',purple_balloon:'Purple balloon',orange_goal:'Orange goal',yellow_goal:'Yellow goal',
+    orange_circle:'Orange circle',orange_square:'Orange square',orange_triangle:'Orange triangle',
+    yellow_circle:'Yellow circle',yellow_square:'Yellow square',yellow_triangle:'Yellow triangle'};
   let state=null, connected=false, requestPending=false, view='boxes', image=null, imageKey='', drawVersion=0, lastSessions='';
   let packetMode='legacy',mapping=null,mappingLoad='idle',mappingHover=null;
   const busy = () => ['capturing','exporting'].includes(state?.capture?.state);
@@ -188,7 +190,7 @@
     const blockers=Array.isArray(packet?.blockers)&&packet.blockers.length?packet.blockers:[telemetry?'Controller and actuator handoff have not been validated.':'No current flight telemetry available.'];
     $('packetBlockers').replaceChildren(...blockers.map(text=>{const item=document.createElement('li');item.textContent=String(text);return item;}));
     const outgoing=telemetry?.outgoing;
-    $('packetText').textContent=packetMode==='legacy'?(outgoing?.legacy_jsonl || 'No current wire packet available.'):(outgoing?.draft_jsonl || (packet?JSON.stringify(packet):'No current guidance draft available.'));
+    $('packetText').textContent=packetMode==='legacy'?(outgoing?.wire_v2_jsonl || outgoing?.legacy_jsonl || 'No current wire packet available.'):(outgoing?.draft_jsonl || (packet?JSON.stringify(packet):'No current guidance draft available.'));
     drawMapping();
   }
 
@@ -298,7 +300,7 @@
   }
 
   function targetOptions(phase, preferred) {
-    const options=phase==='goal' ? ['orange_square','yellow_square'] : ['green_balloon','purple_balloon'];
+    const options=phase==='goal' ? ['orange_goal','yellow_goal'] : ['green_balloon','purple_balloon'];
     const previous=preferred || controls.target.value;
     controls.target.replaceChildren(...options.map(value=>{
       const option=document.createElement('option'); option.value=value; option.textContent=labels[value]; return option;
@@ -445,7 +447,7 @@
   }
 
   async function applyConfig() {
-    const phase=controls.phase.value,goal_color=phase==='goal'?(controls.target.value==='yellow_square'?'yellow':'orange'):(state?.goal_color||'orange');
+    const phase=controls.phase.value,goal_color=phase==='goal'?(controls.target.value==='yellow_goal'?'yellow':'orange'):(state?.goal_color||'orange');
     if(state?.phase===phase&&state?.goal_color===goal_color)return;
     const data=await api('/api/config',{phase,goal_color});
     if(data&&typeof data.ready==='boolean')state=data;
@@ -456,7 +458,7 @@
     if(requestPending||busy()||!connected)return;
     requestPending=true;showError('');updateControls();
     try{await applyConfig();}
-    catch(error){showError(error.message);if(state){controls.phase.value=state.phase;targetOptions(state.phase,state.goal_color==='yellow'?'yellow_square':'orange_square');}}
+    catch(error){showError(error.message);if(state){controls.phase.value=state.phase;targetOptions(state.phase,state.goal_color==='yellow'?'yellow_goal':'orange_goal');}}
     finally{requestPending=false;render();}
   }
 
@@ -493,8 +495,8 @@
       if(typeof incoming.ready!=='boolean')throw new Error('Pi returned an invalid status');
       // A settings response owns the local controls until its request finishes.
       if(!requestPending){
-        if(state?.phase!==incoming.phase){controls.phase.value=incoming.phase;targetOptions(incoming.phase,incoming.goal_color==='yellow'?'yellow_square':'orange_square');}
-        else if(incoming.phase==='goal')controls.target.value=incoming.goal_color==='yellow'?'yellow_square':'orange_square';
+        if(state?.phase!==incoming.phase){controls.phase.value=incoming.phase;targetOptions(incoming.phase,incoming.goal_color==='yellow'?'yellow_goal':'orange_goal');}
+        else if(incoming.phase==='goal')controls.target.value=incoming.goal_color==='yellow'?'yellow_goal':'orange_goal';
       }
       state=incoming;connected=true;render();
       if(mappingLoad==='idle')loadMapping();

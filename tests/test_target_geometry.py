@@ -166,3 +166,33 @@ def test_projected_geometry_default_lens(distance, bearing, label, width, sphere
                                          target_box(lens, distance, bearing, width, sphere))
     assert target.range_m == pytest.approx(distance, rel=.03)
     assert abs(target.bearing_deg - bearing) < 1
+
+
+@pytest.mark.parametrize('color', ['orange', 'yellow'])
+@pytest.mark.parametrize('shape,width,height', [('circle', 1.130, 1.130),
+                                               ('square', 1.168, 1.168),
+                                               ('triangle', 1.749, 1.515)])
+@pytest.mark.parametrize('distance', [2., 4., 6.])
+@pytest.mark.parametrize('width_scale,height_scale', [(1., 1.), (.6, 1.), (1., .6)])
+def test_flat_goal_range_uses_minimum_axis(color, shape, width, height, distance,
+                                         width_scale, height_scale):
+    lens = LensModel.ideal_equidistant()
+    # Mid-edge rays for a flat upright face; yaw/pitch shorten one extent only.
+    rays = [[-width * width_scale / 2, 0, distance], [width * width_scale / 2, 0, distance],
+            [0, -height * height_scale / 2, distance], [0, height * height_scale / 2, distance]]
+    pixels = project(lens, rays)
+    box = [pixels[0, 0], pixels[2, 1], pixels[1, 0], pixels[3, 1]]
+    result = TargetGeometry(lens).target(f'{color}_{shape}', .9, box)
+    assert result.range_m == pytest.approx(distance, rel=1e-6)
+    assert result.size_calibrated and result.range_err_m > 0
+
+
+@pytest.mark.parametrize('height', [None, 0, -1, float('nan'), float('inf')])
+def test_flat_goal_requires_valid_height(tmp_path, height):
+    size = dict(width_m=1.749, shape='triangle', calibrated=True)
+    if height is not None:
+        size['height_m'] = height
+    path = tmp_path / 'sizes.json'
+    path.write_text(json.dumps({'yellow_triangle': size}))
+    with pytest.raises(ValueError, match='height_m'):
+        TargetGeometry(LensModel.ideal_equidistant(), sizes_path=path)

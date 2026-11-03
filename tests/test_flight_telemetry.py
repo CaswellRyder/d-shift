@@ -149,11 +149,13 @@ def test_calibration_flags_cannot_approve_an_unapproved_controller():
     assert "camera_mount_unmeasured" not in packet["blockers"]
 
 
-def test_square_pose_uncertainty_is_not_hidden_by_known_goal_size(telemetry):
-    observed = telemetry.observe(row(label="orange_square", phase="goal"), 10.)
+@pytest.mark.parametrize("label", ["orange_circle", "orange_square", "orange_triangle",
+                                   "yellow_circle", "yellow_square", "yellow_triangle"])
+def test_goal_pose_uncertainty_is_not_hidden_by_known_goal_size(telemetry, label):
+    observed = telemetry.observe(row(label=label, phase="goal"), 10.)
     target = observed["coordinates"]["target"]
     assert target["size_calibrated"]
-    assert target["square_pose_ambiguous"] and not target["range_qualified"]
+    assert target["goal_pose_ambiguous"] and not target["range_qualified"]
     assert "goal_pose_range_ambiguous" in observed["outgoing"]["draft_packet"]["blockers"]
 
 
@@ -226,7 +228,7 @@ def test_equal_width_geometry_uses_the_newer_full_search_confirmation(telemetry)
 
 
 @pytest.mark.parametrize("with_selected_id", [True, False])
-def test_equal_width_avoidance_goals_keep_the_legacy_missions_first_left_goal(
+def test_equal_range_avoidance_goals_use_newest_confirmation(
         telemetry, with_selected_id):
     tracker = ColorTracker()
     tracker.tracks = [
@@ -242,15 +244,15 @@ def test_equal_width_avoidance_goals_keep_the_legacy_missions_first_left_goal(
     mission.captured()
     sample = FlightPipeline(StubWorker(), tracker, mission).step(image, 10.)
     assert sample["message"]["cmd"] == "AVOID"
-    assert sample["message"]["target"]["x"] < 0
-    assert sample["selected_track_id"] == 11
-    expected = next(item for item in sample["tracks"] if item["id"] == 11)
+    assert sample["message"]["target"]["x"] > 0
+    assert sample["selected_track_id"] == 12
+    expected = next(item for item in sample["tracks"] if item["id"] == 12)
     if not with_selected_id:
         sample.pop("selected_track_id")
     observed = telemetry.observe(sample, 10.)
     assert observed["coordinates"]["target"] is None
     assert observed["coordinates"]["avoid"]["box_px"] == tuple(expected["box"])
-    assert observed["coordinates"]["avoid"]["body_xyz_m"][1] < 0
+    assert observed["coordinates"]["avoid"]["body_xyz_m"][1] > 0
     assert observed["outgoing"]["legacy_jsonl"] == encode(sample["message"])
     assert all(value is None for value in observed["outgoing"]["draft_packet"]["relative_guidance"].values())
 

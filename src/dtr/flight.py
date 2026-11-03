@@ -12,7 +12,10 @@ import json
 import cv2
 import numpy as np
 
-from .goal_square import GOAL_COLORS, SQUARE_LABELS
+from .lens import LensModel
+from .target_vector import VectorCreator
+from .goal_square import GOAL_COLORS, GOAL_LABELS, LABELS_BY_COLOR
+from .target_geometry import load_target_sizes, relative_range
 from .vision import GREEN_PURPLE_HSV, HSV_RANGES
 
 BALLOON_LABELS = ("green_balloon", "purple_balloon")
@@ -20,13 +23,15 @@ TRACK_HSV = {
     "green_balloon": GREEN_PURPLE_HSV[:1],
     "purple_balloon": GREEN_PURPLE_HSV[1:],
     # Same bands the goal search uses; orange also wraps through red hues.
-    "orange_square": (HSV_RANGES["goal"][0], ((170, 45, 30), (179, 255, 255))),
-    "yellow_square": (HSV_RANGES["goal"][1],),
+    **{label: (HSV_RANGES["goal"][0], ((170, 45, 30), (179, 255, 255)))
+       for label in LABELS_BY_COLOR["orange"]},
+    **{label: (HSV_RANGES["goal"][1],) for label in LABELS_BY_COLOR["yellow"]},
 }
 PHASE_LABELS = {"balloon": BALLOON_LABELS, "capture": BALLOON_LABELS,
-                "goal": tuple(SQUARE_LABELS.values())}
+                "goal": GOAL_LABELS}
 COMMANDS = ("SEARCH", "TRACK", "LOST", "FAN_ON", "ENTER", "AVOID")
 PROTOCOL_VERSION = 1
+MIN_CENTER_FRACTION = 0.6  # Below this centre-line/box height ratio, trust the box height.
 
 
 def iou(a, b):
@@ -35,6 +40,12 @@ def iou(a, b):
     inter = max(0.0, w) * max(0.0, h)
     union = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter
     return inter / union if union > 0 else 0.0
+
+
+def same_target(a, b):
+    """Same tracked object identity: equal labels, or one goal colour whose shape was revised."""
+    return a == b or (a in GOAL_LABELS and b in GOAL_LABELS
+                      and a.split("_")[0] == b.split("_")[0])
 
 
 def center(box):
@@ -62,6 +73,8 @@ class Track:
     history: deque = field(default_factory=lambda: deque(maxlen=40))
     confirmed_wh: tuple = (0.0, 0.0)  # Width and height the full search measured, in pixels.
 
+    center_h: float | None = None
+
     def box_at(self, when):
         """Where the track was at `when`; the oldest kept box if `when` predates it."""
         best = self.box
@@ -73,7 +86,7 @@ class Track:
 
 
 class ColorTracker:
-    def __init__(self, width=320, height=240, min_pixels=4, max_misses=4, confirm_timeout=1.5,
+    def __init__(self, width=320, height=240, min_pixels=4, max_misses=4, confirm_timeout=2.5,
                  window_scale=2.5, min_window=24, max_tracks=6, alpha=0.5, max_growth=1.6,
                  min_match_iou=0.3, max_size_ratio=1.5):
         self.width, self.height = width, height
@@ -109,7 +122,7 @@ class ColorTracker:
         mask = np.zeros(patch.shape[:2], np.uint8)
         for lo, hi in TRACK_HSV[label]:
             mask |= cv2.inRange(patch, lo, hi)
-        count, _, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=8)
+        count, components, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=8)
         best, best_distance = None, None
         for index in range(1, count):
             if stats[index, cv2.CC_STAT_AREA] < self.min_pixels:
@@ -124,6 +137,9 @@ class ColorTracker:
         if best is None:
             return None
         bx, by, bw, bh = stats[best, :4]
+        mid, band = int(bx + bw // 2), max(1, round(0.05 * bw))
+        rows = np.flatnonzero(np.any(components[:, max(0, mid-band):mid+band+1] == best, axis=1))
+        self._center_h = float(rows[-1] - rows[0] + 1) if len(rows) else float(bh)
         return [float(x1 + bx), float(y1 + by), float(x1 + bx + bw), float(y1 + by + bh)]
 
     def update(self, rgb, now):
@@ -146,6 +162,7 @@ class ColorTracker:
                 dx, dy = track.velocity[0] * dt, track.velocity[1] * dt
                 track.box = [track.box[0] + dx, track.box[1] + dy, track.box[2] + dx, track.box[3] + dy]
             else:
+                track.center_h = self._center_h
                 if dt > 0:
                     (ox, oy), (nx, ny) = center(track.box), center(box)
                     a = self.alpha
@@ -167,7 +184,7 @@ class ColorTracker:
             dx, dy = center(det["box"])
             best, best_iou, best_distance = None, -1.0, float("inf")
             for track in self.tracks:
-                if track.label != det["label"] or track.id in claimed:
+                if not same_target(track.label, det["label"]) or track.id in claimed:
                     continue
                 then = track.box_at(frame_time)
                 overlap = iou(then, det["box"])
@@ -183,6 +200,8 @@ class ColorTracker:
             claimed.add(best.id)
             if frame_time < best.confirmed:
                 continue  # A newer search result already confirmed or corrected this track.
+            # A newer full search may revise a goal's shape; one hoop keeps one track.
+            best.label = det["label"]
             # Compare width and height separately: a box can swell along one axis only.
             ratio = max(max(a, b) / max(min(a, b), 1)
                         for a, b in zip(dims(best.box_at(frame_time)), dims(det["box"])))
@@ -206,7 +225,7 @@ class ColorTracker:
             box = [float(v) for v in det["box"]]
             # Start where the object was; widened windows re-find it in the next frames.
             track = Track(self.next_id, det["label"], box, confirmed=frame_time, seen=frame_time,
-                          score=float(det.get("score", 0.0)), misses=1, confirmed_wh=dims(box))
+                          score=float(det.get("score", 0.0)), misses=1, confirmed_wh=dims(box), center_h=box[3]-box[1])
             track.history.append((frame_time, list(box)))
             self.tracks.append(track)
             self.next_id += 1
@@ -217,7 +236,8 @@ class ColorTracker:
         kept = []
         # Newest confirmation wins so a classifier correction is never discarded.
         for track in sorted(self.tracks, key=lambda t: (-t.confirmed, t.misses)):
-            if all(t.label != track.label or iou(t.box, track.box) < 0.5 for t in kept):
+            if all(not same_target(t.label, track.label) or iou(t.box, track.box) < 0.5
+                   for t in kept):
                 kept.append(track)
         self.tracks = sorted(kept, key=lambda t: t.id)
 
@@ -225,9 +245,10 @@ class ColorTracker:
 @dataclass
 class MissionConfig:
     fresh_s: float = 0.8  # FAN_ON / ENTER need a full-search confirmation this recent.
-    lost_s: float = 1.0  # Send LOST (hold) this long after losing the target, then SEARCH.
+    lost_s: float = 2.0  # Send LOST (hold) this long after losing the target, then SEARCH.
+    enter_commit_s: float = 3.0  # Keep ENTER this long after the gate last passed (hoop clips/leaves view).
     fan_size: float = 0.30  # Balloon width / frame width to trigger FAN_ON (provisional).
-    enter_size: float = 0.45  # Goal width / frame width to allow ENTER (provisional).
+    enter_size: float = 0.45  # Square width / frame width; other goal widths scale this gate.
     centered: float = 0.25  # |x| and |y| limit for FAN_ON / ENTER.
     max_growth: float = 1.5  # Current side / full-search side limit for FAN_ON / ENTER.
     capture_timeout_s: float = 4.0  # No `captured` event in time: back to balloon.
@@ -236,8 +257,14 @@ class MissionConfig:
 class Mission:
     """balloon -> capture (FAN_ON) -> goal -> scored -> balloon. Emits one message per frame."""
 
-    def __init__(self, goal_color, width=320, height=240, config=None):
+    def __init__(self, goal_color, width=320, height=240, config=None, sizes_path=None,
+                 target_sizes=None, vector=None):
         self.config = config or MissionConfig()
+        self.target_sizes = (target_sizes if target_sizes is not None
+                             else load_target_sizes(sizes_path))
+        self.vector = vector or VectorCreator(LensModel.ideal_equidistant(width, height), self.target_sizes)
+        self.last_description, self.last_cmd, self.search_dir = None, None, 0
+        self.enter_at, self.enter_track_id = None, None
         self.width, self.height = width, height
         self.set_goal_color(goal_color)
         self.phase, self.fan, self.seq = "balloon", False, 0
@@ -255,6 +282,8 @@ class Mission:
 
     def _enter(self, phase):
         self.phase, self.last_target_at = phase, None
+        self.last_description, self.last_cmd, self.search_dir = None, None, 0
+        self.enter_at, self.enter_track_id = None, None
 
     def captured(self):
         if self.phase in ("balloon", "capture"):
@@ -273,25 +302,45 @@ class Mission:
     def describe(self, track, now):
         x1, y1, x2, y2 = track.box
         cx, cy = center(track.box)
-        return dict(label=track.label,
+        # Centre-line height corrects fisheye/yaw bending by a modest fraction; far less
+        # than the box means the column missed part of a hollow frame, so use the box.
+        height = track.center_h
+        if height is None or height < MIN_CENTER_FRACTION * (y2 - y1):
+            height = None
+        vector = self.vector.vector_for(track.label, track.box, height) or {}
+        return dict(**{k: round(vector[k], digits) if k in vector else None
+                       for k, digits in (("yaw_deg", 1), ("elev_m", 2), ("travel_m", 2))},
+                    label=track.label,
                     x=round(2 * cx / self.width - 1, 3), y=round(2 * cy / self.height - 1, 3),
                     size=round((x2 - x1) / self.width, 3),
                     age_ms=int(max(0.0, now - track.confirmed) * 1000),
                     seen_ms=int(max(0.0, now - track.seen) * 1000))
 
-    def _ready(self, target, track, size_limit):
+    def _ready(self, target, track, size_limit=None, range_limit=None):
         c = self.config
         # A color box swollen past what the full search measured may be clutter.
         grown = all(now <= c.max_growth * then for now, then in zip(dims(track.box), track.confirmed_wh))
-        return (grown and target["age_ms"] <= c.fresh_s * 1000 and target["size"] >= size_limit
+        if range_limit is not None:
+            # Goals: the same yaw-tolerant range proxy that picks the nearest hoop.
+            near = relative_range(track.label, track.box, self.target_sizes) <= range_limit
+        else:
+            # Use the measured width, not the rounded telemetry value, at the size gate.
+            near = (track.box[2] - track.box[0]) / self.width >= size_limit
+        return (grown and target["age_ms"] <= c.fresh_s * 1000 and near
                 and abs(target["x"]) <= c.centered and abs(target["y"]) <= c.centered)
 
     def _best(self, tracks, labels, now):
         found = [t for t in tracks if t.label in labels and t.misses == 0]
         if not found:
             return None
-        # Biggest (closest) first, then most recently confirmed.
+        if self.phase == "goal":
+            return min(found, key=lambda t: (relative_range(t.label, t.box, self.target_sizes),
+                                             -t.confirmed))
+        # Balloons share a physical size: biggest first, then newest confirmation.
         return max(found, key=lambda t: (t.box[2] - t.box[0], t.confirmed))
+
+    def _committed(self, now):
+        return self.enter_at is not None and now - self.enter_at < self.config.enter_commit_s
 
     def step(self, tracks, now):
         c = self.config
@@ -311,30 +360,57 @@ class Mission:
                 self.fan, self.capture_started, cmd = True, now, "FAN_ON"
                 self._enter("capture")
         else:
-            ours = self._best(tracks, (SQUARE_LABELS[self.goal_color],), now)
+            committed = self._committed(now)
+            # A pass-through stays bound to the hoop that passed the gate.
+            held = next((t for t in tracks if t.id == self.enter_track_id and t.misses == 0),
+                        None) if committed else None
+            ours = held or self._best(tracks, LABELS_BY_COLOR[self.goal_color], now)
             if ours:
-                self.selected_track_id = ours.id
-                target = self.describe(ours, now)
-                cmd = "ENTER" if self._ready(target, ours, c.enter_size) else "TRACK"
-            else:
-                other = [t for t in tracks if t.label in SQUARE_LABELS.values()
-                         and t.label != SQUARE_LABELS[self.goal_color] and t.misses == 0]
-                if other:
-                    selected = max(other, key=lambda t: t.box[2] - t.box[0])
+                candidate = self.describe(ours, now)
+                # Every shape enters at the range where a square spans enter_size of the frame.
+                range_limit = (self.target_sizes[f"{self.goal_color}_square"]["width_m"]
+                               / (c.enter_size * self.width))
+                # Up close the committed hoop clips and swells past the gate; stay committed.
+                ready = self._ready(candidate, ours, range_limit=range_limit)
+                if ready:
+                    self.enter_at, self.enter_track_id, committed = now, ours.id, True
+                if ready or ours is held or not committed:
+                    self.selected_track_id = ours.id
+                    target = candidate
+                    cmd = "ENTER" if ready or ours is held else "TRACK"
+                # Otherwise the committed hoop is out of view: keep its frozen ENTER below.
+            if target is None and not committed:
+                selected = self._best(tracks, tuple(label for label in GOAL_LABELS
+                                      if label not in LABELS_BY_COLOR[self.goal_color]), now)
+                if selected:
                     self.selected_track_id = selected.id
                     target, cmd = self.describe(selected, now), "AVOID"
         if cmd is None:
             if target:
                 cmd = "TRACK"
-            elif self.last_target_at is not None and now - self.last_target_at <= c.lost_s:
+            elif self.last_target_at is not None and now - self.last_target_at < c.lost_s:
                 cmd = "LOST"
             else:
                 cmd = "SEARCH"
+        lost_ms = None
         if target and cmd != "AVOID":
             self.last_target_at = now
+            self.last_description = dict(target)
+            self.last_cmd = cmd
+            self.search_dir = 0
+        elif target is None and self.last_target_at is not None:
+            elapsed = now - self.last_target_at
+            lost_ms = int(max(0, elapsed) * 1000)
+            yaw = (self.last_description or {}).get('yaw_deg')
+            self.search_dir = (1 if yaw > 0 else -1) if yaw is not None and abs(yaw) >= 2 else 0
+            if self._committed(now):
+                cmd = 'ENTER'
+            if cmd in ('LOST', 'ENTER'):
+                target = dict(self.last_description)
         self.seq += 1
         return dict(v=PROTOCOL_VERSION, seq=self.seq, t_ms=int(now * 1000), phase=self.phase,
-                    goal_color=self.goal_color, cmd=cmd, fan=self.fan, target=target)
+                    goal_color=self.goal_color, cmd=cmd, fan=self.fan, target=target,
+                    lost_ms=lost_ms, search_dir=self.search_dir)
 
 
 def encode(message):
@@ -342,3 +418,19 @@ def encode(message):
     if message["cmd"] not in COMMANDS:
         raise ValueError("Unknown command")
     return json.dumps(message, separators=(",", ":")) + "\n"
+
+
+def encode_v2(message):
+    """Compact ESP32 guidance. t_ms - lost_ms is the frozen sighting time;
+    the receiver can subtract its IMU yaw change since that sighting.
+    """
+    if message['cmd'] not in COMMANDS:
+        raise ValueError('Unknown command')
+    target = message.get('target') or {}
+    if message['cmd'] == 'SEARCH':
+        target = {}
+    packet = dict(v=2, **{k: message[k] for k in
+                          ('seq', 't_ms', 'cmd', 'phase', 'goal_color', 'fan')})
+    packet.update({k: target.get(k) for k in ('label', 'yaw_deg', 'elev_m', 'travel_m', 'age_ms')})
+    packet.update(lost_ms=message.get('lost_ms'), search_dir=message.get('search_dir', 0))
+    return json.dumps(packet, separators=(',', ':'), allow_nan=False) + '\n'
