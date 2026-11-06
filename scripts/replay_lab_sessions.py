@@ -233,7 +233,8 @@ def replay_take(take, predictors, cost, balloon_limit, latency, output):
                 expected_frames.append(index)
             else:
                 wrong[target['label']] += 1
-            is_fresh = target['age_ms'] <= mission.config.fresh_s * 1000
+            track = next(t for t in pipeline.tracker.tracks if t.id == row['selected_track_id'])
+            is_fresh = mission.freshness(target, track)
             fresh += is_fresh
             track = next(t for t in pipeline.tracker.tracks if t.id == row['selected_track_id'])
             grown = all(a <= mission.config.max_growth * b for a, b in zip(

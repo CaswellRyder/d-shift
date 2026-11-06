@@ -15,7 +15,8 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from dtr.flight import ColorTracker, Mission, encode, encode_v2
+from dtr.flight import ColorTracker, Mission, encode, encode_v2, encode_i2c
+from dtr.esp32_link import I2CLink, NullLink
 from dtr.flight_pipeline import FlightPipeline
 from dtr.target_geometry import load_target_sizes
 from dtr.target_vector import VectorCreator
@@ -87,7 +88,8 @@ def summary(values):
                 p90=round(float(np.percentile(values, 90)), 1), max=round(float(values.max()), 1))
 
 
-def run(source, worker, tracker, mission, seconds, telemetry=None):
+def run(source, worker, tracker, mission, seconds, telemetry=None, link=None):
+    link = link or NullLink()
     lines, loop_times, refresh_times, search_ms, lag_ms = [], [], [], [], []
     pipeline = FlightPipeline(worker, tracker, mission, telemetry=telemetry)
     draft_lines = []
@@ -96,6 +98,7 @@ def run(source, worker, tracker, mission, seconds, telemetry=None):
     while time.monotonic() < end:
         rgb, now = source.read()
         frame = pipeline.step(rgb, now)
+        link.send(encode_i2c(frame["message"]))
         result = frame["search_result"]
         if result is not None:
             refresh_times.append(now)
@@ -106,7 +109,7 @@ def run(source, worker, tracker, mission, seconds, telemetry=None):
         if 'flight_telemetry' in frame:
             draft_lines.append(frame['flight_telemetry']['outgoing']['draft_jsonl'])
         loop_times.append(time.monotonic())
-    return lines, dict(
+    return lines, dict(link_sent=link.sent, link_errors=link.errors, link_last_error=link.last_error,
         frames=len(loop_times),
         loop_fps=round((len(loop_times) - 1) / (loop_times[-1] - loop_times[0]), 2),
         loop_gap_ms=summary(np.diff(loop_times) * 1000),
@@ -133,6 +136,8 @@ def main():
     parser.add_argument("--seconds", type=float, default=20)
     parser.add_argument("--fps", type=float, default=20)
     parser.add_argument("--replay", help="glob of stored frames instead of the camera")
+    parser.add_argument("--i2c-bus", type=int)
+    parser.add_argument("--i2c-address", type=lambda s: int(s, 0), default=0x42)
     parser.add_argument("--niceness", type=int, default=19)
     add_mapping_arguments(parser)
     args = parser.parse_args()
@@ -160,10 +165,12 @@ def main():
         worker.wait_ready()
         ready_s = time.monotonic() - started
         source = Replay(args.replay, args.fps) if args.replay else Camera(args.fps)
+        link = I2CLink(args.i2c_bus, args.i2c_address) if args.i2c_bus is not None else NullLink()
         try:
             lines, report = run(source, worker, ColorTracker(), mission, args.seconds,
-                                telemetry=telemetry)
+                                telemetry=telemetry, link=link)
         finally:
+            link.close()
             source.close()
     finally:
         worker.close()

@@ -8,6 +8,8 @@ them against where each track was when that frame was captured.
 from collections import deque
 from dataclasses import dataclass, field
 import json
+import struct
+import math
 
 import cv2
 import numpy as np
@@ -29,6 +31,8 @@ TRACK_HSV = {
 }
 PHASE_LABELS = {"balloon": BALLOON_LABELS, "capture": BALLOON_LABELS,
                 "goal": GOAL_LABELS}
+LABELS = BALLOON_LABELS + tuple(GOAL_LABELS)
+PHASES = ("balloon", "capture", "goal")
 COMMANDS = ("SEARCH", "TRACK", "LOST", "FAN_ON", "ENTER", "AVOID")
 PROTOCOL_VERSION = 1
 MIN_CENTER_FRACTION = 0.6  # Below this centre-line/box height ratio, trust the box height.
@@ -73,6 +77,8 @@ class Track:
     history: deque = field(default_factory=lambda: deque(maxlen=40))
     confirmed_wh: tuple = (0.0, 0.0)  # Width and height the full search measured, in pixels.
 
+    last_miss: float = float("-inf")  # Last miss or continuity break (jump to another blob).
+    follow_start: float = float("inf")
     center_h: float | None = None
 
     def box_at(self, when):
@@ -88,8 +94,12 @@ class Track:
 class ColorTracker:
     def __init__(self, width=320, height=240, min_pixels=4, max_misses=4, confirm_timeout=2.5,
                  window_scale=2.5, min_window=24, max_tracks=6, alpha=0.5, max_growth=1.6,
-                 min_match_iou=0.3, max_size_ratio=1.5):
+                 min_match_iou=0.3, max_size_ratio=1.5, follow_jump=0.5):
         self.width, self.height = width, height
+        # A hit this far (x target size) from the predicted centre may be a different
+        # same-colour object: keep tracking, but require a new full-search confirmation
+        # before Mission treats the track as followed (see Mission.freshness).
+        self.follow_jump = follow_jump
         self.min_pixels, self.max_misses = min_pixels, max_misses
         self.confirm_timeout = confirm_timeout
         self.window_scale, self.min_window = window_scale, min_window
@@ -136,6 +146,7 @@ class ColorTracker:
                 best, best_distance = index, distance
         if best is None:
             return None
+        self._hit_distance = float(best_distance)
         bx, by, bw, bh = stats[best, :4]
         mid, band = int(bx + bw // 2), max(1, round(0.05 * bw))
         rows = np.flatnonzero(np.any(components[:, max(0, mid-band):mid+band+1] == best, axis=1))
@@ -159,10 +170,13 @@ class ColorTracker:
             box = self._hit(hsv, track.label, window, predicted, size, growth)
             if box is None:
                 track.misses += 1
+                track.last_miss = now
                 dx, dy = track.velocity[0] * dt, track.velocity[1] * dt
                 track.box = [track.box[0] + dx, track.box[1] + dy, track.box[2] + dx, track.box[3] + dy]
             else:
                 track.center_h = self._center_h
+                if self._hit_distance > self.follow_jump * max(size, 1.0):
+                    track.last_miss = now  # Continuity break, not a miss: tracking goes on.
                 if dt > 0:
                     (ox, oy), (nx, ny) = center(track.box), center(box)
                     a = self.alpha
@@ -215,6 +229,7 @@ class ColorTracker:
                 # The classifier wins; motion from the drifting color track is unsafe.
                 best.box = [float(v) for v in det["box"]]
                 best.velocity, best.misses = (0.0, 0.0), 1
+                best.follow_start = now
                 best.confirmed = frame_time
                 best.history.append((now, list(best.box)))
             best.confirmed_wh = dims(det["box"])
@@ -225,7 +240,7 @@ class ColorTracker:
             box = [float(v) for v in det["box"]]
             # Start where the object was; widened windows re-find it in the next frames.
             track = Track(self.next_id, det["label"], box, confirmed=frame_time, seen=frame_time,
-                          score=float(det.get("score", 0.0)), misses=1, confirmed_wh=dims(box), center_h=box[3]-box[1])
+                          score=float(det.get("score", 0.0)), misses=1, follow_start=now, confirmed_wh=dims(box), center_h=box[3]-box[1])
             track.history.append((frame_time, list(box)))
             self.tracks.append(track)
             self.next_id += 1
@@ -245,6 +260,7 @@ class ColorTracker:
 @dataclass
 class MissionConfig:
     fresh_s: float = 0.8  # FAN_ON / ENTER need a full-search confirmation this recent.
+    follow_s: float = 2.5
     lost_s: float = 2.0  # Send LOST (hold) this long after losing the target, then SEARCH.
     enter_commit_s: float = 3.0  # Keep ENTER this long after the gate last passed (hoop clips/leaves view).
     fan_size: float = 0.30  # Balloon width / frame width to trigger FAN_ON (provisional).
@@ -314,7 +330,17 @@ class Mission:
                     x=round(2 * cx / self.width - 1, 3), y=round(2 * cy / self.height - 1, 3),
                     size=round((x2 - x1) / self.width, 3),
                     age_ms=int(max(0.0, now - track.confirmed) * 1000),
-                    seen_ms=int(max(0.0, now - track.seen) * 1000))
+                    seen_ms=int(max(0.0, now - track.seen) * 1000),
+                    follow=(now - track.confirmed > self.config.fresh_s
+                            and self.freshness({"age_ms": int(max(0, now-track.confirmed)*1000)}, track)))
+
+    def freshness(self, target, track):
+        age = target["age_ms"]
+        recent = age <= self.config.fresh_s * 1000
+        followed = (age <= self.config.follow_s * 1000 and track.misses == 0
+                    and track.last_miss <= track.confirmed
+                    and track.follow_start <= track.confirmed)
+        return recent or followed
 
     def _ready(self, target, track, size_limit=None, range_limit=None):
         c = self.config
@@ -326,7 +352,7 @@ class Mission:
         else:
             # Use the measured width, not the rounded telemetry value, at the size gate.
             near = (track.box[2] - track.box[0]) / self.width >= size_limit
-        return (grown and target["age_ms"] <= c.fresh_s * 1000 and near
+        return (grown and self.freshness(target, track) and near
                 and abs(target["x"]) <= c.centered and abs(target["y"]) <= c.centered)
 
     def _best(self, tracks, labels, now):
@@ -406,7 +432,11 @@ class Mission:
             if self._committed(now):
                 cmd = 'ENTER'
             if cmd in ('LOST', 'ENTER'):
-                target = dict(self.last_description)
+                # Frozen sighting: it ages with the loss and is never "followed".
+                target = dict(self.last_description, follow=False)
+                for key in ('age_ms', 'seen_ms'):
+                    if target.get(key) is not None:
+                        target[key] += lost_ms
         self.seq += 1
         return dict(v=PROTOCOL_VERSION, seq=self.seq, t_ms=int(now * 1000), phase=self.phase,
                     goal_color=self.goal_color, cmd=cmd, fan=self.fan, target=target,
@@ -434,3 +464,65 @@ def encode_v2(message):
     packet.update({k: target.get(k) for k in ('label', 'yaw_deg', 'elev_m', 'travel_m', 'age_ms')})
     packet.update(lost_ms=message.get('lost_ms'), search_dir=message.get('search_dir', 0))
     return json.dumps(packet, separators=(',', ':'), allow_nan=False) + '\n'
+
+
+def crc8(data):
+    """CRC-8, polynomial 0x07, initial value zero."""
+    crc = 0
+    for byte in data:
+        crc ^= byte
+        for _ in range(8):
+            crc = ((crc << 1) ^ (7 if crc & 128 else 0)) & 255
+    return crc
+
+
+def encode_i2c(message):
+    """Fixed 20-byte little-endian guidance packet (no I2C register prefix).
+    Offset/type: 0 u8 magic D7; 1 u8 version 2; 2 u16 sequence;
+    4 u8 COMMANDS index; 5 u8 PHASES index; 6 u8 LABELS index (FF none);
+    7 u8 flags: bit0 fan, bit1 yellow goal, bit2 target, bit3 follow freshness;
+    8 i16 yaw centidegrees (+right); 10 i16 elevation cm (+climb);
+    12 u16 travel cm (FFFF none); 14 u16 age ms; 16 u16 lost ms;
+    18 i8 search direction; 19 u8 CRC-8 over bytes 0..18 (poly 07, init 00).
+    Age/lost saturate at FFFE; absent times also use FFFE. Other numbers
+    saturate to their field range. Enum order is defined by the module tuples.
+    """
+    def number(value, low, high, scale=1):
+        try:
+            value = float(value) * scale
+            if math.isnan(value):
+                return low if low >= 0 else 0
+            return int(max(low, min(high, round(value) if math.isfinite(value) else value)))
+        except (TypeError, ValueError, OverflowError):
+            return low if low >= 0 else 0
+    def index(values, value, default=0):
+        return values.index(value) if value in values else default
+    target = (message.get("target") or {}) if message.get("cmd") != "SEARCH" else {}
+    flags = (bool(message.get("fan")) | (int(message.get("goal_color") == "yellow") << 1)
+             | (int(bool(target)) << 2) | (int(bool(target.get("follow"))) << 3))
+    travel = target.get("travel_m")
+    body = struct.pack("<BBHBBBBhhHHHb", 0xD7, 2,
+        number(message.get("seq"), 0, 65535), index(COMMANDS, message.get("cmd")),
+        index(PHASES, message.get("phase")), index(LABELS, target.get("label"), 255), flags,
+        number(target.get("yaw_deg"), -32768, 32767, 100),
+        number(target.get("elev_m"), -32768, 32767, 100),
+        65535 if travel is None else number(travel, 0, 65534, 100),
+        number(target.get("age_ms", 65534), 0, 65534),
+        number(message.get("lost_ms") if message.get("lost_ms") is not None else 65534, 0, 65534),
+        number(message.get("search_dir"), -1, 1))
+    return body + bytes([crc8(body)])
+
+
+def decode_i2c(packet):
+    """Validate and decode a guidance packet; invalid input raises ValueError."""
+    if len(packet) != 20 or packet[:2] != b"\xd7\x02" or crc8(packet[:-1]) != packet[-1]:
+        raise ValueError("Invalid guidance packet")
+    _, _, seq, cmd, phase, label, flags, yaw, elev, travel, age, lost, direction = struct.unpack("<BBHBBBBhhHHHb", packet[:-1])
+    if cmd >= len(COMMANDS) or phase >= len(PHASES) or (label != 255 and label >= len(LABELS)):
+        raise ValueError("Invalid guidance enum")
+    return dict(seq=seq, cmd=COMMANDS[cmd], phase=PHASES[phase],
+                label=None if label == 255 else LABELS[label], flags=flags,
+                fan=bool(flags & 1), goal_color="yellow" if flags & 2 else "orange",
+                follow=bool(flags & 8), yaw_deg=yaw/100, elev_m=elev/100,
+                travel_m=None if travel == 65535 else travel/100,
+                age_ms=age, lost_ms=lost, search_dir=direction)
