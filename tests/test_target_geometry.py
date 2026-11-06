@@ -100,7 +100,7 @@ def test_mount_signs_errors_clipping_contracts():
         near.score = 0
     with pytest.raises(FrozenInstanceError):
         report.ready = False
-    assert not near.size_calibrated and not near.lens_calibrated
+    assert near.size_calibrated and not near.lens_calibrated  # Balloon size is measured.
     assert target.size_calibrated
 
 

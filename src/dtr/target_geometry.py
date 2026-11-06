@@ -103,7 +103,9 @@ class TargetGeometry:
                                 np.sum(pairs[:, 0] * pairs[:, 1], axis=1))
             # Sphere: tangent rays meet the center at radius / sin. Flat face: half-width / tan.
             if size["shape"] == "round":
-                ranges.append(size["width_m"] / 2 / np.sin(max(angles) / 2))
+                # Per axis (balloons are taller than wide); the larger extent wins.
+                dims = np.array([size["width_m"], size.get("height_m", size["width_m"])])
+                ranges.append(min(dims / 2 / np.sin(angles / 2)))
             else:
                 ranges.append(min(np.array([size["width_m"], size["height_m"]])
                                   / 2 / np.tan(angles / 2)))

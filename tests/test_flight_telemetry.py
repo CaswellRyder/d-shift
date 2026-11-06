@@ -1,4 +1,5 @@
 """Synthetic telemetry checks: no camera, hardware transport, or controller claims."""
+from dtr.target_geometry import load_target_sizes
 
 from copy import deepcopy
 import json
@@ -72,7 +73,8 @@ def test_centre_target_has_zero_lateral_pointing_error(telemetry):
 
 
 def test_centred_target_three_metres_ahead_has_current_xyz_not_frame_delta(telemetry):
-    half_pixels = telemetry.lens.K[0, 0] * np.arcsin(.2 / 3.)
+    radius = load_target_sizes()['green_balloon']['width_m'] / 2  # Narrower axis governs.
+    half_pixels = telemetry.lens.K[0, 0] * np.arcsin(radius / 3.)
     sample = row(tracks=[track(box=(160-half_pixels, 120-half_pixels,
                                    160+half_pixels, 120+half_pixels))])
     packet = telemetry.observe(sample, 10.)['outgoing']['draft_packet']
@@ -128,10 +130,11 @@ def test_default_uncalibrated_coordinates_stay_estimates(telemetry):
     target = observed["coordinates"]["target"]
     assert not target["lens_calibrated"]
     assert not target["mount_calibrated"]
-    assert not target["size_calibrated"]
+    assert target["size_calibrated"]  # Balloon measured 16 x 18 in (2026-11-06).
     assert not target["range_qualified"]
     blockers = observed["outgoing"]["draft_packet"]["blockers"]
-    assert {"lens_uncalibrated", "camera_mount_unmeasured", "target_size_unmeasured"} <= set(blockers)
+    assert {"lens_uncalibrated", "camera_mount_unmeasured"} <= set(blockers)
+    assert "target_size_unmeasured" not in blockers
 
 
 def test_calibration_flags_cannot_approve_an_unapproved_controller():

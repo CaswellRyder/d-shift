@@ -40,9 +40,11 @@ uint8_t crc8(const uint8_t *data) {
 void setup() {
   Serial.begin(115200);
   Wire.onReceive(receivePacket);
-  // SDA GPIO5, SCL GPIO6. GPIO6 is fine on ESP32-S3/C3 but is a flash pin on
-  // classic ESP32 (WROOM/WROVER) modules: pick other pins there.
-  if (!Wire.begin(0x42, 5, 6, 100000)) {
+  // Seeed XIAO ESP32: use the board's own I2C pads (D4 = SDA, D5 = SCL).
+  // On the XIAO ESP32-S3 these are GPIO5/GPIO6, as wired to the Pi.
+  delay(1500);  // Let the USB serial monitor attach before printing.
+  Serial.printf("I2C slave 0x42 on SDA=GPIO%d SCL=GPIO%d\n", SDA, SCL);
+  if (!Wire.begin((uint8_t)0x42, SDA, SCL, 100000)) {
     Serial.println("I2C slave init FAILED (check board and pins)");
   }
 }
