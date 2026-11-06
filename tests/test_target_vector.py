@@ -34,7 +34,9 @@ def test_lost_frozen_search_and_reacquisition(x,sign):
     t=Track(1,'green_balloon',[x-5,115,x+5,125],0,0,confirmed_wh=(10,10))
     first=m.step([t],0)
     lost=m.step([],0.1)
-    assert lost['cmd']=='LOST' and lost['target']==first['target']
+    frozen = dict(first['target'], follow=False, age_ms=first['target']['age_ms']+100,
+                  seen_ms=first['target']['seen_ms']+100)
+    assert lost['cmd']=='LOST' and lost['target']==frozen
     assert lost['lost_ms']==100 and lost['search_dir']==sign
     assert m.step([],2)['cmd']=='SEARCH'
     assert m.step([],3)['search_dir']==sign
@@ -134,7 +136,9 @@ def test_enter_commitment_does_not_transfer_to_another_hoop():
     other = Track(2, 'yellow_square', [240, 80, 280, 120], .5, .5, confirmed_wh=(40, 40))
     held = m.step([other], .5)
     # Still the frozen pass through hoop 1, never an ENTER toward hoop 2.
-    assert held['cmd'] == 'ENTER' and held['target'] == entered['target'] and held['lost_ms'] == 500
+    aged = dict(entered['target'], follow=False, age_ms=entered['target']['age_ms'] + 500,
+                seen_ms=entered['target']['seen_ms'] + 500)
+    assert held['cmd'] == 'ENTER' and held['target'] == aged and held['lost_ms'] == 500
     assert m.selected_track_id is None
     # The committed hoop reappearing keeps the commitment, even when it fails the gate.
     first.box = [-40, -60, 360, 300]

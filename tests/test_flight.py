@@ -173,7 +173,7 @@ def test_mission_rejects_unknown_goal_color_and_encodes_one_line():
     assert line.endswith("\n") and line.count("\n") == 1
     decoded = json.loads(line)
     assert decoded["v"] == 1 and decoded["goal_color"] == "yellow" and decoded["seq"] == 1
-    assert set(decoded["target"]) == {"label", "x", "y", "size", "age_ms", "seen_ms", "yaw_deg", "elev_m", "travel_m"}
+    assert set(decoded["target"]) == {"label", "x", "y", "size", "age_ms", "seen_ms", "yaw_deg", "elev_m", "travel_m", "follow"}
 
 
 def test_goal_rim_is_tracked_by_color():
@@ -449,7 +449,7 @@ def test_all_goal_labels_have_tracking_hsv(color, shape):
     assert tracker.tracks[0].misses == 0
 
 
-def test_slow_search_cadence_survives_but_does_not_extend_mission_freshness():
+def test_slow_search_cadence_allows_unbroken_follow():
     tracker = seeded(cx=160, r=55)
     image = frame(('disk', GREEN, 160, 120, 55))
     for now in [1., 1.5, 2., 2.5]:
@@ -457,7 +457,7 @@ def test_slow_search_cadence_survives_but_does_not_extend_mission_freshness():
         assert len(tracker.tracks) == 1 and tracker.tracks[0].misses == 0
     assert tracker.confirm_timeout == 2.5
     assert MissionConfig().fresh_s == .8
-    assert Mission('orange').step(tracker.tracks, 2.)['cmd'] == 'TRACK'
+    assert Mission('orange').step(tracker.tracks, 2.)['cmd'] == 'FAN_ON'
     tracker.update(image, 2.51)
     assert tracker.tracks == []
 
