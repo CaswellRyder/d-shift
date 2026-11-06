@@ -155,3 +155,14 @@ def test_committed_pass_is_not_interrupted_by_an_opponent_hoop():
     opponent = Track(3, 'orange_circle', [10, 10, 50, 50], .5, .5, confirmed_wh=(40, 40))
     assert m.step([opponent], .5)['cmd'] == 'ENTER'
     assert m.step([opponent], 3.5)['cmd'] == 'AVOID'
+
+
+def test_balloon_depth_uses_width_when_highlight_shortens_height():
+    from dtr.flight import Mission, Track
+    m = Mission('yellow')
+    full = Track(1, 'green_balloon', [150, 110, 170, 132.5], 0, 0, confirmed_wh=(20, 22.5))
+    # The top of the balloon is a white highlight: the mask and centre line are short.
+    clipped = Track(2, 'green_balloon', [150, 118, 170, 132.5], 0, 0, confirmed_wh=(20, 14.5),
+                    center_h=14.5)
+    near, short = m.describe(full, 0)['travel_m'], m.describe(clipped, 0)['travel_m']
+    assert short == pytest.approx(near, rel=0.05)

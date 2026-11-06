@@ -323,6 +323,12 @@ class Mission:
         height = track.center_h
         if height is None or height < MIN_CENTER_FRACTION * (y2 - y1):
             height = None
+        size = self.target_sizes.get(track.label, {})
+        if track.label in BALLOON_LABELS and size.get("height_m"):
+            # A specular highlight on top drops out of the colour mask, so the
+            # balloon's vertical extent reads short. Its width, scaled to height
+            # by the measured shape, is the steadier cue: take the larger.
+            height = max(height or 0.0, y2 - y1, (x2 - x1) * size["height_m"] / size["width_m"])
         vector = self.vector.vector_for(track.label, track.box, height) or {}
         return dict(**{k: round(vector[k], digits) if k in vector else None
                        for k, digits in (("yaw_deg", 1), ("elev_m", 2), ("travel_m", 2))},
