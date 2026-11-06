@@ -183,9 +183,9 @@ def ink(color):
 
 def test_crop_budget_takes_the_nearest_goal_not_the_largest_contour():
     rgb = np.full((240, 320, 3), 128, np.uint8)
-    # The 80 px circle (1.13 m) is nearer than the 116 px-wide triangle (1.749 m),
+    # The 88 px circle (1.13 m) is nearer than the 116 px-wide triangle (1.613 m),
     # even though the triangle's contour is larger.
-    cv2.circle(rgb, (70, 120), 40, ink("orange"), 6)
+    cv2.circle(rgb, (70, 120), 44, ink("orange"), 6)
     cv2.polylines(rgb, [np.array([[150, 70], [266, 70], [208, 170]])], True, ink("orange"), 6)
     candidates = goal_candidates(rgb)
     assert [c["shape"] for c in candidates] == ["circle", "triangle"]

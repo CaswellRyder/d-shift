@@ -34,7 +34,7 @@ MIN_OPPOSITE_RATIO = 0.65
 HOLLOW = 0.02  # A visible opening; hollow contours are classified first.
 # Nominal outer width/height (m) from the DTR rules, used only to rank proposals by range
 # before the crop budget; flight ranking reads configs/target_sizes.json.
-NOMINAL_SIZES = {"circle": (1.130, 1.130), "square": (1.168, 1.168), "triangle": (1.749, 1.515)}
+NOMINAL_SIZES = {"circle": (1.130, 1.130), "square": (1.168, 1.168), "triangle": (1.613, 1.397)}
 SMALL_SIDE = 16  # Rasterized circles and squares this small cannot be told apart reliably.
 DEFAULT_MAX_CROPS = 4
 DEFAULT_THRESHOLD = 0.8

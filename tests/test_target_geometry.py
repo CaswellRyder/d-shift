@@ -171,7 +171,7 @@ def test_projected_geometry_default_lens(distance, bearing, label, width, sphere
 @pytest.mark.parametrize('color', ['orange', 'yellow'])
 @pytest.mark.parametrize('shape,width,height', [('circle', 1.130, 1.130),
                                                ('square', 1.168, 1.168),
-                                               ('triangle', 1.749, 1.515)])
+                                               ('triangle', 1.613, 1.397)])
 @pytest.mark.parametrize('distance', [2., 4., 6.])
 @pytest.mark.parametrize('width_scale,height_scale', [(1., 1.), (.6, 1.), (1., .6)])
 def test_flat_goal_range_uses_minimum_axis(color, shape, width, height, distance,

@@ -61,7 +61,7 @@ class VectorCreator:
         self.ORIGIN_X, self.ORIGIN_Y = origin or (None, None)
         self.PASS_THROUGH_MARGIN_M = pass_through_margin_m
         self.sizes = sizes
-        # ADAPTED: use rulebook outer sizes; Connor used square .6096,
+        # ADAPTED: use measured outer sizes (configs/target_sizes.json); Connor used square .6096,
         # circle .9271 (inside diameter), triangle 1.5146, balloon .762.
         self.TARGET_HEIGHT_M = {label: s.get('height_m', s['width_m'])
                                 for label, s in sizes.items()}
