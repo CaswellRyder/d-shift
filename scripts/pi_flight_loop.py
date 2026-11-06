@@ -1,7 +1,8 @@
 """Bounded flight-vision loop: per-frame tracker + low-priority full search + mission messages.
 
-Writes the Pi -> ESP32 messages to a JSONL log; nothing is sent to a flight
-controller. Use --replay to run on stored frames off the Pi.
+Writes the Pi -> ESP32 messages to JSONL logs. With --i2c-bus, also sends each
+message as a 20-byte packet (dtr.flight.encode_i2c) to the ESP32 I2C slave.
+Use --replay to run on stored frames off the Pi.
 """
 
 import argparse
