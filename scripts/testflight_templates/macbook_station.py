@@ -165,6 +165,8 @@ def start(kit=KIT):
     # Binding preflight detects an existing station without taking it over.
     for port in (8782, 8771):
         with socket.socket() as probe:
+            # Ignore closed TCP sessions while still refusing a live listener.
+            probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
                 probe.bind(('127.0.0.1', port))
             except OSError as error:
@@ -192,9 +194,10 @@ def start(kit=KIT):
     stop = threading.Event()
     for signum in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
         signal.signal(signum, lambda *_: stop.set())
-    print('Join DTR-Drone-Bench and open http://127.0.0.1:8782 when connected.')
+    print('Open http://localhost:8782. The console stays available while waiting for Wi-Fi.')
+    print('Join DTR-Drone-Bench for the Pi link; reconnect requires fresh Resume.')
     print('Leave this Terminal open. Control-C stops only this station and its tunnel.')
-    print('Bench receipts only. Launch and physical motor acknowledgement remain unavailable.')
+    print('Manual bench controls. Launch is disabled; inspect Controller telemetry for ESP32 status.')
     try:
         return station.run(config, stop)
     except station.StartupError as error:

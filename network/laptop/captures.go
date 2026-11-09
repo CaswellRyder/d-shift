@@ -216,7 +216,7 @@ func (c *Captures) forward(ctx context.Context, path string, raw []byte) (json.R
 func (c *Captures) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Cache-Control", "no-store")
 	w.Header().Set("X-Content-Type-Options", "nosniff")
-	if r.Host != c.host || (r.Header.Get("Origin") != "" && r.Header.Get("Origin") != "http://"+c.host) {
+	if !validOperatorRequest(r, c.host) {
 		http.Error(w, "invalid host or origin", 403)
 		return
 	}

@@ -13,17 +13,13 @@ import (
 	"time"
 )
 
-// Handler accepts only requests addressed to the exact loopback listener.
+// Handler accepts the loopback listener and its same-origin localhost alias.
 func Handler(c *Client, host string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.Header().Set("Cache-Control", "no-store")
-		if r.Host != host {
-			http.Error(w, "invalid host", http.StatusForbidden)
-			return
-		}
-		if o := r.Header.Get("Origin"); o != "" && o != "http://"+host {
-			http.Error(w, "invalid origin", http.StatusForbidden)
+		if !validOperatorRequest(r, host) {
+			http.Error(w, "invalid host or origin", http.StatusForbidden)
 			return
 		}
 		if r.URL.Path == "/api/state" && r.Method == http.MethodGet {
@@ -135,4 +131,15 @@ func ListenAddress(address string) bool {
 func OperatorURL(raw string) bool {
 	u, e := url.Parse(raw)
 	return e == nil && u.Scheme == "http" && u.User == nil && u.RawQuery == "" && u.Fragment == "" && (u.Path == "" || u.Path == "/") && ListenAddress(u.Host)
+}
+
+func validOperatorRequest(r *http.Request, host string) bool {
+	if r.Host != host {
+		_, port, err := net.SplitHostPort(host)
+		if err != nil || !ListenAddress(host) || r.Host != "localhost:"+port {
+			return false
+		}
+	}
+	origin := r.Header.Get("Origin")
+	return origin == "" || origin == "http://"+r.Host
 }

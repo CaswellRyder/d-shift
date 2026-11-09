@@ -1,0 +1,97 @@
+D-SHIFT MANUAL MOTOR BENCH INTEGRATION
+
+Build and flash
+- Open esp32_manual_motors.ino in Arduino IDE. Keep both sibling headers.
+- Board: Seeed XIAO ESP32S3, esp32:esp32:XIAO_ESP32S3.
+- Core: Arduino-ESP32 3.3.12. USB CDC On Boot: Enabled.
+- Disconnect ESC/motor batteries and remove propellers before upload.
+- Serial monitor: 115200 baud. "D-SHIFT ready=1 armed=0 enable=0 cycle=0"
+  means PWM/I2C initialized, disarmed, physical enable open, no switch cycle owed.
+  ready=0 inhibits arming until the fault is resolved and the ESP is restarted.
+  Software status does not measure the waveform or motor motion.
+
+Proposed wiring: team must verify the actual harness
+- Pi pin 3 SDA -> XIAO D4/GPIO5; Pi pin 5 SCL -> D5/GPIO6.
+- Pi ground -> ESP ground -> each ESC signal ground. I2C pull-ups at 3.3 V.
+- ESC signals: left thrust D0/GPIO1; right thrust D1/GPIO2;
+  forward D3/GPIO4; auxiliary D8/GPIO7.
+- Normally open hardware enable switch: D9/GPIO8 to GND. Open = disabled.
+- Four separate, correctly rated ESCs are required. Battery voltage must never
+  reach a logic pin. The D9 switch is not a battery-level emergency disconnect.
+
+Pi setup
+- Enable I2C bus 1 and verify /dev/i2c-1 with ESC batteries disconnected.
+- From network/, start pi-link with the existing explicit bind, private key and
+  new journal flags, adding --motor-i2c-bus 1 (address defaults to 0x42).
+- Example (replace host and private file paths):
+  go run ./cmd/pi-link --bind 192.168.50.1 --key-file /path/to/private.key     --journal /tmp/new-manual-session.jsonl --motor-i2c-bus 1
+- Enable explicitly in the existing pi-link service to persist across reboots.
+  The supplied service remains motor-disabled by default. Go requires 1.25+.
+
+Operator sequence
+1. Select Resume, then Enable controls on the laptop console.
+2. Close physical D9 enable only when the bench is ready.
+3. Hold Space or Hold to arm / deadman for >=2 seconds with no direction held.
+4. Check fresh Controller telemetry for armed=true. KEEP the deadman held.
+5. Press a direction key or button. Release direction to return to neutral.
+   Space + W/A/S/D, R up, F down, T auxiliary are supported. Touch operators
+   need separate simultaneous contacts for deadman and direction.
+6. Release the deadman to stop and disarm. A fresh neutral hold is required.
+   Pause stops propulsion and disarms; E-stop additionally latches inhibition
+   on the Pi. Reset E-stop leaves Pause active. Resume never restores old input.
+7. After a Pi process restart/session change, open and close D9, then re-arm.
+   cycle=1 in the serial monitor indicates the switch cycle is still required.
+
+Implemented transport and failure behavior
+- Linux bus 1, 100 kHz configured on the Pi, slave 0x42; 24-byte E1/E3,
+  little-endian, CRC-8/poly 0x07. No legacy D7, E2 or mission output.
+- I2C has no authentication; use the authenticated laptop/Pi link and isolate
+  physical bus access. The session field is not authentication.
+- Pi samples only accepted manual input younger than 300 ms. The worker sends
+  latest intent at up to 20 Hz and clears held intent if server samples stop
+  for 100 ms. Bus I/O is separate from UDP safety and telemetry handling.
+- One worker owns I2C; delayed or blocked transfers do not queue motor commands.
+  Linux kernel I2C calls can block that worker; ESP command expiry must work
+  independently. Shutdown normally closes the device; adapter/kernel faults
+  may delay closing. Never rely on graceful process shutdown for cutoff.
+- Missing/invalid/rejected E3 during held input clears output intent until a
+  release is observed. input_reset_required=true disables browser controls;
+  explicitly re-enable and re-arm after fixing the fault.
+- ESP lease is min(packet ttl_10ms * 10, 200 ms). Expiry, deadman release,
+  open physical enable, receive overflow or PWM/I2C initialization failure
+  prevents arming or cuts software output to minimum. New frames after expiry
+  require neutral re-arming. Session change requires a physical switch cycle.
+- E3 distinguishes accepted/rejected sequence from the last accepted sequence.
+  Malformed frames with untrustworthy identity never receive an attributed ACK.
+  APPLIED reports software intent, not verified ESC execution or motor RPM.
+
+Provisional mixing
+- UP -> both thrust outputs, positive only.
+- RIGHT -> differential offset; RIGHT alone can energize one thrust motor.
+- FORWARD -> dedicated forward motor, positive only.
+- YAW -> auxiliary, positive only. This is a bench channel mapping.
+- Negative forward/up/yaw cannot reverse motors. Outputs are 1000..1250 us at
+  50 Hz: 25% of nominal 1000..2000 command range, not 25% measured thrust.
+- No stabilization, position hold, battery monitoring or flight qualification.
+
+Required physical verification by the hardware/ESP32 team
+1. Confirm board variant, all pin assignments, common grounds, 3.3 V I2C
+   levels/pull-ups and bus speed. Confirm independent battery disconnect.
+2. Confirm exact ESC firmware, supported PWM protocol/range, minimum-command
+   behavior, startup/calibration procedure and compatibility with 50 Hz.
+3. With propellers removed, measure all four output signals: default minimum,
+   neutral arm, each channel, capped maximum and release/Pause/E-stop cutoff.
+4. Connect the Pi and verify fresh matching E3, actual I2C read timing, 2-second
+   neutral arming, direction changes while deadman is held, and neutral return.
+5. Verify cutoff on browser blur/close, Wi-Fi loss, Pi/ESP restart, I2C unplug,
+   stale/invalid traffic and hardware enable opening. Measure the actual time.
+6. Verify E-stop reset/Resume and session restart cannot automatically restart
+   propulsion. Session restart must require opening/closing physical enable.
+7. Confirm channel-to-motor mapping, motor polarity and vehicle mixing before
+   attaching propellers. Flight control/stabilization requires separate design.
+
+Regression checks (repository root)
+  (cd network && go test -race ./... && go vet ./...)
+  node --test network/laptop/web/*.test.mjs
+  scripts/test_manual_motors.sh
+  arduino-cli compile --fqbn esp32:esp32:XIAO_ESP32S3 firmware/esp32_manual_motors

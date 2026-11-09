@@ -28,6 +28,7 @@ type Server struct {
 	safetyReceipt  protocol.Receipt
 	Recorder       Recorder
 	Source         *Source
+	Motor          *MotorLink
 	start          time.Time
 	pending        []challenge
 	rateStart      uint64
@@ -304,7 +305,7 @@ func (s *Server) telemetry(now uint64) protocol.Telemetry {
 		}
 		m.ExpiresInMS = &remaining
 	}
-	return protocol.Telemetry{BenchEstop: s.estop, BenchPaused: s.paused, ControlEpoch: s.epoch, BenchOnly: true, Vision: v, Manual: m, Mission: s.mission, JournalOK: s.Recorder.Healthy(), ControllerStatus: "unavailable", CPUTempC: s.temperature()}
+	return protocol.Telemetry{BenchEstop: s.estop, BenchPaused: s.paused, ControlEpoch: s.epoch, BenchOnly: true, Vision: v, Manual: m, Mission: s.mission, JournalOK: s.Recorder.Healthy(), ControllerStatus: s.controllerStatus(), CPUTempC: s.temperature()}
 }
 func cpuTemp() *float64 {
 	b, e := os.ReadFile("/sys/class/thermal/thermal_zone0/temp")
@@ -326,7 +327,17 @@ func Listen(bind string, port uint16) (*net.UDPConn, error) {
 	return net.ListenUDP("udp", net.UDPAddrFromAddrPort(netip.AddrPortFrom(a, port)))
 }
 func (s *Server) Serve(ctx context.Context, conn *net.UDPConn, key []byte) error {
-	defer func() { s.neutral(uint64(time.Since(s.start).Milliseconds()), "shutdown") }()
+	motorCtx, stopMotor := context.WithCancel(ctx)
+	defer stopMotor()
+	if s.Motor != nil {
+		go s.Motor.Run(motorCtx)
+	}
+	defer func() {
+		s.neutral(uint64(time.Since(s.start).Milliseconds()), "shutdown")
+		if s.Motor != nil {
+			s.Motor.Update(false, [4]float64{})
+		}
+	}()
 	buf := make([]byte, protocol.MaxDatagram+1)
 	for {
 		if ctx.Err() != nil {
@@ -334,6 +345,14 @@ func (s *Server) Serve(ctx context.Context, conn *net.UDPConn, key []byte) error
 		}
 		now := uint64(time.Since(s.start).Milliseconds())
 		s.Advance(now)
+		if s.Motor != nil {
+			var axes [4]float64
+			hold := !s.estop && !s.paused && s.session != (protocol.SessionID{}) && s.manual.Hold && now >= s.manualAt && now-s.manualAt < 300 && s.manual.Axes != nil
+			if hold {
+				axes = *s.manual.Axes
+			}
+			s.Motor.Update(hold, axes)
+		}
 		conn.SetReadDeadline(time.Now().Add(20 * time.Millisecond))
 		n, addr, e := conn.ReadFromUDPAddrPort(buf)
 		if e != nil {
@@ -363,4 +382,11 @@ func (s *Server) temperature() *float64 {
 	s.Source.mu.RLock()
 	defer s.Source.mu.RUnlock()
 	return s.Source.temp
+}
+
+func (s *Server) controllerStatus() string {
+	if s.Motor == nil {
+		return "unavailable"
+	}
+	return s.Motor.Status()
 }

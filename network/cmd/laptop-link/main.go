@@ -45,7 +45,7 @@ func run() (result error) {
 		return e
 	}
 	defer func() { result = errors.Join(result, j.Close()) }()
-	c, e := laptop.NewOnInterface(*peer, *wifiInterface, key, j)
+	c, e := laptop.NewWaitingOnInterface(*peer, *wifiInterface, key, j)
 	if e != nil {
 		return e
 	}
@@ -87,32 +87,13 @@ func run() (result error) {
 	done := make(chan error, 1)
 	go func() { done <- server.Serve(listener) }()
 	go c.Run(ctx)
-	interfaceChanged := make(chan struct{})
-	if *wifiInterface != "" {
-		go func() {
-			ticker := time.NewTicker(time.Second)
-			defer ticker.Stop()
-			for {
-				select {
-				case <-ctx.Done():
-					return
-				case <-ticker.C:
-					if !c.InterfaceCurrent(*wifiInterface) {
-						close(interfaceChanged)
-						return
-					}
-				}
-			}
-		}()
-	}
+
 	select {
 	case e = <-done:
 		if e != http.ErrServerClosed {
 			return e
 		}
 		e = nil
-	case <-interfaceChanged:
-		e = errors.New("Wi-Fi address changed; station restart required")
 	case <-ctx.Done():
 	}
 	shutdown, cancel := context.WithTimeout(context.Background(), time.Second)

@@ -19,7 +19,7 @@ func Dashboard(host string, api http.Handler, captures http.Handler) http.Handle
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		w.Header().Set("Referrer-Policy", "no-referrer")
 		w.Header().Set("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
-		if r.Host != host || (r.Header.Get("Origin") != "" && r.Header.Get("Origin") != "http://"+host) {
+		if !validOperatorRequest(r, host) {
 			http.Error(w, "invalid host or origin", 403)
 			return
 		}

@@ -3,6 +3,7 @@ package integration_test
 import (
 	"context"
 	"encoding/json"
+	"net"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -189,4 +190,64 @@ func TestBenchSafetyAcrossAuthenticatedPeers(t *testing.T) {
 		t.Fatal("resume replayed held input")
 	}
 
+}
+
+func TestWaitingConsoleAuthenticatesWithoutAutomaticallyResuming(t *testing.T) {
+	interfaces, err := net.Interfaces()
+	if err != nil {
+		t.Fatal(err)
+	}
+	name := ""
+	for _, iface := range interfaces {
+		addresses, _ := iface.Addrs()
+		for _, a := range addresses {
+			if subnet, ok := a.(*net.IPNet); ok && subnet.IP.Equal(net.ParseIP("127.0.0.1")) {
+				name = iface.Name
+			}
+		}
+	}
+	if name == "" {
+		t.Skip("no loopback")
+	}
+	conn, err := pibridge.Listen("127.0.0.1", 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer conn.Close()
+	journal, err := pibridge.NewJournal(t.TempDir() + "/pi.jsonl")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer journal.Close()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	done := make(chan error, 1)
+	key := make([]byte, 32)
+	go func() { done <- pibridge.NewServer(journal, nil).Serve(ctx, conn, key) }()
+	defer func() {
+		cancel()
+		if err := <-done; err != nil {
+			t.Error(err)
+		}
+	}()
+	client, err := laptop.NewWaitingOnInterface(conn.LocalAddr().String(), name, key, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer client.Close()
+	if err = client.Poll(ctx); err != nil {
+		t.Fatal(err)
+	}
+	state := client.State()
+	if !state.Connected || !state.PauseRequested || !state.InputInhibited {
+		t.Fatal("connection resumed controls", state)
+	}
+	fresh, err := laptop.WithControlGeneration(ctx, state.InputGeneration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	receipt, err := client.Safety(fresh, "resume")
+	if err != nil || receipt.Status != protocol.StatusQueued || client.State().PauseRequested {
+		t.Fatal("fresh Resume failed", receipt, err)
+	}
 }

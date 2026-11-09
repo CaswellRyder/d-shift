@@ -3,18 +3,70 @@ const $=id=>document.getElementById(id);let fresh=false,inhibited=true,enabled=f
 const text=(id,value)=>{$(id).textContent=value;};
 async function request(path,payload){const response=await fetch(path,{method:payload===undefined?'GET':'POST',headers:payload===undefined?{}:{'Content-Type':'application/json','X-DTR-Request':'1',...(((path==='/api/manual'&&payload.hold)||(path==='/api/estop/reset'||path==='/api/resume'))?{'X-DTR-Control-Generation':inputGeneration}:{})},body:payload===undefined?undefined:JSON.stringify(payload),cache:'no-store'});if(!response.ok)throw Error((await response.text()).slice(0,240)||`HTTP ${response.status}`);return response.json();}
 const stream=new ManualStream(request,value=>text('receipt',value),()=>disable(false));
-function clearActive(){document.querySelectorAll('.motion').forEach(b=>b.classList.remove('active'));current=null;}
-function disable(release=true){const wasActive=enabled||current!==null||stream.axes!==null;enabled=false;stream.axes=null;$('enable').checked=false;clearActive();if(release&&wasActive)stream.release();renderButtons();}
-function renderButtons(){ $('launch').disabled=true;$('enable').disabled=!fresh||inhibited;document.querySelectorAll('.motion').forEach(b=>b.disabled=!enabled||!fresh||inhibited);$('reset-estop').disabled=!fresh||!estopped;$('resume').disabled=!fresh||!paused||estopped; }
-function release(){if(current){clearActive();stream.release();}}
-function hold(direction){if(!enabled||!fresh||inhibited)return;const axes={forward:0,right:0,up:0,yaw:0};const mapping={forward:['forward',.2],back:['forward',-.2],left:['right',-.2],right:['right',.2],up:['up',.2],down:['up',-.2]};const [axis,value]=mapping[direction];axes[axis]=value;current=direction;document.querySelectorAll('.motion').forEach(b=>b.classList.toggle('active',b.dataset.direction===direction));stream.hold(axes);stream.tick();}
+let deadmanSource=null,directionSource=null;
+const neutralAxes=()=>({forward:0,right:0,up:0,yaw:0});
+function clearActive(){
+ document.querySelectorAll('.motion').forEach(b=>b.classList.remove('active'));
+ $('arm-neutral').classList.remove('active');
+ current=null;directionSource=null;deadmanSource=null;
+}
+function disable(release=true){const wasActive=enabled||deadmanSource!==null||stream.axes!==null;enabled=false;stream.axes=null;$('enable').checked=false;clearActive();if(release&&wasActive)stream.release();renderButtons();}
+function renderButtons(){
+ $('launch').disabled=true;$('enable').disabled=!fresh||inhibited;
+ $('arm-neutral').disabled=!enabled||!fresh||inhibited;
+ document.querySelectorAll('.motion').forEach(b=>b.disabled=!enabled||!fresh||inhibited||deadmanSource===null);
+ $('reset-estop').disabled=!fresh||!estopped;$('resume').disabled=!fresh||!paused||estopped;
+}
+function startDeadman(source){
+ if(!enabled||!fresh||inhibited||deadmanSource!==null)return;
+ deadmanSource=source;$('arm-neutral').classList.toggle('active',true);
+ stream.hold(neutralAxes());stream.tick();renderButtons();
+}
+function stopDeadman(source){
+ if(deadmanSource!==source)return;
+ clearActive();stream.release();renderButtons();
+}
+function release(source=directionSource){
+ if(current===null||source!==directionSource)return;
+ document.querySelectorAll('.motion').forEach(b=>b.classList.remove('active'));
+ current=null;directionSource=null;
+ if(deadmanSource!==null){stream.hold(neutralAxes());stream.tick();}
+ else stream.release();
+}
+function hold(direction,source){
+ if(!enabled||!fresh||inhibited||deadmanSource===null||current!==null)return;
+ const mapping={forward:['forward',.2],back:['forward',-.2],left:['right',-.2],right:['right',.2],up:['up',.2],down:['up',-.2],aux:['yaw',.2]};
+ if(!mapping[direction])return;
+ const axes=neutralAxes(),[axis,value]=mapping[direction];axes[axis]=value;
+ current=direction;directionSource=source;
+ document.querySelectorAll('.motion').forEach(b=>b.classList.toggle('active',b.dataset.direction===direction));
+ stream.hold(axes);stream.tick();
+}
 $('enable').addEventListener('change',()=>{enabled=$('enable').checked&&fresh&&!inhibited;if(!enabled)disable();renderButtons();});
-document.querySelectorAll('.motion').forEach(b=>{b.disabled=true;b.addEventListener('pointerdown',e=>{if(current)return;e.preventDefault();b.setPointerCapture(e.pointerId);hold(b.dataset.direction);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,release);});
-const keys={w:'forward',s:'back',a:'left',d:'right',r:'up',f:'down'};
-document.addEventListener('keydown',e=>{if(/^(INPUT|SELECT|TEXTAREA|BUTTON)$/.test(e.target.tagName)||e.ctrlKey||e.altKey||e.metaKey)return;if(keys[e.key.toLowerCase()]&&enabled){e.preventDefault();if(!current&&!e.repeat)hold(keys[e.key.toLowerCase()]);}if(e.key==='Escape'){e.preventDefault();safety('/api/pause');}});
-document.addEventListener('keyup',e=>{if(keys[e.key.toLowerCase()]===current)release();});
+const arm=$('arm-neutral');
+arm.addEventListener('pointerdown',e=>{e.preventDefault();if(deadmanSource!==null)return;arm.setPointerCapture(e.pointerId);startDeadman(e.pointerId);});
+for(const event of ['pointerup','pointercancel','lostpointercapture'])arm.addEventListener(event,e=>stopDeadman(e.pointerId));
+document.querySelectorAll('.motion').forEach(b=>{
+ b.disabled=true;
+ b.addEventListener('pointerdown',e=>{if(current!==null)return;e.preventDefault();b.setPointerCapture(e.pointerId);hold(b.dataset.direction,e.pointerId);});
+ for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,e=>release(e.pointerId));
+});
+const keys={w:'forward',s:'back',a:'left',d:'right',r:'up',f:'down',t:'aux'};
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){e.preventDefault();safety('/api/pause');return;}
+ if((/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)&&e.target!==$('enable'))||e.ctrlKey||e.altKey||e.metaKey)return;
+ if(e.target===$('enable')&&!enabled)return;
+ const key=e.key.toLowerCase();
+ if(e.code==='Space'||key===' '){e.preventDefault();if(!e.repeat)startDeadman('keyboard');}
+ else if(keys[key]&&enabled){e.preventDefault();if(!e.repeat)hold(keys[key],key);}
+});
+document.addEventListener('keyup',e=>{
+ const key=e.key.toLowerCase();
+ if(e.code==='Space'||key===' '){e.preventDefault();stopDeadman('keyboard');}
+ else if(keys[key])release(key);
+});
 window.addEventListener('blur',()=>disable());document.addEventListener('visibilitychange',()=>{if(document.hidden)disable();});window.addEventListener('pagehide',()=>disable());
-function safety(path){disable(false);text('receipt','Pending bench receipt; local input cleared.');stream.stop(path);}
+function safety(path){disable(false);text('receipt','Pending Pi receipt; local input cleared.');stream.stop(path);}
 $('pause').onclick=()=>{paused=true;inhibited=true;safety('/api/pause');};$('resume').onclick=()=>{if(fresh&&paused&&!estopped)safety('/api/resume');};$('estop').onclick=()=>{paused=true;estopped=true;inhibited=true;renderButtons();safety('/api/estop');};$('reset-estop').onclick=()=>{if(fresh&&estopped){safety('/api/estop/reset');}};
 function display(value,unit=''){
  if(value===null||value===undefined)return 'Unavailable';
@@ -23,8 +75,8 @@ function display(value,unit=''){
  return `${Array.isArray(value)?value.map(format).join(', '):format(value)}${unit}`;
 }
 function row(label,value){const d=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;d.append(dt,dd);return d;}
-async function pollState(){try{const s=await request('/api/state');const nextGeneration=s.input_generation||'';if(inputGeneration&&nextGeneration!==inputGeneration)disable(false);inputGeneration=nextGeneration;lastStateAt=Date.now();fresh=s.connected===true&&s.age_ms!=null&&s.age_ms<=750;inhibited=s.input_inhibited!==false;paused=s.pause_requested!==false;estopped=s.estop_requested!==false;if(!fresh||inhibited)disable();const t=fresh?s.telemetry:null,v=t?.vision; text('connection',fresh?'Pi bench link connected':'Pi link unavailable / stale: join DTR-Drone-Bench Wi-Fi');text('launch-reason',s.launch?.reason||'Launch unavailable: no ESP32 flight controller acknowledgement.');text('age',`Link age: ${display(s.age_ms,' ms')}`);text('source',`Source: ${v?.source||'Unavailable'}`);text('inhibition',`Pause: ${s.pause_status||'unavailable'} / E-stop: ${s.estop_status||'unavailable'}${inhibited?' · Bench input inhibited':''}`);const visionFresh=v?.ready===true&&v.age_ms!=null&&v.age_ms<=2000;const target=visionFresh?v.target:null;$('telemetry').replaceChildren(...[
- ['Source ready',v?`${visionFresh?'Ready':'Not ready'}${v.error?' / '+v.error:''}`:'Unavailable'],['Source frame age',display(v?.age_ms,' ms')],['Lab phase / goal',v?`${display(v.phase)} / ${display(v.goal)}`:'Unavailable'],['Vision rate',display(visionFresh?v?.fps:null,' fps')],['Target',target?.label||'Unavailable'],['Target range (estimate)',display(target?.travel_m,' m')],['Target body position (estimate)',display(target?.body_m,' m')],['Pi CPU',display(t?.cpu_temp_c,' °C')],['Mapping',v?`Lens: ${v.lens_calibrated===true?'fitted':v.lens_calibrated===false?'not calibrated':'unavailable'} / mount: ${v.mount_calibrated===true?'measured':v.mount_calibrated===false?'not measured':'unavailable'} / range: ${v.range_qualified===true?'qualified':'unqualified'}`:'Unavailable'],['Hover / position hold','Unavailable: no controller ACK'],['Motor cutoff','Unavailable: no controller ACK'],['Controller',t?.controller_status||'Unavailable'],['Battery',display(t?.battery_v,' V')],['IMU',display(t?.imu)],['Command journals',`Laptop: ${s.local_journal_ok==null?'unavailable':s.local_journal_ok?'healthy':'error'} / Pi: ${t==null?'unavailable':t.journal_ok?'healthy':'error'}`],['Bench manual input',t?`${t.manual?.hold?'Held':'Released'} / ${display(t.manual?.age_ms,' ms old')}`:'Unavailable']].map(([a,b])=>row(a,b)));renderButtons();}catch(error){fresh=false;inhibited=true;disable();text('connection','Pi link unavailable: check DTR-Drone-Bench Wi-Fi and the laptop station');text('source','Source unavailable');text('age','Age unavailable');$('telemetry').replaceChildren(row('Telemetry','Unavailable: '+error.message));}finally{setTimeout(pollState,500);}}
+async function pollState(){try{const s=await request('/api/state');const nextGeneration=s.input_generation||'';if(inputGeneration&&nextGeneration!==inputGeneration)disable(false);inputGeneration=nextGeneration;lastStateAt=Date.now();fresh=s.connected===true&&s.age_ms!=null&&s.age_ms<=750;inhibited=s.input_inhibited!==false;paused=s.pause_requested!==false;estopped=s.estop_requested!==false;if(!fresh||inhibited)disable();const t=fresh?s.telemetry:null,v=t?.vision;if(t?.controller_status?.includes('input_reset_required=true'))disable(); text('connection',fresh?'Pi bench link connected':'Pi link unavailable / stale: join DTR-Drone-Bench Wi-Fi');text('launch-reason',s.launch?.reason||'Launch unavailable: no ESP32 flight controller acknowledgement.');text('age',`Link age: ${display(s.age_ms,' ms')}`);text('source',`Source: ${v?.source||'Unavailable'}`);text('inhibition',`Pause: ${s.pause_status||'unavailable'} / E-stop: ${s.estop_status||'unavailable'}${inhibited?' · Bench input inhibited':''}`);const visionFresh=v?.ready===true&&v.age_ms!=null&&v.age_ms<=2000;const target=visionFresh?v.target:null;$('telemetry').replaceChildren(...[
+ ['Source ready',v?`${visionFresh?'Ready':'Not ready'}${v.error?' / '+v.error:''}`:'Unavailable'],['Source frame age',display(v?.age_ms,' ms')],['Lab phase / goal',v?`${display(v.phase)} / ${display(v.goal)}`:'Unavailable'],['Vision rate',display(visionFresh?v?.fps:null,' fps')],['Target',target?.label||'Unavailable'],['Target range (estimate)',display(target?.travel_m,' m')],['Target body position (estimate)',display(target?.body_m,' m')],['Pi CPU',display(t?.cpu_temp_c,' °C')],['Mapping',v?`Lens: ${v.lens_calibrated===true?'fitted':v.lens_calibrated===false?'not calibrated':'unavailable'} / mount: ${v.mount_calibrated===true?'measured':v.mount_calibrated===false?'not measured':'unavailable'} / range: ${v.range_qualified===true?'qualified':'unqualified'}`:'Unavailable'],['Position hold','Unavailable: bench Pause stops propulsion'],['Motor cutoff','Release deadman, Pause or E-stop; verify ESP status'],['Controller',t?.controller_status||'Unavailable'],['Battery',display(t?.battery_v,' V')],['IMU',display(t?.imu)],['Command journals',`Laptop: ${s.local_journal_ok==null?'unavailable':s.local_journal_ok?'healthy':'error'} / Pi: ${t==null?'unavailable':t.journal_ok?'healthy':'error'}`],['Bench manual input',t?`${t.manual?.hold?'Held':'Released'} / ${display(t.manual?.age_ms,' ms old')}`:'Unavailable']].map(([a,b])=>row(a,b)));renderButtons();}catch(error){fresh=false;inhibited=true;disable();text('connection','Pi link unavailable: check DTR-Drone-Bench Wi-Fi and the laptop station');text('source','Source unavailable');text('age','Age unavailable');$('telemetry').replaceChildren(row('Telemetry','Unavailable: '+error.message));}finally{setTimeout(pollState,500);}}
 function localLink(url,label){if(typeof url!=='string'||!/^\/captures\/[A-Za-z0-9_-]+\//.test(url))return null;const a=document.createElement('a');a.href=url;a.textContent=label;return a;}
 async function captures(){try{const s=await request('/api/captures');text('capture-status',`${s.configured?'Capture service':'Capture service not configured'}: ${s.status||'idle'}${s.total_bytes?` (${s.bytes_downloaded||0} / ${s.total_bytes} bytes)`:''}${s.error?' / '+s.error:''}${s.lab?` · Pi phase: ${s.lab.phase??'unavailable'} / ${s.lab.goal_color??'unavailable'}`:''}`);$('start-capture').disabled=!s.configured||s.busy||!s.lab?.ready||['capturing','exporting'].includes(s.lab?.capture?.state);const remote=$('remote-captures');remote.replaceChildren();for(const item of s.remote||[]){const d=document.createElement('div');d.className='captureitem';const info=document.createElement('span');info.textContent=item.id;const small=document.createElement('small');small.textContent=`${display(item.frames)} frames / ${display(item.bytes,' bytes')} / ${item.source||'source unavailable'}`;info.append(small);const b=document.createElement('button');b.textContent='Transfer & process';b.disabled=s.busy;b.onclick=()=>captureAction('/api/captures/collect',{id:item.id});d.append(info,b);remote.append(d);}if(!remote.children.length)remote.textContent='No finished raw takes available.';const local=$('local-captures');local.replaceChildren();for(const item of s.local||[]){const d=document.createElement('div');d.className='captureitem';const info=document.createElement('span');info.textContent=item.id;const small=document.createElement('small');small.textContent=`${item.status||'unknown'}${item.capture_complete===false?' · Incomplete take':''} / ${item.source||'source unavailable'}${item.error?' / '+item.error:''}`;info.append(small);d.append(info);if(item.status==='ready'){const a=localLink(item.review_url,'Open review');if(a)d.append(a);}local.append(d);}if(!local.children.length)local.textContent='No transferred captures yet.';}catch(e){text('capture-status','Capture service unavailable: '+e.message);$('start-capture').disabled=true;}}
 async function captureAction(path,payload){$('start-capture').disabled=true;try{await request(path,payload);await captures();}catch(e){text('capture-status','Capture request failed: '+e.message);}}

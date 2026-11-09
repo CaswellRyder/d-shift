@@ -19,6 +19,9 @@ func TestDashboardRoutesAndBoundaries(t *testing.T) {
 	}{
 		{"/", "127.0.0.1:8782", "", 200, "Bench console"}, {"/app.js", "127.0.0.1:8782", "", 200, "ManualStream"},
 		{"/api/state", "127.0.0.1:8782", "", 200, "api"}, {"/api/captures", "127.0.0.1:8782", "", 200, "capture"}, {"/captures/abc/review.html", "127.0.0.1:8782", "", 200, "capture"},
+		{"/", "localhost:8782", "http://localhost:8782", 200, "Bench console"},
+		{"/", "localhost:8782", "http://localhost:8783", 403, "invalid"},
+		{"/", "localhost:8782.evil.invalid", "", 403, "invalid"},
 		{"/", "evil.invalid", "", 403, "invalid"}, {"/", "127.0.0.1:8782", "http://evil.invalid", 403, "invalid"}, {"/manual.test.mjs", "127.0.0.1:8782", "", 404, ""},
 	} {
 		r := httptest.NewRequest("GET", tc.path, nil)

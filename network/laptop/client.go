@@ -19,7 +19,7 @@ import (
 var ErrUnknown = errors.New("mission outcome unknown; explicit reset required")
 var ErrLink = errors.New("authenticated bench link unavailable")
 
-const launchUnavailableReason = "ESP32 flight controller and launch command are not integrated; no controller acknowledgement is available."
+const launchUnavailableReason = "Autonomous launch and stabilization are unavailable. Optional ESP32 manual motor control is bench only."
 
 // LaunchCapability describes controller execution, independently of bench-link health.
 type LaunchCapability struct {
@@ -61,6 +61,10 @@ type Client struct {
 	estopStatus   string
 	mu            sync.Mutex
 	conn          *net.UDPConn
+	socketMu      sync.Mutex
+	closed        bool
+	peer          netip.AddrPort
+	waitInterface string
 	key           []byte
 	session       protocol.SessionID
 	seq           map[protocol.Kind]uint64
@@ -79,20 +83,33 @@ func New(peer string, key []byte, journal *Journal) (*Client, error) {
 
 // NewOnInterface binds the UDP source to an IPv4 address on the selected
 // interface's directly connected Pi subnet. It never falls back to Ethernet.
-func NewOnInterface(peer, interfaceName string, key []byte, journal *Journal) (*Client, error) {
+func newClient(peer string, key []byte, journal *Journal) (*Client, error) {
 	endpoint, err := netip.ParseAddrPort(peer)
 	if err != nil || endpoint.Port() == 0 || endpoint.Addr().IsUnspecified() || endpoint.Addr().IsMulticast() || len(key) != 32 {
 		return nil, ErrLink
 	}
+	c := &Client{peer: endpoint, key: append([]byte(nil), key...), seq: make(map[protocol.Kind]uint64), journal: journal}
+	var seed [8]byte
+	if _, err := rand.Read(seed[:]); err != nil {
+		return nil, ErrLink
+	}
+	var generation uint64
+	for _, b := range seed {
+		generation = generation<<8 | uint64(b)
+	}
+	c.generation.Store(generation & protocol.MaxSequence)
+	return c, nil
+}
+func dialInterface(endpoint netip.AddrPort, name string) (*net.UDPConn, error) {
 	addr := net.UDPAddrFromAddrPort(endpoint)
 	var local *net.UDPAddr
-	if interfaceName != "" {
-		iface, e := net.InterfaceByName(interfaceName)
-		if e != nil || iface.Flags&net.FlagUp == 0 || !endpoint.Addr().Is4() {
+	if name != "" {
+		iface, err := net.InterfaceByName(name)
+		if err != nil || iface.Flags&net.FlagUp == 0 || !endpoint.Addr().Is4() {
 			return nil, ErrLink
 		}
-		addresses, e := iface.Addrs()
-		if e != nil {
+		addresses, err := iface.Addrs()
+		if err != nil {
 			return nil, ErrLink
 		}
 		for _, address := range addresses {
@@ -112,24 +129,52 @@ func NewOnInterface(peer, interfaceName string, key []byte, journal *Journal) (*
 	if err != nil {
 		return nil, ErrLink
 	}
-	c := &Client{conn: conn, key: append([]byte(nil), key...), seq: make(map[protocol.Kind]uint64), journal: journal}
-	var seed [8]byte
-	if _, err := rand.Read(seed[:]); err != nil {
-		conn.Close()
-		return nil, ErrLink
+	return conn, nil
+}
+func NewOnInterface(peer, interfaceName string, key []byte, journal *Journal) (*Client, error) {
+	c, err := newClient(peer, key, journal)
+	if err != nil {
+		return nil, err
 	}
-	var generation uint64
-	for _, b := range seed {
-		generation = generation<<8 | uint64(b)
+	c.conn, err = dialInterface(c.peer, interfaceName)
+	if err != nil {
+		return nil, err
 	}
-	c.generation.Store(generation & protocol.MaxSequence)
 	return c, nil
 }
-func (c *Client) Close() error { return c.conn.Close() }
 
-// InterfaceCurrent reports whether this socket's source still belongs to the
-// requested interface. The station supervisor restarts after a DHCP change.
-func (c *Client) InterfaceCurrent(name string) bool {
+// NewWaitingOnInterface keeps the local console available while Wi-Fi is away
+// from the Pi subnet. Poll opens/rebinds UDP only on the configured interface.
+func NewWaitingOnInterface(peer, name string, key []byte, journal *Journal) (*Client, error) {
+	if name == "" {
+		return New(peer, key, journal)
+	}
+	c, err := newClient(peer, key, journal)
+	if err != nil {
+		return nil, err
+	}
+	if _, err = net.InterfaceByName(name); err != nil || !c.peer.Addr().Is4() {
+		return nil, ErrLink
+	}
+	c.waitInterface = name
+	c.paused.Store(true)
+	c.pauseStatus = "waiting_for_wifi"
+	return c, nil
+}
+func (c *Client) Close() error {
+	c.socketMu.Lock()
+	c.closed = true
+	conn := c.conn
+	c.socketMu.Unlock()
+	if conn != nil {
+		return conn.Close()
+	}
+	return nil
+}
+func socketOnInterface(conn *net.UDPConn, name string) bool {
+	if conn == nil {
+		return false
+	}
 	iface, err := net.InterfaceByName(name)
 	if err != nil || iface.Flags&net.FlagUp == 0 {
 		return false
@@ -138,13 +183,69 @@ func (c *Client) InterfaceCurrent(name string) bool {
 	if err != nil {
 		return false
 	}
-	local := c.conn.LocalAddr().(*net.UDPAddr).IP
+	local := conn.LocalAddr().(*net.UDPAddr).IP
 	for _, address := range addresses {
 		if subnet, ok := address.(*net.IPNet); ok && subnet.IP.Equal(local) {
 			return true
 		}
 	}
 	return false
+}
+func (c *Client) InterfaceCurrent(name string) bool {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return socketOnInterface(c.conn, name)
+}
+
+// Caller holds mu; socketMu also protects the pointer used by Safety's interrupt.
+func (c *Client) replaceSocket(conn *net.UDPConn) error {
+	c.socketMu.Lock()
+	if c.closed {
+		c.socketMu.Unlock()
+		if conn != nil {
+			conn.Close()
+		}
+		return ErrLink
+	}
+	old := c.conn
+	c.conn = conn
+	c.socketMu.Unlock()
+	if old != nil {
+		old.Close()
+	}
+	return nil
+}
+func (c *Client) ensureInterface() error {
+	if c.waitInterface == "" {
+		if c.conn == nil {
+			return ErrLink
+		}
+		return nil
+	}
+	if socketOnInterface(c.conn, c.waitInterface) {
+		return nil
+	}
+	if c.conn != nil {
+		if err := c.replaceSocket(nil); err != nil {
+			return err
+		}
+		c.session = protocol.SessionID{}
+		c.received = time.Time{}
+		c.telemetry = nil
+		c.generation.Add(1)
+		c.paused.Store(true)
+		c.pauseStatus = "waiting_for_wifi"
+	}
+	conn, err := dialInterface(c.peer, c.waitInterface)
+	if err != nil {
+		return err
+	}
+	if err = c.replaceSocket(conn); err != nil {
+		return err
+	}
+	c.generation.Add(1)
+	c.pauseStatus = "requested"
+	return nil
 }
 
 func (c *Client) State() State {
@@ -327,6 +428,9 @@ func (c *Client) poll(ctx context.Context) error {
 	return nil
 }
 func (c *Client) connect(ctx context.Context) error {
+	if err := c.ensureInterface(); err != nil {
+		return err
+	}
 	generation := c.generation.Load()
 	deadline := time.Now().Add(3 * time.Second)
 	if d, ok := ctx.Deadline(); ok && d.Before(deadline) {
@@ -352,6 +456,9 @@ func (c *Client) connect(ctx context.Context) error {
 func (c *Client) Poll(ctx context.Context) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
+	if err := c.ensureInterface(); err != nil {
+		return err
+	}
 	if c.session == (protocol.SessionID{}) || time.Since(c.anchor) > 300*time.Millisecond {
 		return c.connect(ctx)
 	}
@@ -532,7 +639,12 @@ func (c *Client) Safety(ctx context.Context, action string) (protocol.Receipt, e
 	c.controlMu.Unlock()
 	ctx = context.WithValue(ctx, exchangeGenerationKey{}, generation)
 	defer c.safetyPending.Add(-1)
-	c.conn.SetReadDeadline(time.Now())
+	c.socketMu.Lock()
+	interrupt := c.conn
+	c.socketMu.Unlock()
+	if interrupt != nil {
+		interrupt.SetReadDeadline(time.Now())
+	}
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	if generation != c.generation.Load() {

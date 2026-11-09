@@ -8,9 +8,9 @@ export class ManualStream {
   const generation=++this.generation;
   // Safety bypasses an outstanding manual HTTP exchange so the backend can
   // interrupt it. A late manual receipt cannot overwrite the safety result.
-  this.report('Pending bench receipt; local input cleared.');
+  this.report('Pending Pi receipt; local input cleared.');
   Promise.resolve(this.send(path,{})).then(result=>{
-   if(generation===this.generation)this.report(`Bench receipt: ${result.receipt?.status??'received'}. No motor acknowledgement.`);
+   if(generation===this.generation)this.report(`Pi receipt: ${result.receipt?.status??'received'}. Pi receipt only; ESP32 status is shown in telemetry.`);
   }).catch(error=>{if(generation===this.generation){this.cancel();this.report(`Safety receipt unknown: ${error.message}. Local input remains cleared.`);}});
  }
  async tick() {
@@ -21,7 +21,7 @@ export class ManualStream {
   else if(this.axes) payload={...this.axes,hold:true};
   else return;
   const generation=this.generation; this.busy=true;
-  try { this.report('Pending bench receipt'); const result=await this.send(path,payload); if(generation!==this.generation)return; this.report(`Bench receipt: ${result.receipt?.status ?? 'received'}${result.receipt?.code ? ' / '+result.receipt.code : ''}. No motor acknowledgement.`); }
+  try { this.report('Pending Pi receipt'); const result=await this.send(path,payload); if(generation!==this.generation)return; if(payload.hold&&result.receipt?.status!=='QUEUED_BENCH')throw Error(`Pi did not accept held input: ${result.receipt?.status??'missing receipt'}`); this.report(`Pi receipt: ${result.receipt?.status ?? 'received'}${result.receipt?.code ? ' / '+result.receipt.code : ''}. Pi receipt only; ESP32 status is shown in telemetry.`); }
   catch(error) { if(generation!==this.generation)return; this.axes=null; this.cancel(); this.report(`Receipt error: ${error.message}. Controls disabled; no automatic resume.`); if(payload.hold) this.releasePending=true; }
   finally { this.busy=false; if(this.safety || this.releasePending) this.tick(); }
  }

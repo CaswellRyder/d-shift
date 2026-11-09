@@ -92,7 +92,7 @@ if @lsof@ -nP -iTCP:8782 -sTCP:LISTEN -t >/dev/null 2>&1; then
   exit 1
 fi
 echo 'Join DTR-Drone-Bench Wi-Fi. This Terminal runs your laptop console.'
-echo 'Bench input only: no ESP32 motor acknowledgement; Launch is unavailable.'
+echo 'Manual bench controls: Launch is unavailable. Inspect Controller telemetry for ESP32 status.'
 echo 'Captures are not configured in this basic kit. Leave this Terminal open; Control-C stops it.'
 opened=0
 delay=1
