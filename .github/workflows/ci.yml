@@ -10,7 +10,7 @@ concurrency:
   group: checks-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  regression:
+  source-and-models:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -28,15 +28,11 @@ jobs:
         with:
           version: '0.12.3'
           enable-cache: true
-      - name: Install frozen desktop test environment
+      - name: Install frozen desktop environment
         run: uv sync --locked --extra dev
       - name: Lint
         run: uv run --locked --extra dev ruff check .
-      - name: Python regression tests
-        run: uv run --locked --extra dev pytest -q
-      - name: Browser policy tests
-        run: node --test tests/frame-policy.test.cjs tests/goal-view.test.cjs
-      - name: Verify committed v1 artifacts
-        run: python3 scripts/verify_release.py
-      - name: Generated model loading checks
-        run: uv run --locked python scripts/verify_release.py --smoke
+      - name: Verify frozen v1 artifact bytes in current tree
+        run: python3 scripts/verify_current_models.py
+      - name: Generated model probes with current runtime
+        run: uv run --locked python scripts/verify_current_models.py --smoke

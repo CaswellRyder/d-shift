@@ -18,7 +18,7 @@ def main():
     args = parser.parse_args()
     output, base = Path(args.output), Path(args.base)
     output.mkdir(parents=True, exist_ok=False)
-    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.txt"):
         shutil.copyfile(name, output / name)
     (output / "dtr").mkdir()
     modules = ["__init__", "data", "runtime", "native_tflite", "goal_evidence"]

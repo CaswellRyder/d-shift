@@ -1,8 +1,6 @@
 """Retrospective TRAIN output-swap attribution, not a deployable hybrid model."""
 from pathlib import Path
 
-import numpy as np
-
 from dtr.data import read_json, sha256, write_json
 from dtr.native_balloon_regions import NativeBalloonRegions
 from dtr.runtime import Predictor

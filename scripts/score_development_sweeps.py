@@ -26,11 +26,11 @@ def totals(doc):
     out = {}
     for row in doc["rows"]:
         for scope in ("sweep", "identity") if row["transform"] == "identity" else ("sweep",):
-            t = out.setdefault(f"{row['search']}|{scope}", {f"{l[0]}_{k}": 0 for l in LABELS
+            t = out.setdefault(f"{row['search']}|{scope}", {f"{label[0]}_{k}": 0 for label in LABELS
                                                             for k in ("tp", "fp", "fn")})
-            for l in LABELS:
+            for label in LABELS:
                 for k in ("tp", "fp", "fn"):
-                    t[f"{l[0]}_{k}"] += sum(c[l][k] for c in row["counts"].values())
+                    t[f"{label[0]}_{k}"] += sum(c[label][k] for c in row["counts"].values())
     return out
 
 
@@ -49,7 +49,7 @@ def permutation(a, b, exact):
 
 
 def rule_audit(docs, before, after):
-    delta = {f"{l[0]}_{k}": 0 for l in LABELS for k in ("tp", "fp")}
+    delta = {f"{label[0]}_{k}": 0 for label in LABELS for k in ("tp", "fp")}
     better = worse = 0
     worse_frames, models_worse = set(), []
     for name, doc in docs.items():
@@ -59,11 +59,11 @@ def rule_audit(docs, before, after):
             if search != before:
                 continue
             for i, (x, y) in enumerate(zip(a, rows[shift, after], strict=True)):
-                tp = sum(y[l]["tp"] - x[l]["tp"] for l in LABELS)
-                fp = sum(y[l]["fp"] - x[l]["fp"] for l in LABELS)
-                for l in LABELS:
+                tp = sum(y[label]["tp"] - x[label]["tp"] for label in LABELS)
+                fp = sum(y[label]["fp"] - x[label]["fp"] for label in LABELS)
+                for label in LABELS:
                     for k in ("tp", "fp"):
-                        delta[f"{l[0]}_{k}"] += y[l][k] - x[l][k]
+                        delta[f"{label[0]}_{k}"] += y[label][k] - x[label][k]
                 model_tp, model_fp = model_tp + tp, model_fp + fp
                 if tp < 0 or (tp == 0 and fp > 0):
                     worse += 1
@@ -87,7 +87,8 @@ def score(runs):
     contrasts = {}
     for scope, key, direction in (("identity", "b_fp", "lower"), ("sweep", "b_fp", "lower"),
                                   ("sweep", "b_tp", "higher")):
-        get = lambda arm: [r[f"mser|{scope}"][key] for r in group[arm]]
+        def get(arm):
+            return [r[f"mser|{scope}"][key] for r in group[arm]]
         clutter, control = get("soft-admit") + get("hard-admit"), get("soft-control") + get("hard-control")
         p = permutation(clutter, control, False)
         moved = st.mean(clutter) < st.mean(control) if direction == "lower" else \

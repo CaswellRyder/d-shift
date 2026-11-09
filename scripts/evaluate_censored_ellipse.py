@@ -47,7 +47,8 @@ def evaluate():
         detections = select_detections(found,'split_merged',2.42913421076193)
         # Check same baseline inference before any joint postprocessing.
         baseline_detections = select_detections(found[:len(base)],'split_merged',2.42913421076193)
-        stripped = lambda rows: [{k:v for k,v in r.items() if k != 'latency_ms'} for r in rows]
+        def stripped(rows):
+            return [{k:v for k,v in r.items() if k != 'latency_ms'} for r in rows]
         if stripped(baseline_detections) != stripped(ref['detections']):
             raise ValueError('Baseline predictions changed')
         row = dict(source=source['source'],frame_sha256=source['source_file_sha256'],truth=source['truth'],
