@@ -6,6 +6,7 @@ setup:
 doctor:
 	.venv/bin/dtr doctor
 
+# These local targets require the ignored tests/ directory.
 test:
 	.venv/bin/ruff check src tests scripts
 	.venv/bin/pytest -q

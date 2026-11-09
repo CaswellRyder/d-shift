@@ -42,7 +42,7 @@ def build(output, manifest, review, archive_path, models, red_blue_lookup=None):
             shutil.copyfile(f"scripts/{name}.py", output / f"{name}.py")
         for name in ("native_color_lookup.py", "native_color_lookup.c"):
             shutil.copyfile(f"src/dtr/{name}", output / "dtr" / name)
-    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.txt"):
         shutil.copyfile(name, output / name)
     crops = []
     for i, row in enumerate(rows):

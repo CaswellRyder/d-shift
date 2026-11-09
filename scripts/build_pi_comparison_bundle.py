@@ -19,7 +19,7 @@ def main():
     args = parser.parse_args()
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=False)
-    for name in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+    for name in ("LICENSE", "THIRD_PARTY_NOTICES.txt"):
         shutil.copyfile(name, out / name)
     (out / "dtr").mkdir()
     for name in ("__init__", "data", "runtime", "native_tflite", "goal_evidence", "vision", "tracking"):

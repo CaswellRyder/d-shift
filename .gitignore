@@ -15,6 +15,70 @@ dist/
 *.before-viewer
 output/
 
+# Generated transfer bundles, runtime state, compiled files and local reports.
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.log
+*.jsonl
+*.py[cod]
+*.whl
+*.o
+*.a
+*.dylib
+*.dll
+*.exe
+*.tmp
+*.swp
+*.swo
+*~
+.runtime/
+captures/
+recordings/
+logs/
+journals/
+sessions/
+/network/bin/
+/network/laptop-link
+/network/pi-link
+/network/linkctl
+.mypy_cache/
+.hypothesis/
+.ipynb_checkpoints/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Local tests and AI assistant configuration, sessions and scratch state.
+tests/
+/scratch/
+/tmp/
+.claude/
+.codex/
+.agents/
+.cursor/
+.windsurf/
+.gemini/
+.continue/
+.opencode/
+.cline/
+.roo/
+.rivet/
+.aider*
+.cursorrules
+.cursorignore
+.windsurfrules
+.clinerules
+.roorules
+.mcp.json
+.vscode/mcp.json
+.github/agents/
+.github/prompts/
+.github/instructions/
+
 # Generated portable lab bundles, local connection state and captured frames.
 lab_kit/Pi Bundle/
 lab_kit/Captures/
@@ -23,13 +87,42 @@ lab_kit/SHA256SUMS.json
 lab_kit/Laptop/.runtime.json
 lab_kit/Laptop/.runtime.json.tmp
 
-# Local notes. Kept on disk, not in git.
-/CHANGELOG.md
-/CONTRIBUTING.md
-/SECURITY.md
-/DOCUMENTATION.md
-/INDEX.md
-/README.md
-/AGENTS.md
+# Credentials, local networking profiles, recordings and generated weights.
+*.key
+*.pem
+*.p12
+*.pfx
+*.nmconnection
+/.ssh/
+/credentials/
+/secrets/
+/captures/
+/recordings/
+/logs/
+/.egm/
+*.mp4
+*.mov
+*.avi
+*.tflite
+*.keras
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.so
+# The reviewed, frozen v1 students are intentional public artifacts.
+!/models/v1.0.0/**/*.tflite
+!/models/v1.0.0/**/*.keras
+
+# Local guides, rendered reports and research inputs.
 /docs/
 /research/
+
+# Keep Markdown, including CLAUDE.md and AGENTS.md, local; publish only the root README.
+*.[mM][dD]
+*.[mM][aA][rR][kK][dD][oO][wW][nN]
+*.[mM][dD][oO][wW][nN]
+*.[mM][kK][dD]
+!/README.md

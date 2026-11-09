@@ -16,11 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 PI_FILES = ('src/dtr/static/flight_lab.html', 'scripts/pi_flight_loop.py',
             'scripts/pi_flight_lab.py', 'scripts/calibrate_lens.py',
             'configs/camera_mount.json', 'configs/target_sizes.json',
-            'LICENSE', 'THIRD_PARTY_NOTICES.md')
+            'LICENSE', 'THIRD_PARTY_NOTICES.txt')
 TEMPLATES = ('Laptop/flight_lab.py', 'Laptop/pi_helper.py',
              'Start Flight Lab.command', 'Download Captures.command',
              'Verify Package.command', 'connection.example.json')
-DOCUMENTS = ('README.md', 'READ ME FIRST.md', 'OWNERSHIP AND STATUS.md', 'START HERE.html')
+DOCUMENTS = ('START HERE.html',)
 RUNTIME_EVIDENCE = 'models/v1.0.0/evidence/runtime-build.json'
 
 
@@ -92,10 +92,7 @@ def package(repo, balloon_model, goal_model, runtime, output, source_revision):
         for relative in TEMPLATES:
             copy_file(templates / relative, staging / relative, repo)
         for relative in DOCUMENTS:
-            if (templates / relative).is_file():
-                copy_file(templates / relative, staging / relative, repo)
-        for path in sorted((templates / 'Laptop/tests').glob('test_*.py')):
-            copy_file(path, staging / 'Laptop/tests' / path.name, repo)
+            copy_file(templates / relative, staging / relative, repo)
         copy_file(staging / 'connection.example.json', staging / 'connection.json')
         bundle = staging / 'Pi Bundle'
         for relative in PI_FILES:
