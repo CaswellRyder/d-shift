@@ -15,6 +15,7 @@ import time
 import numpy as np
 
 FRAME_SHAPE = (240, 320, 3)
+DEFAULT_BALLOON_LIMIT = 4
 
 
 def _serve(conn, shm_name, shape, factory, niceness):
@@ -169,12 +170,12 @@ class SearchWorker:
 class ModelSearch:
     """Picklable factory for the real models; loads them inside the child process."""
 
-    def __init__(self, balloon_model, goal_model, balloon_limit=8):
+    def __init__(self, balloon_model, goal_model, balloon_limit=DEFAULT_BALLOON_LIMIT):
         self.balloon_model, self.goal_model = str(balloon_model), str(goal_model)
         self.balloon_limit = balloon_limit
 
     def __call__(self):
-        from .goal_square import find_squares
+        from .goal_square import find_goals
         from .runtime import Predictor
         from .vision import GREEN_PURPLE_PROFILE, observe
 
@@ -184,7 +185,7 @@ class ModelSearch:
 
         def search(rgb, phase):
             if phase == "goal":
-                found = find_squares(rgb, goals)["detections"]  # Ours and the opponent's.
+                found = find_goals(rgb, goals)["detections"]  # Ours and the opponent's, all shapes.
                 return [dict(label=d["label"], box=[float(v) for v in d["box"]], score=d["score"])
                         for d in found]
             found = observe(rgb, balloons, limit=balloon_limit, profile=GREEN_PURPLE_PROFILE)

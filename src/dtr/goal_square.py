@@ -1,10 +1,7 @@
-"""Square-goal search: color + four-corner shape filter, then the goal crop model confirms.
+"""Colour/geometry proposals for all hoops, confirmed by the seven-class crop model.
 
-Team strategy aims only at the square hoop (largest opening). The shape filter
-replaces the 12-crop goal search, so the model sees well under one crop per frame
-on DTR frames. Our goal color changes every round, so callers pass it per launch.
-Color must be independently confident and agree with the candidate's HSV mask.
-Settings were chosen on DTR v10 train (2026-10-13); val was checked once.
+The historical module and square search names remain importable for callers.
+Geometry thresholds describe complete silhouettes, not calibrated flight limits.
 """
 
 import time
@@ -13,14 +10,32 @@ import cv2
 import numpy as np
 
 from .vision import color_masks
+from .goal_evidence import CLASSES, SHAPES, goal_evidence
 
 GOAL_COLORS = ("orange", "yellow")  # Index matches the goal color_masks order.
 SQUARE_LABELS = {"orange": "orange_square", "yellow": "yellow_square"}
-MIN_SIDE = 8  # Below ~16 px squares are mostly lost at the mask anyway.
-MAX_ASPECT = 1.8  # Perspective squashes a hanging square; keep moderate skew.
-CORNER_EPS = 0.06  # approxPolyDP tolerance, fraction of hull perimeter.
+GOAL_LABELS = tuple(f"{color}_{shape}" for color in GOAL_COLORS for shape in SHAPES)
+LABELS_BY_COLOR = {color: tuple(f"{color}_{shape}" for shape in SHAPES) for color in GOAL_COLORS}
+MIN_SIDE = 8
+ASPECT_LIMITS = {"square": (1 / 1.8, 1.8), "circle": (0.6, 1.65),
+                 "triangle": (0.6, 1.8)}  # Point-down triangle is nominally 1.15 w/h.
+CORNER_EPS = 0.035  # Retains >=6 corners on circles, three on a triangle.
 MIN_FILL = 0.65  # Hull area / min-area rectangle; triangles sit near 0.5.
-HOLLOW = 0.02  # A visible opening; hollow quads are classified first.
+# Thick frames and blur clip a far triangle's tips, so its hull often simplifies to 4-6
+# corners. Test against the smallest enclosing triangle instead of a corner count:
+# a triangle fills ~1.0 of it, a circle ~0.60 and a square ~0.50. Bounding-rectangle fill
+# rises from 0.5 toward 0.7 as the frame thickens and blurs.
+TRIANGLE_FILL = (0.40, 0.75)
+MIN_TRIANGLE_RATIO = 0.80
+MAX_TIP_GAP = 0.30  # Enclosing-vertex distance from the hull, fraction of mean side; far lab tips reach ~0.22.
+MIN_CIRCULARITY = 0.82
+MAX_PARALLEL_SINE = 0.25  # Opposite edge directions differ by at most ~14.5 degrees.
+MIN_OPPOSITE_RATIO = 0.65
+HOLLOW = 0.02  # A visible opening; hollow contours are classified first.
+# Nominal outer width/height (m) from the DTR rules, used only to rank proposals by range
+# before the crop budget; flight ranking reads configs/target_sizes.json.
+NOMINAL_SIZES = {"circle": (1.130, 1.130), "square": (1.168, 1.168), "triangle": (1.613, 1.397)}
+SMALL_SIDE = 16  # Rasterized circles and squares this small cannot be told apart reliably.
 DEFAULT_MAX_CROPS = 4
 DEFAULT_THRESHOLD = 0.8
 DEFAULT_COLOR_THRESHOLD = 0.8
@@ -34,8 +49,41 @@ def order_corners(points):
             points[np.argmax(total)], points[np.argmax(diff)]]
 
 
-def square_candidates(rgb, colors=GOAL_COLORS):
-    """Four-corner outer contours in the requested goal colors, hollow and large first."""
+def shape_hint(hull):
+    """Return shape and cyclic hull corners, rejecting fragments/trapezoids."""
+    area, perimeter = cv2.contourArea(hull), cv2.arcLength(hull, True)
+    _, (rw, rh), _ = cv2.minAreaRect(hull)
+    if min(area, perimeter, rw, rh) <= 0:
+        return None, None
+    fill = area / (rw * rh)
+    if TRIANGLE_FILL[0] <= fill <= TRIANGLE_FILL[1]:
+        triangle_area, triangle = cv2.minEnclosingTriangle(hull.astype(np.float32))
+        triangle = triangle.reshape(-1, 2)
+        side = np.mean(np.linalg.norm(np.roll(triangle, -1, axis=0) - triangle, axis=1))
+        # Clipped tips stay near the enclosing vertex; a trapezoid's missing apex does not.
+        gaps = [-cv2.pointPolygonTest(hull, (float(x), float(y)), True) for x, y in triangle]
+        if (triangle_area > 0 and area / triangle_area >= MIN_TRIANGLE_RATIO
+                and max(gaps) <= MAX_TIP_GAP * side):
+            return "triangle", triangle
+    corners = cv2.approxPolyDP(hull, CORNER_EPS * perimeter, True).reshape(-1, 2)
+    if len(corners) == 4 and fill >= MIN_FILL and max(rw / rh, rh / rw) <= 1.8:
+        # Cyclic order avoids duplicate vertices from sum/difference corner ordering.
+        edges = np.roll(corners.astype(float), -1, axis=0) - corners
+        lengths = np.linalg.norm(edges, axis=1)
+        for i in (0, 1):
+            a, b = edges[i], edges[i + 2]
+            sine = abs(a[0] * b[1] - a[1] * b[0]) / (lengths[i] * lengths[i + 2])
+            ratio = min(lengths[i], lengths[i + 2]) / max(lengths[i], lengths[i + 2])
+            if sine > MAX_PARALLEL_SINE or ratio < MIN_OPPOSITE_RATIO:
+                return None, None
+        return "square", corners
+    if len(corners) >= 6 and fill >= MIN_FILL and 4 * np.pi * area / perimeter**2 >= MIN_CIRCULARITY:
+        return "circle", corners
+    return None, None
+
+
+def goal_candidates(rgb, colors=GOAL_COLORS):
+    """Outer contours in the requested colours: hollow, then nearest, alternating colours."""
     unknown = set(colors) - set(GOAL_COLORS)
     if unknown or not colors:
         raise ValueError(f"Goal colors must be drawn from {GOAL_COLORS}")
@@ -54,7 +102,7 @@ def square_candidates(rgb, colors=GOAL_COLORS):
             if hierarchy[i][3] != -1:
                 continue  # Holes are read from the parent below.
             x, y, w, h = cv2.boundingRect(contour)
-            if min(w, h) < MIN_SIDE or max(w / h, h / w) > MAX_ASPECT:
+            if min(w, h) < MIN_SIDE:
                 continue
             if w * h > 0.75 * width * height:
                 continue
@@ -62,42 +110,59 @@ def square_candidates(rgb, colors=GOAL_COLORS):
             hull_area = cv2.contourArea(hull)
             if hull_area <= 0:
                 continue
-            corners = cv2.approxPolyDP(hull, CORNER_EPS * cv2.arcLength(hull, True), True)
-            if len(corners) != 4:
-                continue
-            _, (rw, rh), _ = cv2.minAreaRect(hull)
-            if rw * rh <= 0 or hull_area / (rw * rh) < MIN_FILL:
+            shape, corners = shape_hint(hull)
+            if shape is None or not ASPECT_LIMITS[shape][0] <= w / h <= ASPECT_LIMITS[shape][1]:
                 continue
             hole, child = 0.0, hierarchy[i][2]
             while child != -1:
                 hole, child = max(hole, cv2.contourArea(contours[child])), hierarchy[child][0]
             pad = int(max(w, h) * 0.12)  # Same crop padding the goal model was trained on.
+            # Small round/square blobs are ambiguous; let confident model evidence decide.
+            shapes = (("circle", "square") if max(w, h) < SMALL_SIDE and shape != "triangle"
+                      else (shape,))
             found.append(dict(
                 box=[x, y, x + w, y + h],
                 crop_box=[max(0, x - pad), max(0, y - pad),
                           min(width, x + w + pad), min(height, y + h + pad)],
                 color=color,
-                corners=[[float(px), float(py)] for px, py in order_corners(corners)],
+                shape=shape,
+                shapes=shapes,
+                range_proxy=min(NOMINAL_SIZES[shape][0] / w, NOMINAL_SIZES[shape][1] / h),
+                corners=corners.astype(float).tolist(),
                 hollow=hole / hull_area,
                 area=float(hull_area),
             ))
-    found.sort(key=lambda c: (c["hollow"] < HOLLOW, -c["area"]))
-    return found
+    # Hollow first, then nearest by physical size, alternating colours so the crop budget
+    # covers both our goals and the opponent's.
+    found.sort(key=lambda c: (c["hollow"] < HOLLOW, c["range_proxy"]))
+    queues = [[c for c in found if c["color"] == color] for color in GOAL_COLORS]
+    ordered = []
+    while any(queues):
+        for queue in queues:
+            if queue:
+                ordered.append(queue.pop(0))
+    return ordered
 
 
 def validate_goal_model(metadata):
     classes = (metadata or {}).get("classes", ())
-    if (metadata or {}).get("task") != "goal" or not set(SQUARE_LABELS.values()) <= set(classes):
-        raise ValueError("Square-goal search requires the goal model with square classes")
+    if (metadata or {}).get("task") != "goal" or len(classes) != 7 or set(classes) != set(CLASSES):
+        raise ValueError("Goal search requires the seven-class goal model")
 
 
-def find_squares(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD,
+def find_goals(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD,
                  max_crops=DEFAULT_MAX_CROPS, color_threshold=DEFAULT_COLOR_THRESHOLD):
-    """Confirmed squares of the requested colors, largest first. Observational only."""
+    """Confirm matching shape and conditional colour evidence. Observational only."""
     validate_goal_model(predictor.metadata)
+    if not np.isfinite(threshold) or not 0.5 < threshold <= 1:
+        raise ValueError("Invalid shape threshold")
+    if not isinstance(max_crops, int) or isinstance(max_crops, bool) or max_crops < 0:
+        raise ValueError("max_crops must be a nonnegative integer")
+    if not np.isfinite(color_threshold) or not 0.5 <= color_threshold <= 1:
+        raise ValueError("Invalid colour threshold")
     classes = predictor.metadata["classes"]
     start = time.perf_counter()
-    candidates = square_candidates(rgb, colors)[:max_crops]
+    candidates = goal_candidates(rgb, colors)[:max_crops]
     searched = time.perf_counter()
     crops = [rgb[c["crop_box"][1]:c["crop_box"][3], c["crop_box"][0]:c["crop_box"][2]]
              for c in candidates]
@@ -107,19 +172,18 @@ def find_squares(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD
     height, width = rgb.shape[:2]
     detections = []
     for candidate, result in zip(candidates, results):
-        scores = {color: result["scores"][classes.index(label)]
-                  for color, label in SQUARE_LABELS.items()}
-        # Shape is summed square mass; color must be confident given that shape.
-        shape_score = sum(scores.values())
+        evidence = goal_evidence(result["scores"], classes, threshold)
+        shape, shape_score = evidence["shape"], evidence["shape_score"]
+        scores = evidence["color_scores_given_shape"]
         color = max(scores, key=scores.get)
-        color_score = scores[color] / shape_score if shape_score > 0 else 0.0
-        if (shape_score < threshold or color_score < color_threshold
+        color_score = scores[color]
+        if (shape not in candidate["shapes"] or color_score < color_threshold
                 or color not in colors or color != candidate["color"]):
             continue
         x1, y1, x2, y2 = candidate["box"]
-        cx, cy = np.mean(candidate["corners"], axis=0)
+        cx, cy = (x1 + x2) / 2, (y1 + y2) / 2
         detections.append(dict(
-            candidate, label=SQUARE_LABELS[color], color=color,
+            candidate, label=f"{color}_{shape}", color=color,
             score=float(shape_score), color_score=float(color_score),
             center_normalized=[float(2 * cx / width - 1), float(2 * cy / height - 1)],
             size_px=float(max(x2 - x1, y2 - y1)),
@@ -131,3 +195,8 @@ def find_squares(rgb, predictor, colors=GOAL_COLORS, threshold=DEFAULT_THRESHOLD
         inference_ms=(classified - searched) * 1000,
         processing_ms=(time.perf_counter() - start) * 1000,
     )
+
+
+# Legacy names now search all goal shapes. Flight callers use the explicit names.
+square_candidates = goal_candidates
+find_squares = find_goals

@@ -1,7 +1,8 @@
 """Bounded flight-vision loop: per-frame tracker + low-priority full search + mission messages.
 
-Writes the Pi -> ESP32 messages to a JSONL log; nothing is sent to a flight
-controller. Use --replay to run on stored frames off the Pi.
+Writes the Pi -> ESP32 messages to JSONL logs. With --i2c-bus, also sends each
+message as a 20-byte packet (dtr.flight.encode_i2c) to the ESP32 I2C slave.
+Use --replay to run on stored frames off the Pi.
 """
 
 import argparse
@@ -15,11 +16,14 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from dtr.flight import ColorTracker, Mission, encode
+from dtr.flight import ColorTracker, Mission, encode, encode_v2, encode_i2c
+from dtr.esp32_link import I2CLink, NullLink
 from dtr.flight_pipeline import FlightPipeline
+from dtr.target_geometry import load_target_sizes
+from dtr.target_vector import VectorCreator
 from dtr.flight_telemetry import add_mapping_arguments, mapping_from_args
 from dtr.goal_square import GOAL_COLORS
-from dtr.search_worker import ModelSearch, SearchWorker
+from dtr.search_worker import DEFAULT_BALLOON_LIMIT, ModelSearch, SearchWorker
 
 SENSOR = (1296, 972)  # 2x2 binned, full field of view.
 
@@ -85,24 +89,28 @@ def summary(values):
                 p90=round(float(np.percentile(values, 90)), 1), max=round(float(values.max()), 1))
 
 
-def run(source, worker, tracker, mission, seconds, telemetry=None):
+def run(source, worker, tracker, mission, seconds, telemetry=None, link=None):
+    link = link or NullLink()
     lines, loop_times, refresh_times, search_ms, lag_ms = [], [], [], [], []
     pipeline = FlightPipeline(worker, tracker, mission, telemetry=telemetry)
     draft_lines = []
+    v2_lines = []
     end = time.monotonic() + seconds
     while time.monotonic() < end:
         rgb, now = source.read()
         frame = pipeline.step(rgb, now)
+        link.send(encode_i2c(frame["message"]))
         result = frame["search_result"]
         if result is not None:
             refresh_times.append(now)
             search_ms.append(result["search_ms"])
             lag_ms.append((now - result["frame_time"]) * 1000)
         lines.append(encode(frame["message"]))
+        v2_lines.append(encode_v2(frame["message"]))
         if 'flight_telemetry' in frame:
             draft_lines.append(frame['flight_telemetry']['outgoing']['draft_jsonl'])
         loop_times.append(time.monotonic())
-    return lines, dict(
+    return lines, dict(link_sent=link.sent, link_errors=link.errors, link_last_error=link.last_error,
         frames=len(loop_times),
         loop_fps=round((len(loop_times) - 1) / (loop_times[-1] - loop_times[0]), 2),
         loop_gap_ms=summary(np.diff(loop_times) * 1000),
@@ -113,6 +121,7 @@ def run(source, worker, tracker, mission, seconds, telemetry=None):
         worker_restarts=worker.restarts, worker_errors=worker.errors,
         commands=dict(Counter(json.loads(line)["cmd"] for line in lines)),
         esp32_draft_lines=draft_lines,
+        wire_v2_lines=v2_lines,
     )
 
 
@@ -120,6 +129,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--balloon-model", required=True)
     parser.add_argument("--goal-model", required=True)
+    parser.add_argument("--balloon-limit", type=int, default=DEFAULT_BALLOON_LIMIT)
     parser.add_argument("--goal-color", required=True, choices=GOAL_COLORS)
     parser.add_argument("--phase", choices=("balloon", "goal"), default="balloon",
                         help="start phase; goal acts as if a balloon is already held")
@@ -127,9 +137,13 @@ def main():
     parser.add_argument("--seconds", type=float, default=20)
     parser.add_argument("--fps", type=float, default=20)
     parser.add_argument("--replay", help="glob of stored frames instead of the camera")
+    parser.add_argument("--i2c-bus", type=int)
+    parser.add_argument("--i2c-address", type=lambda s: int(s, 0), default=0x42)
     parser.add_argument("--niceness", type=int, default=19)
     add_mapping_arguments(parser)
     args = parser.parse_args()
+    if not 1 <= args.balloon_limit <= 64:
+        parser.error("Balloon limit must be between 1 and 64")
     if not 2 <= args.seconds <= 600 or not 1 <= args.fps <= 40:
         parser.error("Require seconds 2..600 and fps 1..40")
     log = Path(args.log)
@@ -138,23 +152,30 @@ def main():
         raise FileExistsError('A requested log already exists')
     telemetry = mapping_from_args(args)
 
-    mission = Mission(args.goal_color)
+    sizes = load_target_sizes(args.target_sizes)
+    # Connor's vector uses the same lens (and any checkerboard calibration) as telemetry.
+    mission = Mission(args.goal_color, target_sizes=sizes,
+                      vector=VectorCreator(telemetry.lens, sizes))
     if args.phase == "goal":
         mission.captured()
-    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model), niceness=args.niceness)
+    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model, args.balloon_limit),
+                          niceness=args.niceness)
     try:
         worker.start()
         started = time.monotonic()
         worker.wait_ready()
         ready_s = time.monotonic() - started
         source = Replay(args.replay, args.fps) if args.replay else Camera(args.fps)
+        link = I2CLink(args.i2c_bus, args.i2c_address) if args.i2c_bus is not None else NullLink()
         try:
             lines, report = run(source, worker, ColorTracker(), mission, args.seconds,
-                                telemetry=telemetry)
+                                telemetry=telemetry, link=link)
         finally:
+            link.close()
             source.close()
     finally:
         worker.close()
+    log.with_name(log.stem + '-v2.jsonl').write_text(''.join(report.pop('wire_v2_lines')))
     log.write_text("".join(lines))  # Written after the loop: no disk I/O while timing.
     draft_log.write_text(''.join(report.pop('esp32_draft_lines')))
     report.update(worker_ready_s=round(ready_s, 2), source="replay" if args.replay else "camera",

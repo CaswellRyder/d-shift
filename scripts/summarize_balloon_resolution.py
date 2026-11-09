@@ -62,7 +62,7 @@ def summarize(path):
         host_mean_search_ms={key: sum(t[i] for t in times)/len(times)
                              for i, key in enumerate(('baseline','high'))} if times else {},
         decision='Do not advance higher-resolution MSER to Pi or development testing: only one extra blue target, one fewer red target, and much more search work.',
-        next_direction='Classifier-only retraining cannot recover missing candidate boxes. Investigate a genuinely different localization mechanism using admitted training annotations.',
+        next_direction='Classifier-only retraining cannot recover missing candidate boxes. Test another localization method using admitted training annotations.',
         caveats=['One-to-one TRAIN proposal coverage, not detector accuracy or independent qualification.',
                  'Union is an unlimited proposal oracle; bounded preserves baseline and adds at most two blue proposals within twelve total.',
                  'Host timings are single-pass diagnostics, not a controlled Pi speed estimate.',

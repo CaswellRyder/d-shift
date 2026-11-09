@@ -79,6 +79,9 @@ def check_package(root=ROOT):
             raise LabError('The Pi bundle is missing its ' + kind + ' model')
     if manifest['runtime_file'] not in manifest['files']:
         raise LabError('The Pi bundle is missing its native runtime')
+    lens = manifest.get('lens_calibration_file')
+    if lens is not None and (lens != 'configs/lens-calibration.json' or lens not in manifest['files']):
+        raise LabError('The Pi bundle has an invalid pinned lens calibration')
     return manifest, count
 
 
@@ -93,6 +96,9 @@ def load_config(root=ROOT):
     port = config.get('port')
     if isinstance(port, bool) or not isinstance(port, int) or not 1024 <= port <= 65535:
         raise LabError('The lab port must be an integer from 1024 to 65535')
+    limit = config.get('balloon_limit', 4)
+    if isinstance(limit, bool) or not isinstance(limit, int) or not 1 <= limit <= 64:
+        raise LabError('The balloon limit must be an integer from 1 to 64')
     for key in ('remote_root', 'legacy_root'):
         value = config.get(key)
         if value is None and key == 'legacy_root':

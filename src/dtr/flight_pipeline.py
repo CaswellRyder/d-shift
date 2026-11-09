@@ -15,7 +15,9 @@ class FlightPipeline:
     def configure(self, phase, goal_color, now):
         if phase not in ('balloon', 'goal'):
             raise ValueError('Choose balloon or goal')
-        mission = Mission(goal_color, self.tracker.width, self.tracker.height)
+        # Keep the launch configuration (custom sizes and gates) across phase/colour changes.
+        mission = Mission(goal_color, self.tracker.width, self.tracker.height,
+                          config=self.mission.config, target_sizes=self.mission.target_sizes, vector=self.mission.vector)
         if phase == 'goal':
             mission.captured()
         self.mission = mission
@@ -29,7 +31,7 @@ class FlightPipeline:
                 and self.phase_since <= result['frame_time'] <= now):
             self.tracker.merge(result['detections'], result['frame_time'], now)
         tracks = [dict(id=t.id, label=t.label, box=list(t.box), score=float(t.score),
-                       confirmed=float(t.confirmed), seen=float(t.seen), misses=t.misses)
+                       center_h=t.center_h, confirmed=float(t.confirmed), seen=float(t.seen), misses=t.misses)
                   for t in self.tracker.tracks]
         phase = self.mission.phase
         message = self.mission.step(self.tracker.tracks, now)

@@ -66,7 +66,10 @@ def argument(argv, name):
     return Path(argv[index])
 
 
-def validate_process(root, manifest, expected_port=None):
+DEFAULT_BALLOON_LIMIT = 4  # pi_flight_lab.py default when --balloon-limit is absent.
+
+
+def validate_process(root, manifest, expected_port=None, expected_balloon_limit=None):
     root = Path(root)
     try:
         pid = int((root / 'server.pid').read_text())
@@ -87,6 +90,15 @@ def validate_process(root, manifest, expected_port=None):
         raise SetupError('Known Pi viewer is running on port %d, but this connection requests %d; '
                          'match connection.json to the existing port before retrying' %
                          (actual_port, expected_port))
+    try:
+        actual_limit = (int(str(argument(argv, '--balloon-limit'))) if '--balloon-limit' in argv
+                        else DEFAULT_BALLOON_LIMIT)
+    except (TypeError, ValueError):
+        raise SetupError('Running viewer has an invalid balloon limit argument')
+    if expected_balloon_limit is not None and actual_limit != expected_balloon_limit:
+        raise SetupError('Known Pi viewer is running with balloon_limit %d, but this connection requests %d; '
+                         'stop that viewer (after any capture is saved) or match connection.json before retrying' %
+                         (actual_limit, expected_balloon_limit))
     verify_files(root, manifest, code_only=True)
     for kind in ('balloon', 'goal'):
         model = argument(argv, '--' + kind + '-model')
@@ -107,7 +119,14 @@ def validate_process(root, manifest, expected_port=None):
                            ('--target-sizes', 'configs/target_sizes.json')):
         if flag in argv and digest(argument(argv, flag)) != manifest['files'][relative]:
             raise SetupError('Running viewer uses different coordinate configuration')
-    if '--lens-calibration' in argv:
+    lens = manifest.get('lens_calibration_file')
+    if lens is not None:
+        if lens != 'configs/lens-calibration.json' or lens not in manifest['files']:
+            raise SetupError('Invalid pinned lens calibration in this kit')
+        if ('--lens-calibration' not in argv
+                or digest(argument(argv, '--lens-calibration')) != manifest['files'][lens]):
+            raise SetupError('Running viewer does not use this kit\'s pinned lens calibration')
+    elif '--lens-calibration' in argv:
         raise SetupError('Running viewer has an external lens calibration not contained in this kit')
     return pid
 
@@ -141,12 +160,14 @@ def probe(payload):
         root = state.get('bundle')
         if root not in roots:
             raise SetupError('Another Pi bundle owns this port; it was not stopped or changed')
-        if validate_process(root, manifest, config['port']) is None:
+        if validate_process(root, manifest, config['port'],
+                            config.get('balloon_limit', DEFAULT_BALLOON_LIMIT)) is None:
             raise SetupError('The viewer PID identity could not be verified; it was not changed')
         return dict(kind='existing', root=root, ready=state.get('ready', False),
                     error=state.get('error'), capture_state=state['capture'].get('state'))
     for root in roots:
-        if validate_process(root, manifest, config['port']) is not None:
+        if validate_process(root, manifest, config['port'],
+                            config.get('balloon_limit', DEFAULT_BALLOON_LIMIT)) is not None:
             return dict(kind='starting', root=root, ready=False, error=None)
     return dict(kind='absent', root=config['remote_root'])
 
@@ -224,8 +245,14 @@ def _start_locked(payload):
     command = ['python3', '-u', str(root / 'scripts/pi_flight_lab.py'),
                '--balloon-model', str(root / manifest['model_files']['balloon']),
                '--goal-model', str(root / manifest['model_files']['goal']),
+               '--balloon-limit', str(config.get('balloon_limit', DEFAULT_BALLOON_LIMIT)),
                '--output', str(root / 'sessions'), '--port', str(config['port']),
                '--wall-clock-offset-s', str(payload['wall_clock_offset_s'])]
+    lens = manifest.get('lens_calibration_file')
+    if lens is not None:
+        if lens != 'configs/lens-calibration.json' or lens not in manifest['files']:
+            raise SetupError('Invalid pinned lens calibration in this kit')
+        command.extend(['--lens-calibration', str(root / lens)])
     with (root / 'server.log').open('ab') as log:
         process = subprocess.Popen(command, cwd=root, env=env, stdin=subprocess.DEVNULL,
                                    stdout=log, stderr=subprocess.STDOUT, start_new_session=True)

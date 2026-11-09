@@ -4,6 +4,7 @@ import argparse
 import gzip
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -15,6 +16,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 PI_FILES = ('src/dtr/static/flight_lab.html', 'scripts/pi_flight_loop.py',
             'scripts/pi_flight_lab.py', 'scripts/calibrate_lens.py',
+            'scripts/lab_session.py',
             'configs/camera_mount.json', 'configs/target_sizes.json',
             'LICENSE', 'THIRD_PARTY_NOTICES.txt')
 TEMPLATES = ('Laptop/flight_lab.py', 'Laptop/pi_helper.py',
@@ -59,7 +61,31 @@ def tar_bundle(bundle, paths):
     return archive
 
 
-def package(repo, balloon_model, goal_model, runtime, output, source_revision):
+def runtime_calibration(path):
+    """Keep runtime geometry and source identity; omit local capture paths."""
+    path = Path(path)
+    if path.is_symlink() or not path.is_file():
+        raise ValueError('Lens calibration must be a regular file')
+    raw = path.read_bytes()
+    data = json.loads(raw)
+    try:
+        k, d, size, rms = (data[key] for key in ('K', 'D', 'image_size', 'rms'))
+        numbers = [v for row in k for v in row] + list(d) + [rms]
+        valid = (data.get('flipped') is True and len(k) == 3
+                 and all(len(row) == 3 for row in k) and len(d) == 4
+                 and size == [320, 240] and k[0][0] > 0 and k[1][1] > 0 and rms >= 0
+                 and all(type(v) in (int, float) and math.isfinite(v) for v in numbers))
+    except (TypeError, KeyError, IndexError):
+        valid = False
+    if not valid:
+        raise ValueError('Expected finite calibration for flipped 320x240 runtime frames')
+    return dict(K=k, D=d, image_size=size, rms=rms, flipped=True,
+                status='provisional; independent physical validation still required',
+                source_calibration_sha256=hashlib.sha256(raw).hexdigest())
+
+
+def package(repo, balloon_model, goal_model, runtime, output, source_revision,
+            lens_calibration=None):
     """Read only explicit source/templates and supplied artifacts; return transfer paths."""
     repo, output = Path(repo).resolve(), Path(output).absolute()
     archive_path = output.with_suffix('.zip')
@@ -67,6 +93,7 @@ def package(repo, balloon_model, goal_model, runtime, output, source_revision):
         raise ValueError('source_revision must be a full immutable Git commit SHA')
     if output.exists() or output.is_symlink() or archive_path.exists() or archive_path.is_symlink():
         raise FileExistsError('Output folder or ZIP already exists; neither will be overwritten')
+    lens = runtime_calibration(lens_calibration) if lens_calibration is not None else None
     models = {'balloon': Path(balloon_model), 'goal': Path(goal_model)}
     model_pins = {}
     for kind, path in models.items():
@@ -97,6 +124,11 @@ def package(repo, balloon_model, goal_model, runtime, output, source_revision):
         bundle = staging / 'Pi Bundle'
         for relative in PI_FILES:
             copy_file(repo / relative, bundle / relative, repo)
+        copy_file(repo / 'scripts/lab_session.py', staging / 'Laptop/lab_session.py', repo)
+        if lens is not None:
+            if digest(lens_calibration) != lens['source_calibration_sha256']:
+                raise ValueError('Lens calibration changed after validation')
+            write_json(bundle / 'configs/lens-calibration.json', lens)
         for path in sorted((repo / 'src/dtr').glob('*.py')):
             copy_file(path, bundle / 'src/dtr' / path.name, repo)
         copy_file(repo / RUNTIME_EVIDENCE, bundle / 'runtime/runtime-build.json', repo)
@@ -119,6 +151,8 @@ def package(repo, balloon_model, goal_model, runtime, output, source_revision):
                         model_files=dict(balloon='models/balloon.tflite', goal='models/goal.tflite'),
                         runtime_file='runtime/libtensorflowlite_c.so', deployment_approved=False,
                         hardware='Existing configured Raspberry Pi Zero W ARMv6')
+        if lens is not None:
+            manifest['lens_calibration_file'] = 'configs/lens-calibration.json'
         write_json(bundle / 'manifest.json', manifest)
         write_json(staging / 'RELEASE-MANIFEST.json', dict(
             schema=1, source_revision=source_revision, status='research lab prerelease',
@@ -163,10 +197,12 @@ def main():
     parser.add_argument('--runtime', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--source-revision', required=True)
+    parser.add_argument('--lens-calibration', type=Path,
+                        help='Explicitly include and use this provisional lens in the new kit')
     args = parser.parse_args()
     try:
         print(json.dumps(package(ROOT, args.balloon_model, args.goal_model, args.runtime,
-                                 args.output, args.source_revision), indent=2))
+                                 args.output, args.source_revision, args.lens_calibration), indent=2))
     except (OSError, ValueError, KeyError) as error:
         parser.exit(1, str(error) + '\n')
 

@@ -15,7 +15,7 @@ dependencies = [
 
 [project.optional-dependencies]
 pretrained = ["timm==1.0.15", "torch==2.6.0", "torchvision==0.21.0", "huggingface-hub==0.29.3"]
-dev = ["pytest==8.3.5", "ruff==0.11.2"]
+dev = ["pytest==8.3.5", "ruff==0.11.2", "scipy==1.16.3"]
 metal = ["tensorflow-metal==1.2.0; platform_system == 'Darwin'"]
 research = ["scipy==1.16.3"]
 

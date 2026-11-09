@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eu
+kit_dir="$(cd -P "$(dirname "$0")/.." && pwd)"
+case "$(/usr/bin/uname -m)" in
+  arm64) architecture=arm64 ;;
+  x86_64) architecture=amd64 ;;
+  *) echo 'Unsupported Mac processor.' >&2; exit 1 ;;
+esac
+export PYTHONPATH="$kit_dir/.runtime/site-$architecture:$kit_dir/source/src"
+export PYTHONNOUSERSITE=1
+unset PYTHONHOME PYTHONSTARTUP PYTHONINSPECT
+exec "$kit_dir/.runtime/python-$architecture/python/bin/python3.11" -s "$@"

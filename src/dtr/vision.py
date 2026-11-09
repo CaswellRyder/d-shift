@@ -24,6 +24,11 @@ GREEN_PURPLE_CLASSES = frozenset(("background", "green_balloon", "purple_balloon
 # sit at OpenCV hue 114-123, blue at 101-110. Starting purple at 112 keeps every
 # purple box and ~2% of blue boxes; the legacy 95-175 band admits all blue.
 GREEN_PURPLE_HSV = (((30, 35, 30), (85, 255, 255)), ((112, 40, 25), (165, 255, 255)))
+# Filled, partly reflective balloon silhouettes. Five pixels across is a minimum
+# for shape evidence: four-pixel lab fragments include indistinguishable hoop hits.
+BALLOON_MIN_SIDE = 5
+BALLOON_MAX_ASPECT = 2.0  # Generous ellipse; reject thin furniture/hoop fragments.
+BALLOON_MIN_COMPACTNESS = 0.25  # 4*pi*A/P^2; allows twice a circle's perimeter.
 PROPOSAL_PROFILES = (
     "v2",
     "orange_v3",
@@ -227,10 +232,15 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
         return mixed_candidates(rgb, baseline, limit)
     candidates = []
     height, width = rgb.shape[:2]
+    compact_balloon = task == "balloon" and profile == GREEN_PURPLE_PROFILE
+    # HSV saturation alone is unreliable near black. max(R,G,B)-min(R,G,B)
+    # measures actual colour signal (S*V), without a lighting-specific cutoff.
+    chroma = np.ptp(rgb, axis=2) if compact_balloon else None
     masks = list(enumerate(color_masks(rgb, task, profile)))
     if task == "goal" and profile == "orange_local":
         masks.append((0, orange_local_mask(rgb)))
     for color, raw in masks:
+        signal = cv2.bitwise_and(chroma, chroma, mask=raw) if compact_balloon else None
         kernels = (1, 3) if task == "balloon" else (1, 5)
         if task == "goal" and profile == "goal_gap9":
             # Train-first ablation: bridge wider breaks without expanding HSV bands.
@@ -269,6 +279,22 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
                     continue
                 if w * h > 0.75 * width * height:
                     continue
+                proposal_score = float(np.sqrt(area) * (area / (w * h)) ** 2)
+                if compact_balloon:
+                    # A balloon cut off by the frame edge keeps its true size but not its
+                    # aspect; leave those to the general 5:1 guard and the crop model.
+                    clipped = x <= 0 or y <= 0 or x + w >= width or y + h >= height
+                    if min(w, h) < BALLOON_MIN_SIDE or (
+                            not clipped and max(w / h, h / w) > BALLOON_MAX_ASPECT):
+                        continue
+                    perimeter = cv2.arcLength(contour, True)
+                    compactness = 4 * np.pi * area / (perimeter * perimeter)
+                    if compactness < BALLOON_MIN_COMPACTNESS:
+                        continue
+                    # Mean over the WHOLE box includes zeros outside coloured pixels:
+                    # hollow rims and sparse speckle lose to filled colour evidence.
+                    # Scale invariant: a large dim blob cannot win on area alone.
+                    proposal_score = compactness * cv2.mean(signal[y:y+h, x:x+w])[0] / 255
                 pad = int(max(w, h) * 0.12)
                 candidates.append(
                     {
@@ -281,7 +307,7 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
                         ],
                         "area": float(area),
                         "color_group": color,
-                        "proposal_score": float(np.sqrt(area) * (area / (w * h)) ** 2),
+                        "proposal_score": float(proposal_score),
                     }
                 )
     if task == "goal" and profile in ("orange_regions", "orange_regions_compact"):
@@ -289,15 +315,22 @@ def proposals(rgb, task, limit=DEFAULT_LIMIT, min_area=6, profile=DEFAULT_PROFIL
     if task == "goal" and profile in ("rim_v4", "rim_budget"):
         candidates = consolidate_rims(candidates, conservative=profile == "rim_budget")
     selected = []
-    queues = [
-        iter(
-            sorted(
-                (c for c in candidates if c["color_group"] == color),
-                key=lambda c: -c["proposal_score"],
-            )
+    ranked = [
+        sorted(
+            (c for c in candidates if c["color_group"] == color),
+            key=lambda c: -c["proposal_score"],
         )
         for color in (0, 1)
     ]
+    if compact_balloon:
+        # The chroma score is scale-free, so tiny saturated specks can outrank a near,
+        # duller balloon. Reserve each colour's second slot for its largest candidate.
+        for queue in ranked:
+            if len(queue) > 2:
+                largest = max(range(1, len(queue)), key=lambda i: queue[i]["area"])
+                if queue[largest]["area"] > queue[0]["area"]:
+                    queue.insert(1, queue.pop(largest))
+    queues = [iter(queue) for queue in ranked]
     # Prevent large yellow structures from consuming the entire orange-goal budget.
     while len(selected) < limit:
         added = False

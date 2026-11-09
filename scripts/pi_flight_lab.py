@@ -24,8 +24,12 @@ import numpy as np
 from dtr.flight import ColorTracker, Mission
 from dtr.flight_lab import CaptureBuffer, diagnostic_images, export_capture, validate_capture
 from dtr.flight_pipeline import FlightPipeline
+from dtr.raw_capture import spool_capture
+from dtr.lab_rehearsal import Rehearsal, validate_event
+from dtr.target_geometry import load_target_sizes
+from dtr.target_vector import VectorCreator
 from dtr.flight_telemetry import add_mapping_arguments, mapping_from_args, mapping_identity_paths
-from dtr.search_worker import ModelSearch, SearchWorker
+from dtr.search_worker import DEFAULT_BALLOON_LIMIT, ModelSearch, SearchWorker
 
 try:
     from scripts.pi_flight_loop import Camera, Replay
@@ -46,7 +50,9 @@ def jpeg(rgb):
 
 
 class Lab:
-    def __init__(self, source, pipeline, root, identities):
+    def __init__(self, source, pipeline, root, identities, capture_mode="legacy"):
+        self.capture_mode = capture_mode
+        self.spool_thread = None
         self.source, self.pipeline = source, pipeline
         self.root, self.identities = Path(root), identities
         self.root.mkdir(parents=True, exist_ok=True)
@@ -57,6 +63,11 @@ class Lab:
         self.phase, self.goal_color = 'balloon', pipeline.mission.goal_color
         self.pending_config, self.frame = None, None
         self.flight_telemetry = None
+        self.last_row, self.last_frame_time = None, None
+        self.rehearsal = Rehearsal(self._record_rehearsal_event)
+        self.event_log_name = f'operator-events-{self.rehearsal.server_session}.jsonl'
+        fd = os.open(self.root / self.event_log_name, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        os.close(fd)
         self.sequence, self.last_frame_at, self.preview_at, self.watched_at = 0, 0., 0., 0.
         self.times, self.refresh = deque(maxlen=100), deque(maxlen=20)
         self.sessions = []
@@ -78,6 +89,8 @@ class Lab:
                 raise RuntimeError('Wait until the current take is saved')
             if self.active_transfers:
                 raise RuntimeError('Wait for take playback or downloads to finish before capture')
+            if self.rehearsal.pending:
+                raise RuntimeError('Wait for pending rehearsal events to reach the next frame')
             self.pending_config = (phase, colour)
             self.ready = False
 
@@ -95,14 +108,78 @@ class Lab:
             metadata['source'] = self.identities['source']
             metadata['worker_errors_before'] = self.pipeline.worker.errors
             metadata['worker_restarts_before'] = self.pipeline.worker.restarts
+            metadata['rehearsal_server_session'] = self.rehearsal.server_session
+            metadata['operator_event_log'] = self.event_log_name
+            metadata['rehearsal_initial'] = self.rehearsal.snapshot(time.monotonic(),
+                self.last_row, source=self.identities['source'], frame_sequence=self.sequence)
             ident = self.capture.start(metadata, time.monotonic())
             return dict(id=ident, state='capturing')
 
-    def state(self):
+    def _record_rehearsal_event(self, event):
+        # Small operator records are persisted by the request/frame owner. Image
+        # encoding remains deferred; this measured path does not claim no I/O.
+        previous = len(self.capture.events)
+        self.capture.record_event(event)
+        try:
+            with (self.root / self.event_log_name).open('a', encoding='utf-8') as stream:
+                stream.write(json.dumps(event, allow_nan=False) + '\n')
+                stream.flush()
+        except OSError:
+            del self.capture.events[previous:]
+            raise
+
+    def record_rehearsal(self, payload):
+        settings = validate_event(payload)
+        with self.lock:
+            now = time.monotonic()
+            if settings['action'] != 'vacuum_off':
+                if self.capture.state == 'exporting':
+                    raise RuntimeError('Wait until the current take is saved')
+                if (not self.ready or self.error or self.pending_config is not None
+                        or now - self.last_frame_at > 2):
+                    raise RuntimeError('Camera and flight pipeline must be ready for rehearsal')
+            event = self.rehearsal.receive(payload, now, frame_sequence=self.sequence,
+                                           frame_time=self.last_frame_time)
+            return dict(event, event_log=self.event_log_name)
+
+    def _apply_rehearsal(self, now):
+        def transition(phase, when):
+            self.pipeline.configure(phase, self.goal_color, when)
+            self.phase = phase
+            self.times.clear()
+            self.refresh.clear()
+        return self.rehearsal.apply(now, transition)
+
+    def telemetry(self):
+        state = self.state(watch=False)
+        result = state['capture'].get('result')
+        if result is not None:
+            state['capture']['result'] = {k: result.get(k) for k in
+                ('id', 'bytes', 'sha256', 'frames', 'created_at', 'source',
+                 'complete', 'export_complete', 'capture_error') if k in result}
+        return {k: state[k] for k in ("source", "ready", "error", "frame_age_ms", "phase",
+                "goal_color", "metrics", "flight_telemetry", "capture", "bundle")}
+
+    def raw_captures(self):
+        result = []
+        for path in sorted(self.root.glob("*/raw-summary.json"), reverse=True):
+            if not SESSION_ID.fullmatch(path.parent.name) or path.is_symlink():
+                continue
+            try:
+                entry = json.loads(path.read_text())
+                archive = path.parent / "capture.tar"
+                if entry["id"] == path.parent.name and archive.is_file() and not archive.is_symlink():
+                    result.append(entry)
+            except (OSError, ValueError, KeyError):
+                continue
+        return result[:100]
+
+    def state(self, watch=True):
         self.check_health()
         with self.lock:
             now = time.monotonic()
-            self.watched_at = now
+            if watch:
+                self.watched_at = now
             stale = now - self.last_frame_at > 3
             gaps = np.diff(self.times)
             fps = float((len(self.times) - 1) / (self.times[-1] - self.times[0])) if len(self.times) > 1 else None
@@ -111,8 +188,14 @@ class Lab:
                         error=self.error, phase=self.phase, goal_color=self.goal_color,
                         source=self.identities['source'],
                         bundle=self.identities.get('bundle'),
+                        identities=self.identities,
+                        capabilities=dict(rehearsal=True, capture_series=True, data_purpose=True),
+                        rehearsal=dict(self.rehearsal.snapshot(now, None if stale else self.last_row,
+                                            source=self.identities['source'], frame_sequence=self.sequence),
+                                       recent_events=list(self.rehearsal.recent),
+                                       pending_events=len(self.rehearsal.pending), event_log=self.event_log_name),
                         flight_telemetry=self.flight_telemetry if not stale else None,
-                        frame=None if self.capture.state in BUSY else self.frame,
+                        frame=None if not watch or self.capture.state in BUSY else self.frame,
                         frame_age_ms=(now - self.last_frame_at) * 1000 if self.last_frame_at else None,
                         metrics=dict(fps=fps, max_gap_ms=float(gaps.max() * 1000) if len(gaps) else None,
                                      search_refresh_ms=float(refresh.mean() * 1000) if len(refresh) else None,
@@ -147,7 +230,13 @@ class Lab:
                 if not self.running:
                     break
                 started = time.perf_counter()
-                row = self.pipeline.step(rgb, now)
+                with self.lock:
+                    applied_events = self._apply_rehearsal(now)
+                    row = self.pipeline.step(rgb, now)
+                    self.phase = 'goal' if self.pipeline.mission.search_phase == 'goal' else 'balloon'
+                    row['rehearsal'] = self.rehearsal.snapshot(now, row,
+                        source=self.identities['source'], frame_sequence=self.sequence + 1)
+                    row['rehearsal']['applied_event_ids'] = applied_events
                 row['pipeline_ms'] = (time.perf_counter() - started) * 1000
                 row['frame_time'] = now
                 metadata = getattr(self.source, 'last_metadata', {})
@@ -161,6 +250,7 @@ class Lab:
                 with self.lock:
                     self.last_frame_at = time.monotonic()
                     self.flight_telemetry = row.get('flight_telemetry')
+                    self.last_row, self.last_frame_time = row, now
                     self.sequence += 1
                     self.times.append(row['loop_completed'])
                     if row['search_result'] is not None:
@@ -174,13 +264,18 @@ class Lab:
                     exporting = self.capture.state == 'exporting'
                     if exporting:
                         self.ready = False
-                    preview = (not busy_before and not exporting and now - self.preview_at >= .5
+                    preview = (self.capture_mode == "legacy" and not busy_before and not exporting and now - self.preview_at >= .5
                                and now - self.watched_at < 3)
                 if exporting:
-                    # No preview, disk I/O, masks or compression in the timed capture interval.
-                    self._export()
-                    self.times.clear()
-                    self.refresh.clear()
+                    # No image encoding/export I/O inside the timed interval.
+                    if self.capture_mode == "raw":
+                        if self.capture.state == "exporting" and (self.spool_thread is None or not self.spool_thread.is_alive()):
+                            self.spool_thread = threading.Thread(target=self._spool, daemon=True)
+                            self.spool_thread.start()
+                    else:
+                        self._export()
+                        self.times.clear()
+                        self.refresh.clear()
                 elif preview:
                     with self.lock:
                         # Capture requests wait for any idle-preview work to finish.
@@ -197,8 +292,24 @@ class Lab:
         finally:
             with self.lock:
                 self.capture.finish('Camera loop stopped before the take finished')
+                try:
+                    self.rehearsal.cancel_pending(time.monotonic())
+                except (OSError, RuntimeError):
+                    self.error = 'Could not persist pending rehearsal shutdown status'
             self.source.close()
             self.pipeline.worker.close()
+
+    def _spool(self):
+        try:
+            result = spool_capture(self.capture, self.root, self.identities, publish=False)
+            with self.lock:
+                self.capture.result = result
+                self.capture.frames = []
+                self.capture.state = "complete"
+        except Exception as error:
+            with self.lock:
+                self.capture.error = f"Raw spool failed: {error}"
+                self.capture.state = "failed"
 
     def _export(self):
         try:
@@ -257,6 +368,10 @@ def make_handler(lab, port):
             path = unquote(urlsplit(self.path).path)
             if path == '/':
                 return self.reply(200, PAGE.read_bytes(), 'text/html; charset=utf-8')
+            if path == '/api/telemetry':
+                return self.reply(200, lab.telemetry())
+            if path == '/api/raw-captures':
+                return self.reply(200, dict(captures=lab.raw_captures()))
             if path == '/api/state':
                 return self.reply(200, lab.state())
             if path == '/api/mapping':
@@ -265,6 +380,26 @@ def make_handler(lab, port):
                     return self.reply(503, dict(error='Coordinate mapping is not configured'))
                 return self.reply(200, telemetry.mapping())
             parts = path.strip('/').split('/')
+            if len(parts) == 3 and parts[0] == 'raw-captures' and SESSION_ID.fullmatch(parts[1]) and parts[2] == 'capture.tar':
+                with lab.lock:
+                    if lab.capture.state in BUSY:
+                        return self.reply(409, dict(error='Wait until capture/spooling finishes'))
+                    lab.active_transfers += 1
+                try:
+                    known = {entry['id'] for entry in lab.raw_captures()}
+                    file = lab.root / parts[1] / 'capture.tar'
+                    if parts[1] not in known or file.parent.is_symlink():
+                        return self.reply(404, dict(error='Not found'))
+                    with file.open('rb') as stream:
+                        self.send_response(200)
+                        self.send_header('Content-Type', 'application/x-tar')
+                        self.send_header('Content-Length', str(file.stat().st_size))
+                        self.end_headers()
+                        shutil.copyfileobj(stream, self.wfile, 64 * 1024)
+                    return
+                finally:
+                    with lab.lock:
+                        lab.active_transfers -= 1
             if len(parts) < 3 or parts[0] != 'sessions' or not SESSION_ID.fullmatch(parts[1]):
                 return self.reply(404, dict(error='Not found'))
             with lab.lock:
@@ -285,7 +420,8 @@ def make_handler(lab, port):
                 return self.reply(200, review_page(parts[1]), 'text/html; charset=utf-8')
             relative = Path(*parts[2:])
             allowed = (str(relative) in ('summary.json', 'scene.json', 'frames.jsonl', 'clip.avi', 'download.zip',
-                                        'wire-v1.jsonl', 'esp32-draft.jsonl', 'mapping.json')
+                                        'wire-v1.jsonl', 'wire-v2.jsonl', 'esp32-draft.jsonl', 'mapping.json',
+                                        'rehearsal.jsonl', 'events.jsonl')
                        or (len(relative.parts) == 2 and relative.parts[0] in
                            ('raw', 'masks', 'overlay', 'tracker-masks')
                            and re.fullmatch(r'\d{4}\.png', relative.name)))
@@ -320,11 +456,15 @@ def make_handler(lab, port):
                     return self.reply(200, dict(ok=True))
                 if self.path == '/api/capture':
                     return self.reply(202, lab.start_capture(payload))
+                if self.path == '/api/rehearsal':
+                    return self.reply(202, lab.record_rehearsal(payload))
                 return self.reply(404, dict(error='Not found'))
             except (ValueError, TypeError, UnicodeDecodeError) as error:
                 return self.reply(400, dict(error=str(error)))
             except RuntimeError as error:
                 return self.reply(409, dict(error=str(error)))
+            except OSError:
+                return self.reply(503, dict(error='Could not persist rehearsal event; acceptance is unknown'))
 
     return Handler
 
@@ -338,15 +478,19 @@ class LabHTTPServer(ThreadingHTTPServer):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--capture-mode', choices=('raw', 'legacy'), default='raw')
     parser.add_argument('--balloon-model', required=True)
     parser.add_argument('--goal-model', required=True)
     parser.add_argument('--output', required=True)
     parser.add_argument('--port', type=int, default=8770)
+    parser.add_argument('--balloon-limit', type=int, default=DEFAULT_BALLOON_LIMIT)
     parser.add_argument('--wall-clock-offset-s', type=float, default=0.,
                         help='Mac-derived offset for labels only; frame timing stays monotonic')
     parser.add_argument('--replay', help='Synthetic/stored frame glob for interface testing only')
     add_mapping_arguments(parser)
     args = parser.parse_args()
+    if not 1 <= args.balloon_limit <= 64:
+        parser.error('Balloon limit must be between 1 and 64')
     if not 1024 <= args.port <= 65535:
         parser.error('Choose a port from 1024 to 65535')
     root = Path(__file__).resolve().parents[1]
@@ -362,17 +506,21 @@ def main():
     identities = dict(source='replay' if args.replay else 'camera', bundle=str(root), fps=20,
                       wall_clock_offset_s=args.wall_clock_offset_s,
                       sensor=[1296, 972], output=[320, 240], rotation_deg=180,
-                      search_niceness=19, balloon_limit=8,
+                      search_niceness=19, balloon_limit=args.balloon_limit,
                       mapping=telemetry.mapping(),
                       hashes={str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in files})
-    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model), niceness=19)
+    worker = SearchWorker(ModelSearch(args.balloon_model, args.goal_model, args.balloon_limit), niceness=19)
     lab, thread, server, source = None, None, None, None
     try:
         worker.start()
         worker.wait_ready()
         source = Replay(args.replay, 20) if args.replay else Camera(20)
-        lab = Lab(source, FlightPipeline(worker, ColorTracker(), Mission('orange'), telemetry=telemetry),
-                  args.output, identities)
+        sizes = load_target_sizes(args.target_sizes)
+        # Connor's vector uses the same lens (and any checkerboard calibration) as telemetry.
+        mission = Mission('orange', target_sizes=sizes,
+                          vector=VectorCreator(telemetry.lens, sizes))
+        lab = Lab(source, FlightPipeline(worker, ColorTracker(), mission, telemetry=telemetry),
+                  args.output, identities, capture_mode=args.capture_mode)
         server = LabHTTPServer(('127.0.0.1', args.port), make_handler(lab, args.port))
         server.lab = lab
         thread = threading.Thread(target=lab.loop, daemon=True)

@@ -1,0 +1,18 @@
+[Unit]
+Description=DTR bench radio link and Wi-Fi navigation page
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=simple
+User=pacman
+WorkingDirectory=/home/pacman/dtr-ground-station
+ExecStart=/bin/sh /home/pacman/dtr-ground-station/start-pi-link.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

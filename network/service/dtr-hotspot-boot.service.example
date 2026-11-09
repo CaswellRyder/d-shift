@@ -1,0 +1,19 @@
+[Unit]
+Description=DTR persistent bench hotspot startup
+After=NetworkManager.service
+Wants=NetworkManager.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/usr/local/libexec/dtr-hotspot
+ExecStart=/usr/bin/python3 -B -E -s /usr/local/libexec/dtr-hotspot/pi_hotspot_boot.py --uuid REPLACE_WITH_CONNECTION_UUID
+TimeoutStartSec=90
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

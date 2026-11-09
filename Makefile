@@ -1,24 +1,26 @@
 .PHONY: setup doctor test test-web-policy smoke viewer webcam
 
 setup:
-	uv sync --extra pretrained --extra dev --extra metal --locked
+	uv sync --locked --extra dev
 
 doctor:
-	.venv/bin/dtr doctor
+	uv run --locked dtr doctor
 
 # These local targets require the ignored tests/ directory.
 test:
-	.venv/bin/ruff check src tests scripts
-	.venv/bin/pytest -q
+	uv run --locked --extra dev ruff check .
+	uv run --locked --extra dev pytest -q
 
 test-web-policy:
 	node --test tests/frame-policy.test.cjs tests/goal-view.test.cjs
 
 smoke:
-	.venv/bin/python scripts/smoke.py
+	uv run --locked python scripts/verify_current_models.py --smoke
 
 viewer:
 	.venv/bin/tensorboard --logdir runs --host 127.0.0.1 --port 6006
 
 webcam:
-	.venv/bin/python webcam_app.py --allow-unvalidated
+	uv run --locked python webcam_app.py --allow-unvalidated \
+	  --goal-model models/v1.0.0/goal/student.float.tflite \
+	  --balloon-model models/v1.0.0/balloon/student.int8.tflite

@@ -15,27 +15,40 @@ import cv2
 import numpy as np
 
 from .flight import TRACK_HSV
-from .flight import encode
+from .flight import encode, encode_v2
+from .goal_square import GOAL_LABELS, LABELS_BY_COLOR
 from .vision import GREEN_PURPLE_PROFILE, color_masks
 
 LABELS = {'balloon': ('green_balloon', 'purple_balloon'),
-          'goal': ('orange_square', 'yellow_square')}
+          'goal': GOAL_LABELS}
 COLORS = {'green_balloon': (65, 195, 105), 'purple_balloon': (178, 100, 215),
-          'orange_square': (245, 145, 55), 'yellow_square': (235, 215, 65)}
+          **{label: (245, 145, 55) for label in LABELS_BY_COLOR['orange']},
+          **{label: (235, 215, 65) for label in LABELS_BY_COLOR['yellow']}}
+GOAL_REQUESTS = ('orange_goal', 'yellow_goal')
+
+
+def requested_target_matches(label, requested):
+    """Goal capture requests cover any shape of that colour, including older takes."""
+    if requested in GOAL_REQUESTS or requested in GOAL_LABELS:
+        return label in LABELS_BY_COLOR[requested.split('_')[0]]
+    return label == requested
 
 
 def validate_capture(payload, phase, goal_color):
     if not isinstance(payload, dict):
         raise ValueError('Capture settings must be an object')
     distance = payload.get('distance_m')
-    if isinstance(distance, bool) or not isinstance(distance, (int, float)):
+    diagnostic = payload.get('diagnostic', False)
+    if not isinstance(diagnostic, bool):
+        raise ValueError('Diagnostic flag must be boolean')
+    if not diagnostic and (isinstance(distance, bool) or not isinstance(distance, (int, float))):
         raise ValueError('Enter the tape-measured distance in metres')
-    if not math.isfinite(distance) or not 0 < distance <= 100:
+    if not diagnostic and (not math.isfinite(distance) or not 0 < distance <= 100):
         raise ValueError('Measured distance must be greater than zero and at most 100 m')
     label = payload.get('target_label')
-    if label not in LABELS.get(phase, ()):
+    if label not in (LABELS.get(phase, ()) + (GOAL_REQUESTS if phase == 'goal' else ())):
         raise ValueError('Target label does not match the search phase')
-    if phase == 'goal' and label != goal_color + '_square':
+    if phase == 'goal' and label not in (*LABELS_BY_COLOR[goal_color], goal_color + '_goal'):
         raise ValueError('Goal label must match the selected goal colour')
     count = payload.get('expected_count', 1)
     if isinstance(count, bool) or not isinstance(count, int) or not 0 <= count <= 20:
@@ -45,11 +58,26 @@ def validate_capture(payload, phase, goal_color):
         raise ValueError('Scene name: up to 48 lowercase letters, digits, - or _')
     if not isinstance(notes, str) or len(notes) > 500:
         raise ValueError('Notes are limited to 500 characters')
-    return dict(distance_m=float(distance), distance_source='operator tape measurement',
+    purpose = payload.get('data_purpose', 'development')
+    if purpose not in ('development', 'training'):
+        raise ValueError('Data purpose must be development or training')
+    if diagnostic and purpose != 'development':
+        raise ValueError('Unmeasured diagnostic captures are development only')
+    group = payload.get('session_group', '')
+    if not isinstance(group, str) or (group and not re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,63}', group)):
+        raise ValueError('Session group: up to 64 lowercase letters, digits, - or _')
+    if purpose == 'training' and not group:
+        raise ValueError('Training collection requires a session group to prevent frame split leakage')
+    return dict(distance_m=None if diagnostic else float(distance),
+                distance_source='not measured' if diagnostic else 'operator tape measurement',
                 distance_reference='camera lens to target centre', target_label=label,
-                expected_count=count, scene=scene or f'{phase}-{distance:g}m', notes=notes,
-                phase=phase, goal_color=goal_color, training_use=False,
-                evaluation_use='development lab; not flight qualification')
+                expected_count=None if diagnostic else count,
+                diagnostic=diagnostic,
+                scene=scene or (f'{phase}-diagnostic' if diagnostic else f'{phase}-{distance:g}m'), notes=notes,
+                phase=phase, goal_color=goal_color, training_use=purpose == 'training',
+                data_purpose=purpose, session_group=group or None,
+                evaluation_use='training collection; review required before use' if purpose == 'training'
+                else 'development lab; not flight qualification')
 
 
 class CaptureBuffer:
@@ -59,6 +87,7 @@ class CaptureBuffer:
         self.wall_clock_offset_s = wall_clock_offset_s
         self.state, self.id, self.error = 'idle', None, None
         self.frames, self.metadata, self.result = [], {}, None
+        self.events = []
         self.started, self.bytes_used, self.count = 0., 0, 0
         self.finished_at = None
 
@@ -71,10 +100,19 @@ class CaptureBuffer:
         self.metadata['created_at'] = wall_now.isoformat()
         self.metadata['wall_clock_offset_s'] = self.wall_clock_offset_s
         self.frames, self.error, self.result = [], None, None
+        self.events = []
         self.started, self.bytes_used, self.count = now, 0, 0
         self.finished_at = None
         self.state = 'capturing'
         return self.id
+
+    def record_event(self, event):
+        stamp = event.get('applied_at_monotonic', event['received_at_monotonic'])
+        if self.state != 'capturing' or not self.started <= stamp < self.started + self.duration_s:
+            return
+        if len(self.events) >= 512:
+            raise RuntimeError('Take event limit reached; wait until this take is saved')
+        self.events.append(deepcopy(event))
 
     def append(self, rgb, row, now):
         if self.state != 'capturing':
@@ -117,7 +155,8 @@ def diagnostic_images(rgb, row):
     phase = 'goal' if row['phase_before'] == 'goal' else 'balloon'
     masks = color_masks(rgb, phase, GREEN_PURPLE_PROFILE if phase == 'balloon' else 'v2')
     mask_rgb = np.zeros_like(rgb)
-    for label, mask in zip(LABELS[phase], masks):
+    mask_labels = ('orange_circle', 'yellow_circle') if phase == 'goal' else LABELS[phase]
+    for label, mask in zip(mask_labels, masks):
         mask_rgb[mask != 0] = COLORS[label]
     overlay = rgb.copy()
     message = row['message']
@@ -180,13 +219,24 @@ def export_capture(capture, root, identities):
                 (pending / 'clip.avi').unlink(missing_ok=True)
         commands = Counter()
         matching = 0
-        wire_bytes, draft_bytes = [], []
+        wire_bytes, draft_bytes, v2_bytes = [], [], []
+        with (pending / 'events.jsonl').open('x') as events:
+            for event in capture.events:
+                events.write(json.dumps(event, allow_nan=False) + '\n')
+        with (pending / 'rehearsal.jsonl').open('x') as rehearsal:
+            for row in rows:
+                if 'rehearsal' in row:
+                    rehearsal.write(json.dumps(dict(frame_time=row['frame_time'],
+                                                     **row['rehearsal']), allow_nan=False) + '\n')
         # Serialize only observations already computed in the live frame step.
         # Old takes without coordinate telemetry remain explicitly legacy-only.
-        with (pending / 'wire-v1.jsonl').open('x') as wire, (pending / 'esp32-draft.jsonl').open('x') as draft:
+        with (pending / 'wire-v1.jsonl').open('x') as wire, (pending / 'wire-v2.jsonl').open('x') as wire2, (pending / 'esp32-draft.jsonl').open('x') as draft:
             for row in rows:
                 outgoing = row.get('flight_telemetry', {}).get('outgoing', {})
                 legacy_line = outgoing.get('legacy_jsonl', encode(row['message']))
+                v2_line = outgoing.get('wire_v2_jsonl', encode_v2(row['message']))
+                wire2.write(v2_line)
+                v2_bytes.append(len(v2_line.encode('utf-8')))
                 wire.write(legacy_line)
                 wire_bytes.append(len(legacy_line.encode('utf-8')))
                 if outgoing.get('draft_jsonl') is not None:
@@ -207,7 +257,8 @@ def export_capture(capture, root, identities):
                                             overlay=f'overlay/{filename}',
                                             tracker_mask=f'tracker-masks/{filename}'), allow_nan=False) + '\n')
                 commands[row['message']['cmd']] += 1
-                matching += any(t['label'] == capture.metadata['target_label'] and t['misses'] == 0
+                matching += any(requested_target_matches(t['label'], capture.metadata['target_label'])
+                                and t['misses'] == 0
                                 for t in row['tracks'])
         if writer is not None:
             writer.release()
@@ -234,6 +285,10 @@ def export_capture(capture, root, identities):
                        loop_fps=fps, max_gap_ms=float(gaps.max()) if len(gaps) else None,
                        p95_gap_ms=float(np.percentile(gaps, 95)) if len(gaps) else None,
                        commands=dict(commands), frames_with_requested_target=matching,
+                       rehearsal=dict(events='events.jsonl', frames='rehearsal.jsonl',
+                                      event_records=len(capture.events),
+                                      transmitted=False, applied=False,
+                                      possession_source='manual operator observations only'),
                        worker_errors_after=rows[-1].get('worker_errors'),
                        worker_restarts_after=rows[-1].get('worker_restarts'),
                        requested_target_coverage=matching / len(rows),
@@ -242,7 +297,7 @@ def export_capture(capture, root, identities):
                        preview_during_capture=False, encoding_during_capture=False,
                        video_available=(pending / 'clip.avi').exists(),
                        video_note='AVI uses measured average fps; frames.jsonl preserves exact timestamps',
-                       outgoing_logs=dict(legacy='wire-v1.jsonl', esp32_draft='esp32-draft.jsonl',
+                       outgoing_logs=dict(wire_v2='wire-v2.jsonl', wire_v2_max_bytes=max(v2_bytes, default=0), legacy='wire-v1.jsonl', esp32_draft='esp32-draft.jsonl',
                                           draft_frames=sum('flight_telemetry' in row for row in rows),
                                           transmitted=False, controller_input='unavailable',
                                           max_legacy_line_bytes=max(wire_bytes, default=0),

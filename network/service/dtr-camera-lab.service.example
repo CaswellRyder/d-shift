@@ -1,0 +1,20 @@
+[Unit]
+Description=DTR camera and vision recorder without actuator output
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pacman/flight-lab-practice-20261109
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONPATH=/home/pacman/flight-lab-practice-20261109/src:/home/pacman/flight-lab-practice-20261109
+Environment=OPENBLAS_NUM_THREADS=1
+Environment=OMP_NUM_THREADS=1
+Environment=DTR_TFLITE_LIBRARY=/home/pacman/flight-lab-practice-20261109/runtime/libtensorflowlite_c.so
+ExecStart=/usr/bin/python3 -u /home/pacman/flight-lab-practice-20261109/scripts/pi_flight_lab.py --capture-mode raw --balloon-model /home/pacman/flight-lab-practice-20261109/models/balloon.tflite --goal-model /home/pacman/flight-lab-practice-20261109/models/goal.tflite --output /home/pacman/flight-lab-practice-20261109/sessions --port 8771 --balloon-limit 4 --lens-calibration /home/pacman/flight-lab-practice-20261109/configs/lens-calibration.json
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=15
+UMask=0077
+
+[Install]
+WantedBy=default.target
